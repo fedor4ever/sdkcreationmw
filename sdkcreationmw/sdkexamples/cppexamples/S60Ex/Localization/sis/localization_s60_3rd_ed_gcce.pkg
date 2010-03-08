@@ -1,0 +1,69 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; Localization.pkg
+;
+
+; Language definitions
+&EN,GE,ZH,JA,TH
+
+; standard SIS file header
+#{"Localization-EN","Localization-GE","Localization-ZH","Localization-JA","Localization-TH"},(0xE0005B00),1,0,0
+
+;Localised Vendor name
+%{"Vendor-EN", "Vendor-GE","Vendor-ZH","Vendor-JA","Vendor-TH"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID-EN","Series60ProductID-GE","Series60ProductID-ZH","Series60ProductID-JA","Series60ProductID-TH"}
+
+;Files to install
+"..\..\..\epoc32\release\gcce\urel\Localization.exe"                   -"!:\sys\bin\Localization.exe"
+"..\..\..\epoc32\data\z\resource\apps\Localization_aif.mif"		        -"!:\resource\apps\Localization_aif.mif"
+
+;Another way would be to install only language specific resources
+;but then the installation would not be generic,
+;meaning that if phone language is changed, the application language
+;would not be changed.
+;If all localized resources from all supported languages are installed
+;the language of the application can dynamically be changed.
+;Although, this required more space from target environment.
+
+;EN resources
+"..\..\..\epoc32\data\z\resource\apps\Localization.r01"                 -"!:\resource\apps\Localization.r01"
+"..\..\..\epoc32\data\z\private\10003a3f\apps\Localization_reg.r01"     -"!:\private\10003a3f\import\apps\Localization_reg.r01"
+"..\..\..\epoc32\data\z\resource\apps\Localization_01.mbm"		      -"!:\resource\apps\Localization_01.mbm"
+
+;GE resources
+"..\..\..\epoc32\data\z\resource\apps\Localization.r03"                 -"!:\resource\apps\Localization.r03"
+"..\..\..\epoc32\data\z\private\10003a3f\apps\Localization_reg.r03"     -"!:\private\10003a3f\import\apps\Localization_reg.r03"
+"..\..\..\epoc32\data\z\resource\apps\Localization_03.mbm"		      -"!:\resource\apps\Localization_03.mbm"
+
+;ZH resources
+"..\..\..\epoc32\data\z\resource\apps\Localization.r31"                 -"!:\resource\apps\Localization.r31"
+"..\..\..\epoc32\data\z\private\10003a3f\apps\Localization_reg.r31"     -"!:\private\10003a3f\import\apps\Localization_reg.r31"
+"..\..\..\epoc32\data\z\resource\apps\Localization_31.mbm"		      -"!:\resource\apps\Localization_31.mbm"
+
+;JA resources
+"..\..\..\epoc32\data\z\resource\apps\Localization.r32"                 -"!:\resource\apps\Localization.r32"
+"..\..\..\epoc32\data\z\private\10003a3f\apps\Localization_reg.r32"     -"!:\private\10003a3f\import\apps\Localization_reg.r32"
+"..\..\..\epoc32\data\z\resource\apps\Localization_32.mbm"		      -"!:\resource\apps\Localization_32.mbm"
+
+;TH resources
+"..\..\..\epoc32\data\z\resource\apps\Localization.r33"                 -"!:\resource\apps\Localization.r33"
+"..\..\..\epoc32\data\z\private\10003a3f\apps\Localization_reg.r33"     -"!:\private\10003a3f\import\apps\Localization_reg.r33"
+"..\..\..\epoc32\data\z\resource\apps\Localization_33.mbm"		      -"!:\resource\apps\Localization_33.mbm"

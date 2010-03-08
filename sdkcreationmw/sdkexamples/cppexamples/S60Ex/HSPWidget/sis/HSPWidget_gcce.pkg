@@ -1,0 +1,46 @@
+;
+; Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+
+;Languages
+&EN
+; Package header
+#{"HsWidget"},(0xA0007E04),1,0,0
+
+;
+;Localised Vendor name
+;
+%{"Forum Nokia"}
+
+;
+;Unique Vendor name
+;
+:"Forum Nokia"
+
+;Supports S60 v 3.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+; Input files
+"..\..\..\Epoc32\release\gcce\urel\HsWidget.exe"								-"!:\sys\bin\HsWidget.exe"
+"..\..\..\Epoc32\data\Z\Resource\apps\HsWidget.rsc"							-"!:\resource\apps\HsWidget.rsc"
+"..\..\..\Epoc32\data\Z\private\10003a3f\apps\HsWidget_reg.rsc"				-"!:\private\10003a3f\import\apps\HsWidget_reg.rsc"
+"..\..\..\Epoc32\winscw\c\resource\apps\HsWidget.mif" 						-"!:\resource\apps\HsWidget.mif"
+"..\..\..\Epoc32\winscw\c\data\Images\Pictures\Sunny.JPG"           			-"c:\data\Images\Pictures\Sunny.JPG"
+
+
+;
+; Backup & Restore
+;
+"backup_registration.xml"		-"!:\private\A0007E04\backup_registration.xml"

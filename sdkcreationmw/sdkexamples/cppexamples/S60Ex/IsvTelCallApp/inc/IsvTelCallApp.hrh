@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Commands and Control IDs for IsvTelCallApp
+*
+*/
+
+
+#ifndef ISVTELCALLAPP_HRH
+#define ISVTELCALLAPP_HRH
+
+enum TIsvTelCallAppMenuCommands
+    {
+    EIsvTelCallAppCmdLaunchPhOps = 0x1600,
+
+    // Test App commands - Phone
+    EIsvTelCallAppCmdAPITestCall,
+    EIsvTelCallAppCmdAPITestHangup,
+    EIsvTelCallAppCmdAPITestHold,
+    EIsvTelCallAppCmdAPITestResume,
+    EIsvTelCallAppCmdAPITestSwap,
+    EIsvTelCallAppCmdAPITestSendDTMF,
+
+    //Status commands
+    EIsvTelCallAppCmdAPITestFetch
+    };
+
+enum TIsvTelCallAppDialogControlIds
+    {
+//Phone 1 Operations Menu
+    EIsvTelCallAppDlgCtrlIdPhone1 = 0x2500,
+    EIsvTelCallAppDlgCtrlIdDtmfSeq1,
+    EIsvTelCallAppDlgCtrlIdCall1Status,
+//Phone 2 Operations Menu
+    EIsvTelCallAppDlgCtrlIdPhone2,
+    EIsvTelCallAppDlgCtrlIdDtmfSeq2,
+    EIsvTelCallAppDlgCtrlIdCall2Status,
+//Line Status Menu
+    EIsvTelCallAppDlgCtrlIdVoiceLineStatus,
+    EIsvTelCallAppDlgCtrlIdDataLineStatus,
+    EIsvTelCallAppDlgCtrlIdFaxLineStatus
+    };
+
+enum TIsvTelCallAppPageControlIds
+    {
+    EIsvTelCallAppPageCtrlIdPagePhone1 = 1,
+    EIsvTelCallAppPageCtrlIdPagePhone2,
+    EIsvTelCallAppPageCtrlIdPageCallLineStatus
+    };
+
+enum TIsvTelCallAppFieldInfo
+    {
+    EIsvTelCallAppLabelMaxLength = 30,
+    EIsvTelCallAppEdwinMaxLength = 100
+    };
+
+#endif
+
+// End of File

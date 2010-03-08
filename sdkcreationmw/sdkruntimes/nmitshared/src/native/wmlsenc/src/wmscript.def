@@ -1,0 +1,8 @@
+LIBRARY    WMLSCRIPT
+DESCRIPTION "WML Script Encoder."
+EXPORTS
+      WMLS_Startup
+      WMLS_Shutdown
+      WMLS_FreeBuffers
+      WMLS_Encode
+      WMLS_AddLibrary

@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+// AgentApp.mmp
+
+sourcepath	..\..\..\..\src\
+
+epocstacksize	0x5000
+target		DebugAgent.exe
+targettype	exe
+TARGETPATH		\sys\bin
+
+START RESOURCE		driver\ui\DebugAgent.rss
+targetpath			Resource\apps
+header
+lang 					sc
+end
+
+// Application exe registration resource file
+start resource 			driver\ui\DebugAgent_reg.rss
+targetpath 				private\10003a3f\apps
+lang					sc
+end
+
+// Application localisable resource file
+start resource 			driver\ui\DebugAgent_loc.rss
+targetpath 				\Resource\apps
+lang					sc
+end
+
+
+
+
+CAPABILITY	ProtServ TrustedUI NetworkServices WriteDeviceData
+VENDORID 0x70000001
+SECUREID 0x10208DDD
+
+UID 		0x100039ce 0x10202065 
+
+systeminclude	\epoc32\include
+systeminclude	\epoc32\include\libc
+systeminclude	\epoc32\include\techview
+systeminclude	\epoc32\include\j2me
+
+userinclude	..\..\..\..\include
+userinclude	..\..\..\..\src\driver\ui
+
+
+#include "..\..\..\engine\swi\swiengine.mmp"
+#include "..\..\..\slave\seislave.mmp"
+#include "..\..\..\utils\utils.mmp"
+
+source		driver\Driver.cpp
+source		driver\ui\UiDriver.cpp
+source		driver\ui\DebugAgentApplication.cpp
+source		driver\ui\DebugAgentAppUi.cpp
+source		driver\ui\DebugAgentDocument.cpp
+source		driver\ui\DebugAgentView.cpp
+source 		driver\ui\Dialogs.cpp
+source 		driver\ui\SEIConnector.cpp
+
+
+
+
+library		euser.lib efsrv.lib esock.lib edbms.lib charconv.lib 
+library		MIDP2DBV2.lib midp2client.lib
+debuglibrary	flogger.lib
+library		etext.lib form.lib  cone.lib  apparc.lib
+library		eikdlg.lib eikcore.lib eikcoctl.lib  
+library 	insock.lib
+
+#ifndef DEBUG_AGENT_ENGINE_SWI_MMP
+library		ezlib.lib 
+#endif

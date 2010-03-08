@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+#define qtn_app_caption_string "Noughts and Crosses"
+#define qtn_app_short_caption_string "NAC"
+
+#define qtn_nac_exit "Exit"
+#define qtn_nac_menu "Menu"
+#define qtn_nac_settings "Settings"
+
+#define qtn_nac_new_game "New game"
+#define qtn_nac_stats "Stats"
+#define qtn_nac_nought "Nought"
+#define qtn_nac_cross "Cross"
+
+#define qtn_nac_players_name "Player's name"
+#define qtn_nac_who_plays_first "Who plays first?"
+#define qtn_nac_player_type "Player type"
+
+#define qtn_nac_computer "Computer"
+#define qtn_nac_human "Human"
+
+#define qtn_nac_noughts_and_crosses "Noughts and Crosses"
+
+// End of File

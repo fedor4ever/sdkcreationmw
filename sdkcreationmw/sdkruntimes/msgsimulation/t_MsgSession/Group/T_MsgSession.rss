@@ -1,0 +1,289 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  Resource Identifier
+
+NAME T_MS
+
+
+//  Include Files
+
+#include <eikon.rh>         // Global command ids
+#include "T_MsgSession.hrh"       // T_MsgSession command ids
+#include "T_MsgSession.loc"       // Localised strings
+
+
+//  Resource File Sigunature
+
+RESOURCE RSS_SIGNATURE {}
+
+
+//  Default Document Name
+
+RESOURCE TBUF { buf=""; }
+
+
+//  Application Information
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_t_msgsession_menubar;
+    hotkeys = r_t_msgsession_hotkeys;
+    cba = r_uikon_t_msgsession_cba;
+    }
+
+
+/*
+-----------------------------------------------------------------------------
+    
+    R_T_MSGSESSION_MENUBAR - Menu bar and menu panes
+
+-----------------------------------------------------------------------------
+*/
+
+RESOURCE MENU_BAR r_t_msgsession_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            txt = M_T_MSGSESSION_FILE;
+            menu_pane = r_t_msgsession_file_menu;
+            },
+        MENU_TITLE
+            {
+            txt = M_T_MSGSESSION_EDIT;
+            menu_pane = r_t_msgsession_edit_menu;
+            },
+        MENU_TITLE
+            {
+            txt = M_T_MSGSESSION_TOOLS;
+            menu_pane = r_t_msgsession_tools_menu;
+            }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_t_msgsession_file_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_NEW;
+            command = EEikCmdFileNew;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_PRINT;
+            cascade = r_t_msgsession_file_print_menu;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_SAVE;
+            command = EEikCmdFileSave;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_ADD_TO_DESK;
+            command = ET_MsgSessionCmdAddToDesk;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_CLOSE;
+            command = EEikCmdExit;
+            }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_t_msgsession_file_print_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_PRINT_PRINT;
+            command = EEikCmdPrintPrint;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_PRINT_PREVIEW;
+            command = EEikCmdPrintPreview;
+            flags = EEikMenuItemSeparatorAfter;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_PRINT_PAGESETUP;
+            command = EEikCmdPrintSetup;
+            }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_t_msgsession_edit_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_UNDO;
+            command = EEikCmdEditUndo;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_CUT;
+            command = EEikCmdEditCut;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_COPY;
+            command = EEikCmdEditCopy;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_PASTE;
+            command = EEikCmdEditPaste;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_SELECT_ALL;
+            command = EEikCmdEditSelectAll;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_FIND;
+            command = EEikCmdSearchFind;
+            }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_t_msgsession_tools_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_OPEN_LOG;
+            command = ET_MsgSessionCmdOpenLog;
+            },
+        MENU_ITEM
+            {
+            txt = M_T_MSGSESSION_RECEIVE_IR;
+            command = EEikCmdIrdaReceive;
+            }
+        };
+    }
+
+
+/*
+-----------------------------------------------------------------------------
+    
+    R_T_MSGSESSION_EDITOR_HOTKEYS - Shortcut key definitions
+
+-----------------------------------------------------------------------------
+*/
+
+RESOURCE HOTKEYS r_t_msgsession_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EEikCmdEditSelectAll;        key = 'a'; },
+        HOTKEY { command = EEikCmdFontBold;             key = 'b'; },
+        HOTKEY { command = EEikCmdEditCopy;             key = 'c'; },
+        HOTKEY { command = ET_MsgSessionCmdDeleteFile;        key = 'd'; },
+        HOTKEY { command = EEikCmdSearchFind;           key = 'f'; },
+        HOTKEY { command = EEikCmdFontItalic;           key = 'i'; },
+        HOTKEY { command = EEikCmdPrintPrint;           key = 'p'; },
+        HOTKEY { command = EEikCmdFontUnderline;        key = 'u'; },
+        HOTKEY { command = EEikCmdEditPaste;            key = 'v'; },
+        HOTKEY { command = EEikCmdEditCut;              key = 'x'; },
+        HOTKEY { command = EEikCmdEditUndo;             key = 'z'; }
+        };
+
+    shift_control=
+        {
+        HOTKEY { command = ET_MsgSessionCmdOpenLog;           key = 'l'; },
+        HOTKEY { command = EEikCmdFileSaveAs;           key = 's'; },
+        HOTKEY { command = EEikCmdPrintSetup;           key = 'u'; },
+        HOTKEY { command = EEikCmdPrintPreview;         key = 'v'; }
+        };
+    }
+
+
+/*
+-----------------------------------------------------------------------------
+    
+    R_UIKON_T_MSGSESSION_CBA - Command buttons on right side of the screen
+
+-----------------------------------------------------------------------------
+*/
+
+RESOURCE CBA r_uikon_t_msgsession_cba
+    {
+    breadth = 80;
+    buttons =
+        {                                                                           
+        CBA_BUTTON
+            {
+            txt = "";
+            id = 0;
+            }, 
+        CBA_BUTTON
+            {
+            txt = "";
+            id = 0; 
+            }, 
+        CBA_BUTTON
+            {
+            txt = "";
+            id = 0;
+            }, 
+        CBA_BUTTON 
+            {
+            txt = B_T_MSGSESSION_CLOSE;
+            id = EEikCmdExit;
+            }
+        };
+    }
+
+
+/*
+-----------------------------------------------------------------------------
+    
+    Dialogs
+
+-----------------------------------------------------------------------------
+*/
+
+// add dialog resources here
+
+
+/*
+-----------------------------------------------------------------------------
+    
+    Resource strings
+
+-----------------------------------------------------------------------------
+*/
+
+RESOURCE TBUF r_not_implemented { buf = I_T_MSGSESSION_NOT_IMPL; }
+
+
+// End of file

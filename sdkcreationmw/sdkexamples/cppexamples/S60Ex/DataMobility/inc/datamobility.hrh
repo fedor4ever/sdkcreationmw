@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains declarations for constants of datamobility.
+*                The file can be included in C++ or resource file.
+*
+*/
+
+
+#ifndef DATAMOBILITY_HRH
+#define DATAMOBILITY_HRH
+
+#define _UID3 0xA000027F
+
+// datamobility enumerate command codes
+
+// Application view ids.
+enum TAppUIViewNumber
+    {
+    EMenuViewId = 1,
+    EOutputViewId
+    };
+
+// Application UI commands.
+enum TAppUICommandIds
+    {
+    EAppUIGoBack = 1,
+    EAppUIGoToMenu,
+    EAppUIGoToStandardApplication,
+    EAppUIGoToApplicationUsingSnap,
+    EAppUIGoToTriggeringConnectionDialog,
+    EAppUIGoToALRApplication,
+    EAppUIGoToALRApplicationUsingDefaultConnection,
+    EAppUIGoToUsingConnectionSetting
+    };
+
+#endif // DATAMOBILITY_HRH

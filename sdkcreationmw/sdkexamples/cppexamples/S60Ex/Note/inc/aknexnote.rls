@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Captions
+rls_string STRING_r_exnt_caption_string            "Note"
+rls_string STRING_r_exnt_short_caption_string      "Note"
+
+// MenuBar
+rls_string STRING_r_exnt_menubar                   "Option"
+rls_string STRING_r_exnt_menu_outline01            "Error note"
+rls_string STRING_r_exnt_menu_outline05            "Wait note"
+rls_string STRING_r_exnt_menu_outline08            "Dynamic text"
+rls_string STRING_r_exnt_menu_outline35            "Progress note"
+rls_string STRING_r_exnt_menu_outline53            "Global Confirmation note"
+rls_string STRING_r_exnt_menu_exit                 "Exit"
+
+// Messages
+rls_string STRING_r_exnt_label_title               "Note\nExample Application"
+rls_string STRING_r_exnt_label_operation           "Press right softkey to\ndisplay next sample"
+
+// Error Note Label
+rls_string STRING_r_exnt_error_singular            "Too long!"
+rls_string STRING_r_exnt_error_plural              "Not found!"
+
+// Progress Note Label
+rls_string STRING_r_exnt_progress_singular         "Loading\nPlease wait..."
+rls_string STRING_r_exnt_progress_plural           "Loading\nPlease wait..."
+
+// Dynamic Text Label
+rls_string STRING_r_exnt_dym_text_singular         "Received\n%d message !"
+rls_string STRING_r_exnt_dym_text_plural           "Received\n%d messages !"
+
+// Wait Note Label
+rls_string STRING_r_exnt_wait_prompt               "Connecting, please wait."
+
+// Global note text
+rls_string STRING_r_exnt_global_con_text           "Confirmation\nnote"
+
+// Softkey text
+rls_string STRING_r_exnt_softkey_empty             ""
+rls_string STRING_r_exnt_softkey_cancel            "Cancel"
+
+rls_string STRING_r_exnt_shownotel_globalconfirmationnote_text     "ShowNoteL\nEAknGlobalConfirmationNote"
+
+rls_string STRING_r_exnt_cba_options                               "Options"
+rls_string STRING_r_exnt_cba_next                                  "Next"
+
+// End of file

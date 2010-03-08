@@ -1,0 +1,73 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+// Example application commands
+rls_string STRING_r_options_exit "Exit"
+rls_string STRING_r_cmd_quit_game "Quit Game"
+rls_string STRING_r_cmd_login "Login"
+rls_string STRING_r_cmd_logout "Logout"
+rls_string STRING_r_cmd_challenge "Challenge"
+rls_string STRING_r_cmd_select "Select"
+rls_string STRING_r_cmd_start_game "Start Game"
+rls_string STRING_r_cmd_end_challenge "End Challenge"
+rls_string STRING_r_cmd_im_settings "Edit Login Settings"
+
+
+// caption strings for example applications
+rls_string STRING_r_app_caption_string "IM API Example"
+rls_string STRING_r_app_short_caption_string "TickTak"
+rls_string str_info_msg_logging "Logging...."
+rls_string str_info_msg_logging_out "Logging Out...."
+rls_string str_info_msg_challenge_sent "Challenge Sent"
+rls_string str_info_msg_sending_challenge "Sending Challenge..."
+rls_string str_info_msg_not_loggedin "You Need to Login!"
+rls_string str_info_msg_your_sign_is "Your Sign is "
+rls_string str_info_msg_you_won "** You Won! **"
+rls_string str_info_msg_your_move "Its your move"
+rls_string str_info_msg_opponent_move "Its opponent's move"
+rls_string str_info_msg_you_lost "You Lost!"
+rls_string str_info_msg_login_success "Login Successful"
+rls_string str_info_msg_login_failed "Login Failed "
+rls_string str_info_msg_challenge_send_failed "Challenge Send Failed "
+rls_string str_info_msg_game_ended "Game Ended!"
+rls_string str_info_msg_game_started "Game Started!"
+rls_string str_info_msg_challenge_accepted "Challenge Accepted"
+rls_string str_info_msg_challenge_rejected "Challenge Rejected"
+rls_string str_info_msg_error "Failed with Error:"
+rls_string str_info_msg_disconnected "IM Disconnected!"
+rls_string str_info_msg_already_in_game "Opponent busy in another Game!"
+rls_string str_info_msg_challenge_received "Do you want to accept Challenge from: "
+rls_string str_info_msg_opp_id_prompt "Enter Opponent's WV ID"
+rls_string str_info_msg_start_game "Select 'Start Game'"
+rls_string str_info_msg_waiting_for_reply "Waiting for Reply..."
+rls_string str_info_msg_game_draw "Game Ended in a Draw!"
+rls_string str_info_msg_start_game_warning "StartGame from one side"
+rls_string str_info_msg_invalid_id "Opponent ID is Invalid!"
+rls_string str_info_msg_challenge_ended "Challenge has ended!"
+rls_string str_info_msg_waiting_opp_to_start "Waiting Opp to Start..."
+rls_string str_info_msg_Enter_User_ID "Enter User ID:"
+rls_string str_info_msg_Enter_Server_Address "Enter Server Address:"
+rls_string str_info_msg_Enter_Password "Enter Password:"
+rls_string str_info_msg_Enter_Access_Point_number "Enter Access Point Number:"
+rls_string str_info_msg_Not_Supported "IM Services not supported on this Device!"
+
+
+// End of File
+

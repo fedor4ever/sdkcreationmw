@@ -1,0 +1,160 @@
+/*! \mainpage XML Engine DOM Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates, how to use XML Engine Document Object
+ * Model (henceforth DOM) APIs for creating, parsing, processing and
+ * destroying of XML documents and its variety of different components
+ * with which the document is formed.
+ *
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - XML Engine DOM API
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * It is recommended that the reader first gets familiarized with
+ * the different classes of importance in the DOM header before having
+ * a look at the example.
+ *
+ * Additionally the example makes use of several other Symbian and S60
+ * features of which the reader should be aware of:
+ * - File Server session
+ * - Lists
+ * - Symbian error codes
+ * - Symbian console classes
+ *
+ * It is also recommended that the reader has generic knowledge of
+ * eXtensible Markup Language (henceforth XML) standards and its
+ * various parsing models especially the DOM model and different
+ * possible ways of processing the DOM tree contents.
+ *
+ * This example requires input XML files and in certain cases it saves
+ * the modified output files for user’s reference. All these files are
+ * stored under the path structure \\xedomexample\\data\\input for input 
+ * files and \\xedomexample\\data\\output for storing output files. These
+ * files are exported to C: for emulator environments e.g. WINS and WINSCW
+ * as specified in bld.inf for this project/application. For hardware 
+ * environment these files are copied to the drive on which application
+ * is installed using the .pkg file provided with this application. If
+ * the user is using other ways of installation, he/she has to make sure
+ * the testdata files are copied installation drive.
+ *
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This XML Engine DOM example application is a console based application
+ * in which the user has option to execute any of the main use cases listed
+ * in the console.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * This example is designed to be a console based application. For testability
+ * purpose the application is implemented in class CXEDomEx and StartExampleL()
+ * should be the first method to be invoked after creating the instance of CXEDomEx.
+ * StartExampleL() method shows the list of usecases the user can select to execute.
+ * Then it calls the usecase specific method of CXEDomEx class, based on the user's 
+ * selection. After execution, StartExampleL() method again prompts user to select
+ * new usecase to run from the list. This action cycle is repeated until user
+ * selects the option to quit. In case, any error/exception occurs during execution
+ * of any usecase, the error code is displayed on screen. If the error is casused
+ * due to incorrect path for testdata input/output files, the error message -
+ * "Input/output path not found" is shown instead of error code (which is -12).
+ *
+ * The member iDomImpl (RXmlEngDOMImplementation) refers to specific implementation
+ * of XmlEngineDOM library. At present, this refers to the only default implementation
+ * available. The member iDomParser (RXmlEngDOMParser) is the actual DOM parser object
+ * responsible for parsing files and buffers. DOM implementation and parser objects are
+ * created when CXEDomEx class in constructed. Also, drive letter is selected based on
+ * the criteria described above. It is stored as CXEDomEx::iDrive member, which will be
+ * later used for prefixing to the input/output filepath.
+ *
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * This example does not require any capabilities.
+ *
+ * \subsection Sub32 3.2 Start-up
+ *
+ * When XML Engine (henceforth XE) DOM Example application is started, the example class
+ * CXEDomEx is instantiated and StartExampleL() method gets called. The CXEDomEx class
+ * uses the Symbian console class RTest for various actions such as taking input from
+ * console, printing onto the console etc. Then use cases are presented to user to choose
+ * from. The user can select a use case for execution.
+ *
+ *
+ * \subsection Sub33 3.3 Brief Example Descriptions
+ *
+ * The main use cases covered by this example are:
+ *
+ * -# Document Parsing \n
+ * Implemented in CXEDomEx::ParseExampleL() \n
+ * Demonstrates a simple parsing of an XML file & return the document in tree form.
+ * Demonstrates parsing a file as well as a buffer. Then it shows how to cleanup the
+ * resources held by parsed document. The input file used for parsing is XML_parsing_001.xml.
+ * -# Document Saving \n
+ * Implemented in CXEDomEx::SaveExampleL() \n
+ * Demonstrates the saving of an XML document onto a given file or buffer in the simplest
+ * form. One can use different serialization options before saving a document onto a buffer
+ * or file. The saved document is present in the out put folder as XML_save_file.xml
+ * -# Document Processing \n
+ * Implemented in CXEDomEx::DocProcessingExampleL() \n
+ * Demonstrates the creation / building of a document from scratch.
+ * Also shows how to work with the different nodes in the document and
+ * operations on a node list that can be done. This example is divided
+ * into 3 sub examples. First example, CreateDocumentL() shows how to
+ * build a document from scratch. Second example, SiblingOperationsL()
+ * shows how nodes inside the document can be traversed and moved from
+ * one place to another. The third, NodeListOperationsL() shows how to
+ * get a list of nodes (child nodes) from any element and how to perform
+ * various operations supported on the list.
+ * -# Namespace Processing \n
+ * Implemented in CXEDomEx::NsProcessingExampleL() \n
+ * This example demonstrates how NameSpaces (henceforth NS) can be used
+ * with in XML Engine DOM. It shows how to look up for namespace URIs,
+ * prefixes, retrieving the default namespace URIs, checking for NS URIs
+ * for a given prefix, creating a NS prefix & URI, adding a NS declaration
+ * onto an element.
+ * -# Attributes Access \n
+ * Implemented in CXEDomEx::AttributesExampleL() \n
+ * This example demonstrates how XML engine DOM deals with attributes.
+ * This has 2 sub examples. The first, AttributeOperationsL() shows different
+ * aspects of checking element attributes such as check whether an element has an
+ * attribute, getting the attribute node for the element, getting the
+ * value of the attribute for the element, removing the attribute from
+ * the element, setting attribute name/values, creating/deleting an
+ * attribute node. The second, AddAttributesL() shows copying attributes,
+ * creating attributes with namespaces in different ways.
+ * -# Elements Access \n
+ * Implemented in CXEDomEx::ElementsExampleL() \n
+ * This example shows the usage of TXmlEngElement class of XML engine DOM.
+ * It shows addition of new elements with/without namespaces, removal of
+ * element nodes, setting content text for elements (both raw and escaped),
+ * fetching elements by their name, etc. This has 2 sub examples. First, AddRemoveElementsL()
+ * shows different ways of adding elements to the tree and removing from tree.
+ * Second, SetElementTextL() show how to access the element's text and change it.
+ * -# Data Containers \n
+ * Implemented in CXEDomEx::DataContainersExampleL() \n
+ * This example demonstrates usage of internal (binary)& external (chunk)
+ * data containers provided by XML engine DOM. Creation of these containers,
+ * fetching the contents of these containers, setting the contents of these
+ * containers, specifying offsets,size in case of external containers, getting
+ * the list of data containers for the document. This has 2 sub examples.
+ * The first, BinaryContainersL() shows how to use binary containers, which
+ * is an internal container (i.e. part of DOM tree). The second, ExternalContainersL()
+ * one shows how to use chunk container, which is an external container (i.e. data
+ * in the container is not owned by DOM tree). Use of file container, which is
+ * another external container is similar to that of chunk container.
+ *
+ */

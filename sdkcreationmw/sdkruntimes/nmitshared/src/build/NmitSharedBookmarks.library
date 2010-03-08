@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>NmitSharedBookmarks</fullname>
+  <class>
+    <path>../../classes/bookmarks</path>
+  </class>
+  <source>
+    <path>../bookmarks</path>
+  </source>
+  <required>NmitSharedApp</required>
+  <required>NmitSharedUtil</required>
+</library>

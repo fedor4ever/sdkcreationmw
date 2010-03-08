@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+        <!-- Package documentation to be used by javadoc -->     <!--
+      Copyright 1998-2001- Nokia Corporation  All rights reserved.
+      Nokia Americas
+      6000 Connection Drive
+      Irving, Texas 75039
+
+      Restricted Rights: Use, duplication, or disclosure by the
+      U.S. Government is subject to restrictions as set forth in
+      subparagraph (c)(1)(ii) of DFARS 252.227-7013, or in FAR
+      52.227-19, or in FAR 52.227-14 Alt. III, as applicable.
+
+      This software is proprietary to and embodies the confidential
+      technology of Nokia.  Possession, use, or copying of this software
+      and media is authorized only pursuant to a valid written license
+      from Nokia or an authorized sublicensor.
+    -->
+  <title>com.nokia.wtk.diagnostics.gui</title>
+   
+</head>
+  <body>
+ 
+<p>This package creates the main window for Diagnostics. It also contains
+the Commands object with all command actions which need to be shared amongst
+various pieces, and two special listeners for Save and Edit commands in menus.<br>
+</p>
+<p>The menu listeners are both derived from SlowInstanceMenuListener. This
+menu listener, coded to be attached to both JMenu and JPopupMenu objects,
+will execute doWillBeVisible() just when the JMenu or JPopupMenu will become
+visible. Both derived listeners, SaveMenuListener and EMSMenuListener implement
+this call to first examine which object the menu is being called on (which
+object is selected) and then examine whether the object has calls in it that
+are relevant for saving or doing a cut/copy/paste. If so, these calls are
+set properly within the menu. MainWindow attaches thse menu-listener to the
+menu it creates in the top toolbar.<br>
+</p>
+MainWindow creates all the Views by repeatedly implementing the AbstractViewFactoryInterface,
+once for every view, in createContentPane(), and passing object with that
+interface to ViewPanel to make a view. This implementation of AbstractViewFactoryInterface
+is the class PropertyLinkedPanelsFactory. An object of PropertyLinkedPanelsFactory
+is instantiated with a specific key of the type String. This key resolves
+to several properties in the MainWindows.properties file, and PropertyLinkedPanelsFactory
+uses these properties as the values for what classes to use to show the summary
+view and the expanded view, and what title to set. 
+</body>
+</html>

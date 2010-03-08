@@ -1,0 +1,45 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is a localisation file for RichTextEditor
+*     A .loc file is the one and only place where the logical strings
+*     to be localised are defined. 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+//d:Command in options menu.
+//d:Example application spesific command.
+//l:list_single_popup_submenu_pane_1
+// example caption strings for app
+
+#define qtn_app_caption_string "RichTextEditor"
+#define qtn_app_short_caption_string "RTE"
+
+#define qtn_app_demo_text "Forum Nokia presents: RichTextEditor \f - The Source - For more information please check the release note and the source code."
+#define qtn_app_demo_intro "Please select the Demo from the Options Menu. To modify the selection use 'ABC'+joystick. To select letters and words, press and hold the 'pencil'-button. At the same time, move the joystick left or right. As the selection moves, text is highlighted."
+//How to use help text for S60 1st and 2nd edition.
+#define qtn_app_demo_intro_help " When the text is highlighted you can change the font, color of font or font style. Choose the e.g. Character format -> Bold in to 'Options' menu."
+
+#define qtn_app_indicator_alignment			"Alignment set"
+#define qtn_app_indicator_character_format	"Font Style set"
+#define qtn_app_indicator_font			"Font changed"
+#define qtn_app_indicator_strike_on			"Strikethrough applied"
+#define qtn_app_indicator_strike_off		"No strikethrough "
+#define qtn_app_indicator_color			"Color set"
+#define qtn_app_indicator_demo			" - Forum Nokia - "
+
+// End of File

@@ -1,0 +1,62 @@
+/*
+* ==============================================================================
+*  Name        : localization.l32
+*  Part of     : localization
+*  Interface   :
+*  Description : Resource File for Japanese
+*  Version     :
+*
+*  Copyright (c) 2005 - 2007 Nokia Corporation.
+*  This material, including documentation and any related
+*  computer programs, is protected by copyright controlled by
+*  Nokia Corporation.
+* ==============================================================================
+*/
+
+CHARACTER_SET UTF8
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+#define qtn_loc_caption_string "きょくげん"
+
+//d:Short caption string for app.
+#define qtn_loc_short_caption_string "きょくげん"
+
+//d:First item in "Options" menu pane
+#define qtn_loc_commandnumber "ばんごう"
+
+//d:Second item in "Options" menu pane
+#define qtn_loc_commandcurrency "つうか"
+
+//d:Third item in "Options" menu pane
+#define qtn_loc_commanddate "ひずけ"
+
+//d:Fourth item in "Options" menu pane
+#define qtn_loc_commandtime "じかん"
+
+//d:Fifth item in "Options" menu pane
+#define qtn_loc_commandtext "ぜんぶん"
+
+//d:Sixth item in "Options" menu pane
+#define qtn_loc_commandimage "がぞう"
+
+//d:Third item in "Options" menu pane, "exit" event.
+#define qtn_loc_exit "でぐち"
+
+//d:When user requests ELocalizationCommand5 event, text below is shown.
+#define qtn_loc_commandtext_text "ぼく　の　おくさん　%0U は　%1U くるま　が　もって　います。"
+
+// the paths in following string are different for 3rd & 2nd platforms
+#ifdef EKA2
+
+//d:When user requests ELocalizationCommand6 event, below image is shown.
+#define qtn_loc_commandimage_bmpfile "%U\\resource\\apps\\Localization_32.mbm"
+
+#else
+
+#define qtn_loc_commandimage_bmpfile "%U\\system\\apps\\Localization\\Localization_32.mbm"
+
+#endif
+
+// End of File

@@ -1,0 +1,76 @@
+/*! \mainpage DynamicSettingList Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * DynamicSettingList example demonstrates how to load <b>CAknSettingItemList</b>
+ * dynamically at run time instead of defining the list structure into a
+ * resource file. In the example, the lists are loaded during application
+ * start-up.
+ *
+ * The example can be used as the basis for many different applications where
+ * a list has to be loaded  dynamically (for instance, based on external feed
+ * from a server).
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CAknSettingItemList
+ * - CAknTextSettingItem
+ * - CAknIntegerEdwinSettingItem
+ * - CAknPasswordSettingItem
+ * - CAknVolumeSettingItem
+ * - CAknTimeOrDateSettingItem
+ * - CAknTimeOrDateSettingItem
+ * - CAknTimeOffsetSettingItem
+ * - CAknIpFieldSettingItem
+ * - CAknEnumeratedTextPopupSettingItem
+ * - CAknBinaryPopupSettingItem
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * Symbian C++ basics
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * DynamicSettingList example follows traditional Symbian OS Control-based architecture.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * In the example CDynamicSettingListAppView is important class, which loads
+ * the setting list dynamically. \link CDynamicSettingListAppView::LoadListL()\endlink
+ * implements all setting items: text, integer, password, volume, date, time, IP
+ * field and enumerated settings.
+ *
+ * Note that CAknSettingItemList itself is not ideal for dynamic loading, but
+ * it is possible by using dummy resource IDs and defining all the required
+ * list item types in the source code. At run time it is then possible to load
+ * multiple instances of each list item type (with any label and value).
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The program capabilities are defined in the DynamicSettingList_S60_3rd_ed.mmp file: CAPABILITY NONE
+ *
+ * \subsection Sub32 3.2 Features
+ *
+ * The main feature of DynamicSettingList example is loading and creating the
+ * settings dynamically. The different setting items are used and are listed
+ * below with the Symbian classes with which they are implemented.
+
+ * - Text Setting:            CAknTextSettingItem
+ * - Integer Setting:         CAknIntegerEdwinSettingItem
+ * - Password Setting:        CAknPasswordSettingItem
+ * - Volume Setting:          CAknVolumeSettingItem
+ * - Dynamic Slider Setting:  CDynamicSettingListSlider (user defined class)
+ * - Date setting:            CAknTimeOrDateSettingItem
+ * - Time offset Setting:     CAknTimeOffsetSettingItem
+ * - Ip field setting:        CAknIpFieldSettingItem
+ * - Enumerated text Setting: CAknEnumeratedTextPopupSettingItem
+ * - Binary pop-up setting:    CAknBinaryPopupSettingItem
+ *
+ *
+ */

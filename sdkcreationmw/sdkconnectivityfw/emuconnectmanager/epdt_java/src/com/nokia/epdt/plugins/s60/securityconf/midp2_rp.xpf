@@ -1,0 +1,669 @@
+
+# midp2_rp.xpf
+
+# Copyright (c) 2004-2005 By Symbian Software Ltd. All rights reserved.
+
+# This file defines one possible interpretation of the MIDP2 Security RP security policy,
+# but with a JTWIr1 compliant policy for untrusted MIDlet suites
+
+FormatVersion: 1.0
+
+Domains
+
+	Domain: "*MFD*"
+
+	Domain: "*ODOPD*"
+
+	Domain: "*OPD*"
+
+	Domain: "*TTPD*"
+
+	Domain: [UNTRUSTED]
+
+	Domain: Minimal
+
+		ConnectionFilters
+
+			NegativePortFilter: "datagram"
+
+				Port:	"9200"
+
+				Port:	"9201"
+
+				Port:	"9202"
+
+				Port:	"9203"
+
+			EndNegativePortFilter
+
+			NegativePortFilter: "socket"
+
+				Port:     "80"
+
+				Port:	 "443"
+
+				Port:	"8080"
+
+			EndNegativePortFilter
+
+			NegativePortFilter: "ssl"
+
+				Port:	 "443"
+
+			EndNegativePortFilter
+
+		EndConnectionFilters
+
+	EndDomain
+
+EndDomains
+
+FunctionGroups
+
+	FunctionGroup: "Application Auto Invocation"
+
+		Permissions
+
+			javax.microedition.io.PushRegistry
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Authentication"
+
+		Permissions
+
+			javax.microedition.securityservice.CMSMessageSignatureService
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Landmark"
+
+		Permissions
+
+			javax.microedition.location.LandmarkStore.read
+			javax.microedition.location.LandmarkStore.write
+			javax.microedition.location.LandmarkStore.category
+			javax.microedition.location.LandmarkStore.management
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Local Connectivity"
+
+		Permissions
+
+			javax.microedition.io.Connector.comm
+			javax.microedition.io.Connector.bluetooth.client
+			javax.microedition.io.Connector.obex.client
+			javax.microedition.io.Connector.bluetooth.server
+			javax.microedition.io.Connector.obex.server
+			javax.microedition.io.Connector.tcpobex.client
+			javax.microedition.io.Connector.tcpobex.server
+			javax.microedition.io.Connector.btgoep.client
+			javax.microedition.io.Connector.btgoep.server
+			javax.microedition.io.Connector.irdaobex.client
+			javax.microedition.io.Connector.irdaobex.server
+			javax.obex.ClientSession
+			javax.obex.Operation
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Location"
+
+		Permissions
+
+			javax.microedition.location.Location
+			javax.microedition.location.ProximityListener
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Messaging"
+
+		Permissions
+
+			javax.microedition.io.Connector.cbs
+			javax.microedition.io.Connector.sms
+			javax.microedition.io.Connector.mms
+			javax.wireless.messaging.cbs.receive
+			javax.wireless.messaging.sms.receive
+			javax.wireless.messaging.sms.send
+			javax.wireless.messaging.mms.receive
+			javax.wireless.messaging.mms.send
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Multimedia Recording"
+
+		Permissions
+
+			javax.microedition.media.control.RecordControl
+			javax.microedition.media.control.VideoControl.getSnapshot
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Net Access"
+
+		Permissions
+
+			javax.microedition.io.Connector.datagram
+			javax.microedition.io.Connector.datagramreceiver
+			javax.microedition.io.Connector.http
+			javax.microedition.io.Connector.https
+			javax.microedition.io.Connector.serversocket
+			javax.microedition.io.Connector.socket
+			javax.microedition.io.Connector.ssl
+			javax.microedition.io.Connector.obex.client.tcp
+			javax.microedition.io.Connector.obex.server.tcp
+			javax.microedition.io.Connector.rtsp
+			javax.microedition.io.Connector.sip
+			javax.microedition.io.Connector.sips
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Orientation"
+
+		Permissions
+
+			javax.microedition.location.Orientation
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Read User Data Access"
+
+		Permissions
+
+			javax.microedition.io.Connector.file.read
+			javax.microedition.pim.ContactList.read
+			javax.microedition.pim.EventList.read
+			javax.microedition.pim.ToDoList.read
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "SATSA APDU"
+
+		Permissions
+
+			javax.microedition.apdu.sat
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Smart Card Communication"
+
+		Permissions
+
+			javax.microedition.apdu.aid
+
+		EndPermissions
+
+	EndFunctionGroup
+
+	FunctionGroup: "Write User Data Access"
+
+		Permissions
+
+			javax.microedition.io.Connector.file.write
+			javax.microedition.pim.ContactList.write
+			javax.microedition.pim.EventList.write
+			javax.microedition.pim.ToDoList.write
+
+		EndPermissions
+
+	EndFunctionGroup
+
+EndFunctionGroups
+
+Bindings
+
+	DomainBindings: "*MFD*"
+
+		FunctionGroupBinding: "Application Auto Invocation"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Authentication"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Landmark"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Local Connectivity"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Location"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Messaging"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Multimedia Recording"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Net Access"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Orientation"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Read User Data Access"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Smart Card Communication"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Write User Data Access"
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+	EndDomainBindings
+
+	DomainBindings: "*ODOPD*"
+
+		FunctionGroupBinding: [*]
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+	EndDomainBindings
+
+	DomainBindings: "*OPD*"
+
+		FunctionGroupBinding: [*]
+
+			Permission:	Allowed
+
+		EndFunctionGroupBinding
+
+	EndDomainBindings
+
+# MIDlets in thirdparty MIDlet suites need user permission before doing certain things
+
+	DomainBindings: "*TTPD*"
+
+		FunctionGroupBinding: "Application Auto Invocation"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Authentication"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			InteractionModes
+
+				No
+
+				Session
+
+				Blanket
+
+			EndInteractionModes
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Landmark"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			InteractionModes
+
+				No
+
+				Session
+
+				Blanket
+
+			EndInteractionModes
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Local Connectivity"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			InteractionModes	
+
+				No
+
+				Session
+
+				Blanket
+
+			EndInteractionModes
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Location"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Messaging"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Oneshot
+
+			Rules
+
+				SimpleMapping: javax.microedition.io.Connector.cbs
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.microedition.io.Connector.sms
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.wireless.messaging.cbs.receive
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.wireless.messaging.sms.receive
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+			EndRules
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Multimedia Recording"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			InteractionModes
+
+				No
+
+				Session
+
+				Blanket
+
+			EndInteractionModes
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Net Access"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Orientation"
+
+			Permission:		Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Read User Data Access"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Smart Card Communication"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			InteractionModes
+
+				No
+
+				Session
+
+				Blanket
+
+			EndInteractionModes
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Write User Data Access"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+	EndDomainBindings
+
+# MIDlets in untrusted MIDlet suites need user permission before doing anything
+
+	DomainBindings: [UNTRUSTED]
+
+		FunctionGroupBinding: "Application Auto Invocation"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Session
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Landmark"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Session
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Local Connectivity"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Blanket
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Location"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Session
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Messaging"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Oneshot
+
+			Rules
+
+				SimpleMapping: javax.microedition.io.Connector.cbs
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.microedition.io.Connector.sms
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.wireless.messaging.cbs.receive
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+				SimpleMapping: javax.wireless.messaging.sms.receive
+
+					FunctionGroupMode:	Oneshot
+
+					PermissionMode:		Blanket
+
+				EndSimpleMapping
+
+			EndRules
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Multimedia Recording"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Session
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Net Access"
+
+			Permission:		User
+
+			DefaultMode:	Session
+
+			MaximumMode:	Session
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Orientation"
+
+			Permission:		Allowed
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Read User Data Access"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Oneshot
+
+		EndFunctionGroupBinding
+
+		FunctionGroupBinding: "Write User Data Access"
+
+			Permission:		User
+
+			DefaultMode:	Oneshot
+
+			MaximumMode:	Oneshot
+
+		EndFunctionGroupBinding
+
+	EndDomainBindings
+
+EndBindings

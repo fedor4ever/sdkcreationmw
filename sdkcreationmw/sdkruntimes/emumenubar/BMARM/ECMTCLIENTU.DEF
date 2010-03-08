@@ -1,0 +1,9 @@
+EXPORTS
+	Close__5REcmt @ 1 NONAME R3UNUSED ; REcmt::Close(void)
+	Connect__5REcmt @ 2 NONAME R3UNUSED ; REcmt::Connect(void)
+	SetServerObserverL__5REcmtP19MEcmtServerObserver @ 3 NONAME R3UNUSED ; REcmt::SetServerObserverL(MEcmtServerObserver *)
+	Write__5REcmtRC7TDesC16 @ 4 NONAME R3UNUSED ; REcmt::Write(TDesC16 const &)
+	"_._5REcmt" @ 5 NONAME R3UNUSED ; REcmt::~REcmt(void)
+	__5REcmt @ 6 NONAME R3UNUSED ; REcmt::REcmt(void)
+	WriteFormat__5REcmtGt11TRefByValue1ZC7TDesC16e @ 7 NONAME ; REcmt::WriteFormat(TRefByValue<TDesC16 const>,...)
+

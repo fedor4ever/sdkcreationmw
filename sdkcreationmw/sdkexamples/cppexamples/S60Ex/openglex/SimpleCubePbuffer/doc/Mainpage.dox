@@ -1,0 +1,49 @@
+/*! \mainpage OpenGL ES Simple Cube Pbuffer Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example is based on SimpleCube example but instead of onscreen window rendering the Pbuffer surface
+ *  is used. To create a Pbuffer surface, a config that supports Pbuffers must be chosen.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  A bitmap must be created where content of the Pbuffer surface is copied for displaying.
+ *  The surface and the bitmap should be same size. To display the content of the Pbuffer surface the content
+ *  is first copied to bitmap in the Draw() method and then rendered to the screen similarly as in
+ *  Simple Cube Pixmap example.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running.
+ *
+ */

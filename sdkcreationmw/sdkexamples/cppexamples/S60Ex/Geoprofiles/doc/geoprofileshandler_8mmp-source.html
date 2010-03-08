@@ -1,0 +1,327 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>geoprofileshandler.mmp Source File</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="annotated.html"><span>Classes</span></a></li>
+    <li id="current"><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<h1>geoprofileshandler.mmp</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment">* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).</span>
+<a name="l00003"></a>00003 <span class="comment">* All rights reserved.</span>
+<a name="l00004"></a>00004 <span class="comment">* This component and the accompanying materials are made available</span>
+<a name="l00005"></a>00005 <span class="comment">* under the terms of the License "Eclipse Public License v1.0"</span>
+<a name="l00006"></a>00006 <span class="comment">* which accompanies this distribution, and is available</span>
+<a name="l00007"></a>00007 <span class="comment">* at the URL "http://www.eclipse.org/legal/epl-v10.html".</span>
+<a name="l00008"></a>00008 <span class="comment">*</span>
+<a name="l00009"></a>00009 <span class="comment">* Initial Contributors:</span>
+<a name="l00010"></a>00010 <span class="comment">* Nokia Corporation - initial contribution.</span>
+<a name="l00011"></a>00011 <span class="comment">*</span>
+<a name="l00012"></a>00012 <span class="comment">* Contributors:</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">* Description:  Project make file for Geo-Profiles Handler</span>
+<a name="l00015"></a>00015 <span class="comment">*</span>
+<a name="l00016"></a>00016 <span class="comment">*/</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="comment">// System Includes</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="comment">// User Includes</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "../../inc/geoprofilesuid.hrh"</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 TARGET                  geoprofileshandler.exe
+<a name="l00025"></a>00025 TARGETTYPE              exe
+<a name="l00026"></a>00026 UID                     0 KGeoProfilesHandlerUid
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 VENDORID                0
+<a name="l00029"></a>00029 SECUREID                KGeoProfilesHandlerUid
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 CAPABILITY                      Location ReadDeviceData WriteDeviceData
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="comment">// System Includes</span>
+<a name="l00034"></a>00034 SYSTEMINCLUDE                   . /epoc32/include
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">// User Includes</span>
+<a name="l00037"></a>00037 USERINCLUDE             ../inc
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="comment">// Source Directory</span>
+<a name="l00040"></a>00040 SOURCEPATH              ../src
+<a name="l00041"></a>00041 SOURCE                  geoprofileshandler.cpp
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">// Libraries</span>
+<a name="l00044"></a>00044 LIBRARY                 euser.lib
+<a name="l00045"></a>00045 LIBRARY                 efsrv.lib
+<a name="l00046"></a>00046 LIBRARY                 estor.lib 
+<a name="l00047"></a>00047 LIBRARY                         bafl.lib
+<a name="l00048"></a>00048 LIBRARY                         aknnotify.lib
+<a name="l00049"></a>00049 LIBRARY                 eiksrv.lib
+<a name="l00050"></a>00050 LIBRARY                 ProfileEngine.lib
+<a name="l00051"></a>00051 LIBRARY                     lbt.lib
+<a name="l00052"></a>00052 LIBRARY                                 flogger.lib
+</pre></div><hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+;
+; $Id: EcmtSdkPluginU.def,v 1.1 2005/06/15 10:01:00 slava Exp $
+;
+; Exports for EcmtSdkPlugin.dll
+;
+
+EXPORTS
+    ?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME
+    ?IsStarted@CEcmtSdkPlugin@@SAHXZ @ 2 NONAME
+    ?InvokeAndWait@CEcmtSdkPlugin@@SAHP6AXPAX00@ZPBX22@Z @ 3 NONAME
+    ?InvokeLater@CEcmtSdkPlugin@@SAHP6AXPAX00@ZPBX22@Z @ 4 NONAME

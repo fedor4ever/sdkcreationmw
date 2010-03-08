@@ -1,0 +1,14 @@
+EXPORTS
+	??0REcmt@@QAE@XZ @ 1 NONAME ; REcmt::REcmt(void)
+	??1REcmt@@QAE@XZ @ 2 NONAME ; REcmt::~REcmt(void)
+	?Close@REcmt@@QAEXXZ @ 3 NONAME ; void REcmt::Close(void)
+	?Connect@REcmt@@QAEHXZ @ 4 NONAME ; int REcmt::Connect(void)
+	?SetServerObserverL@REcmt@@QAEXPAVMEcmtServerObserver@@@Z @ 5 NONAME ; void REcmt::SetServerObserverL(class MEcmtServerObserver *)
+	?Write@REcmt@@QAEXABVTDesC16@@@Z @ 6 NONAME ; void REcmt::Write(class TDesC16 const &)
+	?WriteFormat@REcmt@@QAAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 7 NONAME ; void REcmt::WriteFormat(class TRefByValue<class TDesC16 const >, ...)
+	?Send@REcmt@@QAEXIABVTDesC8@@@Z @ 8 NONAME ; void REcmt::Send(unsigned int, class TDesC8 const &)
+	?SetServerObserverL@REcmt@@QAEXVTUid@@PAVMEcmtServerObserver@@@Z @ 9 NONAME ; void REcmt::SetServerObserverL(class TUid, class MEcmtServerObserver *)
+	?SWrite@REcmt@@SAXABVTDesC16@@@Z @ 10 NONAME ; void REcmt::SWrite(class TDesC16 const &)
+	?SWriteFormat@REcmt@@SAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 11 NONAME ; void REcmt::SWriteFormat(class TRefByValue<class TDesC16 const >, ...)
+	?SClose@REcmt@@SAXXZ @ 12 NONAME ; void REcmt::SClose(void)
+

@@ -1,0 +1,51 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  SEI Forward Plugin
+*
+*/
+
+
+// These headers define the UID values
+#include "..\..\..\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtSeiForwardPluginUids.h"
+
+TARGET          EcmtSeiForwardPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KSEIFORWARDPLUGIN_DLL_UID
+CAPABILITY		CAP_ECOM_PLUGIN
+VENDORID		VID_DEFAULT
+
+SOURCEPATH	..\src
+SOURCE		EcmtSeiForwardPlugin.cpp
+SOURCE		SocketListener.cpp
+SOURCE		SymbianSocket.cpp
+
+USERINCLUDE	..\inc
+USERINCLUDE     ..\..\..\Core\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY     euser.lib
+LIBRARY		bafl.lib
+LIBRARY		efsrv.lib
+LIBRARY		charconv.lib
+LIBRARY     insock.lib
+LIBRARY     esock.lib
+
+SOURCEPATH	..\data
+START RESOURCE KSEIFORWARDPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+    TARGET EcmtSeiForwardPlugin.rsc
+#endif
+END

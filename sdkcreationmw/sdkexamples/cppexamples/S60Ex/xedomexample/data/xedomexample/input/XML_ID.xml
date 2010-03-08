@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<doc>  
+	<library>
+		<libc/>
+		<stdlib id="18"/>
+		<orw:library xmlns:orw="orwell.org">		
+			<orw:AnimalFarm/>
+			<orw:NineteenEighty-Four orw:id="1984"/>
+		</orw:library>
+	</library>
+</doc>

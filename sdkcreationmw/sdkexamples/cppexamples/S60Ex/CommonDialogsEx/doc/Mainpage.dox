@@ -1,0 +1,301 @@
+/*! \mainpage CommonDialogsEx
+ *
+ * \ref Intro_sec\n
+ * \ref Arch_sec\n
+ * \ref Design_sec\n
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * CommonDialogsEx example demonstrates the usage of Common Dialogs APIs. 
+ * This example mainly demonstrates how to use normal and Multiple Drive CFD APIs.
+ * This example includes opening memory selection dialog, opening memory settings dialog,
+ * opening a file selection dialog,opening a file name prompt dialog.\n
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The CommonDialogsEx application mainly demonstrates the usage of the 
+ * follow APIs: \n
+ * \n
+ * -    CAknMemorySelectionDialog::NewL()\n
+ * -    CAknMemorySelectionDialog::ExecuteL()\n
+ * -    CAknMemorySelectionDialogMultiDrive::NewL()\n
+ * -    CAknMemorySelectionDialogMultiDrive:ExecuteL()\n
+ * -    CAknFileSelectionDialog::NewL()\n 
+ * -    CAknFileSelectionDialog::ExecuteL()\n
+ * -    CAknFileNamePromptDialog::RunDlgLD()\n
+ * \n  
+ * -    CAknMemorySelectionSettingItem()\n
+ * -    CAknMemorySelectionSettingItemMultiDrive()\n
+ * -    CAknMemorySelectionSettingItem::ConstructL()\n
+ * -    CAknMemorySelectionSettingItemMultiDrive::ConstructL()\n
+ * -    CAknMemorySelectionSettingItem::ConstructL()\n
+ * -    CAknMemorySelectionSettingItemMultiDrive::ConstructL()\n
+ * -    CAknSettingItemArray::AppendL()\n
+ * -    CAknSettingItemArray::RecalculateVisibleIndicesL()\n
+ * -    CTextListBoxModel::SetItemTextArray()\n
+ * -    CTextListBoxModel::SetOwnershipType()\n
+ * -    CAknSettingStyleListBox::CreateScrollBarFrameL()\n
+ * -    CAknSettingStyleListBox::ScrollBarFrame()\n
+ * -    CAknSettingStyleListBox::HandleItemAdditionL()\n
+ * -    CAknSettingStyleListBox::SetListBoxObserver()\n
+ * -    CAknSettingStyleListBox::UpdateScrollBarsL()\n
+ * -    CEikListBox::SetScrollBarVisibilityL();
+ * -    CAknMemorySelectionSettingItem::EditItemL( )
+ * -    CAknMemorySelectionSettingItemMultiDrive::EditItemL()
+ * \n
+ *
+ * The follow header files are included in the examples:\n
+ *
+ * -    CAknMemorySelectionDialog.h\n
+ * -    CAknMemorySelectionDialogMultiDrive.h.h\n
+ * -    CAknMemorySelectionSettingPage.h\n
+ * -    CAknFileSelectionDialog.h\n
+ * -    CAknFileNamePromptDialog.h\n
+ * -    AknSettingItemList.h\n
+ * -    EikDialg.h\n
+ * \n
+ *
+ * The CCommonDialogsExSettingsDialog class is inherited from the following classes:\n
+ *
+ * -    CEikDialog\n
+ * -    MEikListBoxObserver\n
+ * \n
+ *
+ * The following functions have been implemented:\n
+ *
+ * -    TBool OkToExitL( TInt aButtonId ) \n
+ * -    void PreLayoutDynInitL() \n
+ * -    void ProcessCommandL( TInt aCommandId )
+ * \n 
+ * -    void HandleListBoxEventL( CEikListBox* aListBox,TListBoxEvent aEventType )\n
+ * \n 
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example requires a familiarity with the C++ programming language and 
+ * S60 application structure. 
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * The CommonDialogsEx example application follows the standard S60 application framework.
+ * The application, document and view classes implement the framework and the 
+ * actual example code is in the CCommonDialogsExAppUi class.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The CommonDialogsEx application needs ReadUserData and WriteUserData capabilities
+ * for creating, modifying and deleting contact(s). 
+ *
+ * \subsection Sub32 3.2 Build and Installation
+ * The CommonDialogsEx application has two .pkg files which will be used for making sis 
+ * package for different target platforms. The whole project can be imported to 
+ * codewarrior by mmp file. The project can be built inside codewarrior and also
+ * can be build on command line with the following commands.
+ * 
+ * @code
+ * ..\group>bldmake bldfiles
+ * ..\group>abld build winscw udeb
+ * @endcode
+ * 
+ * \subsection Sub34 3.3 Preparation
+ * When the application is started, the CCommonDialogsExContainer class will be initialized by 
+ * View class. Here are the steps done in CCommonDialogsExContainer's constructor.The labels
+ * are two components for display text;
+ * @code
+ *   iLabel = new (ELeave) CEikLabel;
+ *   iLabel->SetContainerWindowL( *this );
+ *   iLabel->SetTextL( _L("Example View") );
+ *
+ *   iToDoLabel = new (ELeave) CEikLabel;
+ *   iToDoLabel->SetContainerWindowL( *this );
+ *   iToDoLabel->SetTextL( _L("Press Options to start") );
+ * @endcode
+ *
+ * Function ShowTextL(const TDesC& aText, const TDesC& aTextSub) 
+ * Show text message on screen by using label
+ * @code
+ *   iLabel->SetTextL(aText);
+ *   iToDoLabel->SetTextL(aTextSub);
+ * @endcode
+ *
+ * When the application is launched the CCommonDialogsExAppUi class is initialized by 
+ * the AppUi class. Here are the steps done in the constructor.
+ *
+ * @code
+ * iAppContainer = new (ELeave) CCommonDialogsExContainer;
+ * iAppContainer->ConstructL( ClientRect() );
+ * @endcode
+ *
+ *
+ * Class CCommonDialogsExSettingsDialog  is inherited from class CEikDialog and MEikListBoxObserver.
+ * In this class you should implement function PreLayoutDynInitL() OkToExitL() ProcessCommandL()
+ * from CEikDialog, implement function HandleListBoxEventL() from MEikListBoxObserver.
+ *
+ * Function PreLayoutDynInitL() Initializes the dialog's controls before the dialog is sized and layed out.
+ *     
+ * @code
+ *  CAknSettingStyleListBox* listBox =  static_cast< CAknSettingStyleListBox* >
+ *                                                             ( Control( ECommonDialogsExSettingsListboxId ) );
+ *   User::LeaveIfNull( listBox );
+ * @endcode
+ *
+ * Create the memory selection item. If your current SDK support Multiple Drive APIs.
+ *
+ * @code
+ *  if ( iMultiDriveSupport )
+ *       {    
+ *       settingItem = new( ELeave ) CAknMemorySelectionSettingItemMultiDrive(
+ *                                            iResourceId, iDriveNumber );
+ *       }
+ *  else
+ *       {
+ *       settingItem = new( ELeave ) CAknMemorySelectionSettingItem(
+ *                                           iResourceId, iMemory );
+ *       }
+ *   CleanupStack::PushL( settingItem );
+ * @endcode
+ *
+ * Set memory selection item's title
+ *
+ * @code
+ *
+ *   itemTitle = iCoeEnv->AllocReadResourceLC( R_STRING_COMMONDIALOGSEX_SET_MEMORY );
+ *   settingItem->ConstructL( EFalse, 0, *itemTitle, NULL, 0,
+ *                                                   EAknCtPopupSettingList );
+ *   CleanupStack::PopAndDestroy();  // itemTitle
+ * @endcode
+ *
+ * Add memo store item to the settings array
+ *
+ * @code
+ *   iSettingItemArray.AppendL( settingItem );
+ *   CleanupStack::Pop();    // settingItem
+ * @endcode
+ *
+ * Set listBox.
+ *
+ * @code
+ *   CTextListBoxModel* model = listBox->Model();
+ *   model->SetItemTextArray( &iSettingItemArray );
+ *   model->SetOwnershipType( ELbmDoesNotOwnItemArray );
+ *   iSettingItemArray.RecalculateVisibleIndicesL();
+ *   listBox->CreateScrollBarFrameL( ETrue );
+ *   listBox->ScrollBarFrame()->SetScrollBarVisibilityL(
+ *                       CEikScrollBarFrame::EOff, CEikScrollBarFrame::EAuto );
+ *   listBox->HandleItemAdditionL();
+ *   listBox->SetListBoxObserver( this );
+ *   listBox->UpdateScrollBarsL();
+ * @endcode
+ *
+ * \subsection Sub36 3.5 Execution
+ *
+ * There are total 6 cases for this example: opening memory selection dialog, 
+ * opening Multiple Drive memory selection dialog ,opening memory settings dialog, 
+ * opening Multiple Drive memory settings dialog,
+ * opening file selection dialog, opening file name prompt dialog 
+ *
+ * a) Creating memory selection dialogs with case ECommonDialogsExCmd101
+ *
+ * @code
+ *           CAknMemorySelectionDialog* dlg = CAknMemorySelectionDialog::NewL( 
+ *                                                       ECFDDialogTypeNormal, 
+ *                                                       ETrue );
+ *           CleanupStack::PushL( dlg );
+ *           returnValue = dlg->ExecuteL( iMemory );
+ * @endcode
+ *    
+ * Then set the display text.
+ *
+ * @code
+ *           if( returnValue )
+ *               {
+ *               textMain.Append( KCommonDialogsExSelected );
+ *               if ( iMemory == CAknMemorySelectionSettingPage::EPhoneMemory )
+ *                   {
+ *                   textSub.Append( KCommonDialogsExPhoneMemoryName );
+ *                   }
+ *               else
+ *                   {
+ *                   textSub.Append( KCommonDialogsExMemoryCardName );
+ *                   }
+ *               }
+ *           else
+ *               {
+ *               textMain.Append( KCommonDialogsExCanceled );
+ *               textSub.Append( KCommonDialogsExSpace );
+ *               }
+ *           iAppContainer->ShowTextL( textMain, textSub );
+ *           CleanupStack::PopAndDestroy(); //dlg
+ * @endcode
+ *           
+ * b) Creating Multiple Drive memory selection dialogs with case ECommonDialogsExCmd102
+ *
+ * If your current SDK support Multiple Drive APIs, the dialog will display.
+ *
+ * @code
+ *           CAknMemorySelectionDialogMultiDrive* dlg =
+ *               CAknMemorySelectionDialogMultiDrive::NewL(
+ *                       ECFDDialogTypeNormal, ETrue );
+ *           CleanupStack::PushL( dlg );
+ *           returnValue = dlg->ExecuteL( iDrive , &tempRootPath, NULL );
+ *           ......
+ *           CleanupStack::PopAndDestroy();
+ * @endcode
+ * 
+ *           
+ * c) Creating memory settings dialog with case ECommonDialogsExCmd201
+ *
+ * @code
+ *           CCommonDialogsExSettingsDialog* dlg = 
+ *                         CCommonDialogsExSettingsDialog::NewL(0, EFalse);
+ *           dlg->ExecuteLD( R_COMMONDIALOGSEX_SETTINGS_DIALOG );
+ *           textMain.Append( KCommonDialogsExSelected );
+ *           textSub.Append( KCommonDialogsExDefaultSetting );
+ *           iAppContainer->ShowTextL( textMain, textSub );
+ * @endcode
+ *      
+ * d) Creating Multiple Drive memory settings dialog with case ECommonDialogsExCmd202
+ *
+ * @code
+ *            CCommonDialogsExSettingsDialog* dlg =
+ *                CCommonDialogsExSettingsDialog::NewL(0, ETrue);
+ *            dlg->ExecuteLD( R_COMMONDIALOGSEX_SETTINGS_DIALOG );
+ *            textMain.Append( KCommonDialogsExSelected );
+ *            textSub.Append( KCommonDialogsExMultiSetting );
+ *            iAppContainer->ShowTextL( textMain, textSub );
+ * @endcode
+ * 
+ *           
+ * e) Creating file selection dialog with case ECommonDialogsExCmd301
+ *
+ * @code
+ *           CAknFileSelectionDialog* dlg = CAknFileSelectionDialog::NewL( ECFDDialogTypeSelect );
+ *           CleanupStack::PushL( dlg );
+ *           returnValue = dlg->ExecuteL( rootFileName );
+ *           ......
+ *           iAppContainer->ShowTextL( textMain, textSub );
+ *           CleanupStack::PopAndDestroy();
+ * @endcode
+ * 
+ *           
+ * f) Creating file name prompt dialog with case ECommonDialogsExCmd401
+ *
+ * @code
+ *           returnValue = CAknFileNamePromptDialog::RunDlgLD( 
+ *                                 defaultFileName, 
+ *                                 KRootPath );
+ *           ......
+ *           iAppContainer->ShowTextL( textMain, textSub );
+ * @endcode
+ * 
+ * 
+ *
+ * <HR>
+ */

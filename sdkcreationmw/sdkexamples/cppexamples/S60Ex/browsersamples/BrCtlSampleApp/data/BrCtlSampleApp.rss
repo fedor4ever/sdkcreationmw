@@ -1,0 +1,265 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains all the resources for
+|									the BrCtlSampleApp.
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include "brctlsampleapp.hrh"
+#include "brctlsampleapp.rls"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="BrCtlSampleApp"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys=r_brctlsampleapp_hotkeys;
+    menubar=r_brctlsampleapp_menubar;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+
+RESOURCE LOCALISABLE_APP_INFO r_brctlsampleapp_localisable_app_info
+    {
+    short_caption = STRING_r_brctl_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_brctl_caption_string;
+
+        number_of_icons = 1;
+
+        icon_file = "\\resource\\apps\\BrCtlSampleApp_AIF.MIF";
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_hotkeys
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_brctlsampleapp_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknCmdExit; key='e'; }
+        };
+    }
+
+
+//----------------------------------------------------
+//
+//    r_input_element_buttons
+//    CBA buttons for input element
+//
+//----------------------------------------------------
+RESOURCE CBA r_input_element_buttons
+    {
+	flags = EAknCBAFlagRespondWhenInvisible;
+    buttons =
+                {
+				// left softkey id has to be EAknSoftkeyOptions so that T9 will
+				// be able to replace it with "Spell" when needed
+                CBA_BUTTON {id=EAknSoftkeyOptions; txt=STRING_r_brctl_options_input;},
+                CBA_BUTTON {id=EAknSoftkeyCancel; txt=STRING_r_brctl_cancel_input;}
+                };
+    }
+
+//----------------------------------------------------
+//
+//    r_browser_default_buttons
+//    Default CBA buttons for multipurpose browser display
+//
+//----------------------------------------------------
+//
+RESOURCE CBA r_browser_default_buttons
+    {
+	flags = EAknCBAFlagRespondWhenInvisible;
+    buttons =
+                {
+                CBA_BUTTON {id=EAknSoftkeyOptions; txt=STRING_r_brctl_options_default;},
+                CBA_BUTTON {id=EAknSoftkeyCancel; txt=STRING_r_brctl_cancel_default;}
+                };
+    }
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_menubar
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_brctlsampleapp_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_brctlsampleapp_menu; txt=STRING_r_brctl_menubar; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_brctlsampleapp_menu
+    {
+    items=
+        {
+        MENU_ITEM { cascade = r_brctlsampleapp_menu_tools; command=EBrCtlSampleAppCmdAppTools; txt=STRING_r_brctl_menu_tools; },
+        MENU_ITEM { cascade = r_brctlsampleapp_menu1; command=EBrCtlSampleAppCmdAppMenu1; txt=STRING_r_brctl_menu1; },
+        MENU_ITEM { cascade = r_brctlsampleapp_menu2; command=EBrCtlSampleAppCmdAppMenu2; txt=STRING_r_brctl_menu2; },
+        MENU_ITEM { command=EAknCmdExit; txt=STRING_r_brctl_menu_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_menu_tools
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_brctlsampleapp_menu_tools
+    {
+    items=
+        {
+        MENU_ITEM { command=EBrCtlSampleAppCmdAppRestoreSetting; txt=STRING_r_brctl_tools_menu_1; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdAppReload; txt=STRING_r_brctl_tools_menu_2; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdAppBack; txt=STRING_r_brctl_tools_menu_3; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdAppForward; txt=STRING_r_brctl_tools_menu_4; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_menu1
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_brctlsampleapp_menu1
+    {
+    items=
+        {
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp1; txt=STRING_r_brctl_menu1_1; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp2; txt=STRING_r_brctl_menu1_2; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp3; txt=STRING_r_brctl_menu1_3; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp4; txt=STRING_r_brctl_menu1_4; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp5; txt=STRING_r_brctl_menu1_5; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp6; txt=STRING_r_brctl_menu1_6; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp7; txt=STRING_r_brctl_menu1_7; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp8; txt=STRING_r_brctl_menu1_8; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp9; txt=STRING_r_brctl_menu1_9; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp10; txt=STRING_r_brctl_menu1_10; }
+        };
+    }
+
+
+//----------------------------------------------------
+//
+//    r_brctlsampleapp_menu2
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_brctlsampleapp_menu2
+    {
+    items=
+        {
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp11; txt=STRING_r_brctl_menu2_1; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp12; txt=STRING_r_brctl_menu2_2; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp13; txt=STRING_r_brctl_menu2_3; },
+        MENU_ITEM { command=EBrCtlSampleAppCmdApp14; txt=STRING_r_brctl_menu2_4; }
+        };
+    }
+
+// For DialogPromptLC
+// ---------------------------------------------------------
+//
+//    r_data_query_with_heading
+//
+// ---------------------------------------------------------
+//
+RESOURCE DIALOG r_data_query_with_heading
+	{
+	flags=EGeneralQueryFlags | EEikDialogFlagNoShadow;
+	buttons=R_AVKON_SOFTKEYS_OK_CANCEL;
+	items=
+		{
+		DLG_LINE
+		{
+		type = EAknCtPopupHeadingPane;
+		id = EAknMessageQueryHeaderId;
+		control = AVKON_HEADING
+			{
+			label = STRING_r_browser_query_script_prompt;
+			};
+		},
+		DLG_LINE
+			{
+			type=EAknCtQuery;
+			id=EGeneralQuery;
+			control= AVKON_DATA_QUERY
+				{
+				layout = EStaticSizeDataLayout; // Use this when you have a heading in data query
+				control=EDWIN
+					{
+					flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+					};
+				};
+			}
+		};
+	}
+
+
+RESOURCE DIALOG r_confirm_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+			control= AVERELL_CONFIRMATION_QUERY
+				{
+					layout = EConfirmationLayout;
+					label = "";
+				};
+			}
+        };
+    }
+
+
+// End of File
+

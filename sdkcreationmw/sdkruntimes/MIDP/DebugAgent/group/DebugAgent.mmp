@@ -1,0 +1,27 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#include "../src/JavaDebugAgentUid.h"
+
+MACRO   DEBUG_AGENT_EXE
+#define JAVA_DEBUG_AGENT_EXE DebugAgent.exe
+#define JAVA_DEBUG_AGENT_RSS DebugAgent.rss
+//Currently we don't want to show an icon of debug agent
+#define JAVA_DEBUG_AGENT_REG_RSS DebugAgent_reg.rss
+
+#include "JavaDebugAgent.mmp"

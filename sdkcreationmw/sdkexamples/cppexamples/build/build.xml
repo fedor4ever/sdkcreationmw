@@ -1,0 +1,67 @@
+<!-- build.xml -->
+<project name="S60 SDK C++ Examples" default="help" basedir="..">
+  <description>
+    S60 SDK C++ Examples
+  </description>
+
+  <property name="root" location="." />
+  <property name="dist" location="${root}/dist" />
+  <property name="s60ex" location="${dist}/s60ex" />
+  <property name="build" location="${root}/build" />
+
+  <target name="help">
+    <echo> 
+    target help:
+    try
+       ant -emacs -projecthelp 
+    </echo>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- **************** Clean *********************************** -->
+  <!-- ********************************************************** -->
+  <target name="clean">
+    <delete dir="${dist}"/>
+  </target>
+  
+  <!-- ********************************************************** -->
+  <!-- **************** Build *********************************** -->
+  <!-- ********************************************************** -->
+  <target name="build">
+    <tstamp>
+      <format property="TODAY_UK" pattern="yyyy-MM-dd" locale="en"/>
+    </tstamp>
+    
+    <mkdir dir="${dist}" />
+    
+    <antcall target="copyExamples" />    
+    
+    <exec dir="${build}" executable="perl.exe"> 
+      <arg line="doxy.pl"/>     
+    </exec>
+    
+    <zip destfile="${dist}/s60ex-${TODAY_UK}.zip">
+      <zipfileset dir="${s60ex}" prefix="s60ex/"/>
+    </zip>    
+  </target>
+  
+  <!-- List of sdk included examples-->
+  <target name="copyExamples">
+    <antcall target="copy">    
+      <param name="from.dir" value="SipExample"/>
+      <param name="to.dir" value="SipExample"/>
+    </antcall>
+  </target>
+
+  <!-- copies example -->
+  <target name="copy">
+    <mkdir dir="${s60ex}/${to.dir}" />
+    <copy todir="${s60ex}/${to.dir}">
+      <fileset dir="${root}/${from.dir}">
+        <exclude name="**/*.sis,**/*.bat,**/*.s60"/>
+      </fileset>   
+    </copy>    
+    <delete dir="${s60ex}/${to.dir}/internal" />
+  </target>
+</project>
+

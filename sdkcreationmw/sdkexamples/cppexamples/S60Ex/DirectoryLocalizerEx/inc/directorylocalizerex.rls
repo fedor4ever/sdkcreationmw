@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  DirectoryLocalizer localise file
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Caption
+rls_string STRING_r_apps_tavl_list              "DIRECTORYLOCALIZER"
+rls_string STRING_r_apps_tavl_grid              "DIRECTORYLOCALIZER"
+
+// MenuBar
+rls_string STRING_r_directorylocalizerex_menubar        "Option"
+rls_string STRING_r_directorylocalizerex_menu_exit      "Exit"
+
+// softkey
+rls_string STRING_r_softkey_option                      "Options"
+
+// outline 
+rls_string STRING_r_dirlocalizerex_addfromresid         "LocalizedFromResId"
+rls_string STRING_r_dirlocalizerex_setupfromresrd       "SetupFromResRd"
+rls_string STRING_r_dirlocalizerex_setupfromresid       "SetupFromResId"
+rls_string STRING_r_dirlocalizerex_getextradata         "GetExtraData"
+rls_string STRING_r_dirlocalizerex_geticonindex         "GetIconIndex"
+
+
+// Application name
+rls_string STRING_r_app_name                            "LocalizerEx"
+// End of File

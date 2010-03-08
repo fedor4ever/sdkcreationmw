@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+//d:Command in options menu.
+//d:Example application spesific command.
+//l:list_single_popup_submenu_pane_1
+//
+
+//d:Caption strings for app
+rls_string STRING_r_app_caption_string              "WebClient"
+rls_string STRING_r_app_short_caption_string        "WebClient"
+
+//d:Menu
+rls_string STRING_r_webclient_mo_request            "Request URL"
+rls_string STRING_r_webclient_mo_header             "HTTP Header"
+rls_string STRING_r_webclient_mo_source             "HTTP Source"
+rls_string STRING_r_webclient_mo_status             "Transaction Status"
+rls_string STRING_r_webclient_mo_exit               "Exit"
+
+//d:Dialogs
+rls_string gtn_webclient_url_dialog            "URL"
+rls_string gtn_webclient_psw_dialog_username   "User name"
+rls_string gtn_webclient_psw_dialog_password   "Password"
+rls_string gtn_webclient_url_downloading       "Downloading.\nPlease Wait..."
+
+
+//d:Error messages
+rls_string STRING_r_webclient_iap_conf_err          "Cannot create session. Error: %N"
+
+//d:HTTP transaction status messages
+rls_string STRING_r_webclient_connecting            "Connecting..."
+rls_string STRING_r_webclient_transaction_cancel    "Transaction cancelled"
+rls_string STRING_r_webclient_header_received       "Header received. Status: %N %U"
+rls_string STRING_r_webclient_body_part_received    "%N bytes received... "
+rls_string STRING_r_webclient_body_received         "Body received"
+rls_string STRING_r_webclient_transaction_complete  "Transaction Complete"
+rls_string STRING_r_webclient_transaction_succeed   "Transaction Successful"
+rls_string STRING_r_webclient_transaction_failed    "Transaction Failed"
+rls_string STRING_r_webclient_transaction_error     "Error: %N"
+rls_string STRING_r_webclient_unrecognised_event    "Unrecognised event: %N"
+rls_string STRING_r_webclient_mhfrun_error          "MHFRunError: %N"
+
+
+// End of File

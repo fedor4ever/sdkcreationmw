@@ -1,0 +1,218 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Windows menubar for S60 emulator
+ *
+*/
+
+
+//#include <platform_paths.hrh>
+#include "..\menubar\EcmtMenubarUids.h"
+
+#ifndef ENABLE_NMIT_INTEGRATION
+#  define ENABLE_NMIT_INTEGRATION 1
+#endif // ENABLE_NMIT_INTEGRATION
+
+// DRM is enabled by default
+#ifndef ENABLE_DRM_SUPPORT
+#  define ENABLE_DRM_SUPPORT 1
+#endif // ENABLE_DRM_SUPPORT
+
+// NOTE: this .mmp file may be included from another mmp file. The "parent"
+// mmp file may define one of the following environment variables to 1:
+//
+//   ENABLE_SDK_REGISTRATION - enables product registration functionality
+//   ENABLE_NMIT_INTEGRATION - enables NMIT integration
+//
+// If this mmp file is used "as is", these variables are not defined and 
+// therefore the above functionality is not available. In addition to that,
+// the "parent" mmp file will probably define ECMT_MENUBAR_DLL variable
+// to avoid DLL name collision.
+
+#ifndef ECMT_MENUBAR_DLL
+#  define ECMT_MENUBAR_DLL EcmtMenubar.dll
+#endif // ECMT_MENUBAR_DLL
+
+#ifndef ECMT_MENUBAR_RC
+#  define ECMT_MENUBAR_RC EcmtMenubar.rc
+#endif // ECMT_MENUBAR_RC
+
+TARGET          ECMT_MENUBAR_DLL
+TARGETTYPE      DLL
+UID             0x1000008D KECMT_MENUBAR_UID	//Shared Library
+CAPABILITY      CAP_GENERAL_DLL
+
+// Both Forum Nokia and external builds use slib and wlib
+MACRO HAVE_SLIB
+MACRO HAVE_WLIB
+USERINCLUDE     ..\..\NmitShared\src\native\wlib
+USERINCLUDE     ..\..\NmitShared\src\native\slib\include
+
+// This enables linking with debug libraries. Note that this flag may also
+// be defined in ecmtmenubar2.mmp which includes this .mmp file.
+//#define DEBUG_LIBS
+#ifdef DEBUG_LIBS
+// Let the compiler know that we are linking with debug libraries from
+// NmitShared.
+MACRO NMIT_DEBUG_LIBS
+#endif // DEBUG_LIBS
+
+SOURCEPATH      ..\menubar
+SOURCE          WinMenubar.cpp
+SOURCE          AboutBox.cpp
+SOURCE          LoadDialog.cpp
+SOURCE          EcmtMenubar.cpp
+SOURCE          EcmtMenubarProxy.cpp
+SOURCE          EcmtMenubarUtils.cpp
+SOURCE          EcmtMenubarFileUtils.cpp
+SOURCE          ImageDataObject.cpp
+
+USERINCLUDE     .
+USERINCLUDE     ..\menubar
+USERINCLUDE     ..\..\..\sdkconnectivityfw\emuconnectserver\core\inc
+USERINCLUDE     ..\..\loggingapi\inc
+USERINCLUDE     ..\..\emulatorplugins\sdk\inc
+USERINCLUDE     ..\osutils\inc
+APP_LAYER_SYSTEMINCLUDE
+
+#if ENABLE_SDK_REGISTRATION
+MACRO SDK_REGISTRATION
+USERINCLUDE     ..\..\..\Registration\native\reglib\include
+#endif // ENABLE_SDK_REGISTRATION
+
+#if ENABLE_NMIT_INTEGRATION
+#define ENABLE_PUSH_SUPPORT
+MACRO NMIT_INTEGRATION
+SYSTEMINCLUDE   \epoc32\include\push
+SYSTEMINCLUDE   \epoc32\include\ecom
+SYSTEMINCLUDE		\sf\mw\messagingmw\messagingfw\wappushfw\pushwatcher\inc
+USERINCLUDE     ..\..\NMIT\lib\include
+
+LIBRARY         xrpcrt.lib
+#  ifdef DEBUG_LIBS
+// debug
+LIBRARY         nmitlibd.lib
+#  else
+// release
+LIBRARY         nmitlib.lib
+#endif // DEBUG_LIBS
+#endif // ENABLE_NMIT_INTEGRATION
+
+#if defined(ENABLE_PUSH_SUPPORT) || defined(ENABLE_DRM_SUPPORT)
+LIBRARY         estor.lib
+#endif //ENABLE_PUSH_SUPPORT || ENABLE_DRM_SUPPORT
+
+#ifdef ENABLE_PUSH_SUPPORT
+MACRO PUSH_SUPPORT
+SOURCE          Push.cpp
+LIBRARY         WapPushUtils.lib
+LIBRARY         viewcli.lib
+#endif // ENABLE_PUSH_SUPPORT
+
+#if ENABLE_DRM_SUPPORT
+MACRO DRM_SUPPORT
+USERINCLUDE     ..\..\NmitShared\src\native\httpfile\include
+SOURCE          DRM.cpp
+LIBRARY         apmime.lib
+LIBRARY         ServiceHandler.lib
+LIBRARY         DrmParsers.lib
+#  ifdef DEBUG_LIBS
+LIBRARY         httpfiled.lib
+#  else
+LIBRARY         httpfile.lib
+#  endif
+#endif // ENABLE_DRM_SUPPORT
+
+#if ENABLE_SDK_REGISTRATION
+#  ifdef DEBUG_LIBS
+LIBRARY         reglibd.lib
+LIBRARY         zlibd.lib
+#  else
+LIBRARY         reglib.lib
+LIBRARY         zlib.lib
+#  endif
+#endif // ENABLE_SDK_REGISTRATION
+
+#ifdef DEBUG_LIBS
+LIBRARY         wlibd.lib
+LIBRARY         slibd.lib
+#else
+LIBRARY         wlib.lib
+LIBRARY         slib.lib
+#endif
+
+LIBRARY         efsrv.lib 
+LIBRARY         apgrfx.lib
+LIBRARY         euser.lib
+LIBRARY         ws32.lib 
+LIBRARY         cone.lib
+LIBRARY         eikcore.lib
+LIBRARY         emulator.lib 
+LIBRARY	        platformenv.lib
+LIBRARY         InetProtUtil.lib
+LIBRARY         EcmtClient.lib 
+LIBRARY         EcmtOsUtils.lib 
+LIBRARY         EcmtSdkPlugin.lib 
+LIBRARY         CommonUI.lib
+LIBRARY         charconv.lib
+
+
+// Always link with msvcrt.lib (or msvcrtd.lib if we are using debug 
+// libraries), otherwise static C-runtime supplied by CodeWarrior does 
+// not get properly initialized and malloc (and possibly other C-runtime
+// functions) crash. Moving msvcrt from WIN32_LIBRARY to LIBRARY category
+// helps the linker to resolve more reverences in favor or msvcrt.dll
+// The path here must be relative (as opposed to WIN32_LIBRARY where
+// path must be absolute - how convenient!).
+#ifdef DEBUG_LIBS
+LIBRARY   ..\..\..\..\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\msvcrtd.lib
+#else
+LIBRARY   ..\..\..\..\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\msvcrt.lib
+#endif
+
+START WINS
+
+// 
+// Unfortunately, it's impossible to use relative path to the libraries
+// so that it works in all configurations, i.e. command line and IDE builds
+// in both Visual Studio and CodeWarrior. We have to assume that the build
+// area is mapped to a drive letter.
+// 
+
+#if ENABLE_SDK_REGISTRATION
+WIN32_LIBRARY   ..\..\..\..\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\comctl32.lib 
+#endif // ENABLE_SDK_REGISTRATION
+
+WIN32_LIBRARY	\publicsdk\sdkcreationmw\sdkcommonutils\mslibs\uuid.lib
+WIN32_LIBRARY	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\comdlg32.lib 
+WIN32_LIBRARY 	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\shell32.lib
+WIN32_LIBRARY	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\ole32.lib
+
+WIN32_RESOURCE  ..\menubar\ECMT_MENUBAR_RC
+
+WIN32_LIBRARY   user32.lib
+WIN32_LIBRARY   kernel32.lib
+WIN32_LIBRARY   advapi32.lib
+WIN32_LIBRARY   gdi32.lib
+
+END
+
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * compile-command: "./ABLD.BAT build winscw udeb ecmtmenubar"
+ * End:
+ */
+

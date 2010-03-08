@@ -1,0 +1,78 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+
+TARGET            LongTapDetectorExample.exe
+TARGETTYPE        exe
+UID		  0x100039CE 0xA0000283
+
+EPOCSTACKSIZE	  0x5000
+
+SOURCEPATH        ..\src
+SOURCE            longtapdetectorex.cpp
+SOURCE            longtapdetectorexapp.cpp
+SOURCE            longtapdetectorexdoc.cpp
+SOURCE            longtapdetectorexappui.cpp
+SOURCE            longtapdetectorexcontainer.cpp
+
+
+SOURCEPATH        ..\data
+
+START RESOURCE    longtapdetectorexample.rss
+HEADER
+TARGETPATH resource\apps
+END //RESOURCE
+
+START RESOURCE    longtapdetectorexample_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+
+
+USERINCLUDE       ..\inc
+
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib 
+LIBRARY           eikcore.lib  
+LIBRARY           avkon.lib  
+LIBRARY           gdi.lib
+LIBRARY           eikcoctl.lib
+LIBRARY           eikctl.lib
+LIBRARY           eikdlg.lib
+LIBRARY           bafl.lib
+LIBRARY           aknskins.lib
+LIBRARY           commonengine.lib
+LIBRARY           egul.lib
+LIBRARY						ws32.lib 
+LANG SC
+
+VENDORID	  	  0
+CAPABILITY	NONE
+
+// End of File

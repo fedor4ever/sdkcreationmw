@@ -1,0 +1,38 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; NPBitmap_gcce.pkg
+;
+;Languages
+&EN
+
+;Header
+#{"NPBitmap"},(0xA000018C), 1, 0, 0
+
+; Localised Vendor name
+%{"Vendor-EN"}
+
+; Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; BitmapGraphics
+"..\..\..\epoc32\release\gcce\urel\NPBitmap.dll"		-"!:\sys\bin\NPBitmap.dll"
+"..\..\..\epoc32\data\Z\Resource\Plugins\NPBitmap.RSC"		-"!:\Resource\plugins\NPBitmap.rsc"
+"..\..\..\epoc32\data\Z\Resource\apps\allbitmaps.mbm"		-"!:\NPBitmap\allbitmaps.mbm"
+"..\data\plugin.html"						-"!:\NPBitmap\plugin.html"
+

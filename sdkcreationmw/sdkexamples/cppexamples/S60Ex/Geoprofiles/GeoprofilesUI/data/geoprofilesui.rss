@@ -1,0 +1,704 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file defintion for project Geo Profiles Application
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    GPAP // 4 letter ID
+
+//  SYSTEM INCLUDES
+#include <eikon.rh>
+#include <appinfo.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+// #include <bldvariant.hrh>
+#include <avkon.hrh>
+#include <eikctl.rsg>
+// #include <data_caging_paths_strings.hrh>
+
+// USER INCLUDES
+#include "geoprofilesui.loc"
+#include "geoprofiles.hrh"
+
+//  RESOURCE DEFINITIONS 
+
+// ---------------------------------------------------------------------------
+// Signature
+// ---------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE 
+    {
+    }
+
+// ---------------------------------------------------------------------------
+// Application Name buffer
+// ---------------------------------------------------------------------------
+//
+RESOURCE TBUF 
+    {
+    buf="geoprofiles";
+    }
+
+// ---------------------------------------------------------------------------
+// Eik Application Info
+// ---------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {     
+    }
+
+
+// ---------------------------------------------------------------------------
+// Application Information structure for Geo profiles Application
+// ---------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_geoprofiles_localisable_app_info
+	{
+	short_caption = qtn_geoprofiles_grid;
+	caption_and_icon = CAPTION_AND_ICON_INFO
+		{
+		caption = qtn_geoprofiles_list;	
+		};
+	}
+
+// ---------------------------------------------------------------------------
+// Geo profiles Application Main View
+// ---------------------------------------------------------------------------
+//	
+RESOURCE AVKON_VIEW r_geoprofiles_view
+    {
+    menubar = r_geoprofiles_menubar;
+    cba = r_geoprofiles_cba;    
+    }
+
+// ---------------------------------------------------------------------------
+// Menu bar definition for Geo profiles Application Main View
+// ---------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_geoprofiles_menubar
+    {
+    titles=
+        {
+        MENU_TITLE 
+            {
+            menu_pane = r_geoprofiles_menu; 
+            txt = ""; 
+            }
+        };
+    }
+
+// ---------------------------------------------------------------------------
+// Menu pane definition for Geo profiles Application Main View
+// ---------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_geoprofiles_menu
+    {
+    items=
+        {
+        MENU_ITEM 
+            { 
+            command = EGeoProfilesAdd; 
+            txt = qtn_options_geoprofiles_add; 
+            },         
+        MENU_ITEM 
+            { 
+            command = EGeoProfilesOpen; 
+            txt = qtn_options_geoprofiles_open; 
+            }, 
+        MENU_ITEM 
+            { 
+            command = EGeoProfilesDelete; 
+            txt = qtn_options_geoprofiles_delete; 
+            },
+        MENU_ITEM 
+            {
+            command = EAknCmdExit;  
+            txt = qtn_options_geoprofiles_exit; 
+            }
+        };
+    }
+
+// ---------------------------------------------------------------------------
+// Control Button array definition for Geo profiles Application
+// ---------------------------------------------------------------------------
+//  
+RESOURCE CBA r_geoprofiles_cba
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOptions; 
+            txt = qtn_softkey_geoprofiles_options;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyExit; 
+            txt = qtn_softkey_geoprofiles_exit;
+            },
+        CBA_BUTTON
+            {
+            id = EGeoProfilesOpen; 
+            txt = qtn_softkey_geoprofiles_open;
+            }
+        };
+    }
+    
+// ---------------------------------------------------------------------------
+// Control Button array definition for Geo profiles Application empty
+// ---------------------------------------------------------------------------
+//  
+RESOURCE CBA r_geoprofiles_cba_empty
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOptions; 
+            txt = qtn_softkey_geoprofiles_options;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyExit; 
+            txt = qtn_softkey_geoprofiles_exit;
+            },
+        CBA_BUTTON
+            {
+            id = EGeoProfilesNone; 
+            txt = "";
+            }
+        };
+    }    
+
+// ---------------------------------------------------------------------------
+// Hot Keys for Geo profiles Application
+// ---------------------------------------------------------------------------
+//
+RESOURCE HOTKEYS r_geoprofiles_hotkeys
+   {
+   control=
+        {
+        };
+    }
+
+// ---------------------------------------------------------------------------
+// List box for Geo profiles Application Main View
+// ---------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_geoprofiles_listbox
+	{
+    flags = EAknListBoxSelectionList;
+	}
+
+// ---------------------------------------------------------------------------
+// Title text for Geo profiles Application
+// ---------------------------------------------------------------------------
+//	
+RESOURCE TBUF r_geoprofiles_title
+    {
+    buf = qtn_geoprofiles_title;
+    }
+
+//----------------------------------------------------
+// Editor dialog foe Geo profiles
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_geoprofiles_editor_dialog
+    {
+    flags = EEikDialogFlagNoDrag | 
+            EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagWait |
+            EEikDialogFlagCbaButtons;
+            
+    buttons = r_geoprofiles_cba_ok_cancel_edit;
+    form = r_geoprofiles_editor_form;
+    }
+    
+// ---------------------------------------------------------------------------
+// CBA containing Options, Done, Change
+// ---------------------------------------------------------------------------
+// 
+RESOURCE CBA r_geoprofiles_cba_ok_cancel_change
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOk; 
+            txt = qtn_softkey_geoprofiles_ok;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyCancel; 
+            txt = qtn_softkey_geoprofiles_cancel;
+            },
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyChange; 
+            txt = qtn_msk_geoprofiles_change;
+            }
+        };
+    }  
+
+// ---------------------------------------------------------------------------
+// CBA containing Options, Done, Change
+// ---------------------------------------------------------------------------
+// 
+RESOURCE CBA r_geoprofiles_cba_ok_cancel_edit
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOk; 
+            txt = qtn_softkey_geoprofiles_ok;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyCancel; 
+            txt = qtn_softkey_geoprofiles_cancel;
+            },
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyEdit; 
+            txt = qtn_msk_geoprofiles_edit;
+            }
+        };
+    } 
+    
+// ---------------------------------------------------------------------------
+// CBA containing Options, Done, Change
+// ---------------------------------------------------------------------------
+// 
+RESOURCE CBA r_geoprofiles_cba_ok_cancel
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOk; 
+            txt = qtn_softkey_geoprofiles_ok;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyCancel; 
+            txt = qtn_softkey_geoprofiles_cancel;
+            },
+        CBA_BUTTON
+            {
+            id = EGeoProfilesNone; 
+            txt = "";
+            }
+        };
+    }
+    
+// ---------------------------------------------------------------------------
+// CBA containing Cancel
+// ---------------------------------------------------------------------------
+// 
+RESOURCE CBA r_geoprofiles_cba_cancel
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EGeoProfilesNone; 
+            txt = "";
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyCancel; 
+            txt = qtn_softkey_geoprofiles_cancel;
+            },
+        CBA_BUTTON
+            {
+            id = EGeoProfilesNone; 
+            txt = "";
+            }
+        };
+    }
+                
+//----------------------------------------------------
+// Form structure for Geo profiles definition
+//----------------------------------------------------
+//
+RESOURCE FORM r_geoprofiles_editor_form
+    {
+    flags =  EEikFormUseDoubleSpacedFormat ;
+    items =
+        {
+        DLG_LINE
+            {
+            // Dialog Line for Geo Profile Name
+            type = EEikCtEdwin;
+            prompt = qtn_lbl_geoprofiles_name;
+            id = EGeoPlace;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN 
+                {
+                flags = EEikEdwinReadOnly | EEikEdwinAvkonDisableCursor | EEikEdwinJustAutoCurEnd | EEikEdwinResizable | EEikEdwinNoLineOrParaBreaks | EEikEdwinAvkonNotEditable ;
+                width = 16; 
+                maxlength = KGeoPlaceNameMaxLength;
+                lines = 8;
+                };
+            },
+        DLG_LINE
+            {            
+            type = EAknCtIntegerEdwin;
+            prompt = qtn_lbl_geoprofiles_radius;
+            id = EGeoRadius;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = AVKON_INTEGER_EDWIN 
+               {
+               maxlength = KGeoProfileRadiusMaxLength;               
+               min = KGeoProfileRadiusMin;
+               max = KGeoProfileRadiusMax;
+               unset_value = KGeoProfileRadiusUnsetValue;
+               }; 
+            },
+        DLG_LINE
+             {
+             type = EAknCtPopupFieldText;
+             prompt = qtn_lbl_geoprofiles_type;
+             id = EGeoProfileType;
+             itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+             control = POPUP_FIELD_TEXT
+                 {
+                 popupfield = POPUP_FIELD
+                     {
+                     width = KGeoProfileTriggerModeLength;
+                     };
+                 textarray = r_geoprofiles_triggertype_array;
+                 active = 0;
+                 };
+             },                       
+        DLG_LINE
+            {
+            // Dialog Line for Profile Name
+            type = EEikCtEdwin;
+            prompt = qtn_lbl_geoprofiles_profile;
+            id = EGeoProfileName;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN 
+                {
+                flags = EEikEdwinReadOnly| EEikEdwinAvkonDisableCursor| EEikEdwinJustAutoCurEnd | EEikEdwinResizable | EEikEdwinNoLineOrParaBreaks | EEikEdwinAvkonNotEditable;
+                width = 16; 
+                maxlength = KGeoProfileNameMaxLength;
+                lines = 8;
+                };
+            }        
+        };           
+    }
+
+//----------------------------------------------------
+// Resource definition for Geo-Profiles type array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_geoprofiles_triggertype_array
+    {
+    items =
+        {
+        LBUF{ txt = qtn_lbl_geoprofiles_entry; },
+        LBUF{ txt = qtn_lbl_geoprofiles_exit; }                  
+        };
+    }
+    
+//----------------------------------------------------
+// Resource definition for Geo-Profiles place selector
+//----------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_geoprofiles_list_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = r_geoprofiles_select_cancel_select;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSingleGraphicPopupMenuListBox;
+                listbox = LISTBOX
+                    {
+                    flags = EAknListBoxSelectionList;
+                    array_id = r_geoprofile_empty_list;
+                    };
+                heading = qtn_lbl_geoprofiles_place;                
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+// Empty array definition
+//----------------------------------------------------
+// 
+RESOURCE ARRAY r_geoprofile_empty_list
+    {
+    items =
+        {
+        LBUF{ txt = ""; }
+        };
+    } 
+//----------------------------------------------------
+// Resource definition CBA with Select Cancel Select
+//----------------------------------------------------
+//    
+RESOURCE CBA r_geoprofiles_select_cancel_select
+    {
+    flags = 0;
+    buttons = 
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeySelect; 
+            txt = qtn_softkey_geoprofiles_select;
+            },
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyCancel; 
+            txt = qtn_softkey_geoprofiles_cancel;
+            },    
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeySelect; 
+            txt = qtn_softkey_geoprofiles_select;
+            }       
+        };
+    }
+
+//----------------------------------------------------
+// Resource Definitions for Place selector
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_place
+    {
+    buf = qtn_lbl_geoprofiles_place;
+    }
+    
+//----------------------------------------------------
+// Resource Definitions for Profile Selector
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_profile
+    {
+    buf = qtn_lbl_geoprofiles_profile;
+    }
+    
+//----------------------------------------------------
+// Resource Definitions for current place
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_currentplace
+    {
+    buf = qtn_lbl_geoprofiles_currentplace;
+    }  
+    
+//----------------------------------------------------
+// Resource Definitions for landmarks
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_landmarks
+    {
+    buf = qtn_lbl_geoprofiles_landmarks;
+    }                      
+    
+//----------------------------------------------------
+// Resource Definitions for define
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_define
+    {
+    buf = qtn_lbl_geoprofiles_define;
+    }
+    
+//----------------------------------------------------
+// Resource Definitions for Incomplete form exit
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_incomplete
+    {
+    buf = qtn_lbl_geoprofiles_incomplete;
+    }      
+
+//----------------------------------------------------
+// Resource Definitions for No events
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_noprofiles
+    {
+    buf = qtn_lbl_geoprofiles_noprofiles;
+    }
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//    
+RESOURCE DIALOG r_lbl_geoprofiles_waitdlg_create
+    {   
+    flags = EAknWaitNoteFlags | EEikDialogFlagWait;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = qtn_lbl_geoprofiles_creating;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//    
+RESOURCE DIALOG r_lbl_geoprofiles_waitdlg_update
+    {   
+    flags = EAknWaitNoteFlags | EEikDialogFlagWait;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = qtn_lbl_geoprofiles_updating;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    } 
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//    
+RESOURCE DIALOG r_lbl_geoprofiles_waitdlg_delete
+    {   
+    flags = EAknWaitNoteFlags | EEikDialogFlagWait;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = qtn_lbl_geoprofiles_deleting;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//    
+RESOURCE DIALOG r_lbl_geoprofiles_waitdlg_currentlocation
+    {   
+    flags = EAknWaitNoteFlags | EEikDialogFlagWait;
+    buttons = r_geoprofiles_cba_cancel;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = qtn_lbl_geoprofiles_currentlocation;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }           
+
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//     
+RESOURCE DIALOG r_geoprofiles_name_querydialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = r_geoprofiles_cba_ok_cancel;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                control = EDWIN
+                    {
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    maxlength = KGeoPlaceNameMaxLength;
+                    width = 4;
+                    lines = 1;
+                    };
+                };
+            }
+        };
+    }    
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_locationname
+    {
+    buf = qtn_lbl_geoprofiles_locationname;
+    } 
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_location_fail
+    {
+    buf = qtn_lbl_geoprofiles_location_fail;
+    } 
+    
+//----------------------------------------------------
+// 
+//----------------------------------------------------
+//
+RESOURCE TBUF r_lbl_geoprofiles_operation_fail
+    {
+    buf = qtn_lbl_geoprofiles_operation_fail;
+    }         
+           

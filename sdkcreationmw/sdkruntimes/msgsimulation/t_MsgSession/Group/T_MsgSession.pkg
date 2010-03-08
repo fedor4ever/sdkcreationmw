@@ -1,0 +1,27 @@
+;
+; Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+
+; Package header (English only, add other languages here)
+#{"T_MsgSession application"}, (0x101f8c30), 1, 0, 0
+
+; Language independent files
+"\epoc32\release\thumb\urel\t_msgsession.app"-"!:\system\apps\t_msgsession\t_msgsession.app"
+
+; Language dependent files (English only, add other languages here)
+{"\epoc32\release\thumb\urel\t_msgsession.rsc"}-"!:\system\apps\t_msgsession\t_msgsession.rsc"
+{"\epoc32\release\thumb\urel\t_msgsession.aif"}-"!:\system\apps\t_msgsession\t_msgsession.aif"
+
+; End of file

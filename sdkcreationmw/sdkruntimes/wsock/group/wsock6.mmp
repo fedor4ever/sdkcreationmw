@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+//
+// $Id: wsock6.mmp,v 1.1 2005/11/30 07:40:43 slava Exp $
+//
+// IPv6 support module
+//
+
+TARGET          wsock6.prt
+TARGETTYPE      dll
+
+#ifdef EKA2
+CAPABILITY      ALL -TCB
+#endif // EKA2
+
+#include "../inc/WinsockUid.h"
+
+UID 0x10003d38 KWinsockIPv6ProtocolUid
+
+SOURCEPATH      ..\wsock6
+SOURCE          wsock6.cpp
+
+USERINCLUDE     ..\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\comms-infras
+
+LIBRARY         euser.lib 
+LIBRARY         wsock.lib 

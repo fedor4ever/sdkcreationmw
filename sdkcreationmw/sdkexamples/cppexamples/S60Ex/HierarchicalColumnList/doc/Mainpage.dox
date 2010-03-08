@@ -1,0 +1,126 @@
+/*! \mainpage HierarchicalColumnList
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example application is intended to demonstrate the usage of hierarchical
+ * column list UI component. The application creates a hierarchical list, adds
+ * some data items to the list, and then allows the user to browse the list
+ * structure and change some of the list setting through options menu. 
+ *
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * This application demonstrates the usage of Hierarchical Column List API.
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example exists as a complete application, and has the standard Symbian
+ * OS application architecture employing the Application, Document, UI, and View
+ * classes.
+ *
+ * <HR>
+ *
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * The example application is a standard Symbian OS standalone application, and
+ * the hierarchical column list demonstrated in this example is constructed as
+ * component control of the container class acting as application's view.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application capabilities are defined in the %HierarchicalColumnList.mmp
+ * file: CAPABILITY NONE 
+ *
+ * \subsection Sub32 3.2 Building the example application
+ *
+ * This example can be built in directory HierarchicalColumnList\\group by
+ * running the following commands:<br>
+ * bldmake bldfiles<br>
+ * abld build winscw udeb
+ *
+ * After successful build, application can be found and started from:
+ * Applications > Installed > HCList
+ *
+ * \subsection Sub33 3.3 Application construction
+ *
+ * The example application follows standard Symbian OS application construction
+ * sequence.
+ *
+ * The application user interface class @c CHierarchicalColumnListAppUi instance
+ * creates a container class, an instance of @c CHierarchicalColumnListAppView,
+ * which is responsible for drawing the view and handling the key and pointer
+ * events.
+ *
+ * The container class constructs the hierarchical list, which is an instance of
+ * @c CAknSingleColumnStyleTreeList class, and a background control context, an
+ * instance of @c CAknsBasicBackgroundControlContext.
+ *
+ * Container class also realizes the @c MAknTreeListObserver interface, which
+ * is then registered to the hierarchical column list to act as callback hook
+ * between the list and the container. The events received through the interface
+ * are in this example mainly used in implementing the application's middle
+ * softkey (MSK) functionality.
+ *
+ * After hierarchical list is constructed, the container then populates it with
+ * small set of items. Any dynamic changes in the tree structure are not
+ * demonstrated in this example.
+ *
+ * \subsection Sub34 3.4 Handling key events
+ *
+ * The focused container class receives the key events from control stack to
+ * @c CHierarchicalColumnListAppView::OfferKeyEventL() method. This method only
+ * passes the events to the hierarchical column list, which then responds to the
+ * received key events with appropriate actions.
+ *
+ * \subsection Sub35 3.5 Handling pointer events
+ *
+ * As the constructed hierarchical column list is constructed to the container's
+ * window and set as component control of the container, the control framework
+ * handles the passing of pointer events to the list. Otherwise, this would be
+ * on the application's responsibility.
+ *
+ * \subsection Sub36 3.6 Handling resource changes
+ *
+ * As the hierarchical list is set as component control of the container, it
+ * receives the resource change events through the control framework, but the
+ * container is still responsible for setting the size for both hierarchical
+ * column list and the background control context, when the container's size
+ * is changed on dynamic layout switches. This is done in
+ * @c CHierarchicalColumnListAppView::SizeChanged() method.
+ * 
+ * \subsection Sub37 3.7 Providing list background
+ *
+ * The container class provides the background control context for the list
+ * through mop-chain. The background control context was constructed at the
+ * container's construction, and it is provided for the use of other objects
+ * with @c CHierarchicalColumnListAppView::MopSupplyObject() method.
+ *
+ *
+ * \subsection Sub38 3.8 MSK and menu commands
+ *
+ * The hierarchical list related commands, either from menu or MSK are
+ * received by the AppUi class. Each of these commands are implemented by the
+ * container class, and the AppUi class only calls the respective method from
+ * the container.
+ *
+ * Before menus are displayed, the menu panes are passed to the AppUi, which
+ * only passes them on to the container class, so that it can remove some of the
+ * menu items depending on the list state.
+ *
+ * The MSK commands in the example application are handled by container class.
+ * As all the commands relate to the list state, these commands are updated
+ * to necessary commands whenever the container receives list events in the
+ * @c CHierarchicalColumnListAppView::HandleTreeListEvent() method.
+ *
+ */

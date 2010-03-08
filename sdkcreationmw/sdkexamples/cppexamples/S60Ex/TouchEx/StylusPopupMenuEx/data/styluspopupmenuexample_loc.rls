@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+// These are self-explanatory
+
+rls_string STRING_r_styluspopupmenuex_short_caption "StylusPopupMenuEx"
+rls_string STRING_r_styluspopupmenuex_caption "StylusPopupMenu Example"
+rls_string STRING_r_styluspopupmenuex_create_from "Create the menu from"
+rls_string STRING_r_styluspopupmenuex_from_resource "Resource"
+rls_string STRING_r_styluspopupmenuex_from_code "Code"
+rls_string STRING_r_styluspopupmenuex_menuitem_1 "Res. Menu item 1"
+rls_string STRING_r_styluspopupmenuex_menuitem_2 "Res. Menu item 2"
+rls_string STRING_r_styluspopupmenuex_menuitem_3 "Res. Menu item 3"
+rls_string STRING_r_styluspopupmenuex_menuitem_4 "Res. Menu item 4"
+rls_string STRING_r_styluspopupmenuex_item_selected "Item %d selected"
+rls_string STRING_r_styluspopupmenuex_add_items "Add items"
+rls_string STRING_r_styluspopupmenuex_popupmenu_cancelled "Popup menu cancelled"
+rls_string STRING_r_styluspopupmenuex_menu_created "Popup menu created"
+rls_string STRING_r_styluspopupmenuex_setting_changed "Setting changed"
+rls_string STRING_r_styluspopupmenuex_exit "Exit"

@@ -1,0 +1,177 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    NAC_ // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include "nac.hrh"
+#include "nac.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+
+// ADDED FOR SVG-T ICON SUPPORT.
+#include <appinfo.rh>
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=qtn_nac_noughts_and_crosses; }
+
+RESOURCE EIK_APP_INFO
+    {
+    }
+
+RESOURCE AVKON_VIEW r_noughtsandcrosses_view
+    {
+    menubar = r_noughtsandcrosses_menubar1;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+RESOURCE AVKON_VIEW r_noughtsandcrosses_setting_view
+    {
+    cba = R_AVKON_SOFTKEYS_OK_CANCEL;
+    }
+
+RESOURCE MENU_BAR r_noughtsandcrosses_menubar1
+    {
+    titles=
+        {
+        MENU_TITLE {menu_pane = r_noughtsandcrosses_menu1;}
+        };
+    }
+
+RESOURCE MENU_PANE r_noughtsandcrosses_menu1
+    {
+    items = 
+        {
+        MENU_ITEM {command = ENoughtsAndCrossesCmdAppNewGame;  txt = qtn_nac_new_game;},
+        MENU_ITEM {command = ENoughtsAndCrossesCmdAppSetting;  txt = qtn_nac_settings;},
+        MENU_ITEM {command = ENoughtsAndCrossesCmdAppStatistics;  txt = qtn_nac_stats;},
+        MENU_ITEM {command = ENoughtsAndCrossesCmdExit; txt = qtn_nac_exit;}
+        };
+    }
+
+RESOURCE AVKON_SETTING_ITEM_LIST r_noughtsandcrossest_setting_list_player_name_text
+    {
+    flags= EAknSettingItemNumberedStyle;
+    title = qtn_nac_settings;
+    initial_number = 1;
+    items =     
+        {
+        AVKON_SETTING_ITEM
+            {
+            identifier = ENoughtsAndCrossesPlayerNameText;
+            setting_page_resource = r_noughtsandcrossest_text_setting_page;
+            name = qtn_nac_players_name;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ENoughtsAndCrossesPlayerFirstBinary;
+            setting_page_resource = r_noughtsandcrosses_binary_setting_page;
+            associated_resource = r_noughtsandcrosses_popup_setting_playsfirst_binary_texts;
+            name = qtn_nac_who_plays_first;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ENoughtsAndCrossesPlayerTypeBinary;
+            setting_page_resource = r_noughtsandcrosses_binary_setting_page;
+            associated_resource = r_noughtsandcrosses_popup_setting_playertype_binary_texts;
+            name = qtn_nac_player_type;
+            }
+        };
+    }
+
+RESOURCE AVKON_SETTING_PAGE r_noughtsandcrossest_text_setting_page
+    {
+    number = 1;
+    label = qtn_nac_players_name;
+    type = EEikCtEdwin;
+    editor_resource_id = r_noughtsandcrossest_edwin;
+    }
+
+RESOURCE EDWIN r_noughtsandcrossest_edwin
+    {
+    width = 9;
+    lines = 1;
+    maxlength = 20;
+    }
+
+
+RESOURCE AVKON_SETTING_PAGE r_noughtsandcrosses_binary_setting_page
+    {   
+    number= 0;
+    label= qtn_aknexsettinglist_binary_title;
+    type = EAknCtPopupSettingList;
+    }
+
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_noughtsandcrosses_popup_setting_playsfirst_binary_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_aknexsettinglist_on_off_texts;
+    }
+
+RESOURCE ARRAY r_aknexsettinglist_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=0; text = qtn_nac_computer; },
+	AVKON_ENUMERATED_TEXT { value=1; text = qtn_nac_human; }
+        };
+    }
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_noughtsandcrosses_popup_setting_playertype_binary_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_noughtsandcrosses_playfirst_on_off_texts;
+    }
+
+RESOURCE ARRAY r_noughtsandcrosses_playfirst_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=0; text = qtn_nac_nought; },
+        AVKON_ENUMERATED_TEXT { value=1; text = qtn_nac_cross; }
+        };
+    }
+
+// ADDED FOR SVG-T ICON SUPPORT.
+RESOURCE LOCALISABLE_APP_INFO r_nac_localisable_app_info
+    {
+    short_caption = qtn_app_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = qtn_app_caption_string;
+        number_of_icons = 1;
+	  #ifdef EKA2 
+        icon_file = "\\resource\\Apps\\NAC_AIF.mif";
+	  #else
+        icon_file = "\\System\\Apps\\NAC\\NAC_AIF.mif";
+	  #endif        
+	  };
+    }

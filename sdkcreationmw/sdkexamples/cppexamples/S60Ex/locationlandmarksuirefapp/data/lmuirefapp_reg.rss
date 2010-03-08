@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     This file contains Application registration info of Ref Application.
+*
+*/
+
+
+#include <appinfo.rh>
+#include <lmuirefapp.rsg>
+#include "LmUiRefAppUID.h" 
+
+UID2 KUidAppRegistrationResourceFile
+UID3 KLmUiRefAppUID3 
+
+RESOURCE APP_REGISTRATION_INFO
+    {
+    app_file = "LmUiRefApp"; 
+    localisable_resource_file = "\\resource\\apps\\lmuirefapp";
+    localisable_resource_id = R_LMUIREFAPP_LOCALISABLE_APP_INFO;
+    }
+
+// End of File
+
+
+
+
+
+
+
+
+
+

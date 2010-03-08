@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  The project specification file for AudioStream application
+*
+*/
+
+
+
+TARGET			AudioStream.exe
+TARGETTYPE			exe
+
+UID 	  			0x100039CE 0xE01FF1C3
+SECUREID			0xE01FF1C3
+
+EPOCSTACKSIZE		0x5000
+
+VENDORID			0
+CAPABILITY			UserEnvironment
+
+SOURCEPATH 			..\src
+SOURCE  			AudioStreamApp.cpp 
+SOURCE  			AudioStreamAppUi.cpp
+SOURCE  			AudioStreamDocument.cpp
+SOURCE  			AudioStreamView.cpp
+SOURCE  			AudioStreamEngine.cpp
+
+SOURCEPATH			..\data
+START RESOURCE		AudioStream.rss
+HEADER
+TARGETPATH			\resource\apps
+END // RESOURCE
+
+START RESOURCE		AudioStream_reg.rss
+TARGETPATH 	  		\private\10003a3f\apps
+END // RESOURCE
+
+USERINCLUDE			. ..\inc
+
+SYSTEMINCLUDE		\epoc32\include \epoc32\include\mmf\plugin 
+
+LIBRARY euser.lib   
+LIBRARY estor.lib
+LIBRARY apparc.lib
+LIBRARY cone.lib
+LIBRARY eikcore.lib 
+LIBRARY avkon.lib
+LIBRARY eikcoctl.lib 
+LIBRARY efsrv.lib
+LIBRARY mediaclientaudiostream.lib
+LIBRARY mediaclientaudioinputstream.lib
+
+// End of file

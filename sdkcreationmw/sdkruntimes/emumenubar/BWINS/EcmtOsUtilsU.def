@@ -1,0 +1,15 @@
+;
+; $Id: EcmtOsUtilsU.def,v 1.1 2005/05/04 04:01:42 slava Exp $
+;
+; EcmtOsUtils exports
+;
+
+EXPORTS
+    ?Epocroot@EcmtOsUtils@@SAPBGXZ @ 1 NONAME
+    ?EcmtDir@EcmtOsUtils@@SAPBGXZ @ 2 NONAME
+    ?DataDir@EcmtOsUtils@@SAPBGXZ @ 3 NONAME
+    ?TempDir@EcmtOsUtils@@SAPBGXZ @ 4 NONAME
+    ?Launch@EcmtOsUtils@@SAHPAGPBGW4TEcmtLaunchFlags@@PAU_PROCESS_INFORMATION@@@Z @ 5 NONAME
+    ?LauncherMode@EcmtOsUtils@@SAHXZ @ 6 NONAME
+    ?Alloc@EcmtOsUtils@@SAPAXI@Z @ 7 NONAME
+    ?Free@EcmtOsUtils@@SAXPAX@Z @ 8 NONAME

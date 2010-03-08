@@ -1,0 +1,40 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; IsvTelInfoApp_gcce.pkg
+
+; Languages
+&EN
+
+; Header
+#{"IsvTelInfoApp"},(0xA00001F0),1,0,0
+
+;Localised Vendor name
+%{"Vendor Test EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports S60 3rd Edition
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+; Target
+"..\..\..\epoc32\release\gcce\urel\IsvTelInfoApp.exe"-"!:\sys\bin\IsvTelInfoApp.exe"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\IsvTelInfoApp_reg.rsc"-"!:\private\10003a3f\import\apps\IsvTelInfoApp_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\IsvTelInfoApp.rsc"-"!:\resource\apps\IsvTelInfoApp.rsc"
+"..\..\..\epoc32\data\z\resource\apps\IsvTelInfoApp_icon.mif"-"!:\resource\apps\IsvTelInfoApp_icon.mif"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						-"!:\private\A00001F0\backup_registration.xml"

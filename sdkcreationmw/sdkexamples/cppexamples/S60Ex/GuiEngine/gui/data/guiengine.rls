@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+rls_string STRING_r_quie_caption_string                 "GUI Engine"
+
+//d:Short caption string for app.
+rls_string STRING_r_quie_short_caption_string           "GUIEngine"
+
+
+//d:Menu string for selection
+rls_string STRING_r_quie_engine_menu_shape              "Shape"
+
+//d:Menu string for selection
+rls_string STRING_r_quie_engine_menu_clear              "Clear"
+
+//d:Menu string for selection
+rls_string STRING_r_quie_engine_menu_exit               "Exit"
+
+//d:Menu string for cascade selection
+rls_string STRING_r_quie_engine_shape_cascade_circle    "Circle"
+
+//d:Menu string for cascade selection
+rls_string STRING_r_quie_engine_shape_cascade_rectangle "Rectangle"
+
+
+rls_string STRING_r_guiengine_loc_resource_file_1 "\\resource\\apps\\GuiEngine"
+
+// End of File

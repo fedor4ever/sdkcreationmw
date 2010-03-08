@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+// example caption strings for app
+rls_string STRING_r_app_caption_string          "OCR Example"
+rls_string STRING_r_app_short_caption_string    "OCR Example"
+rls_string STRING_r_ocr_open_file_cmnd          "Open File"
+rls_string STRING_r_ocr_analyze_cmnd            "Analyze"
+rls_string STRING_r_ocr_recognize_cmnd          "Recognize"
+rls_string STRING_r_ocr_recognize_block_cmnd    "Block"
+rls_string STRING_r_ocr_recognize_region_cmnd   "Region"
+rls_string STRING_r_ocr_toggle_crosshair_cmnd   "Toggle Crosshair"
+rls_string STRING_r_ocr_exit_cmnd               "Exit"
+
+rls_string STRING_r_waitnote_text               "Executing..."
+
+// SettingList
+rls_string STRING_r_ocr_setting_title   "Settings"
+
+// Setting List items and titles
+rls_string STRING_r_ocr_highlight_item      "Highlight Color"
+rls_string STRING_r_ocr_lang_english        "English Recognition"
+rls_string STRING_r_ocr_lang_chinese        "Chinese Recognition"
+rls_string STRING_r_ocr_lang_japanese       "Japanese Recognition"
+rls_string STRING_r_ocr_crosshair_height    "Crosshair Height"
+rls_string STRING_r_ocr_crosshair_width     "Crosshair Width"
+
+// Other Texts
+rls_string STRING_r_binary_on   "Enabled"
+rls_string STRING_r_binary_off  "Disabled"
+
+rls_string STRING_r_minimum   "Min"
+rls_string STRING_r_maximum  "Max"
+
+rls_string STRING_r_color_red       "Red"
+rls_string STRING_r_color_yellow    "Yellow"
+rls_string STRING_r_color_black     "Black"
+
+rls_string STRING_r_hint   "Hint!"
+
+// form texts
+rls_string STRING_r_layout_type         "Layout"
+rls_string STRING_r_layout_horizontal   "Horizontal"
+rls_string STRING_r_layout_vertical     "Vertical"
+
+rls_string STRING_r_background_color    "Background"
+rls_string STRING_r_light               "Light"
+rls_string STRING_r_dark                "Dark"
+rls_string STRING_r_unknown             "I don't know"
+
+rls_string STRING_r_lines_type          "Lines"
+rls_string STRING_r_lines_multi         "Multiple"
+rls_string STRING_r_lines_single        "Single"
+
+rls_string STRING_r_skew_setting        "Skew"
+
+rls_string STRING_r_brightness          "Brightness"
+rls_string STRING_r_normal              "Normal"
+
+rls_string STRING_r_content_type        "Content"
+rls_string STRING_r_content_email       "E-mail"
+rls_string STRING_r_content_telnum      "Telephone number"
+rls_string STRING_r_content_www         "WWW-address"
+
+// End of File

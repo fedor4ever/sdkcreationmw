@@ -1,0 +1,109 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is a localisation file for BrCtlSampleApp
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+//d:Short caption string for app.
+rls_string STRING_r_brctl_short_caption_string "BrCtl"
+
+//d:Caption string for app.
+rls_string STRING_r_brctl_caption_string "BrCtlSampleApp"
+
+//d:CBA left button for input element
+rls_string STRING_r_brctl_options_input "Input"
+
+//d:CBA right button for input element
+rls_string STRING_r_brctl_cancel_input "Cancel"
+
+//d:Default CBA left button for multipurpose browser display
+rls_string STRING_r_brctl_options_default "Options"
+
+//d:Default CBA right button for multipurpose browser display
+rls_string STRING_r_brctl_cancel_default "Back"
+
+//d:Menubar
+rls_string STRING_r_brctl_menubar "File"
+
+//d:Menu Item Tools
+rls_string STRING_r_brctl_menu_tools "Tools"
+
+//d:Menu Item 1
+rls_string STRING_r_brctl_menu1 "Menu1"
+
+//d:Menu Item 2
+rls_string STRING_r_brctl_menu2 "Menu2"
+
+//d:Menu Item Exit
+rls_string STRING_r_brctl_menu_exit "Exit"
+
+//d:Tools Menu Item 1
+rls_string STRING_r_brctl_tools_menu_1 "Restore settings"
+
+//d:Tools Menu Item 1
+rls_string STRING_r_brctl_tools_menu_2 "Reload"
+
+//d:Tools Menu Item 1
+rls_string STRING_r_brctl_tools_menu_3 "Back"
+
+//d:Tools Menu Item 1
+rls_string STRING_r_brctl_tools_menu_4 "Forward"
+
+//d:Menu 1 Item 1
+rls_string STRING_r_brctl_menu1_1 "Basic BrCtl"
+
+//d:Menu 1 Item 2
+rls_string STRING_r_brctl_menu1_2 "BrCtl Observers"
+
+//d:Menu 1 Item 3
+rls_string STRING_r_brctl_menu1_3 "Load Content using File Handle"
+
+//d:Menu 1 Item 4
+rls_string STRING_r_brctl_menu1_4 "Load Content using Buffer"
+
+//d:Menu 1 Item 5
+rls_string STRING_r_brctl_menu1_5 "Incremental Loading"
+
+//d:Menu 1 Item 6
+rls_string STRING_r_brctl_menu1_6 "Special Load Requests"
+
+//d:Menu 1 Item 7
+rls_string STRING_r_brctl_menu1_7 "Customized Dialogs"
+
+//d:Menu 1 Item 8
+rls_string STRING_r_brctl_menu1_8 "Customized Softkeys"
+
+//d:Menu 1 Item 9
+rls_string STRING_r_brctl_menu1_9 "Embedded Links"
+
+//d:Menu 1 Item 10
+rls_string STRING_r_brctl_menu1_10 "Customized Scrollbars"
+
+//d:Menu 2 Item 1
+rls_string STRING_r_brctl_menu2_1 "Handle State Changed"
+
+//d:Menu 2 Item 2
+rls_string STRING_r_brctl_menu2_2 "Change Size Extents"
+
+//d:Menu 2 Item 3
+rls_string STRING_r_brctl_menu2_3 "Page Info"
+
+//d:Menu 2 Item 4
+rls_string STRING_r_brctl_menu2_4 "Content Size and Image Count"
+
+// End of File
+

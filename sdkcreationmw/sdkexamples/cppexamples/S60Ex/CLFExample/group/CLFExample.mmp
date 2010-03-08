@@ -1,0 +1,86 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#include "CLFExampleUID.hrh"
+
+TARGET          CLFExample.exe
+TARGETTYPE      exe
+UID             0 KCEUID3
+EPOCSTACKSIZE   0x5000
+VENDORID        0
+
+SOURCEPATH      ..\src
+
+SOURCE          CCEApp.cpp
+SOURCE          CCEDocument.cpp
+SOURCE          CCEAppUi.cpp
+
+SOURCE          CCEGroupContainer.cpp
+SOURCE          CCEGroupView.cpp
+SOURCE          CCEMusicContainer.cpp
+SOURCE          CCEMusicView.cpp
+
+SOURCE          CCEPostFilter.cpp
+SOURCE          CCECustomGrouper.cpp
+SOURCE          CCECustomSorter.cpp
+
+SOURCE          CCEOperationObserver.cpp
+
+SOURCE          CCESoundPlayer.cpp
+SOURCE          CCEWaitNote.cpp
+
+START RESOURCE  ..\data\CLFExample.rss
+  HEADER
+  TARGETPATH    \Resource\Apps
+END // RESOURCE
+
+START RESOURCE  ..\data\CLFExample_reg.rss
+// Do not change the UID
+#ifdef WINSCW
+TARGETPATH    \private\10003a3f\apps
+#else
+TARGETPATH    \private\10003a3f\import\apps
+#endif
+END // RESOURCE
+
+
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\group
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+//SYSTEMINCLUDE   \epoc32\include\oem
+
+LIBRARY         euser.lib
+LIBRARY         apparc.lib
+LIBRARY         cone.lib
+LIBRARY         avkon.lib
+LIBRARY         eikcore.lib
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+LIBRARY         ContentListingFramework.lib
+LIBRARY         eikcoctl.lib
+LIBRARY         eikctl.lib
+LIBRARY         commonengine.lib
+LIBRARY         mediaclientaudio.lib
+
+LANG    SC
+CAPABILITY NONE
+
+// End of File

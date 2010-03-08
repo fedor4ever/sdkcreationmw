@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+PRJ_PLATFORMS
+DEFAULT ARMV5_ABIV2
+
+PRJ_EXPORTS
+..\..\pictures\los_cristianos.jpg ..\release\wins\udeb\z\private\A0000224\los_cristianos.jpg
+..\..\pictures\sky.jpg            ..\release\wins\udeb\z\private\A0000224\sky.jpg
+..\..\pictures\sugar_loaf.jpg     ..\release\wins\udeb\z\private\A0000224\sugar_loaf.jpg
+..\..\pictures\parati.jpg         ..\release\wins\udeb\z\private\A0000224\parati.jpg
+..\..\pictures\banana_trees.jpg   ..\release\wins\udeb\z\private\A0000224\banana_trees.jpg
+
+..\..\pictures\los_cristianos.jpg ..\release\winscw\udeb\z\private\A0000224\los_cristianos.jpg
+..\..\pictures\sky.jpg            ..\release\winscw\udeb\z\private\A0000224\sky.jpg
+..\..\pictures\sugar_loaf.jpg     ..\release\winscw\udeb\z\private\A0000224\sugar_loaf.jpg
+..\..\pictures\parati.jpg         ..\release\winscw\udeb\z\private\A0000224\parati.jpg
+..\..\pictures\banana_trees.jpg   ..\release\winscw\udeb\z\private\A0000224\banana_trees.jpg
+
+PRJ_MMPFILES
+gnumakefile icons_scalable_dc.mk
+Slideshow.mmp

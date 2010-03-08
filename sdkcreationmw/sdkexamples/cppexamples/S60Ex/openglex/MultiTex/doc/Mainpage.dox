@@ -1,0 +1,50 @@
+/*! \mainpage OpenGL ES Multi Texture Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates multiple dynamic lights without enabling OpenGL ES lightning.
+ *  The effect has been created using multitexturing.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  The example uses two different textures for sphere object. The world texture is loaded from jpeg file. The light texture, used as
+ *  environmental map, is first rendered to pbuffer surface and then copied to created texture. The final textured object is rendered
+ *  to window surface. The pointer to pbuffer context have to be passed to the window context during creation because surfaces have their
+ *  own contexts but they need to share the same texture.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

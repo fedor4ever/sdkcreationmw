@@ -1,0 +1,143 @@
+/*
+* Copyright (c) 2001 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+NAME JDBG
+
+#include <eikon.rh>
+#include <eikon.rsg>
+
+#include "DebugAgent.rls"
+#include "ui/DebugAgent.hrh"
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=""; }
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar=r_debugagent_menubar;
+    }
+
+RESOURCE MENU_BAR r_debugagent_menubar
+    {
+    titles=
+        {
+	MENU_TITLE { menu_pane=r_debugagent_menuagent; txt=r_debugagent_menuagent_txt_agent; },
+	MENU_TITLE { menu_pane=r_debugagent_menusettings; txt=r_debugagent_menuagent_txt_settings; }
+        };
+    }
+
+RESOURCE MENU_PANE r_debugagent_menuagent
+    {
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentStartServer; txt=r_debugagent_menuagent_txt_start; }
+		};
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentStopServer; txt=r_debugagent_menuagent_txt_stop; }
+		};
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentConnect; txt=r_debugagent_menuagent_txt_connect; }
+		};
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentClearScreen; txt=r_debugagent_menuagent_txt_clearscreen; }
+		};
+    items=
+        {
+        MENU_ITEM { command=EEikCmdExit; txt=r_debugagent_menuagent_txt_exit; }
+		};
+    }
+
+RESOURCE MENU_PANE r_debugagent_menusettings
+    {
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentSetAgent; txt=r_debugagent_menusettings_txt_settings_agent; }
+		};
+    items=
+        {
+        MENU_ITEM { command=EDebugAgentCleanup; txt=r_debugagent_menusettings_txt_settings_cleanup; }
+		};
+    }
+
+RESOURCE DIALOG r_debugagent_agent_settings_dialog
+   {
+   title=r_debugagent_agent_settings_dialog_txt_title;
+   buttons=R_EIK_BUTTONS_CANCEL_OK;
+   items=
+       {
+       DLG_LINE
+          {
+          type=EEikCtEdwin;
+          id=EDebugAgentPort;
+          prompt=r_debugagent_agent_settings_dialog_txt_agent_port;
+          control=EDWIN
+             {
+             width=6; // Width of the edwin in characters or pixels.
+             maxlength=6; // Width of the edwin in characters or pixels.
+             lines=1; // Number of lines.
+             };
+          },
+       DLG_LINE
+          {
+          type=EEikCtEdwin;
+          id=EPCHost;
+          prompt=r_debugagent_agent_settings_dialog_txt_pc_host;
+          control=EDWIN
+             {
+             width=15; // Width of the edwin in characters or pixels.
+             maxlength=15; // Width of the edwin in characters or pixels.
+             lines=1; // Number of lines.
+             };
+          },
+       DLG_LINE
+          {
+          type=EEikCtEdwin;
+          id=EPCPort;
+          prompt=r_debugagent_agent_settings_dialog_txt_pc_port;
+          control=EDWIN
+             {
+             width=6; // Width of the edwin in characters or pixels.
+             maxlength=6; // Width of the edwin in characters or pixels.
+             lines=1; // Number of lines.
+             };
+          },
+       DLG_LINE
+          {
+          type=EEikCtCheckBox;
+          id=EStartupAutoClean;
+          prompt=r_debugagent_agent_settings_dialog_txt_autoclean;
+          },
+       DLG_LINE
+          {
+          type=EEikCtCheckBox;
+          id=EDebugAgentFileLog;
+          prompt=r_debugagent_agent_settings_dialog_txt_filelog;
+          },
+       DLG_LINE
+          {
+          type=EEikCtCheckBox;
+          id=EDebugAgentUsePin;
+          prompt=r_debugagent_agent_settings_dialog_txt_usepin;
+          }     
+       };
+   }
+

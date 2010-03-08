@@ -1,0 +1,78 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Caption
+rls_string STRING_r_expl_caption_string                 "Pop-up List"
+rls_string STRING_r_expl_short_caption_string           "PopupList "
+
+rls_string STRING_r_expl_hotkey_exit            'e'
+
+rls_string STRING_r_expl_tab1_text              "Popup List"
+rls_string STRING_r_expl_tab2_text              "Single item"
+
+rls_string STRING_r_expl_select_message         "Item %d was selected."
+
+rls_string STRING_r_expl_menu_auto              "Auto"
+rls_string STRING_r_expl_view1_menu1            "Single item"
+rls_string STRING_r_expl_view1_menu4            "SI with G (Head)"
+rls_string STRING_r_expl_view1_menu9            "DI with LI"
+rls_string STRING_r_expl_exit                   "Exit"
+
+rls_string STRING_r_expl_menu_test1_item1       "Send"
+rls_string STRING_r_expl_menu_test1_item2       "Set folder"
+rls_string STRING_r_expl_menu_test1_item3       "Add new entry"
+rls_string STRING_r_expl_menu_test1_item4       "Transfer/Copy"
+rls_string STRING_r_expl_menu_test1_item5       "General"
+
+rls_string STRING_r_expl_menu_test2_title       "You have :"
+rls_string STRING_r_expl_menu_test2_item1       "0\tBusiness card"
+rls_string STRING_r_expl_menu_test2_item2       "0\tKeke & Leeni"
+rls_string STRING_r_expl_menu_test2_item3       "1\tDoris"
+rls_string STRING_r_expl_menu_test2_item4       "1\t(4) Matti Meikalain Jr."
+rls_string STRING_r_expl_menu_test2_item5       "1\t(2) +123456789099887766"
+
+rls_string STRING_r_expl_menu_test5_item1       "0\tBirthday party\t23 Jun 2000-15:05"
+rls_string STRING_r_expl_menu_test5_item2       "1\tReindeer!\t17 Jun 2000-10:22"
+rls_string STRING_r_expl_menu_test5_item3       "0\tHoliday break\t24 Jun 2000-11:23"
+rls_string STRING_r_expl_menu_test5_item4       "1\tMotor show\t25 Jul 2000-09:00"
+rls_string STRING_r_expl_menu_test5_item5       "0\tReview meeting\t26 Jul 2000-13:00"
+
+rls_string STRING_r_expl_menu_cascade1          "item1"
+rls_string STRING_r_expl_menu_cascade2          "item2"
+rls_string STRING_r_expl_menu_cascade3          "item3"
+rls_string STRING_r_expl_menu_cascade4          "item4"
+rls_string STRING_r_expl_menu_cascade5          "item5"
+rls_string STRING_r_expl_menu_cascade6          "item6"
+rls_string STRING_r_expl_menu_cascade7          "item7"
+rls_string STRING_r_expl_menu_cascade8          "item8"
+rls_string STRING_r_expl_menu_cascade9          "item9"
+rls_string STRING_r_expl_menu_cascade10         "item10"
+rls_string STRING_r_expl_menu_cascade11         "item11"
+rls_string STRING_r_expl_menu_cascade12         "item12"
+rls_string STRING_r_expl_menu_cascade13         "item13"
+rls_string STRING_r_expl_menu_cascade14         "item14"
+rls_string STRING_r_expl_menu_cascade15         "item15"
+rls_string STRING_r_expl_menu_cascade16         "item16"
+rls_string STRING_r_expl_menu_cascade17         "item17"
+
+rls_string STRING_r_expl_softkey_options        "Options"
+rls_string STRING_r_expl_softkey_empty          ""
+
+// End Of File

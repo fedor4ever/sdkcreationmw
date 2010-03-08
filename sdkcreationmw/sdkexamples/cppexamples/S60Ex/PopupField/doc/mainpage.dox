@@ -1,0 +1,170 @@
+/*! \mainpage Pop-up field Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This tutorial explains how to use pop-up fields in Avkon applications. A
+ * pop-up field is used to show list items that end-users can select an item
+ * from. For example, end-users can select a setting from the setting list of a
+ * mobile phone.
+ *
+ * The pop-up field example application helps you to understand the following:
+ *
+ * - The process used in pop-up field operation (Display > Edit > Save (or
+ *   Cancel))
+ * - The difference between display formats of different data types
+ *
+ * The following UML diagram shows key classes of the pop-up field example
+ * application.
+ *
+ * \image html image_popfield001.gif
+ *
+ * <HR>
+ *
+ * \subsection Sub11 1.1 Prerequisites
+ *
+ * An understanding of the following topics is important for using the pop-up
+ * field control:
+ *
+ * - Functions of the pop-up field class (CAknPopupField)
+ * - Defining dialog resources to use the pop-up field object and using the
+ *   pop-up field object
+ * - Defining pop-up field resources
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, View and Container classes.
+ *
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * A pop-up field uses CAknFormGraphcStyleListBox to display a list. The example
+ * application uses pop-up field calling methods that are provided by
+ * CAknPopupField.
+ *
+ * In the example application, a pop-up field is displayed using
+ * CAknExPopFieldBaseDialog that is an inherited class of CAknForm.
+ * By implementing this code, the pop-up field can be
+ * handled as though it is a control that is displayed on a dialog.
+ *
+ * \subsection Sub31 3.1 Resource definition of a dialog that is inherited from CAknForm
+ *
+ * The following shows resource definition for using a pop-up field in the
+ * example application:
+ *
+ * <I>Example 1: Resource definition of a dialog (inherited from Form class)
+ * that uses a pop-up field.</I>
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexpopfield_two_text_field_dialog
+ *   {
+ *   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+ *           EEikDialogFlagNoTitleBar | EEikDialogFlagButtonsRight |
+ *           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder;
+ *   buttons = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+ *   form = r_aknexpopfield_two_text_field_form;
+ *   }
+ * \endcode
+ *
+ * <B>Note</B>: Unlike standard dialog definition, the form field is used to
+ * define a dialog in this example.
+ *
+ * <I>Example 2: Contents resource definition of a dialog (inherited from Form
+ * class) that uses a pop-up field.</I>
+ *
+ * \code
+ * RESOURCE FORM r_aknexpopfield_two_text_field_form
+ *   {
+ *   items =
+ *     {
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtPopupField;
+ *       prompt = qtn_aknexpopfield_label_pop01;
+ *       id = EAknExPopFieldDlgCtrlIdPop01;
+ *       itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+ *       control = POPUP_FIELD
+ *         {
+ *         width = AKNEXPOPFIELD_TEXT_WIDTH;
+ *         other = qtn_aknexpopfield_list_other;
+ *         };
+ *       tooltip = qtn_aknexpopfield_hint_text;
+ *       },
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtPopupField;
+ *       prompt = qtn_aknexpopfield_label_pop02;
+ *       id = EAknExPopFieldDlgCtrlIdPop02;
+ *       itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+ *       control = POPUP_FIELD
+ *         {
+ *         width = AKNEXPOPFIELD_TEXT_WIDTH;
+ *         other = qtn_aknexpopfield_list_other;
+ *         };
+ *       tooltip = qtn_aknexpopfield_hint_text;
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * <B>Note</B>: The control type EAknCtPopupField is used to handle the pop-up
+ * field.
+ *
+ * The following shows the POPUP_FIELD resource structure:
+ *
+ * \code
+ * STRUCT POPUP_FIELD
+ *   {
+ *   WORD flags=0;
+ *   WORD width=0;
+ *   LTEXT other="";
+ *   LLINK emptynote = 0;
+ *   LTEXT empty="";
+ *   }
+ * \endcode
+ *
+ * \subsection Sub32 3.2 Instantiating and displaying a dialog object inherited from CAknForm
+ *
+ * The following describes how an object is instantiated from the resource data
+ * defined above.
+ *
+ * <I>Example 3: Instantiation of a dialog object inherited from Form that uses
+ * a pop-up field.</I>
+ *
+ * \code
+ * CAknExPopFieldAttribSetDialog* dlg = CAknExPopFieldAttribSetDialog::NewLC();
+ * CleanupStack::Pop();
+ * dlg->ExecuteLD( aResourceId );
+ * \endcode
+ *
+ * \image html image_popfield009.gif
+ *
+ * \subsection Sub33 3.3 Initialising the pop-up field
+ *
+ * An array that defines pop-up field items to be selected
+ * is set to each class in following funtions:
+ *
+ * - CAknExPopFieldMultiPageDialog::ConfigurePageTextL()
+ * - CAknExPopFieldMultiPageDialog::ConfigurePageNumberL()
+ * - CAknExPopFieldMultiPageDialog::ConfigurePagePhoneL()
+ * - CAknExPopFieldMultiPageDialog::ConfigurePageTimeL()
+ * - CAknExPopFieldMultiPageDialog::ConfigurePageDateL()
+ * - CAknExPopFieldMultiPageDialog::ConfigurePageDurationL()
+ *
+ * In each of these functions, an array for selection items is set as follows:
+ *
+ * \code
+ * CAknPopupField * popup;
+ * ....
+ * popup->SetQueryValueL();
+ * \endcode
+ *
+ */

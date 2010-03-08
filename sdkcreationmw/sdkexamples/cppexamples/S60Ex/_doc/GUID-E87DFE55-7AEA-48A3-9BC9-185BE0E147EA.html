@@ -1,0 +1,93 @@
+﻿
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="copyright" content="(C) Copyright 2007"/><meta name="DC.rights.owner" content="(C) Copyright 2007"/><meta name="DC.Type" content="mobileconcept"/><meta name="DC.Title" content="Building and running example applications from Carbide.c++"/><meta name="DC.Format" content="XHTML"/><meta name="DC.Identifier" content="GUID-E87DFE55-7AEA-48A3-9BC9-185BE0E147EA"/><title> S60 Example Applications</title><script type="text/javascript" src="js/utils.js">//</script><script type="text/javascript" src="js/gui.js">//</script><script type="text/javascript" src="js/common.js">//</script><script type="text/javascript" src="js/toc.js">//</script><script type="text/javascript" src="js/page.js">//</script><script type="text/javascript" src="js/s60/white_toc.js">//</script><script type="text/javascript" src="js/s60/page.js">//</script><link href="css/html.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/print.css" rel="stylesheet" type="text/css" media="print"/><link href="css/nwg.css" rel="stylesheet" type="text/css" media="all"/><link href="css/s60/white.css" rel="stylesheet" type="text/css" media="all"/><script>if( self == top ){ window.location.replace( "../../../?topic=/com.nokia.s60.sdk.cppapi_5.0/GUID-441D327D-D737-42A2-BCEA-FE89FBCA2F35/GUID-E87DFE55-7AEA-48A3-9BC9-185BE0E147EA.html");}</script>
+</head><body onload="initPage();"><!--BEGIN: HEADER--><!--END: HEADER--><!--BEGIN: BODY SECTION--><div class="body"><!--begin: content--><div class="contentLeft prTxt"><h1 class="pageHeading" id="GUID-E87DFE55-7AEA-48A3-9BC9-185BE0E147EA"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-E87DFE55-7AEA-48A3-9BC9-185BE0E147EA"><!----></a>Building
+and running example applications from Carbide.c++</h1>
+<p>The SDK support of Carbide.c++ allows you to build S60 applications
+and run them in the emulator directly from the IDE. Building and running an
+example application for the emulator from Carbide.c++ consists of the following
+steps:</p>
+<ul>
+<li><p>importing an example application to the IDE</p></li>
+<li><p>creating a WINSCW build of the example application</p>
+</li>
+<li><p>running the example application in the emulator</p></li>
+</ul>
+<div class="note"><p><strong class="note_title">Note: </strong>Carbide.c++ does not perform actions described in the bld.inf file.
+For instance exports and additional makefiles are ignored. Almost all example
+applications are affected by this problem. Thus, it is recommended to build
+example applications first on command line and import these into the IDE only
+after a successful command line build (see Building and Running
+Example Applications from the Command Line).</p></div>
+<div><h3>Importing an example application to Carbide.c++</h3><p>The <strong>Import Project</strong> wizard of Carbide.c++ allows you to import
+Symbian OS projects into the IDE. With the wizard you can import both component
+description file (<code>bld.inf</code>) and project definition file
+(<code>.mmp</code>) based projects.</p><p>To import an example application (in this case <em>Hello World Basic</em>)
+to Carbide.c++, do the following:</p><ol>
+<li id="GUID-352BD584-6350-4987-8ACB-04EB254576C8"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-352BD584-6350-4987-8ACB-04EB254576C8"><!----></a><p>Select <strong>File
+&gt; Import..</strong> from the menu bar.</p></li>
+<li id="GUID-033B08A3-463C-4E46-B76F-C21E81D6AE1F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-033B08A3-463C-4E46-B76F-C21E81D6AE1F"><!----></a><p>In the <strong>Import</strong> dialog,
+select "Symbian MMP File" and click <strong>Next</strong>.</p></li>
+<li id="GUID-B4BF29B5-7492-445C-B67D-22C959157CE2"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-B4BF29B5-7492-445C-B67D-22C959157CE2"><!----></a><p>In the <strong>MMP
+File</strong> field, browse to the <code>.mmp</code> file (located in the <code>group</code> folder)
+of the example application that you want to import.</p><p>For example:</p>
+<p><code>&lt;S60_SDK_installation_directory&gt;\S60CppExamples\HelloWorldBasic\group\helloworldbasic.mmp</code></p>
+</li>
+<li id="GUID-9C669E8F-75A7-42B1-BEF5-5D4685E31A53"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9C669E8F-75A7-42B1-BEF5-5D4685E31A53"><!----></a><p>In the <strong>SDKs
+and Build Configurations</strong> list, under "All SDKs" select "S60_5th_Edition_SDK_V1.0" and
+"Emulator Debug(WINSCW)[S60_5th_Edition_SDK_V1.0]".</p></li>
+<li id="GUID-4B288D54-56E3-44C8-87B4-4AB1082D88F1"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-4B288D54-56E3-44C8-87B4-4AB1082D88F1"><!----></a><p>Click <strong>Finish</strong>.</p>
+</li>
+</ol><p>The wizard will now create import the project and display it in the <strong>C/C++
+Projects</strong> view, from where it can be built.</p><p>For more information on importing and creating project in Carbide.c++,
+please refer to the following topic in the Carbide.c++ Help:</p><ul>
+<li><p><strong>Carbide.c++ User Guide &gt; Symbian OS Projects &gt; Tasks &gt;
+Projects &gt; Importing Projects</strong></p></li>
+</ul></div>
+<div><h3>Creating a WINSCW build of an example application with Carbide.c++</h3><p>In order to be able to view an aplication in the SDK emulator, you need
+to create a WINSCW build of it: </p><ol>
+<li id="GUID-43FF836F-1FDF-4104-BC2F-570CEB17DE52"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-43FF836F-1FDF-4104-BC2F-570CEB17DE52"><!----></a><p>Select <strong>Project
+&gt; Properties</strong> from the menu bar.</p><p>The <strong>Properties</strong> dialog
+opens. Here you can manage the build process by defining all aspects of the
+build by entering the needed information.</p></li>
+<li id="GUID-09954897-E1A8-4A91-BE88-0D7A87C89A42"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-09954897-E1A8-4A91-BE88-0D7A87C89A42"><!----></a><p>Click <strong>C/C++
+Build</strong> in the dialog TOC.</p></li>
+<li id="GUID-6972CB13-B9DA-4E10-827A-E777B9DEF893"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-6972CB13-B9DA-4E10-827A-E777B9DEF893"><!----></a><p>Select "S60
+3.0 Emulator Debug" from the <strong>Configuration</strong> drop-down menu.</p></li>
+<li id="GUID-9B8CCC40-0B4A-4257-969A-31069A039656"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9B8CCC40-0B4A-4257-969A-31069A039656"><!----></a><p>Click <strong>OK</strong>.</p>
+</li>
+<li id="GUID-2010504D-C631-48C2-94DB-AF8514A6F397"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-2010504D-C631-48C2-94DB-AF8514A6F397"><!----></a><p>Select <strong>Project
+&gt; Build Project</strong> from the menu bar.</p></li>
+</ol><p>Carbide.c++ creates a build of your project according to the current
+configuration determined in the <strong>Properties</strong> dialog - in this case, a
+WINSCW build.</p><p>For more information on building a project, please refer to the following
+topics in the Carbide.c++ Help:</p><ul>
+<li><p><strong>Carbide.c++ User Guide &gt; Getting Started &gt; First Application
+Example &gt; 5. Building a Symbian OS Executable</strong></p><p><strong>C/C++ Development
+User Guide &gt; Tasks &gt; Building projects</strong></p></li>
+</ul></div>
+<div><h3>Running an example application in the emulator from Carbide.c++</h3><p>Once you have created a GCCE build of your project, you can run it on
+the S60 emulator.</p><ol>
+<li id="GUID-A79DB2EB-D28D-4A1A-933D-031028DF8AFF"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-A79DB2EB-D28D-4A1A-933D-031028DF8AFF"><!----></a><p>Select <strong>Run
+&gt; Run...</strong> from the menu bar.</p><p>The Run dialog opens. The Run
+dialog allows you to define the launch configuration of the build.</p>
+</li>
+<li id="GUID-1B4D8494-E86B-4E97-84C0-18CC79253BA0"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-1B4D8494-E86B-4E97-84C0-18CC79253BA0"><!----></a><p>Select the
+GCCE build from the <strong>Configurations</strong> list of the dialog.</p></li>
+<li id="GUID-06A71AAD-5A85-4157-BE40-ABFA4E6E9CBF"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-06A71AAD-5A85-4157-BE40-ABFA4E6E9CBF"><!----></a><p>Define and/or
+accept the values in the fields (above all, make sure that the <strong>Executable</strong> and <strong>Emulator
+or host application</strong> paths are correct).</p></li>
+<li id="GUID-1BD562CB-2612-4748-BC97-51524E5CE1A3"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-1BD562CB-2612-4748-BC97-51524E5CE1A3"><!----></a><p>Click the <strong>Apply</strong> button.</p>
+</li>
+<li id="GUID-6424FE70-A363-4938-BC89-9FF7B9DEB5CB"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-6424FE70-A363-4938-BC89-9FF7B9DEB5CB"><!----></a><p>Click the <strong>Run</strong> button.</p>
+</li>
+</ol><p>The application is launched in the emulator (see step 2 onwards in <a href="GUID-1AAADEA6-89E7-4F54-A3F5-FA74BDE1A21A.html#GUID-8319CFBF-719F-4DB7-AB52-545798F09509">Launch the application in
+the emulator</a> for a description of the Hello World Basic example application).</p><p>For more information on running projects and applications through Carbide.c++,
+please refer to the following topics in the Carbide.c++ Help:</p><ul>
+<li><p><strong>Carbide.c++ User Guide &gt; Getting Started &gt; First Application
+Example &gt; 3. Building a Symbian OS Executable</strong></p></li>
+<li><p><strong>C/C++ Development User Guide &gt; Tasks &gt; First Application
+Example &gt; Running and debugging projects</strong></p></li>
+</ul></div>
+</div><!--end: content--><!--start: sidebar--><!--end: sidebar--></div><!--END: BODY SECTION--><!--BEGIN: FOOTER--><div class="footer"><hr/><div class="copy">© Nokia 2009</div></div><!--END: FOOTER--></body></html>

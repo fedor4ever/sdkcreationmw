@@ -1,0 +1,97 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+rls_string STRING_r_se_caption_string "SensorExample"
+
+//d:Short caption string for app.
+rls_string STRING_r_se_short_caption_string "SE"
+
+//d:First item in "Options" menu pane.
+rls_string STRING_r_se_showProperty "Show property"
+
+//d:Second item in "Options" menu pane.
+rls_string STRING_r_se_getValue "Get a property value"
+
+//d:Third item in "Options" menu pane.
+rls_string STRING_r_se_setValue "Set a property value"
+
+//d:Fourth item in "Options" menu pane.
+rls_string STRING_r_se_exit "Exit"
+
+//d:Caption for value query dialog
+rls_string STRING_r_se_setValue_text "Enter a new value"
+
+rls_string STRING_r_se_loc_resource_file_1 "\\resource\\apps\\sensorexample"
+
+// d:Text for channel type id query listbox.
+rls_string STRING_r_se_available_channels "Available channels:"
+
+// d:Text for property query listbox.
+rls_string STRING_r_se_available_properties "Available properties:"
+
+// d:Text for messages.
+rls_string STRING_r_se_notFound "Not Found channel(s):"
+rls_string STRING_r_se_arraySuffix "(Array)"
+rls_string STRING_r_se_valueQueryTitle "New value (%d to %d)"
+rls_string STRING_r_se_valueSetTo "Value set to "
+rls_string STRING_r_se_valueSetError "Error "
+rls_string STRING_r_se_valueSetIntegerOnly "Only integers supported"
+rls_string STRING_r_se_valueSetReadOnly "Read only property"
+
+// d:Channel names.
+rls_string STRING_r_se_accelerometerChannel "Accelerometer"
+rls_string STRING_r_se_doubleTapChannel "Double Tap"
+rls_string STRING_r_se_orientationChannel "Orientation"
+rls_string STRING_r_se_rotationChannel "Rotation"
+
+// d:Property names.
+rls_string STRING_r_se_dataRate "Data Rate"
+rls_string STRING_r_se_availability "Availability"
+rls_string STRING_r_se_measureRange "Measure Range"
+rls_string STRING_r_se_dataFormat "Data Format"
+rls_string STRING_r_se_scaledRange "Scaled Range"
+rls_string STRING_r_se_accuracy "Accuracy"
+rls_string STRING_r_se_scale "Scale"
+rls_string STRING_r_se_unit "Unit"
+rls_string STRING_r_se_model "Model"
+rls_string STRING_r_se_connectionType "Connection Type"
+rls_string STRING_r_se_description "Description"
+rls_string STRING_r_se_xAxisActive "x-axis active"
+rls_string STRING_r_se_yAxisActive "y-axis active"
+rls_string STRING_r_se_zAxisActive "z-axis active"
+rls_string STRING_r_se_doubleTapLatency "Double tap latency"
+rls_string STRING_r_se_doubleTapInterval "Double tap interval"
+
+// d:Property information.
+rls_string STRING_r_se_propertyID "ID"
+rls_string STRING_r_se_propertyType "Type"
+rls_string STRING_r_se_propertyTypeInt "Int"
+rls_string STRING_r_se_propertyTypeReal "Real"
+rls_string STRING_r_se_propertyTypeBuffer "Buffer"
+rls_string STRING_r_se_propertyTypeNoType "No type"
+rls_string STRING_r_se_propertyItemIndex "iidx"
+rls_string STRING_r_se_propertyArrayIndex "arr"
+rls_string STRING_r_se_propertyRoEtrue "RO:ETrue"
+rls_string STRING_r_se_propertyRoEfalse "RO:EFalse"
+rls_string STRING_r_se_propertyValue "Value"
+rls_string STRING_r_se_propertyMin "Min"
+rls_string STRING_r_se_propertyMax "Max"
+rls_string STRING_r_se_propertyUninitialized "Uninitialized"

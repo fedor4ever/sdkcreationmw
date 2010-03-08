@@ -1,0 +1,11 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_Z12NPP_Shutdownv @ 2 NONAME
+	_Z15InitializeFuncsP14_NPPluginFuncs @ 3 NONAME
+	_ZTI11CBitmapInst @ 4 NONAME ; #<TI>#
+	_ZTI15CBitmapEcomMain @ 5 NONAME ; #<TI>#
+	_ZTV11CBitmapInst @ 6 NONAME ; #<VT>#
+	_ZTV15CBitmapEcomMain @ 7 NONAME ; #<VT>#
+	_Z12NPP_GetValuePv11NPPVariableS_ @ 8 NONAME
+	_Z22NPP_GetMIMEDescriptionv @ 9 NONAME
+

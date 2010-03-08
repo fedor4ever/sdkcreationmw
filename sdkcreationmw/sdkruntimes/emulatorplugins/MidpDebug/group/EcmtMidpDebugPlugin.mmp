@@ -1,0 +1,72 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  MIDP Debug plugin
+ *
+*/
+
+
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtMidpDebugPluginUids.h"
+
+TARGET      EcmtMidpDebugPlugin.dll
+TARGETTYPE  PLUGIN
+
+#ifdef WINS
+CAPABILITY      CAP_ECOM_PLUGIN -DRM
+#else
+CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
+#endif
+
+
+// ECom Recogniction UID followed by Unique 3rd UID
+UID KECOM_DLL_UID KECMT_MIDP_DEBUG_PLUGIN_UID
+
+SOURCEPATH    ..\src
+SOURCE        EcmtMidpDebugPlugin.cpp
+SOURCE        EcmtMidpDebugSession.cpp
+SOURCE        EcmtMidpDebugConnection.cpp
+SOURCE        EcmtMidpDebugTrace.cpp
+
+USERINCLUDE   ..\inc
+USERINCLUDE   ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\ecom
+
+SOURCEPATH    ..\data
+START RESOURCE KECMT_MIDP_DEBUG_PLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET EcmtMidpDebugPlugin.rsc
+#endif
+END
+
+LIBRARY       euser.lib
+LIBRARY       insock.lib
+LIBRARY       esock.lib
+LIBRARY	      charconv.lib 
+
+#ifdef WINS
+LIBRARY       emulator.lib
+START WINS
+WIN32_LIBRARY kernel32.lib
+END
+#endif // WINS
+
+/*
+ * Local Variables:
+ * mode: c++
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * compile-command: "./ABLD.BAT build winscw udeb"
+ * End:
+ */

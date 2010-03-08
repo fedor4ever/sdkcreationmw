@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project make file for Geo-Profiles Handler
+*
+*/
+
+
+// System Includes
+
+// User Includes
+#include "../../inc/geoprofilesuid.hrh"
+
+TARGET              geoprofileshandler.exe
+TARGETTYPE          exe
+UID                 0 KGeoProfilesHandlerUid
+
+VENDORID            0
+SECUREID            KGeoProfilesHandlerUid
+
+CAPABILITY      	Location ReadDeviceData WriteDeviceData ReadUserData WriteUserData
+
+// System Includes
+SYSTEMINCLUDE   	. /epoc32/include
+
+// User Includes
+USERINCLUDE         ../inc
+USERINCLUDE         ../../inc
+
+// Source Directory
+SOURCEPATH          ../src
+SOURCE              geoprofileshandler.cpp
+
+// Libraries
+LIBRARY             euser.lib
+LIBRARY             efsrv.lib
+LIBRARY             estor.lib 
+LIBRARY 		    bafl.lib
+LIBRARY 		    aknnotify.lib
+LIBRARY             eiksrv.lib
+LIBRARY             ProfileEngine.lib
+LIBRARY		        lbt.lib

@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+TARGET            GuiEngine.exe
+TARGETTYPE        exe
+UID               0x100039CE 0xA00001F5
+
+VENDORID 0
+
+EPOCSTACKSIZE 0x5000
+
+SOURCEPATH        ..\src
+SOURCE            GuiEngine.cpp
+SOURCE            GuiEngineApplication.cpp
+SOURCE            GuiEngineAppView.cpp
+SOURCE            GuiEngineAppUi.cpp
+SOURCE            GuiEngineDocument.cpp
+
+USERINCLUDE       ..\inc
+USERINCLUDE       ..\..\Engine\inc
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+SOURCEPATH        ..\data
+
+START RESOURCE GuiEngine.rss
+HEADER
+TARGETPATH resource\apps
+END // RESOURCE
+
+START RESOURCE GuiEngine_reg.rss
+#ifdef WINSCW
+TARGETPATH \private\10003a3f\apps
+#else
+TARGETPATH \private\10003a3f\import\apps
+#endif
+END
+
+LIBRARY           ShapeListManager.lib
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib
+LIBRARY           eikcore.lib
+LIBRARY           avkon.lib
+LIBRARY           estor.lib
+LIBRARY           ws32.lib
+
+LANG              SC
+
+CAPABILITY NONE

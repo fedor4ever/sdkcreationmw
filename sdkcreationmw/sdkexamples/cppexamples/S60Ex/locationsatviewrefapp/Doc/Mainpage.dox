@@ -1,0 +1,74 @@
+/*! \mainpage Satellite Info UI Reference Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref What_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ * \n\ref Summary_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  The Satellite Info UI Reference application is a UI application that demonstrates the usage of the CSateliteInfoUI class that is exported by the BLID Application Satellite Info API. This API is used to execute a dialog that displays satellite signal strength information.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *    This example makes use of the standard Symbian OS application framework comprising of the Application, Document, UI, and View classes. It also makes use of the CSatelliteInfoUI class that is exported by BLID Application Satellite Information API. Please refer to document Series_60_BLID_Application_Satellite_Information_API_Specification for further information about CSatelliteInfoUI API. Satellite Info Reference Application requires “Location” and “SwEvent” capabilities for its operation. The reader should be familiar with all these areas before attempting to understand this example.
+ *
+ * <HR>
+ *
+ * \section What_sec 3. What can the Satellite Info UI Reference Application do?
+ *
+ *    The reference application pops a dialog that displays the satellite strengths.
+ *
+ * <HR>
+ *
+ * \section UI_sec 4. User Interface
+ *
+ *  This section shows how the Satellite Info UI Reference example application is displayed to end-users and explains how to operate it.
+ *
+ *  \subsection Sub41 4.1 Initial View
+ *
+ *  When the application has been launched, it will display the default view as shown below. The options menu of the view will have the menu command to launch the Satellite Info dialog. Pressing the <b>Back</b> soft key would close the application.
+ *
+ <img src="InitialView.PNG"><h5 align="center">Figure 1 Initial view</h5></img>
+ *
+ *  \subsection Sub42 4.2 Launching Satellite Info dialog
+ *
+ *  To launch the Satellite Info dialog, select the <b>Satellite Status</b> menu item in the <b>Options</b> menu. A progress dialog would display before the satellite dialog displays.
+ *
+ <img src="SatInfo.PNG"><h5 align="center">Figure 2 Launching Satellite Info dialog</h5></img>
+ *
+ *  \subsection Sub43 4.3 Satellite Info dialog display
+ *
+ *  After the progress dialog closes, the satellite information dialog as depicted below is displayed. This dialog displays the satellite ID's along with their signal strengths in the form of bars. The satellite with filled bar depicts that the satellite has a fix and the satellite with unfilled bar depicts that it does not have a fix. A maximum of five satellites information is displayed in the decreasing order of their strengths. Pressing the <b>Back</b> soft key closes the dialog and returns to the Initial View.
+ *
+ <img src="SatInfoDisplay.PNG"><h5 align="center">Figure 3 Satellite Info display</h5></img>
+ *
+ * <HR>
+ *
+ * \section Design_sec 5. Design and Implementation
+ *
+ *  \subsection Sub51 5.1 Design
+ *
+ *  The class diagram for the Satellite Info UI Reference Application is shown below.
+ *
+ <img src="ClassDiagram.PNG"><h5 align="center">Figure 4 Class Diagram for Satellite Info UI Reference application</h5></img>
+ *
+ *  \subsection Sub52 5.2 Implementation
+ *
+ *  The following sequence diagram demonstrates the actions taken when the Satellite Info UI reference application is executed
+ *
+ <img src="SeqDiagram.PNG"><h5 align="center">Figure 5 Sequence diagram for the Satellite Info UI Reference Application describing the application start-up sequence</h5></img>
+ *
+ * <HR>
+ *
+ * \section Summary_sec 6. Summary
+ *
+ *  The Satellite Info UI Reference Application demonstrates as to how the CSatelliteInfoUI class can be used to display the Satellite Strength Information.
+ *
+ */

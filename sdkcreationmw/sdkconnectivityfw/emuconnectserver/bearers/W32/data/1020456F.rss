@@ -1,0 +1,59 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource definition needed by ECom for EcmtW32Bearer
+*
+*/
+
+
+#include <eikon.rh>
+//#include "RegistryInfo.rh"
+#include <RegistryInfoV2.rh>	
+#include "..\..\..\core\inc\EcmtUids.h"
+#include "EcmtW32BearerUids.h"
+
+// -----------------------------------------------------------------------------
+//   
+// Registry info for ECom
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE REGISTRY_INFO pluginInfo
+	{
+	resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	dll_uid = KW32BEARER_DLL_UID;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = KECMT_BEARER_IF_UID;
+			implementations =
+				{
+//				IMPLEMENTATION_INFO
+				BINARY_IMPLEMENTATION_INFO
+					{
+					implementation_uid = KW32BEARER_IMPL_UID;
+					version_no = 1;
+					display_name = "W32Bearer";
+//					default_data = "";
+					default_data = {};
+//					opaque_data = "0";
+					opaque_data = {};
+					}
+				};
+			}
+		};
+	}
+
+// End of File

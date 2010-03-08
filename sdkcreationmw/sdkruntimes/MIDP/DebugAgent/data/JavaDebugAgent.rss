@@ -1,0 +1,546 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME JDBA    // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include "JavaDebugAgent.hrh"
+
+//  RESOURCE DEFINITIONS
+
+// ---------------------------------------------------------------------------
+//
+// Define the resource file signature
+// This resource should be empty.
+//
+// ---------------------------------------------------------------------------
+
+RESOURCE RSS_SIGNATURE
+{
+}
+
+// ---------------------------------------------------------------------------
+//
+// Default Document Name
+//
+// ---------------------------------------------------------------------------
+
+RESOURCE TBUF r_default_document_name
+{
+    buf = "";
+}
+
+// ---------------------------------------------------------------------------
+//
+// Default menu and CBA key.
+//
+// ---------------------------------------------------------------------------
+
+RESOURCE EIK_APP_INFO
+{
+    menubar = R_AVKON_DIALOG_EMPTY_MENUBAR;
+    cba = r_java_debug_agent_full_screen_softkeys;
+}
+
+// ---------------------------------------------------------------------------
+//
+// Menubar
+//
+// ---------------------------------------------------------------------------
+RESOURCE MENU_BAR r_java_debug_agent_full_screen_log_menubar
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_java_debug_agent_full_screen_log_menu; }
+    };
+}
+
+RESOURCE MENU_BAR r_java_debug_agent_log_menubar
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_java_debug_agent_log_menu; }
+    };
+}
+
+RESOURCE MENU_BAR r_java_debug_agent_settings_menubar
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_java_debug_agent_settings_menu; }
+    };
+}
+
+RESOURCE MENU_BAR r_java_debug_agent_full_screen_log_popup_menubar
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_java_debug_agent_full_screen_log_popup_menu; }
+    };
+}
+
+RESOURCE MENU_BAR r_java_debug_agent_log_popup_menubar
+{
+    titles =
+    {
+        MENU_TITLE { menu_pane = r_java_debug_agent_log_popup_menu; }
+    };
+}
+
+// ---------------------------------------------------------------------------
+//
+//  Menu pain
+//
+// ---------------------------------------------------------------------------
+
+RESOURCE TBUF r_java_debug_agent_menu_item_label_stop
+{ 
+    buf = "Stop";
+}
+
+RESOURCE TBUF r_java_debug_agent_menu_item_label_cancel
+{ 
+    buf = "Cancel";
+}
+
+RESOURCE MENU_PANE r_java_debug_agent_full_screen_log_menu
+{
+    items =
+    {
+        MENU_ITEM { command = EJavaDebugAgentStop; txt = "Cancel"; },
+        MENU_ITEM { command = EJavaDebugAgentClearLog; txt = "Clear Log"; },
+        MENU_ITEM { command = EJavaDebugAgentEditSettings; txt = "Settings"; }
+    };
+}
+
+RESOURCE MENU_PANE r_java_debug_agent_full_screen_log_popup_menu
+{
+    items =
+    {
+        MENU_ITEM { command = EJavaDebugAgentStop; txt = "Cancel"; },
+        MENU_ITEM { command = EJavaDebugAgentClearLog; txt = "Clear Log"; }
+    };
+}
+
+RESOURCE MENU_PANE r_java_debug_agent_log_menu
+{
+    items =
+    {
+        MENU_ITEM { command = EJavaDebugAgentListen; txt = "Listen"; },
+        MENU_ITEM { command = EJavaDebugAgentConnect; txt = "Connect"; },
+        MENU_ITEM { command = EJavaDebugAgentStop; txt = "Stop"; },
+        MENU_ITEM { command = EJavaDebugAgentClearLog; txt = "Clear Log"; },
+        MENU_ITEM { command = EJavaDebugAgentEditSettings; txt = "Settings"; },
+        MENU_ITEM { command = EAknSoftkeyExit; txt = "Exit"; }
+    };
+}
+
+RESOURCE MENU_PANE r_java_debug_agent_log_popup_menu
+{
+    items =
+    {
+        MENU_ITEM { command = EJavaDebugAgentListen; txt = "Listen"; },
+        MENU_ITEM { command = EJavaDebugAgentConnect; txt = "Connect"; },
+        MENU_ITEM { command = EJavaDebugAgentStop; txt = "Stop"; },
+        MENU_ITEM { command = EJavaDebugAgentClearLog; txt = "Clear Log"; }
+    };
+}
+
+RESOURCE MENU_PANE r_java_debug_agent_settings_menu
+{
+    items =
+    {
+        MENU_ITEM { command = EJavaDebugAgentChangeValue; txt = "Change"; },
+        MENU_ITEM { command = EAknSoftkeyExit; txt = "Exit"; }
+    };
+}
+
+// ---------------------------------------------------------------------------
+//
+//  Views
+//
+// ---------------------------------------------------------------------------
+
+RESOURCE CBA r_java_debug_agent_full_screen_softkeys
+{
+    buttons =
+    {
+        CBA_BUTTON { id = EAknSoftkeyOptions; txt = "Options"; },
+        CBA_BUTTON { id = EAknSoftkeyEmpty; txt = " "; }
+    };
+}
+
+RESOURCE AVKON_VIEW r_java_debug_agent_full_screen_log_view
+{
+    menubar = r_java_debug_agent_full_screen_log_menubar;
+    cba = r_java_debug_agent_full_screen_softkeys;
+}
+
+RESOURCE AVKON_VIEW r_java_debug_agent_log_view
+{
+    menubar = r_java_debug_agent_log_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+}
+
+RESOURCE TITLE_PANE r_java_debug_agent_log_title
+{
+    txt = "Debug Agent";
+}
+
+RESOURCE AVKON_VIEW r_java_debug_agent_settings_view
+{
+    menubar = r_java_debug_agent_settings_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+}
+
+RESOURCE TITLE_PANE r_java_debug_agent_settings_title
+{
+    txt = "Settings";
+}
+
+RESOURCE CBA r_java_debug_agent_cancel_softkeys
+{
+    buttons =
+    {
+        CBA_BUTTON { id = EAknSoftkeyOptions; txt = "Options"; },
+        CBA_BUTTON { id = EJavaDebugAgentStop; txt = "Cancel"; }
+    };
+}
+
+RESOURCE CBA r_java_debug_agent_stop_softkeys
+{
+    buttons =
+    {
+        CBA_BUTTON { id = EAknSoftkeyOptions; txt = "Options"; },
+        CBA_BUTTON { id = EJavaDebugAgentStop; txt = "Stop"; }
+    };
+}
+
+// ---------------------------------------------------------------------------
+//
+//  Settings
+//
+// ---------------------------------------------------------------------------
+
+#define R_JAVA_DEBUG_AGENT_LABEL_AUTOCLEAN    "Auto cleanup"
+#define R_JAVA_DEBUG_AGENT_LABEL_FILE_LOG     "Log to file"
+#define R_JAVA_DEBUG_AGENT_LABEL_PCHOST       "PC host"
+#define R_JAVA_DEBUG_AGENT_LABEL_PCPORT       "PC port"
+#define R_JAVA_DEBUG_AGENT_LABEL_ACCESS_POINT "Access point"
+#define R_JAVA_DEBUG_AGENT_LABEL_KEEPALIVE    "Keep-alive timer"
+#define R_JAVA_DEBUG_AGENT_LABEL_FONTSIZE     "Font size"
+
+RESOURCE TBUF r_java_debug_agent_access_point_always_ask
+{ 
+    buf = "Always ask";
+}
+
+RESOURCE TBUF r_java_debug_agent_access_point_user_defined
+{ 
+    buf = "User defined";
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_radio_button_setting_page
+{ 
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknSetListBox;
+    editor_resource_id = r_java_debug_agent_setting_app_listbox;
+}
+
+RESOURCE LISTBOX r_java_debug_agent_setting_app_listbox 
+{
+    flags = EEikListBoxMultipleSelection;
+}
+
+RESOURCE POPUP_SETTING_LIST r_java_debug_agent_settings_popup
+{
+}
+
+RESOURCE ARRAY r_java_debug_agent_settings_keepalive_array
+{
+    // One of the values MUST match KDefaultKeepAlivePeriod, otherwise
+    // we hit EAknPanicSettingItemListInvalidEnumeratedValue panic in 
+    // AknSettingItemList.cpp because CAknEnumeratedTextPopupSettingItem
+    // doesn't support "nothing selected" state
+    items =
+    {
+        AVKON_ENUMERATED_TEXT 
+        {
+            value = EJavaDebugAgentKeepAlivePeriodDisable;
+            text = "Disable";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = EJavaDebugAgentKeepAlivePeriodHalfSecond;
+            text = "Twice a second";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = EJavaDebugAgentKeepAlivePeriodOneSecond;
+            text = "Every second";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = EJavaDebugAgentKeepAlivePeriodTwoSeconds;
+            text = "Every two seconds";
+        }
+    };
+}
+
+RESOURCE ARRAY r_java_debug_agent_settings_fontsize_array
+{
+    // One of the values MUST match KDefaultDebugAgentFontSize, otherwise
+    // we hit EAknPanicSettingItemListInvalidEnumeratedValue panic in 
+    // AknSettingItemList.cpp because CAknEnumeratedTextPopupSettingItem
+    // doesn't support "nothing selected" state
+    items =
+    {
+        AVKON_ENUMERATED_TEXT 
+        {
+            value = TJavaDebugAgentFontSizeTiny;
+            text = "Tiny";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = TJavaDebugAgentFontSizeSmall;
+            text = "Small";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = TJavaDebugAgentFontSizeMedium;
+            text = "Medium";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = TJavaDebugAgentFontSizeLarge;
+            text = "Large";
+        }
+    };
+}
+
+RESOURCE ARRAY r_java_debug_agent_settings_enable_disable_array
+{
+    items =
+    {
+        AVKON_ENUMERATED_TEXT 
+        {
+            value = 1;
+            text = "Enable";
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 0;
+            text = "Disable";
+        }
+    };
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_autoclean_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_AUTOCLEAN;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_java_debug_agent_settings_popup;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_filelog_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_FILE_LOG;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_java_debug_agent_settings_popup;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_pchost_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_PCHOST;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type =  EEikCtEdwin;
+    editor_resource_id = r_java_debug_agent_settings_pchost_edwin;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_pcport_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_PCPORT;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknCtIntegerEdwin;
+    editor_resource_id = r_java_debug_agent_settings_pcport_editor;
+}
+
+RESOURCE EDWIN r_java_debug_agent_settings_pchost_edwin
+{
+    maxlength = KDebugAgentMaxStrParamLength;
+    flags = EEikEdwinAutoSelection | EEikEdwinNoHorizScrolling;
+    default_input_mode = EAknEditorTextInputMode;
+    allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode;
+    default_case = EAknEditorTextCase;
+}
+
+RESOURCE AVKON_INTEGER_EDWIN r_java_debug_agent_settings_pcport_editor
+{
+    maxlength = 5;
+    min = 1;
+    max = 65535;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_keepalive_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_KEEPALIVE;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_java_debug_agent_settings_popup;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_java_debug_agent_settings_fontsize_page
+{
+    label = R_JAVA_DEBUG_AGENT_LABEL_FONTSIZE;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_java_debug_agent_settings_popup;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_java_debug_agent_settings_keepalive
+{
+    setting_texts_resource = r_java_debug_agent_settings_keepalive_array;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_java_debug_agent_settings_fontsize
+{
+    setting_texts_resource = r_java_debug_agent_settings_fontsize_array;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_java_debug_agent_settings_enable_disable
+{
+    setting_texts_resource = r_java_debug_agent_settings_enable_disable_array;
+}
+
+RESOURCE AVKON_SETTING_ITEM_LIST r_java_debug_agent_settings_list
+{
+    title = "Settings";
+    initial_number = 1;
+    items = 
+    {
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentPCHostItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_PCHOST;
+            setting_page_resource = r_java_debug_agent_settings_pchost_page;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentPCPortItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_PCPORT;
+            setting_page_resource = r_java_debug_agent_settings_pcport_page;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentApItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_ACCESS_POINT;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentKeepAliveItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_KEEPALIVE;
+            setting_page_resource = r_java_debug_agent_settings_keepalive_page;
+            associated_resource = r_java_debug_agent_settings_keepalive;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentAutoCleanItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_AUTOCLEAN;
+            setting_page_resource = r_java_debug_agent_settings_autoclean_page;
+            associated_resource = r_java_debug_agent_settings_enable_disable;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentFileLogItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_FILE_LOG;
+            setting_page_resource = r_java_debug_agent_settings_filelog_page;
+            associated_resource = r_java_debug_agent_settings_enable_disable;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentFontSizeItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_FONTSIZE;
+            setting_page_resource = r_java_debug_agent_settings_fontsize_page;
+            associated_resource = r_java_debug_agent_settings_fontsize;
+        }
+    };
+}
+
+RESOURCE AVKON_SETTING_ITEM_LIST r_java_debug_agent_short_settings_list
+{
+    title = "Settings";
+    initial_number = 1;
+    items = 
+    {
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentAutoCleanItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_AUTOCLEAN;
+            setting_page_resource = r_java_debug_agent_settings_autoclean_page;
+            associated_resource = r_java_debug_agent_settings_enable_disable;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentFileLogItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_FILE_LOG;
+            setting_page_resource = r_java_debug_agent_settings_filelog_page;
+            associated_resource = r_java_debug_agent_settings_enable_disable;
+        },
+        AVKON_SETTING_ITEM
+        {
+            identifier = EJavaDebugAgentFontSizeItem;
+            name = R_JAVA_DEBUG_AGENT_LABEL_FONTSIZE;
+            setting_page_resource = r_java_debug_agent_settings_fontsize_page;
+            associated_resource = r_java_debug_agent_settings_fontsize;
+        }
+    };
+}
+
+// -------------------------------------------------------------------------- 
+//
+// App info
+//
+// -------------------------------------------------------------------------- 
+
+RESOURCE LOCALISABLE_APP_INFO r_java_debug_agent_app_info
+{
+    short_caption = "Debug Agent";
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+    {
+        caption = "Debug Agent";
+        number_of_icons = 0;
+        icon_file = "\\resource\\apps\\DebugAgent_aif.mif";
+    };
+}
+
+
+/**
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * End:
+ */

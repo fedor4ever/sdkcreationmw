@@ -1,0 +1,74 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+TARGET          IsvTelInfoApp.exe
+TARGETTYPE      exe
+
+UID             0x100039CE 0xA00001F0  
+EPOCSTACKSIZE	0x5000
+
+CAPABILITY      NetworkServices ReadDeviceData WriteDeviceData ReadUserData WriteUserData 
+
+VENDORID        0
+
+SOURCEPATH      ..\data
+START RESOURCE IsvTelInfoApp.rss
+HEADER
+TARGETPATH \resource\apps
+LANG	SC
+END 
+
+START RESOURCE IsvTelInfoApp_reg.rss
+#ifdef WINSCW
+TARGETPATH   \private\10003a3f\apps
+#else
+TARGETPATH   \private\10003a3f\import\apps
+#endif
+END
+
+SOURCEPATH      ..\src
+SOURCE          IsvTelInfoAppApplication.cpp 
+SOURCE          IsvTelInfoAppUi.cpp
+SOURCE          IsvTelInfoAppDocument.cpp
+SOURCE          IsvTelInfoAppView.cpp
+SOURCE          IsvTelInfoAppContainer.cpp
+SOURCE          IsvTelInfoAppDlg.cpp
+SOURCE          IsvTelInfoAppTelephony.cpp
+
+USERINCLUDE     . ..\inc 
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY         euser.lib
+LIBRARY         apparc.lib
+LIBRARY         cone.lib
+LIBRARY         eikcore.lib
+LIBRARY         eikcoctl.lib
+LIBRARY         avkon.lib
+LIBRARY         efsrv.lib
+LIBRARY         eikdlg.lib
+LIBRARY         eikctl.lib
+LIBRARY         etel3rdparty.lib
+LIBRARY         estor.lib
+LIBRARY		charconv.lib
+LIBRARY 	CommonEngine.lib 
+
+// End of File

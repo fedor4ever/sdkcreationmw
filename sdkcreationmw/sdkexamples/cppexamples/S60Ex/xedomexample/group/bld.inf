@@ -1,0 +1,39 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file provides the information required for building the
+ *	  	          DOM Example application.
+ *
+*/
+
+ 
+
+PRJ_MMPFILES
+xedomexample.mmp
+
+PRJ_EXPORTS
+..\data\xedomexample\input\test.doc                    C:\xedomexample\input\test.doc
+..\data\xedomexample\input\test.jpg                    C:\xedomexample\input\test.jpg
+..\data\xedomexample\input\XML_check_attrs.xml         C:\xedomexample\input\XML_check_attrs.xml
+..\data\xedomexample\input\XML_doc_params.xml          C:\xedomexample\input\XML_doc_params.xml
+..\data\xedomexample\input\XML_ID.xml                  C:\xedomexample\input\XML_ID.xml
+..\data\xedomexample\input\XML_inner.xml               C:\xedomexample\input\XML_inner.xml
+..\data\xedomexample\input\XML_nodetree_modif.xml      C:\xedomexample\input\XML_nodetree_modif.xml
+..\data\xedomexample\input\XML_nsprocessing.xml        C:\xedomexample\input\XML_nsprocessing.xml
+..\data\xedomexample\input\XML_parsing_001.xml         C:\xedomexample\input\XML_parsing_001.xml
+..\data\xedomexample\input\XML_setelement_text.xml     C:\xedomexample\input\XML_setelement_text.xml
+..\data\xedomexample\input\XML_settextnoenc_001.xml    C:\xedomexample\input\XML_settextnoenc_001.xmL
+..\data\xedomexample\input\XML_settextnoenc_002.xml    C:\xedomexample\input\XML_settextnoenc_002.xml
+..\data\xedomexample\input\XML_sibling_fns.xml         C:\xedomexample\input\XML_sibling_fns.xml
+..\data\xedomexample\output\dummy_place_holder.file    C:\xedomexample\output\dummy_place_holder.file
+

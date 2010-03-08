@@ -1,0 +1,425 @@
+# Microsoft Developer Studio Generated Dependency File, included by wmlenc.mak
+
+.\src\chenc.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\chmap.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\chtables.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chmap.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\codeload.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\mibenum.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlhost.h"\
+	
+
+.\src\wmlarray.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\wmlarray.h"\
+	".\src\xmlhost.h"\
+	
+
+.\src\wmlbin.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmlhndl.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmllog.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	
+
+.\src\wmlmain.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlbuf.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmlsegm.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmlstruc.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmlvalid.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wbxml_config.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\wmlvar.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\wmlmsg.h"\
+	".\src\wmlvalid.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlbuf.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlbuf.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlcomm.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlconst.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	
+
+.\src\xmlcp.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlhost.h"\
+	".\src\xmllex.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlctyp.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	
+
+.\src\xmllex.c : \
+	".\src\xmllex.h"\
+	
+
+.\src\xmlmem.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlhost.h"\
+	
+
+.\src\xmlmsg.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlrules.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlpars.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\chenc.h"\
+	".\src\chmap.h"\
+	".\src\wmlarray.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlbuf.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlrules.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlpool.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	
+
+.\src\xmlrules.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	".\src\xmllex.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlrules.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	".\src\xmlvc.h"\
+	
+
+.\src\xmlstr.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	
+
+.\src\xmlstruc.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlhost.h"\
+	".\src\xmllex.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlsymt.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlhost.h"\
+	".\src\xmllex.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlsymt.h"\
+	
+
+.\src\xmlvc.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlapi.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\xmlapi.h"\
+	".\src\xmlconst.h"\
+	".\src\xmlctyp.h"\
+	".\src\xmlhost.h"\
+	".\src\xmllex.h"\
+	".\src\xmlmsg.h"\
+	".\src\xmlpars.h"\
+	".\src\xmlpool.h"\
+	".\src\xmlstr.h"\
+	".\src\xmlstruc.h"\
+	".\src\xmlsymt.h"\
+	".\src\xmlvc.h"\
+	

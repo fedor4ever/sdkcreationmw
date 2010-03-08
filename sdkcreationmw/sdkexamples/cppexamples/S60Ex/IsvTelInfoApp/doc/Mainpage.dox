@@ -1,0 +1,115 @@
+/*! \mainpage IsvTelInfoApp Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This tutorial explains the IsvTelInfoApp application example, which is a simple application demonstrating the use of the ISV ETel APIs.
+ *
+ * The tutorial starts by listing the pre-requisites the user should know before starting this example, and describes how to build and run the example. The documentation goes on to discuss how to test an ISV ETel API, which is split into the following sections:
+ *
+ *
+ * - The application GUI.
+ * - Engine.
+ * - ISV ETel APIs.
+ *
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ * This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The example makes use of several other Symbian OS concepts that the reader should be aware of before attempting to understand this example. These are:
+ *
+ * - Active Object.
+ * - ETel ISV APIs.
+ *
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ * This application requires following capabilities defined in IsvTelInfoApp.mmp:
+ *
+ * NetworkServices ReadDeviceData WriteDeviceData ReadUserData WriteUserData
+ *
+ * \note ACS Publisher ID is required to sign applications with ReadDeviceData and WriteDeviceData.
+ * However, a signed sis is provided in sis-folder so that this example application
+ * can easily be tried on a device.
+ *
+ *  \subsection Sub32 3.2	Application Overview
+ *
+ * CIsvTelAppTelephony class is an active object, derived from CActive class and provides the functionality of the engine.  Each option selected by User through GUI invokes wrapper function of CIsvTelAppTelephony class, which in turn calls corresponding ISV ETel API.  CTelephony class provides ISV ETel APIs.  Since, CIsvTelAppTelephony is an active object; it waits asynchronously for the operations to complete from ISV ETel API.  When engine is notified of completion of requested ISV ETel API, it sends back theesponse to GUI for User.
+ *
+ * This application uses the status related ISV ETel APIs, e.g. CTelephony::GetPhoneId(), CTelephony::GetNetworkRegistrationStatus(), etc.
+ *
+ * Selection of Fetch option, provided by Options Menu, provides all the desired information.
+ *
+ *
+ *
+ *
+ *  \subsection Sub33 3.3	GUI Implementation
+ *
+ * This sections gives the details about GUI implementation.
+ *
+ * -#	The Framework creates the GUI, resulting call to Class Construct, which in turn constructs CIsvTelAppView object.
+ * -#	CIsvTelAppView creates the CIsvTelAppContainer object from its second phase constructor.
+ * -#	When User launchs the application, HandleCommandL() gets executed, which in turn invokes DisplayFormL() of CIsvTelAppContainer object. DisplayFormL () then creates CIsvTelAppDlg object and executes it.
+ * -#	CIsvTelAppDlg creates CIsvTelAppTelephony objects and assigns CTelephony pointer to it. Refer Class Constructor.
+ *
+ * When User closes the application, CTelephony object and all engine objects are closed and destroyed.
+ *
+ *
+ *  \subsection Sub34 3.4	ISV ETel API Engine
+ *
+ *  The previous section shows how the GUI creates CIsvTelInfoAppTelephony object and invokes corresponding ISV ETel API wrapper function.  This section describes how this object functions as an engine.
+ *
+ * CIsvTelInfoAppTelephony engine object creates an object of CTelephony  class.   Based on the request from GUI, associated engine function gets invoked, which in turn calls corresponding ISV ETel API.
+ *
+ * CIsvTelInfoAppTelephony class, an active object, waits asynchronously for the reponses from ISV ETel APIs.  When command complete notification message from ISV ETel API reaches the engine, it then sends back response to GUI for display.
+ *
+ * The steps involved in GetPhoneId command is described as follows, the other commands also follow similar steps.
+ *
+ * -#	When User wants to get the information about phone, User selects Fetch option.  CIsvTelInfoAppDlg decodes the command and calls corresponsing engine function, in this case TelApiWrapperGetPhoneId.
+ * -#	CIsvTelInfoAppTelephony engine class then invokes corresponding ISV ETel API, GetPhoneId().
+ * -#	GetPhoneId() is an asynchronous request, hence when API’s execution completes, RunL() of the CIsvTelInfoAppTelephony class is called, which in turn calls GetPhoneIdCompleteL() funtion of CIsvTelInfoAppDlg class.
+ * -#	CIsvTelInfoAppDlg class then converts the information in user friendly manner and displays on UI.
+ *
+ *
+ *
+ *  \subsection Sub35 3.5 ISV ETel APIs
+ * The previous two sections have shown how User selects the commands and how those commands are processed by Engine in accordance with ISV ETel APIs.  This section gives the details of CTelephony calss and ISV ETel APIs provided by it.
+ *
+ * The CTelephony class is meant for 3rd party developers.  This class provides a simple interface to the phone's telephony system. It provides two services:
+ * -#		Information Service : This service provides support for retrieving Phone Settings, Line Information, Network Information and (basic) Supplementary Service Settings.
+ * -#		Call Service: This service provides dialling, answering and controlling of voice calls.
+ * This example has used APIs related to retriving Phone Settings, Network Information and Supplementry Service Settings.  APIs used in this example are:
+ * -#		GetPhoneId
+ * -#		GetSubscriberId
+ * -#		GetCallBarringStatus
+ * -#		GetCallWaitingStatus
+ * -#		GetNetworkRegistrationStatus
+ * -#		GetIdentityServiceStatus
+ *
+ *
+ *  \subsection Sub36 3.6 MMP File
+ *
+ * Each Symbian OS application has an associated MMP file. The MMP file defines such things as which source files are to be compiled, which libraries to be linked, and so on. To create an IsvTelInfoApp EXE, it is necessary to specify the target type and UID in the MMP. These should be set to the values shown below.
+ * - TARGETTYPE exe
+ * - UID 0xA00001F0
+ *
+ *
+ *
+ * <HR>
+ *
+ *
+ *  \section Summary_sec 4. SUMMARY
+ * IsvTelInfoApp Example application has demonstrated the use of ISV ETel APIs.  The application is split in two parts GUI and Engine.  User interacts with GUI and the GUI logic coverts those key presses to commands.  Engine handles the commands and invokes corresponding ISV ETel APIs.  Upon completion of the API, the engine sends back the responses to GUI for display.
+ *
+ */

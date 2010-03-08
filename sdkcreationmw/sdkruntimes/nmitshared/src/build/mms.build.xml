@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project name="MMS Package" default="lib" basedir="../..">
+
+<!--==========================================-->
+<!-- ANT BUILD FILE FOR MMS PKG	-->
+<!--					-->
+<!-- To use:				-->
+<!-- % ant -buildfile mms.build.xml	-->
+<!--==========================================-->
+
+<!--==========================================-->
+<!--set global properties for this build-->
+<!--==========================================-->
+<property name="name" value="MMS"/>
+<property name="build" value="classes/mms"/>
+<property name="verbose" value="off"/>
+<property name="debug" value="off"/>
+
+<property name="build.classes" value="${build}/classes"/>
+<property name="src" value="src/mms"/>
+<property name="jar.path" value="$(basedir)/../../jars"/>
+
+<!-- Distribution layout -->
+<property name="lib" value="${basedir}/lib"/>
+
+<!-- Dependencies -->
+<property name="classpath" 
+	  value="${lib}/util.jar;${lib}/hcodec.jar;${lib}/http.jar"/>
+
+<!-- Final jar -->
+<property name="mms.jar" value="mms.jar"/>
+
+<!--==========================================-->
+<!--TARGET [PREPARE]-->
+<!--==========================================-->
+<target name="prepare" description="Prepare build environment">
+	<echo>Preparing Build Environment</echo>
+	<tstamp/>
+
+	<!-- remove old stuff -->
+	<delete dir="${build.classes}" quiet="true"/>
+
+	<!-- create the build directory structure -->
+	<echo>Creating output directories...</echo>
+	<mkdir dir="${build}"/>
+	<mkdir dir="${build.classes}"/>
+	<mkdir dir="${lib}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [COMPILE]-->
+<!--==========================================-->
+<target name="compile" depends="prepare" description="Compile java sources">
+
+	<echo>Building MMS ...</echo>
+	<javac 
+		srcdir="${src}"
+		destdir="${build.classes}"
+		includes="**/*.java"
+		classpath="${classpath}"
+		verbose="${verbose}"
+		debug="${debug}"
+	/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [ARCHIVE]-->
+<!--==========================================-->
+<target name="archive" depends="compile" description="Archive java classes and resources">
+
+	<echo>Copying resource files..</echo>
+
+	<copy todir="${build.classes}">
+	  <fileset dir="${src}" 
+                   includes="com/nokia/wtk/mms/**/*.properties"
+          />
+	</copy>
+
+	<echo>Archiving sources and resources..</echo>
+	<jar 
+		jarfile="${build}/${mms.jar}"
+		basedir="${build.classes}"
+         />
+</target>
+
+<!--==========================================-->
+<!--TARGET [DIST]-->
+<!--==========================================-->
+<target name="lib" depends="archive" description="Build Distribution">
+
+	<!-- Just copy the jar -->
+	<copy todir="${lib}">
+	  <fileset dir="${build}" includes="${mms.jar}"/>
+	</copy>
+	<echo>Built MMS Package!</echo>
+
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLEAN]-->
+<!--==========================================-->
+<target name="clean" description="Delete entire build">
+	<delete dir="${build}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLOBBER]-->
+<!--==========================================-->
+<target name="clobber" depends="clean" description="Delete entire lib">
+	<delete file="${lib}/${mms.jar}"/>
+</target>
+</project>

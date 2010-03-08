@@ -1,0 +1,42 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; listbox_gcce.pkg
+;
+;Language - standard language definitions
+&EN
+
+; standard SIS file header
+#{"Listbox"},(0xA0000228),1,0,0
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.2
+[0x102752AE], 0, 0, 0, {"Series60ProductID"}
+
+;Files to install
+"..\..\..\epoc32\release\gcce\urel\Listbox.exe"                -"!:\sys\bin\Listbox.exe"
+"..\..\..\epoc32\data\z\resource\apps\Listbox.rsc"              -"!:\resource\apps\Listbox.rsc"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\Listbox_reg.rsc"  -"!:\private\10003a3f\import\apps\Listbox_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\listbox.mif"		-"!:\resource\apps\listbox.mif"
+"..\..\..\epoc32\data\z\private\A0000228\Listbox_bitmaps.mif"        		-"!:\private\A0000228\Listbox_bitmaps.mif"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						-"!:\private\A0000228\backup_registration.xml"
+

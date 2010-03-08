@@ -1,0 +1,125 @@
+﻿
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="copyright" content="(C) Copyright 2007"/><meta name="DC.rights.owner" content="(C) Copyright 2007"/><meta name="DC.Type" content="mobileconcept"/><meta name="DC.Title" content="Creating a .sis file"/><meta name="DC.Format" content="XHTML"/><meta name="DC.Identifier" content="GUID-0377E6E3-7927-432B-BF6F-4DD8A243654A"/><title> S60 Example Applications</title><script type="text/javascript" src="js/utils.js">//</script><script type="text/javascript" src="js/gui.js">//</script><script type="text/javascript" src="js/common.js">//</script><script type="text/javascript" src="js/toc.js">//</script><script type="text/javascript" src="js/page.js">//</script><script type="text/javascript" src="js/s60/white_toc.js">//</script><script type="text/javascript" src="js/s60/page.js">//</script><link href="css/html.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/print.css" rel="stylesheet" type="text/css" media="print"/><link href="css/nwg.css" rel="stylesheet" type="text/css" media="all"/><link href="css/s60/white.css" rel="stylesheet" type="text/css" media="all"/></head><body onload="initPage();"><!--BEGIN: HEADER--><!--END: HEADER--><!--BEGIN: BODY SECTION--><div class="body"><!--begin: content--><div class="contentLeft prTxt"><h1 class="pageHeading" id="GUID-0377E6E3-7927-432B-BF6F-4DD8A243654A"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-0377E6E3-7927-432B-BF6F-4DD8A243654A"><!----></a>Creating
+a .sis file</h1>
+<p>Once you have <a href="GUID-FDB2C970-1356-4749-A856-005D5D0166D1.html#GUID-FDB2C970-1356-4749-A856-005D5D0166D1">created
+a GCCE UREL release build</a> of an example application, you need to create
+a Symbian Installation <code>.sis</code> file out of it. A <code>.sis</code> file
+is, in essence, a file that compresses the files (such as, <code>.dll</code>, <code>.exe</code>, <code>.rss</code>)
+included in an application and lists all the needed information (such as language,
+unique application ID) that the real device needs when receiving an application.</p>
+<p>S60 includes mandatory <code>.sis</code> file signing, which
+means that all <code>.sis</code> files must be signed before installing
+them to the device. The type of certificate needed for an application depends
+on the capabilities it uses. The following table explains the different kinds
+of certificates needed:</p>
+<div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-004D3EBF-1E1B-4EE6-A79D-A0E5C1DAE4AC"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-004D3EBF-1E1B-4EE6-A79D-A0E5C1DAE4AC" frame="border" border="1" rules="all">
+<thead align="left">
+<tr class="title "><th valign="top" width="28.000000000000004%" id="d0e1936">
+<p>Signing with</p>
+</th><th valign="top" width="72%" id="d0e1941">
+<p>Used when</p>
+</th></tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="28.000000000000004%" headers="d0e1936 ">
+<p>Self Signed Certificate</p>
+</td>
+<td valign="top" width="72%" headers="d0e1941 ">
+<p>When an application requires no capabilities or utilizes APIs, which
+are open to all. This can be used when testing an application in one’s own
+device or when shipping the application.</p>
+<p>Note: The application is regarded as Untrusted if signed with the Self
+Signed Certificate.</p>
+<p>This process is recommended for freeware applications using unrestricted
+capabilities.</p>
+<p>See <a href="GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D.html#GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D">Signing a
+.sis file</a> for instructions on how to sign a .sis with a Self Signed
+certificate.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="28.000000000000004%" headers="d0e1936 ">
+<p>Developer Certificate</p>
+</td>
+<td valign="top" width="72%" headers="d0e1941 ">
+<p>When testing the application in developer’s own device(s). This certificate
+is acquired from Symbian.</p>
+<p>The Symbian Developer Certificate can be used by developers to sign
+their applications in order to obtain the restricted capabilities for device
+testing. The certificate is restricted to a certain set of IMEIs and the set
+cannot be changed. There are a few requirements to get a Symbian Developer
+Certificate.</p>
+<p>More information on Symbian Signed is available from the <a href="http://developer.symbian.com/main/downloads/papers/Developer_Certificate_Request_Process_v2.0.pdf" target="_blank">Symbian Developer website</a>.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="28.000000000000004%" headers="d0e1936 ">
+<p>Symbian Signed</p>
+</td>
+<td valign="top" width="72%" headers="d0e1941 ">
+<p>Mandatory if the application is using capabilities beyond the scope
+of APIs open to all and the application is shipped.</p>
+<p>More information on Symbian Signed is available from the <a href="http://www.symbiansigned.com/" target="_blank">Symbian
+Signed website</a>.</p>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>As the example applications do not require restricted capabilities,
+you can use the Self Signed certificate to sign them. The necessary steps
+for creating and using a Self Signed certificate are explained in Creating
+a Private Key and Self-Signed Certificate:</p>
+<p><strong>Creating a Private Key and Self-Signed Certificate</strong></p>
+<p>The <strong>makekeys</strong> tool can be used to create private key and Self-Signed
+certificate. The usage of the tool is described below:</p>
+<pre class="codeblock" id="GUID-96CC3477-06EB-429A-A42F-0BFB4560CF52"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-96CC3477-06EB-429A-A42F-0BFB4560CF52"><!----></a>makekeys -cert [-password &lt;password&gt;] [-len &lt;key-length&gt;] -dname &lt;distinguised-name-string&gt; &lt;private-key-file&gt; &lt;public-key-cert&gt;makekeys -cert [-password &lt;password&gt;] -dname &lt;distinguised-name-string&gt; &lt;private-key-file&gt; &lt;public-key-cert&gt; &lt;cert-request-file&gt;makekeys -view &lt;certificate-file&gt;
+</pre>
+<p>An example of creating a privatekey <code>mykey.key</code> and
+self-signed certificate <code>mycert.dat</code> is presented below:</p>
+<pre class="codeblock" id="GUID-244648AB-A552-4A8B-B991-F9B21CD8137B"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-244648AB-A552-4A8B-B991-F9B21CD8137B"><!----></a>makekeys -cert -password yourpassword -len 2048 -dname "CN=Test User  OU=Development OR=Company  CO=FI EM=test@company.com" mykey.key mycert.cer
+</pre>
+<p>Once you have acquired the needed certificate, you can create the <code>.sis</code> file,
+which you then need to sign.</p>
+<div><h3>Creating a .sis file</h3><p>Once you have acquired the needed certificate to sign your application,
+you can create the <code>.sis</code> file. The <code>.sis</code> file
+is made from the <code>.pkg</code> file of the application, which
+is located in the example application's <code>sis</code> folder.</p><p>The <code>.pkg</code> file looks like this:</p><pre class="codeblock" id="GUID-036581C9-0984-4FB7-BAD0-238CC6A295A8"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-036581C9-0984-4FB7-BAD0-238CC6A295A8"><!----></a>Languages
+
+&amp;EN
+
+;Header
+
+#{"HelloWorldBasic"}, (0x11111111), 1, 2, 3,TYPE=SA
+
+; Localized Vendor name
+
+%{"Vendor_EN"}
+
+; Unique Vendor Name
+
+:"Unique Vendor Name"
+
+;File to install
+
+"\epoc32\release\gcce\urel\helloworldbasic.exe"
+
+-"!:\sys\bin\helloworldbasic.exe";
+
+;Supports Series 60 v 3.0
+
+[0x101F7961], 0, 0, 0, {"S60ProductID"}</pre><div class="note"><p><strong class="note_title">Note: </strong>The binaries are located in the <code>\sys\bin</code> directory.</p></div><ol>
+<li id="GUID-264A1A43-C2C2-43BB-8D94-ACA905D009DC"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-264A1A43-C2C2-43BB-8D94-ACA905D009DC"><!----></a><p>Open the command
+prompt in the folder where the <code>HelloWorldBasic.pkg</code> file
+is located:</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60CppExamples\helloworldbasic\sis</code></p>
+</li>
+<li id="GUID-85216DDD-3964-4B64-84AA-24666928B77F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-85216DDD-3964-4B64-84AA-24666928B77F"><!----></a><p>In the same
+directory, enter the <code>makesis</code> command and press <strong>Enter</strong>:</p>
+<p><code>&lt;S60_SDK_installation_directory&gt;\S60CppExamples\helloworldbasic\sis&gt;
+makesis helloworldbasic.pkg</code></p></li>
+</ol><p>The <code>helloworldbasic.SIS</code> file is created into the
+same directory where the <code>.pkg</code> file is located, that is:</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60CppExamples\helloworldbasic\sis\helloworldbasic.SIS</code></p><p>Next, you need to <a href="GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D.html#GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D">sign
+the .sis file</a>.</p></div>
+</div><!--end: content--><!--start: sidebar--><!--end: sidebar--></div><!--END: BODY SECTION--><!--BEGIN: FOOTER--><div class="footer"><hr/><div class="copy">© Nokia 2009.</div></div><!--END: FOOTER--></body></html>

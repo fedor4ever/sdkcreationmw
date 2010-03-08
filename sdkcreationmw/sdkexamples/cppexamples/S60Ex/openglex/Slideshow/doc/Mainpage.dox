@@ -1,0 +1,59 @@
+/*! \mainpage OpenGL ES Slideshow Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates OpenGL ES texture environment combiners, which were introduced
+ *  in version 1.1. The example is a simple slideshow viewer, which has a number of transition
+ *  effects that are shown when the user navigates the images.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. OpenGL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implemention
+ *
+ *  The <a class="el" href="class_c_slideshow.html">CSlideshow</a> class implements a slideshow viewer,
+ *  which can be asked to cycle the loaded pictures.
+ *  When a new picture is requested, a random transition renderer (i.e. a class that implements
+ *  <a class="el" href="class_m_transition_renderer.html">MTransitionRender</a>
+ *  is instantiated and used to draw the transition effect.
+ *
+ *  In the scope of this example, the most interesting transition renderer is
+ *  <a class="el" href="class_c_mask_transition.html">CMaskTransition</a>. It uses two texture
+ *  units and texture environment combiners to blend two images together with a mask texture. The process is described
+ *  in detail in the implementation of <a class="el" href="class_c_mask_transition.html#a1">CMaskTransition::Render()</a>. Two more transition
+ *  effects are implemented by <a class="el" href="class_c_whisk_transition.html">CWhiskTransition</a> and
+ *  <a class="el" href="class_c_curtain_transition.html">CCurtainTransition</a>.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

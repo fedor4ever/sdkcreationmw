@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localisation file
+ *
+*/
+
+
+// LOCALISATION STRINGS
+
+// Application name
+#ifndef SDK_MIDP
+#define qtn_app_caption_string "EcmtAgent"
+#define qtn_app_short_caption_string "EcmtAgent"
+#else
+#define qtn_app_caption_string "BT&USB Debug"
+#define qtn_app_short_caption_string "BT&USB Debug"
+#endif //SDK_MIDP
+
+// Menu strings
+#define qtn_start_server "Start Server"
+#define qtn_stop_server "Stop Server"
+#define qtn_clear_log "Clear Log"
+#define qtn_exit "Exit"
+
+// Strings displayed in main view
+#define qtn_server_running "Started\tServer is running"
+#define qtn_server_start_error "Start Error\t"
+#define qtn_stopped "Stopped\tServer closed"
+#define qtn_error_getting_notification "Error\t"
+
+#define qtn_r_listbox_options "Options"
+#define qtn_r_listbox_exit "Exit"
+#define qtn_r_listbox_change_settingitem "Edit"
+
+// End of File

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<Eventconfig>
+	<eventgroup name="Basic Events">
+		<event id="2" name="Grip Open"/>
+		<event id="3" name="Grip Closed"/>
+		<event id="0" name="Battery Low"/>
+		<event id="1" name="Battery Empty"/>
+		<event id="29" name="Battery Full"/>
+    <event id="26" name="Connecting External PowerCharger"/>
+    <event id="27" name="Removing External PowerCharger"/>
+		<!--
+	    <event id="4" name="CameraLens Open"/>
+	    <event id="5" name="CameraLens Closed"/>
+	    -->
+	</eventgroup>
+	<eventgroup name="Enhancement Events">
+	  	<event id="14" name="Headset connected"/>
+	  	<event id="15" name="Headset removed"/>
+	  	<event id="16" name="Tty connected"/>
+	  	<event id="17" name="Tty removed"/>
+	  	<event id="18" name="Loopset connected"/>
+	  	<event id="19" name="Loopset removed"/>
+	  	<!--
+	  	<event id="20" name="Handsfree mode on"/>
+	  	<event id="21" name="Handsfree mode off" />
+	  	-->
+	</eventgroup>
+	<eventgroup name="Notification Events"> 
+    <event id="6" name="Alarm notification" delay="Delay, min"/>
+    <!--
+    <event id="7" name="Calendar notification" delay="Delay, min"/>
+    <event id="8" name="Memory notification"/>
+    <event id="9" name="Disk space notification"/>
+    -->
+	</eventgroup>
+	<!--eventgroup name="SIM Events">
+	    <event id="10" name="SIM Removed"/>
+	    <event id="11" name="SIM Changed"/>
+	    <event id="12" name="SIM Locked"/>
+	    <event id="13" name="SIM SMS Memory Full"/>
+	</eventgroup -->
+<!--
+    EWrapperBatteryLow = 0,
+    EWrapperBatteryEmpty = 1,
+    EWrapperGripOpen = 2,
+    EWrapperGripClosed = 3,
+    EWrapperCameraLensOpen = 4,
+    EWrapperCameraLensClosed = 5,
+    EWrapperAlarmNotification = 6,
+    EWrapperCalendarNotification = 7,
+    EWrapperMemoryNotification = 8,
+    EWrapperDiskSpaceNotification = 9,
+    EWrapperSIMRemoved = 10,
+    EWrapperSIMChanged = 11,
+    EWrapperSIMLocked = 12,
+    EWrapperSIMSMSMemoryFull = 13,
+    EWrapperHeadSetConnected = 14,
+    EWrapperHeadsetRemoved = 15,
+    EWrapperTtyConnected = 16,
+    EWrapperTtyRemoved = 17,
+    EWrapperLoopsetConnected = 18,
+    EWrapperLoopsetRemoved = 19,
+    EWrapperHandsfreeModeOn = 20,
+    EWrapperHandsfreeModeOff = 21,
+    EWrapperIncomingVoicecall = 22,
+    EWrapperIncomingDatacall = 23,
+    EWrapperIncomingFaxcall = 24,
+    EWrapperRemoteHangup = 25,
+    EWrapperConnectingExternalPowerCharger = 26,
+    EWrapperRemovingExternalPowerCharger = 27,
+    EWrapperMMC = 28,
+    EWrapperBatteryFull = 29
+-->
+ 	
+</Eventconfig>	

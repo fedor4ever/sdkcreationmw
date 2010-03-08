@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localisation strings for Haptics Example.
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Caption string for app.
+rls_string STRING_r_hapticsexample_caption_string "Haptic Ball"
+
+// Short caption string for app.
+rls_string STRING_r_hapticsexample_short_caption_string "Haptic Ball"
+
+// Menu items
+rls_string STRING_r_hapticsexample_strength_string "Strength"
+rls_string STRING_r_hapticsexample_disable_string "Disable Haptics"
+rls_string STRING_r_hapticsexample_enable_string "Enable Haptics"
+rls_string STRING_r_hapticsexample_sensor_mode "Sensor Mode"
+rls_string STRING_r_hapticsexample_drag_mode "Drag Mode"
+
+// Strength array strings
+rls_string STRING_r_hapticsexample_strength_max_string "Max (100%)"
+rls_string STRING_r_hapticsexample_strength_high_string "75%"
+rls_string STRING_r_hapticsexample_strength_mid_string "50%"
+rls_string STRING_r_hapticsexample_strength_low_string "25%"
+
+// End of File
+

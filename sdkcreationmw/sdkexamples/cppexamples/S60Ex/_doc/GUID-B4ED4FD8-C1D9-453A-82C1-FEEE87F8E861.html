@@ -1,0 +1,2755 @@
+﻿
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="copyright" content="(C) Copyright 2007"/><meta name="DC.rights.owner" content="(C) Copyright 2007"/><meta name="DC.Type" content="mobileconcept"/><meta name="DC.Title" content="Coding conventions"/><meta name="DC.Format" content="XHTML"/><meta name="DC.Identifier" content="GUID-B4ED4FD8-C1D9-453A-82C1-FEEE87F8E861"/><title> S60 Example Applications</title><script type="text/javascript" src="js/utils.js">//</script><script type="text/javascript" src="js/gui.js">//</script><script type="text/javascript" src="js/common.js">//</script><script type="text/javascript" src="js/toc.js">//</script><script type="text/javascript" src="js/page.js">//</script><script type="text/javascript" src="js/s60/white_toc.js">//</script><script type="text/javascript" src="js/s60/page.js">//</script><link href="css/html.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/print.css" rel="stylesheet" type="text/css" media="print"/><link href="css/nwg.css" rel="stylesheet" type="text/css" media="all"/><link href="css/s60/white.css" rel="stylesheet" type="text/css" media="all"/></head><body onload="initPage();"><!--BEGIN: HEADER--><!--END: HEADER--><!--BEGIN: BODY SECTION--><div class="body"><!--begin: content--><div class="contentLeft prTxt"><h1 class="pageHeading" id="GUID-B4ED4FD8-C1D9-453A-82C1-FEEE87F8E861"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-B4ED4FD8-C1D9-453A-82C1-FEEE87F8E861"><!----></a>Coding conventions</h1>
+<p>The coding conventions are organized under various headings, and each
+rule is tagged according to how it affects the program code.  </p>
+<p><em>viability</em> - the code will not work unless you follow this rule.
+  </p>
+<p><em>reliability</em> - the code may not work unless you follow this rule.</p>
+<p><em>maintainability</em> - the code may be difficult to modify unless
+you follow this rule.</p>
+<p><em>readability</em> - the code may be difficult to understand unless
+you follow this rule.</p>
+<p><em>reusability</em> - the code may be less usable in conjunction with
+other code unless you follow this rule.</p>
+<p><em>convention</em> - the code will be unconventional unless you follow
+this rule.</p>
+<p>The rules are also tagged according to whether they are:</p>
+<p><em>C++</em> - general 'good practice' C++ coding rules.</p>
+<p><em>Symbian</em> - Symbian OS-specific rules.</p>
+<p><em>S60</em> - S60 recommended rules.</p>
+<p>Some entries are tagged as <em>notes</em> rather than rules.</p>
+<div><h3>Contents</h3><ul>
+<li>
+<p><a href="#GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201">assertions</a></p>
+</li>
+<li>
+<p><a href="#GUID-A5AA196D-0112-4528-AB0A-900071E5AD7B">C classes</a></p>
+</li>
+<li>
+<p><a href="#GUID-732CBF96-9B76-4851-BCBD-3475EAE47C1A">class invariants</a></p>
+</li>
+<li>
+<p><a href="#GUID-E0F0E0D1-245C-499B-900B-B96881E96AA8">classes</a></p>
+</li>
+<li>
+<p><a href="#GUID-47F081B0-31A6-4F20-98D2-3580A7484784">coding style</a></p>
+</li>
+<li>
+<p><a href="#GUID-E4D44906-CC66-4329-BF26-F6524BF3345F">comments</a></p>
+</li>
+<li>
+<p><a href="#GUID-DB5A0EFF-163A-4D96-AEE3-6E6299BE1E3C">compilation errors</a></p>
+</li>
+<li>
+<p><a href="#GUID-0010648C-9552-4C89-A101-4CAAB8E3E510">constants</a></p>
+</li>
+<li>
+<p><a href="#GUID-D74E5979-37FA-4E57-933C-FF109B8541C4">construction</a></p>
+</li>
+<li>
+<p><a href="#GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4">constructors</a></p>
+</li>
+<li>
+<p><a href="#GUID-BD333DFC-714B-4FED-B65C-B926B1CEC726">consts</a></p>
+</li>
+<li>
+<p><a href="#GUID-9B4065AD-A89F-4DD0-9CF9-13D44C3C50F6">destruction</a></p>
+</li>
+<li>
+<p><a href="#GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39">destructors</a></p>
+</li>
+<li>
+<p><a href="#GUID-09E8D323-CE7E-4075-AF5C-2C8DAD16F6F1">DLLs</a></p>
+</li>
+<li>
+<p><a href="#GUID-7BED2225-C4D8-451B-BD8B-E5C76956F326">exceptions</a></p>
+</li>
+<li>
+<p><a href="#GUID-7875C679-C7B9-47E6-AF78-DF7599EDB7F9">files</a></p>
+</li>
+<li>
+<p><a href="#GUID-2D4462A7-7872-408E-A1DB-55B59D85EF13">flow control</a></p>
+</li>
+<li>
+<p><a href="#GUID-05A767D2-5C59-4E1C-B25B-79814A81E991">functions</a></p>
+</li>
+<li>
+<p><a href="#GUID-CB85CB05-94A6-49A5-B6B7-2AB059CE768A">header files</a></p>
+</li>
+<li>
+<p><a href="#GUID-93DEAD22-18B4-4759-B3D1-E307BE2CDEFD">#include</a></p>
+</li>
+<li>
+<p><a href="#GUID-DB170E38-DCFC-44EF-B7CB-A2E9BC5CDDB7">inheritance</a></p>
+</li>
+<li>
+<p><a href="#GUID-5934B566-4BB6-4975-83DB-FB91ED00ABA9">invariants</a></p>
+</li>
+<li>
+<p><a href="#GUID-8F0DAA2C-D9ED-43EC-9241-5296B1ED18AE">local variables</a></p>
+</li>
+<li>
+<p><a href="#GUID-505A7518-E163-4066-BB11-5EBB1E139FDC">M classes</a></p>
+</li>
+<li>
+<p><a href="#GUID-F98CE67A-A9C4-4BC6-B88D-E428FF014215">macros</a></p>
+</li>
+<li>
+<p><a href="#GUID-B751F9EF-4E22-46FF-A634-3358B29AB105">member variables</a></p>
+</li>
+<li>
+<p><a href="#GUID-27632127-80B4-46EF-AEDC-9C62B1B5778C">operators</a></p>
+</li>
+<li>
+<p><a href="#GUID-39C2836B-7A16-455D-8914-611AB596C982">parameters</a></p>
+</li>
+<li>
+<p><a href="#GUID-C50DD839-608C-45C0-84D1-5705467CFC65">pointers</a></p>
+</li>
+<li>
+<p><a href="#GUID-0940CE75-1E3A-446B-8A5E-76B4053C3760">postconditions</a></p>
+</li>
+<li>
+<p><a href="#GUID-4F4AF06A-164A-42EF-95BA-FDBC7A72EC59">preconditions</a></p>
+</li>
+<li>
+<p><a href="#GUID-50646384-C7BD-458B-B181-693A704129CE">R classes</a></p>
+</li>
+<li>
+<p><a href="#GUID-1190CE68-C71F-495D-8623-CCA0ED55A389">resource files</a></p>
+</li>
+<li>
+<p><a href="#GUID-EFAE77F2-7D71-4AA8-BE71-0687FAFCD4B0">statements</a></p>
+</li>
+<li>
+<p><a href="#GUID-F803AC8E-A955-4BBE-8A5A-39FF0AB030C4">strings</a></p>
+</li>
+<li>
+<p><a href="#GUID-94922621-0133-455E-B538-DCA35C0CE66A">structs</a></p>
+</li>
+<li>
+<p><a href="#GUID-A55B57C7-1DA6-4078-A713-F61A28E6DB47">T classes</a></p>
+</li>
+<li>
+<p><a href="#GUID-E74DD652-1682-4D84-A0B0-9913EA185C44">TBool types</a></p>
+</li>
+<li>
+<p><a href="#GUID-12C70C2A-F828-46B9-A159-BAD57E94565B">templates</a></p>
+</li>
+<li>
+<p><a href="#GUID-5E43F7E1-E82B-49BB-960B-B585E3F2A5FA">types</a></p>
+</li>
+<li>
+<p><a href="#GUID-42A97A9C-8337-444A-AA62-B7EAAAD9CAA2">unions</a></p>
+</li>
+<li>
+<p><a href="#GUID-A777D89D-2DBC-4C5A-885E-A04381CCBC96">variables</a></p>
+</li>
+<li>
+<p><a href="#GUID-362B7CBE-7BC1-4141-BDA6-A988A245CAB1">virtual functions</a></p>
+</li>
+</ul></div>
+<div><h3>A</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e2607">
+<p>assertions</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e2613">
+<p/>
+</th>
+<th valign="top" width="72.75747508305648%" id="d0e2618">
+<p/>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e2607 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2613 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2618 ">
+<p>A function body can start with a list of <code>__ASSERT_ALWAYS()</code> macros
+that verify that the parameters are valid. These are to check that the function
+is being called correctly. In particular they check that run-time input is
+valid, and that the object to which the function is being applied is in a
+valid state. A precondition can be read as "This function is not guaranteed
+to work correctly unless &lt;precondition expression&gt;</p>
+<p>If the function isn't part of a public API consider using the macro <code>ASSERT_DEBUG()</code> instead.</p>
+<p>Points to remember:</p>
+<ul>
+<li>
+<p>If you have a precondition that a pointer is not null, consider passing
+a reference instead of a pointer.</p>
+</li>
+<li>
+<p>If you have a precondition that a value passed in is in a valid range,
+consider passing an enumeration or a T-class object.</p>
+</li>
+<li>
+<p>Constructors may run precondition checks on their parameters. However,
+these parameters are used in the member initialisation list., so it is usually
+better to put the tests in the body of the constructor. </p>
+</li>
+<li>
+<p>Precondition assertions should be documented as comments against their
+corresponding function prototype in the header file.</p>
+</li>
+<li>
+<p>Any member function should cope with all situations not excluded by
+the preconditions expressed in the header.</p>
+</li>
+<li>
+<p>Preconditions should not be placed in <code>NewL()</code> or <code>NewLC()</code> but
+instead within the constructor and <code>ConstructL()</code> functions.
+However, they are in fact still preconditions of <code>NewL()</code> and <code>NewLC()</code> and
+as such should exist as comments in the header file.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e2607 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2613 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2618 ">
+<p>At the end of any function it can be useful to check that the value
+you are returning is valid, or that the function has performed the task it
+promised. This is behavioural self-testing. Use the macro <code>ASSERT()</code> to
+perform these tests. These are to catch programmer errors in the function
+containing the postcondition. A postcondition can be read as "When this function
+returns, &lt;postcondition expression&gt; is guaranteed to be true, provided
+that all the preconditions held when it was called".</p>
+<p>Points to remember</p>
+<ul>
+<li>
+<p>If a function has multiple returns, remember to put post-conditions
+before every return!</p>
+</li>
+<li>
+<p>If you have a post-condition that the pointer you return is not null,
+consider returning a reference.</p>
+</li>
+<li>
+<p>Post-conditions should be documented as comments against their corresponding
+function prototype in the header file.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e2607 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2613 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2618 ">
+<p>All non-trivial classes should implement invariant checking. Invariants
+can be thought of as preconditions and post-conditions that apply to all member
+functions of a class. The macro <code>__DECLARE_TEST</code> is a function
+declaration which should be invoked in the header file within a Protected
+clause. You need to implement the member function <code>void __DbgTestInvariant()
+const</code>. The first line should be a call to <code>__DbgTestInvariant()</code> on
+your base class (if the function is defined), followed by <code>ASSERT_DEBUG()</code> calls
+that verify that your member data is in a valid state.</p>
+<p><strong>Example:</strong></p>
+<pre class="codeblock" id="GUID-462FE5BD-10BA-4F2F-9D81-3423CED03455"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-462FE5BD-10BA-4F2F-9D81-3423CED03455"><!----></a>void CMyClass::__DbgTestInvariant() const
+{
+ASSERT_DEBUG(iPointer);
+ASSERT_DEBUG((iValue&gt;=KMinValue) &amp;&amp; (iValue&gt;=kmaxvalue)); }
+&lt;/pre&gt;</pre>
+<p>Every public non-static function calls <code>__TEST_INVARIANT</code> at
+the start and at the end (or only once if the function is a single line query).
+ Put Invariants before preconditions and after post-conditions. The last line
+in <code>ConstructL()</code> is <code>__TEST_INVARIANT</code>.</p>
+<p>Points to remember:</p>
+<ul>
+<li>
+<p>You cannot call functions in <code>__DbgTestInvariant()</code> that
+call <code>__TEST_INVARIANT</code> (it is best not to call any functions).</p>
+</li>
+<li>
+<p>If a function has multiple returns, remember to call <code>__TEST_INVARIANT</code> before
+every return!  </p>
+</li>
+<li>
+<p>You may call static functions at any time, as static member functions
+can't check the Invariant, not having any state to verify.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>C</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-A5AA196D-0112-4528-AB0A-900071E5AD7B"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-A5AA196D-0112-4528-AB0A-900071E5AD7B" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e2876">
+<p>C classes</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e2882">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e2884">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+
+<td colspan="2" valign="top" headers="d0e2876 d0e2882 ">
+<p>See also <a href="#GUID-E0F0E0D1-245C-499B-900B-B96881E96AA8">classes</a></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2882 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+
+<td valign="top" width="12.956810631229237%" headers="d0e2876 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2884 ">
+<p>C class objects cannot be passed or returned by value, but only through
+pointers or by reference.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e2876 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2884 ">
+<p>Passing C class objects by pointer implies either the transfer of ownership,
+or that the parameter is optional. To remove this ambiguity, consider overloading
+functions that have optional parameters.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e2876 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2884 ">
+<p>Returning C class objects by pointer implies either the transfer of
+ownership, or that the return value may be <code>NULL</code>. To remove
+this ambiguity, consider pushing the object on to the cleanup stack before
+you return it, and adding a trailing C to the function name.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-732CBF96-9B76-4851-BCBD-3475EAE47C1A"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-732CBF96-9B76-4851-BCBD-3475EAE47C1A" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e2981">
+<p>class invariants</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e2987">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e2989">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e2981 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e2987 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e2989 ">
+<p>See <a href="#GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201">assertions</a></p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-E0F0E0D1-245C-499B-900B-B96881E96AA8"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-E0F0E0D1-245C-499B-900B-B96881E96AA8" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3027">
+<p>classes</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3033">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3035">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>Every class in Symbian OS must be one of 5 kinds. To indicate which
+kind a class is, the name must be prefixed by a capital C, T, M, S, or R.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>C classes must always have a destructor (which is virtual by virtue
+of CBase). If the destructor is empty, then use the helpful comment <code>//empty
+destructor</code>.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>Try  to avoid using friend classes, as they break encapsulation. If
+you feel you need to use a friend class do the following: </p>
+<p><strong>Example:</strong></p>
+<p>Class B is a friend of Class A, in order that it can call the non-public
+member functions <code>f()</code>, <code>g()</code>, <code>h()</code>.
+We simply define an interface:</p>
+<pre class="codeblock" id="GUID-33CCAAB3-9A4D-46D5-B38A-D4004BE0CD07"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-33CCAAB3-9A4D-46D5-B38A-D4004BE0CD07"><!----></a>Class MyInterface
+{
+friend class B;
+protected:
+virtual void f() = 0;
+virtual void g() = 0;
+virtual void h() = 0;
+};
+</pre>
+<p>and then derive Class A from MyInterface.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>reusability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>Declare all classes in header files. If you want to hide a class, make
+it nested.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>There should be one (or none) <code>.cpp</code> and one <code>.h</code> file
+per class (except for nested classes).</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>Any class that is derived from <code>CBase</code> has a "C"
+prefix.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>An M class only has virtual methods, and no data. The methods can at
+most have only a trivial implementation.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>C class objects can be pushed onto the cleanup stack.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>C class objects must either be newed, or (in rare cases) be a member
+variable of another C class.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3027 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3033 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3035 ">
+<p>C classes inherit a private assignment operator from <code>CBase</code>,
+so it is not necessary for you to define one.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-47F081B0-31A6-4F20-98D2-3580A7484784"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-47F081B0-31A6-4F20-98D2-3580A7484784" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3305">
+<p>coding style </p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3311">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3313">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>Keep all lines fairly short, and always break the line if it goes off
+the edge of the screen. When you break a line, break it in a sensible place
+(for example, after rather than before an operator) and indent the following
+lines.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>Use white space to group related lines of code together.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>Use parentheses to clarify ambiguous code.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>There should be</p>
+<ul>
+<li>
+<p>no spaces around primary operators ( '.', '*', '-&gt;' ).</p>
+</li>
+<li>
+<p>no spaces between unary operators and their operands </p>
+</li>
+<li>
+<p>one space on each side of all other operators </p>
+</li>
+<li>
+<p>no space between function names or macros and their arguments </p>
+</li>
+<li>
+<p>one space between a keyword and its parenthesised arguments</p>
+</li>
+<li>
+<p>matching spaces with matching parentheses.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>There must be no more than 120 characters per line. Indents should be
+by exactly four spaces.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3305 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3311 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3313 ">
+<p>Braces should be indented according to Symbian's standards.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-E4D44906-CC66-4329-BF26-F6524BF3345F"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-E4D44906-CC66-4329-BF26-F6524BF3345F" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3508">
+<p>comments</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3514">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3516">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3508 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3514 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3516 ">
+<p>Don't write comments that simply mirror the code. Try to make your code
+less obscure instead of papering over it with comments.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3508 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3514 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3516 ">
+<p>Stylised comment blocks in the format described below should be inserted
+into header files to help with automatic document generation. The convention
+is generally that used by Together, JavaDoc and CcDoc. There should be a separate
+comment block for each class, operation, and member variable declared in the
+header file.</p>
+<p>A comment block starts with a '/**' and ends with a '*/'. Each line
+starts with an asterisk '*'. The basic format is: </p>
+<pre class="codeblock" id="GUID-A9A88637-C34E-4224-B39D-9360349375C6"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-A9A88637-C34E-4224-B39D-9360349375C6"><!----></a>/**
+* &lt;BriefDescription&gt;
+* &lt;MarkUpTag&gt;
+* &lt;MarkUpTag&gt;
+...
+* &lt;MarkUpTag&gt;
+*/</pre>
+<p>Alternatively a shorter form can be used:</p>
+<pre class="codeblock" id="GUID-222CF601-E512-402B-8400-EE5A6752D0C0"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-222CF601-E512-402B-8400-EE5A6752D0C0"><!----></a>/** &lt;BriefDescription&gt; */</pre>
+<p>The <code>&lt;BriefDescription&gt;</code> should be an informal,
+one-sentence description of the class, operation or member variable.</p>
+<p>The <code>&lt;MarkUpTag&gt;</code> entries start with an <code>@</code> sign
+and are the first things (after the optional leading asterisk) on the line.</p>
+<p><strong>Example: </strong></p>
+<pre class="codeblock" id="GUID-0A9203BF-FBCD-4D57-8055-50C1C90947C6"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-0A9203BF-FBCD-4D57-8055-50C1C90947C6"><!----></a>/*
+* A Rectangle object, which can be moved and rotated.
+*
+* @invariants iLength &gt; 0;
+*  iHeight &gt; 0;
+*/
+class TRectangle
+{
+public:
+/**
+* Constructor
+*
+* @semantics Construct a new rectangle
+*
+at position ( aX , aY ),
+* length aLength, height aHeight.
+* @stereotype  constructor
+* @preconditions aLength &gt;= 0; aHeight &gt;= 0;
+*/
+TRectangle( TReal x, TReal y, TReal aLength, TReal aHeight);
+/** 
+* Rotate operation
+*
+* @semantics Rotate this rectangle by aAngle degrees
+* about its centre
+* @stereotype modifier
+* @preconditions aAngle &gt;= 0; aAngle &lt;= 360;
+*/ void rotate(TReal aAngle);
+/**
+* Absolute move operation
+*
+* @stereotype  modifier
+* @semantics Move this rectangle to position ( aX , aY ).
+*/
+void move_to(float x, float y);
+//data
+private:
+/** The x position of this rectangle*/
+TReal iPosX;
+/** The y position of this rectangle*/
+TReal iPosY;
+/** The length of this rectangle*/
+TReal iLength;
+/** The height of this rectangle*/
+TReal iHeight; 
+}
+</pre>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3508 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3514 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3516 ">
+<p>Use // for permanent comments in <code>.cpp</code> file code.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-DB5A0EFF-163A-4D96-AEE3-6E6299BE1E3C"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-DB5A0EFF-163A-4D96-AEE3-6E6299BE1E3C" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3635">
+<p>compilation errors</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3641">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3643">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3635 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3641 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3643 ">
+<p>You should have zero compiler errors, except for unavoidable warnings
+that are due to the libraries you are using. Ideally you should also have
+a minimum of Lint warnings. Fix any Lint warnings that are fixable unless
+blatantly foolish and counter-productive.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-0010648C-9552-4C89-A101-4CAAB8E3E510"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-0010648C-9552-4C89-A101-4CAAB8E3E510" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3689">
+<p>constants</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3695">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3697">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e3689 d0e3695 ">
+<p>See also <a href="#GUID-BD333DFC-714B-4FED-B65C-B926B1CEC726">consts</a></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3695 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3689 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3695 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3697 ">
+<p>The name for a constant should be prefixed by a capital K. </p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3689 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3695 ">&nbsp;</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3697 ">
+<p>Constants should be implemented as either:</p>
+<ul>
+<li>
+<p>enums scoped within a class (for example, <code>enum { KMagicNumber
+= 3 };</code> , that is to say, no type name, and all on one line), or</p>
+</li>
+<li>
+<p>class scoped static members (for example, <code>static const TReal
+KMagicNumber;</code>) which must then be defined once only in a .cpp file.
+Note that this only works for built-in types, and that TInt64 is not a built-in
+type. </p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-D74E5979-37FA-4E57-933C-FF109B8541C4"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-D74E5979-37FA-4E57-933C-FF109B8541C4" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="12.956810631229237%" id="d0e3790">
+<p>construction</p>
+</th>
+<th valign="top" width="14.285714285714288%" id="d0e3796">&nbsp;</th>
+<th valign="top" width="72.75747508305648%" id="d0e3798">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e3790 d0e3796 ">
+<p>See also <a href="#GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4">constructors</a>, <a href="#GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39">destructors</a></p>
+</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3796 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="12.956810631229237%" headers="d0e3790 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3796 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3798 ">
+<p>C-classes are the only classes that you can <code>new</code>,
+and this is almost always the only way they are constructed.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="12.956810631229237%" headers="d0e3790 ">&nbsp;</td>
+<td valign="top" width="14.285714285714288%" headers="d0e3796 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.75747508305648%" headers="d0e3798 ">
+<p>All C-class member variables are nulled on creation.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e3876">
+<p>constructors</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e3882">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e3884">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e3876 d0e3882 ">
+<p>See also <a href="#GUID-D74E5979-37FA-4E57-933C-FF109B8541C4">construction</a>, <a href="#GUID-9B4065AD-A89F-4DD0-9CF9-13D44C3C50F6">destruction</a>, <a href="#GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39">destructors</a> </p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p><code>ConstructL()</code> should never be a virtual function,
+since a partially constructed object isn't a polymorphic entity.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p>Constructors and <code>ConstructL()</code> in C classes must
+be protected (or private), and should be empty apart from a member initialisation
+list and <code>ASSERT</code> macros. This enforces correct two-phase
+construction of objects.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p>You must always have a <code>NewLC()</code> in a C class, unless
+it's a nested class where you have a bit more leeway. The <code>NewL()</code> is
+optional, and should always be implemented in terms of the <code>NewLC()</code>.
+Both should always follow the standard pattern, and call <code>ConstructL()</code>.
+Non standard construction makes code unclear, and prone to cleanup stack errors.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p>In the implementation of <code>ConstructL()</code>, you should
+always call <code>ConstructL()</code> on the base class first. In
+certain circumstances you cannot help but break this rule, for example when
+you need to read in parameters from a resource file. Always scope this call
+to the base class to make things clearer.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">&nbsp;</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p>For small C classes it is acceptable to have a public constructor to
+allow them to be member variables of other C classes. This is normally only
+done for classes without a <code>ConstructL()</code>, such as the
+Symbian OS array classes.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">&nbsp;</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p><code>NewL()</code> and <code>NewLC()</code> in C classes
+should be static, usually public, functions.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e3876 ">&nbsp;</td>
+<td valign="top" width="14.046822742474916%" headers="d0e3882 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e3884 ">
+<p>Copy constructors lose their "special status" in Symbian OS. Normally
+only classes with a destructor need copy constructors, and this means C-classes,
+but C-classes are only instantiated via <code>NewL()</code> and <code>NewLC()</code>.
+C-classes derive a private copy constructor from <code>CBase</code>,
+and since any you define are never public, they cannot be called implicitly.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-BD333DFC-714B-4FED-B65C-B926B1CEC726"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-BD333DFC-714B-4FED-B65C-B926B1CEC726" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4116">
+<p>consts</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4122">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4124">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e4116 d0e4122 ">
+<p>See also <a href="#GUID-0010648C-9552-4C89-A101-4CAAB8E3E510">constants</a></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4122 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4116 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4122 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4124 ">
+<p><code>Const</code> correctness should be applied throughout.
+Most functions that return a value should not change the object they are applied
+to. These are called queries, and can mostly be made <code>const</code>.</p>
+<p>One word of caution, however: the compiler enforces that <code>const</code> functions
+preserve the object's bitwise state, but leaves it up to you to ensure that
+the object's abstract state is unchanged.</p>
+<p><strong>Example:</strong> If you have member variable that is a pointer to another
+object, then the compiler allows you to call <code>non-const</code> functions
+on that object from within a <code>const</code> function!</p>
+<pre class="codeblock" id="GUID-22690A58-4A44-4E3C-B9CD-F06B42B1A949"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-22690A58-4A44-4E3C-B9CD-F06B42B1A949"><!----></a>Class WorstCaseScenario
+{
+
+public:
+WorstCaseScenario() : iThis(this)
+{
+}
+void ChangeTheWorld();
+TBool InnocentLookingFunction() const
+{
+iThis-&gt;ChangeTheWorld();
+}
+WorstCaseScenario* iThis;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>D</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9B4065AD-A89F-4DD0-9CF9-13D44C3C50F6"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-9B4065AD-A89F-4DD0-9CF9-13D44C3C50F6" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4214">
+<p><strong>destruction</strong></p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4221">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4223">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e4214 d0e4221 ">
+<p>See also <a href="#GUID-D74E5979-37FA-4E57-933C-FF109B8541C4">construction</a>, <a href="#GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4">constructors</a>, <a href="#GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39">destructors</a></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4221 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4214 ">&nbsp;</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4221 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4223 ">
+<p>If an object is deleted twice, this is a fatal error. This will occur
+if a <code>Leave</code> occurs whilst an object is both on the cleanup
+stack and is to be deleted in some object's destructor.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4286">
+<p>destructors</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4292">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4294">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e4286 d0e4292 ">
+<p>See also <a href="#GUID-D74E5979-37FA-4E57-933C-FF109B8541C4">construction</a>, <a href="#GUID-35D2222F-490F-41C6-A6CE-BE434126A8C4">constructors</a>, <a href="#GUID-9B4065AD-A89F-4DD0-9CF9-13D44C3C50F6">destruction</a></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4292 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4286 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4292 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4294 ">
+<p>In a destructor or function called from a destructor you cannot assume
+that the object is fully constructed, hence you must check the state of the
+object and cope with all situations. You must not throw any exceptions.</p>
+<p><strong>Example:</strong></p>
+<pre class="codeblock" id="GUID-010ECD62-F078-46B5-AD2B-876CD6B8642A"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-010ECD62-F078-46B5-AD2B-876CD6B8642A"><!----></a>MyClass::~MyClass()
+{
+if(iObject) //might be NULL if constructor failed
+{
+iObject-&gt;Close();
+delete iObject;
+iObject = NULL;
+}
+delete iFred;   //delete NULL is allowed
+iFred = NULL;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-09E8D323-CE7E-4075-AF5C-2C8DAD16F6F1"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-09E8D323-CE7E-4075-AF5C-2C8DAD16F6F1" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4366">
+<p>DLLs</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4372">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4374">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4366 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4372 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4374 ">
+<p>You must not have any global non-constant data in a <code>DLL</code>.
+This includes static member variables. The only global data you may have is
+constant static built-in types, that is, ones with no constructor.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>E</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7BED2225-C4D8-451B-BD8B-E5C76956F326"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-7BED2225-C4D8-451B-BD8B-E5C76956F326" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4429">
+<p>exceptions</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4435">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4437">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4429 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4435 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4437 ">
+<p>You cannot use C++ style exceptions.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>F</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7875C679-C7B9-47E6-AF78-DF7599EDB7F9"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-7875C679-C7B9-47E6-AF78-DF7599EDB7F9" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4489">
+<p>files</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4495">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4497">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e4489 d0e4495 ">
+<p>See also <a href="#GUID-CB85CB05-94A6-49A5-B6B7-2AB059CE768A">header
+files</a></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>Place Control IDs, and defines in <code>.hrh</code> files.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>readabillity</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>In a resource file, always use comments! Resource file comments are
+written to describe the usage of the file so that localisation can be based
+on them.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>Naming of <code>.mmp</code> and <code>.rss</code> files:
+If there is one, name it after the project (for example <code>animation.mmp</code>).
+If there are more than one, name them after the subproject (for example <code>engine.mmp</code>).</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>There should be one directory per <code>.mmp</code> file, called
+group, or <code>&lt;subproject&gt;</code>. This should contain <code>.mmp</code>, <code>.def</code> and <code>readme</code> files.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>Public header files should go in a subdirectory inc, or <code>&lt;subproject&gt;</code> inc.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>Documents should all go in a subdirectory docs, or <code>&lt;subproject&gt;</code> docs.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>All files associated with the <code>.aif</code> file should
+be placed in a subdirectory aif. (To avoid name clashes with the <code>.rss</code> file)</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>Test files should go in a subdirectory tsrc or <code>&lt;subproject&gt;</code> tsrc.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">&nbsp;</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>All other files should go in a subdirectory src, or <code>&lt;subproject&gt;</code> src.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4489 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4495 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4497 ">
+<p>In a resource file, use the same bracketing conventions you're using
+in your source files.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-2D4462A7-7872-408E-A1DB-55B59D85EF13"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-2D4462A7-7872-408E-A1DB-55B59D85EF13" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4776">
+<p>flow control</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4782">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4784">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4776 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4782 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4784 ">
+<p>Switch statements should always have a default clause. If the default
+should never occur, the default clause should be an assertion to that effect.
+The only clauses that should follow through (that is, no break) are empty
+ones, for example:</p>
+<pre class="codeblock" id="GUID-054B2ED0-4214-434B-A62C-2EB40B23A000"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-054B2ED0-4214-434B-A62C-2EB40B23A000"><!----></a>switch(value)
+{
+case 0:
+case 1:
+case 2:
+DoSomething();
+break;
+case 4:
+case 5:
+DoSomethingElse();
+break;
+default:
+ASSERT(EFalse);//cannot occur
+}
+</pre>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4776 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4782 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4784 ">
+<p>Never use <code>goto</code>.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4776 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4782 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4784 ">
+<p>Single line statements after a <code>for</code> or an <code>if</code> statement
+should be parenthesized, that is:</p>
+<pre class="codeblock" id="GUID-665AF234-289F-4EFE-92A2-3C06B4DCDFE9"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-665AF234-289F-4EFE-92A2-3C06B4DCDFE9"><!----></a>if(wantToDoSomething)
+{
+DoSomething();
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-05A767D2-5C59-4E1C-B25B-79814A81E991"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-05A767D2-5C59-4E1C-B25B-79814A81E991" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.043478260869565%" id="d0e4891">
+<p>functions</p>
+</th>
+<th valign="top" width="14.046822742474916%" id="d0e4897">&nbsp;</th>
+<th valign="top" width="72.90969899665552%" id="d0e4899">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e4891 d0e4897 ">
+<p>See also <a href="#GUID-362B7CBE-7BC1-4141-BDA6-A988A245CAB1">virtual
+functions</a></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Do not use default parameters (though exceptions can be made for having
+one default parameter only). If you have a function with 'n' default parameters,
+replace it with 'n+' overloaded versions of that function. It is usual to
+discover that</p>
+<ul>
+<li>
+<p>not all the overloads are needed</p>
+</li>
+<li>
+<p>some better choices of overload can be found</p>
+</li>
+<li>
+<p>some of the overloads can be renamed more appropriately </p>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="codeblock" id="GUID-3EBF9EAA-29BD-412F-83E3-7A38249D8A28"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-3EBF9EAA-29BD-412F-83E3-7A38249D8A28"><!----></a>AddControl(Control&amp; ctrl, ControlObserver* observer = 0);
+</pre>
+<p>Becomes:</p>
+<pre class="codeblock" id="GUID-F50223CA-8118-4E94-AF7C-C6413592DF63"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F50223CA-8118-4E94-AF7C-C6413592DF63"><!----></a>AddControl(Control&amp; ctrl); 
+AddControl(Control&amp; ctrl, ControlObserver* observer);
+</pre>
+<p>Which can be improved further to become:</p>
+<pre class="codeblock" id="GUID-641C2C49-4BC4-4C4A-A824-A0174ED6781D"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-641C2C49-4BC4-4C4A-A824-A0174ED6781D"><!----></a>AddControl(Control&amp; ctrl); 
+AddControl(Control&amp; ctrl, ControlObserver&amp; observer);
+</pre>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Separate functions into either</p>
+<ul>
+<li>
+<p>modifiers - <code>non-const</code> functions that don't return
+a value, or </p>
+</li>
+<li>
+<p>queries - functions that return a value, are usually <code>const</code>,
+and due to preconditions probably don't <code>Leave</code>.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Keep function bodies small.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Never return an error code. Use the <code>Leave</code> mechanism
+instead.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Function names should begin with a capital letter.</p>
+<p>Normally Modifiers are expected to do something, and hence the name
+is in the form of an order.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Functions should be defined in the same order as in the header file.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>All inline functions should be in an <code>.inl</code> file.
+During development don't use inline functions. When you need to optimise before
+releasing the code, cut and paste the functions to be inlined from the <code>.cpp</code> file
+to an inline file ("<code>.inl</code>") which is then included by
+the header. Remember to add the keyword inline to the functions.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Function names that end in a "C" indicate that the function returns
+a pointer that has been pushed onto the cleanup stack.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>Function names that end in a "D" indicate that the function call will
+result in the deletion of the object.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.043478260869565%" headers="d0e4891 ">&nbsp;</td>
+<td valign="top" width="14.046822742474916%" headers="d0e4897 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="72.90969899665552%" headers="d0e4899 ">
+<p>When a function "<code>Leaves</code>", control is passed up
+the function call stack to the first call which was protected with a <code>TRAP</code> clause.
+The cleanup stack is then unwound, and all objects which have been pushed
+onto the cleanup stack since this <code>TRAP</code> clause are deleted.
+This means that in code that can leave, the only destructors that you can
+ensure are called, are for objects that can be pushed onto the cleanup stack,
+or which are members of other objects that have been pushed onto the cleanup
+stack, and so on, transitively.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>H</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-CB85CB05-94A6-49A5-B6B7-2AB059CE768A"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-CB85CB05-94A6-49A5-B6B7-2AB059CE768A" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5254">
+<p>header files</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5260">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5262">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5254 d0e5260 ">
+<p>See also <a href="#GUID-7875C679-C7B9-47E6-AF78-DF7599EDB7F9">files</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5260 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5254 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5260 ">&nbsp;</td>
+<td valign="top" width="73%" headers="d0e5262 ">
+<p>In header files, use standard anti-nesting, for example:</p>
+<pre class="codeblock" id="GUID-9A677825-2CA0-4730-B1C6-2C22389F9CA9"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9A677825-2CA0-4730-B1C6-2C22389F9CA9"><!----></a>#ifdef __CMYCLASS__ 
+#define __CMYCLASS__</pre>
+<p>body of header</p>
+<pre class="codeblock" id="GUID-590DD417-7463-409A-AFC4-67C5E965EA92"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-590DD417-7463-409A-AFC4-67C5E965EA92"><!----></a>#endif</pre>
+<p>Always use explicit access control specifiers. List the public members
+first, then the protected ones, then the private ones. List the data members
+in a group after the methods. Put any "special" methods first within each
+section (for example, <code>NewL</code> / <code>NewLC</code> /
+constructors / destructors / operators). Group methods by sets of functionality.
+Name variables in the function declaration. Group overridden methods together
+within each section, labelling which immediate base class they are from (via
+//from <code>CMyBase</code> Class), and do not specify the keyword
+virtual, for example:</p>
+<pre class="codeblock" id="GUID-7444F414-77D3-40A1-A875-71FD6BA0646A"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7444F414-77D3-40A1-A875-71FD6BA0646A"><!----></a>//from CCoeControl
+void Draw() const; 
+//from MObserver
+void Notify();
+void StopObserving();
+</pre>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5254 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5260 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5262 ">
+<p>Use <code>#ifndef</code> when including header files within
+header files. </p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>I</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-93DEAD22-18B4-4759-B3D1-E307BE2CDEFD"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-93DEAD22-18B4-4759-B3D1-E307BE2CDEFD" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5372">
+<p>#include</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5378">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5380">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5372 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5378 ">&nbsp;</td>
+<td valign="top" width="73%" headers="d0e5380 ">
+<p>Put system includes first (using angle brackets), followed by local
+includes (using quotes). </p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5372 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5378 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5380 ">
+<p>Prefer forward declarations to <code>#include</code> statements,
+otherwise you end up with horrendously long build times on larger projects.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-DB170E38-DCFC-44EF-B7CB-A2E9BC5CDDB7"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-DB170E38-DCFC-44EF-B7CB-A2E9BC5CDDB7" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5447">
+<p>inheritance</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5453">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5455">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5447 d0e5453 ">
+<p>See also <a href="#GUID-362B7CBE-7BC1-4141-BDA6-A988A245CAB1">virtual
+functions</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5453 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5447 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5453 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5455 ">
+<p>Never use multiple inheritance except for interfaces (that is, <code>mixin</code> classes).
+Interfaces must have no member data. However they need not be pure virtual;
+they may have trivial implementation of functions.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5447 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5453 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5455 ">
+<p>Never use private or protected inheritance. Consider whether composition
+would be more appropriate.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-5934B566-4BB6-4975-83DB-FB91ED00ABA9"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-5934B566-4BB6-4975-83DB-FB91ED00ABA9" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5540">
+<p>invariants</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5546">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5548">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5540 d0e5546 ">
+<p>See also <a href="#GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201">assertions</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5546 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5540 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5546 ">
+<p/>
+</td>
+<td valign="top" width="73%" headers="d0e5548 ">
+<p>See assertions.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>L</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-8F0DAA2C-D9ED-43EC-9241-5296B1ED18AE"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-8F0DAA2C-D9ED-43EC-9241-5296B1ED18AE" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5606">
+<p>local variables</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5612">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5614">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5606 d0e5612 ">
+<p>See also <a href="#GUID-A777D89D-2DBC-4C5A-885E-A04381CCBC96">variables</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5612 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5606 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5612 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5614 ">
+<p>Local variables should be defined as late as possible, that is near
+to their first use.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5606 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5612 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5614 ">
+<p>Never use static local variables.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3><!--no section title--></h3><p>M</p><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-505A7518-E163-4066-BB11-5EBB1E139FDC"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-505A7518-E163-4066-BB11-5EBB1E139FDC" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5702">
+<p>M classes</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5708">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5710">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5702 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5708 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5710 ">
+<p>M class objects cannot be passed or returned by value. The choice between
+pointer and reference should be made according to whether a <code>NULL</code> value
+is acceptable.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F98CE67A-A9C4-4BC6-B88D-E428FF014215"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-F98CE67A-A9C4-4BC6-B88D-E428FF014215" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5754">
+<p>macros</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5760">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5762">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5754 d0e5760 ">
+<p>See also <a href="#GUID-05A767D2-5C59-4E1C-B25B-79814A81E991">functions</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5760 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5754 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5760 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5762 ">
+<p>Avoid macros. Any macros you do use should be all capitals, using underscores
+to separate words. Use <code>enums</code> and <code>const static</code> instead
+of <code>#defining</code> constants. Inline functions can replace
+many other uses of macros. <code>#ifdef DEBUG</code> is acceptable,
+as is the <code>ASSERT</code> family of macros.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-B751F9EF-4E22-46FF-A634-3358B29AB105"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-B751F9EF-4E22-46FF-A634-3358B29AB105" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5836">
+<p>member variables </p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5842">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5844">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e5836 d0e5842 ">
+<p>See also <a href="#GUID-A777D89D-2DBC-4C5A-885E-A04381CCBC96">variables</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5842 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5836 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5842 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5844 ">
+<p>It is better by far to encapsulate member data than return references
+to it . If you must return references to member data, it is better to return
+a <code>const</code> reference. If you must return a <code>non-const</code> reference,
+you need to provide both a <code>const</code> and a <code>non-const</code> (overloaded)
+accessor function, or you won't be able to call it from a <code>const</code> member
+function!</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5836 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5842 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5844 ">
+<p>Whenever you delete member variables, you must set them to <code>NULL</code>.
+This is a safeguard against many nasty difficult to trace bugs. </p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e5836 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5842 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5844 ">
+<p>Never have public member data.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>O</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-27632127-80B4-46EF-AEDC-9C62B1B5778C"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-27632127-80B4-46EF-AEDC-9C62B1B5778C" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e5973">
+<p>operators</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e5979">&nbsp;</th>
+<th valign="top" width="73%" id="d0e5981">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e5973 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e5979 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e5981 ">
+<p>Assignment operators must handle self-assignment, though this becomes
+mostly irrelevant in Symbian OS.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>P</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-39C2836B-7A16-455D-8914-611AB596C982"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-39C2836B-7A16-455D-8914-611AB596C982" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6033">
+<p>parameters</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6039">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6041">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6033 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6039 ">&nbsp;</td>
+<td valign="top" width="73%" headers="d0e6041 ">
+<p>In source files, use the same parameter names as you had in the header
+file.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6033 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6039 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6041 ">
+<p>Never use ellipsis notation, that is, <code>func(...)</code>.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-C50DD839-608C-45C0-84D1-5705467CFC65"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-C50DD839-608C-45C0-84D1-5705467CFC65" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6108">
+<p>pointers </p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6114">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6116">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6108 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6114 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6116 ">
+<p>Never use pointer arithmetic.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6108 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6114 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6116 ">
+<p>Never use pointer casts. Unfortunately, sometimes libraries you are
+using force you to cast return values. In this case encapsulate the cast in
+a function call, and use standard C++ casts rather than C style casts (for
+example, <code>dynamic_cast</code>). </p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6108 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6114 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6116 ">
+<p>Initialize all pointers to <code>NULL</code> (not <code>0</code>). </p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6108 ">
+<p><em>reusability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6114 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6116 ">
+<p>Use descriptors and other specialized classes instead of pointers when
+storing data or handling strings.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6108 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6114 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6116 ">
+<p>Check for non-null pointers via <code>if (ptr)</code> instead
+of <code>if(ptr!=NULL)</code>.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-0940CE75-1E3A-446B-8A5E-76B4053C3760"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-0940CE75-1E3A-446B-8A5E-76B4053C3760" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6269">
+<p>postconditions</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6275">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6277">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6269 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6275 ">
+<p/>
+</td>
+<td valign="top" width="73%" headers="d0e6277 ">
+<p>See <a href="#GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201">assertions</a>.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-4F4AF06A-164A-42EF-95BA-FDBC7A72EC59"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-4F4AF06A-164A-42EF-95BA-FDBC7A72EC59" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6319">
+<p>preconditions</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6325">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6327">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6319 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6325 ">
+<p/>
+</td>
+<td valign="top" width="73%" headers="d0e6327 ">
+<p>See <a href="#GUID-06384A29-35BE-4B85-9AA3-B0B1936FA201">assertions</a>.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>R</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-50646384-C7BD-458B-B181-693A704129CE"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-50646384-C7BD-458B-B181-693A704129CE" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6375">
+<p>R classes</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6381">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6383">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e6375 d0e6381 ">
+<p>See also <a href="#GUID-4D3937AD-6381-4FAA-9C6F-54C1B61E6C39">destructors</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6375 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6383 ">
+<p>You cannot push R-class objects onto the cleanup stack, hence they must
+not have a destructor.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6375 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6383 ">
+<p>You shouldn't pass R class objects by value. Since R class variables
+are system resources you shouldn't make copies of them.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6375 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6383 ">
+<p>R classes must initialize all member data in the constructor. You cannot
+rely on members being zeroed.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6375 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6383 ">
+<p>R class objects must not be created via new.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6375 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6381 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6383 ">
+<p>It is generally necessary to "open" and "close" R-type objects, and
+hence you see code like this:</p>
+<pre class="codeblock" id="GUID-5C5397C7-5498-475A-B756-1CC7948ED5AA"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-5C5397C7-5498-475A-B756-1CC7948ED5AA"><!----></a>RFile file;
+file.OpenL();
+TRAPD(err,file.ReadL());
+if(err)
+{
+file.CloseL();
+User::Leave(err);
+}
+//etc. etc.
+</pre>
+<p>This is inefficient, and makes code quite unreadable, being (in effect)
+a return to the era of checking return values for error codes. There is a
+simple method for bypassing this, shown in the following example:</p>
+<pre class="codeblock" id="GUID-9E5224EF-3E5E-4A99-8320-E3B1421725F7"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9E5224EF-3E5E-4A99-8320-E3B1421725F7"><!----></a>class SRClassCleanup
+{
+public:
+static void OpenLC(RFile&amp; aFile)
+{
+User::LeaveIfError(aFile.OpenL);
+CleanupStack::PushL(TCleanupItem
+(ReleaseRFileOnCleanup,&amp;aFile));
+}
+private:
+static void ReleaseRFileOnCleanup(TAny* aObject)
+{
+REINTERPRET_CAST(RFile*,aObject)-&gt;Close();
+}
+//repeat for all R-Classes in your project.
+};
+</pre>
+<p>Then we can simplify the previous example to the following (assuming
+we've derived from <code>SRClassCleanup</code>):</p>
+<pre class="codeblock" id="GUID-BC44EDC2-5F27-4BF0-B1C5-5997A15D4E48"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-BC44EDC2-5F27-4BF0-B1C5-5997A15D4E48"><!----></a>RFile file;
+OpenLC(file);
+file-&gt;ReadL();
+//etc. etc.
+CleanupStack::PopAndDestroy();//close file
+</pre>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-1190CE68-C71F-495D-8623-CCA0ED55A389"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-1190CE68-C71F-495D-8623-CCA0ED55A389" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6547">
+<p>resource files</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6553">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6555">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6547 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6553 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6555 ">
+<p>Place resource structures in <code>.rh</code> file.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6547 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6553 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6555 ">
+<p>In a resource file, write resource names in lower case.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>S</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-EFAE77F2-7D71-4AA8-BE71-0687FAFCD4B0"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-EFAE77F2-7D71-4AA8-BE71-0687FAFCD4B0" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6633">
+<p>statements</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6639">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6641">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6633 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6639 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6641 ">
+<p>Never modify two different objects in the same statement.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6633 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6639 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6641 ">
+<p>Break statements, multiple returns, and even continue may make your
+code clearer. Use them when they make your code clearer. Don't use them if
+they make it less clear!</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F803AC8E-A955-4BBE-8A5A-39FF0AB030C4"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-F803AC8E-A955-4BBE-8A5A-39FF0AB030C4" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6710">
+<p>strings</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6716">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6718">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6710 ">
+<p><em>reusability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6716 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6718 ">
+<p>Always use resource files instead of string constants.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-94922621-0133-455E-B538-DCA35C0CE66A"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-94922621-0133-455E-B538-DCA35C0CE66A" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6764">
+<p>structs</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6770">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6772">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6764 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6770 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6772 ">
+<p>Always use <code>class</code> instead of <code>struct</code>.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>T</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-A55B57C7-1DA6-4078-A713-F61A28E6DB47"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-A55B57C7-1DA6-4078-A713-F61A28E6DB47" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6830">
+<p>T classes</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6836">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6838">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6830 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6836 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6838 ">
+<p>Since T class objects cannot be pushed onto the cleanup stack, they
+must not have a destructor as you cannot ensure that it is called in all circumstances.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6830 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6836 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6838 ">
+<p>T class objects must not be created via new.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6830 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6836 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6838 ">
+<p>T class objects are returned by value, and passed by reference or value.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-E74DD652-1682-4D84-A0B0-9913EA185C44"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-E74DD652-1682-4D84-A0B0-9913EA185C44" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6925">
+<p>TBool types</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6931">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6933">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6925 ">&nbsp;</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6931 ">
+<p><em>Symbian (note)</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6933 ">
+<p>The compiler will not allow you to compare TBool types with <code>ETrue</code> and <code>EFalse</code>.
+Instead consider, for example, <code>if ( !Visible() ) )</code>.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-12C70C2A-F828-46B9-A159-BAD57E94565B"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-12C70C2A-F828-46B9-A159-BAD57E94565B" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e6983">
+<p>templates</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e6989">&nbsp;</th>
+<th valign="top" width="73%" id="d0e6991">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e6983 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6989 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6991 ">
+<p>Templates should be used only for defining universal containers. Any
+template should be tested carefully on the target platform.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e6983 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e6989 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e6991 ">
+<p>Templates should never be used in conjunction with virtual functions.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-5E43F7E1-E82B-49BB-960B-B585E3F2A5FA"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-5E43F7E1-E82B-49BB-960B-B585E3F2A5FA" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e7060">
+<p>types</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e7066">&nbsp;</th>
+<th valign="top" width="73%" id="d0e7068">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7060 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7066 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7068 ">
+<p>Always use Symbian OS types, for example, <code>TInt</code> instead
+of <code>int</code>.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7060 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7066 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7068 ">
+<p>Don't use the explicit type forms (for example <code>TInt16</code>)
+except in rare circumstances (for example reading from resource files).</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7060 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7066 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7068 ">
+<p>For conversion between base types, always use explicit casts - it clarifies
+your code and removes warnings.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7060 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7066 ">&nbsp;</td>
+<td valign="top" width="73%" headers="d0e7068 ">
+<p>The name for the enumeration type should have a capital <code>T</code> prefix,
+the enumeration members should have a capital <code>E</code> prefix.</p>
+<p>Use relevant, meaningful, and unambiguous names for <code>enums</code>.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>U</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-42A97A9C-8337-444A-AA62-B7EAAAD9CAA2"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-42A97A9C-8337-444A-AA62-B7EAAAD9CAA2" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e7205">
+<p>unions</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e7211">&nbsp;</th>
+<th valign="top" width="73%" id="d0e7213">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7205 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7211 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7213 ">
+<p>Never use a <code>union</code>, unless you are forced to when
+writing low-level machine-specific code.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+<div><h3>V</h3><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-A777D89D-2DBC-4C5A-885E-A04381CCBC96"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-A777D89D-2DBC-4C5A-885E-A04381CCBC96" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e7268">
+<p>variables</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e7274">&nbsp;</th>
+<th valign="top" width="73%" id="d0e7276">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e7268 d0e7274 ">
+<p>See also <a href="#GUID-8F0DAA2C-D9ED-43EC-9241-5296B1ED18AE">local
+variables</a>, <a href="#GUID-B751F9EF-4E22-46FF-A634-3358B29AB105">member
+variables</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Only a single variable declaration should be made per statement.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Put the pointer or reference indicator next to the type name, with no
+separating space.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Variable names start with (some or none) Symbian OS prefixes (i, a,
+C, M, T, R, E, K, S), followed by concatenated words (that is, no underscore
+separator), the first letter of each word being capitalised, followed by (possibly)
+Symbian OS postfixes (L, C, D).</p>
+<p>The only exception to this rule is that local variables have a lower
+case first letter to distinguish them from functions.</p>
+<p>Don't use numbers or abbreviations in names (except for test code).</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Variable names should be abstract nouns like <code>windSpeed</code>, <code>windowPosition</code>.
+Make them long enough to be descriptive (although it is fine to use variables
+like i or j within a for loop). </p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Local variable names should start with a lower case letter.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Parameter names should be prefixed with a lower case "a", followed by
+an upper case letter.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7268 ">
+<p><em>convention</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7274 ">
+<p><em>Symbian</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7276 ">
+<p>Member data names should be prefixed with a lower case "i", followed
+by an upper case letter.</p>
+</td>
+</tr>
+</tbody>
+</table></div><div class="tablenoborder"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-362B7CBE-7BC1-4141-BDA6-A988A245CAB1"><!----></a><table cellpadding="4" cellspacing="0" summary="" id="GUID-362B7CBE-7BC1-4141-BDA6-A988A245CAB1" frame="border" border="1" rules="all">
+
+
+
+<thead align="left">
+<tr class="title ">
+<th valign="top" width="13.333333333333334%" id="d0e7488">
+<p>virtual functions</p>
+</th>
+<th valign="top" width="13.666666666666666%" id="d0e7494">&nbsp;</th>
+<th valign="top" width="73%" id="d0e7496">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td colspan="2" valign="top" headers="d0e7488 d0e7494 ">
+<p>See also <a href="#GUID-05A767D2-5C59-4E1C-B25B-79814A81E991">functions</a>, <a href="#GUID-DB170E38-DCFC-44EF-B7CB-A2E9BC5CDDB7">inheritance</a></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">&nbsp;</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>viability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>You should never call a virtual function from within a constructor or
+destructor.</p>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>Never overload virtual functions.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>When implementing a virtual function you often need to call the base
+class implementation. When you scope the call you should use your immediate
+base class:</p>
+<pre class="codeblock" id="GUID-91D22085-0CD3-42D5-AF63-9D0F259AC8C9"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-91D22085-0CD3-42D5-AF63-9D0F259AC8C9"><!----></a>SportsCar::DoSomething()
+{
+FastCar::DoSomething();
+//code here
+}
+</pre>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>S60</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>Virtual functions should not be inline, except for destructors.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>maintainability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>When implementing a virtual function you often need to call the base
+class implementation. This should normally be done first or last:</p>
+<pre class="codeblock" id="GUID-9F77C8C0-9826-4189-8B9E-E2DA5B9EFED7"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9F77C8C0-9826-4189-8B9E-E2DA5B9EFED7"><!----></a>SportsCar::DoSomething()
+{
+FastCar::DoSomething();
+//code here
+}
+</pre>
+<p>or</p>
+<pre class="codeblock" id="GUID-ABF5889C-D8F9-440E-8B82-E59D13D9D5B0"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-ABF5889C-D8F9-440E-8B82-E59D13D9D5B0"><!----></a>SportsCar::DoSomething()
+{
+//code here
+FastCar::DoSomething();
+}
+</pre>
+<p>and not:</p>
+<pre class="codeblock" id="GUID-7483AD35-77DA-48CA-A72D-A75F73EFBD13"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7483AD35-77DA-48CA-A72D-A75F73EFBD13"><!----></a>SportsCar::DoSomething()
+{
+//code here
+Car::DoSomething();
+//some more code here
+}
+</pre>
+</td>
+</tr>
+<tr class="">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>readability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>Never change the visibility (public/protected/private) when overriding
+a virtual function.</p>
+</td>
+</tr>
+<tr class="bg ">
+<td valign="top" width="13.333333333333334%" headers="d0e7488 ">
+<p><em>reliability</em></p>
+</td>
+<td valign="top" width="13.666666666666666%" headers="d0e7494 ">
+<p><em>C++ (note)</em></p>
+</td>
+<td valign="top" width="73%" headers="d0e7496 ">
+<p>In an overridden function you cannot make any more assumptions than
+the preconditions of the base class implementation and your own class Invariants.</p>
+</td>
+</tr>
+</tbody>
+</table></div></div>
+</div><!--end: content--><!--start: sidebar--><!--end: sidebar--></div><!--END: BODY SECTION--><!--BEGIN: FOOTER--><div class="footer"><hr/><div class="copy">© Nokia 2009.</div></div><!--END: FOOTER--></body></html>

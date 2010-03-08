@@ -1,0 +1,39 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;Languages
+&EN
+
+;Header
+#{"SimpleCubePbuffer"}, (0xA000021B), 1, 0, 0,TYPE=SA
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Files to install
+"..\..\..\..\epoc32\release\armv5\urel\SimpleCubePbuffer.exe"                      -"!:\sys\bin\SimpleCubePbuffer.exe"
+"..\..\..\..\epoc32\data\z\resource\apps\SimpleCubePbuffer.RSC"                    -"!:\resource\apps\SimpleCubePbuffer.RSC"
+"..\..\..\..\epoc32\data\Z\private\10003a3f\import\apps\simplecubepbuffer_reg.RSC" -"!:\private\10003a3f\import\apps\simplecubepbuffer_reg.RSC"
+"..\..\..\..\epoc32\data\z\resource\apps\simplecubepbuffer_icon.mif"  		    	    -"!:\resource\apps\simplecubepbuffer_icon.mif"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						                                    -"!:\private\A000021B\backup_registration.xml"
+

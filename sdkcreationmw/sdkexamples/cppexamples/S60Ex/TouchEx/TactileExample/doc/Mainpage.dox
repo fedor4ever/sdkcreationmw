@@ -1,0 +1,104 @@
+/*! \mainpage Tactile Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * The Tactile example demonstrates how to use Tactile Feedback Client API
+ * on Symbian OS application. The program shows basic ways to produce tactile 
+ * feedback in different situations and some related issues that are necessary 
+ * in order that everything works correctly.
+ *
+ * Basically program draws two different objects (square and circle) and a  
+ * button on a screen. Tapping objects’ area or dragging them will produce  
+ * tactile feedback. When objects are dragged in such position that their focal
+ * points have exactly the same coordinates, tactile feedback is disabled.
+ * Pressing button at any time will enable feedback and restore objects to their  
+ * original positions. If screen mode doesn't have touch support objects
+ * are not visible.
+ *
+ * \image html tact.jpg 
+ *
+ * \subsection Sub11 1.1. APIs demonstrated
+ *
+ * Tactile Feedback Client API. 
+ *
+ * \subsection Sub12 1.2. Prerequisites
+ *
+ * None.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * Tactile Example follows traditional Symbian OS Control-based architecture.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * Tactile Example application does not require any capabilities.
+ * The program capabilities are defined in tactileexample.mmp file:
+ * CAPABILITY NONE.
+ *
+ * \subsection Sub32 3.2 ScalableUI & Touch Screen
+ *
+ * The program works with all screen modes and with touch screen.
+ *  
+ * \subsection Sub33 3.3 Tactile Feedback Client API usage
+ *
+ * This section explains the usage of Tactile Feedback Client API on the example
+ * program. Feedback for square is registry based and since circle is not 
+ * rectangular shape – instant feedback must be used. Feedback for button is 
+ * handled by component itself. This is the case with all S60 UI components.
+ *
+ * When using Tactile Feedback Client API, instance for touch feedback must be
+ * acquired by calling MTouchFeedback::Instance(). For square object it is 
+ * stored in member variable because it is often needed.
+ *
+ * -# At first, Feedback area for square is registered initially in 
+ *   TactileExampleSquare::ConstructL() using SetFeedbackArea().
+ *   <br><br>  
+ * -# Square’s feedback area must be updated when square is dragged or when its size is
+ *   altered as a result of a screen mode change. Feedback area updates are 
+ *   implemented using ChangeFeedbackArea() in 
+ *   TactileExampleSquare::PositionChanged() and SetFeedbackArea() in
+ *   TactileExampleSquare::SizeChanged().
+ *   <br><br>
+ * -# Feedback for dragging square and circle are handled by calling 
+ *   InstantFeedback() in CTactileExampleAppView::Move(). It is called from
+ *   HandlePointerEventL() which is usually the only place to detect dragging 
+ *   events. It is usually a good idea to call InstantFeedback() as early stage  
+ *   as possible. Especially when there are some time-consuming calculations 
+ *   and/or graphical operations involved. This is due to latency reasons. 
+ *   <br><br>
+ * -# Since circle is not rectangular shape it’s feedback must be handled by
+ *   using InstantFeedback(). It is done in TactileExampleCircle::HandlePointerEventL().
+ *   Hit detection of both objects is handled by means of MCoeControlHitTest interface.
+ *   <br><br>
+ * -# When square and circle are in end positions i.e. their focal points share  
+ *   exactly the same coordinates, feedback is disabled. It is detected in
+ *   CTactileExampleAppView::HandlePointerEventL(). Eventually  
+ *   EnableFeedbackForControl() with parameter EFalse gets called for both objects.
+ *   <br><br>
+ * -# Pressing button will restore the objects to default positions and also enable feedback
+ *   in CTactileExampleAppView::HandleControlEventL(). Feedback might have been    
+ *   disabled if objects are in end positions. 
+ *   <br><br>
+ * -# If screen mode is changed objects are restored to default positions. In this case feedback 
+ *   must be enabled again for same reason as after pressing the button.
+ *   CTactileExampleAppView::HandleResourceChangeL() gets called when
+ *   screen mode is about to change, so that is a good place to enable feedback
+ *   for both objects again.
+ *   <br><br>
+ * -# Finally square feedback area is removed using RemoveFeedbackForControl()
+ *   in destructor TactileExampleSquare::~TactileExampleSquare(). Notice that 
+ *   this is fundamental when registry based feedback is used. Otherwise the 
+ *   feedback area is left in the registry and it cannot be removed anymore.
+ */

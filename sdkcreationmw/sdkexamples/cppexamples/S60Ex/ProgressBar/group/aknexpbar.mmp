@@ -1,0 +1,73 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+TARGET              AknExPbar.exe
+TARGETTYPE          exe
+EPOCSTACKSIZE       0x5000
+
+// Change the second number here to change the UID for this application
+UID                 0x0 0xA00001F9
+
+TARGETPATH          \system\apps\AknExPbar
+
+SOURCEPATH          ..\src
+SOURCE              AknExPbarApp.cpp
+SOURCE              AknExPbarAppUi.cpp
+SOURCE              AknExPbarDocument.cpp
+SOURCE              AknExPbarContainer.cpp
+SOURCE              AknExPbarTimer.cpp
+
+SOURCEPATH          ..\data
+START RESOURCE      AknExPbar.rss
+HEADER
+TARGETPATH          resource\apps
+END
+
+START RESOURCE      AknExPbar_reg.rss
+#ifdef WINSCW
+TARGETPATH 	        \private\10003a3f\apps
+#else
+TARGETPATH 	        \private\10003a3f\import\apps
+#endif
+END
+
+
+USERINCLUDE         ..\inc
+
+SYSTEMINCLUDE       \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY             EUSER.LIB
+LIBRARY             WS32.LIB
+LIBRARY             CONE.LIB
+LIBRARY             EIKCORE.LIB
+LIBRARY             EIKCTL.LIB
+LIBRARY             AVKON.LIB
+LIBRARY             APPARC.LIB
+LIBRARY             eikcoctl.lib
+
+LANG                SC
+
+
+VENDORID            0
+
+CAPABILITY          NONE
+
+// End of File

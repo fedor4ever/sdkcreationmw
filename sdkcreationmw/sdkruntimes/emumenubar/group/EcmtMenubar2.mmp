@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Windows menubar for SOS emulator + NMIT and Registration
+*
+*/
+
+
+//
+// This MMP file builds EcmtMenubar2.dll which is basically EcmtMenubar.dll
+// plus NMIT integration and product registration. Note that both DLLs have
+// the same UID but I think that's OK because a) it should not cause any 
+// problems and b) in the final release there will be only one menubar DLL.
+//
+
+#define ECMT_MENUBAR_DLL EcmtMenubar2.dll
+#define ECMT_MENUBAR_RC EcmtMenubar2.rc
+#define ENABLE_SDK_REGISTRATION 0
+#define ENABLE_NMIT_INTEGRATION 0
+
+#include "EcmtMenubar.mmp"

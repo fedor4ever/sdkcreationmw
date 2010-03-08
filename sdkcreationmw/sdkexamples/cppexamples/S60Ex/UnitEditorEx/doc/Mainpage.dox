@@ -1,0 +1,121 @@
+/*! \mainpage Unit Editor Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates how to use Unit Editor, a multi field
+ * numeric editor introduced in S60 3rd edition Feature Pack 2. It
+ * creates a form with one unit editor.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * [list the APIs whose use the example demonstrates]
+ *
+ * - CAknUnitEditor
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example assumes that the reader is familiar with basic Symbian
+ * application architecture, creating UI controls and has read the
+ * documentation for CAknUnitEditor. Being familiar with CAknForm is an
+ * advantage, although in this example it is only a container for the unit
+ * editor.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * The application uses a dialog-based architecture. Upon starting
+ * it display an CAknForm. When the form is finished executing the
+ * application exits.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * This example does not require any capabilities. The capabilities are
+ * defined as NONE in mmp-file.
+ *
+ * \subsection Sub32 3.2 Start-up
+ *
+ * As this application uses a form to display the unit editor, it does not
+ * own any CCoeControl derived views. The form is created and displayed in
+ * CUEExAppUi::ConstructL(). Once the form is dismissed the application
+ * exists. Menu for the form and contained control resources are defined
+ * in \\data\\ueex.rss.
+ *
+ * \subsection Sub33 3.3 Form
+ *
+ * The CAknForm derived class used as a container for the unit editor
+ * overrides several base class functions. These are:
+ * - CUEExForm::ProcessCommandL(), which takes care of menu command handling,
+ * - CUEExForm::DynInitMenuPaneL(), which disables certain items from the menu
+ *   that are not suited for this example and
+ * - CUEExForm::QuerySaveChangesL(), which just returns EFalse thus making the
+ *   form exit without querying if it should save the changes the user has
+ *   made.
+ *
+ * The CUEExForm::ProcessCommandL() function is pretty simple. It tries to
+ * fetch a pointer to the editor using the control id defined for the editor
+ * in resource file. If it manages to get a valid pointer, it checks the
+ * command id and calls the corresponding function. The command, handled or
+ * not, is then passed on to CAknForm::ProcessCommandL(), unless the command
+ * id is EAknCmdExit. In this case the function calls CAknForm::TryExitL()
+ * with a parameter EAknSoftkeyBack. This equals pressing the right softkey,
+ * and this way we can exit the CAknForm cleanly using a menu command.
+ *
+ * CUEExForm::DynInitMenuPaneL() calls base class implementation, and if
+ * the menu pane in question is form's, the function dims (in S60 this
+ * renders the options invisible) several options from the menu. These
+ * are mostly related to handling of the labels in the form.
+ *
+ * \subsection Sub34 3.4 Unit editor
+ *
+ * \subsection Sub341 3.4.1 Creation
+ *
+ * The CAknUnitEditor is created by form using the resources defined
+ * in ueex.rss. The resource defines a unit editor that has a maximum
+ * value of 20, minimum value of -5 and initial value of 2. The editor's
+ * default unit is speed in metric system, defined by a value of
+ * EAknUnitEditorMetricSpeed of enum TAknUnitEditorUnits, and the resource
+ * also defines the editor to have a flag EAknUnitEditorAllowUninitialized
+ * which allows a not a number (NaN) value to be set as the editor's value.
+ *
+ * The resource struct used for unit editor is AVKON_UNIT_EDITOR, and it
+ * has default values for all parameters to simplify the creation of a
+ * unit editor using resources. Unit editor can also be created fully with
+ * code alone, by first calling CAknUnitEditor::NewL() and then
+ * CAknUnitEditor::ConstructL() with the parameters. Note that this differs
+ * a bit from the common pattern where NewL() or NewLC() function also
+ * calls ConstructL().
+ *
+ * \subsection Sub342 3.4.2 API usage
+ *
+ * The application demonstrates a few typical use cases for the unit editor.
+ * Most of the functions use a standard Avkon query to receive values from the
+ * user. These functions are shown in the following functions:
+ * - CUEExForm::DoSetValue(). This function shows how a value can be set
+ *   to the editor using CAknUnitEditor::SetValue().
+ * - CUEExForm::DoSetNaN(). This function shows how to set a NaN value
+ *   to the editor using TRealX.
+ * - CUEExForm::DoSetMinMax(). As seen in the function, Using
+ *   CAknUnitEditor::SetMinimumAndMaximum() the developer can (re)set the
+ *   limits for the editor.
+ * - CUEExForm::DoSetUnit(). This function shows how to set a predefined
+ *   and localized unit for the editor.
+ * - CUEExForm::DoSetCustomUnit(). In this function a custom unit, defined
+ *   in the beginning of the file, is set for the editor.
+ * - CUEExForm::DoSetMaxFractionalDigits(). The function (re)sets the maximum
+ *   fractional digits that the editor shows and can receive. The maximum
+ *   value for CAknUnitEditor::SetMaxFractionalDigits() is 8.
+ * - CUEExForm::DoGetValue(). This functions shows how to get the value from
+ *   the editor and format it as a string.
+ *
+ */

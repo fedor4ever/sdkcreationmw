@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for common plugins
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+// These headers define the UID values
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtCommonPluginUids.h"
+#include <data_caging_paths.hrh>
+
+TARGET          EcmtCommonPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KCOMMONPLUGIN_DLL_UID
+CAPABILITY	CAP_ECOM_PLUGIN
+VENDORID	VID_DEFAULT
+
+SOURCEPATH	..\src
+SOURCE		EcmtCommonPluginMain.cpp
+SOURCE		EcmtFile.cpp
+SOURCE		EcmtSeekFile.cpp
+
+SOURCE		EcmtCommonPluginBase.cpp
+SOURCE		EcmtPanPlugin.cpp
+SOURCE		EcmtEmuConfigPlugin.cpp
+
+USERINCLUDE	..\inc
+USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+USERINCLUDE     ..\..\..\emumenubar\osutils\inc
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY         euser.lib
+LIBRARY		bafl.lib
+LIBRARY		efsrv.lib
+
+#ifdef WINS
+LIBRARY		EcmtOsUtils.lib
+#endif
+
+SOURCEPATH	..\data
+START RESOURCE KCOMMONPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET          EcmtCommonPlugin.rsc
+#endif
+END
+
+START RESOURCE EcmtCommonPlugin.rss
+	HEADER
+	TARGETPATH APP_RESOURCE_DIR
+END
+
+START WINS
+WIN32_LIBRARY   kernel32.lib
+END
+

@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+
+#ifndef MESSAGE_HRH
+#define MESSAGE_HRH
+
+_LIT8(KBeginSend,		"<send>");
+_LIT8(KEndSend,			"</send>");
+_LIT8(KBeginReceive,	"<receive>");
+_LIT8(KEndReceive,		"</receive>");
+_LIT8(KBeginSmsMessage,	"<smsmessage>");
+_LIT8(KEndSmsMessage,	"</smsmessage>");
+_LIT8(KBeginAddress,	"<address>");
+_LIT8(KEndAddress,		"</address>");
+_LIT8(KBeginType,		"<type>");
+_LIT8(KEndType,			"</type>");
+_LIT8(KBeginTimestamp,	"<timestamp>");
+_LIT8(KEndTimestamp,	"</timestamp>");
+_LIT8(KBeginPayload,	"<payload>");
+_LIT8(KEndPayload,		"</payload>");
+
+#endif MESSAGE_HRH

@@ -1,0 +1,87 @@
+/*! \mainpage Rich Text Editor Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * Rich Text Editor example demonstrates the usage of Rich Text Editor. Most of the features
+ * are handled automatically when the dialog framework creates the editor. However,
+ * some steps, such as inserting an image, setting the text input type, or showing
+ * the scroller require the use of methods or classes.
+ *
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CEikRichTextEditor
+ * - CFbsBitmap
+ * - TPictureHeader
+ * - CPicture
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * Symbian C++ basics
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * Start the application. An editor opens.
+ * Select any part of the text: press and hold the Edit key while moving the scroller key
+ * to left or right. The selected text is highlighted.
+ * You can select various formatting options from the Options menu (character format, color,
+ * alignment and font).
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * RichTextEditor example follows traditional Symbian OS Control-based
+ * architecture.
+ *
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * CEikRichTextEditor is the main class used in this example, which is an edit
+ * window that supports rich text, including embedded objects represented
+ * either by icons or glass doors. CRTEContainer contains CEikRichTextEditor.
+ * The basic features are handled by CEikRichTextEditor API.
+ *
+ * Another important class CMyPicture, which is used to insert the picture in
+ * the editor window.This class contains the CFbsBitmap class, which is
+ * reference to bitmap data.
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The program capabilities are defined in the RichTextEditor_S60_3rd_Ed.mmp file: CAPABILITY NONE
+ *
+ * \subsection Sub32 3.2 Features
+ *
+ * The main features of Rich text editor are as follows
+ *
+ * - <b>Character Format</b>
+ *   <br>This feature enables the user to select the font style, The APIs which implements
+ * the character format are CRTEContainer::SetFont() and  CRTEContainer::Strike(). The following options
+ * can be selected for character formats.
+ *  - Bold
+ *  - Italic
+ *  - Underline
+ *  - Strike-through
+ * - \link CRTEContainer::SetColor Change Color \endlink
+ * <br>This feature allows user to specify the color of the text.
+ * The parameter of type <b>Trgb</b> indicates the color id:
+ *  - Red
+ *  - Green
+ *  - Blue
+ *  - Black
+ * - \link CRTEContainer::SetAlignment() Set Alignment \endlink
+ * <br>This feature enables user to select the text alignment in the text editor.
+ * The parameter of type <b>CParaFormat::TAlignment</b> indicates the alignment:
+ *  - Left
+ *  - Centre
+ *  - Right
+ * - \link CRTEContainer::DemoL() Demo Text \endlink
+ *  <br>This feature is to Create Demo Text Content, there is also demonstration of picture insertion
+ * which is implemented by user defined class CMyPicture, which handles the picture insertion in the editor.
+ *
+ *
+ */

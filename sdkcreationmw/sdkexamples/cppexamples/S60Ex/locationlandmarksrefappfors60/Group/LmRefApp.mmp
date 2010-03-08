@@ -1,0 +1,101 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines the components forming the Landmarks Reference Application.
+*
+*/
+
+
+TARGET              LmRefApp.exe
+TARGETTYPE          exe
+EPOCSTACKSIZE       0x5000
+UID                 0x100039CE 0xA0000187
+
+VENDORID            0
+CAPABILITY          Location ReadUserData WriteUserData
+
+SOURCEPATH          ..\src
+
+// Application mandatory classes
+SOURCE              Landmarks.cpp
+SOURCE              LandmarksApplication.cpp
+SOURCE              LandmarksAppUi.cpp
+SOURCE              LandmarksDocument.cpp
+
+// View classes
+SOURCE              LandmarksView.cpp
+SOURCE              LandmarksContainerBase.cpp
+SOURCE              LandmarksContainer.cpp
+SOURCE              LandmarksModel.cpp
+SOURCE              LandmarksCategoriesView.cpp
+SOURCE              LandmarksCategoriesContainer.cpp
+SOURCE              LandmarksCategoriesModel.cpp
+SOURCE              LandmarksInfoView.cpp
+SOURCE              LandmarksInfoContainer.cpp
+SOURCE              LandmarksInfoModel.cpp
+
+// Engine component classes
+SOURCE              LandmarksApplicationEngine.cpp
+SOURCE              LandmarksEngineBase.cpp
+SOURCE              LandmarksEngine.cpp
+SOURCE              LandmarksCategoriesEngine.cpp
+SOURCE              LandmarksLmOpWrapper.cpp
+SOURCE              LandmarksDbEventHandler.cpp
+
+// Other components
+SOURCE              LandmarksEditDialog.cpp
+SOURCE              LandmarksCategoriesDialog.cpp
+SOURCE              LandmarksLmCategoriesModel.cpp
+SOURCE              LandmarksListBox.cpp
+SOURCE              LandmarksListBoxModel.cpp
+SOURCE              LandmarksPositionRequest.cpp
+SOURCE              LandmarksUtils.cpp
+
+USERINCLUDE         ..\inc
+
+SYSTEMINCLUDE       \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY             euser.lib
+LIBRARY             efsrv.lib
+LIBRARY             estor.lib
+LIBRARY             cone.lib
+LIBRARY             apparc.lib
+LIBRARY             bafl.lib
+LIBRARY             eikcore.lib
+LIBRARY             eikcoctl.lib
+LIBRARY             eikctl.lib
+LIBRARY             eikdlg.lib
+LIBRARY             egul.lib
+
+LIBRARY             avkon.lib
+LIBRARY             aknskins.lib
+
+LIBRARY             eposlandmarks.lib
+LIBRARY             eposlmsearchlib.lib
+LIBRARY             lbs.lib
+
+START RESOURCE      ..\data\LmRefApp.rss
+HEADER
+TARGETPATH \resource\apps
+END
+
+START RESOURCE      ..\data\LmRefApp_reg.rss
+#ifdef WINSCW
+TARGETPATH           \private\10003a3f\apps
+#else
+TARGETPATH           \private\10003a3f\import\apps
+#endif
+END
+

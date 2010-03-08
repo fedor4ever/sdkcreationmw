@@ -1,0 +1,209 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localisation Strings for IsvTelCallApp
+*
+*/
+
+
+//  LOCALISATION STRINGS
+rls_string STRING_r_IsvTelCallApp_title   			"IsvTelCallApp"
+
+// Caption
+rls_string STRING_r_apps_tafm_list         		      	"IsvTelCallApp"
+rls_string STRING_r_apps_tafm_grid          		     	"IsvTelCallApp"
+
+// MenuBar
+rls_string STRING_r_IsvTelCallApp_menubar			"Option"
+rls_string STRING_r_IsvTelCallApp_menu_exit        	         "Exit"
+
+rls_string STRING_r_IsvTelCallApp_menu_launch_phops  	 	 "Launch"
+
+
+// Messages
+rls_string STRING_r_IsvTelCallApp_label_title			"IsvTelCallApp\nExample Application"
+rls_string STRING_r_IsvTelCallApp_label_operation            	"IsvTelCallApp\nExample Application"
+
+// Label field text for Phone Operations Menu
+rls_string STRING_r_IsvTelCallApp_form_label_phone1  	     	"Phone1"
+rls_string STRING_r_IsvTelCallApp_form_label_phone2  	     	"Phone2"
+
+rls_string STRING_r_IsvTelCallApp_form_label_dtmfseq  	     	"DTMF Sequence"
+
+rls_string STRING_r_IsvTelCallApp_form_label_call1status     	"Call 1 Status"
+rls_string STRING_r_IsvTelCallApp_form_label_call2status     	"Call 2 Status"
+
+//Menu command texts for Phone Operations Menu
+rls_string STRING_r_IsvTelCallApp_form_label_call     		"Call"
+rls_string STRING_r_IsvTelCallApp_form_label_hold     		"Hold"
+rls_string STRING_r_IsvTelCallApp_form_label_resume   		"Resume"
+rls_string STRING_r_IsvTelCallApp_form_label_swap     		"Swap"
+rls_string STRING_r_IsvTelCallApp_form_label_send     		"Send DTMF"
+rls_string STRING_r_IsvTelCallApp_form_label_hangup   		"Hangup"
+
+// Label field text for Call and Line Status Menu
+rls_string STRING_r_IsvTelCallApp_form_label_voicelinestatus 	"Voice Line Status"
+rls_string STRING_r_IsvTelCallApp_form_label_datalinestatus  	"Data Line Status"
+rls_string STRING_r_IsvTelCallApp_form_label_faxlinestatus   	"Fax Line Status"
+
+//Status pane text for pages
+rls_string STRING_r_IsvTelCallApp_status_pane_page_phone1      	"Call 1"
+rls_string STRING_r_IsvTelCallApp_status_pane_page_phone2      	"Call 2"
+rls_string STRING_r_IsvTelCallApp_status_pane_page_call1       	"Call 1 Info"
+rls_string STRING_r_IsvTelCallApp_status_pane_page_call2       	"Call 2 Info"
+rls_string STRING_r_IsvTelCallApp_status_pane_page_call_line_status     "Line Status"
+
+// Slider label text
+rls_string STRING_r_IsvTelCallApp_form_label_sdmin  		"min"
+rls_string STRING_r_IsvTelCallApp_form_label_sdmax  		"max"
+rls_string STRING_r_IsvTelCallApp_form_value_label  		"%U"
+rls_string STRING_r_IsvTelCallApp_form_header_label 		"HeaderLabel"
+
+// Sample Editor text
+rls_string STRING_r_IsvTelCallApp_form_edwin_text   		"Edwin text."
+rls_string STRING_r_IsvTelCallApp_form_secret_text  		"Password"
+
+// Derived Form Menu text
+rls_string STRING_r_IsvTelCallApp_menu_change_focus               "Change Focus"
+rls_string STRING_r_IsvTelCallApp_menu_try_change_focus_to_first  "Try To Focus First"
+rls_string STRING_r_IsvTelCallApp_menu_try_change_focus_to_middle "Try To Focus Middle"
+rls_string STRING_r_IsvTelCallApp_menu_try_change_focus_to_last   "Try To Focus Last"
+rls_string STRING_r_IsvTelCallApp_menu_rotate_focus_by_one        "Rotate Focus +1"
+rls_string STRING_r_IsvTelCallApp_menu_rotate_focus_by_three      "Rotate Focus +3"
+rls_string STRING_r_IsvTelCallApp_menu_rotate_focus_by_minus_two  "Rotate Focus -2"
+
+rls_string STRING_r_IsvTelCallApp_menu_set_caption                "Set Caption"
+rls_string STRING_r_IsvTelCallApp_menu_set_caption_from_resource  "From Resource"
+rls_string STRING_r_IsvTelCallApp_menu_set_caption_from_user      "From User"
+
+
+rls_string STRING_r_IsvTelCallApp_menu_activate_page              "Activate Page"
+rls_string STRING_r_IsvTelCallApp_menu_activate_first_page        "First Page"
+
+rls_string STRING_r_IsvTelCallApp_menu_checks                     "Checks"
+rls_string STRING_r_IsvTelCallApp_menu_active_page                "Active Page"
+rls_string STRING_r_IsvTelCallApp_menu_get_border_style           "Get Border Style"
+rls_string STRING_r_IsvTelCallApp_menu_get_flags                  "Get Flags"
+rls_string STRING_r_IsvTelCallApp_menu_get_line                   "1st Line on 1st page"
+
+rls_string STRING_r_IsvTelCallApp_menu_reset_line             	   "Reset Line"
+rls_string STRING_r_IsvTelCallApp_menu_reset_line_minimum_sizes    "Minimum Sizes"
+
+rls_string STRING_r_IsvTelCallApp_menu_pre_n_post                  "Pre N Post"
+
+rls_string STRING_r_IsvTelCallApp_menu_size_n_pos                  "Size N Pos"
+rls_string STRING_r_IsvTelCallApp_menu_size_n_pos_10x10            "10 x 10"
+rls_string STRING_r_IsvTelCallApp_menu_size_n_pos_100x100          "100 x 100"
+
+rls_string STRING_r_IsvTelCallApp_menu_save_test                  "Save Test"
+rls_string STRING_r_IsvTelCallApp_menu_set_changes_pending_true   "Changes Pending True"
+rls_string STRING_r_IsvTelCallApp_menu_set_changes_pending_false  "Changes Pending False"
+
+
+// texts used in derived form
+rls_string STRING_r_IsvTelCallApp_resource_caption    "Resource"
+
+
+//===========================================================================
+//ETel ISV Test App API Command Language
+rls_string STRING_r_IsvTelCallApp_TelStr_MakeCall              "MakeNewCall"
+rls_string STRING_r_IsvTelCallApp_TelStr_Hold                  "Hold"
+rls_string STRING_r_IsvTelCallApp_TelStr_Resume                "Resume"
+rls_string STRING_r_IsvTelCallApp_TelStr_Swap                  "Swap"
+rls_string STRING_r_IsvTelCallApp_TelStr_Hangup                "Hangup"
+rls_string STRING_r_IsvTelCallApp_TelStr_GetPhId               "GetPhoneId"
+rls_string STRING_r_IsvTelCallApp_TelStr_GetCallStatus         "GetCallStatus"
+rls_string STRING_r_IsvTelCallApp_TelStr_GetVoiceLineStatus    "GetVoiceLineStatus"
+rls_string STRING_r_IsvTelCallApp_TelStr_GetDataLineStatus     "GetDataLineStatus"
+rls_string STRING_r_IsvTelCallApp_TelStr_GetFaxLineStatus      "GetFaxLineStatus"
+rls_string STRING_r_IsvTelCallApp_TelStr_SendDTMF              "SendDTMF"
+
+//Call Id representation in command language
+rls_string STRING_r_IsvTelCallApp_TelStr_CallId1   		"Call1"
+rls_string STRING_r_IsvTelCallApp_TelStr_CallId2  		"Call2"
+
+
+//Answer Incoming Call Phone1 Num
+rls_string STRING_r_IsvTelCallApp_TelStr_AnswerInCallPhoneNum1  "Incoming Call 1"
+
+//Answer Incoming Call Phone2 Num
+rls_string STRING_r_IsvTelCallApp_TelStr_AnswerInCallPhoneNum2  "Incoming Call 2"
+
+//Common Error string
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrString     			"Error"
+rls_string STRING_r_IsvTelCallApp_TelStr_SuccessString 			"Success"
+
+//Call Not active
+rls_string STRING_r_IsvTelCallApp_TelStr_CallNotActive  		"Call Not Active"
+
+//Standard Error strings
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrNotFound			"Error Not Found"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrGeneral 			"Error General"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrCancel			 	"Cancel"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrNoMemory 			"No Memory"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrNotSupported 		"Command Not Supported"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrArgument 			"Error in Arguments"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrTotalLossOfPrecision 	"Loss of Precision"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrBadHandle			"Bad Handle"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrOverflow 			"Error Overflow"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrUnderflow 			"Error Underflow"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrAlreadyExists 		"Already Exists"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrInUse 			"Error In Use"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrServerTerminated		"Error Server Terminated"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrServerBusy 		 	"Server Busy"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrUnknown 			"Error Unkonown"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrCorrupt 			"Error Corrupt"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrAccessDenied 		"Access Denied"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrCommsLineFail		"Line Fail"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrTimedOut 			"Time Out"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrCouldNotConnect 		"Could not Connect"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrCouldNotDisconnect 		"Could not Disconnect"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrHardwareNotAvailable 	"Hardware Not available"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrSessionClosed 		"Session Closed"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrPermissionDenied 		"Permission Denied"
+rls_string STRING_r_IsvTelCallApp_TelStr_ErrorDefault 			"Error"
+
+//Menu command texts for General Fetch Menu
+rls_string STRING_r_IsvTelCallApp_form_label_fetch      		"Fetch"
+
+
+//UI Errors
+rls_string STRING_r_IsvTelCallApp_UIErr_DtmfTooLong        		"DTMF Seq Too Long"
+rls_string STRING_r_IsvTelCallApp_Err_EmuApiNotSupported   		"Emulator:API not supported"
+
+
+//After Api Complete, Information
+rls_string STRING_r_IsvTelCallApp_Unknown 				"Unknown"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Idle 			"Idle"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Dialling 			"Dialling"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Ringing 			"Ringing"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Answering 			"Answering"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Connecting 		"Connecting"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Connected 			"Connected"
+rls_string STRING_r_IsvTelCallApp_CallStatus_ReconnectPending   	"Reconnect Pending"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Disconnecting      	"Disconnecting"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Hold 			"Hold"
+rls_string STRING_r_IsvTelCallApp_CallStatus_Transferring 		"Transferring"
+rls_string STRING_r_IsvTelCallApp_CallStatus_TransferAlerting 		"Transfer Alerting"
+
+
+//Status
+rls_string STRING_r_IsvTelCallApp_Status_Active 			"Active"
+rls_string STRING_r_IsvTelCallApp_Status_NotActive 			"Not Active"
+rls_string STRING_r_IsvTelCallApp_Status_NotProvisioned 		"Not Provisioned"
+rls_string STRING_r_IsvTelCallApp_Status_NotAvailable 			"Not Available"
+rls_string STRING_r_IsvTelCallApp_Status_Unknown 			"Unknown"
+
+
+
+// End of File

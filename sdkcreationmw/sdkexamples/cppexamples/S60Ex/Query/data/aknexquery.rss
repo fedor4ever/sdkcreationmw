@@ -1,0 +1,1167 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    EXQE
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include <aknexquery.mbg>
+
+#include "aknexquery.hrh"
+#include "aknexquery.rls"
+
+//  CONSTANTS
+#define AKNEXQUERY_HOTKEY_EXIT 'e'
+#define AKNEXQUERY_EDWIN_WIDTH 5
+#define AKNEXQUERY_EDWIN_LINES 5
+#define AKNEXQUERY_EDWIN_MAXLENGTH 128
+#define AKNEXQUERY_DATE_EDITOR_MIN_DATE 1986
+#define AKNEXQUERY_DATE_EDITOR_MAX_DATE 2986
+#define AKNEXQUERY_DATE_EDITOR_FLAGS 0
+#define AKNEXQUERY_TIME_EDITOR_MIN_SECOND 0
+#define AKNEXQUERY_TIME_EDITOR_MIN_MINUTE 0
+#define AKNEXQUERY_TIME_EDITOR_MIN_HOUR 0
+#define AKNEXQUERY_TIME_EDITOR_MAX_SECOND 59
+#define AKNEXQUERY_TIME_EDITOR_MAX_MINUTE 59
+#define AKNEXQUERY_TIME_EDITOR_MAX_HOUR 23
+#define AKNEXQUERY_DURATION_EDITOR_MAX_SECOND 3599
+#define AKNEXQUERY_DURATION_EDITOR_FLAGS 0
+#define AKNEXQUERY_BITMAP_MASK_FLAG 0xFFFF
+#define AKNEXQUERY_LISTBOX_HEIGHT 3
+#define AKNEXQUERY_LISTBOX_WIDTH 3
+#define AKNEXQUERY_BMPFILE_NAME "\\private\\A0000232\\aknexquery.mbm"
+
+//  MACROS
+
+//  RESOURCE DEFINITIONS
+//-----------------------------------------------------------------------------
+//
+//    RSS_SIGNATURE
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    TBUF16
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16
+    {
+    buf = "AknExQuery";
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    EIK_APP_INFO
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = R_AVKON_STATUS_PANE_LAYOUT_USUAL;
+    hotkeys = r_aknexquery_hotkeys;
+    menubar = r_aknexquery_menubar_main;
+	cba = r_aknexquery_cba_options_next;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_hotkeys
+//    ?description
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE HOTKEYS r_aknexquery_hotkeys
+    {
+    control =
+        {
+        HOTKEY
+            {
+            command = EAknCmdExit;
+            key = AKNEXQUERY_HOTKEY_EXIT;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_view
+//    ?description
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_aknexquery_view
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_menubar_main
+//    Resource of ManuBar.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_aknexquery_menubar_main
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_aknexquery_app_menu;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_app_menu
+//    Resource of MainMenu.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_app_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            cascade = r_aknexquery_data_list_menu1;
+            txt = STRING_r_aknexquery_app_menu_text1;
+            },
+        MENU_ITEM
+            {
+            cascade = r_aknexquery_data_list_menu2;
+            txt = STRING_r_aknexquery_app_menu_text2;
+            },
+        MENU_ITEM
+            {
+            cascade = r_aknexquery_data_list_menu3;
+            txt = STRING_r_aknexquery_app_menu_text3;
+            },
+        MENU_ITEM
+            {
+            cascade = r_aknexquery_data_list_menu4;
+            txt = STRING_r_aknexquery_app_menu_text4;
+            },
+        MENU_ITEM
+            {
+            cascade = r_aknexquery_data_list_menu7;
+            txt = STRING_r_aknexquery_app_menu_text7;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_aknexquery_app_menu_text9;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_list_menu1
+//    SubMenu of Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_data_list_menu1
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline1;
+            txt = STRING_r_aknexquery_data_list_text1;
+            },
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline4;
+            txt = STRING_r_aknexquery_data_list_text4;
+            },
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline8;
+            txt = STRING_r_aknexquery_data_list_text8;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_list_menu2
+//    SubMenu of Confirmation Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_data_list_menu2
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline10;
+            txt = STRING_r_aknexquery_data_list_text10;
+            },
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline16;
+            txt = STRING_r_aknexquery_data_list_text16;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_list_menu3
+//    SubMenu of List Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_data_list_menu3
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline48;
+            txt = STRING_r_aknexquery_data_list_text48;
+            },
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline52;
+            txt = STRING_r_aknexquery_data_list_text52;
+            },
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline61;
+            txt = STRING_r_aknexquery_data_list_text61;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_list_menu4
+//    SubMenu of MultiSelection Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_data_list_menu4
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline54;
+            txt = STRING_r_aknexquery_data_list_text54;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_list_menu7
+//    SubMenu of MultiLine Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexquery_data_list_menu7
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExQueryOutline44;
+            txt = STRING_r_aknexquery_data_list_text44;
+            }
+         };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_yes_or_ok_message
+//    Approved Message of Yes or Ok Softkey.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_yes_or_ok_message
+    {
+    buf = STRING_r_aknexquery_yes_ok_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_no_or_cancel_message
+//    Discarded Message of No or Cancel Softkey.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_no_or_cancel_message
+    {
+    buf = STRING_r_aknexquery_no_can_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_title_message
+//    Message of Title.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_title_message
+    {
+    buf = STRING_r_aknexquery_title_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_operate_message
+//    Label of Operation Message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_operate_message
+    {
+    buf = STRING_r_aknexquery_operate_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline1
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline1
+    {
+    buf = STRING_r_aknexquery_data_list_text1;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline4
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline4
+    {
+    buf = STRING_r_aknexquery_data_list_text4;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline8
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline8
+    {
+    buf = STRING_r_aknexquery_data_list_text8;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline10
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline10
+    {
+    buf = STRING_r_aknexquery_data_list_text10;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline16
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline16
+    {
+    buf = STRING_r_aknexquery_data_list_text16;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline44
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline44
+    {
+    buf = STRING_r_aknexquery_data_list_text44;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline48
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline48
+    {
+    buf = STRING_r_aknexquery_data_list_text48;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline52
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline52
+    {
+    buf = STRING_r_aknexquery_data_list_text52;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline54
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline54
+    {
+    buf = STRING_r_aknexquery_data_list_text54;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_outline61
+//    Title of StatusPane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_outline61
+    {
+    buf = STRING_r_aknexquery_data_list_text61;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_confirmation_query
+//    Resource of Confirmation Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_confirmation_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_YES_NO;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                label = STRING_r_aknexquery_con_label_text;
+                bmpfile = AKNEXQUERY_BMPFILE_NAME;
+                bmpid = EMbmAknexqueryLshellicon;
+                bmpmask = AKNEXQUERY_BITMAP_MASK_FLAG;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_confirmation_query_other_softkeys
+//    Resource of Confirmation Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_confirmation_query_other_softkeys
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY 
+                {
+                layout = EConfirmationQueryLayout;
+                label = STRING_r_aknexquery_con_label_text;
+                bmpfile = AKNEXQUERY_BMPFILE_NAME;
+                bmpid = EMbmAknexqueryLshellicon;
+                bmpmask = AKNEXQUERY_BITMAP_MASK_FLAG;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_query
+//    Resource of Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_data_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = STRING_r_aknexquery_data_label_text;
+                control = EDWIN
+                    {
+                    flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    width = AKNEXQUERY_EDWIN_WIDTH;
+                    maxlength = AKNEXQUERY_EDWIN_MAXLENGTH;
+                    // added to limit expanding in forms. 
+                    // If you want full screen use 6 here
+                    max_view_height_in_lines = AKNEXQUERY_EDWIN_LINES; 
+                    // if you have the line above, you must have this. 
+                    // It's calculable from LAF
+                    base_line_delta = 21; 
+                    };
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_data_query_initial_text
+//    Initial Text of Data Query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_data_query_initial_text
+    {
+    buf = STRING_r_aknexquery_initial_text;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_date_initial_value
+//    Resource of Initial Date.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_date_initial_value
+    {
+    buf = STRING_r_aknexquery_date_initial;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_time_initial_value
+//    Resource of Initial Time.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_time_initial_value
+    {
+    buf = STRING_r_aknexquery_time_initial;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multi_line_date_and_duration_layout
+//    Resource of MultiLine Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_multi_line_date_and_duration_layout
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = EMultilineFirstLine;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataFirstDateEd;
+                label = STRING_r_aknexquery_date_label_text;
+                control = DATE_EDITOR
+                    {
+                    minDate = DATE
+                        {
+                        year = AKNEXQUERY_DATE_EDITOR_MIN_DATE;
+                        };
+                    maxDate = DATE
+                        {
+                        year = AKNEXQUERY_DATE_EDITOR_MAX_DATE;
+                        };
+                    flags = AKNEXQUERY_DATE_EDITOR_FLAGS;
+                    };
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = EMultilineSecondLine;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataSecondDurEd;
+                label = STRING_r_aknexquery_dura_label_text;
+                control = DURATION_EDITOR
+                    {
+                    minDuration = DURATION
+                        {
+                        };
+                    maxDuration = DURATION
+                        {
+                        seconds = AKNEXQUERY_DURATION_EDITOR_MAX_SECOND;
+                        };
+                    flags = AKNEXQUERY_DURATION_EDITOR_FLAGS;
+                    };
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multi_line_time_and_duration_layout
+//    Resource of MultiLine Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_multi_line_time_and_duration_layout
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = EMultilineFirstLine;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataFirstTimeEd;
+                label = STRING_r_aknexquery_time_label_text;
+                control = TIME_EDITOR
+                    {
+                    minTime = TIME
+                        {
+                        second = AKNEXQUERY_TIME_EDITOR_MIN_SECOND;
+                        minute = AKNEXQUERY_TIME_EDITOR_MIN_MINUTE;
+                        hour = AKNEXQUERY_TIME_EDITOR_MIN_HOUR;
+                        };
+                    maxTime = TIME
+                        {
+                        second = AKNEXQUERY_TIME_EDITOR_MAX_SECOND;
+                        minute = AKNEXQUERY_TIME_EDITOR_MAX_MINUTE;
+                        hour = AKNEXQUERY_TIME_EDITOR_MAX_HOUR;
+                        };
+                    flags = EEikTimeWithoutSecondsField | EEikTimeForce24HourFormat;
+                    };
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = EMultilineSecondLine;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataSecondDurEd;
+                label = STRING_r_aknexquery_dura_label_text;
+                control = DURATION_EDITOR
+                    {
+                    minDuration = DURATION
+                        {
+                        };
+                    maxDuration = DURATION
+                        {
+                        seconds = AKNEXQUERY_DURATION_EDITOR_MAX_SECOND;
+                        };
+                    flags = AKNEXQUERY_DURATION_EDITOR_FLAGS;
+                    };
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_sub_popup_data
+//    Resource of sub popup menu data.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_sub_popup_data
+    {
+  items =
+        {
+        LBUF
+            {
+            txt = STRING_r_aknexquery_sub_popup_data1;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_sub_popup_data2;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_sub_popup_data3;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_sub_popup_data4;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_sub_popup_data5;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multiline_time_and_duration_list_item
+//    Items array for ListBox
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_multiline_time_and_duration_list_item
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = STRING_r_aknexquery_multiline_item17;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_multiline_item18;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_list_single_pane
+//    Resource of List Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_list_single_pane
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtListQueryControl;
+            id = EListQueryControl;
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox = LISTBOX
+                    {
+                    flags = EAknListBoxMenuList;
+                    height = AKNEXQUERY_LISTBOX_HEIGHT;
+                    width = AKNEXQUERY_LISTBOX_WIDTH;
+                    array_id = r_aknexquery_list_single_pane_item;
+                    };
+                heading = STRING_r_aknexquery_list_title;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_list_single_graphic_heading_pane
+//    Resource of List Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_list_single_graphic_heading_pane
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtListQueryControl;
+            id = EListQueryControl;
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSingleGraphicHeadingPopupMenuListBox;
+                listbox = LISTBOX
+                    {
+                    flags = EAknListBoxMenuList;
+                    height = AKNEXQUERY_LISTBOX_HEIGHT;
+                    width = AKNEXQUERY_LISTBOX_WIDTH;
+                    array_id =
+                        r_aknexquery_list_single_graphic_heading_pane_item;
+                    };
+                heading = STRING_r_aknexquery_list_title;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multi_selection_query
+//    Resource of Multi Selection Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexquery_multi_selection_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtListQueryControl;
+            id = EListQueryControl;
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSingleGraphicPopupMenuListBox;
+                listbox = LISTBOX
+                    {
+                    flags = EAknListBoxMultiselectionList;
+                    height = AKNEXQUERY_LISTBOX_HEIGHT;
+                    width = AKNEXQUERY_LISTBOX_WIDTH;
+                    array_id = r_aknexquery_multi_selection_query_list_item;
+                    };
+                heading = STRING_r_aknexquery_selection_title;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_list_single_pane_item
+//    Items array for List Query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_list_single_pane_item
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = STRING_r_aknexquery_list_item1;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_list_item2;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_list_item3;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_list_single_graphic_heading_pane_item
+//    Items array for List Query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_list_single_graphic_heading_pane_item
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = STRING_r_aknexquery_head_graph_item1;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_head_graph_item2;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_head_graph_item3;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multi_selection_query_list_item
+//    Items array for Multi Selection Query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_multi_selection_query_list_item
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = STRING_r_aknexquery_selection_item1;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_selection_item2;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_selection_item3;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_selection_item4;
+            },
+        LBUF
+            {
+            txt = STRING_r_aknexquery_selection_item5;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_confirmation_query2
+//
+//-----------------------------------------------------------------------------
+//
+
+RESOURCE DIALOG r_aknexquery_confirmation_query2
+    {
+    flags=EGeneralQueryFlags;
+    buttons=R_AVKON_SOFTKEYS_OK_EMPTY;
+    items=
+        {
+        DLG_LINE
+            {
+            type=EAknCtQuery;
+            id=EGeneralQuery;
+            control= AVKON_CONFIRMATION_QUERY 
+                { 
+                    layout = EConfirmationLayout;
+                    bmpfile = AKNEXQUERY_BMPFILE_NAME;
+                    bmpid = EMbmAknexqueryLshellicon;
+                    bmpmask = 0xffff;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_list_query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_aknexquery_list_query
+    {
+    items = 
+    {
+    AVKON_LIST_QUERY_DLG_LINE 
+        {
+        control = AVKON_LIST_QUERY_CONTROL
+        {
+        listtype = EAknCtSinglePopupMenuListBox;
+        listbox = AVKON_LIST_QUERY_LIST
+            {
+            array_id=r_aknexquery_tlbx_fruit_list;
+            };
+        heading = "";
+        };
+        }
+    };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_multi_selection_list_query
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_MULTISELECTION_LIST_QUERY r_aknexquery_multi_selection_list_query
+    {
+    items =
+        {
+        AVKON_MULTISELECTION_LIST_QUERY_DLG_LINE 
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSingleGraphicPopupMenuListBox;
+                listbox = AVKON_MULTISELECTION_LIST_QUERY_LIST
+                    {
+                    array_id=r_aknexquery_multi_selection_query_list_item;
+                    };
+                heading = "List query test";
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_tlbx_fruit_list
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_aknexquery_tlbx_fruit_list
+    {
+    items=
+        {
+        LBUF {txt="Yes"; } ,
+        LBUF {txt="No"; },
+        LBUF {txt="Yes"; },
+        LBUF {txt="NoNo"; },
+        LBUF {txt="Yes"; },
+        LBUF {txt="NoNoNo"; },
+        LBUF {txt="Yes"; },
+        LBUF {txt="NoNoNoNo"; },
+        LBUF {txt="Yes"; },
+        LBUF {txt="NoNoNoNoNoNoNoNo"; },
+        LBUF {txt="Yes"; },
+        LBUF {txt="NoNoNoNonoNoNOnOnONoNo"; }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//     r_aknexquery_numquery_withhead_head
+//     Heading text
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 r_aknexquery_numquery_withhead_head
+    {
+    buf = STRING_r_aknexquery_numquery_withhead_head;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_querydiscarded
+//    
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_querydiscarded
+    {
+    buf = STRING_r_aknexquery_querydiscarded;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexquery_item_selected
+//    
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_item_selected
+    {
+    buf = STRING_r_aknexquery_item_selected;
+    }
+
+// ----------------------------------------------------------------------------
+//
+//    r_aknexquery_cba_options_next
+//    ?description
+//
+// ----------------------------------------------------------------------------
+//
+
+RESOURCE CBA r_aknexquery_cba_options_next
+    {
+    buttons =
+        {
+        CBA_BUTTON 
+            {
+            id=EAknSoftkeyOptions; 
+            txt = STRING_r_aknexquery_cba_options;
+            },
+        AVKON_CBA_BUTTON
+            {
+            id = EAknExQueryCbaCmdNext;
+            txt = STRING_r_aknexquery_cba_next;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    Resource of message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_aknexquery_received_message
+    {
+    buf = STRING_r_aknexquery_received_message;
+    }
+
+RESOURCE TBUF64 r_aknexquery_approved_message
+    {
+    buf = STRING_r_aknexquery_approved_message;
+    }
+
+// ---------------------------------------------------------------------------- 
+//
+// r_aknexquery_localisable_app_info
+//
+// ---------------------------------------------------------------------------- 
+//
+RESOURCE LOCALISABLE_APP_INFO r_aknexquery_localisable_app_info
+    {
+    short_caption = STRING_r_aknexquery_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_aknexquery_caption_string;
+
+        number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\AknExquery_aif.mif";
+	    };
+    }
+
+// End of File

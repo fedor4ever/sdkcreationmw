@@ -1,0 +1,203 @@
+;
+; $Id: xrpcrt.def,v 1.1 2005/05/06 20:17:40 slava Exp $
+;
+; XRPC Runtime
+;
+
+EXPORTS
+
+;
+; Functions that XRPCRT adds to XRPC and XREG APIs.
+;
+
+    XRPCRT_Server
+    XRPCRT_ServerPort
+    XRPCRT_Registry
+
+;
+; XRPC Runtime. NOTE that XRPC_CreateServer2, XRPC_FreeServer and a few other
+; functions have been removed from the export list in order to force use of a
+; single XRPC server per process, returned by XRPC_Server function.
+;
+;   XRPC_CreateServer2
+;   XRPC_FreeServer
+;   XRPC_ServerSetThreadAPI
+;   XRPC_ServerResetThreadAPI
+;   XRPC_ServerSpawn
+
+    XRPC_GetTagName
+    XRPC_GetValidTagName
+    XRPC_IsDataElement
+    XRPC_IsContainer
+    XRPC_IsArray
+    XRPC_IsStruct
+    XRPC_GetElementTag
+    XRPC_GetElementTagName
+    XRPC_Init
+    XRPC_Deinit
+    XRPC_GetElementName
+    XRPC_SetElementName
+    XRPC_GetParent
+    XRPC_AttributeCount
+    XRPC_GetAttributeAt
+    XRPC_RemoveAttributeAt
+    XRPC_GetAttribute
+    XRPC_GetAttributeIndex
+    XRPC_SetAttribute
+    XRPC_RemoveAttribute
+    XRPC_ElementCount
+    XRPC_GetElementAt
+    XRPC_GetElementByName
+    XRPC_GetElementIndex
+    XRPC_AddElement
+    XRPC_TryAddElement
+    XRPC_InsertElement
+    XRPC_RemoveElementAt
+    XRPC_GetAsText
+    XRPC_GetDataType
+    XRPC_GetTypeName
+    XRPC_IsBoolElement
+    XRPC_IsByteElement
+    XRPC_IsShortElement
+    XRPC_IsIntElement
+    XRPC_IsLongElement
+    XRPC_IsDoubleElement
+    XRPC_IsStringElement
+    XRPC_IsBinaryElement
+    XRPC_GetBool
+    XRPC_GetByte
+    XRPC_GetShort
+    XRPC_GetInt
+    XRPC_GetLong
+    XRPC_GetDouble
+    XRPC_GetString
+    XRPC_GetStringUTF8
+    XRPC_GetStringUCS2
+    XRPC_GetStringLength
+    XRPC_GetBinaryData
+    XRPC_GetBinaryDataSize
+    XRPC_CreateContainer
+    XRPC_CreateStruct
+    XRPC_CreateVoidElement
+    XRPC_CreateNullElement
+    XRPC_CreateBoolElement
+    XRPC_CreateByteElement
+    XRPC_CreateShortElement
+    XRPC_CreateIntElement
+    XRPC_CreateLongElement
+    XRPC_CreateDoubleElement
+    XRPC_CreateStringElement
+    XRPC_CreateStringElementUCS2
+    XRPC_CreateStringElementUTF8
+    XRPC_CreateBinaryElement
+    XRPC_SetAsText
+    XRPC_UpdateBoolElement
+    XRPC_UpdateByteElement
+    XRPC_UpdateShortElement
+    XRPC_UpdateIntElement
+    XRPC_UpdateLongElement
+    XRPC_UpdateDoubleElement
+    XRPC_UpdateStringElement
+    XRPC_UpdateStringElementUCS2
+    XRPC_UpdateStringElementUTF8
+    XRPC_UpdateBinaryElement
+    XRPC_FreeElement
+    XRPC_AddDoubleField
+    XRPC_AddLongField
+    XRPC_AddIntField
+    XRPC_AddShortField
+    XRPC_AddByteField
+    XRPC_AddBoolField
+    XRPC_AddStringField
+    XRPC_AddStringFieldUCS2
+    XRPC_AddStringFieldUTF8
+    XRPC_AddContainerField
+    XRPC_AddField
+    XRPC_GetDoubleElementByName
+    XRPC_GetLongElementByName
+    XRPC_GetIntElementByName
+    XRPC_GetShortElementByName
+    XRPC_GetByteElementByName
+    XRPC_GetBoolElementByName
+    XRPC_GetStringElementByName
+    XRPC_GetArrayByName
+    XRPC_GetStructByName
+    XRPC_ContainerToElement
+    XRPC_FreeContainer
+    XRPC_Call
+    XRPC_Wait
+    XRPC_TimeWait
+    XRPC_CallStatus
+    XRPC_CallResult
+    XRPC_FreeCall
+    XRPC_Notify
+    XRPC_FormatNotify
+    XRPC_FormatCall
+    XRPC_ListRemoteProtocols
+    XRPC_IsAlive
+    XRPC_RegisterProtocol
+    XRPC_UnregisterProtocol
+    XRPC_ServerListen
+    XRPC_ServerListenSocket
+    XRPC_ServerAccept
+    XRPC_CreateStreamSession
+    XRPC_CreateSocketSession
+    XRPC_Connect
+    XRPC_GetCurrentSession
+    XRPC_SetSessionContext
+    XRPC_GetSessionContext
+    XRPC_CreateSessionThread
+    XRPC_CreateSessionThread2
+    XRPC_UseExternalThread
+    XRPC_GetClient
+    XRPC_GetServer
+    XRPC_RunSession
+    XRPC_CloseSession
+    XRPC_FreeSession
+    XRPC_GetUTF8Char
+    XRPC_GetUTF8CharSize
+    XRPC_UTF8ToWideString
+    XRPC_UTF8ToASCIIString
+    XRPC_WideStringToUTF8
+    XRPC_WideCharToUTF8
+    XRPC_WideCharToASCII
+    XRPC_WideStringToASCII
+    XRPC_ASCIIToWideString
+    XRPC_ASCIIToWideChar
+    XRPC_LengthUTF8
+    XRPC_BASE64Encode
+    XRPC_BASE64Decode
+    XRPC_IsValidXMLChar
+    XRPC_IsValidXMLCharUCS2
+    XRPC_IsValidXMLString
+    XRPC_IsValidXMLStringUCS2
+    XRPC_IsValidXMLStringUTF8
+    XRPC_Malloc
+    XRPC_Free
+    XRPC_GetLogonID
+    XRPC_DebugTrace
+
+;
+; XRPC Registry API. NOTE that XREG_CreateRegistry, XREG_ConnectRegistry
+; and XREG_FreeRegistry functions have been removed from the export list
+; in order to force use of a single XRPC Registry object per process, 
+; returned by XRPC_Registry function.
+
+;   XREG_CreateRegistry
+;   XREG_ConnectRegistry
+;   XREG_FreeRegistry
+
+    XREG_IsServer
+    XREG_IsClient
+    XREG_RegisterService
+    XREG_UnregisterService
+    XREG_List
+    XREG_Query
+    XREG_SetListener
+    XREG_SetProperty
+    XREG_ClearProperty
+    XREG_Lock
+    XREG_Unlock
+    XREG_Free
+    XREG_GetPropValue
+    XREG_GetServiceProp

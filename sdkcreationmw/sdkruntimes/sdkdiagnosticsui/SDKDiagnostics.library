@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>SDKDiagnostics</fullname>
+  <class>
+    <path>classes</path>
+  </class>
+  <source>
+    <path>src</path>
+  </source>
+  <required>NmitSharedApp</required>
+  <required>NmitSharedWtkdev</required>
+  <required>NmitSharedHttp</required>
+  <required>NmitSharedUtil</required>
+  <required>NmitSharedBookmarks</required>
+</library>

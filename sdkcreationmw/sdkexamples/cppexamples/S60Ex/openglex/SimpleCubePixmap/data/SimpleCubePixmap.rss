@@ -1,0 +1,139 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include "simplecubepixmap.hrh"
+#include "simplecubepixmap.rls"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+//  RESOURCE DEFINITIONS
+RESOURCE RSS_SIGNATURE { }
+RESOURCE TBUF { buf = "SimpleCubePixmap"; }
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_simplecubepixmap_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+
+//----------------------------------------------------
+//
+//    r_simplecubepixmap_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_simplecubepixmap_menubar
+    {
+    titles =
+        {
+            MENU_TITLE
+            {
+                menu_pane = r_simplecubepixmap_exit;
+            },
+            MENU_TITLE
+            {
+                menu_pane = r_simplecubepixmap_menu;
+            }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_simplecubepixmap_exit
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_simplecubepixmap_exit
+{
+    items =
+        {
+            MENU_ITEM
+            {
+                command = EAknCmdExit;
+                txt = STRING_r_simplecubepixmap_exit;
+            }
+        };
+}
+
+//----------------------------------------------------
+//
+//    r_simplecubepixmap_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_simplecubepixmap_menu
+    {
+    items =
+        {
+            MENU_ITEM
+            {
+                command = ESimpleCubeShading;
+                cascade = r_simplecubepixmap_shading_menu;
+                txt = STRING_r_simplecubepixmap_shade;
+            }
+        };
+}
+
+//----------------------------------------------------
+//
+//    r_simplecubepixmap_shading_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_simplecubepixmap_shading_menu
+{
+    items =
+        {
+            MENU_ITEM
+            {
+                command = ESimpleCubeFlat;
+                txt     = STRING_r_simplecubepixmap_flat;
+            },
+            MENU_ITEM
+            {
+                command = ESimpleCubeSmooth;
+                txt     = STRING_r_simplecubepixmap_smooth;
+            }
+        };
+}
+
+//----------------------------------------------------
+//
+//    r_simplecubepixmap_localisable_app_info
+//
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_simplecubepixmap_localisable_app_info
+    {
+    short_caption = STRING_r_app_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption         = STRING_r_app_caption_string;
+        number_of_icons = 1;
+        icon_file       = "\\resource\\apps\\simplecubepixmap_icon.mif";
+        };
+    }
+
+// End of File

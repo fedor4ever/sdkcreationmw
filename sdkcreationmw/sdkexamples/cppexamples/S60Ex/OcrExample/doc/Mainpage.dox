@@ -1,0 +1,268 @@
+/*! \mainpage Optical Character Recognition Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates, how to use Optical Character Recognition API
+ * (henceforth OCR) introduced in S60 3rd edition Feature Pack 1.
+ *
+ * \note Optical Character Recognition feature does not exist in all devices.
+ *  OCR Example cannot be executed in such devices.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - OCR API
+ * - CImageDecoder
+ * - CBitmapScaler
+ * - CAknSettingItemList
+ * - CEikGlobalTextEditor
+ * - CAknForm
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * It is recommended that the reader first familiarizes herself with OCR API
+ * usage in SDK help.
+ *
+ * Additionally the example makes use of several other Symbian and S60 features
+ * of which the reader should be aware of:
+ * - Window graphics context
+ * - Bitmaps
+ * - File Server session
+ * - Active Objects
+ * - Forms and Settings list
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * OCR Example application design follows Avkon View-switching architecture.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * OCR Example consists of three views:
+ * - the main-view i.e. image-view shows loaded image in the screen. OCR
+ *   operations are executed in this view.
+ * - one sub-view i.e. settings-view shows general settings of application,
+ *   such as which languages are used in recognition.
+ * - one sub-view i.e. text-view shows the result of analysis and recognition.
+ *
+ * The logic of application is somewhat heavily concentrated in the
+ * COcrExampleImageView class, which controls all the image-related
+ * operations (loading and scaling the image, OCR operations and so on).
+ * And if you are interested just to see, how OCR operations are done, then
+ * that class contains basically everything you need to check.
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * OCR Example does not require any capabilities. The capabilities are defined
+ * as NONE in mmp-file.
+ *
+ * \subsection Sub32 3.2 Start-up
+ *
+ * When OCR Example application is started, the framework completes the
+ * construction of the application by calling COcrExampleAppUi::ConstructL()
+ * during which three view-objects are created:
+ * - image view (COcrExampleImageView::NewL)
+ * - settings view (NOCRUtils::CSimpleView<>::NewL), and
+ * - text view (NOCRUtils::CSimpleView<>::NewL).
+ *
+ * COcrExampleAppUi has two data-objects as members:
+ * \link COcrExampleAppUi::iSettingsData iSettingsData \endlink and
+ * \link COcrExampleAppUi::iTextData iTextData \endlink. Settings-data is used
+ * both by image and settings view; text-data is used only by text-view.
+ * The data-object is passed to view in their construction.
+ *
+ * COcrExampleImageView::NewL() for its part creates by calling
+ * COcrExampleImageContainer::NewL() to which settings data is also passed in
+ * addition to the TScreenUpdateData data-object via which the image-view
+ * controls bitmaps and rectangles drawn to the screen.
+ * Image container does not contain much intelligence: essentially it just
+ * draws the screen based on data in TScreenUpdateData.
+ *
+ * The image-view during its
+ * \link COcrExampleImageView::ConstructL ConstructL \endlink
+ * also creates
+ * - a log-file, where recognition results are written (\\Data\\OCRExample.txt),
+ *   and
+ * - two bitmap-files: one for the image to be loaded and another for a
+ *   re-sized variant of it to fit to the screen; and
+ * - an utility object to handle image loading and scaling is created with
+ *   NOCRUtils::CImageHandler::NewL.
+ *
+ * Settings and text views are constructed with the help of template class
+ * \link NOCRUtils::CSimpleView CSimpleView \endlink.
+ * Template parameters for the class are container-class and data type to be
+ * passed to container in its creation.
+ * <br>
+ * Both text and settings views are such that the view-class does not require
+ * any customization. And what suits for one, suits also to another one. Thus
+ * the view-functionality is implemented by template, and all differentiating
+ * functionality is specified either with template parameters or with parameters
+ * passed to \link NOCRUtils::CSimpleView::NewL NewL \endlink.
+ * <br>
+ * The container is created, when the view is activated, and destroyed when
+ * deactivated. And when Back- or Ok-button is given, the previous view is
+ * activated.
+ * <br>
+ * Containers of these two simple views are
+ * - COcrExampleTextContainer, and
+ * - COcrExampleSettingsContainer.
+ *
+ * \subsection Sub33 3.3 Opening File
+ *
+ * Initially image-view Options offer just Open File- and Settings-commands.
+ * COcrExampleImageView::DynInitMenuPaneL implements menu's dynamic handling.
+ *
+ * Open File -functionality is implemented in
+ * COcrExampleImageView::OpenImageL():
+ * - First file selection dialog is executed. In the OcrExample.rss
+ *   MEMORYSELECTIONDIALOG is defined, so that the user can choose between phone
+ *   memory and memory card from where to seek the file.
+ *   <br>
+ *   The whole dialog functionality and directory browsing is implemented by
+ *   AknCommonDialogs.
+ * - If image file was chosen, the previously loaded image - if such exists -
+ *   is closed and freed.
+ * - Then image-view request loading - and scaling of image - by calling
+ *   NOCRUtils::CImageHandler::LoadFileAndScaleL(). The filename
+ *   and the size of the screen are passed as parameters.
+ *   <br>
+ *   The file loading and scaling operations are asynchronous, executed by
+ *   CImageHandler active object: the handler will first load the original
+ *   image to COcrExampleImageView::iBitMap, and then scale the image
+ *   to fit the screen and store it to TScreenUpdateData::iScaledBitMap.
+ * - Then image-view will execute wait-note for the duration of loading
+ *   and scaling. See COcrExampleImageView::ExecuteWaitNoteL().
+ * - The image-view acts as an observer to the image handler i.e. the
+ *   view-class inherits NOCRUtils::MImageHandlerCallback. The handler will call
+ *   \link COcrExampleImageView::ImageOperationCompleteL ImageOperationCompleteL
+ *   \endlink, when loading and scaling have been completed.
+ * - When \link COcrExampleImageView::ImageOperationCompleteL
+ *   ImageOperationCompleteL \endlink is called, the image-view checks, whether
+ *   operation was successful - and if so, the sizes of the original and scaled
+ *   image are passed to a small help-utility
+ *   TScreenUpdateData::iRectScaler, which is used to resize rectangles
+ *   between original and scaled images.
+ *   Next drawing is requested. See also \ref SubDrawing
+ *
+ * \subsection Sub34 3.4 OCR operations
+ *
+ *  When the image has been loaded, OCR operations become available. Similarly
+ *  as in the actual OCR API, the operations are divided to two groups:
+ *  - layout analysis of the whole image and recognition (of analysed areas),
+ *    and
+ *  - block or special region recognition of the user-specified rectangle.
+ *
+ * The state of the cross-hair rectangle defines, which group of commands are
+ * available:
+ * - if the cross-hair is disabled, layout analysis and recognition can be done;
+ * - if the cross-hair is enabled, then it defines the area of the
+ *   image to be recognized (block or special region). The user can use
+ *   arrow-keys to move the cross-hair and change its size via Settings.
+ *
+ * When an OCR operation is started, the application executes a simple form
+ * dialog (NOCRUtils::CLayoutForm) to specify the settings used in the OCR
+ * operation.
+ * The asked options match one-to-one to the parameters of the particular OCR
+ * interface to be triggered. (Recognition of regions produced by layout
+ * analysis is the exception - as the interface does not currently have any
+ * operational parameters.)
+ * <br>
+ * For details of those options, refer to OCR API documentation.
+ *
+ * OCR operations are asynchronous and completion - for better or worse - is
+ * informed via callbacks.
+ *
+ * \subsubsection Sub341 3.4.1 Initializing OCR Engine
+ *
+ * Whenever a new layout analysis, block or special region recognition is to
+ * be done, OCR Engine initialization takes place. (Note, that recognition of
+ * regions acquired from layout analysis does not do OCR Engine initialization
+ * as analysis and recognition is two-step process and thus uses the same
+ * initialized engine.)
+ *
+ * COcrExampleImageView::InitializeOCREngineL contains the initialization
+ * steps:
+ * - possible previously initialized OCR Engine is first released,
+ * - then a new one is created (the caller informs which type of engine should
+ *   be initialized), and
+ * - used languages are informed to OCR Engine. The language set is taken
+ *   from the settings, which in this example allows English, Chinese or
+ *   Japanese to be used.
+ *
+ * \subsubsection Sub342 3.4.2 Operations
+ *
+ * COcrExampleImageView::AnalyzeImageLayoutL() triggers analyze layout
+ * operation. OCR Engine informs the completion by calling
+ * COcrExampleImageView::LayoutComplete().
+ * <br>
+ * If layout analysis was successful, the block info is written to the log
+ * file and the text-view is activated to show the results.
+ * See \ref SubTextView.
+ *
+ * COcrExampleImageView::RecognizeImageL() triggers the recognition of
+ * regions identified by analysis operation. (This operation is not available
+ * until analysis has been done.) All regions are asked to be
+ * recognized. The completion callback is
+ * COcrExampleImageView::RecognizeComplete(), which directly
+ * calls COcrExampleImageView::RecognizeDoneL().
+ *
+ * COcrExampleImageView::RecognizeBlockL() triggers the block
+ * recognition operation. (The cross-hair defines the region; scaled up with
+ * \link TScreenUpdateData::iRectScaler iRectScaler \endlink
+ * to match the size and position of the original image.) The completion
+ * callback is COcrExampleImageView::RecognizeBlockComplete(), which
+ * also directly calls COcrExampleImageView::RecognizeDoneL().
+ *
+ * COcrExampleImageView::RecognizeSpecialRegionL() triggers the special
+ * region recognition operation. (The cross-hair again defines the region.)
+ * The completion callback is
+ * COcrExampleImageView::RecognizeSpecialRegionComplete(), which
+ * also directly calls COcrExampleImageView::RecognizeDoneL().
+ *
+ * So, \link COcrExampleImageView::RecognizeDoneL RecognizeDoneL \endlink
+ * handles the recognition results in case of all three variant recognition
+ * operations. In very similar fashion as in case of analysis results,
+ * if recognition was successful, the block info and recognized texts are
+ * written to the log file and the text-view is again activated to show the
+ * results.
+ *
+ * \subsection SubTextView 3.5 Text view
+ *
+ * The text view is very simple: when activated, the log file is read from
+ * the disk and the contents is shown in a read-only editor.
+ * (The whole file is always read, but the
+ * previous position is stored in the data-object of the container, so that
+ * the cursor can be set to the beginning of the new data.)
+ * The user can scroll the text up and down - and when she exits the view,
+ * the control returns back to the image view.
+ *
+ * The implementation of text view is in class COcrExampleTextContainer and
+ * the view-layer is taken care of by NOCRUtils::CSimpleView.
+ *
+ * \subsection SubDrawing 3.6 Drawing the screen
+ *
+ * When the framework calls
+ * \link COcrExampleImageContainer::Draw Draw() \endlink OCR Example draws the
+ * scaled version of the image (assuming one is loaded) to the screen.
+ *
+ * Then if cross-hair rectangle is activated, it is also drawn on top of the
+ * image.
+ *
+ * If cross-hair is not activated, but layout analysis have been successfully
+ * done, the rectangles informed by OCR Engine are drawn on top of the image.
+ * However, as the OCR operations are done to the original image, also the
+ * areas (i.e. rectangles) containing texts refer to the original image.
+ * Hence container has to adjust sizes and positions of those rectangles
+ * to fit the scaled image drawn to the screen.
+ * TScreenUpdateData::iRectScaler is then asked to scale down the
+ * rectangles, before drawing.
+ *
+ */

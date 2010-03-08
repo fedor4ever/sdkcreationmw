@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+#ifndef WEBCLIENT_HRH
+#define WEBCLIENT_HRH
+
+enum TWebClientCommandIds
+    {
+    EWebClientCmdReqUrl = 0x6000,
+    EWebClientCmdHeader,
+    EWebClientCmdSource,
+    EWebClientCmdStatus
+    };
+
+enum TWebClientNoteIds
+    {
+    EWebClientWaitNote = 0x6100
+    };
+
+// Size of buffers used in WebClient
+#define KMaxUriNameLength       128
+#define KPrefixedUriNameLength  135
+#define KMaxUserNameLength      128
+#define KMaxPasswordLength      128
+
+#endif      // WEBCLIENT_HRH

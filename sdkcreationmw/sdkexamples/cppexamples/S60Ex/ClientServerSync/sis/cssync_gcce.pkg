@@ -1,0 +1,42 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; CSSync_gcce.pkg
+
+;Languages
+&EN
+
+; Package header
+#{"CSSync"},(0xA00001FB),1,0,0
+
+;Localised Vendor name
+%{"VendorEN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+; Target
+"..\..\..\epoc32\release\gcce\urel\CSSync.exe"             -"!:\sys\bin\CSSync.exe"
+"..\..\..\epoc32\data\z\resource\apps\CSSync.rsc"           -"!:\resource\apps\CSSync.rsc"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\CSSync_reg.rsc"  -"!:\private\10003a3f\import\apps\CSSync_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\CSSync.mif"		        -"!:\resource\apps\CSSync.mif"
+"..\..\..\epoc32\release\gcce\urel\CSSyncserver.exe"       -"!:\sys\bin\CSSyncServer.exe"
+
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						-"!:\private\A00001FB\backup_registration.xml"

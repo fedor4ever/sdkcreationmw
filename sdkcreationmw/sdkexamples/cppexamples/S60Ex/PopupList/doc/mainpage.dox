@@ -1,0 +1,105 @@
+/*! \mainpage Pop-up list Example
+ *
+ * \ref Intro_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This tutorial explains how to use the pop-up list control for Avkon
+ * applications. Pop-up list control is displayed as a pop-up window including a
+ * listbox that provides several styles. The user can select an item or items
+ * from this pop-up list.
+ *
+ * In the pop-up list example application, the following styles are provided.
+ *
+ * <TABLE><TR>
+ * <TD>Single item</TD>
+ * <TD>Standard (1 row = 1 item)</TD>
+ * </TR><TR>
+ * <TD>Single item with graphic & head title</TD>
+ * <TD>A bitmap icon is shown on each item, and a head title is shown at the top
+ * of the pop-up list.</TD>
+ * </TR><TR>
+ * <TD>Double item with large icon</TD>
+ * <TD>Double pop-up list with a large bitmap icon.</TD>
+ * </TR></TABLE>
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The following UML diagram shows key classes of the Pop-up List sample
+ * application.
+ *
+ * \image html image_poplist001.gif
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The pop-up list example application shows how to implement the pop-up list
+ * user interface in your application. To use the pop-up list control in an
+ * application, it is necessary that application programmers understand the
+ * following topics:
+ *
+ * - The functions of the pop-up list control class (CAknPopupList)
+ * - The functions of the listbox control class
+ * - Classes that are related to the pop-up list user interface, particularly
+ *   listbox
+ * - Defining pop-up list resources and using them
+ * - Implementing pop-up list related classes and handling functions in them
+ *
+ * <HR>
+ *
+ * \section UI_sec 2. User Interface
+ *
+ * This section shows how the pop-up list control is displayed to users and
+ * explains how to use them with the pop-up list example application.
+ *
+ * All of the pop-up list examples can be opened from the \b Options menu in the
+ * initial view. To display the \b Options menu, press the left soft key in
+ * initial view. Pressing the right softkey shows all examples.
+ *
+ * \subsection Sub21 2.1 Single item pop-up list
+ *
+ * To display a pop-up list with single items, select <B>Single item</B> in the
+ * \b Options menu.
+ *
+ * \image html image_poplist002.gif
+ *
+ * \subsection Sub22 2.2 Single item with graphic and head title
+ *
+ * To display single items with a graphic and head title, select <B>Single item
+ * with G (Head)</B> in the \b Options menu.
+ *
+ * \image html image_poplist005.gif
+ *
+ * \subsection Sub23 2.3 Double item with large icon
+ *
+ * To display double items with a large icon, select <B>Double item with LI</B>
+ * in the \b Options menu.
+ *
+ * \image html image_poplist014.gif
+ *
+ *
+ * \section Design_sec 3. Design and implementation
+ *
+ * \subsection Sub31 3.1 Sequence for using the pop-up list class
+ *
+ * The following figure shows the sequence for using the pop-up list class:
+ *
+ * \image html image_poplist019.gif
+ *
+ * At first, an instance of a listbox object is created. Then, when the
+ * CAknPopupList object is created (instantiated), the handle of the listbox
+ * object is passed to CAknPopupList at the construction phase. Then ExecuteLD
+ * is called to show the pop-up list.
+ *
+ * When the user selects an item in a pop-up list, the code of ExecuteLD returns
+ * to caller. To get the index of the selected item by application code, the
+ * CurrentItemIndex is called. Just like a normal dialog, the pop-up list has
+ * Active Object in itself.
+ *
+ *
+ */

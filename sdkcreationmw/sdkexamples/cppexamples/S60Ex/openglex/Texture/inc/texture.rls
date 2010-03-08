@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+rls_string STRING_r_app_caption_string        "Texture"
+rls_string STRING_r_app_short_caption_string  "Texture"
+
+rls_string STRING_r_texture_exit              "Exit"
+
+rls_string STRING_r_texture_perspective_on    "Perspective corr. on"
+rls_string STRING_r_texture_perspective_off   "Perspective corr. off"
+rls_string STRING_r_texture_wrapping_on       "Texture wrapping on"
+rls_string STRING_r_texture_wrapping_off      "Texture wrapping off"
+rls_string STRING_r_texture_lighting_on       "Turn lights on"
+rls_string STRING_r_texture_lighting_off      "Turn lights off"
+
+// End of File

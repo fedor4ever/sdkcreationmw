@@ -1,0 +1,43 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;Languages
+&EN
+
+;Header
+#{"Bumpmap"}, (0xA0000220), 1, 0, 0,TYPE=SA
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Files to install
+"..\..\..\..\epoc32\release\gcce\urel\Bumpmap.exe"                       -"!:\sys\bin\Bumpmap.exe"
+"..\..\..\..\epoc32\data\z\resource\apps\Bumpmap.RSC"                    -"!:\resource\apps\Bumpmap.RSC"
+"..\..\..\..\epoc32\data\Z\private\10003a3f\import\apps\bumpmap_reg.RSC" -"!:\private\10003a3f\import\apps\bumpmap_reg.RSC"
+"..\..\..\..\epoc32\data\z\resource\apps\bumpmap_icon.mif"  			       -"!:\resource\apps\bumpmap_icon.mif"
+
+"..\inc\firefly.jpg"                                                     -"!:\private\A0000220\firefly.jpg"
+"..\inc\bumpmap.jpg"                                                     -"!:\private\A0000220\bumpmap.jpg"
+"..\inc\texmap.jpg"                                                      -"!:\private\A0000220\texmap.jpg"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						                                    -"!:\private\A0000220\backup_registration.xml"
+

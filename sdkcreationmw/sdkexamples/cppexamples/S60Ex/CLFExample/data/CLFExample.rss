@@ -1,0 +1,488 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+//  RESOURCE IDENTIFIER
+NAME    CLFE
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <eikon.rsg>
+
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <avkon.rh>
+#include <avkon.hrh>
+#include <appinfo.rh>
+
+#include <CLFContentListing.rh>
+#include <CLFContentListing.hrh>
+
+#include "CLFExample.hrh"
+#include "CLFExample.rls"
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+// Resource signature
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE {}
+
+// -----------------------------------------------------------------------------
+// Default application new file name
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF16 { buf = ""; }
+
+// -----------------------------------------------------------------------------
+//
+// Application info
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_ce_group_view_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_view
+// View and default CBA for group view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ce_group_view
+    {
+    menubar = r_ce_group_view_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_music_view
+// View and default CBA for music view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ce_music_view
+    {
+    menubar = r_ce_music_view_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_localisable_app_info
+// Application information.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_ce_localisable_app_info
+    {
+    short_caption = STRING_r_ce_application_short_caption;
+    caption_and_icon =
+        CAPTION_AND_ICON_INFO
+            {
+            caption = STRING_r_ce_application_caption;
+            number_of_icons = 1;
+            icon_file = "\\Resource\\Apps\\CLFExample.mif";
+            };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_view_menubar
+// Menu bar for group view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_ce_group_view_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_ce_group_view_menupane;
+                     txt=STRING_r_ce_application_caption; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_music_view_menubar
+// Menu bar formusic view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_ce_music_view_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_ce_music_view_menupane;
+                     txt=STRING_r_ce_application_caption; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_view_menupane
+// Menu pane for group view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_ce_group_view_menupane
+    {
+    items=
+        {
+        MENU_ITEM { command=ECECmdOpen;  txt=STRING_r_ce_om_open; },
+        MENU_ITEM { command=ECECmdGroup; txt=STRING_r_ce_om_group_by;
+                    cascade=r_ce_group_view_group_cascade; },
+        MENU_ITEM { command=EAknCmdExit; txt=STRING_r_ce_om_exit; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_view_group_cascade
+// Cascading menu for grouping options in group view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_ce_group_view_group_cascade
+    {
+    items=
+        {
+        MENU_ITEM { command=ECECmdGroupByAllMusicFiles;
+                    txt=STRING_r_ce_sm_group_all; },
+        MENU_ITEM { command=ECECmdGroupByAlbum;
+                    txt=STRING_r_ce_sm_group_album; },
+        MENU_ITEM { command=ECECmdGroupByArtist;
+                    txt=STRING_r_ce_sm_group_artist; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_music_view_menupane
+// Menu pane for music view.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_ce_music_view_menupane
+    {
+    items=
+        {
+        MENU_ITEM { command=ECECmdPlay;     txt=STRING_r_ce_om_play; },
+        MENU_ITEM { command=ECECmdStop;     txt=STRING_r_ce_om_stop; },
+        MENU_ITEM { command=ECECmdSort;     txt=STRING_r_ce_om_sort; },
+        MENU_ITEM { command=ECECmdRename;   txt=STRING_r_ce_om_rename; },
+        MENU_ITEM { command=EAknCmdExit;    txt=STRING_r_ce_om_exit; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_default_sorting_param_query
+// Query for default sorting parameter.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_ce_wait_note
+    {
+    flags = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control = AVKON_NOTE
+                {
+                layout = EWaitLayout;
+                singular_label = STRING_r_ce_wait_note;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_default_sorting_param_query
+// Query for default sorting parameter.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_ce_default_sorting_param_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox = AVKON_LIST_QUERY_LIST
+                    {
+                    array_id = r_ce_default_sorting_param_list;
+                    };
+                heading = STRING_r_ce_query_sort_heading;
+                };
+            }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_default_sorting_param_list
+// Options for default sorting parameter query.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_ce_default_sorting_param_list
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_ce_query_sort_album; },
+        LBUF { txt = STRING_r_ce_query_sort_artist; },
+        LBUF { txt = STRING_r_ce_query_sort_title; },
+        LBUF { txt = STRING_r_ce_query_sort_genre; },
+        LBUF { txt = STRING_r_ce_query_sort_filedate; },
+        LBUF { txt = STRING_r_ce_query_sort_random; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_ordering_sorting_param_query
+// Query for sort ordering.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_ce_ordering_sorting_param_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox = AVKON_LIST_QUERY_LIST
+                    {
+                    array_id = r_ce_ordering_sorting_param_list;
+                    };
+                heading = STRING_r_ce_query_ordering_heading;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_ordering_sorting_param_list
+// Options for sort ordering query.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_ce_ordering_sorting_param_list
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_ce_query_ordering_ascend; },
+        LBUF { txt = STRING_r_ce_query_ordering_descend; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_position_sorting_param_query
+// Query for positioning items that have no tag for sorting parameter.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_ce_position_sorting_param_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox = AVKON_LIST_QUERY_LIST
+                    {
+                    array_id = r_ce_position_sorting_param_list;
+                    };
+                heading = STRING_r_ce_query_no_tag_heading;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_position_sorting_param_list
+// Options for querying position of items with insufficient tag info.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_ce_position_sorting_param_list
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_ce_query_no_tag_bottom; },
+        LBUF { txt = STRING_r_ce_query_no_tag_top; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_rename_query
+// Query for new file name.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_LIST_QUERY r_ce_rename_query
+    {
+    flags = EAknGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = STRING_r_ce_rename_query;
+                control = EDWIN
+                    {
+                    };
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_no_music_files_found
+// Text that is diplayed on a warning note when no music files were found.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_no_music_files_found  { buf = STRING_r_ce_no_music_files_found; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_no_groups
+// Text that is diplayed on the groups list box when it is empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_no_groups             { buf = STRING_r_ce_no_groups; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_all_files_item
+// List item to be used when all music files has been grouped to one group.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_group_all_files_item  { buf = STRING_r_ce_group_all_files_item; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_group_list_item
+// List item to be used for viewing groups.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_group_list_item       { buf = STRING_r_ce_group_list_item; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_music_list_2_item
+// List item to be used for viewing music files that do not have album tag.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_music_list_2_item     { buf = STRING_r_ce_music_list_2_item; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_music_list_3_item
+// List item to be used for viewing music files that have album tag.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_music_list_3_item     { buf = STRING_r_ce_music_list_3_item; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_no_tag_info_list_item
+// Text is diplayed on a list item when it has insufficient tag info.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_no_tag_info_list_item { buf = STRING_r_ce_no_tag_info_list_item; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_info_label_text
+// Info text displayed on the start up.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_ce_info_label_text       { buf = STRING_r_ce_info_label_text; }
+
+// -----------------------------------------------------------------------------
+//
+// r_ce_secondary_sorting_style
+// Content Listing Framework: Secondary sorting style for item sorting.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE CLF_SORTING_STYLE r_ce_secondary_sorting_style
+    {
+    // Sort ordering: Ascending
+    ordering = ECLFOrderingAscending;
+
+    // Field data type: Text string
+    data_type = ECLFItemDataTypeDesC;
+
+    fields =
+        {
+        // Sort by file name
+        CLF_FIELD_ID { field_id = ECLFFieldIdFileName; }
+        };
+    }
+
+// End of File

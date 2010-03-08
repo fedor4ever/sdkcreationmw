@@ -1,0 +1,197 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "expat"=..\expat\expat.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "slib"=..\slib\slib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "testcln"=.\test\testcln.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xrpc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ucs2lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xreg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expat
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name slib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "testsrv"=.\test\testsrv.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xrpc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ucs2lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xreg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name slib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expat
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ucs2lib"=..\ucs2lib\ucs2lib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "xls"=.\tools\xls.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name ucs2lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xreg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xrpc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name slib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expat
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "xreg"=.\xreg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "xregd"=.\tools\xregd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name slib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xreg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xrpc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ucs2lib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name expat
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "xrpc"=.\xrpc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "zlib"=..\zlib\zlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,42 @@
+/*! \mainpage IM Open API Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This Example demonstrates the use of IM API. IM API is an open API which can be used by third party developers to send and receive instant messages (IM). The example is a tick tack toe game, which is played between two players having compatible mobile devices. The moves and game protocol messages are sent as instant messages using IM API, therefore network capability is required on both devices. Both the players should have user acounts to compatible IM server. The application can be built using standard S60 built methods on supported platforms, and a signed sis file can be created and installed using standard S60 procedures.
+ *  \subsection Sub11 1.1 How it works
+ *  Here's how the application works from a player's point of view, for implementation details please refer to section \ref Design_sec.
+ *  After installing the application, It can be executed using IMOpenAPIExample icon. Help text is always visible on top of the application screen. From the options menu choose 'Edit Login Settings' to make the login settings. There are three login settings needed UserID, Password and Server Address and access point to connect network.
+ *  Once the settings are done 'Login' can be selected from the options menu. Login may fail with appropriate error code, e.g. the provided access point is not working. If instant messaging is not supported on the device, info message informs from that. After successfull login user can choose to send a challenge to the other player. The other player must also be successfully logged in to receive a challenge. A challenge invitation can be sent by choosing 'Challenge' from te options menu and typing in the other user id. The other user gets a challenge invitation and has options to accept or reject. If challenge is accepted, the users can start or stop game. The players can easily follow further instructions on top of the application screen. The help text on top the screen also shows whos turn it is and who can start the game by selecting start from the options menu. While in a Game, the users can choose to end a game from options menu. After ending a game users can also end the challenge from the options menu.
+ * 
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *  Mobile device should have instant messaging (IM) capabilities. Users must have accounts on compatible IM server and mobile device should have a valid access point to connect network. Also define a valid Web address as shown below.
+ *  <img src="ServerSettings.jpg">
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  IM Example has six classes in total. Application is started by CIMOpenAPIExampleApp which creates CIMOpenAPIExampleDocument. CIMOpenAPIExampleAppUi and CIMOpenAPIExamplemodel are then initiated. CIMOpenAPIExampleAppUi also creates CIMOpenAPIExampleContainer with CIMOpenAPIExampleGrid. Some details of the important classes is provided below.
+ *  <img src="ClassDiagram.jpg">
+ *  <b> <center> figure: IM Example Application Class Diagram</center></b>\n
+ *  CIMOpenAPIExampleAppUi: This class is responsible for user interface. It also creates CIMOpenAPIExampleContainer. It has options menu and all user commands goes through this class. It communicates with CIMOpenAPIExamplemodel and CIMOpenAPIExampleContainer. All user commands are transfered to CIMOpenAPIExamplemodel and/or CIMOpenAPIExampleContainer.\n
+ *  CIMOpenAPIExamplemodel: This class uses instances from IM API. It has instances of CImConnection and MImClient. When this class is initiated it tries to initiate CImConnection and stores error code if some error occur, which is then transfer to the CIMOpenAPIExampleAppUi when it tries to login.\n
+ *  CIMOpenAPIExamplemodel also inherits MImObserver and MImConnectionObserver classes to get the events from IM API. It has Login, Logout and Message sending functions which are called by CIMOpenAPIExampleAppUi which is the only class it can communicate. The class also reports if some error occur during login, logout or message sending and receiving. Moreover this class has the game logic, it checks for game end (draw or won by any player) after each move and holds the data for a 3*3 matrix. Each cell in matrix can have an enum value TGameSign. The can also manipulate the current state of the application, the example application can have a state TGameState at any given time, which determine the game view and the options available to the player. CIMOpenAPIExamplemodel communicates with CIMOpenAPIExampleAppUi using internal message ids TInternalMsgID, and it commnicate with remote user using message ids in TMsg. Please look into comments in IMOpenAPIExamplemodel.h for more information.\n
+ *  CIMOpenAPIExampleContainer: It contains the help text and 'your sign is:' text shown on top of the application window. It also contains CIMOpenAPIExampleGrid which is used to graphically display game's current data. This class is able to change its texts and grid according to the different states and data of the game.\n
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application need following capabilities: NetworkServices to connect with remote IM server. ReadUserData to read user data in the device. ReadDeviceData and WriteDeviceData capabilities are needed to read operator specific settings in the device. Please refer to IM API specification document for further information.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  The application runs in legacy S60 mode.
+ *
+ */

@@ -1,0 +1,131 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+NAME CSSY
+
+// INCLUDE FILES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "CSSync.hrh"
+#include "CSSync.rls"
+
+
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+        {
+        // No implementation required
+        }
+
+// -----------------------------------------------------------------------------
+//
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF
+        {
+        buf="";
+        }
+
+
+// -----------------------------------------------------------------------------
+//
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_cssync_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_cssync_menubar
+//   Menubar for CSSync example
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_cssync_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane=r_cssync_menu;
+            }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_cssync_menu
+//   Menu for "Options"
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_cssync_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EDisplayTime;
+            txt = STRING_r_cssy_submenu_display;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_cssy_submenu_exit;
+            }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_cssync_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_cssync_localisable_app_info
+    {
+    short_caption = STRING_r_cssy_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_cssy_caption_string;
+
+        number_of_icons = 2;
+	   	  icon_file = "\\resource\\apps\\cssync.mif";
+	      };
+    }
+
+// End of File

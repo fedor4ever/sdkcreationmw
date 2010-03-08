@@ -1,0 +1,312 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME SENE    // 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include "sensorexample.hrh"
+#include "sensorexample.rls"
+
+
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name
+    {
+    buf="SENE";
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_sensorexample_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_sensorexample_menubar
+//   Menubar for sensorexample
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_sensorexample_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_sensorexample_menu; }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_sensorexample_menu
+//   Menu for "Options"
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_sensorexample_menu
+    {
+    items =
+        {
+        MENU_ITEM
+                {
+                command = ESensorProperties;
+                txt = STRING_r_se_showProperty;
+                },
+        MENU_ITEM
+                {
+                command = EGetValue;
+                txt = STRING_r_se_getValue;
+                },
+        MENU_ITEM
+                {
+                command = ESetValue;
+                txt = STRING_r_se_setValue;
+                },
+        MENU_ITEM
+                {
+                command = EAknSoftkeyExit;
+                txt = STRING_r_se_exit;
+                }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// Resources for messages.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF32 r_se_notFound              { buf = STRING_r_se_notFound; }
+RESOURCE TBUF32 r_se_accelerometerChannel  { buf = STRING_r_se_accelerometerChannel; }
+RESOURCE TBUF32 r_se_doubleTapChannel      { buf = STRING_r_se_doubleTapChannel; }
+RESOURCE TBUF32 r_se_orientationChannel    { buf = STRING_r_se_orientationChannel; }
+RESOURCE TBUF32 r_se_rotationChannel       { buf = STRING_r_se_rotationChannel; }
+RESOURCE TBUF32 r_se_arraySuffix           { buf = STRING_r_se_arraySuffix; }
+RESOURCE TBUF32 r_se_dataRate              { buf = STRING_r_se_dataRate; }
+RESOURCE TBUF32 r_se_availability          { buf = STRING_r_se_availability; }
+RESOURCE TBUF32 r_se_measureRange          { buf = STRING_r_se_measureRange; }
+RESOURCE TBUF32 r_se_dataFormat            { buf = STRING_r_se_dataFormat; }
+RESOURCE TBUF32 r_se_scaledRange           { buf = STRING_r_se_scaledRange; }
+RESOURCE TBUF32 r_se_accuracy              { buf = STRING_r_se_accuracy; }
+RESOURCE TBUF32 r_se_scale                 { buf = STRING_r_se_scale; }
+RESOURCE TBUF32 r_se_unit                  { buf = STRING_r_se_unit; }
+RESOURCE TBUF32 r_se_model                 { buf = STRING_r_se_model; }
+RESOURCE TBUF32 r_se_connectionType        { buf = STRING_r_se_connectionType; }
+RESOURCE TBUF32 r_se_description           { buf = STRING_r_se_description; }
+RESOURCE TBUF32 r_se_xAxisActive           { buf = STRING_r_se_xAxisActive; }
+RESOURCE TBUF32 r_se_yAxisActive           { buf = STRING_r_se_yAxisActive; }
+RESOURCE TBUF32 r_se_zAxisActive           { buf = STRING_r_se_zAxisActive; }
+RESOURCE TBUF32 r_se_doubleTapLatency      { buf = STRING_r_se_doubleTapLatency; }
+RESOURCE TBUF32 r_se_doubleTapInterval     { buf = STRING_r_se_doubleTapInterval; }
+RESOURCE TBUF32 r_se_propertyID            { buf = STRING_r_se_propertyID; }
+RESOURCE TBUF32 r_se_propertyTypeInt       { buf = STRING_r_se_propertyTypeInt; }
+RESOURCE TBUF32 r_se_propertyTypeReal      { buf = STRING_r_se_propertyTypeReal; }
+RESOURCE TBUF32 r_se_propertyTypeBuffer    { buf = STRING_r_se_propertyTypeBuffer; }
+RESOURCE TBUF32 r_se_propertyTypeNoType    { buf = STRING_r_se_propertyTypeNoType; }
+RESOURCE TBUF32 r_se_propertyItemIndex     { buf = STRING_r_se_propertyItemIndex; }
+RESOURCE TBUF32 r_se_propertyArrayIndex    { buf = STRING_r_se_propertyArrayIndex; }
+RESOURCE TBUF32 r_se_propertyRoEtrue       { buf = STRING_r_se_propertyRoEtrue; }
+RESOURCE TBUF32 r_se_propertyRoEfalse      { buf = STRING_r_se_propertyRoEfalse; }
+RESOURCE TBUF32 r_se_propertyValue         { buf = STRING_r_se_propertyValue; }
+RESOURCE TBUF32 r_se_propertyMin           { buf = STRING_r_se_propertyMin; }
+RESOURCE TBUF32 r_se_propertyMax           { buf = STRING_r_se_propertyMax; }
+RESOURCE TBUF32 r_se_propertyUninitialized { buf = STRING_r_se_propertyUninitialized; }
+RESOURCE TBUF32 r_se_propertyType          { buf = STRING_r_se_propertyType; }
+RESOURCE TBUF32 r_se_valueQueryTitle       { buf = STRING_r_se_valueQueryTitle; }
+RESOURCE TBUF32 r_se_valueSetTo            { buf = STRING_r_se_valueSetTo; }
+RESOURCE TBUF32 r_se_valueSetError         { buf = STRING_r_se_valueSetError; }
+RESOURCE TBUF32 r_se_valueSetIntegerOnly   { buf = STRING_r_se_valueSetIntegerOnly; }
+RESOURCE TBUF32 r_se_valueSetReadOnly      { buf = STRING_r_se_valueSetReadOnly; }
+
+// ----------------------------------------------------------------------------
+//
+// r_sensorexample_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_sensorexample_localisable_app_info
+    {
+    short_caption = STRING_r_se_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_se_caption_string;
+
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\sensorexample_aif.mif";
+        };
+    }
+
+
+
+// ----------------------------------------------------------------------------
+//
+// r_sensorexample_dialog_ChannelTypeId_query
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_sensorexample_dialog_channeltypeid_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+      {
+      DLG_LINE
+        {
+        type = EAknCtListQueryControl;
+        id = EListQueryControl;
+
+          control = AVKON_LIST_QUERY_CONTROL
+          {
+          listtype = EAknCtSinglePopupMenuListBox;
+          listbox = LISTBOX
+            {
+                flags = EAknListBoxMenuList;
+
+            };
+          heading = STRING_r_se_available_channels;
+          };
+
+        }
+      };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_sensorexample_dialog_ChannelProperty_query
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_sensorexample_dialog_channelproperty_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+      {
+      DLG_LINE
+        {
+        type = EAknCtListQueryControl;
+        id = EListQueryControl;
+
+          control = AVKON_LIST_QUERY_CONTROL
+          {
+          listtype = EAknCtSinglePopupMenuListBox;
+          listbox = LISTBOX
+            {
+                flags = EAknListBoxMenuList;
+
+            };
+          heading = STRING_r_se_available_properties;
+          };
+
+        }
+      };
+    }
+
+//------------------------------------------------------------------------------
+// r_sensorexample_information_note
+// buttons = R_AVKON_SOFTKEYS_EMPTY;
+//------------------------------------------------------------------------------
+
+RESOURCE DIALOG r_sensorexample_information_note
+    {
+    flags = EEikDialogFlagNoDrag |
+            EEikDialogFlagNoTitleBar |
+            EEikDialogFlagCbaButtons;
+
+    buttons = R_AVKON_SOFTKEYS_OK_EMPTY ;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EGeneralNote;
+            control = AVKON_NOTE
+                {
+                layout = EGeneralLayout;
+                singular_label = " ";
+                animation = R_QGN_NOTE_INFO_ANIM;
+                };
+            }
+        };
+
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_sensorexample_dialog_value_edit_query
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_sensorexample_dialog_value_edit_query
+    {
+    flags=EGeneralQueryFlags;
+    buttons=R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type=EAknCtQuery;
+            id=EGeneralQuery;
+            control= AVKON_DATA_QUERY
+                {
+                    layout = ENumberLayout;
+                    label = " ";
+                    control = AVKON_INTEGER_EDWIN
+                        {
+                        // overridden in program code
+                        min = 0;
+                        max = 0x7fffffff;//KMaxTInt
+                        };
+                };
+            }
+        };
+    }
+
+// End of File

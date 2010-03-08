@@ -1,0 +1,1495 @@
+/*! \mainpage Location Reference Application Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref AppOutput_sec
+ * \n\ref Design_sec
+ * \n\ref Errors_sec
+ * \n\ref Summary_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ * The Location Reference application is intended for use as an example for programmers who develop applications that use Mobile Location Framework to obtain position information.
+ * The example application is implemented as an UI application, which has one module that issues position requests through MLFW. This module handles the whole position request process including starting and stopping the periodic update session and requesting the position information.
+ * The life cycle of the application is briefly:
+ * The Framework creates the control class (AppUI).
+ * The control class creates the positioning module and view class (container).
+ * The MLFW specific classes are initialised and a new position information request is made.
+ * The position request is completed with new position information, which is shown to the user.
+ * The new position request is made.
+ * When the user exits the application the periodic update session is stopped.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *    Location Reference uses the standard Symbian OS application framework, comprising of the Application, Document, UI, and View classes. The example makes use of several other Symbian OS concepts, which the reader should be aware of before attempting to understand the Location Reference example. These are:
+ * Asynchronous programming
+ * Active Objects
+ * Client/server architecture:
+ *
+ *  \subsection Sub21 2.1 Platform Security Aspects
+ *
+ *  The Location Reference Application needs ‘Location’ capability.
+ *  The program capabilities are defined in the LBSReference.mmp file.
+ *
+ *	<HR>
+ *
+ *  \section AppOutput_sec 3. Application Output
+ *
+ *  The output for the Location Reference Application is shown in the UI drawn into a listbox component (CAknDoubleStyleListBox).
+ *
+ *  It is possible to request two different kind of data types in the example application: TPositionSatelliteInfo and TPositionInfo.
+ *
+ *  The information displayed in the UI when using TPositionSatelliteInfo is described below. When using TPositionInfo only the first seven fields are used.
+ *
+ *  <table border="1" cellspacing="3" cellpadding="3">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Field</span></b></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Unit</span></b></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Description</span></b></td></tr>
+
+<tr style="height: 22.05pt;">
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Module</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>String</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>The name of the position module which
+ provided the position information.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Lat</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Degrees</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Latitude information (+degrees °minutes’seconds”.milliseconds).</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Lon</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Degrees</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Longitude information (+degrees °minutes'seconds”.milliseconds).</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Alt</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Meters</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Altitude in meters according to WGS-84
+ ellipsoid.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>HRMS</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Meters</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Horizontal accuracy.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>VRMS</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Meters</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Vertical accuracy.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Time</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Date/Time</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Universal (GMT) time, based on the
+ system time of the target phone (day.month.year - hours:minutes:seconds).</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Speed</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Km/h</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Horizontal speed.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Speed accuracy</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Km/h</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Horizontal speed accuracy.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Heading</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Degrees</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Heading.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Heading accuracy</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Degrees</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Heading accuracy.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Satellite time</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Date/Time</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Satellite date and time (UTC). This
+ time is acquired from NMEA messages (day.month.year - hours:minutes:seconds)..</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Satellites in view</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Number</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Number of satellites in view. This
+ is the amount of satellites the GPS device sees at the time.</span></td></tr>
+
+<tr style="height: 25.55pt;">
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 25.55pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=34
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span lang=EN-GB>Satellites used</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 25.55pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=34
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span lang=EN-GB>Number</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 25.55pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=34
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><span lang=EN-GB>Satellites being used to calculate
+ the solution (0-12).</span></p>
+<p class=Tabletext><span lang=EN-GB>3 satellites needed for 2D fix</span></p>
+<p class=Tabletext><span lang=EN-GB>&gt;=4 satellites needed for 3D fix</span></td></tr>
+</table>
+ *
+ <img src="Initialising.PNG"><h5 align="center">Figure 1 Initialising the position request process</h5></img>
+ *
+ <img src="Example_1.PNG"><h5 align="center">Figure 2 Example view of Location Reference Application requesting TPositionInfo from Location Framework</h5></img>
+ *
+ <img src="Example_2.PNG"><h5 align="center">Figure 3 Example views of Location Reference Application requesting TPositionSatelliteInfo from Location Framework</h5></img>
+ *
+ <img src="View.PNG"><h5 align="center">Figure 4 View of a situation where access for position request was denied</h5></img>
+ *
+ * <HR>
+ *
+ * \section Design_sec 4. Design and Implementation
+ *
+ *    The example application uses a periodic update option to retrieve position information. This means that the position requesting is continuous and it should be completed once every second with new position information. This procedure starts immediately when the application is started and it does not stop until the application is closed.
+ *
+ *  All the update options are described in the table below.
+ *
+ *  <table border="1" cellspacing="3" cellpadding="3">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=92.2pt>
+<p class=Tabletext><span style="font-weight: bold;">Option</span></td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=106.3pt>
+<p class=Tabletext><span style="font-weight: bold;">Value</span></td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=240.9pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Description</span></b></td></tr>
+
+<tr style="height: 22.05pt;">
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=92.2pt>
+<p class=Tabletext>Update interval</td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=106.3pt>
+<p class=Tabletext>One second</td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 22.05pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=29
+	valign=top
+	width=240.9pt>
+<p class=Tabletext>The position request should complete once every second
+ with new position information.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext>Update timeout</td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext>Two minutes</td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext>If MLFW cannot get position in two minutes it cancels
+ the position request.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext>Maximum update age</td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext>500 milliseconds</td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext>Positions which have a time stamp below this value can
+ be reused and are returned when no other position information is available.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 92.15pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=92.2pt>
+<p class=Tabletext>Accept partial updates</td>
+<td style="x-cell-content-align: top;
+			width: 106.3pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=106.3pt>
+<p class=Tabletext>ETrue</td>
+<td style="x-cell-content-align: top;
+			width: 240.95pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=240.9pt>
+<p class=Tabletext>Enables location framework to send partial position
+ information. This option is useful in situations where location information
+ is not available but there might be information on orbiting satellites.</td></tr>
+</table>
+ *
+ *  Generally, using of periodic interval or single requests depends on the application (for example navigation application) type. The periodic update interval must be set to meet the needed application performance with the understanding of possible costs to the user, the power consumption, and that a PSY is not always available with a small time to fix ability, that is, the PSY cannot obtain position in a second but, for example, in five or ten seconds.
+ *
+ *  \subsection Sub41 4.1 Design
+ *
+ *  The class diagram for the Location Reference Application is shown below.
+ *
+ <img src="ClassDiagram.PNG"><h5 align="center">Figure 5 Class diagram for the Location Reference Application</h5></img>
+ *
+ *  CLbsReferenceContainer functions as a controller of application’s location system. It implements MLbsPositionListener interface, which is used to retrieve position information from CLbsPositionRequestor. CLbsReferenceContainer does all the position information formatting. The formatted information is sent to CAknDoubleStyleListBox component, which displays it to the user.
+ *
+ *  The class CAknDoubleStyleListBox functions as a view of the application. It draws the location info string, retrieved from CLbsReferenceContainer via MLbsPositionListener interface, to the screen.
+ *
+ *  CLbsPositionRequestor class handles the position requesting process. It initialises the RPositionServer and RPositioner and starts the position requesting process. If an error occurs during the process it is sent to the MLbsPositionListener (CLbsReferenceContainer) and displayed to the user. Because CLbsPositionRequestor is an active object it can easily be used in the requesting position with RPositioner::NotifyPositionUpdate()or RPositioner::GetLastKnownPosition() which are asynchronous methods.
+ *
+ *  RPositionServer and RPositioner are the primary classes used to retrieve location information from MLFW. See [1] in References for more detailed information about these classes.
+ *
+ *  \subsection Sub42 4.2 Implementation
+ *
+ *  \subsection Sub421 4.2.1 Initialisation process
+ *
+ *  The following figure demonstrates the series of actions performed by the application example Location Reference in order to initialise the application, request position information and view the current position information requested from Mobile Location Framework.
+ *
+ <img src="SeqDiagram.PNG"><h5 align="center">Figure 6 Sequence diagram for the Location Reference Application describing the initialisation of the position request process and new position information request</h5></img>
+ *
+ *  <b>Steps:</b>
+ *
+ *  1.	Framework creates CLbsReferenceAppUi object.
+ *
+ *  2.	CLbsReferenceAppUi creates CLbsReferenceContainer object.
+ *
+ *  3.	CLbsReferenceContainer instantiates CLbsPositionRequestor by making a call to NewL()
+ *
+ *  4.	CLbsPositionRequestor calls RPositionServer::Connect() in order to connect to position server.
+ *
+ *  5.	CLbsPositionRequestor calls RPositioner::Open() in order to connect to the default position module via Default Proxy.
+ *
+ *  6.	CLbsPositionRequestor calls RPositioner::SetRequestor() to inform MLFW about the person requesting the location information.
+ *
+ *  7.	CLbsPositionRequestor calls RPositioner::SetUpdateOptions() to set the update options (for example to obtain periodic updates).
+ *
+ *  8.	CLbsPositionRequestor makes an asynchronous call to RPositioner::GetLastKnownPosition() to retrieve the last known position.
+ *
+ *  9.	When the position request is completed, CLbsPositionRequestor::RunL() is called.
+ *
+ *  10.	CLbsPositionRequestor calls CLbsReferenceContainer::PositionInfoUpdatedL().
+ *
+ *  11.	CLbsReferenceContainer processes the position information and displays it in listbox.
+ *
+ *  12.	Control returns to class CLbsPositionRequestor.
+ *
+ *  13.	CLbsPositionRequestor calls asynchronous RPositioner::NotifyPositionUpdate() to request new position information.
+ *
+ *  Position information updating continues by repeating steps 9-13.
+ *
+ *  \subsection Sub422 4.2.2 Changing the data class
+ *
+ *  The following figure demonstrates the series of actions performed by Location Reference application example in order to change the data class used during the position request when the default PSY is changed by user.
+ *
+ <img src="StateDiagram.PNG"><h5 align="center">Figure 7 State diagram for the Location Reference application describing procedures when default PSY is changed by user</h5></img>
+ *
+ *  Every time the position request is completed with KErrArgument (the data class used was not supported), the data class is changed to TPositionInfo.
+ *
+ *  Every time the position request is completed with KPositionPartialUpdate or KerrNone, the ID of the module which provided the latest position information is checked.
+ *
+ *  If the module ID is different from the ID of the module which provided the previous position info, it is assumed that the position module has changed. In this case the data class support of this module is checked. The data class is changed to TPositionSatelliteInfo or TPositionInfo depending on which data classes the new module supports.
+ *
+ *  \subsection Sub423 4.2.3 Closing the application
+ *
+ *  The following figure demonstrates the series of actions performed by application example Location Reference in order to close the application and to destroy all the objects used during the position request.
+ *
+ <img src="SeqDiagram_2.PNG"><h5 align="center">Figure 8 Sequence diagram for the Location Reference Application describing procedures when closing the application</h5></img>
+ *
+ *  1.	The user wishes to close the application and framework destroys AppUi, which in turn destroys the container it owns.
+ *
+ *  2.	The container iAppContainer destroys iPositionRequestor it owns.
+ *
+ *  3.	Object iPositionRequestor issues iPositioner.CancelRequest()in order to cancel an ongoing request.
+ *
+ *  4.	Object iPositionRequestor issues iPositioner.Close() in order to close handle to positioner.
+ *
+ *  5.	Object iPositionRequestor issues iPosServer.Close() in order to close handle to server.
+ *
+ *  6.	Call returns.
+ *
+ *  7.	Call returns.
+ *
+ *  \subsection Sub424 4.2.4 Privacy handling
+ *
+ *  Methods RPositioner::GetLastKnownLocation() and RPositioner::NotifyPositionUpdate() complete with KErrAccessDenied when potential privacy verification of position request fails. The possible cases when this can happen are:
+ *
+ *  The position request is rejected by the user.
+ *
+ *  \subsection Sub425 4.2.5 Privacy dialogs
+ *
+ *  When the position request is made, the privacy dialog may appear. The purpose of this dialog is to ask the user if he accepts any position requests made by the application. If the permission for position request is denied, the position request is completed with KErrAccessDenied. If the permission for position request is granted, the position request completes normally.
+ *
+ *  The timeout update option or RPositioner::CancelRequest() can be used to ensure that the UI dialogs are dismissed after some time if the user does not respond to the dialogs.
+ *
+ *  The example below shows how to use the timeout update option to cancel the position request and how to close possible UI dialogs visible at the time.
+ *
+ *  Note that the timeout is the correct way to cancel a request if no completion is made in a reasonable time. RPositioner::CancelRequest() is used when the application is closed and for example the requesting has to be stopped immediately.
+ *
+ *  When defining the timeout value the verification time with the UI dialog must be taken into account.
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr valign=top>
+<td style="border-left-width: 1px;
+			border-left-color: #000000;
+			border-left-style: Solid;
+			border-top-style: Solid;
+			border-top-color: #000000;
+			border-top-width: 1px;
+			border-right-width: 1px;
+			border-right-color: #000000;
+			border-right-style: Solid;
+			border-bottom-style: Solid;
+			border-bottom-color: #000000;
+			border-bottom-width: 1px;
+			padding-right: 10px;
+			padding-left: 10px;"
+	width=100%>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;"><!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->//The
+ update options</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;">TPositionUpdateOptions
+ <!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->updateops;</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;"><!--kadov_tag{{<spaces>}}-->&nbsp;<!--kadov_tag{{</spaces>}}-->//Set
+ timeout to thirty seconds</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;">updateops.SetUpdateTimeOut(TTimeIntervalMicroSeconds(30000000));</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;">iPositioner.SetUpdateOptions(
+ updateops );</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;">iPositioner.NotifyPositionUpdate(iSatelliteInfo,
+ iStatus);</p>
+<p class=Tabletext
+	style="font-family: 'Courier New', monospace; font-size: 10pt;">User::WaitForRequest(iStatus);</td></tr>
+</table>
+ *
+ *  \subsection Sub426 4.2.6 Configuring
+ *
+ *  The Location Reference application example does not provide any configuration options to the user.
+ *
+ * <HR>
+ *
+ * \section Errors_sec 5. Error Situations
+ *
+ *  Every time an error occurs it is reported to the user. If an error occurs during the initialisation of the application, no recovering is performed. The error is simply conveyed to the user and no attempt is made in order to obtain a position fix. If an error occurs during the periodic update session the error message is displayed to the user and the session is continued if possible. See <i>S60 Location Acquisition API Specification</i> document for more detailed description about errors and error codes.
+ *
+ *  \subsection Sub51 5.1 Handling errors in CLbsPositionRequestor
+ *
+ *  Errors from synchronous calls are handled immediately after the call returns. When requesting a position, the error handling is done in CLbsPositionRequestor::RunL().
+ *
+ *  Possible error situations within the example application Location Reference are shown in the following chapters.
+ *
+ *  \subsection Sub511 5.1.1 Initialisation of the position request process
+ *
+ *  If an error occurs while initialising the position request process, the error message is displayed to the user and the application is closed after the initialisation is cancelled.
+ *
+ *  \subsection Sub512 5.1.2 Position request
+ *
+ *  These errors are processed in CLbsPositionRequestor::RunL(). All handled errors are described in the table below.
+ *
+ *  <table border="1" cellspacing="3" cellpadding="3">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Error
+ code</span></b></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=145pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Description</span></b></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border: solid #000000 .75pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><b style="font-weight: bold;"><span lang=EN-GB>Action</span></b></td></tr>
+
+<tr style="height: 63.8pt;">
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 63.8pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=85
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KPositionQualityLoss</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 63.8pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=85
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>Some quality loss in position information
+ returned. This is not actually an error but information provided about
+ the quality of the returned position information. </span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			height: 63.8pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	height=85
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>The new position information is requested
+ when this error occurs.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KErrAccessDenied</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>Access was denied when requesting the
+ position. If this error occurs the location privacy setting could be set
+ to reject position requests.</span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>No new position request is made when
+ this error occurs. The user is prompted to close the application.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KErrTimedOut</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>The position request was timed out.
+ This error occurs when position request takes more than what is set with
+ </span><span class=Codewords><span lang=EN-GB
+									style="font-size: 10.0pt; font-family: 'Courier New';">RPositioner::SetUpdateOptions()</span></span><span
+ lang=EN-GB>. </span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>The new position information is requested
+ when this error occurs.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KErrCancel</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>The position request was cancelled
+ by the user. In the application example Location Reference this error
+ occurs only when user cancels the UI dialogs (BT device selection dialog
+ or Pairing passkey dialog). </span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>No new position request is made when
+ this error occurs. The user is prompted to close the application.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KErrArgument</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>The requested position information
+ type is of a non-supported type.</span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>The requested position information
+ type is changed and the position request process is continued.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span class=Codewords><span lang=EN-GB
+												style="font-size: 10.0pt; font-family: 'Courier New';">KErrUnknown</span></span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>The last known position is not available.</span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>The new position information is requested
+ when this error occurs.</span></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 145.6pt;
+			border: solid #000000 .75pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145.6pt>
+<p class=Tabletext><span lang=EN-GB>Other errors</span></td>
+<td style="x-cell-content-align: top;
+			width: 145.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=145pt>
+<p class=Tabletext><span lang=EN-GB>For example, in the situation where
+ there are no PSYs installed the error </span><span class=Codewords><span
+ lang=EN-GB
+	style="font-size: 10.0pt; font-family: 'Courier New';">KErrNotFound</span></span><span
+ lang=EN-GB> is handled here.</span></td>
+<td style="x-cell-content-align: top;
+			width: 148.8pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .75pt;
+			border-right: solid #000000 .75pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=148.8pt>
+<p class=Tabletext><span lang=EN-GB>No new position request is made when
+ this error occurs. The user is prompted to close the application.</span></td></tr>
+</table>
+ *
+ * <HR>
+ *
+ * \section Summary_sec 6. Summary
+ *
+ *  The Location Reference example demonstrates:
+ *
+ * How to use Mobile Location Framework within an UI application to request current position information from Mobile Location Framework and how to show it to the user.
+ * How the privacy handling should be taken into consideration when creating the UI Applications with Mobile Location Framework.
+ * How to handle errors during the initialisation of the application and during the position request.
+ *
+ */

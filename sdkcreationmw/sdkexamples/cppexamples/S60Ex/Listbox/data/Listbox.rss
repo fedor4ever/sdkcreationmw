@@ -1,0 +1,533 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME LBOX    // 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include "Listbox.hrh"
+#include "Listbox.rls"
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name
+    {
+    buf="LBOX";
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_listbox_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_listbox_numberview_options_exit__options
+//    Softkeys for Number view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE CBA r_listbox_numberview_options_exit__options
+    {
+    flags = 0;
+    buttons =
+        {
+        CBA_BUTTON {id=EAknSoftkeyOptions; txt=STRING_r_listbox_options;},
+        CBA_BUTTON {id=EAknSoftkeyExit; txt=STRING_r_listbox_exit;},
+        CBA_BUTTON {id=EAknSoftkeyOptions; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_listbox_number_view
+//    Number view for listbox example.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_listbox_number_view
+    {
+    menubar = r_listbox_menubar;
+    cba = r_listbox_numberview_options_exit__options;
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_listbox_graphicview_options_exit__options
+//    Softkeys for Graphic view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE CBA r_listbox_graphicview_options_exit__options
+    {
+    flags = 0;
+    buttons =
+        {
+        CBA_BUTTON {id=EAknSoftkeyOptions; txt=STRING_r_listbox_options;},
+        CBA_BUTTON {id=EAknSoftkeyExit; txt=STRING_r_listbox_exit;},
+        CBA_BUTTON {id=EAknSoftkeyContextOptions; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_listbox_graphic_view
+//    Graphic view for listbox example
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_listbox_graphic_view
+    {
+    menubar = r_listbox_menubar;
+    cba = r_listbox_graphicview_options_exit__options;
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_menubar
+// Menubar for NumberView and GraphicView
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_BAR r_listbox_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_listbox_menu; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_menu
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_listbox_menu
+    {
+    items =
+        {
+        // added the new Options menu command here
+        MENU_ITEM
+                {
+                command = EListboxCommandAddItem;
+                txt = STRING_r_listbox_add;
+                },
+        MENU_ITEM
+                {
+                command = EListboxCommandRemoveItem;
+                txt = STRING_r_listbox_remove;
+                },
+	    MENU_ITEM
+                {
+                command = EListboxCommandChange;
+                txt = STRING_r_listbox_change;
+                cascade = r_listbox_change_submenu;
+                },
+        MENU_ITEM
+                {
+                command = EAknSoftkeyExit;
+                txt = STRING_r_listbox_exit;
+                }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_change_submenu
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_listbox_change_submenu
+    {
+    items =
+        {
+        MENU_ITEM
+                {
+                command = EListboxCommandToNumberStyle;
+                txt = STRING_r_listbox_number_style_listbox;
+                },
+        MENU_ITEM
+                {
+                command = EListboxCommandToGraphicStyle;
+                txt = STRING_r_listbox_graphic_style_listbox;
+                },
+        MENU_ITEM
+                {
+                command = EListboxCommandToSetting;
+                txt = STRING_r_listbox_setting_listbox;
+                }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_graphicview_msk_menubar
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_BAR r_listbox_graphicview_msk_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_listbox_graphicview_msk_menu; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_graphicview_msk_menu
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_listbox_graphicview_msk_menu
+    {
+    items =
+        {
+        MENU_ITEM
+                {
+                command = EListboxCommandAddItem;
+                txt = STRING_r_listbox_add;
+                },
+        MENU_ITEM
+                {
+                command = EListboxCommandRemoveItem;
+                txt = STRING_r_listbox_remove;
+                }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_single_number_style
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE LISTBOX r_listbox_single_number_style
+    {
+    flags = EAknListBoxSelectionList;
+    array_id = r_single_number_style_items;    
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_single_number_style_items
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE ARRAY r_single_number_style_items
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = STRING_r_listbox_ns1;
+            },
+        LBUF
+            {
+            txt = STRING_r_listbox_ns2;
+            },
+        LBUF
+            {
+            txt = STRING_r_listbox_ns3;
+            },
+        LBUF
+            {
+            txt = STRING_r_listbox_ns4;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_data_query_dialog
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE DIALOG r_listbox_data_query_dialog
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtQuery;
+      id = EGeneralQuery;
+      control = AVKON_DATA_QUERY
+        {
+        layout = EDataLayout;
+        label = STRING_r_listbox_add_item_dialog;
+        control = EDWIN
+          {
+          flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+          maxlength = 45;
+          };
+        };
+      }
+    };
+  }
+  
+// -----------------------------------------------------------------------------
+//
+// r_listbox_settingview_options_exit__change
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE CBA r_listbox_settingview_options_exit__change
+    {
+    flags = 0;
+    buttons =
+        {
+        CBA_BUTTON {id=EAknSoftkeyOptions; txt=STRING_r_listbox_options;},
+        CBA_BUTTON {id=EAknSoftkeyExit; txt=STRING_r_listbox_exit;},
+        CBA_BUTTON {id=EListboxCmdChange; txt=STRING_r_listbox_change_settingitem;}
+        };
+    }
+    
+    
+// -----------------------------------------------------------------------------
+//
+// r_listbox_settings_view
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE AVKON_VIEW r_listbox_settings_view
+    {
+    menubar = r_listbox_settings_menubar;
+    cba = r_listbox_settingview_options_exit__change;
+    }   
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_settings_menubar
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_BAR r_listbox_settings_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_listbox_settings_menu;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_settings_menu
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_listbox_settings_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            command = EListboxCmdChange;
+            txt = STRING_r_listbox_change_settingitem;
+            },
+        MENU_ITEM
+            {
+            command = EListboxCommandChange;
+            txt = STRING_r_listbox_change;
+            cascade = r_listbox_change_submenu;
+            },
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = STRING_r_listbox_exit;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_setting_item_list
+//
+// -----------------------------------------------------------------------------
+// 
+RESOURCE AVKON_SETTING_ITEM_LIST r_listbox_setting_item_list
+  {
+  title = "Setting list title";
+  initial_number = 1;
+  items = 
+    { 
+    AVKON_SETTING_ITEM
+      {
+      identifier = EListboxSettingUsername;
+      setting_page_resource = r_listbox_username_setting_page;
+      name = STRING_r_listbox_username_setting_title;
+      },      
+    AVKON_SETTING_ITEM
+      {
+      identifier = EListboxSettingConnectMode;
+      setting_page_resource = r_listbox_connection_setting_page;
+      associated_resource = r_listbox_popup_setting_connection;
+      name = STRING_r_listbox_conntoserv_setting_title;
+      }
+    };
+  }   
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_popup_setting_connection
+//
+// -----------------------------------------------------------------------------
+//  
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_listbox_popup_setting_connection
+    {
+    flags = 0;
+    setting_texts_resource = r_listbox_connection_mode;
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_connection_mode
+//
+// -----------------------------------------------------------------------------
+//  
+RESOURCE ARRAY r_listbox_connection_mode
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=0; text = STRING_r_listbox_connection_on; },
+        AVKON_ENUMERATED_TEXT { value=1; text = STRING_r_listbox_connection_off; },
+        AVKON_ENUMERATED_TEXT { value=2; text = STRING_r_listbox_connection_when_needed; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_listbox_connection_setting_page
+//
+// -----------------------------------------------------------------------------
+//  
+RESOURCE AVKON_SETTING_PAGE r_listbox_connection_setting_page
+    {
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_listbox_popup_setting_list;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL__OK;
+    invalid_contents_softkey_resource = R_AVKON_SOFTKEYS_CANCEL;
+    }
+    
+// -----------------------------------------------------------------------------
+//
+// r_listbox_popup_setting_list
+//
+// -----------------------------------------------------------------------------
+//  
+RESOURCE POPUP_SETTING_LIST r_listbox_popup_setting_list
+    {
+    flags = 0;
+    }
+    
+// -----------------------------------------------------------------------------
+//
+// r_listbox_username_setting_page
+//
+// -----------------------------------------------------------------------------
+//   
+RESOURCE AVKON_SETTING_PAGE r_listbox_username_setting_page
+    {   
+    label= "User Name";
+    type = EEikCtEdwin;
+    editor_resource_id = r_listbox_username_editor;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL__OK;
+    invalid_contents_softkey_resource = R_AVKON_SOFTKEYS_CANCEL;
+    }
+        
+// -----------------------------------------------------------------------------
+//
+// r_listbox_username_editor
+//
+// -----------------------------------------------------------------------------
+//    
+RESOURCE EDWIN r_listbox_username_editor
+    {
+    flags=0;
+	width=9;
+	lines=5;
+	maxlength=60;
+	default_input_mode=EAknEditorAlphaInputMode;
+	flags = EEikEdwinNoLineOrParaBreaks;
+	avkon_flags=0;
+    }
+
+// -----------------------------------------------------------------------------
+//
+// String resources.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF32 r_listbox_itemtext { buf=STRING_r_listbox_ns1; }
+RESOURCE TBUF32 r_listbox_emptytext { buf=STRING_r_listbox_emptytext; }
+
+// ---------------------------------------------------------------------------- 
+//
+// r_listbox_localisable_app_info
+//
+// ---------------------------------------------------------------------------- 
+//
+RESOURCE LOCALISABLE_APP_INFO r_listbox_localisable_app_info
+    {
+    short_caption = STRING_r_listbox_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_listbox_caption_string;
+
+        number_of_icons = 1;
+	   	  icon_file = "\\resource\\apps\\listbox.mif";
+	    };
+    }
+
+// End of File
+

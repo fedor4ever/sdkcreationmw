@@ -1,0 +1,54 @@
+/*! \mainpage OpenGL ES Mipmapping Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates the benefits of texture mipmapping. Mipmapping is a technique of pre-filtering
+ *  texture maps to reduce aliasing effects when the texture is drawn minimized. OpenGL ES has supported
+ *  automatic mipmap generation since version 1.1.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. OpenGL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implemention
+ *
+ *  In the example, an animated textured tunnel is drawn with the screen split vertically in half. The left
+ *  side of the screen is drawn with mipmaps enabled, while the right side of the screen has only traditional
+ *  texture mapping. The improvement in image quality is clearly visible at the far end of the tunnel.
+ *  The user may toggle between nearest neighbor and bilinear texture filtering from the application menu.
+ *
+ *  The class hierarchy follows the other OpenGL ES examples; the framework consists of the usual App, AppUi,
+ *  Document and Container classes. CMipmapping is the main OpenGL ES drawing class and handles all the drawing.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

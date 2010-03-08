@@ -1,0 +1,278 @@
+/*! \mainpage SIP Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ * This tutorial explains the Session Initiation Protocol (SIP) Example Application. The SIPEx is a simple game for two players, but it is a complete application, which demonstrates the use of the SIP API to set up a connection to a remote device. The structure of the tutorial is based on the architecture of the application, which is shown in the UML component diagram below.
+ *  <img src="./componentDiagram.jpg">
+ *  <b> <center> Figure 1.1: SIP Example Application architecture</center></b>
+ *
+ *
+ * The example demonstrates the basic usage of the SIP and shows the basic functionality of the SIP API in practice. The API classes are used in the example are defined in the following header files, among others:
+ *
+ * - sipprofile.h
+ * - sipprofileregistry.h
+ * - sipprofileregistryobserver.h
+ * - sdpdocument.h
+ * - sip.h
+ * - sipdialog.h
+ * - sipinvitedialogassoc.h
+ * - sipobserver.h
+ * - sipconnectionobserver.h
+ * - sipmessageelements.h
+ * - siprequestelements.h
+ * - sipresponseelements.h
+ * - sipclienttransaction.h
+ * - sipservertransaction.h
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ * This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. Previous knowledge of main Symbian OS concepts is essential to understand this example.
+ *
+ * The example demonstrates the use of the SIP protocol in setting up communications between two peers. The scope of the technologies utilised is too broad for this tutorial, so the reader is urged to familiarize her/himself with the following:
+ *
+ * 	- The Session Initiation Protocol (SIP).
+ * 	- The Session Description Protocol (SDP).
+ * 	- The TCP/IP protocol family and socket communications.
+ *
+ * To use the application, a SIP server is needed. Due to the evolving nature of the networking world, server addresses are not listed in this document. Public SIP servers can be found with internet search engines with search strings like, for example, "public sip server".
+ *
+ * The sample application also requires another terminal to be used, since it demonstrates how SIP session can be established between two terminals.
+ *
+ * \subsection Sub21 2.1. Building and Using
+ *
+ * To build the SIP example application, change to the SIPEx/group directory, run <i>bldmake bldfiles</i>, and run <i>abld build platform udeb</i>, where platform is the platform architecture you are using (usually wins or winscw).
+ *
+ * The SIPEx application consists of following modules, which should be built in the following order:
+ *
+ * 	-# SIP Engine
+ * 	-# Socket Engine
+ * 	-# Game Engine
+ * 	-# Game UI
+ *  -# Resolver plug-in
+ *
+ * The definition for the whole application can be found in the <i>bld.inf</i> file in the <i>group</i> subdirectory of the applications main directory.
+ *
+ * \subsubsection Sub211 2.1.1 Configuring
+ *
+ * Running the example application requires that an Internet Access Point (IAP) and a SIP profile (with Service profile defined as IETF) have been configured on the device or emulator.
+ *
+ * Open the SIP settings application, select New, and define the data. For Service Profile, select IETF, select the Default access point, and define your Public username (your identity as known to SIP, e.g. "user@sipserver.com"). You also need to define the server addresses in the Proxy server and Registrar server tabs (e.g. "sipserver.com"). Check with the SIP server documentation.
+ *
+ * <b> <center><img src="./SIPEx_profile_settings.jpg"> </center></b>
+ * <b> <center> Figure 2.1: SIP Settings dialog</center></b>
+ *
+ * When the profile has been defined, set it to be default by <i>Options -> Default</i> profile and select the profile.
+ *
+ * \subsubsection Sub212 2.1.2 Running
+ *
+ * \subsubsection Sub2121 2.1.2.1 Starting the application
+ *
+ * Start the application by selecting the SIPEx icon on the desktop. The following screen appears:
+ *
+ * <img src="./SIPex_screen_initial.jpg">
+ *  <b> <center> Figure 2.2: SIP Example Application initial screen</center></b>
+ *
+ * \subsubsection Sub2122 2.1.2.2 Enabling the profile
+ *
+ * The first thing to do after starting the application is to enable the default profile. Select <i>Options->Enable profile</i> from the application menu:
+ *
+ * <img src="./SIPEx_screen_menu_initial.jpg">
+ * <b> <center> Figure 2.3: SIP Example Application initial menu</center></b>
+ *
+ * The application attempts to verify and enable the default profile. If the operation is successful, the following info appears on the Log-screen:
+ *
+ *  <img src="./SIPEx_screen_profile_enabled.jpg">
+ *  <b> <center> Figure 2.4: Profile is enabled</center></b>
+ *
+ * \subsubsection Sub2123 2.1.2.3 Instant messaging
+ *
+ * After the default profile has been enabled, instant messages can be sent to recipients who are proficient in SIP. Instant messaging doesn't require a SIP dialog between the user agents. Start writing your instant message by selecting <i>Options->Send instant message</i> from the menu:
+ *
+ *  <img src="./SIPEx_screen_menu_IM.jpg">
+ *  <b> <center> Figure 2.5: SIP Example Application menu - Instant Messaging</center></b>
+ *
+ * The <i>Instant message</i> dialog is displayed. Write the recipients SIP address and your message to the dialog, and select <i>OK</i>:
+ *
+ *  <img src="./SIPEx_dialog_IM.jpg">
+ *  <b> <center> Figure 2.6: SIP Example Application menu - Instant message dialog</center></b>
+ *
+ * Your message text is sent to the recipient using the SIP MESSAGE method. The recipient sees the message on Log-screen:
+ *
+ *  <img src="./SIPEx_screen_IMReceived.jpg">
+ *  <b> <center> Figure 2.7: SIP Example Application menu - Instant message received</center></b>
+ *
+ * \subsubsection Sub2124 2.1.2.4 Sending an invitation
+ *
+ * After the default profile has been enabled, you can send an invitation for a remote user to join a game with you. The invitation, if accepted, results in a SIP dialog and socket connection being formed between you and the remote party. Start sending the invitation by selecting <i>Options->Invite for game</i>:
+ *
+ * <img src="./SIPEx_screen_menu_invite.jpg">
+ * <b> <center> Figure 2.8: SIP Example Application menu - Inviting</center></b>
+ *
+ * Invitees address</i> dialog is displayed. Write the invitee's SIP address and select OK:
+ *
+ * <img src="./SIPEx_dialog_invite.jpg">
+ * <b> <center> Figure 2.9 : SIP Example Application menu - Instant Messaging</center></b>
+ *
+ * The INVITE message is sent, and the remote party first responds with the provisional 180 (Ringing) response indicating that the remote terminal is reached and is ringing.
+ *
+ * <img src="./SIPEx_screen_invite_1.jpg">
+ * <b> <center> Figure 2.10: SIP Example Application menu - Inviting</center></b>
+ *
+ * Finally, after the remote party has accepted the invitation by sending 200 (OK) response, ACK is sent and SIP session is established. Peer-to-peer connection to remote party is made using TCP/IP for the game. After connection is set up, player inviting to the game has the first move.
+ *
+ *  <img src="./SIPEx_your_move.jpg">
+ *  <b> <center> Figure 2.11: SIP Example Application - Your move</center></b>
+ *
+ * \subsubsection Sub2125 2.1.2.5 Accepting invitation
+ *
+ * It is possible to invite user into game even he/she does not have the SIPEx application running. What is however needed is that user is registered into network. In this case invitation is routed to user's terminal and SIP implementation requets permission to launch requested application. Dialog indicates who is the person inviting and what is the requested application. Select <i> Yes </i> to launch requested application and accept invitation.
+ *
+ * If the application was already running, select <i> Yes</i> to accept invitation.
+ *
+ *  <img src="./SIPEx_accept_invitation.jpg">
+ *  <b> <center> Figure 2.12: SIP Example Application - accept invitation</center></b>
+ *
+ * After the invitation is accepted, SIP response 200 OK is sent. SIP session is finally established when ACK is received and TCP/IP connection for game data is created. After connection is set up, user is to wait remote to make his/her first move.
+ *
+ *  <img src="./SIPEx_waiting_remote2.jpg">
+ *  <b> <center> Figure 2.13: SIP Example Application - waiting remote</center></b>
+ *
+ * \subsubsection Sub2126 2.1.2.6 Playing the game
+ *
+ * Game move is made by arrow keys in wanted location. After the move is made, turn is given to remote party.
+ *
+ *  <img src="./SIPEx_waiting_remote.jpg">
+ *  <b> <center> Figure 2.14: SIP Example Application - remote move</center></b>
+ *
+ * The game will go on until one player will get four pieces in the row. The winner is announced and both peer-to-peer connection and SIP session is disconnected.
+ *
+ *  <img src="./SIPEx_game_over.jpg">
+ *  <b> <center> Figure 2.15: SIP Example Application - game over</center></b>
+ *
+ * Alternatively, player can end the game from the menu in the middle of the game.
+ *
+ *  <img src="./SIPEx_end_game.jpg">
+ *  <b> <center> Figure 2.16: SIP Example Application - end game</center></b>
+ *
+ * After the game is ended a new one can be started by inviting a remote party again.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ * After Capabilities and ScalableUi chapters a brief overview of the Session Initiation Protocol (SIP) is followed. Then the next subchapters describes briefly three of the four components which make up the SIP Example Application: the SIPEx GUI, the SIPEx engine, and the socket engine. Finally, the main component (from this example's point of view), the SIP engine, is described more thoroughly, along with the API functionality used.
+ *
+ * The application is implemented as one executable and three dynamic link libraries (dll).
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in ui.mmp file:
+ *  NetworkServices LocalServices Location ReadUserData WriteUserData WriteDeviceData SwEvent ProtServ
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  SIP Example does not support different screen modes.
+ *
+ *  \subsection Sub33 3.3 The SIP protocol
+ *
+ * The SIP protocol is used to set up a communications session with a remote device on the network. The actual communications use different protocols, after the session has been accomplished. The exchange of messages used to control the session is called a SIP dialog. For more information on SIP, see the IETF RFC 3261.
+ *
+ * The following image shows an example of SIP network architecture. In this case, two SIP enabled phones, in SIP lingo user agents, set up a connection using SIP servers in the IP network. The user agent which issues SIP requests is called the user agent client (UAC) and the recipient of these requests the user agent server (UAS). The role of the user agent, client or server, may change during the session - the terms are relevant during a single transaction, i.e. the sending of a request and subsequent responses and acknowledgements related to it.
+ *
+ *  <img src="SIPEx_SIP_Network_Arch.jpg">
+ *  <b> <center> Figure 3.1: SIP network architecture</center></b>
+ *
+ * Closely related to SIP is the Session Description Protocol (SDP). It defines the format of messages used to describe the type of information one wishes to exchange in a communication session.
+ *
+ * In order to be reachable via SIP, the SIP device needs to register itself to a registration server in the network. When the session is initiated, the SIP device contacts a SIP server, which then queries the registration server for the actual contact information. The SIP API provides registration services using profiles.
+ *
+ * The session creation commences with the sending of an INVITE message. The INVITE contains the SIP address of the remote party, and usually the desired session is defined in the INVITE message body using SDP.
+ *
+ * On receiving the INVITE the remote party sends a provisional reply (e.g. "180 Ringing", implying the invite has been received) and, if it accepts the invitation, a final reply (usually "200 OK").
+ *
+ * After the session has been established, the parties can continue communicating using the appropriate channels, e.g. TCP/IP. SIP is not intended for the actual communication, although messages can be sent using the SIP MESSAGE method. Usually the SIP session is kept active during the communication session and it can be used for reconfiguring the session (e.g. activating new session parameters) or tearing down the connection with the BYE method.
+ *
+ *  \subsection Sub34 3.4 The SIPEx GUI
+ *
+ * The SIPEx GUI is the interface with which the game application is used. The different functions are found in the menu. The active functions, which the user can select at the particular moment, are shown in a menu.
+ *
+ *  \subsection Sub35 3.5 The SIPEx engine
+ *
+ * The SIPEx engine is in control of the whole process of setting up the GUI, opening the SIP session with the SIP engine, opening the socket connection to transfer game data, and closing the connections and sessions when exiting the game.
+ *
+ *  \subsection Sub36 3.6 The socket engine
+ *
+ * The socket engine handles the socket connection between the two devices. The socket connection transmits the actual game data.
+ *
+ *  \subsection Sub36 3.7 The SIP engine
+ *
+ * The SIP engine handles the setting up and tearing down of the SIP sessions, the enabling and disabling of the default profile, and the sending and receiving of instant messages. It is implemented as a separate dll, and the engine API is defined in the headers SIPExSIPEngine.h and SIPExSIPEngineObserver.h.
+ *
+ * The SIP Engine is a finite state machine, implemented using a state machine design pattern. The states, transitions, and observer methods are shown in the diagram below:
+ *
+ *  <img src="SIPEx_SIPEngine_states.jpg">
+ *  <b> <center> Figure 3.2: The SIP engine statediagram</center></b>
+ *
+ * When the application is started, the game engine creates an instance of the SIP engine object. It is initially in the Idle state. At the same time, the CSIP, CSIPProfileRegistry, and state machine object instances are created.
+ *
+ *  \subsubsection Sub371 3.7.1 Enabling or disabling the default profile
+ *
+ * The SIP Profile Agent API provides a SIP registration service for applications. The behavior of the registration service depends on the profile type used. There are different profile types for different standards, e.g. 3GPP R5 IMS, IETF and proprietary. At any given time, zero or more profiles of any profile type may exist. Each profile has a one-to-one correspondence with one SIP registration.
+ *
+ * The SIP engine has functions for enabling the default profile and disabling a previously enabled profile. One of the SIP profiles stored into the device can be designated the default profile. The SIP Example Application requires this to be of the IETF type.
+ *
+ * After the SIP engine has instantiated the CSIP, it creates an instance of the CSIPProfileRegistry class. The profile registry object can be used to retrieve the default profile. After retrieval, the profile can be enabled and subsequently disabled. The sequence diagram below demonstrates the profile operations:
+ *
+ *  <img src="SIPEx_profile_operations.gif">
+ *  <b> <center> Figure 3.3: Profile operations</center></b>
+ *
+ * The SIP engine implements the MSIPProfileRegistryObserver and is thus notified of changes in the profile registration status.
+ *
+ *  \subsubsection Sub372 3.7.2 Sending a SIP request
+ *
+ * In order to send a SIP request, application creates an instance CSIPRequestElements, and sets the desired parts of the request. Once CSIPRequestElements has been filled, application invokes CSIPConnection ::SendRequestL(CSIPRequestElements*) function. CSIPConnection takes the ownership of CSIPRequestElements and communicates the request to the server side of the SIP stack. CSIPConnection instantiates a CSIPClientTransaction and returns it to the application. SendRequestL initiates the server side processing of sending the MESSAGE, but the time consuming tasks like address resolving and socket operations are done only after the SendRequestL call has returned. If an error happends after the SendRequestL has returned, e.g. in the address resolving, the error will be communicated to the application by MSIPConnectionObserver::ErrorOccured. It is important to understand that when the SendRequestL returns, the MESSAGE has not yet been sent to the network but is being processed on the server side of the SIP stack.
+ *
+ * Once the SendRequestL has returned and the sending of a MESSAGE will continue on the shared server, there is no way for the application to cancel the operation. This applies to other kind of operations too. Note that the CSIPClientTransaction::CancelL function is used to send SIP CANCEL request after the application has first sent an INVITE request.
+ *
+ * When a the SIP response message is received from the server side, CSIPConnection forms a CSIPResponseElements object to represent the SIP response, attaches it to the CSIPClientTransaction and notifies the application with MSIPConnectionObserver::IncomingResponse. Application can determine what kind of a response was received by accessing the CSIPResponseElements from the CSIPClientTransaction. As the response was a provisional response, application does not delete the CSIPClientTransaction yet. Later a 200 response is received and application deletes the CSIPClientTransaction, which has now completed.
+ *
+ * The following sequence diagram illustrates the steps of sending a MESSAGE request and receiving two responses to it.
+ *
+ *  <img src="SIPEx_sending_message.gif">
+ *  <b> <center> Figure 3.4: Sending SIP request</center></b>
+ *
+ * The SIP engine provides utility functions for sending requests (e.g. SendInviteL, CancelInviteL, EndSessionL) and responses (e.g. AcceptInviteL, DeclineInviteL). The availability of a certain function depends on the state of the engine. This way, the state machine enforces the protocol.
+ *
+ *  \subsubsection Sub373 3.7.3 Receiving a SIP request
+ *
+ *  In this example a stand-alone SIP request is received through an existing CSIPConnection. CSIPConnection creates CSIPRequestElements and CSIPServerTransaction to represent the incoming SIP request, before notifying the application with IncomingRequest event to MSIPConnectionObserver. Application obtains information of the request by getting the CSIPRequestElements of the CSIPServerTransaction. When a response is sent, CSIPResponseElements needs to be instantiated and passed to CSIPServerTransaction with the SendResponseL function. This causes the response to be handed to server side for further processing. When SendResponseL has returned, application has no need for the CSIPServerTransaction any more and deletes it.
+ *
+ * The following sequence diagram displays the steps of receiving a MESSAGE and sending a response to it.
+ *
+ *  <img src="./SIPEx_receiving_message.gif" alt="SIP Example - Receiving a SIP request">
+ *  <b> <center> Figure 3.5: Receiving a SIP request</center></b>
+ *
+ *  \subsubsection Sub374 3.7.4 Receiving SIP request outside a dialog
+ *
+ * SIP stack receives a SIP INVITE request from network acting as UAS and creates an invite server transaction for the received request. The SIP stack sends a 100 SIP response to the remote UA. After comparing the received request with the stored application capabilities the SIP stack routes the received INVITE request to the chosen application. The application creates CSIPInviteDialogAssoc instance and SIP stack creates CSIPDialog instance. The application sends a 200 SIP response to the remote UA. The remote UA acknowledges the 200 SIP response with ACK and a SIP session is created between the local and remote UA.
+ *
+ * If an INVITE is received outside of a dialog, the SIP engine first enables the default profile (in case it is not enabled), then creates a new CSIPConnection instance, before continuing with the handling of the request.
+ *
+ * Typically, the receipt of a request, or response to a request sent, results in a state change in the SIP engine. Also the SIP engine observer is usually notified of the incoming request or response.
+ *
+ *  <img src="./SIPEx_receiving_mess_outside_dial.gif" alt="SIP Example - Receiving a SIP request">
+ *  <b> <center> Figure 3.6: Receiving a SIP request and creating a SIP dialog</center></b>
+ *
+ *  \subsubsection Sub375 3.7.5 Instant messages
+ *
+ * The SIP method MESSAGE can be used to send instant messages to SIP user agents. A SIP dialog isn't necessary for instant messaging.
+ *
+ */

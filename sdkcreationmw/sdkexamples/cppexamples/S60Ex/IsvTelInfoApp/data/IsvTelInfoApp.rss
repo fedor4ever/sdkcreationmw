@@ -1,0 +1,862 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file for ETel ISV Test Application
+*
+*/
+
+
+// RESOURCE IDENTIFIER
+NAME EITA
+
+// INCLUDES
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rsg>
+#include <avkon.hrh>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include "IsvTelInfoApp.rls"
+#include "IsvTelInfoApp.hrh"
+#include <appinfo.rh>
+
+//  CONSTANTS
+#define ISVINFOAPP_EDWIN_WIDTH                  1
+#define ISVINFOAPP_EDWIN_LINES                  1
+#define ISVINFOAPP_NUMBER_EDITOR_MIN_VALUE01   10
+#define ISVINFOAPP_NUMBER_EDITOR_MAX_VALUE01   30
+#define ISVINFOAPP_NUMBER_EDITOR_MIN_VALUE02    0
+#define ISVINFOAPP_NUMBER_EDITOR_MAX_VALUE02   10
+#define ISVINFOAPP_DATE_MAX_DAY_VALUE          30
+#define ISVINFOAPP_DATE_MIN_DAY_VALUE           0
+#define ISVINFOAPP_DATE_MAX_MONTH_VALUE        11
+#define ISVINFOAPP_DATE_MIN_MONTH_VALUE         0
+#define ISVINFOAPP_DATE_MAX_YEAR_VALUE       2009
+#define ISVINFOAPP_DATE_MIN_YEAR_VALUE       2000
+#define ISVINFOAPP_TIME_MIN_SECOND_VALUE        0
+#define ISVINFOAPP_TIME_MAX_SECOND_VALUE       59
+#define ISVINFOAPP_TIME_MIN_MINUTE_VALUE        0
+#define ISVINFOAPP_TIME_MAX_MINUTE_VALUE       59
+#define ISVINFOAPP_TIME_MIN_HOUR_VALUE          0
+#define ISVINFOAPP_TIME_MAX_HOUR_VALUE         23
+#define ISVINFOAPP_DURATION_MIN_VALUE           0
+#define ISVINFOAPP_DURATION_MAX_VALUE        3600
+#define ISVINFOAPP_SECRET_MAX_LENGTH            8
+#define ISVINFOAPP_EDWIN_CHANGE_WIDTH           3
+#define ISVINFOAPP_EDWIN_CHANGE_LINES           5
+#define ISVINFOAPP_SLIDER_MIN_VALUE             0
+#define ISVINFOAPP_SLIDER_MAX_VALUE            20
+#define ISVINFOAPP_SLIDER_STEP                  2
+
+//  MACROS
+
+//  RESOURCE DEFINITIONS
+//-----------------------------------------------------------------------------
+//
+//    RSS_SIGNATURE
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    Default File Name
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name
+    {
+    buf = "IsvTelInfoAppDoc";
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    EIK_APP_INFO
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_IsvTelInfoApp_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknextest_view
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_IsvTelInfoApp_view
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_menubar
+//    MenuBar
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_IsvTelInfoApp_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_IsvTelInfoApp_menu;
+            txt = STRING_r_IsvTelInfoApp_menubar;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_menu
+//    Menu pane
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_IsvTelInfoApp_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EIsvTelInfoAppCmdLaunchPhOps;
+            txt = STRING_r_IsvTelInfoApp_menu_launch_phops;
+            },
+
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_IsvTelInfoApp_menu_exit;
+            }
+        };
+    }
+
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_text_label_title
+//    Text which is used by label
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF256 r_IsvTelInfoApp_text_label_title
+    {
+    buf = STRING_r_IsvTelInfoApp_label_title;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_text_label_operation
+//    Text which is used by label
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF256 r_IsvTelInfoApp_text_label_operation
+    {
+    buf = STRING_r_IsvTelInfoApp_label_operation;
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_text_status_pane_title??
+//    Text which is used on status pane
+//
+//-----------------------------------------------------------------------------
+//
+
+RESOURCE TBUF256 r_IsvTelInfoApp_text_status_pane_main_page
+    {
+    buf = STRING_r_IsvTelInfoApp_title;
+    }
+
+RESOURCE TBUF256 r_IsvTelInfoApp_text_status_pane_page_phoneInfo
+    {
+    buf = STRING_r_IsvTelInfoApp_status_pane_page_phoneInfo;
+    }
+
+
+RESOURCE TBUF256 r_IsvTelInfoApp_text_status_pane_page_barringStatus
+    {
+    buf = STRING_r_IsvTelInfoApp_status_pane_page_barringStatus;
+    }
+
+
+RESOURCE TBUF256 r_IsvTelInfoApp_text_status_pane_page_Misc
+    {
+    buf = STRING_r_IsvTelInfoApp_status_pane_page_misc;
+    }
+
+RESOURCE TBUF256 r_IsvTelInfoApp_resource_caption
+    {
+    buf = STRING_r_IsvTelInfoApp_resource_caption;
+    }
+
+//----------------------------------------------------------------------
+//
+// Locasiable Application Info
+//
+//----------------------------------------------------------------------
+
+RESOURCE LOCALISABLE_APP_INFO r_isvinfoapp_localisable_app_info
+    {
+    short_caption = "IsvTelInfoApp";
+
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = "IsvTelInfoApp";
+        number_of_icons = 1;
+	   		icon_file = "\\resource\\apps\\IsvTelInfoApp_icon.mif";
+
+        };
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_navipane_dialog
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_IsvTelInfoApp_navipane_dialog
+    {
+    flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagNoTitleBar | EEikDialogFlagNoBorder |
+            EEikDialogFlagCbaButtons;
+    buttons = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    pages = r_IsvTelInfoApp_navipane_pages;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_IsvTelInfoApp_navipane_pages
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_IsvTelInfoApp_navipane_pages
+    {
+    items =
+        {
+        PAGE
+            {
+            id = EIsvTelInfoAppPageCtrlIdPagePhoneInfo;
+            text = STRING_r_IsvTelInfoApp_status_pane_page_phoneInfo;
+            form = r_fetch_phone_information_form;
+            },
+        PAGE
+            {
+            id = EIsvTelInfoAppPageCtrlIdPageNwBarringStatus;
+            text = STRING_r_IsvTelInfoApp_status_pane_page_barringStatus;
+            form = r_fetch_barring_status_form;
+            },
+        PAGE
+            {
+            id = EIsvTelInfoAppPageCtrlIdPageMisc;
+            text = STRING_r_IsvTelInfoApp_status_pane_page_misc;
+            form = r_fetch_miscellaneous_status_form;
+            }
+        };
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_fetch_general_status_form
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE FORM r_fetch_phone_information_form
+    {
+    flags = EEikFormUseDoubleSpacedFormat;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_phonemfr;
+            id = EIsvTelInfoAppDlgCtrlIdPhoneMfr;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_phonemodel;
+            id = EIsvTelInfoAppDlgCtrlIdPhoneModel;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_phonesernum;
+            id = EIsvTelInfoAppDlgCtrlIdPhoneSerNum;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_subscriber_id;
+            id = EIsvTelInfoAppDlgCtrlIdSubscriberId;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_fetch_barring_status_form
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE FORM r_fetch_barring_status_form
+    {
+    flags = EEikFormUseDoubleSpacedFormat;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_barringallincoming;
+            id = EIsvTelInfoAppDlgCtrlIdBarringAllIncoming;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_barringalloutgoing;
+            id = EIsvTelInfoAppDlgCtrlIdBarringAllOutgoing;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_barringincomingroaming;
+            id = EIsvTelInfoAppDlgCtrlIdBarringIncomingRoaming;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_barringoutgoinginternational;
+            id = EIsvTelInfoAppDlgCtrlIdBarringOutgoingInternational;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt =
+                STRING_r_IsvTelInfoApp_form_label_barringoutgoinginternationalexhc;
+            id = EIsvTelInfoAppDlgCtrlIdBarringOutgoingInternationalExHC;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            }
+        };
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_fetch_barring_status_form
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE FORM r_fetch_miscellaneous_status_form
+    {
+    flags = EEikFormUseDoubleSpacedFormat;
+    items =
+        {
+        //Call waiting
+         DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_waiting;
+            id = EIsvTelInfoAppDlgCtrlIdWaiting;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_nw_registration;
+            id = EIsvTelInfoAppDlgCtrlIdNwRegistration;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        //Call Identity
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_identity_presentation;
+            id = EIsvTelInfoAppDlgCtrlIdIdPresentation;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_IsvTelInfoApp_form_label_identity_restriction;
+            id = EIsvTelInfoAppDlgCtrlIdIdRestriction;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys ;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling
+                        | EEikEdwinDisplayOnly
+                        | EEikEdwinAvkonNotEditable
+                        | EEikEdwinAvkonDisableCursor;
+                width = ISVINFOAPP_EDWIN_WIDTH;
+                lines = ISVINFOAPP_EDWIN_LINES;
+                maxlength = EIsvTelInfoAppEdwinMaxLength;
+                max_view_height_in_lines = 5;
+                base_line_delta = 21;
+                };
+            }
+        };
+    }
+
+
+
+RESOURCE MENU_PANE r_general_status_menu_pane
+    {
+    items=
+        {
+        MENU_ITEM
+            {
+            command = EIsvTelInfoAppCmdAPITestFetch;
+            txt = STRING_r_IsvTelInfoApp_form_label_fetch;
+            }
+        };
+    }
+
+
+
+//-----------------------------------------------------------------------------
+//
+//   Command Language and error strings
+//
+//
+//-----------------------------------------------------------------------------
+//
+
+
+RESOURCE TBUF r_IsvTelInfoApp_PhoneId_Manufacturer
+{
+	buf=STRING_r_IsvTelInfoApp_PhoneId_Manufacturer;
+}
+RESOURCE TBUF r_IsvTelInfoApp_PhoneId_Model
+{
+	buf=STRING_r_IsvTelInfoApp_PhoneId_Model;
+}
+RESOURCE TBUF r_IsvTelInfoApp_PhoneId_SerialNum
+{
+	buf=STRING_r_IsvTelInfoApp_PhoneId_SerialNum;
+}
+
+RESOURCE TBUF r_IsvTelInfoApp_SubscriberId_SubscriberId
+{
+	buf=STRING_r_IsvTelInfoApp_SubscriberId_SubscriberId;
+}
+
+//Network Registration
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_Unknown
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_Unknown;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_NoRegNoSrvc
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_NoRegNoSrvc;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_NoRegEmergSrvc
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_NoRegEmergSrvc;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_NoRegSearching
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_NoRegSearching;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_RegBusy
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_RegBusy;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_RegHome
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_RegHome;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_RegDenied
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_RegDenied;
+}
+RESOURCE TBUF r_IsvTelInfoApp_NwReg_RegRoaming
+{
+	buf=STRING_r_IsvTelInfoApp_NwReg_RegRoaming;
+}
+
+//Call Barrging conditions
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_BarCondition1
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_BarCondition1;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_BarCondition2
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_BarCondition2;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_BarCondition3
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_BarCondition3;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_BarCondition4
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_BarCondition4;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_BarCondition5
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_BarCondition5;
+	}
+
+//Call Id services
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_IdService1
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_IdService1;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_IdService2
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_IdService2;
+	}
+
+//Common Error and Success string
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrString
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrString;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_SuccessString
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_SuccessString;
+	}
+
+//Call Not Active message
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_callnotactive
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_CallNotActive;
+	}
+
+//Identity Status
+RESOURCE TBUF r_IsvTelInfoApp_IdStatus_ActivePerm
+{
+	buf=STRING_r_IsvTelInfoApp_IdStatus_ActivePerm;
+}
+RESOURCE TBUF r_IsvTelInfoApp_IdStatus_DefaultRestricted
+{
+	buf=STRING_r_IsvTelInfoApp_IdStatus_DefaultRestricted;
+}
+RESOURCE TBUF r_IsvTelInfoApp_IdStatus_DefaultAllowed
+{
+	buf=STRING_r_IsvTelInfoApp_IdStatus_DefaultAllowed;
+}
+RESOURCE TBUF r_IsvTelInfoApp_IdStatus_NotProvisioned
+{
+	buf=STRING_r_IsvTelInfoApp_IdStatus_NotProvisioned;
+}
+RESOURCE TBUF r_IsvTelInfoApp_IdStatus_Unknown
+{
+	buf=STRING_r_IsvTelInfoApp_IdStatus_Unknown;
+}
+
+//Standard Error Strings
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrNotFound
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrNotFound;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrGeneral
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrGeneral;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrCancel
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrCancel;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrNoMemory
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrNoMemory;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrNotSupported
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrNotSupported;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrArgument
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrArgument;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrTotalLossOfPrecision
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrTotalLossOfPrecision;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrBadHandle
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrBadHandle;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrOverflow
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrOverflow;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrUnderflow
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrUnderflow;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrAlreadyExists
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrAlreadyExists;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrInUse
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrInUse;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrServerTerminated
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrServerTerminated;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrServerBusy
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrServerBusy;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrUnknown
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrUnknown;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrCorrupt
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrCorrupt;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrAccessDenied
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrAccessDenied;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrCommsLineFail
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrCommsLineFail;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrTimedOut
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrTimedOut;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrCouldNotConnect
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrCouldNotConnect;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrCouldNotDisconnect
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrCouldNotDisconnect;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrHardwareNotAvailable
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrHardwareNotAvailable;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrSessionClosed
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrSessionClosed;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrPermissionDenied
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrPermissionDenied;
+	}
+RESOURCE TBUF r_IsvTelInfoApp_TelStr_ErrorDefault
+	{
+	buf = STRING_r_IsvTelInfoApp_TelStr_ErrorDefault;
+	}
+
+
+// Status
+RESOURCE TBUF r_IsvTelInfoApp_Status_Active
+{
+	buf=STRING_r_IsvTelInfoApp_Status_Active;
+}
+RESOURCE TBUF r_IsvTelInfoApp_Status_NotActive
+{
+	buf=STRING_r_IsvTelInfoApp_Status_NotActive;
+}
+RESOURCE TBUF r_IsvTelInfoApp_Status_NotProvisioned
+{
+	buf=STRING_r_IsvTelInfoApp_Status_NotProvisioned;
+}
+RESOURCE TBUF r_IsvTelInfoApp_Status_NotAvailable
+{
+	buf=STRING_r_IsvTelInfoApp_Status_NotAvailable;
+}
+RESOURCE TBUF r_IsvTelInfoApp_Status_Unknown
+{
+	buf=STRING_r_IsvTelInfoApp_Status_Unknown;
+}
+
+
+RESOURCE TBUF r_IsvTelInfoApp_Err_EmuApiNotSupported
+	{
+	buf = STRING_r_IsvTelInfoApp_Err_EmuApiNotSupported;
+	}
+
+
+// End of File

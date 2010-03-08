@@ -1,0 +1,37 @@
+/* HEADER */
+
+.forumlogo {
+    float: right;
+    padding: 20px 15px 0 0;
+}
+h1.pageHeading,
+h1.pageHeadingRed {
+    font-family: Arial, sans-serif;
+}
+.siteIdentifier {
+	left: 380px;
+	top: 50px;
+	font-size: 14px;
+	width: auto;
+}
+
+.figure-title {
+    font-weight: bold;  
+}
+
+/* TOC */
+
+.toc-title {
+    background-repeat: no-repeat;
+    padding: 1px 0px 1px 18px;
+    line-height: 15px;
+}
+.toc-closed {
+    background-image: url('../../images/s60/Icon_ForumNokia_Closed.png');
+}
+.toc-open {
+    background-image: url('../../images/s60/Icon_ForumNokia_Open.png');
+}
+.toc-topic {
+    background-image: url('../../images/s60/Icon_ForumNokia_Topic.png');
+}

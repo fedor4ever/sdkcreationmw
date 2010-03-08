@@ -1,0 +1,92 @@
+/*! \mainpage Sensor API example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * SensorExample is an example application that demonstrates Sensor API functionality. Sensor API provides clients the access to the data provided by various Sensors of the device.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - Sensor Channel API
+ * - Sensor definitions API
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The user should be familiar with standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The user should be aware of basic Symbian OS concepts.
+ *
+ * Behavior of sensor channels in emulator environment is configured to SsyReferenceConfig.xml file.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example exists as a complete application and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * ECapabilityReadDeviceData capability is needed to run this application. To be able to set a property, ECapabilityWriteDeviceData capability is needed.
+ *
+ * 
+ * \subsection Sub32 3.2 Opening sensor channels
+ * This section explains the sequence of opening sensor channels during the application startup.
+ *
+ * \image html openChannel.PNG
+ *
+ * 1. The framework completes the construction of the AppUI object by calling its ConstructL method (CSensorExampleAppUi::ConstructL). \n
+ * 2. AppUI object tries to open three sensor channels (accelerometer, double tapping and orientation). Channels are opened by calling three times CSensorExampleAppUi::OpenChannelL method. \n
+ * 3. A channel finder object is created. \n
+ * 4. A channel is searched by calling FindChannelsL method with a channel type id as a parameter. \n
+ * 5. If a searched channel is found a sensor channel object is created. \n
+ * 6. A Found channel is opened. \n
+ * 7. Channel data listening is started. \n
+ *
+ * \subsection Sub33 3.3 Receiving sensor data
+ * This section explains the sequence of receiving data from sensor channel.
+ *
+ * \image html receiveData.PNG
+ *
+ * 1. The sensor channel calls DataReceived call-back method when new data is available. \n
+ * 2. Data listener object reads new data with GetData method. \n
+ * 3. Received data is passed to AppView object. \n
+ * 4. AppView object draws screen showing the current sensor data. A smiley is drawn to the screen as shown in screenshot below. Sensor data affects to smiley in three different ways: \n
+ * - accelerometer channel data affect smiley position on the screen
+ * - smiley orientation is drawn according to the orientation channel data
+ * - color of the smiley can be altered by double tapping the device
+ *
+ * \image html basicView.PNG
+ *
+ * \subsection Sub34 3.4 Handling properties
+ * This section explains the sequence of getting and setting sensor channel properties.
+ *
+ * \image html property.PNG
+ *
+ * 1. Whenever the user selects a menu option, CSensorExampleAppUi::HandleCommandL is called by the framework. Available property related commands are shown in figure below. \n
+ * \image html showPropertySelected.PNG
+ * 2. The AppUI calls internal method HandleQueryL for property related commands. \n
+ * 3. A channel finder object is created. \n
+ * 4. All available channels are searched by calling FindChannelsL. \n
+ * 5. ShowQueryDialogL method shows all available channels on device in query dialog where user can select one as shown in       figure below. \n
+ * \image html accelerometerSelected.PNG
+ * 6. After user has selected one channel, a new channel object is created. \n
+ * 7. User selected channel is opened. \n
+ * 8. All properties of the opened channel are queried. \n
+ * 9. ShowQueryDialogL method shows all available properties of the opened channel. User can select one property as shown in figure below. \n
+ * \image html scaledRangeSelected.PNG
+ * 10. Depending on user selection in phase one the result is following: \n
+ * - in case of "Show property", content of a property is shown:
+ * \image html scaledRangeProperty.PNG 
+ * - in case of "Get a property value", value of the property is show:
+ * \image html getProperty.png
+ * - in case of "Set a property value", a new value for the property is queried and the value is set to the property:
+ * \image html setProperty.png
+ *
+ */

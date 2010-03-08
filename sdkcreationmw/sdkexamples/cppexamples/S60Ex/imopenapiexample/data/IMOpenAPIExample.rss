@@ -1,0 +1,442 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+#include "IMOpenAPIExample.hrh"
+#include "IMOpenAPIExample.rls"
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "IMOpenAPIExample"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_IMOpenAPIExample_hotkeys;
+    menubar = r_IMOpenAPIExample_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }
+
+//----------------------------------------------------
+//
+//    r_IMOpenAPIExample_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_IMOpenAPIExample_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_IMOpenAPIExample_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_IMOpenAPIExample_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_IMOpenAPIExample_menu; txt = "File"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_IMOpenAPIExample_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_IMOpenAPIExample_menu
+    {
+    items =
+        {
+		MENU_ITEM { command = EIMOpenAPIExampleCmdLogin; txt = STRING_r_cmd_login; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdStartGame; txt = STRING_r_cmd_start_game; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdChallenge; txt = STRING_r_cmd_challenge; },
+       		MENU_ITEM { command = EIMOpenAPIExampleCmdSelect; txt = STRING_r_cmd_select; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdExitGame; txt = STRING_r_cmd_quit_game; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdEndChallenge; txt = STRING_r_cmd_end_challenge; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdLogout; txt = STRING_r_cmd_logout; },
+		MENU_ITEM { command = EIMOpenAPIExampleCmdIMSettings; txt = STRING_r_cmd_im_settings; },
+		MENU_ITEM { command = EAknCmdExit; txt = STRING_r_options_exit; }
+        };
+    }
+
+// ---------------------------------------------------------
+//	r_IMOpenAPIExample_grid
+//	The game grid
+//
+// ---------------------------------------------------------
+//
+RESOURCE GRID R_IMOpenAPIExample_GRID
+	{
+	array_id = r_IMOpenAPIExample_grid_items;
+	flags = EAknListBoxSelectionGrid;
+	style= r_IMOpenAPIExample_grid_style;
+	}
+
+RESOURCE ARRAY r_IMOpenAPIExample_grid_items
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			},
+		LBUF
+			{
+			txt = "2";
+			}
+
+		};
+	}
+
+
+
+RESOURCE GRID_STYLE r_IMOpenAPIExample_grid_style
+	{
+	layoutflags=EAknGridHorizontalOrientation| EAknGridLeftToRight | EAknGridTopToBottom;
+	primaryscroll= EAknGridFollowsItemsAndLoops; // horizontal scroll
+	secondaryscroll=EAknGridFollowsItemsAndLoops; // vertical scroll
+	itemsinprimaryorient=3; // number of items horizontally per screen
+	itemsinsecondaryorient=3; // number of items vertically per screen
+	gapwidth=3;
+	gapheight=3;
+	height = 50;
+	width = 50;
+
+	}
+
+//----------------------------------------------------
+//
+//    r_singular_wait_note
+//    wait note used for async operations
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_singular_wait_note
+	{
+    flags   = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type    = EAknCtNote;
+            id      = 10;
+            control = AVKON_NOTE
+                {
+                layout         = EWaitLayout;
+                singular_label = "";
+                plural_label   = "";
+                animation      = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_challenge_query
+//    Query for user id to be challenged
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_challenge_query
+	{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_YES_NO;
+	items=
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_CONFIRMATION_QUERY
+				{
+				layout =EConfirmationQueryLayout;
+				};
+			}
+		};
+	}
+
+//----------------------------------------------------
+//
+//    r_data_query
+//    Query for user id to be challenged
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_data_query
+	{
+	flags=EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_DATA_QUERY
+				{
+				layout = EDataLayout;
+				control =
+					EDWIN
+						{
+						width = KMaxChallengeIDLength;
+						lines = 1;
+						maxlength = KMaxChallengeIDLength;
+						};
+				};
+			}
+		};
+	}
+
+//----------------------------------------------------
+//
+//    r_user_id_query
+//    Query for login user id
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_user_id_query
+	{
+	flags=EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;//EDataQueryDlgCIdDataQuery;
+			control = AVKON_DATA_QUERY
+				{
+				layout = EDataLayout;
+				control =
+					EDWIN
+						{
+						width = KMaxChallengeIDLength;
+						lines = 1;
+						maxlength = KMaxChallengeIDLength;
+						};
+				};
+			}
+		};
+	}
+
+//----------------------------------------------------
+//
+//    r_server_address_query
+//    Query for login server address
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_server_address_query
+	{
+	flags=EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;//EDataQueryDlgCIdDataQuery;
+			control = AVKON_DATA_QUERY
+				{
+				layout = EDataLayout;
+				control =
+					EDWIN
+						{
+						width = KMaxServerAddressLength;
+						lines = 1;
+						maxlength = KMaxServerAddressLength;
+						};
+				};
+			}
+		};
+	}
+
+//----------------------------------------------------
+//
+//    r_password_query
+//    Query for login password
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_password_query
+	{
+	flags=EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;//EDataQueryDlgCIdDataQuery;
+			control = AVKON_DATA_QUERY
+				{
+				layout = ECodeLayout;
+				control =
+					SECRETED
+						{
+						num_letters = KMaxPasswordLength;
+						};
+				};
+			}
+		};
+	}
+
+//----------------------------------------------------
+//
+//    r_access_point_query
+//    Query for login access point
+//
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_access_point_query
+	{
+	flags=EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EGeneralQuery;//EDataQueryDlgCIdDataQuery;
+			control = AVKON_DATA_QUERY
+				{
+				layout = ENumberLayout;
+				control =
+					AVKON_INTEGER_EDWIN
+						{
+	                    min = 0;
+	                    max = 99;
+						};
+				};
+			}
+		};
+	}
+
+// ----------------------------------------------------------------------------
+//
+// r_imopenapiexample_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_imopenapiexample_localisable_app_info
+    {
+    short_caption = "IMOpenAPIExample";
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = "IMOpenAPIExample";
+        number_of_icons = 1;
+        icon_file =
+                "\\resource\\apps\\imopenapiexample.mif";
+        };
+    }
+
+
+//----------------------------------------------------
+//
+//    string resouces
+//    the strings can be localized in loc file
+//
+//----------------------------------------------------
+//
+
+RESOURCE TBUF r_info_msg_logging { buf=str_info_msg_logging; }
+RESOURCE TBUF r_info_msg_logging_out { buf=str_info_msg_logging_out; }
+RESOURCE TBUF r_info_msg_challenge_sent { buf=str_info_msg_challenge_sent; }
+RESOURCE TBUF r_info_msg_sending_challenge { buf=str_info_msg_sending_challenge; }
+RESOURCE TBUF r_info_msg_not_loggedin { buf=str_info_msg_not_loggedin; }
+RESOURCE TBUF r_info_msg_your_sign_is { buf=str_info_msg_your_sign_is; }
+RESOURCE TBUF r_info_msg_you_won { buf=str_info_msg_you_won; }
+RESOURCE TBUF r_info_msg_your_move { buf=str_info_msg_your_move; }
+RESOURCE TBUF r_info_msg_opponent_move { buf=str_info_msg_opponent_move; }
+RESOURCE TBUF r_info_msg_you_lost { buf=str_info_msg_you_lost; }
+RESOURCE TBUF r_info_msg_login_success { buf=str_info_msg_login_success; }
+RESOURCE TBUF r_info_msg_login_failed { buf=str_info_msg_login_failed; }
+RESOURCE TBUF r_info_msg_challenge_seding_failed { buf=str_info_msg_challenge_send_failed; }
+RESOURCE TBUF r_info_msg_game_ended { buf=str_info_msg_game_ended; }
+RESOURCE TBUF r_info_msg_game_started { buf=str_info_msg_game_started; }
+RESOURCE TBUF r_info_msg_challenge_accepted { buf=str_info_msg_challenge_accepted; }
+RESOURCE TBUF r_info_msg_challenge_rejected { buf=str_info_msg_challenge_rejected; }
+RESOURCE TBUF r_info_msg_error { buf=str_info_msg_error; }
+RESOURCE TBUF r_info_msg_disconnected { buf=str_info_msg_disconnected; }
+RESOURCE TBUF r_info_msg_already_in_game { buf=str_info_msg_already_in_game; }
+RESOURCE TBUF r_info_msg_challenge_received { buf=str_info_msg_challenge_received; }
+RESOURCE TBUF r_info_msg_opp_id_prompt { buf=str_info_msg_opp_id_prompt; }
+RESOURCE TBUF r_info_msg_start_game { buf=str_info_msg_start_game; }
+RESOURCE TBUF r_info_msg_waiting_for_reply { buf=str_info_msg_waiting_for_reply; }
+RESOURCE TBUF r_info_msg_game_draw { buf=str_info_msg_game_draw; }
+RESOURCE TBUF r_info_msg_start_game_warning { buf=str_info_msg_start_game_warning; }
+RESOURCE TBUF r_info_msg_invalid_id { buf=str_info_msg_invalid_id; }
+RESOURCE TBUF r_info_msg_challenge_ended { buf=str_info_msg_challenge_ended; }
+RESOURCE TBUF r_info_msg_waiting_opp_to_start { buf=str_info_msg_waiting_opp_to_start; }
+RESOURCE TBUF r_info_msg_user_id { buf=str_info_msg_Enter_User_ID; }
+RESOURCE TBUF r_info_msg_password { buf=str_info_msg_Enter_Password; }
+RESOURCE TBUF r_info_msg_server_address { buf=str_info_msg_Enter_Server_Address; }
+RESOURCE TBUF r_info_msg_access_point { buf=str_info_msg_Enter_Access_Point_number ; }
+RESOURCE TBUF r_info_msg_not_supported { buf=str_info_msg_Not_Supported; }
+
+// End of File
+

@@ -1,0 +1,54 @@
+/*! \mainpage OpenGL ES Billboard Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates the billboarding technique. Billboarding is a way
+ *  of making 2D sprites look 3D. It is achieved by applying a 2D texture bitmap
+ *  to a rectangular primitive. The primitive is then rotated so that it always
+ *  faces the camera. This technique is often used in games to render trees,
+ *  bushes, clouds, fire, smoke, explosions, and so on.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  By using billboarding, 3D applications can sometimes gain speed, as the billboard is much faster to
+ *  draw than a detailed model of a tree, for example. This example uses the T3DModel::MakeBillboardWorldViewMatrix(…)
+ *  in order to achieve the effect. As in this example, Billboarding can be combined with color keying to render objects
+ *  that have non-rectangular images.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

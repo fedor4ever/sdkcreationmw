@@ -1,0 +1,270 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+// APPLICATION INFORMATION
+#define ELanguage   ELangLanguage
+
+// LOCALISATION STRINGS
+
+// Common texts
+
+//d:Application title
+//l:r_ce_group_view
+//w:
+//
+rls_string STRING_r_ce_application_caption          "CLF Example"
+
+//d:Application title - short format
+//l:r_ce_group_view
+//w:
+//
+rls_string STRING_r_ce_application_short_caption    "CLF Ex"
+
+
+// Group view menu
+
+rls_string STRING_r_ce_om_exit                      "Exit"
+
+//d:Command in options list in group view
+//d:Opens group in music files view.
+//l:r_ce_group_view_menupane
+//w:
+//
+rls_string STRING_r_ce_om_open                      "Open"
+
+//d:Command in options list in group view
+//d:Topic for cascade menu of grouping
+//l:r_ce_group_view_menupane
+//w:
+//
+rls_string STRING_r_ce_om_group_by                  "Group music by"
+
+//d:Command in grouping options in group view
+//d:Group all music files.
+//l:r_ce_group_view_group_cascade
+//w:
+//
+rls_string STRING_r_ce_sm_group_all                 "all files"
+
+//d:Command in grouping options in group view
+//d:Group music files by albums.
+//l:r_ce_group_view_group_cascade
+//w:
+//
+rls_string STRING_r_ce_sm_group_album               "albums"
+
+//d:Command in grouping options in group view
+//d:Group music files by artists.
+//l:r_ce_group_view_group_cascade
+//w:
+//
+rls_string STRING_r_ce_sm_group_artist              "artists"
+
+
+
+// Music view menu
+
+//d:Command in options list in music view
+//d:Starts playback of the audio file.
+//l:r_ce_music_view_menupane
+//w:
+//
+rls_string STRING_r_ce_om_play                      "Play"
+
+//d:Command in options list in music view
+//d:Stops playback.
+//l:r_ce_music_view_menupane
+//w:
+//
+rls_string STRING_r_ce_om_stop                      "Stop"
+
+//d:Command in options list in music view
+//d:Prompt sorting options of audio files.
+//l:r_ce_music_view_menupane
+//w:
+//
+rls_string STRING_r_ce_om_sort                      "Sort items"
+
+//d:Command in options list in music view
+//d:Rename a music file.
+//l:txt_ce_cmd_rename
+//w:
+//
+rls_string STRING_r_ce_om_rename                    "Rename"
+
+
+
+// Queries and notes
+
+//d:Query for default sorting parameter.
+//d:Text on the wait note when refreshing the model.
+//l:r_ce_wait_note
+//w:
+//
+rls_string STRING_r_ce_wait_note                    "Refreshing the List Model..."
+
+//d:Query for default sorting parameter.
+//d:Header of the query.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_heading           "Sort by"
+
+//d:Query for default sorting parameter.
+//d:Sort by album name.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_album             "Album"
+
+//d:Query for default sorting parameter.
+//d:Sort by artist name.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_artist            "Artist"
+
+//d:Query for default sorting parameter.
+//d:Sort by song name.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_title             "Title"
+
+//d:Query for default sorting parameter.
+//d:Sort by genre.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_genre             "Genre"
+
+//d:Query for default sorting parameter.
+//d:Sort by file date.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_filedate          "File date"
+
+//d:Query for default sorting parameter.
+//d:Randomize the listing of audio files.
+//l:r_ce_default_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_sort_random            "Random"
+
+//d:Query for sort ordering.
+//d:Header of the query.
+//l:r_ce_ordering_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_ordering_heading       "Sort ordering"
+
+//d:Query for sort ordering.
+//d:Order the list ascending.
+//l:r_ce_ordering_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_ordering_ascend        "Ascending"
+
+//d:Query for sort ordering.
+//d:Order the list descending.
+//l:r_ce_ordering_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_ordering_descend       "Descending"
+
+//d:Query for positioning items that have no tag for sorting parameter.
+//d:Header of the query.
+//l:r_ce_position_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_no_tag_heading         "Files without sorting criteria"
+
+//d:Query for positioning items that have no tag for sorting parameter.
+//d:Files with insufficient tag info are placed to end of the list.
+//l:r_ce_position_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_no_tag_bottom          "Bottom"
+
+//d:Query for positioning items that have no tag for sorting parameter.
+//d:Files with insufficient tag info are placed to top of the list.
+//l:r_ce_position_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_query_no_tag_top             "Top"
+
+//d:Query for new file name.
+//l:r_ce_position_sorting_param_query
+//w:
+//
+rls_string STRING_r_ce_rename_query                 "New file name:"
+
+
+
+// Text strings
+
+//d:Text that is diplayed on a warning note when no music files were found.
+//l:r_ce_no_music_files_found
+//w:
+//
+rls_string STRING_r_ce_no_music_files_found         "No music files found for this grouping!"
+
+//d:Text that is diplayed on the groups list box when it is empty.
+//l:r_ce_no_groups
+//w:
+//
+rls_string STRING_r_ce_no_groups                    "(no groups)"
+
+//d:List item to be used when all music files has been grouped to one group.
+//l:r_ce_group_all_files_item
+//w:
+//
+rls_string STRING_r_ce_group_all_files_item         "All files"
+
+//d:List item to be used for viewing groups.
+//l:r_ce_group_list_item
+//w:
+//
+rls_string STRING_r_ce_group_list_item              "\t%U\t\t"
+
+//d:List item to be used for viewing music files that do not have album tag.
+//l:r_ce_music_list_2_item
+//w:
+//
+rls_string STRING_r_ce_music_list_2_item            "\t%0U\t%1U\t"
+
+//d:List item to be used for viewing music files that have album tag.
+//l:r_ce_music_list_3_item
+//w:
+//
+rls_string STRING_r_ce_music_list_3_item            "\t%0U\t%1U, %2U\t"
+
+//d:Text is diplayed on a list item when it has insufficient tag info.
+//l:r_ce_no_tag_info_list_item
+//w:
+//
+rls_string STRING_r_ce_no_tag_info_list_item        "Tag info missing"
+
+//d:Info text displayed on the start up.
+//l:r_ce_info_label_text
+//w:
+//
+rls_string STRING_r_ce_info_label_text              "Content Listing\nFramework\nSample Application"
+

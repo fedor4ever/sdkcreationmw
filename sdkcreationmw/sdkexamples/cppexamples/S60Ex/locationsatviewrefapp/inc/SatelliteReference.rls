@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+//d:Applications logical
+//d:service name for tule
+//l:list_single_heading_pane_2
+//w:
+//r:3.0
+//
+rls_string STRING_r_satref_logical_rule_name "Satellite Ref"
+
+//d:Options menu item to
+//d:open satellites status view
+//l:list_single_popup_menu_pane_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_sateref_Satellite_status "Satellite Status"
+
+//d:Options menu item to
+//d:exit from the application
+//l:list_single_popup_menu_pane_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_satref_exit	"Exit"
+
+// End of File
+
+
+

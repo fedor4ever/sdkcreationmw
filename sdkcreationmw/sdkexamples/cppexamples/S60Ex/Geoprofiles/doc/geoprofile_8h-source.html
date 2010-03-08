@@ -1,0 +1,510 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>geoprofile.h Source File</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="annotated.html"><span>Classes</span></a></li>
+    <li id="current"><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<h1>geoprofile.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment">* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).</span>
+<a name="l00003"></a>00003 <span class="comment">* All rights reserved.</span>
+<a name="l00004"></a>00004 <span class="comment">* This component and the accompanying materials are made available</span>
+<a name="l00005"></a>00005 <span class="comment">* under the terms of the License "Eclipse Public License v1.0"</span>
+<a name="l00006"></a>00006 <span class="comment">* which accompanies this distribution, and is available</span>
+<a name="l00007"></a>00007 <span class="comment">* at the URL "http://www.eclipse.org/legal/epl-v10.html".</span>
+<a name="l00008"></a>00008 <span class="comment">*</span>
+<a name="l00009"></a>00009 <span class="comment">* Initial Contributors:</span>
+<a name="l00010"></a>00010 <span class="comment">* Nokia Corporation - initial contribution.</span>
+<a name="l00011"></a>00011 <span class="comment">*</span>
+<a name="l00012"></a>00012 <span class="comment">* Contributors:</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">* Description:  Geo Profile Structure</span>
+<a name="l00015"></a>00015 <span class="comment">*</span>
+<a name="l00016"></a>00016 <span class="comment">*/</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#ifndef C_GEOPROFILE_H</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define C_GEOPROFILE_H</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>
+<a name="l00022"></a>00022 <span class="comment">// SYSTEM INCLUDES</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;e32base.h&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;s32strm.h&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;LbsPosition.h&gt;</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="comment">// FORWARD DECLARATIONS</span>
+<a name="l00028"></a>00028 <span class="comment"></span>
+<a name="l00029"></a>00029 <span class="comment">/**</span>
+<a name="l00030"></a>00030 <span class="comment"> * Geo Profile Exchange Structure</span>
+<a name="l00031"></a>00031 <span class="comment"> */</span>
+<a name="l00032"></a><a class="code" href="class_c_geo_profile.html">00032</a> <span class="keyword">class </span><a class="code" href="class_c_geo_profile.html">CGeoProfile</a> : <span class="keyword">public</span> CBase
+<a name="l00033"></a>00033     {
+<a name="l00034"></a>00034 <span class="keyword">public</span>:
+<a name="l00035"></a><a class="code" href="class_c_geo_profile.html#76f571b4836356ec7e5737c68bf217b3">00035</a>     <span class="keyword">enum</span> <a class="code" href="class_c_geo_profile.html#76f571b4836356ec7e5737c68bf217b3">TGeoPlaceType</a>
+<a name="l00036"></a>00036         {
+<a name="l00037"></a>00037         EUndefined,
+<a name="l00038"></a>00038         ECoordinate,
+<a name="l00039"></a>00039         ENetworkCell    
+<a name="l00040"></a>00040         };
+<a name="l00041"></a>00041         
+<a name="l00042"></a><a class="code" href="class_c_geo_profile.html#fabf418c69a4b54f77a561bf0767804f">00042</a>     <span class="keyword">enum</span> <a class="code" href="class_c_geo_profile.html#fabf418c69a4b54f77a561bf0767804f">TGeoTriggerType</a>
+<a name="l00043"></a>00043         {
+<a name="l00044"></a>00044         EEntryTrigger,
+<a name="l00045"></a>00045         EExitTrigger    
+<a name="l00046"></a>00046         };    
+<a name="l00047"></a>00047 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">    /**</span>
+<a name="l00049"></a>00049 <span class="comment">     * Constructs a new instance of CGeoProfile Entry</span>
+<a name="l00050"></a>00050 <span class="comment">     */</span>
+<a name="l00051"></a>00051     <span class="keyword">static</span> <a class="code" href="class_c_geo_profile.html">CGeoProfile</a>* <a class="code" href="class_c_geo_profile.html#990716240ccf3341f7fdbf289ec927ad">NewL</a>();
+<a name="l00052"></a>00052     <span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment">    /**</span>
+<a name="l00054"></a>00054 <span class="comment">     * Constructs a new instance of CGeoProfile Entry.        </span>
+<a name="l00055"></a>00055 <span class="comment">     */</span>
+<a name="l00056"></a>00056     <span class="keyword">static</span> <a class="code" href="class_c_geo_profile.html">CGeoProfile</a>* <a class="code" href="class_c_geo_profile.html#990716240ccf3341f7fdbf289ec927ad">NewL</a>( <span class="keyword">const</span> TDesC&amp;       aGeoPlaceName,
+<a name="l00057"></a>00057                                     TLocality&amp;   aPositionInfo,
+<a name="l00058"></a>00058                                     TInt         aGeoProfileId = 0,
+<a name="l00059"></a>00059                                     TInt         aProfileRadius = 100,
+<a name="l00060"></a>00060                                     TInt         aTriggerId = -1,
+<a name="l00061"></a>00061                                     TInt         aTriggerType = EEntryTrigger );
+<a name="l00062"></a>00062     <span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">    /**</span>
+<a name="l00064"></a>00064 <span class="comment">     * C++ Destructor.</span>
+<a name="l00065"></a>00065 <span class="comment">     * Frees all the resources</span>
+<a name="l00066"></a>00066 <span class="comment">     */</span>
+<a name="l00067"></a>00067     <span class="keyword">virtual</span> <a class="code" href="class_c_geo_profile.html#cf24d8c898a1c5a0da95f30cf8628464">~CGeoProfile</a>();
+<a name="l00068"></a>00068     <span class="comment"></span>
+<a name="l00069"></a>00069 <span class="comment">    /**</span>
+<a name="l00070"></a>00070 <span class="comment">     * Accessor method for obtaining the Geo-Profile Name</span>
+<a name="l00071"></a>00071 <span class="comment">     */</span>    
+<a name="l00072"></a>00072     TPtrC <a class="code" href="class_c_geo_profile.html#9f4d711b7d49c2db1623677c1edcbc18">GeoPlaceName</a>();
+<a name="l00073"></a>00073 <span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">    /**</span>
+<a name="l00075"></a>00075 <span class="comment">     * Accessor method for obtaining the Profile Name</span>
+<a name="l00076"></a>00076 <span class="comment">     */</span>    
+<a name="l00077"></a>00077     TPtrC <a class="code" href="class_c_geo_profile.html#5f414fad410dafd9dd35fd21fc4d4814">ProfileName</a>();
+<a name="l00078"></a>00078         <span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">    /**</span>
+<a name="l00080"></a>00080 <span class="comment">     * Accessor method for obtaining the Item Id</span>
+<a name="l00081"></a>00081 <span class="comment">     */</span>     
+<a name="l00082"></a>00082     TInt <a class="code" href="class_c_geo_profile.html#36db1998bbd3e7ca920f54661088c0c0">GeoProfileId</a>();
+<a name="l00083"></a>00083     <span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">    /**</span>
+<a name="l00085"></a>00085 <span class="comment">     * Accessor method for setting the Profile Name</span>
+<a name="l00086"></a>00086 <span class="comment">     */</span>
+<a name="l00087"></a>00087     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#73c6ac9d3f26f4d1b2f1ab6accb9a1ce">SetGeoProfileIdL</a>( TInt               aGeoProfileId );
+<a name="l00088"></a>00088     <span class="comment"></span>
+<a name="l00089"></a>00089 <span class="comment">    /**</span>
+<a name="l00090"></a>00090 <span class="comment">     * Location Information Type</span>
+<a name="l00091"></a>00091 <span class="comment">     */</span>
+<a name="l00092"></a>00092     TInt <a class="code" href="class_c_geo_profile.html#e14c2b5e4e9b190d7faf2c41ded3a34b">GeoPositionType</a>(); 
+<a name="l00093"></a>00093     <span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">    /**</span>
+<a name="l00095"></a>00095 <span class="comment">     * Location Information</span>
+<a name="l00096"></a>00096 <span class="comment">     */</span>
+<a name="l00097"></a>00097     TLocality&amp; <a class="code" href="class_c_geo_profile.html#306aa2bb62c804a8ead759d65f74f78c">GeoPositionInfo</a>();
+<a name="l00098"></a>00098     <span class="comment"></span>
+<a name="l00099"></a>00099 <span class="comment">    /**</span>
+<a name="l00100"></a>00100 <span class="comment">     * Accessor method for setting Location Information</span>
+<a name="l00101"></a>00101 <span class="comment">     */</span>    
+<a name="l00102"></a>00102     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#c36338bc1dcdf197d19b8774f86218ca">SetGeoPositionInfoL</a>( <span class="keyword">const</span> TDesC&amp;       aGeoPlaceName,
+<a name="l00103"></a>00103                                     TLocality&amp;   aPositionInfo );
+<a name="l00104"></a>00104 <span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">    /**</span>
+<a name="l00106"></a>00106 <span class="comment">     * Accessor method for obtaining the radius</span>
+<a name="l00107"></a>00107 <span class="comment">     */</span>
+<a name="l00108"></a>00108     TInt <a class="code" href="class_c_geo_profile.html#8b79e2493915d5c022bafd78347ed4c8">GeoProfileRadius</a>();
+<a name="l00109"></a>00109 <span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    /**</span>
+<a name="l00111"></a>00111 <span class="comment">     * Accessor method for setting the radius</span>
+<a name="l00112"></a>00112 <span class="comment">     */</span>    
+<a name="l00113"></a>00113     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#5d6f49ec86fc2bfc63fe3519afc86152">SetGeoProfileRadius</a>( TInt  aRadius );
+<a name="l00114"></a>00114     <span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">    /**</span>
+<a name="l00116"></a>00116 <span class="comment">     * Accessor method for obtaining the Trigger Id</span>
+<a name="l00117"></a>00117 <span class="comment">     */</span>
+<a name="l00118"></a>00118     TInt <a class="code" href="class_c_geo_profile.html#fe9088f1ba3cfa7f65d0c0c1a7b23dd3">TriggerId</a>();
+<a name="l00119"></a>00119 <span class="comment"></span>
+<a name="l00120"></a>00120 <span class="comment">    /**</span>
+<a name="l00121"></a>00121 <span class="comment">     * Accessor method for setting the Trigger Id</span>
+<a name="l00122"></a>00122 <span class="comment">     */</span>    
+<a name="l00123"></a>00123     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#067a0a570d79a1c55647ad8d091b7883">SetTriggerId</a>( TInt  aTriggerId );
+<a name="l00124"></a>00124     <span class="comment"></span>
+<a name="l00125"></a>00125 <span class="comment">    /**</span>
+<a name="l00126"></a>00126 <span class="comment">     * Accessor method for obtaining the Trigger Type</span>
+<a name="l00127"></a>00127 <span class="comment">     */</span>
+<a name="l00128"></a>00128     TInt <a class="code" href="class_c_geo_profile.html#8dadd44d028aadaed4538925f53d94bd">TriggerType</a>();
+<a name="l00129"></a>00129 <span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">    /**</span>
+<a name="l00131"></a>00131 <span class="comment">     * Accessor method for setting the Trigger Type</span>
+<a name="l00132"></a>00132 <span class="comment">     */</span>    
+<a name="l00133"></a>00133     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#7b267dbf3dd7338e7ccf63134a3a8dc3">SetTriggerType</a>( TInt  aTriggerType );    
+<a name="l00134"></a>00134      <span class="comment"></span>
+<a name="l00135"></a>00135 <span class="comment">    /**</span>
+<a name="l00136"></a>00136 <span class="comment">     * Internalized the information available from the buffer</span>
+<a name="l00137"></a>00137 <span class="comment">     * The buffer must be in following format</span>
+<a name="l00138"></a>00138 <span class="comment">     * 1. Profile ID ( Integer )</span>
+<a name="l00139"></a>00139 <span class="comment">     * 2. Location Type ( Integer )</span>
+<a name="l00140"></a>00140 <span class="comment">     * 3. Horizontal Accuracy ( Integer )</span>
+<a name="l00141"></a>00141 <span class="comment">     * 4. Radius ( Integer )</span>
+<a name="l00142"></a>00142 <span class="comment">     */</span> 
+<a name="l00143"></a>00143     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#ba767d14ba6f08d559bed97ebbcf497e">PartialInternalizeL</a>( <span class="keyword">const</span> TDesC&amp;   aInputBuffer ); 
+<a name="l00144"></a>00144     <span class="comment"></span>
+<a name="l00145"></a>00145 <span class="comment">    /**</span>
+<a name="l00146"></a>00146 <span class="comment">     * Partially externalizes the contents of the Geo Profile to</span>
+<a name="l00147"></a>00147 <span class="comment">     * a buffer</span>
+<a name="l00148"></a>00148 <span class="comment">     * The following fields are externalized and in the following</span>
+<a name="l00149"></a>00149 <span class="comment">     * format</span>
+<a name="l00150"></a>00150 <span class="comment">     * 1. Profile ID ( Integer )</span>
+<a name="l00151"></a>00151 <span class="comment">     * 2. Location Type ( Integer )</span>
+<a name="l00152"></a>00152 <span class="comment">     * 3. Horizontal Accuracy ( Integer )</span>
+<a name="l00153"></a>00153 <span class="comment">     * 4. Radius ( Integer )     </span>
+<a name="l00154"></a>00154 <span class="comment">     */</span>    
+<a name="l00155"></a>00155     HBufC* <a class="code" href="class_c_geo_profile.html#fa08f77de8a3c6f65a49f03599148110">PartialExternalizeLC</a>();      
+<a name="l00156"></a>00156     
+<a name="l00157"></a>00157 <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00158"></a>00158 <span class="comment">    /**</span>
+<a name="l00159"></a>00159 <span class="comment">     * C++ Constructor</span>
+<a name="l00160"></a>00160 <span class="comment">     */</span>
+<a name="l00161"></a>00161     <a class="code" href="class_c_geo_profile.html#87ae3c781f8b38b890df8bed3895ea02">CGeoProfile</a>();
+<a name="l00162"></a>00162                       <span class="comment"></span>
+<a name="l00163"></a>00163 <span class="comment">    /**</span>
+<a name="l00164"></a>00164 <span class="comment">     * Second phase of two phase construction</span>
+<a name="l00165"></a>00165 <span class="comment">     */</span>                      
+<a name="l00166"></a>00166     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#cb7edf7da4750989e9eca501ea6f7821">ConstructL</a>( <span class="keyword">const</span> TDesC&amp;       aGeoPlaceName,
+<a name="l00167"></a>00167                            TInt         aGeoProfileId,
+<a name="l00168"></a>00168                            TLocality&amp;   aPositionInfo,
+<a name="l00169"></a>00169                            TInt         aProfileRadius,
+<a name="l00170"></a>00170                            TInt         aTriggerId,
+<a name="l00171"></a>00171                            TInt         aTriggerType );
+<a name="l00172"></a>00172                            <span class="comment"></span>
+<a name="l00173"></a>00173 <span class="comment">    /**</span>
+<a name="l00174"></a>00174 <span class="comment">     * Accessor method for setting the Profile Name</span>
+<a name="l00175"></a>00175 <span class="comment">     */</span>
+<a name="l00176"></a>00176     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#f3a8a137c8f0cbae947fffa3ef8cf286">SetProfileNameL</a>( <span class="keyword">const</span> TDesC&amp;       aProfileName );
+<a name="l00177"></a>00177     
+<a name="l00178"></a>00178     <span class="comment"></span>
+<a name="l00179"></a>00179 <span class="comment">    /**</span>
+<a name="l00180"></a>00180 <span class="comment">     * Accessor method for setting Location Information</span>
+<a name="l00181"></a>00181 <span class="comment">     */</span>    
+<a name="l00182"></a>00182     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#d17b974b66c89f72106a8db390ae1d02">SetGeoPositionType</a>( TInt         aPositionType );
+<a name="l00183"></a>00183     <span class="comment"></span>
+<a name="l00184"></a>00184 <span class="comment">    /**</span>
+<a name="l00185"></a>00185 <span class="comment">     * Accessor method for setting Location name</span>
+<a name="l00186"></a>00186 <span class="comment">     */</span>
+<a name="l00187"></a>00187     <span class="keywordtype">void</span> <a class="code" href="class_c_geo_profile.html#b082459c8aac8a5928adc593965fb650">SetGeoPlaceNameL</a>( <span class="keyword">const</span> TDesC&amp;   aGeoPlaceName );        
+<a name="l00188"></a>00188                                                            
+<a name="l00189"></a>00189                    
+<a name="l00190"></a>00190 <span class="keyword">private</span>: <span class="comment">// Member Variables                      </span>
+<a name="l00191"></a>00191       <span class="comment"></span>
+<a name="l00192"></a>00192 <span class="comment">    /**</span>
+<a name="l00193"></a>00193 <span class="comment">     * Geo Profile Name</span>
+<a name="l00194"></a>00194 <span class="comment">     * Owns</span>
+<a name="l00195"></a>00195 <span class="comment">     */</span>  
+<a name="l00196"></a><a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">00196</a>     HBufC*       <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a>;
+<a name="l00197"></a>00197     <span class="comment"></span>
+<a name="l00198"></a>00198 <span class="comment">    /**</span>
+<a name="l00199"></a>00199 <span class="comment">     * Profile Name</span>
+<a name="l00200"></a>00200 <span class="comment">     * Owns</span>
+<a name="l00201"></a>00201 <span class="comment">     */</span>     
+<a name="l00202"></a><a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">00202</a>     HBufC*       <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a>;
+<a name="l00203"></a>00203     <span class="comment"></span>
+<a name="l00204"></a>00204 <span class="comment">    /**</span>
+<a name="l00205"></a>00205 <span class="comment">     * Geo Profile Identifier</span>
+<a name="l00206"></a>00206 <span class="comment">     */</span>
+<a name="l00207"></a><a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">00207</a>     TInt         <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a>;
+<a name="l00208"></a>00208     <span class="comment"></span>
+<a name="l00209"></a>00209 <span class="comment">    /**</span>
+<a name="l00210"></a>00210 <span class="comment">     * Geo Profile Location</span>
+<a name="l00211"></a>00211 <span class="comment">     */</span>
+<a name="l00212"></a><a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">00212</a>     TLocality    <a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a>;
+<a name="l00213"></a>00213     <span class="comment"></span>
+<a name="l00214"></a>00214 <span class="comment">    /** </span>
+<a name="l00215"></a>00215 <span class="comment">     * Position Type</span>
+<a name="l00216"></a>00216 <span class="comment">     */</span>
+<a name="l00217"></a><a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">00217</a>     TInt        <a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a>;
+<a name="l00218"></a>00218     <span class="comment"></span>
+<a name="l00219"></a>00219 <span class="comment">    /**</span>
+<a name="l00220"></a>00220 <span class="comment">     * Radius of the profile</span>
+<a name="l00221"></a>00221 <span class="comment">     */</span>
+<a name="l00222"></a><a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">00222</a>     TInt        <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a>;
+<a name="l00223"></a>00223     <span class="comment"></span>
+<a name="l00224"></a>00224 <span class="comment">    /** </span>
+<a name="l00225"></a>00225 <span class="comment">     * Trigger Id</span>
+<a name="l00226"></a>00226 <span class="comment">     */</span>
+<a name="l00227"></a><a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">00227</a>     TInt        <a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a>;
+<a name="l00228"></a>00228     <span class="comment"></span>
+<a name="l00229"></a>00229 <span class="comment">    /**</span>
+<a name="l00230"></a>00230 <span class="comment">     * Trigger Type</span>
+<a name="l00231"></a>00231 <span class="comment">     */</span>
+<a name="l00232"></a><a class="code" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">00232</a>     TInt        <a class="code" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">iTriggerType</a>;
+<a name="l00233"></a>00233     }; 
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235 <span class="preprocessor">#endif // C_GEOPROFILE_H</span>
+</pre></div><hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

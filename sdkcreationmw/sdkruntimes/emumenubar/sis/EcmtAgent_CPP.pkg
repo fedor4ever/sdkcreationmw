@@ -1,0 +1,87 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+; EcmtAgent_CPP.pkg
+;
+
+; SIS file header
+#{"EcmtAgent"},(0x10202062),4,0,1
+
+;Language - standard language definitions
+&EN
+
+;Localised Vendor name
+%{"Nokia"}
+
+;Unique Vendor name
+:"Nokia"
+
+;Supports Series 60 v 3.1
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;EcmtServer core and REcmt API
+"\epoc32\release\armv5\urel\EcmtCore.exe"
+   -"!:\sys\bin\EcmtCore.exe"
+"\epoc32\release\armv5\urel\ecmtclient.dll"
+   -"!:\sys\bin\ecmtclient.dll"
+
+;GuiLauncher
+"\epoc32\release\armv5\urel\EcmtGui.exe"
+   -"!:\sys\bin\EcmtGui.exe"
+"\epoc32\data\z\resource\apps\EcmtGui.rsc"
+   -"!:\resource\apps\EcmtGui.rsc"
+"\epoc32\data\z\RESOURCE\APPS\EcmtGui_AIF.mif"
+   -"!:\resource\apps\EcmtGui_aif.mif"
+"\epoc32\data\z\private\10003a3f\apps\EcmtGui_reg.rsc"
+   -"!:\private\10003a3f\import\apps\EcmtGui_reg.rsc"
+
+;Bluetooth bearer
+"\epoc32\release\armv5\urel\ecmtbtbearer.dll"
+   -"!:\sys\bin\ecmtbtbearer.dll"
+"\epoc32\data\z\resource\plugins\ecmtbtbearer.rsc"
+   -"!:\resource\plugins\ecmtbtbearer.rsc"
+
+;USB bearer
+"\epoc32\release\armv5\urel\ecmtusbbearer.dll"
+   -"!:\sys\bin\ecmtusbbearer.dll"
+"\epoc32\data\z\resource\plugins\ecmtusbbearer.rsc"
+   -"!:\resource\plugins\ecmtusbbearer.rsc"
+
+;WLAN bearer
+"\epoc32\release\armv5\urel\ecmtwlanbearer.dll"
+   -"!:\sys\bin\ecmtwlanbearer.dll"
+"\epoc32\data\z\resource\plugins\ecmtwlanbearer.rsc"
+   -"!:\resource\plugins\ecmtwlanbearer.rsc"
+   
+;TaskManager plug-in
+"\epoc32\release\armv5\urel\EcmtTaskManagerPlugin.dll"                 
+   -"!:\sys\bin\EcmtTaskManagerPlugin.dll"
+"\epoc32\data\z\resource\plugins\EcmtTaskManagerPlugin.rsc"               
+   -"!:\resource\plugins\EcmtTaskManagerPlugin.rsc"
+
+;Push URL plug-in
+"\epoc32\release\armv5\urel\EcmtPushURLPlugin.dll"
+   -"!:\sys\bin\EcmtPushURLPlugin.dll"
+"\epoc32\data\z\resource\plugins\EcmtPushURLPlugin.rsc"
+   -"!:\resource\plugins\EcmtPushURLPlugin.rsc"
+
+;HttpTraffic plug-in
+"\epoc32\release\armv5\urel\EcmtHttpTrafficPlugin.dll"                 
+   -"!:\sys\bin\EcmtHttpTrafficPlugin.dll"
+"\epoc32\data\z\resource\plugins\EcmtHttpTrafficPlugin.rsc"               
+   -"!:\resource\plugins\EcmtHttpTrafficPlugin.rsc"
+
+;Backup registration
+"backup_registration.xml"-"!:\private\10202062\backup_registration.xml"

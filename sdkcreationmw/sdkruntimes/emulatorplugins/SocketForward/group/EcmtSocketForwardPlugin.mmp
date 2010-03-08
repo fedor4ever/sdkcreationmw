@@ -1,0 +1,58 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Socket Forward Plugin
+*
+*/
+
+#include <platform_paths.hrh>
+
+// These headers define the UID values
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtSocketForwardPluginUids.h"
+
+TARGET          EcmtSocketForwardPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KSOCKETFORWARDPLUGIN_DLL_UID
+
+#ifdef WINS
+CAPABILITY      CAP_ECOM_PLUGIN -DRM
+#else
+CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
+#endif
+
+VENDORID		VID_DEFAULT
+
+SOURCEPATH	..\src
+SOURCE		EcmtSocketForwardPlugin.cpp
+SOURCE		SymbianSocket.cpp
+
+USERINCLUDE	..\inc
+USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY     euser.lib
+LIBRARY		bafl.lib
+LIBRARY		efsrv.lib
+LIBRARY		charconv.lib
+LIBRARY     insock.lib
+LIBRARY     esock.lib
+LIBRARY	    PlatformEnv.lib
+
+SOURCEPATH	..\data
+START RESOURCE KSOCKETFORWARDPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+    TARGET EcmtSocketForwardPlugin.rsc
+#endif
+END

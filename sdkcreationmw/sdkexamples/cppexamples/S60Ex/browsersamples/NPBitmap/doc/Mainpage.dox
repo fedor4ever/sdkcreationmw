@@ -1,0 +1,143 @@
+/*! \mainpage Netscape Plugin Control Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  The Plugin Control Sample was designed to accompany the Browser
+ *  Plug-in API Developer’s Guide. A sample html page demonstrating a plugin looks
+ *  like this:
+ *
+ *  \code
+ *
+ *  <html>
+ *  <head>
+ *  <title>Flip Bitmap</title>
+ *  </head>
+ *  <body>
+ *  <p>
+ *  	Simple bitmap object<br/>
+ *  	<object data="allbitmaps.mbm" type="application/mbm" width="70" height="70">
+ *  	</object>
+ *  	<br/>
+ *  </p>
+ *  </body>
+ *  </html>
+ *  \endcode
+ *
+ *  plugin.html and allbitmaps.mbm will be saved to NPBitmap directory.
+ *  After the NPBitmap plugin is installed, open plugin.html from browser typing:
+ *  file://X:/NPBitmap/plugin.html
+ *  Where X is the drive where to plugin is installed.
+ *
+ *  Click on the Bitmap which is shown on the html page, to flip to another bitmap.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *  Knowledge of the following domains will help in the understanding of this sample application:
+ *
+ *  1. Symbian OS
+ *
+ *  2. Ecom plugins
+ *
+ *  3. Netscape plugins
+ *
+ *  4. HTML
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ * Because this is plugin app for browser same capabilities as browser.
+ * The program capabilities are defined in %NPBitmap.mmp file: NetworkServices LocalServices ReadUserData WriteUserData ReadDeviceData WriteDeviceData SwEvent UserEnvironment DRM NetworkControl
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  This plugin is used by browser that handles scalability issues.
+ *
+ * \subsection Sub33 3.3 Technical Description
+ *
+ * The browser employs a common Netscape Plug-in ECom interface to interact with any number of Netscape plug-in ECom implementations. This interface has two abstract methods that closely map to the following Netscape plug-in DLL-level methods:
+ *	- InitializeFuncs — initializes the plug-in
+ *	- NPP_Shutdown — shuts the plug-in down
+ *
+ *	Each ECom implementation derives from this interface and implements these two abstract methods to initialize and shutdown the plug-in. When the plug-in is initialized, the browser and the plug-in exchange function tables. In the example, these functions are prototyped in the Bitmapplugin.h header and the implementation is done in the source file of the corresponding name. Note that these are independent functions, not methods of a class.
+ *	The Netscape Plug-in API defines two additional DLL-level methods:
+ *	- NPP_GetMIMEDescription
+ *	- NPP_GetValue
+ *
+ *	The NPP_GetMIMEDescription method returns the following information:
+ *	- MIME types supported by the plug-in
+ *	- File extensions supported by the plug-in
+ *	- Brief description of the file type
+ *
+ *	The NPP_GetValue method is no longer needed because the ECom resource file can contain the display name and description of the plug-in.
+ *
+ *	When a Netscape ECom plug-in is initialized, the browser saves the following data:
+ *		- Plug-in name
+ *		- Plug-in description
+ *		- File name
+ *		- MIME type
+ * 		- MIME file extension
+ *		- MIME description
+ *
+ * The browser passes a table of function pointers to the plug-in. This table is an allocated but uninitialized structure that contains the API that the plug-in provides to the browser. The plug-in fills out this table during the initialization call. In the example, the function InitializeFuncs implements this.
+
+*  \subsubsection Sub331 3.3.1 Creating a plug-in instance
+The main class of the example is is CBitmapInst, which implements the plugin functionality. It uses the CBitmapEcomMain class.
+
+The browser calls the NPP_New function to create a plug-in instance. Instance-specific private data can be allocated at this time. This call does not pass windowing information to the plug-in constructor. The browser then calls the NPP_SetWindow function to provide the windowing information required to embed the plug-in within the parent Web page.
+
+The browser calls the NPP_Destroy function to destroy a plug-in instance. The browser application calls the NPP_Destroy function when the user performs any of the following actions:
+		- Navigates away from the page containing the instance
+		- Quits the application
+ *
+If this is the last instance created by a plug-in, the browser calls the NPP_Shutdown function.
+NPP_Destroy does not track or delete browser-created objects.
+The NPWindow structure represents the native window. This structure contains information about coordinate position, size, the state of the plug-in, and a handle to the window. Using the NPP_SetWindow function, the plug-in constructs a CCoeControl object (or an object that inherits from CCoeControl) that is parented to the Web page. The plug-in also gets a pointer to an object that implements the PluginAdapter interface.
+In the example, the Bitmapplugin.cpp file provides the implementations of the static methods needed for the plugin interface. It contains an implementation of the PluginNew(…) function, which creates a new plugin instance CBitmapInst by contrstucting it as usual with NewL(…) and then calling PluginNew(…) of the instance.
+
+*  \subsubsection Sub332 3.3.2 Implementing Streams
+Streams are objects that represent data generated from a URL, or data sent by a plug-in without an associated URL. Streams can be produced by the browser and consumed by a plug-in instance, or produced by a plug-in instance and consumed by the browser. A stream object has an associated MIME type, which identifies the format of the data in the stream. Each stream object is associated with a single plug-in, and a plug-in can hold multiple stream objects.
+The browser performs the following tasks when sending a data stream to the plug-in:
+*
+*	<b>1.	Creates a stream and informs the plug-in. </b>
+*	To inform a plug-in when a new stream is created, the browser calls the NPP_NewStream function. This function also determines which mode the browser should use to send data to the plug-in. The browser can create a stream for the following types of data:
+	- File specified in the src attribute of the embed tag
+	- Data file
+	- Full-page instance
+*
+*	<b>2.	Finds out from the plug-in how much data it can accept.</b>
+*	After calling the NPP_NewStream function and before writing data to the plug-in, the browser calls the NPP_WriteReady function to determine the maximum number of bytes that the plug-in can accept. This function allows the browser to send only as much data to the plug-in as it can handle at one time, and it helps both the browser and the plug-in to use their resources efficiently.
+*
+*	<b>3.	Writes data to the stream object.</b>
+*	The browser pushes data into the stream by using a series of calls to the NPP_WriteReady and the NPP_Write functions. The NPP_Write function returns the number of bytes consumed by the plug-in instance. If this is a negative number, the browser calls the NPP_DestroyStream function to destroy the stream. If the number returned is smaller than the size of the buffer, the browser sends the remaining data in the buffer to the plug-in through repeated calls to the NPP_WriteReady and NPP_Write functions.
+*
+*	<b>4.	Notifies the plug-in and deletes the stream.</b>
+*	After it sends the stream to the plug-in, the browser calls the NPP_DestroyStream function whether or not the stream arrived successfully. After the plug-in returns from this function, the browser deletes the NPStream object.
+The plug-in stores private data associated with the stream in stream->pdata. Any resources that the plug-in allocated for that stream should be deleted when the stream is destroyed. The browser stores private data in stream->ndata. The plug-in should not change the value of ndata.
+Similarly as with initialization, the static function PluginNewStream(…) is called to create a new stream. It, in turn, calls a method of the same name of the plugin instance CBitmapInst.
+*
+*  \subsubsection Sub333 3.3.3 Retrieving data from a URL
+The plug-in calls the NPN_GetURL function to ask the browser to do one of the following:
+		- Display data retrieved from a URL in a specified target window or frame
+		- Deliver the data to the plug-in instance in a new stream
+*
+If the browser cannot locate the URL or retrieve the data, it does not create a stream for the plug-in. The developer can call the NPN_GetURLNotify function to notify the plug-in that the data was not retrieved.
+The browser calls the NPP_URLNotify function to notify the plug-in. The browser then passes the notifyData value to the plug-in. The notifyData parameter contains the private plug-in data passed to the corresponding call to the NPN_GetURLNotify function. The value of notifyData may be used to track multiple requests.
+The NPN_GetURLNotify function handles the URL request asynchronously. It returns immediately and only later handles the request and calls the NPP_URLNotify function. The plug-in must receive this notification in order to determine whether a request with a null target failed or whether a request with a non-null target completed successfully.
+
+*  \subsubsection Sub334 3.3.4 Posting URLs
+The plug-in calls the NPN_PostURL function to post data from a file or buffer to a URL. After posting the data, the NPN_PostURL function either displays the server response in the target window or delivers it to the plug-in.
+The NPN_PostURLNotify function has the same capabilities as the NPN_PostURL function, with the following exceptions:
+	- NPN_PostURLNotify supports specifying headers when posting a memory buffer
+	- NPN_PostURLNotify calls the NPP_URLNotifyfunction upon successful or unsuccessful completion of the request. The NPN_PostURLNotify function is asynchronous; it returns immediately and only later handles the request and calls the NPP_URLNotify function.
+ *
+ */

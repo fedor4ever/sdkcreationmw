@@ -1,0 +1,1156 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoProfilesContainer Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoProfilesContainer Class Reference</h1><!-- doxytag: class="CGeoProfilesContainer" --><!-- doxytag: inherits="CCoeControl,MEikListBoxObserver" --><code>#include &lt;<a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoProfilesContainer:
+<p><center><img src="class_c_geo_profiles_container.png" usemap="#CGeoProfilesContainer_map" border="0" alt=""></center>
+<map name="CGeoProfilesContainer_map">
+</map>
+<a href="class_c_geo_profiles_container-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+GeoProfiles Application's Container class. This class is the chief windowing component of GeoProfiles which displays the List of Tagged profiles 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8h-source.html#l00037">37</a> of file <a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#24c7d7c7ca2c7d169c489421b5a9e3a9">~CGeoProfilesContainer</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#7099137a534c547cf7dcbf015c0a0e51">UpdateL</a> (<a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;aListboxModel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#ca6c1ae22dc8967b0386d2a3cb1bc3b4">GetFocussedItem</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_profiles_container.html">CGeoProfilesContainer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#6b090527d9b9d7c2de2a224427476b6a">NewL</a> (const TRect &amp;aRect, <a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;aListboxModel, <a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> &amp;aView)</td></tr>
+
+<tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#9f9bb5a2110532e2f2909eaefb44d36a">SizeChanged</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#195be64c0e5b9f91ce87699e499af01c">CountComponentControls</a> () const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CCoeControl *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#c1d1ba8d1c19e939c47fb73d50cb5432">ComponentControl</a> (TInt aIndex) const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TKeyResponse&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#6775621e6d3ce05d6685555c939c7706">OfferKeyEventL</a> (const TKeyEvent &amp;aKeyEvent, TEventCode aType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#389d15aa1abc22fb211d040f034e4e31">HandleResourceChange</a> (TInt aType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#ddb86bdfaf368ea970a5272723b9355a">HandleListBoxEventL</a> (CEikListBox *aListBox, TListBoxEvent aEventType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#3f7d5667032bc6e39b297590008bc8e6">FocusChanged</a> (TDrawNow aDrawNow)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#50830e194f2b97f068a00533e4d3f193">CGeoProfilesContainer</a> (<a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;aListboxModel, <a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> &amp;aView)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#bf31593b337cbf3fb671382cf773281c">ConstructL</a> (const TRect &amp;aRect)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#4f9d737f4ea226db46ed8b9ac1a3ce2d">MakeTitleL</a> (TInt aResourceText)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#7f9545eab1ef371270ca6a490f37d7bc">CreateListboxL</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">iListboxModel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CAknSettingStyleListBox *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_container.html#c5a168e1237846e8981054243db858f8">iView</a></td></tr>
+
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="24c7d7c7ca2c7d169c489421b5a9e3a9"></a><!-- doxytag: member="CGeoProfilesContainer::~CGeoProfilesContainer" ref="24c7d7c7ca2c7d169c489421b5a9e3a9" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfilesContainer::~CGeoProfilesContainer           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Virtual destructor 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00057">57</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00058"></a>00058     {
+<a name="l00059"></a>00059     <span class="comment">// Delete the list box</span>
+<a name="l00060"></a>00060     <span class="keyword">delete</span> <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>;
+<a name="l00061"></a>00061     
+<a name="l00062"></a>00062     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="50830e194f2b97f068a00533e4d3f193"></a><!-- doxytag: member="CGeoProfilesContainer::CGeoProfilesContainer" ref="50830e194f2b97f068a00533e4d3f193" args="(CGeoProfilesLBModel &amp;aListboxModel, CGeoProfilesView &amp;aView)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfilesContainer::CGeoProfilesContainer           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aListboxModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aView</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Default constructor 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00046">46</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00068">NewL()</a>.<div class="fragment"><pre class="fragment"><a name="l00048"></a>00048     :<a class="code" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">iListboxModel</a>( &amp;aListboxModel ),
+<a name="l00049"></a>00049     <a class="code" href="class_c_geo_profiles_container.html#c5a168e1237846e8981054243db858f8">iView</a>( aView )
+<a name="l00050"></a>00050     {
+<a name="l00051"></a>00051     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="6b090527d9b9d7c2de2a224427476b6a"></a><!-- doxytag: member="CGeoProfilesContainer::NewL" ref="6b090527d9b9d7c2de2a224427476b6a" args="(const TRect &amp;aRect, CGeoProfilesLBModel &amp;aListboxModel, CGeoProfilesView &amp;aView)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_container.html">CGeoProfilesContainer</a> * CGeoProfilesContainer::NewL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TRect &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aListboxModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aView</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Static Two phase constructor<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>aRect,Client</em>&nbsp;</td><td>Rectangle for this window owning control. </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00068">68</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8cpp-source.html#l00046">CGeoProfilesContainer()</a>.<div class="fragment"><pre class="fragment"><a name="l00072"></a>00072     {
+<a name="l00073"></a>00073     <a class="code" href="class_c_geo_profiles_container.html">CGeoProfilesContainer</a>* <span class="keyword">self</span> = <span class="keyword">new</span> (ELeave) <a class="code" href="class_c_geo_profiles_container.html#50830e194f2b97f068a00533e4d3f193">CGeoProfilesContainer</a>( aListboxModel,
+<a name="l00074"></a>00074                                                                       aView );
+<a name="l00075"></a>00075     CleanupStack::PushL( <span class="keyword">self</span> );
+<a name="l00076"></a>00076     <span class="keyword">self</span>-&gt;ConstructL( aRect );
+<a name="l00077"></a>00077     CleanupStack::Pop();
+<a name="l00078"></a>00078     
+<a name="l00079"></a>00079     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00080"></a>00080     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="7099137a534c547cf7dcbf015c0a0e51"></a><!-- doxytag: member="CGeoProfilesContainer::UpdateL" ref="7099137a534c547cf7dcbf015c0a0e51" args="(CGeoProfilesLBModel &amp;aListboxModel)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::UpdateL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aListboxModel</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Updates the container 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00106">106</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>, and <a class="el" href="geoprofilescontainer_8h-source.html#l00133">iListboxModel</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesview_8cpp-source.html#l00349">CGeoProfilesView::ProfileStatusChangedL()</a>.<div class="fragment"><pre class="fragment"><a name="l00107"></a>00107     {
+<a name="l00108"></a>00108     <span class="comment">// Store the new list box model</span>
+<a name="l00109"></a>00109     <a class="code" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">iListboxModel</a> = &amp;aListboxModel;
+<a name="l00110"></a>00110     
+<a name="l00111"></a>00111     <span class="comment">// Assign it to the listbox</span>
+<a name="l00112"></a>00112     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;Model()-&gt;SetItemTextArray( <a class="code" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">iListboxModel</a> );
+<a name="l00113"></a>00113     
+<a name="l00114"></a>00114     <span class="comment">// Update the list box</span>
+<a name="l00115"></a>00115     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;HandleItemAdditionL();
+<a name="l00116"></a>00116     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;HandleItemRemovalL();
+<a name="l00117"></a>00117     
+<a name="l00118"></a>00118     DrawDeferred();
+<a name="l00119"></a>00119     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ca6c1ae22dc8967b0386d2a3cb1bc3b4"></a><!-- doxytag: member="CGeoProfilesContainer::GetFocussedItem" ref="ca6c1ae22dc8967b0386d2a3cb1bc3b4" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfilesContainer::GetFocussedItem           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Returns the currently focussed element. 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00125">125</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesview_8cpp-source.html#l00121">CGeoProfilesView::ContainerCommandL()</a>.<div class="fragment"><pre class="fragment"><a name="l00126"></a>00126     {
+<a name="l00127"></a>00127     <span class="keywordflow">if</span> ( !<a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a> )
+<a name="l00128"></a>00128         {
+<a name="l00129"></a>00129         <span class="keywordflow">return</span> KErrNotFound;        
+<a name="l00130"></a>00130         }
+<a name="l00131"></a>00131     <span class="keywordflow">else</span> 
+<a name="l00132"></a>00132         {
+<a name="l00133"></a>00133         <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;CurrentItemIndex();
+<a name="l00134"></a>00134         }
+<a name="l00135"></a>00135     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="9f9bb5a2110532e2f2909eaefb44d36a"></a><!-- doxytag: member="CGeoProfilesContainer::SizeChanged" ref="9f9bb5a2110532e2f2909eaefb44d36a" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::SizeChanged           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CCoeControl 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00141">141</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00142"></a>00142     {
+<a name="l00143"></a>00143     <span class="keywordflow">if</span> ( <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a> )
+<a name="l00144"></a>00144         {
+<a name="l00145"></a>00145         <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;SetRect( Rect());
+<a name="l00146"></a>00146         }
+<a name="l00147"></a>00147     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="195be64c0e5b9f91ce87699e499af01c"></a><!-- doxytag: member="CGeoProfilesContainer::CountComponentControls" ref="195be64c0e5b9f91ce87699e499af01c" args="() const " --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfilesContainer::CountComponentControls           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap> const<code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CCoeControl 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00153">153</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00154"></a>00154     {
+<a name="l00155"></a>00155     <span class="keywordflow">if</span> ( <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a> )
+<a name="l00156"></a>00156         {
+<a name="l00157"></a>00157         <span class="keywordflow">return</span> 1;    
+<a name="l00158"></a>00158         }
+<a name="l00159"></a>00159     <span class="keywordflow">else</span>
+<a name="l00160"></a>00160         {
+<a name="l00161"></a>00161         <span class="keywordflow">return</span> 0;    
+<a name="l00162"></a>00162         }
+<a name="l00163"></a>00163     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="c1d1ba8d1c19e939c47fb73d50cb5432"></a><!-- doxytag: member="CGeoProfilesContainer::ComponentControl" ref="c1d1ba8d1c19e939c47fb73d50cb5432" args="(TInt aIndex) const " --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CCoeControl * CGeoProfilesContainer::ComponentControl           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aIndex</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap> const<code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CCoeControl 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00169">169</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00170"></a>00170     {
+<a name="l00171"></a>00171     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>;
+<a name="l00172"></a>00172     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="6775621e6d3ce05d6685555c939c7706"></a><!-- doxytag: member="CGeoProfilesContainer::OfferKeyEventL" ref="6775621e6d3ce05d6685555c939c7706" args="(const TKeyEvent &amp;aKeyEvent, TEventCode aType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TKeyResponse CGeoProfilesContainer::OfferKeyEventL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TKeyEvent &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aKeyEvent</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TEventCode&nbsp;</td>
+          <td class="mdname" nowrap> <em>aType</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CCoeControl 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00178">178</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00181"></a>00181     {
+<a name="l00182"></a>00182     <span class="keywordflow">switch</span> ( aKeyEvent.iCode )
+<a name="l00183"></a>00183         {
+<a name="l00184"></a>00184         <span class="keywordflow">case</span> EKeyLeftArrow:
+<a name="l00185"></a>00185         <span class="keywordflow">case</span> EKeyRightArrow:
+<a name="l00186"></a>00186             {
+<a name="l00187"></a>00187             <span class="comment">// No action in this application for the Right arrow and left</span>
+<a name="l00188"></a>00188             <span class="comment">// arrow.</span>
+<a name="l00189"></a>00189             <span class="keywordflow">return</span> EKeyWasNotConsumed;  
+<a name="l00190"></a>00190             }
+<a name="l00191"></a>00191         <span class="keywordflow">default</span>:
+<a name="l00192"></a>00192             {
+<a name="l00193"></a>00193             <span class="keywordflow">break</span>;  
+<a name="l00194"></a>00194             }
+<a name="l00195"></a>00195         }
+<a name="l00196"></a>00196     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;OfferKeyEventL( aKeyEvent, aType ); 
+<a name="l00197"></a>00197     }   
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="389d15aa1abc22fb211d040f034e4e31"></a><!-- doxytag: member="CGeoProfilesContainer::HandleResourceChange" ref="389d15aa1abc22fb211d040f034e4e31" args="(TInt aType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::HandleResourceChange           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aType</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CCoeControl 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00203">203</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilesview_8cpp-source.html#l00121">CGeoProfilesView::ContainerCommandL()</a>, and <a class="el" href="geoprofilescontainer_8h-source.html#l00144">iView</a>.<div class="fragment"><pre class="fragment"><a name="l00204"></a>00204         {
+<a name="l00205"></a>00205     <span class="comment">// Pass the event to the base class</span>
+<a name="l00206"></a>00206     CCoeControl::HandleResourceChange( aType );
+<a name="l00207"></a>00207     
+<a name="l00208"></a>00208     <span class="keywordflow">switch</span>( aType )
+<a name="l00209"></a>00209         {
+<a name="l00210"></a>00210         <span class="comment">// Dynamic Layout switch and Skin Change</span>
+<a name="l00211"></a>00211         <span class="keywordflow">case</span> KEikDynamicLayoutVariantSwitch:
+<a name="l00212"></a>00212             {
+<a name="l00213"></a>00213             <a class="code" href="class_c_geo_profiles_container.html#c5a168e1237846e8981054243db858f8">iView</a>.<a class="code" href="class_c_geo_profiles_view.html#54e18fbde69116c14ba4ceb4a4ebed45">ContainerCommandL</a>( aType );
+<a name="l00214"></a>00214             <span class="keywordflow">break</span>;
+<a name="l00215"></a>00215             }        
+<a name="l00216"></a>00216         <span class="keywordflow">case</span> KAknsMessageSkinChange:
+<a name="l00217"></a>00217             {
+<a name="l00218"></a>00218             <span class="keywordflow">break</span>;
+<a name="l00219"></a>00219             }
+<a name="l00220"></a>00220         <span class="keywordflow">default</span>:
+<a name="l00221"></a>00221             {
+<a name="l00222"></a>00222             <span class="keywordflow">break</span>;
+<a name="l00223"></a>00223             }
+<a name="l00224"></a>00224         }       
+<a name="l00225"></a>00225         }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ddb86bdfaf368ea970a5272723b9355a"></a><!-- doxytag: member="CGeoProfilesContainer::HandleListBoxEventL" ref="ddb86bdfaf368ea970a5272723b9355a" args="(CEikListBox *aListBox, TListBoxEvent aEventType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::HandleListBoxEventL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">CEikListBox *&nbsp;</td>
+          <td class="mdname" nowrap> <em>aListBox</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TListBoxEvent&nbsp;</td>
+          <td class="mdname" nowrap> <em>aEventType</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from MEikListBoxObserver 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00231">231</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilesview_8cpp-source.html#l00121">CGeoProfilesView::ContainerCommandL()</a>, and <a class="el" href="geoprofilescontainer_8h-source.html#l00144">iView</a>.<div class="fragment"><pre class="fragment"><a name="l00234"></a>00234     {
+<a name="l00235"></a>00235     <span class="keywordflow">switch</span> (aEventType)
+<a name="l00236"></a>00236         {
+<a name="l00237"></a>00237         <span class="comment">// List box Item Selection</span>
+<a name="l00238"></a>00238         <span class="keywordflow">case</span> EEventEnterKeyPressed:
+<a name="l00239"></a>00239         <span class="keywordflow">case</span> EEventItemDoubleClicked:
+<a name="l00240"></a>00240             {
+<a name="l00241"></a>00241             <a class="code" href="class_c_geo_profiles_container.html#c5a168e1237846e8981054243db858f8">iView</a>.<a class="code" href="class_c_geo_profiles_view.html#54e18fbde69116c14ba4ceb4a4ebed45">ContainerCommandL</a>( EGeoProfilesOpen );
+<a name="l00242"></a>00242             <span class="keywordflow">break</span>;  
+<a name="l00243"></a>00243             }
+<a name="l00244"></a>00244         <span class="keywordflow">default</span>:
+<a name="l00245"></a>00245            <span class="keywordflow">break</span>;
+<a name="l00246"></a>00246         }        
+<a name="l00247"></a>00247     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="3f7d5667032bc6e39b297590008bc8e6"></a><!-- doxytag: member="CGeoProfilesContainer::FocusChanged" ref="3f7d5667032bc6e39b297590008bc8e6" args="(TDrawNow aDrawNow)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::FocusChanged           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TDrawNow&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aDrawNow</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [protected]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Focus changes event 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00254">254</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>.<div class="fragment"><pre class="fragment"><a name="l00255"></a>00255     {
+<a name="l00256"></a>00256     CCoeControl::FocusChanged( aDrawNow );
+<a name="l00257"></a>00257     <span class="comment">// The focus event has to be explicitly handed over to all the compound</span>
+<a name="l00258"></a>00258     <span class="comment">// controls since CCoeControl does not do that implicitly</span>
+<a name="l00259"></a>00259     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;SetFocus( IsFocused(), aDrawNow );
+<a name="l00260"></a>00260     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="bf31593b337cbf3fb671382cf773281c"></a><!-- doxytag: member="CGeoProfilesContainer::ConstructL" ref="bf31593b337cbf3fb671382cf773281c" args="(const TRect &amp;aRect)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TRect &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aRect</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of the two phase constructor 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00086">86</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8cpp-source.html#l00266">CreateListboxL()</a>, and <a class="el" href="geoprofilescontainer_8cpp-source.html#l00301">MakeTitleL()</a>.<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087     {
+<a name="l00088"></a>00088     <span class="comment">// This is the cheif control for this application. This has to be made a </span>
+<a name="l00089"></a>00089     <span class="comment">// Window owning control</span>
+<a name="l00090"></a>00090     CreateWindowL();
+<a name="l00091"></a>00091     
+<a name="l00092"></a>00092         <span class="comment">// Create a New Title for the View</span>
+<a name="l00093"></a>00093         <a class="code" href="class_c_geo_profiles_container.html#4f9d737f4ea226db46ed8b9ac1a3ce2d">MakeTitleL</a>( R_GEOPROFILES_TITLE );
+<a name="l00094"></a>00094     
+<a name="l00095"></a>00095     <span class="comment">// Create the Geo Profiles list box</span>
+<a name="l00096"></a>00096     <a class="code" href="class_c_geo_profiles_container.html#7f9545eab1ef371270ca6a490f37d7bc">CreateListboxL</a>();
+<a name="l00097"></a>00097             
+<a name="l00098"></a>00098     SetRect(aRect);
+<a name="l00099"></a>00099     ActivateL();
+<a name="l00100"></a>00100     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="4f9d737f4ea226db46ed8b9ac1a3ce2d"></a><!-- doxytag: member="CGeoProfilesContainer::MakeTitleL" ref="4f9d737f4ea226db46ed8b9ac1a3ce2d" args="(TInt aResourceText)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::MakeTitleL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aResourceText</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sets the Title text <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aResourceText</em>&nbsp;</td><td>Resource to create title </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00301">301</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00086">ConstructL()</a>.<div class="fragment"><pre class="fragment"><a name="l00302"></a>00302         {
+<a name="l00303"></a>00303         CEikStatusPane* statusPane = 
+<a name="l00304"></a>00304             static_cast&lt;CEikStatusPane*&gt;( iEikonEnv-&gt;AppUiFactory()-&gt;StatusPane());
+<a name="l00305"></a>00305         <span class="comment">// Obtain the title from the Status Pane</span>
+<a name="l00306"></a>00306         CAknTitlePane* title = static_cast&lt;CAknTitlePane*&gt;( statusPane-&gt;
+<a name="l00307"></a>00307         ControlL( TUid::Uid( EEikStatusPaneUidTitle )));
+<a name="l00308"></a>00308        
+<a name="l00309"></a>00309     <span class="comment">// Set the Title's buffer    </span>
+<a name="l00310"></a>00310     HBufC* buf = StringLoader::LoadL( aResourceText );
+<a name="l00311"></a>00311     title-&gt;SetText( buf ); <span class="comment">// Takes ownership of buf</span>
+<a name="l00312"></a>00312         }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="7f9545eab1ef371270ca6a490f37d7bc"></a><!-- doxytag: member="CGeoProfilesContainer::CreateListboxL" ref="7f9545eab1ef371270ca6a490f37d7bc" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesContainer::CreateListboxL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Creates the Geo profiles List box 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8cpp-source.html#l00266">266</a> of file <a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a>.
+<p>
+References <a class="el" href="geoprofilescontainer_8h-source.html#l00139">iListBox</a>, and <a class="el" href="geoprofilescontainer_8h-source.html#l00133">iListboxModel</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00086">ConstructL()</a>.<div class="fragment"><pre class="fragment"><a name="l00267"></a>00267     {
+<a name="l00268"></a>00268     
+<a name="l00269"></a>00269     <span class="comment">// Create the List box</span>
+<a name="l00270"></a>00270     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a> = <span class="keyword">new</span> ( ELeave ) CAknSettingStyleListBox;
+<a name="l00271"></a>00271     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;ConstructL( <span class="keyword">this</span>, EAknListBoxSelectionList );
+<a name="l00272"></a>00272     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;SetContainerWindowL( *<span class="keyword">this</span> ); 
+<a name="l00273"></a>00273     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;SetListBoxObserver( <span class="keyword">this</span> );
+<a name="l00274"></a>00274     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;CreateScrollBarFrameL( ETrue );
+<a name="l00275"></a>00275     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;ScrollBarFrame()-&gt;SetScrollBarVisibilityL( CEikScrollBarFrame::EOff,
+<a name="l00276"></a>00276                                                          CEikScrollBarFrame::EAuto ); 
+<a name="l00277"></a>00277                                                          
+<a name="l00278"></a>00278     <span class="comment">// The ownership of the list box model is retained with the Container.</span>
+<a name="l00279"></a>00279     <span class="comment">// This is because the model contains the additional functionality of</span>
+<a name="l00280"></a>00280     <span class="comment">// changing the settings values in addition to retreiving it.                                                        </span>
+<a name="l00281"></a>00281     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;Model()-&gt;SetItemTextArray( <a class="code" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">iListboxModel</a> );  
+<a name="l00282"></a>00282     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;Model()-&gt;SetOwnershipType( ELbmDoesNotOwnItemArray );
+<a name="l00283"></a>00283     
+<a name="l00284"></a>00284     <span class="comment">// Set empty text for the list box</span>
+<a name="l00285"></a>00285     HBufC* emptyText = StringLoader::LoadLC( R_LBL_GEOPROFILES_NOPROFILES );
+<a name="l00286"></a>00286     <span class="comment">// Set text for empty list</span>
+<a name="l00287"></a>00287     CEikListBox* listbox = <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>;
+<a name="l00288"></a>00288     listbox-&gt;View()-&gt;SetListEmptyTextL( *emptyText );
+<a name="l00289"></a>00289     CleanupStack::PopAndDestroy( emptyText );
+<a name="l00290"></a>00290                                          
+<a name="l00291"></a>00291     <a class="code" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">iListBox</a>-&gt;ActivateL();
+<a name="l00292"></a>00292     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="9ea500c09ae269fa908cb7f1e4558e13"></a><!-- doxytag: member="CGeoProfilesContainer::iListboxModel" ref="9ea500c09ae269fa908cb7f1e4558e13" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a>* <a class="el" href="class_c_geo_profiles_container.html#9ea500c09ae269fa908cb7f1e4558e13">CGeoProfilesContainer::iListboxModel</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Reference to the list box model Does not own 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8h-source.html#l00133">133</a> of file <a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00266">CreateListboxL()</a>, and <a class="el" href="geoprofilescontainer_8cpp-source.html#l00106">UpdateL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a4fe3028661554d5362654dd3ab592f6"></a><!-- doxytag: member="CGeoProfilesContainer::iListBox" ref="a4fe3028661554d5362654dd3ab592f6" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CAknSettingStyleListBox* <a class="el" href="class_c_geo_profiles_container.html#a4fe3028661554d5362654dd3ab592f6">CGeoProfilesContainer::iListBox</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Settings list box for Geo Profiles list Owns 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8h-source.html#l00139">139</a> of file <a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00169">ComponentControl()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00153">CountComponentControls()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00266">CreateListboxL()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00254">FocusChanged()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00125">GetFocussedItem()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00178">OfferKeyEventL()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00141">SizeChanged()</a>, <a class="el" href="geoprofilescontainer_8cpp-source.html#l00106">UpdateL()</a>, and <a class="el" href="geoprofilescontainer_8cpp-source.html#l00057">~CGeoProfilesContainer()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="c5a168e1237846e8981054243db858f8"></a><!-- doxytag: member="CGeoProfilesContainer::iView" ref="c5a168e1237846e8981054243db858f8" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a>&amp; <a class="el" href="class_c_geo_profiles_container.html#c5a168e1237846e8981054243db858f8">CGeoProfilesContainer::iView</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Reference to the Container's view 
+<p>
+Definition at line <a class="el" href="geoprofilescontainer_8h-source.html#l00144">144</a> of file <a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofilescontainer_8cpp-source.html#l00231">HandleListBoxEventL()</a>, and <a class="el" href="geoprofilescontainer_8cpp-source.html#l00203">HandleResourceChange()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoprofilescontainer_8h-source.html">geoprofilescontainer.h</a><li><a class="el" href="geoprofilescontainer_8cpp-source.html">geoprofilescontainer.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

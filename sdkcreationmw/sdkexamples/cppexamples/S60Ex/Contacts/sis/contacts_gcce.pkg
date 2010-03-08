@@ -1,0 +1,38 @@
+;
+; Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+
+;Languages
+&EN
+
+; Installation header
+#{"ContactsDB"},(0xA000022E),1,4,0
+
+%{"Vendor-EN"}
+:"Vendor"
+
+; Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+"..\..\..\epoc32\release\gcce\UREL\Contacts.exe"			-"!:\sys\bin\Contacts.exe"
+"..\..\..\epoc32\data\z\resource\apps\Contacts.rsc"		-"!:\resource\apps\Contacts.rsc"
+"..\..\..\epoc32\data\z\resource\apps\Contacts_aif.mif"		-"!:\resource\apps\Contacts_aif.mif"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\Contacts_reg.rsc"	-"!:\private\10003a3f\import\apps\Contacts_reg.rsc"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"					-"!:\private\A000022E\backup_registration.xml"

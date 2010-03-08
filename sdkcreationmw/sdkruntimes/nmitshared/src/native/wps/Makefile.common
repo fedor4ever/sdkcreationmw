@@ -1,0 +1,168 @@
+# -*- Makefile -*-
+# 
+# $Id: Makefile.common,v 1.12 2001/03/01 18:25:55 slava Exp $
+#
+# Makefile for building client WPS JNI wrapper libraries
+#
+# Environment:
+#       OS        - the operating system (lunux, solaris), lowercased
+#       PLATFORM  - OS type (unix,win32,vms), lowercased
+#       CPU       - hardware platform (i386, alpha, sparc), lowercased
+#	JAVA_HOME - points to the top of the JDK tree
+#	WPSC_HOME - points to the top of the WPS source tree
+#
+# Targets:
+#	all     - builds the libraries
+#	clean	- remove generated intermediate files
+
+CLIENT_INCS = \
+	-I$(WPSC_HOME)/include \
+	-I$(WPSC_HOME)/include/wim_include \
+	-I$(JAVA_HOME)/include \
+	-I$(JAVA_HOME)/include/$(OS)
+
+#
+# Project-specific definitions
+#
+PROJECT_INCLUDES = $(CLIENT_INCS)
+PROJECT_DEFINES = -DBEARER_INIT_HERE -DWPS_1_4
+
+SOURCE_DIR = .
+
+DEBUG_DEFINES = -D_DEBUG
+RELEASE_DEFINES = -DNDEBUG
+
+BUILD_DIR = ../../build
+TOOLKIT_DIR = ../../../..
+
+#
+# Include platform specific definitions
+#
+
+include $(BUILD_DIR)/Platform.$(PLATFORM)
+
+RELEASE_CLIENT_OBJS = \
+	$(RELEASE_OBJ_DIR)$(FS)java_wps_client.$(OBJ_EXT) \
+	$(RELEASE_OBJ_DIR)$(FS)java_util.$(OBJ_EXT) \
+	$(RELEASE_OBJ_DIR)$(FS)java_misc.$(OBJ_EXT) \
+	$(RELEASE_OBJ_DIR)$(FS)java_bearers.$(OBJ_EXT) \
+	$(RELEASE_OBJ_DIR)$(FS)java_wtls.$(OBJ_EXT)
+
+DEBUG_CLIENT_OBJS = \
+	$(DEBUG_OBJ_DIR)$(FS)java_wps_client.$(OBJ_EXT) \
+	$(DEBUG_OBJ_DIR)$(FS)java_util.$(OBJ_EXT) \
+	$(DEBUG_OBJ_DIR)$(FS)java_misc.$(OBJ_EXT) \
+	$(DEBUG_OBJ_DIR)$(FS)java_bearers.$(OBJ_EXT) \
+	$(DEBUG_OBJ_DIR)$(FS)java_wtls.$(OBJ_EXT)
+
+CLIENT_JNI_LIB		= $(LIB_PREFIX)clientJNI.$(DYN_LIB_EXT)
+DEBUG_CLIENT_JNI_LIB	= $(DEBUG_OBJ_DIR)$(FS)$(CLIENT_JNI_LIB)
+RELEASE_CLIENT_JNI_LIB	= $(RELEASE_OBJ_DIR)$(FS)$(CLIENT_JNI_LIB)
+
+#
+# Header codec flags and targets
+#
+HC_LIBS		= $(WPSC_LIB_DIR)$(FS)headercodec.$(LIB_EXT)
+
+HC_OBJ		= java_headercodec.$(OBJ_EXT)
+DEBUG_HC_OBJS	= $(DEBUG_OBJ_DIR)$(FS)$(HC_OBJ)
+RELEASE_HC_OBJS	= $(RELEASE_OBJ_DIR)$(FS)$(HC_OBJ)
+
+HC_JNI_LIB		= $(LIB_PREFIX)headercodecJNI.$(DYN_LIB_EXT)
+DEBUG_HC_JNI_LIB	= $(DEBUG_OBJ_DIR)$(FS)$(HC_JNI_LIB)
+RELEASE_HC_JNI_LIB	= $(RELEASE_OBJ_DIR)$(FS)$(HC_JNI_LIB)
+
+#
+# WPS libraries
+#
+
+DEBUG_WPSC_LIB_DIR = $(WPSC_HOME)$(FS)bin$(FS)$(DEBUG_DIR)
+DEBUG_WPSC_LIBS = $(EXTRA_LIBS) \
+	$(DEBUG_WPSC_LIB_DIR)$(FS)$(LIB_PREFIX)wpsc.$(LIB_EXT)
+
+RELEASE_WPSC_LIB_DIR = $(WPSC_HOME)$(FS)bin$(FS)$(RELEASE_DIR)
+RELEASE_WPSC_LIBS = $(EXTRA_LIBS) \
+	$(RELEASE_WPSC_LIB_DIR)$(FS)$(LIB_PREFIX)wpsc.$(LIB_EXT)
+
+
+#
+# Default target (client and headercodec)
+#
+
+all: release
+
+release:  $(RELEASE_CLIENT_JNI_LIB) $(RELEASE_HC_JNI_LIB)
+
+debug:  $(DEBUG_CLIENT_JNI_LIB) $(DEBUG_HC_JNI_LIB)
+
+clean:
+	$(RM) $(RELEASE_CLIENT_OBJS)
+	$(RM) $(DEBUG_CLIENT_OBJS)
+	$(RM) $(RELEASE_HC_OBJS)
+	$(RM) $(DEBUG_HC_OBJS)
+	$(RM) *~
+
+clobber: clean
+	-$(RM) $(RELEASE_OBJ_DIR)$(FS)*.*
+	-$(RM) $(DEBUG_OBJ_DIR)$(FS)*.*
+	-$(RMDIR) $(RELEASE_OBJ_DIR)
+	-$(RMDIR) $(DEBUG_OBJ_DIR)
+	-$(RMDIR) $(OS)$(FS)$(CPU)
+	-$(RMDIR) $(OS)
+
+#
+# Rules to build individual libs  
+#
+
+DEBUG_LIBS = $(DEBUG_WPSC_LIBS) $(LIB_DEFAULT) $(LIB_SOCKET) $(LIB_OTHER)
+RELEASE_LIBS = $(RELEASE_WPSC_LIBS) $(LIB_DEFAULT) $(LIB_SOCKET) $(LIB_OTHER)
+
+$(RELEASE_CLIENT_JNI_LIB): $(RELEASE_OBJ_DIR) $(RELEASE_CLIENT_OBJS) 
+	@$(CC) $(SHARED_LIB_RELEASE_FLAG) $(OUT_FLAG)$@ $(RELEASE_CFLAGS) $(RELEASE_CLIENT_OBJS) $(RELEASE_LIBS)
+
+$(DEBUG_CLIENT_JNI_LIB): $(DEBUG_OBJ_DIR) $(DEBUG_CLIENT_OBJS)
+	$(CC) $(SHARED_LIB_DEBUG_FLAG) $(OUT_FLAG)$@ $(DEBUG_CFLAGS) $(DEBUG_CLIENT_OBJS) $(DEBUG_LIBS)
+
+$(RELEASE_HC_JNI_LIB): $(RELEASE_HC_OBJS)
+	@$(CC) $(SHARED_LIB_RELEASE_FLAG) $(OUT_FLAG)$@ $(RELEASE_CFLAGS) $(RELEASE_HC_OBJS) $(RELEASE_LIBS)
+
+$(DEBUG_HC_JNI_LIB): $(DEBUG_HC_OBJS)
+	$(CC) $(SHARED_LIB_DEBUG_FLAG) $(OUT_FLAG)$@ $(DEBUG_CFLAGS) $(DEBUG_HC_OBJS) $(DEBUG_LIBS)
+
+#
+# Rules to create directories. Do not rely on mkdir's ability to create the
+# whole directory tree in one call
+#
+
+$(OS):
+	$(MKDIR) $@
+
+$(OS)$(FS)$(CPU): $(OS)
+	$(MKDIR) $@
+
+$(DEBUG_OBJ_DIR): $(OS)$(FS)$(CPU)
+	$(MKDIR) $@
+
+$(RELEASE_OBJ_DIR): $(OS)$(FS)$(CPU)
+	$(MKDIR) $@
+
+#
+# install targets for Unix platforms
+# Win32 install target is in Makefile.win32 for historical reasons
+#
+
+TOOLKIT_BIN = $(TOOLKIT_RESULTS)
+TOOLKIT_DEBUG_BIN = $(TOOLKIT_BIN)$(FS)$(OS)$(FS)$(CPU)$(FS)debug
+TOOLKIT_RELEASE_BIN = $(TOOLKIT_BIN)$(FS)$(OS)$(FS)$(CPU)$(FS)release
+
+toolkit: $(RELEASE_CLIENT_JNI_LIB) $(RELEASE_HC_JNI_LIB) $(TOOLKIT_RELEASE_BIN)
+	-$(RM) $(TOOLKIT_RELEASE_BIN)$(FS)$(CLIENT_JNI_LIB)
+	-$(RM) $(TOOLKIT_RELEASE_BIN)$(FS)$(HC_JNI_LIB)
+	-$(CP) $(RELEASE_CLIENT_JNI_LIB) $(TOOLKIT_RELEASE_BIN)
+	-$(CP) $(RELEASE_HC_JNI_LIB) $(TOOLKIT_RELEASE_BIN)
+
+debug_toolkit: $(DEBUG_CLIENT_JNI_LIB) $(DEBUG_HC_JNI_LIB) $(TOOLKIT_DEBUG_BIN)
+	-$(RM) $(TOOLKIT_DEBUG_BIN)$(FS)$(CLIENT_JNI_LIB)
+	-$(RM) $(TOOLKIT_DEBUG_BIN)$(FS)$(HC_JNI_LIB)
+	-$(CP) $(DEBUG_CLIENT_JNI_LIB) $(TOOLKIT_DEBUG_BIN)
+	-$(CP) $(DEBUG_HC_JNI_LIB) $(TOOLKIT_DEBUG_BIN)

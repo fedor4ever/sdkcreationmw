@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification Bluetooth RFCOMM bearer
+ *
+*/
+
+#include <platform_paths.hrh>
+
+// These headers define the UID values
+#include "..\..\..\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtWLANBearerUids.h"
+
+TARGET          EcmtWLANBearer.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KWLANBEARER_DLL_UID
+
+#ifdef WINS
+CAPABILITY      CAP_ECOM_PLUGIN -DRM
+#else
+CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
+#endif
+
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ..\src
+SOURCE          WLANSocket.cpp
+
+
+USERINCLUDE	..\inc
+USERINCLUDE     ..\..\..\Core\inc
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY		ecom.lib
+LIBRARY         euser.lib
+LIBRARY		esock.lib
+LIBRARY		insock.lib
+LIBRARY     commdb.lib 
+LIBRARY     efsrv.lib
+LIBRARY     flogger.lib
+
+
+
+SOURCEPATH	..\data
+START RESOURCE KWLANBEARER_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+    TARGET EcmtWLANBearer.rsc
+#endif
+END

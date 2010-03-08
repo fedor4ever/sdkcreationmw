@@ -1,0 +1,51 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is the project specification file for AudioStream for S60 2nd Edition.
+*
+*/
+
+
+TARGET  AudioStream.app
+TARGETTYPE  app
+UID  0x100039CE 0x101FF1C3
+TARGETPATH \system\apps\AudioStream
+
+SOURCEPATH ..\src
+SOURCE  AudioStreamApp.cpp 
+SOURCE  AudioStreamAppUi.cpp
+SOURCE  AudioStreamDocument.cpp
+SOURCE  AudioStreamView.cpp
+SOURCE  AudioStreamEngine.cpp
+
+RESOURCE ..\data\AudioStream.rss
+RESOURCE ..\data\AudioStream_caption.rss
+LANG     SC
+
+USERINCLUDE . 
+USERINCLUDE ..\inc
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY euser.lib apparc.lib cone.lib eikcore.lib
+LIBRARY estor.lib 
+LIBRARY eikcoctl.lib avkon.lib
+LIBRARY efsrv.lib
+LIBRARY mediaclientaudiostream.lib
+LIBRARY mediaclientaudioinputstream.lib
+
+AIF AudioStream.aif ..\aif AudioStreamaif.rss c8 context_pane_icon.bmp context_pane_icon_mask.bmp list_icon.bmp list_icon_mask.bmp
+

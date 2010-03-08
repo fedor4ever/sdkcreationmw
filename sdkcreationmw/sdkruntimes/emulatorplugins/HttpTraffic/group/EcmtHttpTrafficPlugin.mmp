@@ -1,0 +1,55 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  HTTP traffic plugin for diagnostics
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include "..\inc\HttpPluginUids.h"
+
+TARGET      EcmtHttpTrafficPlugin.dll
+TARGETTYPE  PLUGIN 
+
+#ifdef WINS
+CAPABILITY      CAP_ECOM_PLUGIN -DRM
+#else
+CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
+#endif
+
+
+// ECom Recogniction UID followed by Unique 3rd UID
+UID 0x10009D8D KHTTPPLUGINFILTER_DLL_UID 
+
+SOURCEPATH ..\src
+SOURCE HttpPluginFilter.cpp
+
+USERINCLUDE ..\inc
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\ecom
+SYSTEMINCLUDE \epoc32\include\http\framework
+
+SOURCEPATH ..\data
+START RESOURCE KHTTPPLUGINFILTER_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET EcmtHttpTrafficPlugin.rsc
+#endif
+END
+
+LIBRARY euser.lib
+LIBRARY ecom.lib
+LIBRARY http.lib
+LIBRARY InetProtUtil.lib
+LIBRARY bafl.lib
+LIBRARY EcmtClient.lib

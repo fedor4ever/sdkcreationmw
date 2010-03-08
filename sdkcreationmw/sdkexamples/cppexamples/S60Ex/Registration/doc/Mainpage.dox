@@ -1,0 +1,70 @@
+/*! \mainpage Registration Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This tutorial explains the Registration example application, which is a simple application demonstrating the use of the setting list components in registration form.
+ *
+ *  The tutorial starts by listing the pre-requisites the user should know before starting this example, and describes how to build and run the example.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *  This example has the standard Symbian OS application architecture employing the Application, Document, UI, and View class. The example makes use of few other Symbian OS concepts which  *  the reader should be aware of before attempting to understand this example. These are:
+ *
+ *  - How to use Setting list component.
+ *  - Familiarity with UI scalability.
+ *
+ *  This application supports changing the screen size when program is running.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  This section starts with explaining the capabilities that the program can use. After that, the support using different screen modes are explained.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in Registration.mmp file: CAPABILITY NONE.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  The program takes screen parameters in the start of the application and works with all screen modes. The program supports changing the screen layout while the program is running. Function HandleResourceChangeL() in class RegistrationAppUi is called when the resolution is changed.
+ *
+ *  \subsection Sub33 3.3 Building the example application
+ *
+ *  This example can be built in directory Registration\\group by running the following commands:<br>
+ *  bldmake bldfiles<br>
+ *  abld build winscw udeb
+ *
+ *  The project can also be created by using IDE command File > Importing project from .mmp File and built from IDE.
+ *
+ *  After successful build, application can be found and started from
+ *  Applications > Installed > Registration
+ *
+ *  \subsection Sub34 3.4 Design
+ *
+ *  S60 provides setting list functionality, which is demonstrated in this example. The setting list functionality is derived from CAknSettingItemList class.
+ *
+ *  The example contains setting list input fields: Name,  Email, Phone number, Date of Birth, Time, Gender, Login, Password, Slider and Accept Emails.
+ *
+ *  Fields Name, Email and Login accept text input.
+ *  Field Phone number accepts numeric input.
+ *  Field Date of Birth accepts date input.
+ *  Fields Gender and Accept Emails are boolean fields.
+ *
+ *  \subsubsection Subsub341 3.4.1 Creating and using a setting list
+ *
+ *  Setting list is implemented in RegistrationListbox class. Input dialogs and setting item titles are defined in resource files. Function CreateSettingItemL() is called when constructing setting list. When a setting item is selected for editing function EditItemL() is called.
+ *
+ *  \subsubsection Subsub342 3.4.2 Using the Options menu
+ *
+ *  The Options menu commands are handled in CRegistrationAppUi::HandleCommandL(). When Register option is selected function call ValidateInput() is performed. ValidateInput checks email address validity by searching for one @ character. If one @ character is found, an information note is presented. If email address does not contain @ character or there is more than one, an error note is presented.
+ *
+ */

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<project name="Http Package" default="lib" basedir="../..">
+
+<!--==========================================-->
+<!-- ANT BUILD FILE FOR HTTP PKG	-->
+<!--					-->
+<!-- To use:				-->
+<!-- % ant -buildfile http.build.xml	-->
+<!--==========================================-->
+
+<!--==========================================-->
+<!--set global properties for this build-->
+<!--==========================================-->
+<property name="name" value="Http"/>
+<property name="build" value="classes/http"/>
+<property name="verbose" value="off"/>
+<property name="debug" value="off"/>
+
+<property name="build.classes" value="${build}/classes"/>
+<property name="src" value="src/http"/>
+
+<property name="classpath" value="${basedir}/lib/util.jar"/>
+
+<!-- Distribution layout -->
+<property name="lib" value="${basedir}/lib"/>
+
+<!-- Final jar -->
+<property name="http.jar" value="http.jar"/>
+
+<!--==========================================-->
+<!--TARGET [PREPARE]-->
+<!--==========================================-->
+<target name="prepare" description="Prepare build environment">
+	<echo>Preparing HTTP Build Environment</echo>
+	<tstamp/>
+
+	<!-- remove old stuff -->
+	<delete dir="${build.classes}" quiet="true"/>
+
+	<!-- create the build directory structure -->
+	<echo>Creating output directories...</echo>
+	<mkdir dir="${build}"/>
+	<mkdir dir="${build.classes}"/>
+	<mkdir dir="${lib}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [COMPILE]-->
+<!--==========================================-->
+<target name="compile" depends="prepare" description="Compile java sources">
+
+	<echo>Compiling HTTP...</echo>
+	<javac 
+		srcdir="${src}"
+		destdir="${build.classes}"
+		includes="**/*.java"
+		classpath="${classpath}"
+		verbose="${verbose}"
+		debug="${debug}"
+	/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [ARCHIVE]-->
+<!--==========================================-->
+<target name="archive" depends="compile" description="Archive java classes and resources">
+
+	<echo>Copying resource files..</echo>
+
+	<copy todir="${build.classes}">
+	  <fileset dir="${src}" 
+                   includes="com/nokia/wtk/http/resources/**"
+          />
+	</copy>
+
+	<echo>Archiving sources and resources..</echo>
+	<jar 
+		jarfile="${build}/${http.jar}"
+		basedir="${build.classes}"
+         />
+</target>
+
+<!--==========================================-->
+<!--TARGET [DIST]-->
+<!--==========================================-->
+<target name="lib" depends="archive" description="Build Distribution">
+
+	<!-- Just copy the jar -->
+	<copy todir="${lib}">
+	  <fileset dir="${build}" includes="${http.jar}"/>
+	</copy>
+	<echo>Built HTTP Package!</echo>
+
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLEAN]-->
+<!--==========================================-->
+<target name="clean" description="Delete entire build">
+	<delete dir="${build}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLOBBER]-->
+<!--==========================================-->
+<target name="clobber" depends="clean" description="Delete entire lib">
+	<delete file="${lib}/${http.jar}"/>
+</target>
+</project>

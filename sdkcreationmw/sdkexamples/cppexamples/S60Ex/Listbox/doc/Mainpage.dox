@@ -1,0 +1,204 @@
+/*! \mainpage Listbox example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates how to use Listbox control in Avkon applications.
+ * A listbox is a user interface control, which contains a number of individually
+ * selectable items. This example concentrates on two listbox category: vertical
+ * list and setting list. On vertical list side it allows user to add new items
+ * and remove items from the listbox and change listbox type. On setting list
+ * side it allows user to modify setting item data in separate setting page. This
+ * example also explains how to use middle softkey (MSK) in different ways.
+ *
+ * The following UML diagram shows key classes of the Listbox example application.
+ * Classes indicated by yellow color are classes of listbox example and classes
+ * indicated by blue are concrete listbox control classes.
+ *
+ * \image html class_diagram.gif
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CEikColumnListBox
+ * - CAknSingleNumberStyleListBox
+ * - CAknSingleGraphicStyleListBox
+ * - CAknSettingItemList
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * Reader should be aware of Avkon-view-switching architecture before attempting
+ * to understand this example. Also an understanding of classes CEikListBox,
+ * CListBoxView, and MListBoxModel is important (Model-View-Controller design
+ * pattern representation of a listbox).
+ *
+ * <HR>
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * When the application is started up, the following screen is displayed. From
+ * this initial screen it is possible to add and remove listbox items, change listbox
+ * type, and exit the application. Note that the class name of this listbox control is
+ * scrolled on the navigation pane. In this view the MSK has same functionality as left
+ * softkey does.
+ *
+ * \image html NumberStyle.jpg
+ *
+ *
+ * Following screen is displayed after selecting "Options" -> "Change listbox" ->
+ * "Graphic style listbox". Each listbox item of listbox has an icon. It is possible
+ * to add and remove listbox items, change listbox type, and exit the
+ * application. Note that the class name of this listbox control is displayed on the
+ * navigation pane. In this view the MSK can open context specific options menu with
+ * "Add item" and "Remove item" items.
+ *
+ * \image html GraphicStyle.jpg
+ *
+ *
+ * Following screen is displayed after selecting "Options" -> "Change listbox" ->
+ * "Setting style listbox". This view contains a setting listbox. By selecting "Options"
+ * -> "Change" or pressing the "Change" middle softkey, it is possible to modify
+ * setting item value on setting page. Also from this view it is possible to change
+ * listbox type, exit the application, and see the listbox control class name on the
+ * navigation pane. It is possible to change the setting item value py pressing the MSK.
+ *
+ * \image html SettingStyle.jpg
+ *
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ * Listbox example application uses Avkon View-Switching architecture.
+ *
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * Listbox example application includes three views:
+ * - Number view (CViewTemplate, CListboxNumberContainer). This is the main view of the
+ * application. It is for CAknSingleNumberStyleListBox type selection listbox control.
+ * In this view the listbox is created from resource.
+ * - Graphic view (CViewTemplate, CListboxGraphicContainer). This view is for
+ * CAknSingleGraphicStyleListBox type listbox control. The listbox is created dynamically in
+ * this view.
+ * - Setting view (CListboxSettingView, CListboxSettingList). This view is for
+ * CAknSettingItemList type listbox control.
+ *
+ * \subsection Sub31 3.1 Creating listbox from resource and run-time
+ * Listbox example demonstrates how to create listbox from resource and at run time.
+ * In number view the listbox is created from resource, and in graphic view at run time.
+ *
+ * For detailed information about constructing listbox from resource and at run-time,
+ * refer to SDK documentation <I>Lists API: Using Lists API</I>
+ *
+ * \subsection Sub33 3.3 Using SVG icons in listbox
+ * The Graphic view uses SVG icon on listbox from Listbox application's private directory.
+ * AknIcon server has no access to the application's private directory. AknIconUtils offers
+ * a method with which is possible to use icons from private directories. The method is
+ * CreateIconL with reference to MAknIconFileProvider as parameter. Listbox example uses
+ * instance of CIconFileProvider as this parameter. CIconFileProvider is derived from
+ * MAknIconFileProvider. It opens the file and passes a file
+ * handle to AknIcon server. Following code represents the icon loading:
+ *
+ *
+ * \code
+ * void CListboxGraphicContainer::SetIconsL()
+ *      {
+ *      CArrayPtr<CGulIcon>* iconList = new (ELeave) CAknIconArray(1);
+ *      // push iconarray to stack
+ *      CleanupStack::PushL(iconList);
+ *
+ *      User::LeaveIfError( iFsSession.Connect() );
+ *      // Let other sessions to use this. ShareProtected() must be called for
+ *      // enabling other other threads in this process to use this handle.
+ *      iFsSession.ShareProtected();
+ *      TBuf<256> path;
+ *      iFsSession.PrivatePath( path );
+ *
+ *      path.Append( KMifFileName() );
+ *      // insert the drive to the private path
+ *      TParsePtrC parse(
+ *          (CEikonEnv::Static()->EikAppUi()->Application())->AppFullName() );
+ *      path.Insert( 0, parse.Drive() );
+ *
+ *      CFbsBitmap* bitmap = NULL;
+ *      CFbsBitmap* mask = NULL;
+ *
+ *      iFileProvider = CIconFileProvider::NewL( iFsSession, path );
+ *
+ *      // Create icons. This function uses CIconFileProvider to pass handle to
+ *      // icon file (which lies in application private directory) to AknIcon
+ *      // server. This server does not have access to private directories.
+ *      AknIconUtils::CreateIconL(bitmap,
+ *                             mask,
+ *                             *iFileProvider,
+ *                             EMbmListbox_bitmapsListbox_icon,
+ *                             EMbmListbox_bitmapsListbox_icon_mask);
+ *
+ *      CGulIcon* newIcon = CGulIcon::NewL( bitmap, mask );
+ *      iconList->AppendL( newIcon );
+ *
+ *      iListBox->ItemDrawer()->ColumnData()->SetIconArray( iconList );
+ *      CleanupStack::Pop(iconList);
+ *      }
+ * \endcode
+ *
+ * After calling the CreateIconL() function, icon framework retrieves the specified icon
+ * via given MAknIconFileProvider, using MAknIconFileProvider::RetrieveIconFileHandleL().
+ *
+ * \code
+ * void CIconFileProvider::RetrieveIconFileHandleL( RFile& aFile,
+ *                                              const TIconFileType aType )
+ *      {
+ *              ...
+ *
+ *      User::LeaveIfError(aFile.Open(iSession, filename, EFileShareAny));
+ *      }
+ * \endcode
+ *
+ *
+ * \subsection Sub34 3.4 Setting list
+ * Setting list allows user to change item value. CListboxSettingList represents setting
+ * listbox. The setting list contains two list items, text editor (CAknTextSettingItem)
+ * and enumerated text (CAknEnumeratedTextPopupSettingItem) setting item. The main
+ * implementation for setting list goes in following way. Setting list resource
+ * AVKON_SETTING_ITEM_LIST is created in resource file. CListboxSettingList is derived
+ * from CAknSettingItemList and implements two virtual functions from this class,
+ * CreateSettingItemL and EditItemL. CreateSettingItemL is a framework function for
+ * creating a setting item based on the user given setting item type. So in order to use
+ * setting list application must have class derived from CAknSettingItemList. Instance
+ * of this class is constructed from resource in CListBoxSettingView::DoActivateL. After
+ * calling ConstructFromResourceL, the framework calls CreateSettingItemL for each setting
+ * item identifier (defined in AVKON_SETTING_ITEM_LIST resource).
+ *
+ * When one item is selected using selection key, the base class calls the EditItemL
+ * method. It is implemented in CListboxSettingList class. On this method, a corresponding
+ * setting page is launched by calling base class version of EditItemL.
+ *
+ * For more information about using setting lists and setting pages, refer to SDK
+ * documentation <I>SettingPages API: Using Setting Pages API</I>.
+ *
+ * \subsection Sub35 3.5 Middle softkey usage
+ * Listbox application uses Middle softkey. On number view MSK has same functionality as
+ * the left softkey does, launch Options menu and select Options menu items. If
+ * command id is same for these softkeys, MSK label is a dot. On graphic view the MSK
+ * launches separate menu, with Add and Remove item items. In this case the MSK label is
+ * a icon representing menu. On setting view the MSK has one function, Change, which
+ * launches setting page for focused setting item.
+ *
+ * For more information about using MSK, refer to SDK documentation <I>Middle Softkey (MSK)
+ * Guide for Applications</I>.
+ *
+ * \subsection Sub36 3.6 Capabilities
+ *
+ * Listbox example application does not require any capabilities. The application capabilities
+ * are defined in listbox.mmp file: CAPABILITY NONE.
+ *
+ */

@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#ifndef __CONTACTS_HRH__
+#define __CONTACTS_HRH__
+
+// Command ID's for the Contacts menu commands
+
+enum TContactsCommandIds
+    {
+	EContactsDefaultDB =1 ,
+	EContactsCreateTemplate,
+	EContactsCreateContact,
+	EContactsDeleteContact,
+	EContactsEditContact,
+	EContactsAddContactToGrp,
+	EContactsShowContacts,
+	EContactsShowGroups,
+	EContactsCreateContactGroup,
+	EContactsDeleteContactGroup,
+	EContactsSelectGrp,
+	EContactsCancelSelectGrp
+    };
+
+
+enum TContactsEdwinConstants
+	{
+	EContactsEdwinWidth = 5,
+	EContactsEdwinLines = 5,
+	EContactsEdwinMaxLength = 128,
+	EContactsEdwinBaseLineDelta = 21
+	};
+
+#endif      // __CONTACTS_HRH__

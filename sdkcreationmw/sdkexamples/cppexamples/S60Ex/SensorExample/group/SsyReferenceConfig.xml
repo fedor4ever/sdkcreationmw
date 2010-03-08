@@ -1,0 +1,193 @@
+<!-- SSY reference configuration -->
+<SsyReferenceConfig>
+    <SsyGeneralInformation>
+        <Properties>
+        	<PropertyItem PropertyId="0x0000000011"
+        	  ItemIndex="0"
+        		PropertyValue="SsyRef model 123"
+        		MaxValue="0"
+        		MinValue="0"
+        		ReadOnly="1"
+        		PropertyType="3">
+        		<!-- Sensor property, model description, not mandatory, see KSensrvSensorModel  -->
+          </PropertyItem>
+          <PropertyItem PropertyId="0x0000000012"
+        		ItemIndex=""
+        		PropertyValue="2"
+        		MaxValue=""
+        		MinValue=""
+        		ReadOnly="1"
+        		PropertyType="1">
+        		<!-- Sensor property, connection type, not mandatory, see KSensrvSensorConnectionType  -->
+          </PropertyItem>
+        	<PropertyItem PropertyId="0x0000000013"
+        		ItemIndex=""
+        		PropertyValue="SSY reference sensor"
+        		MaxValue=""
+        		MinValue=""
+        		ReadOnly="1"
+        		PropertyType="3">
+        		<!-- Sensor property, short description of the sensor, not mandatory, see KSensrvSensorDescription  -->
+          </PropertyItem>
+        </Properties>
+    </SsyGeneralInformation>
+    <ChannelInformationGroup ChannelCount="2">
+    	<ChannelItem
+    		ChannelId="4"
+    		ContextType="2" 
+    		Quantity="10" 
+    		ChannelType="0x1020507E" 
+    		Location="SsyRefAxisChan" 
+    		Vendor="SsyRefVendor"
+    		DataTypeId="0x1020507E">
+        	<Properties>
+        		<!-- First four properties has same property Id, they are grouped to array property -->
+        		<!-- First is array info -2, which tells currently selected property, value = 1 -->
+        		<!-- Max and Min values tells max and min property array indexes, not the actual values -->
+        		<!-- Array index is mandatory only for array type of properties, by default it is -1 -->
+        		<PropertyItem PropertyId="0x00000002"
+        			ArrayIndex="-2"
+    		      ItemIndex="0"
+    		      PropertyValue="1"
+    		      MaxValue="2"
+    		      MinValue="0"
+    		      ReadOnly="0"
+    		      PropertyType="1">
+    		     	<!-- Channel property, data rate, mandatory for all channels, see KSensrvPropIdDataRate  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000002"
+        			ArrayIndex="0"
+    		      ItemIndex="0"
+    		      PropertyValue="10"
+    		      MaxValue="0"
+    		      MinValue="0"
+    		      ReadOnly="1"
+    		      PropertyType="1">
+    		     	<!-- Channel property, data rate, mandatory for all channels, see KSensrvPropIdDataRate  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000002"
+        			ArrayIndex="1"
+    		      ItemIndex="0"
+    		      PropertyValue="30"
+    		      MaxValue="0"
+    		      MinValue="0"
+    		      ReadOnly="1"
+    		      PropertyType="1">
+    		     	<!-- Channel property, data rate, mandatory for all channels, see KSensrvPropIdDataRate  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000002"
+        			ArrayIndex="2"
+    		      ItemIndex="0"
+    		      PropertyValue="50"
+    		      MaxValue="0"
+    		      MinValue="0"
+    		      ReadOnly="1"
+    		      PropertyType="1">
+    		     	<!-- Channel property, data rate, mandatory for all channels, see KSensrvPropIdDataRate  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000004"
+    		      ItemIndex="0"
+    		      PropertyValue="1"
+    		      MaxValue="0"
+    		      MinValue="0"
+    		      ReadOnly="1"
+    		      PropertyType="1">
+    		     	<!-- Channel property, availability of the channel, mandatory for all channels, see KSensrvPropIdAvailability  -->
+        		</PropertyItem>
+    		    <PropertyItem PropertyId="0x00000005"
+    		      ItemIndex="1"
+    		      PropertyValue="14.56"
+    		      MaxValue="128"
+    		      MinValue="1"
+    		      ReadOnly="0"
+    		      PropertyType="2">
+    		     	<!-- Channel item property, measure range for X-axis (item index = 1), see KSensrvPropIdMeasureRange  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000005"
+    		      ItemIndex="2"
+    		      PropertyValue="20.65"
+    		      MaxValue="256"
+    		      MinValue="1"
+    		      ReadOnly="0"
+    		      PropertyType="2">
+    		     	<!-- Channel item property, measure range for Y-axis (item index = 2), see KSensrvPropIdMeasureRange  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000005"
+    		      ItemIndex="3"
+    		      PropertyValue="10.56"
+    		      MaxValue="128"
+    		      MinValue="1"
+    		      ReadOnly="0"
+    		      PropertyType="2">
+    		     	<!-- Channel item property, measure range for Z-axis (item index = 3), see KSensrvPropIdMeasureRange  -->
+        		</PropertyItem>
+        	</Properties>
+          <ChannelData StartIntervalMs="5000">
+            <ChannelDataItem DataTypeId="0x1020507E" count="1" IntervalMs="500">
+              <SsyRefChannelDataAxis XAxis="0" YAxis="0" ZAxis="-80" ></SsyRefChannelDataAxis>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507E" count="1" IntervalMs="500">
+              <SsyRefChannelDataAxis XAxis="0" YAxis="-80" ZAxis="0" ></SsyRefChannelDataAxis>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507E" count="1" IntervalMs="500">
+              <SsyRefChannelDataAxis XAxis="80" YAxis="0" ZAxis="0" ></SsyRefChannelDataAxis>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507E" count="1" IntervalMs="500">
+              <SsyRefChannelDataAxis XAxis="0" YAxis="80" ZAxis="0" ></SsyRefChannelDataAxis>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507E" count="1" IntervalMs="500">
+              <SsyRefChannelDataAxis XAxis="-80" YAxis="0" ZAxis="0" ></SsyRefChannelDataAxis>
+            </ChannelDataItem>
+        </ChannelData>
+    	</ChannelItem>    	
+    	<ChannelItem 
+    		ChannelId="5"
+    		ContextType="2" 
+    		Quantity="11" 
+    		ChannelType="0x10205081" 
+    		Location="SsyRefDblTap"
+    		Vendor="SsyRefVendor"
+    		DataTypeId="0x1020507F">
+    			<Properties>
+        		<PropertyItem PropertyId="0x00000002"
+    		      ItemIndex="0"
+    		      PropertyValue="100"
+    		      MaxValue="150"
+    		      MinValue="0"
+    		      ReadOnly="0"
+    		      PropertyType="1">
+    		     	<!-- Channel property, data rate, mandatory for all channels, see KSensrvPropIdDataRate  -->
+        		</PropertyItem>
+        		<PropertyItem PropertyId="0x00000004"
+    		      ItemIndex="0"
+    		      PropertyValue="1"
+    		      MaxValue="0"
+    		      MinValue="0"
+    		      ReadOnly="1"
+    		      PropertyType="1">
+    		     	<!-- Channel property, availability of the channel, mandatory for all channels, see KSensrvPropIdAvailability  -->
+        		</PropertyItem>
+          </Properties>
+          <ChannelData StartIntervalMs="3000">
+            <ChannelDataItem  count="1" IntervalMs="3000">
+              <SsyRefChannelDataTapping Direction="0x01"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507F" count="1" IntervalMs="5000">
+              <SsyRefChannelDataTapping Direction="0x02"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507F" count="1" IntervalMs="2000">
+              <SsyRefChannelDataTapping Direction="0x04"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507F" count="1" IntervalMs="4000">
+              <SsyRefChannelDataTapping Direction="0x08"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507F" count="1" IntervalMs="1000">
+              <SsyRefChannelDataTapping Direction="0x10"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+            <ChannelDataItem DataTypeId="0x1020507F" count="1" IntervalMs="2000">
+              <SsyRefChannelDataTapping Direction="0x20"></SsyRefChannelDataTapping>
+            </ChannelDataItem>
+          </ChannelData>
+    	</ChannelItem>
+    </ChannelInformationGroup>
+</SsyReferenceConfig>

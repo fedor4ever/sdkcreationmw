@@ -1,0 +1,97 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines IDs and constants for UI components
+*
+*/
+
+
+#ifndef __LANDMARKS_HRH__
+#define __LANDMARKS_HRH__
+
+// DATA TYPES
+
+enum TLandmarksCommandIds
+    {
+    ELandmarksOpen = 1,  // start value must not be 0
+    ELandmarksEdit,
+    ELandmarksSave,
+    ELandmarksDelete,
+    ELandmarksRename,
+    ELandmarksAddBlank,
+    ELandmarksAddCurrent,
+    ELandmarksAddCategory,
+    ELandmarksEditCategories,
+    ELandmarksUpdateToCurrentLocation
+    };
+
+enum TLandmarksViewIds
+    {
+    ELandmarksViewId = 1,
+    ELandmarksCategoriesViewId,
+    ELandmarksInfoViewId
+    };
+
+enum TLandmarksViewMessageIds
+    {
+    ELandmarksViewInfoById = 1
+    };
+
+enum TLandmarksMenuTabIds
+    {
+    ELandmarksNameTab = 1,
+    ELandmarksCategoriesTab
+    };
+
+enum TLandmarkInfoFieldIds
+    {
+    ELandmarkNameField = 1,
+    ELandmarkDescField,
+    ELandmarkCategoryField,
+    ELandmarkLatitudeField,
+    ELandmarkLongitudeField,
+    ELandmarkAltitudeField,
+    ELandmarkHorAccField,
+    ELandmarkVerAccField,
+    ELandmarkRadiusField,
+    ELandmarkStreetField,
+    ELandmarkPostalField,
+    ELandmarkCityField,
+    ELandmarkCountryField
+    };
+
+enum TLandmarkDialogIds
+    {
+    ELandmarksInitDbProgressDialog = 0x200,
+    ELandmarksGeneralQuery,
+    ELandmarksRenameQuery,
+    ELandmarksAcquireLocationWaitNote
+    };
+
+enum TRealEditors
+    {
+    ELatitudeEditor = 0,
+    ELongitudeEditor,
+    EAltitudeEditor,
+    EHorizontalAccEditor,
+    EVerticalAccEditor,
+    ERadiusEditor
+    };
+
+#define KEditorMaxWidth 255 // equals KPosLmMaxTextFieldLength, see EPos_Landmarks.h
+#define KDescMaxWidth 4095 // equals KPosLmMaxDescriptionLength, see EPos_Landmarks.h
+#define KMaxReal32Length 11 // TReal32 can represent 6-9 significant digits + decimal and sign
+#define KMaxReal64Length 19 // TReal64 can represent 15-17 significant digits + decimal and sign
+
+#endif // __LANDMARKS_HRH__
+

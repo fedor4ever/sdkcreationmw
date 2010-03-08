@@ -1,0 +1,5 @@
+;
+; $Id: wsock6u.def,v 1.1 2005/11/30 07:40:42 slava Exp $
+;
+EXPORTS
+    Install    @ 1 NONAME

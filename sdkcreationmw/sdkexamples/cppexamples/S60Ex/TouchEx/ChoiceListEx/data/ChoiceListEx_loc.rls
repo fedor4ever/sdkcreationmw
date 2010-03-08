@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+// These are self-explanatory
+
+
+#define STRING_r_choicelistex_item( x ) "item index "#x
+
+rls_string STRING_r_choicelistex_short_caption "Choice List"
+rls_string STRING_r_choicelistex_caption "Choice List Example"
+rls_string STRING_r_choicelistex_create_cascade "Create choice list"
+rls_string STRING_r_choicelistex_create_default "Create from array "
+rls_string STRING_r_choicelistex_create_resource "Create from resource"
+rls_string STRING_r_choicelistex_create_button  "Create with button"
+rls_string STRING_r_choicelistex_show_list "Show choice list"
+rls_string STRING_r_choicelistex_add_item "Add item"
+rls_string STRING_r_choicelistex_insert_item "Insert item"
+rls_string STRING_r_choicelistex_remove_item "Remove item"
+rls_string STRING_r_choicelistex_select_item "Set selected item"
+rls_string STRING_r_choicelistex_position_cascade "ChoiceList position"
+rls_string STRING_r_choicelistex_pos_left "Left"
+rls_string STRING_r_choicelistex_pos_right "Right"
+rls_string STRING_r_choicelistex_pos_top "Top"
+rls_string STRING_r_choicelistex_pos_bottom "Bottom"
+rls_string STRING_r_choicelistex_exit "Exit"

@@ -1,0 +1,114 @@
+/*! \mainpage Data Mobility Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * DataMobility is an s60 application providing developers example code to create application using connection having the following features:
+ * - automatic connection selection of the best available bearer when starting a connection.
+ * - roaming on the fly to the best available bearer during the active data connection.
+ * 
+ * Automatic connection selection is enabled by using Service Network Access Point (SNAP), also called Destination in the UI. A SNAP represents a group of Internet Access Points (IAP).
+ * Roaming on the fly is enabled by using the Mobility extension of Connection Manager API.
+ * 
+ * Finally the application also demonstrates how to use the Connection Settings UI API. Connection Settings UI API provides a UI dialog that lets the user select connection settings (SNAP, IAP, default connection or always ask) to be saved in application’s settings.
+ * 
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - Mobility extension of Connection Manager API
+ * - Connection Settings UI API 
+ *
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The example makes use of other Symbian OS concepts which the reader should be aware of before attempting to understand this example. These are:
+ *
+ * - Active Objects 
+ * - How to create a connection using IAP.
+ * 
+ * Before running this example, a SNAP has to be configured. The SDK comes with 3 SNAPs: Internet, Operator and MMS, and one IAP: Winsock. We configure the Internet SNAP to contain the IAP Winsock.
+ * For this, start the emulator, go to Applications->Settings->Connection->Network destinations->Uncategorized. There, select Winsock, click on Options, select Organise, select Move to other destination, and select Internet.
+ *
+ *
+ * Note:
+ * - At present, the emulator cannot be used to simulate roaming events. Phone hardware with WLAN should be used instead.
+ * - If the application is run on a phone that supports WLAN, WLAN scanning should be enabled (Settings->Connection->WirelessLAN) to expect WLAN availability events.
+ *
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * DataMobility application design follows Avkon View-switching architecture.
+ *
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The program capabilities are defined in datamobility.mmp file: CAPABILITY NetworkServices.
+ *
+ *
+ * \subsection Sub32 3.2 ScalableUI
+ *
+ * The program takes screen parameters in the start of the application and works with all screen modes. The program support changing the screen layout while the program is running.
+ *
+ *
+ * \subsection Sub33 3.3 Design goals
+ *
+ * The application is made of two views (each having a container): the first one is the Menu View listing the "applications" that could be opened/started; the second one is the Output View printing on the screen what the launched "application" does.
+ * 
+ * Each "application" is coded in a separate class.
+ * 
+ * There are 6 "applications":
+ * - "Standard Application": aims to be the reference class, it shows how an IAP is usually started.
+ * - "Application Using SNAP": aims to show how to start a SNAP. The developer can see what the difference with starting an IAP is.
+ * - "Triggering Connection Dialog": aims to show how to start a connection that will display the connection dialog, using ECommDbDialogPrefPrompt.
+ * - "ALR Application": aims to show how a class could be written to enable the Application Level Roaming feature, what is required in addition to starting a SNAP.
+ * - "ALR Application Using Dft Conn": aims to show that a connection started without no preference can use the default connection if this one exists. It is also possible to enable the Application Level Roaming feature as the started connection may support it (i.e. the started access point is a SNAP).
+ * - "Using Connection Setting": aims to show how to call the Connection Settings UI API for the application to store the connection preference setting. This class also starts a connection based on the setting chosen by the user.
+ * 
+ * 
+ * - "Standard Application" is described in standardapplication.h and standardapplication.cpp
+ * - "Application Using SNAP" is described in applicationusingsnap.h and applicationusingsnap.cpp
+ * - "Triggering Connection Dialog" is described in applicationtriggeringconndlg.h and applicationtriggeringconndlg.cpp
+ * - "ALR Application" is described in alrapplication.h and alrapplication.cpp
+ * - "ALR Application Using Dft Conn" is described in alrapplicationusingnopref.h and alrapplicationusingnopref.cpp
+ * - "Using Connection Setting" is described in applicationusinguisettings.h and applicationusinguisettings.cpp
+ * 
+ * Note:
+ * The IAP value in "Standard Application" and the SNAP value in "Application Using SNAP" and "ALR Application" are hard coded and should match the CommsDat settings in the given environment.
+ *
+ *
+ * \subsection Sub34 3.4 Lifetime of the "application"
+ *
+ * The "application" lifetime follows the Output View container, CDataMobilityAppOutputContainer, lifetime.
+ * When the user selects and opens an item in the Menu View, the selected item id is passed to CDataMobilityAppOutputContainer constructor that can instantiate the "application" related to the selected item.
+ * The "application" is terminated in CDataMobilityAppOutputContainer destructor, i.e. when the Output View is exited.
+ *
+ *
+ * \subsection Sub35 3.5 CActiveCommsMobilityApiExt and MMobilityProtocolResp classes
+ *
+ * They demonstrate the Mobility extension of Connection Manager API.
+ * CActiveCommsMobilityApiExt is used to register an RConnection, already started, for Mobility messages notifications. When creating the instance of CActiveCommsMobilityApiExt an object implementing the interface MMobilityProtocolResp has to be given in argument. This object will get the Mobility messages notifications. 
+ * In DataMobility the classes owning a pointer to CActiveCommsMobilityApiExt also implement the interface MMobilityProtocolResp. Theses classes are:
+ * - CALRApplication, declared in alrapplication.h
+ * - CALRApplicationUsingNoPref, declared in alrapplicationusingnopref.h
+ *
+ *
+ * \subsection Sub36 3.6 CCmApplicationSettingsUi and TCmSettingSelection classes
+ *
+ * They demonstrate the Connection Settings UI API.
+ * CCmApplicationSettingsUi is used to instantiate the Connection Settings UI dialog. A TCmSettingSelection object keeps the setting the user has chosen with this UI dialog.
+ * In DataMobility the setting kept in TCmSettingSelection is reused to start a connection with a connection preference translated from the TCmSettingSelection object. But the setting could, for example, have been stored in file instead.
+ * 
+ *
+ * \subsection Sub37 3.7 MDataMobilityPrinter interface class
+ *
+ * MDataMobilityPrinter is a simple interface that the "applications" use to print connection events on the Output View. CDataMobilityAppOutputContainer implements MDataMobilityPrinter, it is the reason why a reference to CDataMobilityAppOutputContainer is passed to the "applications".
+ *
+ *
+ */

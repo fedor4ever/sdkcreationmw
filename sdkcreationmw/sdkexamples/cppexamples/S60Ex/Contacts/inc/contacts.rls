@@ -1,0 +1,110 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+// Caption strings for app
+rls_string STRING_r_contacts_caption_string "Contacts DB"
+rls_string STRING_r_contacts_short_caption_string "ContactsDB"
+
+
+// Message strings
+
+//d: Cannot delete selected contact database
+rls_string STRING_r_contacts_cannot_delete_db "Cannot delete contact database"
+
+//d: Contact database not found 
+rls_string STRING_r_contacts_db_not_found "Contact database not found"
+
+//d: Database open
+rls_string STRING_r_contacts_no_db_selected "Please open database"
+
+//d: Database creating query
+rls_string STRING_r_contacts_create_db_message "Write new db name"
+
+//d: Contact deleting query
+rls_string STRING_r_contacts_delete_contact_message "Delete selected contact?"
+
+//d: Contact group deleting query
+rls_string STRING_r_contacts_delete_group_message "Delete selected contact group?"
+
+//d: Contact deleting query
+rls_string STRING_r_contacts_con_label_text "Delete selected contact?"
+
+//d: Contact group creating query
+rls_string STRING_r_contacts_create_group_message "Write new contact group name:"
+
+//d: Contact template creating query
+rls_string STRING_r_contacts_create_template_message "Write new contact template name:"
+
+//d: Contact no selected
+rls_string STRING_r_contacts_no_contact_selected "No contact selected"
+
+//d: Default contact database opened title
+rls_string STRING_r_contacts_default_db "Default db"
+
+//d: No contact database opened title
+rls_string STRING_r_contacts_no_db "Contacts"
+
+// Menu option strings
+
+//d: File
+rls_string STRING_r_contacts_file "File"
+//d: Open created contact database
+rls_string STRING_r_contacts_select_db "Created database"
+//d: Open default contact database
+rls_string STRING_r_contacts_open_default_db "Default database"
+//d: Show Contacts
+rls_string STRING_r_contacts_show_contacts "Contacts"
+//d: Show contact groups
+rls_string STRING_r_contacts_show_groups "Groups"
+//d: Edit or view a contact
+rls_string STRING_r_contacts_edit_contact "Edit/View"
+//d: Create a new contact
+rls_string STRING_r_contacts_create_contact "Create"
+//d: Add contact to contact group
+rls_string STRING_r_contacts_add_to_group "Add to contact group"
+//d: Delete the contact
+rls_string STRING_r_contacts_delete_contact "Delete"
+//d: Create sub menu option string
+rls_string STRING_r_contacts_create_group "Create"
+//d: Delete sub menu string
+rls_string STRING_r_contacts_delete_group "Delete"
+//d: Create new contact template
+rls_string STRING_r_contacts_create_template "Contact template"
+//d: Contact groups sub menu string
+rls_string STRING_r_contacts_edit_group "Contact groups"
+//d: Contacts sub menu string
+rls_string STRING_r_contacts_contacts "Contacts"
+//d: Exit sub menu string
+rls_string STRING_r_contacts_exit "Exit"
+//d: Back sub menu string
+rls_string STRING_r_contacts_back "Back"
+//d: Open sub menu string
+rls_string STRING_r_contacts_open "Open"
+//d: Create sub menu string
+rls_string STRING_r_contacts_create "Create"
+//d: Delete sub menu string
+rls_string STRING_r_contacts_delete "Delete"
+//d: Show sub menu string
+rls_string STRING_r_contacts_show "Show"
+//d: Edit sub menu string
+rls_string STRING_r_contacts_edit "Edit"
+
+
+// End of File

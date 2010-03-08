@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<project name="Full" default="all" basedir="../..">
+
+<!--==========================================-->
+<!-- ANT BUILD FILE FOR ALL LIBRARIES          -->
+<!--                          -->
+<!-- To use:                      -->
+<!-- % ant -buildfile full.build.xml [target] -->
+<!--    target:                               -->
+<!--        all                       -->
+<!--    -Ddist="your_dir"             -->
+<!--       To define a new distribution dir   -->
+<!--    -Dbuild="your_dir"            -->
+<!--       To define a new build dir          -->
+<!--==========================================-->
+
+<!--==========================================-->
+<!--set global properties for this build-->
+<!--==========================================-->
+
+<property name="full.name" value="Lib-All"/>
+
+<property name="config" value="src/build"/>
+<property name="build.root" value="classes"/>
+
+<!-- Library Directory property used by all scripts -->
+<!--    Override this to change library location    -->
+<property name="dist" value="lib"/>
+
+<!-- Verbosity -->
+<property name="verbose" value="false"/>
+
+<!-- Debug information -->
+<property name="debug" value="off"/>
+
+<!-- Ant Files -->
+<property name="app.buildfile" value="${config}/app.build.xml"/>
+<property name="bookmarks.buildfile" value="${config}/bookmarks.build.xml"/>
+<property name="util.buildfile" value="${config}/util.build.xml"/>
+<property name="wtkdev.buildfile" value="${config}/wtkdev.build.xml"/>
+<property name="xrpc.buildfile" value="${config}/xrpc.build.xml"/>
+<property name="http.buildfile" value="${config}/http.build.xml"/>
+<property name="wps.buildfile" value="${config}/wps.build.xml"/>
+<property name="mms.buildfile" value="${config}/mms.build.xml"/>
+
+
+<!-- Log Files -->
+<property name="app.logfile" value="${build.root}/app.log"/>
+<property name="bookmarks.logfile" value="${build.root}/bookmarks.log"/>
+<property name="util.logfile" value="${build.root}/util.log"/>
+<property name="wtkdev.logfile" value="${build.root}/wtkdev.log"/>
+<property name="xrpc.logfile" value="${build.root}/xrpc.log"/>
+<property name="http.logfile" value="${build.root}/http.log"/>
+<property name="wps.logfile" value="${build.root}/wps.log"/>
+<property name="mms.logfile" value="${build.root}/mms.log"/>
+
+
+<!--==========================================-->
+<!--TARGET [TSTAMP]-->
+<!--==========================================-->
+<target name="begin" description="Begin">
+    <tstamp>
+        <format property="display_time" pattern="MM/dd/yyyy hh:mm aa" />
+    </tstamp>
+    <echo> Build Started: ${display_time}</echo>
+</target>
+
+<!--==========================================-->
+<!--TARGET [ALL]-->
+<!--==========================================-->
+<target name="all" depends="begin" description="Build All libraries">
+    <echo> Building Libraries: </echo>
+
+    <!-- Independant libs -->
+    <ant
+        antfile="${util.buildfile}"
+        output="${util.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <ant
+        antfile="${xrpc.buildfile}"
+        output="${xrpc.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+    <ant
+        antfile="${wtkdev.buildfile}"
+        output="${wtkdev.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <!-- Dependant libs.  Order is significant here. -->
+    <ant
+        antfile="${app.buildfile}"
+        output="${app.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <ant
+        antfile="${bookmarks.buildfile}"
+        output="${bookmarks.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <ant
+        antfile="${http.buildfile}"
+        output="${http.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <ant
+        antfile="${wps.buildfile}"
+        output="${wps.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+    <ant
+        antfile="${mms.buildfile}"
+        output="${mms.logfile}"
+        >
+        <property name="lib" value="${dist}"/>
+        <property name="verbose" value="${verbose}"/>
+        <property name="debug" value="${debug}"/>
+    </ant>
+
+
+    <echo>Build Done!</echo>
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLEAN]-->
+<!--==========================================-->
+<target name="clean" depends="begin" description="Delete all builds">
+
+    <delete dir="${build.root}"/>
+    <delete dir="${dist}"/>
+
+</target>
+</project>

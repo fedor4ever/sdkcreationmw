@@ -1,0 +1,231 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+NAME CLEX
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rh>
+#include <avkon.rsg> 
+#include <appinfo.rh>
+
+#include "ChoiceListEx.hrh"
+#include "ChoiceListEx_loc.rls"
+
+// ---------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// ---------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+// ---------------------------------------------------------
+//   
+//    Default Document Name
+//
+// ---------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name { buf=""; }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_choicelistex_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_choicelistex_localisable_app_info
+	{
+	short_caption = STRING_r_choicelistex_short_caption;
+	caption_and_icon =
+		{
+		CAPTION_AND_ICON_INFO 
+			{
+			caption = STRING_r_choicelistex_caption;
+			number_of_icons = 1;
+			icon_file = "\\resource\\apps\\choicelistex_aif.mif";
+			}
+		};
+	}
+	
+// ---------------------------------------------------------
+//   
+//   r_choicelistex_menubar
+//   Menubar for choice list example
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_BAR r_choicelistex_menubar
+    {
+    titles =
+        {
+        MENU_TITLE 
+            { 
+            menu_pane = r_choicelistex_menu; 
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------
+//   
+//   r_choicelistex_menu
+//   Menu for "Options"
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_PANE r_choicelistex_menu
+    {
+    items = 
+        {
+        MENU_ITEM 
+            { 
+            command = ECmdCreateMenu; 
+            cascade = r_choicelistex_create_cascade;
+            txt = STRING_r_choicelistex_create_cascade; 
+            },
+        MENU_ITEM
+            {
+            command = ECmdShowList;
+            txt = STRING_r_choicelistex_show_list;
+            },
+        MENU_ITEM
+            {
+            command = ECmdPositionMenu;
+            cascade = r_choicelistex_position_cascade;
+            txt = STRING_r_choicelistex_position_cascade;
+            },
+        MENU_ITEM
+            {
+            command = ECmdAddItem;
+            txt = STRING_r_choicelistex_add_item;
+            },
+        MENU_ITEM
+            {
+            command = ECmdInsertItem;
+            txt = STRING_r_choicelistex_insert_item;
+            },
+        MENU_ITEM
+            {
+            command = ECmdRemoveItem;
+            txt = STRING_r_choicelistex_remove_item;
+            },
+        MENU_ITEM
+            {
+            command = ECmdSelectItem;
+            txt = STRING_r_choicelistex_select_item;
+            },
+        MENU_ITEM 
+            { 
+            command = EAknSoftkeyExit; 
+            txt = STRING_r_choicelistex_exit; 
+            }
+        };
+    }
+    
+// ---------------------------------------------------------
+//   
+//   r_choicelistex_create_cascade
+//   Sub menu of "Create" menu
+//
+// ---------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_choicelistex_create_cascade
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ECmdCreateDefault;
+            txt = STRING_r_choicelistex_create_default;
+            },
+        MENU_ITEM
+            {
+            command = ECmdCreateButton;
+            txt = STRING_r_choicelistex_create_button;
+            },
+        MENU_ITEM
+            {
+            command = ECmdCreateResource;
+            txt = STRING_r_choicelistex_create_resource;
+            }
+        };
+    }
+
+// ---------------------------------------------------------
+//   
+//   r_choicelistex_postion_cascade
+//   Sub menu of "Position" menu
+//
+// ---------------------------------------------------------
+// 
+RESOURCE MENU_PANE r_choicelistex_position_cascade
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ECmdListPosLeft;
+            txt = STRING_r_choicelistex_pos_left;
+            },
+        MENU_ITEM
+            {
+            command = ECmdListPosRight;
+            txt = STRING_r_choicelistex_pos_right;
+            },
+        MENU_ITEM
+            {
+            command = ECmdListPosBottom;
+            txt = STRING_r_choicelistex_pos_bottom;
+            }
+        };
+    }
+    
+
+//-----------------------------------------------------------------------------
+//
+//    r_choicelistex_item_array
+//    The texts are used by choice list array
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_choicelistex_item_array
+    {
+    items = 
+        {
+        LBUF { txt = STRING_r_choicelistex_item(0); },
+        LBUF { txt = STRING_r_choicelistex_item(1); },        
+        LBUF { txt = STRING_r_choicelistex_item(2); },
+        LBUF { txt = STRING_r_choicelistex_item(3); },
+        LBUF { txt = STRING_r_choicelistex_item(4); }
+        };
+    }

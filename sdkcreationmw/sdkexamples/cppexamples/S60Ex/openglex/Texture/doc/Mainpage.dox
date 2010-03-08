@@ -1,0 +1,72 @@
+/*! \mainpage OpenGL ES Texture Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates texturing in OpenGL ES. Definition of textures, texture coordinates,
+ *  and the use of texture matrix are shown. Textures are loaded from jpeg files using Image Converter
+ *  Library. This example also demonstrates texture wrapping and combines lighting and blending with
+ *  textures. Again, the user can change the setup by accessing the menu by pressing the left software button.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  In this example, a single cube that has its every side textured is created. In order to do this, duplication
+ *  of the cube’s vertex coordinates is needed. Every vertex appears three times in the vertex list, with three
+ *  different associated texture coordinates. See the definition of vertices from source code file Texture.cpp.
+ *  Since there are two different textures, the cube has to be constructed from two different objects, each of
+ *  which is assigned to a certain texture. Two different index lists are defined for this purpose: triangles
+ *  and triangles2. Triangles contains indices for five sides of the cube, where the nasa_hubble texture is
+ *  assigned, and triangles2 contains indices for the sixth side, where the ogles.jpg texture is assigned.
+ *
+ *  Texture coordinates are defined in the same way as the color values, that is, per vertex. Possible data
+ *  types for texture coordinates are GL_BYTE, GL_SHORT, GL_FIXED, and GL_FLOAT. In this example, the defined
+ *  coordinate type is GL_BYTE, and therefore the possible values are between [-128,127]. Both of the used
+ *  texture sizes are 256x256 pixels.
+ *
+ *  After textures have been loaded with glTexImage2D(…), the original bitmaps can be deleted because the
+ *  textures have been copied to OpenGL ES texture manager, that is, the textures are stored inside OpenGL ES.
+ *  See the code in TextureAppUi.CPP for more information.When using lighting with texture mapping, the texture
+ *  environment has to be changed from GL_REPLACE to GL_MODULATE.
+ *
+ *  The shading model should be set to GL_SMOOTH when using lighting. In this example, texture wrapping is implemented
+ *  simply by changing the scale in texture matrix. Instead of scaling the texture coordinates by 1.f/255.f we scale
+ *  them by 1.f/128.f. After that the texture coordinates are between [0,2], which causes the texture to wrap one time.
+ *  See code in Texture.cpp.
+ *
+ *  Also use of blending can create nice-looking effects. In this example, blending is used to create a translucency effect.
+ *  This effect can be enabled by pressing the joystick down.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running.
+ *
+ */

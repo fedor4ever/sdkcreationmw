@@ -1,0 +1,58 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;
+; Installation file for XeDOMExample application
+
+; Languages, (English only)
+&EN
+
+; UID is the app's UID
+#{"XeDOMExample"},(0xA0000279),1,0,0,TYPE=SA
+
+;S60 v3.2
+[0x102752AE], 0, 0, 0, {"S60ProductID"}
+
+; Localised Vendor name
+%{"Vendor-EN"}
+
+; Unique Vendor name
+:"Vendor"
+
+;
+; Files to install
+;
+
+"..\..\..\epoc32\RELEASE\gcce\UREL\xedomexample.exe"   -"!:\sys\bin\xedomexample.exe"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\xedomexample_reg.rsc"     -"!:\private\10003a3f\import\apps\xedomexample_reg.rsc"
+"..\data\xedomexample\input\test.doc"                    -"!:\xedomexample\input\test.doc"
+"..\data\xedomexample\input\test.jpg"                    -"!:\xedomexample\input\test.jpg"
+"..\data\xedomexample\input\XML_check_attrs.xml"         -"!:\xedomexample\input\XML_check_attrs.xml"
+"..\data\xedomexample\input\XML_doc_params.xml"          -"!:\xedomexample\input\XML_doc_params.xml"
+"..\data\xedomexample\input\XML_ID.xml"                  -"!:\xedomexample\input\XML_ID.xml"
+"..\data\xedomexample\input\XML_inner.xml"               -"!:\xedomexample\input\XML_inner.xml"
+"..\data\xedomexample\input\XML_nodetree_modif.xml"      -"!:\xedomexample\input\XML_nodetree_modif.xml"
+"..\data\xedomexample\input\XML_nsprocessing.xml"        -"!:\xedomexample\input\XML_nsprocessing.xml"
+"..\data\xedomexample\input\XML_parsing_001.xml"         -"!:\xedomexample\input\XML_parsing_001.xml"
+"..\data\xedomexample\input\XML_setelement_text.xml"     -"!:\xedomexample\input\XML_setelement_text.xml"
+"..\data\xedomexample\input\XML_settextnoenc_001.xml"    -"!:\xedomexample\input\XML_settextnoenc_001.xml"
+"..\data\xedomexample\input\XML_settextnoenc_002.xml"    -"!:\xedomexample\input\XML_settextnoenc_002.xml"
+"..\data\xedomexample\input\XML_sibling_fns.xml"         -"!:\xedomexample\input\XML_sibling_fns.xml"
+"..\data\xedomexample\output\dummy_place_holder.file"    -"!:\xedomexample\output\dummy_place_holder.file"
+
+;
+;Required for application to be covered by backup/restore facility 
+;
+"backup_registration.xml"						-"!:\private\A0000279\backup_registration.xml"

@@ -1,0 +1,328 @@
+/*! \mainpage [HsWidget]
+ *
+ * \ref Intro_sec
+ * \n\ref Sub11
+ * \n\ref Prerequisites_sec
+ * \n\ref Sub21
+ * \n\ref Sub22
+ * \n\ref Sub23
+ * \n\ref UseCase_sec
+ * \n\ref sub31
+ * \n\ref sub32
+ * \n\ref sub33
+ * \n\ref sub34
+ * \n\ref sub35
+ * \n\ref sub36
+ * \n\ref Arch_sec
+ * \n\ref sub41
+   *
+ * <HR>
+ *
+ * \section Intro_sec 1. An example application HsWidget.
+ * Symbian based application that publish its content to Home Screen (HS) 
+ * Application with usage of Homescreen Publishing Api.
+ *
+ * \subsection Sub11 1.1 Homescreen Publishing Api - C++ SDK API.
+ * Homescreen Publishing API (HsPApi) is C++ based framework that allows,
+ * C++ or Symbian based applications, to publish it's content in HS.
+ * All interfaces method contains standard C++ data types.  
+ *
+ * <HR>
+ *
+ * \section Prerequisites_sec 2. Prerequisites
+ *
+ * \subsection Sub21 2.1 Include Library.
+ * 
+ * To use hswidgetpublisher.dll, client needs to library linking and .mmp 
+ * file should contains lines below:
+ *
+ * @code
+ * LIBRARY    hswidgetpublisher.lib //homescreen publishing api
+ * LIBRARY    libstdcpp.lib         //std library
+ * LIBRARY    libc.lib              //std library
+ * LIBRARY    charconv.lib          //string conversion
+ * @endcode
+ *
+ *   
+ * \subsection Sub22 2.2 Header files
+ * To make available standard C++ headers by include paths should contain macros:
+ * @code
+ * OS_LAYER_LIBC_SYSTEMINCLUDE
+ * OS_LAYER_STDCPP_SYSTEMINCLUDE
+ * @endcode 
+ *
+ * HsPApi necessary headers files:
+ * @code
+ * #include <hswidgetpublisher.h>
+ * #include <hswidget.h>
+ * #include <hsexception.h>
+ * #include <hsdataobserver.h>
+ * @endcode
+ * 
+ * HsPApi uses C++ standard string data in format UTF-8.
+ * The .rls file needs entry like below:
+ * 
+ * @code
+ * // .rls file
+ * //...
+ * CHARACTER_SET UTF8
+ * //...
+ * @endcode
+ *
+ * To ensure use of C++ standard string client needs to include: 
+ * @code
+ * #include <string>
+ * #include <utf.h>
+ * @endcode
+ *
+ * Example code that converts UNICODE to UTF-8 std::string data:
+ * 
+ *
+ * @code
+ *  string toString(const TDesC& aText)
+ *     {
+ *     HBufC8* text = HBufC8::NewL( aText.Length() + 4 /*for ending zero*/ );
+ *     TPtr8 dest( text->Des() );
+ *     CnvUtfConverter::ConvertFromUnicodeToUtf8( dest, aText );    
+ *     string ret((const char*)dest.PtrZ());
+ *     delete text;
+ *     return ret;
+ *     }
+ * @endcode
+ *
+ * \subsection Sub23 2.3 Capabilities
+ * No special capabilities are required.
+ *
+ * <HR>
+ *
+ * \section UseCase_sec 3. Use cases
+ *
+ * \subsection sub31 3.1 Creation of the Homescreen Publisher and observer.
+ * 
+ * \subsubsection subsub311 3.1.1 Data observer.
+ * To create HsWidgetPublisher user needs to implement interface’s 
+ * IHsDataObserver.
+ * @code  
+ * void CHsWidgetExample::handleEvent( std::string aWidgetName, 
+ *   Hs::IHsDataObserver::EEvent aEvent)    
+ *   {
+ *   }
+ * void CHsWidgetExample::handleItemEvent( std::string aWidgetName,
+ *   std::string aWidgetItemName,
+ *   Hs::IHsDataObserver::EItemEvent aEvent)
+ *   {
+ *   }
+ * @endcode
+ *
+ * \subsubsection subsub312 3.1.2 Homescreen Publisher.
+ *
+ * User needs to care about \ref subsub313 and \ref subsub314. 
+ *
+ * @code 
+ * void CHsWidgetExample::ConstructL()
+ *    {
+ *    try
+ *        {
+ *        iHsWidgetPublisher = new Hs::HsWidgetPublisher( this );
+ *        }
+ *    ...
+ *    }
+ * @endcode
+ *
+ * \subsubsection subsub313 3.1.3 Exception handling.
+ * HsPApi is C++ component and it doesn't use Symbian Leaves system.
+ * Instead, it uses C++ exception (HsException that is std::exception deriver)
+ * mechanism.
+ * HsException object contains information, compatible with Symbian errors, 
+ * about exception reason. 
+ * Moreover, HsPApi uses STD libraries so other exception, might also be thrown 
+ * as error handling result.
+ *
+ * @code
+ * ... 
+ * try
+ *     {
+ *     // HSP method call   
+ *     }
+ * catch( Hs::HsException& e)
+ *     {
+ *     //catch error from HsPApi
+ *     User::Leave( e.getReason() );
+ *     }
+ * catch( ... )
+ *     {
+ *     //catch error from other libraries
+ *     User::Leave( KErrGeneral );
+ *     }
+ * ...
+ * @endcode
+ * 
+ *
+ * \subsubsection subsub314 3.1.4 Allocation memory handling.
+ * Besides exception handling, user should to also take care about memory 
+ * allocation handling because Symbian new operator return empty pointer in 
+ * case of memory allocation problem.
+ * @code 
+ * ...
+ * if( iHsWidgetPublisher )
+ *     {
+ *     // memory allocate properly, use iHsWidgetPublisher          
+ *     }
+ * else
+ *     {
+ *     // memory not allocated
+ *     )
+ * ... 
+ * @endcode
+ * 
+ * \subsection sub32 3.2 Creation of widget.
+ *
+ * \image html hsp_widget_register_widget.bmp
+ * 
+ * @code
+ * ...    
+ * iHsWidgetPublisher->createHsWidget( "onerow", "HSWidget", "0xA0007E04" );
+ * ...
+ * @endcode
+ *
+ * \image html hsp_widget_registry.bmp
+ *
+ *
+ * Once widget is created, it is available in list shown to the HS user. Widget 
+ * can be added as content to HS and it will display current values.
+ * Because items were not added to widget, content doesn't 
+ * contain valuable information. 
+ * \image html hsp_widget_empty_value.bmp
+ *
+ * <b></b>
+ * 
+ * \subsection sub33 3.3 Add items to widget.
+ * 
+ * While adding new items to widget, user needs to take care about widget 
+ * pre-defined structure.
+ * Example widget is "onerow" type and contains two items: image and text. 
+ * Sequence of adding does not matter. 
+ * 
+ * 
+ * @code
+ * const char* image = "image1";
+ * const char* text = "text1";
+ *
+ * ...
+ * iHsWidgetPublisher->getHsWidget( "onerow", "HSWidget", "0xA0007E04" ).
+ *     setItem( image, "mif(c:\\resource\\apps\\HSPWidget.mif 16388 16389)" );
+ * iHsWidgetPublisher->getHsWidget( "onerow", "HSWidget", "0xA0007E04" ).
+ *     setItem( text, "First text: good morning" );
+ * ...
+ * @endcode
+ * \image html hsp_widget_change_values.bmp
+ *
+ * 
+ * \subsection sub34 3.4 Publish the widget.
+ *
+ * Publishing the widget may occur in event handling process and keeps HS 
+ * data up to date.
+ * Each widget's item is being published in publish process.   
+ * @code
+ * ...
+ * iHsWidgetPublisher->publishHsWidget( 
+ *    iHsWidgetPublisher->getHsWidget( "onerow", "HSWidget", "0xA0007E04" ) );
+ * ...
+ * @endcode
+ *
+ * \image html hsp_widget_event_resume.bmp
+ * 
+ * Items added to widget \ref sub33 are displayed in HS.
+ * Widget contains image and localized string. 
+ * \image html hsp_widget_first_value.bmp
+ *
+ * 
+ * \subsection sub35 3.5 Update the data in the widget.
+ * Once item were added to widget \ref sub33 they might be updated with use
+ * of the same methods.
+ *
+ * @code
+ *
+ * ...
+ * iHsWidgetPublisher->getHsWidget( "onerow", "HSWidget", "0xA0007E04" ).
+ *     setItem( image, "c:\\data\\Images\\Pictures\\Sunny.JPG );
+ * iHsWidgetPublisher->getHsWidget( "onerow", "HSWidget", "0xA0007E04" ).
+ *     setItem( text, "Second text: hyvää päivää" );
+ * ...
+ * @endcode
+ *
+ * \image html hsp_widget_change_values.bmp
+ *
+ * To update widget's data in HS, entire widget should be published and it 
+ * happens during event handling \ref sub34. The result with visible widget
+ * below. 
+ *
+ * \image html hsp_widget_second_value.bmp
+ *
+ *
+ * \subsection sub36 3.6 Observe widget's and items' events.
+ * To observe events user needs to implement IHsDataObserver \ref subsub311.
+ * 
+ * \subsubsection subsub361 3.6.1 IHsDataObserver::handleEvent(...).
+ * Example of widget events handling \ref sub34.
+ * Events that are available for widget:
+ * @code
+ * enum EEvent
+ *     {
+ *      EUnknown    = 0,
+ *      EActivate   = 1,
+ *      EDeactivate = 2,
+ *      ESuspend    = 3,
+ *      EResume     = 4     
+ *      };
+ * @endcode
+ * Each represent widget status from HS point of view.
+ *
+ * \subsubsection subsub362 3.6.2 IHSPDataObserver::handleItemEvent(...).
+ * Events that are available for widget's item:
+ * @code
+ * enum EItemEvent
+ *     {
+ *     EUnknownItemAction = 0,
+ *     ESelection         = 1
+ *     };
+ * @endcode
+ *
+ * Select is evoked per each widget's item as result of user's pointer on 
+ * content area in HS.    
+ * 
+ *
+ * \image html hsp_widget_event_select.bmp
+ *
+ * \subsection sub37 3.7 Remove of the widget.
+ * 
+ * Remove of widget deletes all it's data from Homescreens Publishing Api.
+ * Content is also removed from HS conetnt list.
+ * 
+ * @code
+ * ...    
+ * iHsWidgetPublisher->removeHsWidget( "onerow", "HsWidget", "0xA0007E04" );
+ * ...
+ * @endcode
+ *
+ *
+ * \image html hsp_widget_remove.bmp
+ *
+ *
+ *
+ * <HR>
+ *
+ * \section Arch_sec 4. Architecture
+ *
+ * HsWidget is a simple UI application that contains extra CHsWidgetExample 
+ * class. 
+ * It implement abstract class IHsDataObserver and contains HsPApi interface.
+ * CHsWidgetExample class is representation of simple widget, but
+ * it contains complex widget functionality described in section \ref UseCase_sec.
+ *
+ * \subsection sub41 4.1 Class diagram.
+ *
+ * \image html hsp_widget_class_diagram.bmp
+ *
+ *
+ */

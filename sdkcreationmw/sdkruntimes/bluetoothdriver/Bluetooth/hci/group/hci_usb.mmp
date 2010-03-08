@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Builds HCI DLL that can talk to USB Bluetooth hardware
+ *
+*/
+
+
+MACRO HCI_USB_SUPPORT
+#define HCI_DLL hci_usb.dll
+USERINCLUDE ..\..\usbdrv
+USERINCLUDE ..\..\..\..\emumenubar\osutils\inc
+
+/*#include "..\..\..\..\..\..\sf\os\shortlinksrv\bthci\bthci1\src\hci_h4.mmp"*/
+LIBRARY         EcmtOsUtils.lib
+LIBRARY         emulator.lib
+START WINS
+WIN32_LIBRARY   kernel32.lib
+END
+
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * compile-command: "./ABLD.BAT build winscw udeb hci_usb"
+ * End:
+ */

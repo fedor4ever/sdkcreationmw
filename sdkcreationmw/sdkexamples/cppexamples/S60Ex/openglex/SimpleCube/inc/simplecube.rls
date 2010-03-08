@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+rls_string STRING_r_app_caption_string       "SimpleCube"
+rls_string STRING_r_app_short_caption_string "SimpleCube"
+
+rls_string STRING_r_simplecube_exit          "Exit"
+
+rls_string STRING_r_simplecube_shade         "Shading mode"
+rls_string STRING_r_simplecube_flat          "Flat"
+rls_string STRING_r_simplecube_smooth        "Smooth"
+
+rls_string STRING_r_simplecube_draw          "Drawing mode"
+rls_string STRING_r_simplecube_triangles     "Triangles"
+rls_string STRING_r_simplecube_trianglefans  "Triangle fans"
+
+// End of File

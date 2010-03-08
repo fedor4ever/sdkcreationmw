@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE doc [
+	<!ENTITY test1 "1.1">
+]>
+<doc xmlns="http://test.pl" xmlns:testns="http://test.com" attr1="test"><elem1>test</elem1><testns:elem1/><testns:elem1/><elem2>&test1;test</elem2></doc>

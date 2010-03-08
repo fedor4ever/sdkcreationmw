@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+//Stylus popup menu example application's registration resource file 
+
+#include <appinfo.rh>
+#include <styluspopupmenuexample.rsg>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0xA0000284
+
+RESOURCE APP_REGISTRATION_INFO 
+	{
+    app_file="styluspopupmenuexample";
+    localisable_resource_file="\\resource\\apps\\styluspopupmenuexample";
+    localisable_resource_id = R_STYLUSPOPUPMENUEX_LOCALISABLE_APP_INFO;
+    embeddability=KAppNotEmbeddable;
+    newfile=KAppDoesNotSupportNewFile;
+	}

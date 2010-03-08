@@ -1,0 +1,6 @@
+#default values for MUST properties
+MIDlet-Name: S60 MIDP SDK
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: Unspecified
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1

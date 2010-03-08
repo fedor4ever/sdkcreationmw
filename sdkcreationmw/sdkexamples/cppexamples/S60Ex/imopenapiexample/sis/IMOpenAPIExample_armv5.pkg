@@ -1,0 +1,47 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;
+; Installation file for IMOpenAPIExample application
+;
+;Languages
+&EN
+;
+
+; standard SIS file header
+#{"IMOpenAPIExample"},(0xA0000186),1,0,0
+;
+;Localised Vendor name
+%{"Vendor-EN"}
+;
+;Unique Vendor name
+:"Vendor"
+;
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;
+; five files to install
+;
+"..\..\..\epoc32\release\armv5\urel\IMOpenAPIExample.exe"		-"!:\sys\bin\IMOpenAPIExample.exe"
+"..\..\..\epoc32\data\z\resource\apps\IMOpenAPIExample.rsc"		-"!:\resource\apps\IMOpenAPIExample.rsc"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\IMOpenAPIExample_reg.rsc"	-"!:\private\10003a3f\import\apps\IMOpenAPIExample_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\mysigns.mbm"			-"!:\resource\apps\mysigns.mbm"
+"..\..\..\epoc32\data\z\resource\apps\imopenapiexample.mif"		-"!:\resource\apps\imopenapiexample.mif"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						-"!:\private\A0000186\backup_registration.xml"
+

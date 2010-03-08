@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc xmlns="http://test.pl" xmlns:testns="http://test.com" attr1="test"><test1/><testns:test2/><undefns:test3/><test4 testns:attr2="1"/><test5/></doc>

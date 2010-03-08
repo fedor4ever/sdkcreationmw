@@ -1,0 +1,159 @@
+/*! \mainpage Help Example
+ *
+ * \ref Intro_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This SDK example demonstrates how to add support for context sensitive help
+ * to an application.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The key class of the Help example is TCoeHelpContext. The example also
+ * demonstrates the use of functions CCoeControl::GetHelpContext and
+ * CCoeAppUi::AppHelpContextL.
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example exists as a complete application, and has the standard Symbian
+ * OS application architecture, employing the Application, Document, UI, and
+ * View classes. The reader should be aware of this structure, along with the
+ * following Symbian CS Help Compiler titles, before attempting to understand
+ * the example:
+ *
+ * - CS Help Guide
+ * - CS Help Compiler GUI Guide
+ * - CS Help Reference
+ *
+ * This example addresses only the enabling of context-sensitive help in
+ * applications.
+ *
+ * <HR>
+ *
+ * \section UI_sec 2. User Interface
+ *
+ * \image html image_help01.gif
+ *
+ * The \b Options menu displays three choices:
+ *
+ * - Select <B>Show Form</B> to display an example form.
+ * - Select \b Help to display help information for the application.
+ * - Select \b Exit to exit the application.
+ *
+ * On selecting \b Help, the help application is started and presents
+ * application level help. Select \b Back to return to the example application.
+ *
+ * Select <B>Show Form</B> from the \b Options menu to display a form with three
+ * editable entries. Navigate to each of the editor windows and invoke the
+ * context sensitive help from the \b Options menu to see how the dialog offers
+ * different help depending on which control has input focus.
+ *
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * To provide context sensitive help, applications must first gather context
+ * information, then launch the help viewer application, providing it with the
+ * gathered context.
+ *
+ * In the following sections, the Design Overview section provides a design
+ * overview of the example.
+ *
+ * Sections the Requesting application level help section and the Requesting
+ * control level help section illustrate the following use case scenarios
+ * respectively:
+ *
+ * - The user selects \b Help from the \b Options menu on the initial
+ *   HelpExample view. This results in application level help being displayed.
+ * - Having selected the <B>Show Form</B> option, the user now navigates to the
+ *   desired form entry and selects \b Help from the \b Options menu. This
+ *   results in control level help being displayed.
+ *
+ * \subsection Sub31 3.1 Design Overview
+ *
+ * The class diagram for this example is shown below:
+ *
+ * \image html image_help02.jpg
+ *
+ * To facilitate help in this example, a Help option is added to the \b Options
+ * menu where appropriate. For the form dialog, a menu with a Help option is
+ * supplied on form creation. The form dialog creates its own internal menu and
+ * adds the supplied menu to it. Menu commands will be sent to the form's
+ * ProcessCommandL function when the form is active.
+ *
+ * For help context gathering, each CCoeControl derived class can override the
+ * CCoeControl::GetHelpContext function to return a help context identifier
+ * specific to that control. For this example, the CHelpfulForm determines which
+ * of its form entries has focus and returns help context for that entity.
+ *
+ * The UI can override the CCoeAppUI::HelpContextL function to provide
+ * application level help.
+ *
+ * \subsection Sub32 3.2 Requesting application level help
+ *
+ * When the user selects \b Help from the \b Options menu on this example's
+ * initial view, the following sequence is entered:
+ *
+ * \image html image_help03.jpg
+ *
+ * -# The framework passes the ELaunchHelpForContext command to the
+ *    CHelpExampleAppUi::HandleCommandL member function.
+ * -# The AppUi then calls its inherited function CCoeAppUi::AppHelpContextL.
+ * -# CCoeAppUi::AppHelpContextL now gathers an array of help context
+ *    identifiers by calling the overridden virtual function
+ *    CHelpExampleAppUi::HelpContextL. This returns a help context containing
+ *    the UID of the help file and a flag indicating that application level help is
+ *    required, in this case KContextApplication.
+ * -# The help application is now passed the gathered array of help contexts by
+ *    calling HlpLauncher::LaunchHelpApplicationL. This will start the help
+ *    application if it is not started, or bring it to the front if it is
+ *    already running.
+ *
+ * \subsection Sub33 3.3 Requesting control level help
+ *
+ * After the user has selected the <B>Show Form</B> option, navigated to one of
+ * the form's controls and selected \b Help from the form's \b Options menu, the
+ * following sequence is entered:
+ *
+ * \image html image_help04.jpg
+ *
+ * -# The framework passes the ELaunchHelpForContext command to the
+ *    CHelpfulForm::ProcessCommandL member function. Note that the form creates
+ *    its own menu resource resulting in this mechanism being used rather than
+ *    AppUi's HandleCommandL.
+ * -# The ELaunchHelpForContext command is passed back to the
+ *    CHelpExampleAppUi::HandleCommandL member function.
+ * -# The AppUi then calls its inherited function CCoeAppUi::AppHelpContextL.
+ * -# CCoeAppUi::AppHelpContextL now gathers an array of help context
+ *    identifiers by interrogating any active controls via the
+ *    CCoeControl::GetHelpContext function.
+ * -# For this example, the overridden virtual function
+ *    CHelpfulForm::GetHelpContext is called. This determines which form entry
+ *    has focus by calling its inherited CEikDialog::IdOfFocusControl function.
+ *    It then returns a help context containing the UID of the help file and a flag
+ *    indicating the help required. In this example the first two form entries
+ *    have specific help (KContextEdwin1 and KContextEdwin2) and any others
+ *    would give rise to general help for the form (KContextHelpfulForm).
+ * -# CCoeAppUi::AppHelpContextL now calls the overridden virtual function
+ *    CHelpExampleAppUi::HelpContextL. This returns a help context containing
+ *    the UID of the help file and a flag indicating that application level help is
+ *    required, in this case KContextApplication.
+ * -# The help application is now passed the gathered context by calling
+ *    HlpLauncher::LaunchHelpApplicationL. This will start the help application
+ *    if it is not started, or bring it to the front if it is already running.
+ * -# The base class CAknForm::ProcessCommandL command is now called to
+ *    completed processing of the menu command (it removes the Options menu from
+ *    display).
+ *
+ * The help context identifiers KContextApplication and KContextHelpfulView are
+ * generated by the Symbian CS Help Compiler and defined in the header file
+ * HelpExample.hlp.hrh. See the Symbian CS Help documentation for details of how
+ * the corresponding help topics are specified in the source RTF file.
+ *
+ *
+ */

@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+TARGET          Animation_server.dll
+TARGETTYPE      ani
+
+// The second one is the UID of the server, different than main program's UID
+UID             0x10003b22 0xA000022B
+
+SECUREID	    0xA000022B
+EPOCSTACKSIZE	0x5000
+
+SOURCEPATH      ..\src
+SOURCE          ServerDll.cpp
+SOURCE          ServerImage.cpp
+SOURCE          ServerTimeOutTimer.cpp
+
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\..\gui\inc
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY         euser.lib
+
+LANG            SC
+
+CAPABILITY      PowerMgmt ReadDeviceData WriteDeviceData ProtServ
+VENDORID        0
+
+EXPORTUNFROZEN
+
+// End of File

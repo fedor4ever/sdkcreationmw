@@ -1,0 +1,235 @@
+/*! \mainpage DirectoryLocalizerEx
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * The DirectoryLocalizerEx example demonstrates the usage of DirectoryLocalizer API(s).
+ * It define two sample resource structures in the .rss file. And the localizer will be 
+ * initialized from the resource structures. This example shows total three kinds of CDirectoryLocalizer
+ * initialization method: from a resource reader, from a resource ID, and from
+ * its default construction function. And this example also shows how to use DirectoryLocalizer API 
+ * to retrieve the localized data defined in the resouce structures.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The DirectoryLocalizerEx example application demonstrates the usage of the CDirectoryLocalizer 
+ * definition API. The following methods are covered: \n
+ * \n
+ * -    CDirectoryLocalizer::NewL()\n
+ * -    CDirectoryLocalizer::AppendL()\n
+ * \n
+ * -    CDirectoryLocalizer::AddFromResourceL()\n
+ * -    CDirectoryLocalizer::SetFullPath()\n
+ * -    CDirectoryLocalizer::IsLocalized()\n
+ * -    CDirectoryLocalizer::LocalizedName()\n
+ * \n
+ * -    CDirectoryLocalizer::ExtraData()\n
+ * -    CDirectoryLocalizer::Icon()\n
+ * \n
+ * The following header files are included in the examples:\n
+ * \n
+ * -    directorylocalizerexapp.h\n
+ * -    directorylocalizerexappUi.h\n
+ * -    directorylocalizerexcontainer.h\n
+ * -    directorylocalizerexdocument.h\n
+ * \n
+ * The CDirectoryLocalizerExContainer class is inherited from the following classes:\n
+ * \n
+ * -    CCoeControl\n
+ * \n
+ * The following inherited methods have been implemented:\n
+ * \n
+ * -    void SetControl( CCoeControl* aControl ) \n
+ * -    TInt CountComponentControls() const  \n
+ * -    CCoeControl* ComponentControl( TInt aIndex ) const \n
+ * -    void Draw( const TRect& aRect ) const \n
+ * \n
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example requires basic understanding about Symbian C++ programming 
+ * and S60 application framework.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * The DirectoryLocalizerEx examle application follows the standard S60 application framework.
+ * The application, document, view and application UI classes implement
+ * the framework while the actual example code is mainly in the CDirectoryLocalizerExContainer 
+ * class. 
+ * When the application is initialized, the container will be created by the CDirectoryLocalizerExAppUi.
+ * After the menu item of the application is selected, the container will create a CDirectoryLocalizer
+ * instance and construct the instance from the resource structure, and it will demonstrate how to
+ * use the CDirectoryLocalizer API to localize the directory data which stored in the resource structure
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * None.
+ *
+ * \subsection Sub32 3.2 Build and Installation
+ *
+ * The DirectoryLocalizerEx example application uses standard Symbian OS building and packaging
+ * mechanisms. 
+ *
+ * The build configuration files are placed in the group folder and the 
+ * packaging files are placed in the sis folder.
+ *
+ * Here's an example command for building the project in command line window.
+ * 
+ * @code
+ * ..\group>bldmake bldfiles
+ * ..\group>abld build
+ * @endcode
+ * 
+ *
+ * \subsection Sub35 3.3 Preparation
+ *
+ * When the application is launched the CDirectoryLocalizerExContainer class will be initialized by 
+ * the UI class.
+ *
+ * First the framework creates the CDirectoryLocalizerExUi object by calling its ConstructL method,
+ * The fact that the framework calls the CDirectoryLocalizerExUi object's constructor and ConstructL separately
+ * allows the framework to complete any necessary initialisation before the construction of CDirectoryLocalizerExUi object 
+ * is completed.
+ * 
+ * @code
+ *   void CDirectoryLocalizerExAppUi::ConstructL()
+ *   {
+ *   BaseConstructL();
+ *
+ *   iAppContainer = new (ELeave) CDirectoryLocalizerExContainer();
+ *   iAppContainer->SetMopParent( this );
+ *   iAppContainer->ConstructL( ClientRect());
+ *   AddToStackL( iAppContainer );
+ *
+ *   };
+ * @endcode
+ * 
+ * 
+ * \subsection Sub36 3.6 Execution
+ *
+ * This example have four functions: handdling menu commands, constructing the CDirectoryLocalizer instance,
+ * localizing some directory, and retrieving localized data.
+ * 
+ * a) When the user selects a menu item in the example application, HandleCommandL method is called by the framework. 
+ * The input argument for this method, aCommand, indicates which command the user has selected. Then the AppUI can perform
+ * corresponding actions to do the localizer initialisation or retrieving localized data.
+ * 
+ * @code
+ * void CDirectoryLocalizerExAppUi::HandleCommandL( TInt aCommand )
+ *   {
+ *   switch ( aCommand )
+ *       {
+ *       case EDirLocalizerAddFromResId:
+ *           {
+ *           iAppContainer->LocalizedFromResIdL();
+ *           break;
+ *           }
+ *       case EDirLocalizerSetupFromResRd:
+ *           {
+ *           iAppContainer->SetupFromResRdL();
+ *           break;
+ *           }
+ *       case EDirLocalizerSetupFromResId:
+ *           {
+ *           iAppContainer->SetupFromResIdL();
+ *           break;
+ *           }
+ *       case EDirLocalizerGetExtraData:
+ *           {
+ *           iAppContainer->GetExtraDataL();
+ *           break;
+ *           }
+ *       case EDirLocalizerGetIconIndex:
+ *           {
+ *           iAppContainer->GetIconIndexL();
+ *           break;
+ *           }
+ *       case EAknSoftkeyExit:
+ *       case EEikCmdExit:
+ *           {
+ *           Exit();
+ *           return;
+ *           }
+ *       default:
+ *           break;
+ *       }
+ *   }
+ * @endcode
+ * 
+ * 
+ * b) After a menu item is selected by user, the CDirectoryLocalizerExUi will invoke the different function of
+ * the container, the CDirectoryLocalizerExContainer then initializes the CDirectoryLocalizer instance from
+ * resource structure with different method.
+ * 
+ * LocalizedFromResIdL() function constructs from default construction, and load Directory data from resource via ID
+ * as the following,
+ * 
+ * @code
+ * CDirectoryLocalizer* localizer = CDirectoryLocalizer::NewL(); 
+ * CleanupStack::PushL(localizer);  // localizer                            
+ * localizer->AddFromResourceL( R_EXAMPLE_LOCALIZER_ENTRIES );
+ * @endcode
+ * 
+ * Where R_EXAMPLE_LOCALIZER_ENTRIES is defined in the RSS file.
+ *
+ *
+ * SetupFromResRdL() function will initialize the CDirectoryLocalizer instance via an instance of TResourceReader,
+ * The reader will read directory data from resource file, as the following,
+ *
+ * @code
+ * TResourceReader reader;
+ * CCoeEnv::Static()->CreateResourceReaderLC( reader, R_EXAMPLE_LOCALIZER_ENTRIES );
+ * CDirectoryLocalizer* localizer = CDirectoryLocalizer::NewL( reader );
+ * CleanupStack::PushL(localizer);  // localizer
+ * @endcode
+ *
+ * SetupFromResIdL() function will initialize CDirectoryLocalizer instance by resource ID directly 
+ * as the following,
+ *
+ * @code
+ * CDirectoryLocalizer* localizer = CDirectoryLocalizer::NewL( R_EXAMPLE_LOCALIZER_ENTRIES );
+ * CleanupStack::PushL(localizer);  // localizer
+ * @endcode
+ * 
+ * 
+ * c) After the CDirectoryLocalizer instance initialisation, an absolute path will be set to the CDirectoryLocalizer
+ * instance. And if the path has been localized, the localized name will be retrieved and showed by AknInformationNote.
+ * 
+ * @code
+ * localizer->SetFullPath( KDLTestExistsDir );
+ * TBool success = localizer->IsLocalized();
+ *
+ * CAknInformationNote *note = new ( ELeave ) CAknInformationNote();
+ * if( success )
+ *    {
+ *    const TPtrC strNote = localizer->LocalizedName();
+ *    note->ExecuteLD( strNote );
+ *    }
+ * else
+ *    {
+ *    _LIT( strNote, "Not Localized" );
+ *    note->ExecuteLD( strNote );
+ *    }
+ * CleanupStack::PopAndDestroy();  // localizer  
+ * @endcode
+ *
+ * d) The instance of CDirectoryLocalizer can also retrieve the extra data and icon index after the initialisation and localization,
+ * for example:
+ * 
+ * @code
+ * const TPtrC strNote = localizer->ExtraData();
+ * TInt iconIndex = localizer->Icon();
+ * @endcode
+ * 
+ * <HR>
+ */

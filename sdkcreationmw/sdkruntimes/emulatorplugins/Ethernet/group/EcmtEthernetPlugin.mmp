@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for the Ethernet (npacket) plugin
+*
+*/
+
+
+// These headers define the UID values
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtEthernetPluginUids.h"
+
+TARGET          EcmtEthernetPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KETHERNETPLUGIN_DLL_UID
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ..\src
+SOURCE          EcmtEthernetPlugin.cpp
+SOURCEPATH      ..\..\Common\src
+SOURCE          EcmtCommonPluginBase.cpp
+SOURCE          EcmtFile.cpp
+
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\..\Common\inc
+USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+USERINCLUDE     ..\..\..\..\..\Ecmt\osutils\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY         euser.lib
+LIBRARY		commdb.lib
+LIBRARY		bafl.lib
+LIBRARY		efsrv.lib
+LIBRARY		EcmtOsUtils.lib
+
+SOURCEPATH     ..\data
+START RESOURCE KETHERNETPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET          EcmtEthernetPlugin.rsc
+#endif // SYMBIAN_SECURE_ECOM
+END
+
+START WINS
+WIN32_LIBRARY   kernel32.lib
+END

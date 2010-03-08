@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#ifndef __FOCUSEVENT_HRH__
+#define __FOCUSEVENT_HRH__
+
+// FocusEvent enumerate command codes
+enum TFocusEventIds
+    {
+    EFocusEventCommand1 = 0x6000  // ensure they do not coincide
+                                  // with predefined commands.
+    // add further enumerations here
+    };
+
+
+#endif // __FOCUSEVENT_HRH__
+
+// End of File

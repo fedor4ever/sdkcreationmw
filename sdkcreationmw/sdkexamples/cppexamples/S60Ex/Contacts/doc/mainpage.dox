@@ -1,0 +1,248 @@
+/*! \mainpage Contacts DB Example
+ *
+ * \ref Intro_sec
+ * \n\ref Run_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *   
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * The Contacts example demonstrates how to:
+ *
+ * - Create a contact template.
+ * - Create, delete, view, and update a contact.
+ * - Create, delete, and update a contact group.
+ *
+ * This example uses the CContactDatabase and CPbkContactEngine classes for
+ * database handling.
+ *
+ * This example can be run in both a real S60 device and the emulator
+ * provided with the SDK. This example does not involve any configurations.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CContactDatabase
+ * - CPbkContactEngine
+ * - CPbkContactEditorDlg
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example uses the Symbian OS programming concept. Familiarity with it is
+ * required in order to fully understand this example.
+ *
+ * \subsection Sub121 1.2.1 Emulator
+ *
+ * This example does not involve any configurations to the SDK emulator.
+ *
+ * \subsection Sub122 1.2.2 S60 device
+ *
+ * This example does not involve any configurations to S60 devices.
+ *
+ * <HR>
+ *
+ * \section Run_sec 2. Running the example
+ *
+ * When the application starts up and the user presses the <B>Select</B>
+ * softkey, the following screen appears:
+ *
+ * \image html image2.gif
+ *
+ * Pressing the \b Options softkey displays the following six choices:
+ *
+ * \image html image3.gif
+ *
+ * Select <B>Default database</B> to open the database. The Phonebook
+ * application uses this database.
+ *
+ * Selecting <B>Default database</B> from the \b Open submenu opens the created
+ * contact database. If the default contact database is opened, the application
+ * title is "Default db”.
+ *
+ * \image html image5.gif
+ *
+ * Select <B>Contact template</B> to create a contact template.
+ *
+ * Selecting <B>Contact template</B> from the \b Create submenu creates a new
+ * contact template. A contact template is a contact item, which is used to
+ * initialize the field set for other contact items. The example application
+ * does not check if the contact template already exists.
+ *
+ * The following dialog appears in the display:
+ *
+ * \image html image6.gif
+ *
+ * CContactDatabase has the following methods for Contact Template handling:
+ *
+ * - TemplateId() gets the ID of the system template. This can then be read,
+ *   opened and committed like any other contact item.
+ * - CreateContactCardTemplateL() creates a contact card template and adds it to
+ *   the database.
+ * - SetPrefTemplateL() sets the database's preferred template.
+ * - PrefTemplateId() returns the ID of the database's preferred template, as
+ *   set by SetPrefTemplateL().
+ *
+ * There can be preset information in the contact template. All contact template
+ * information is copied to the new contact items.
+ *
+ * \b Example:
+ *
+ * A company name is added to the contact template. When the user adds a new
+ * contact to the contact database, a company name is automatically inserted to
+ * the new contact items.
+ *
+ * \image html image10.gif
+ *
+ * - Select <B>Edit</B>/<B>View</B> to edit or view a contact from the selected
+ *   contact database.
+ * - Select \b Create to create new contact to the selected contact database.
+ * - Select <B>Add to contact group</B> to add a selected contact to the contact
+ *   group. This changes the contact group items displayed. Selecting Groups
+ *   from the Show submenu shows contact group items.
+ * - Select \b Delete to delete a contact from the selected contact database. If
+ *   the default database is opened and Delete is selected from the Delete
+ *   submenu, the contacts are deleted permanently and the information is lost
+ *   from the phonebook.
+ *
+ * The following message appears in the display if a contact database is not opened:
+ *
+ * \image html image9.gif
+ *
+ * Selecting <B>Edit</B>/<B>View</B> from the \b Contacts submenu or clicking
+ * with the joystick (or similar pointing device) displays the following dialog.
+ * Selecting \b Options menu behaves the same way as if it is opened from the
+ * Phonebook application. Selecting \b Exit from the \b Options menu closes the
+ * contact database example application.
+ *
+ * \image html image12.gif
+ *
+ * Selecting \b Create from the \b Contacts submenu displays the following
+ * dialog:
+ *
+ * \image html image13.gif
+ *
+ * Selecting \b Delete from the \b Contacts submenu displays the following
+ * dialog displayed below. This shows how to delete a contact. The contact
+ * database can be opened or closed. If the contact database is opened, the
+ * application closes it before deleting.
+ *
+ * \image html image14.gif
+ *
+ * Selecting <B>Add to contact group</B> from the \b Contacts submenu displays
+ * the contact groups listbox. This example shows how to add a contact to a
+ * contact group.
+ *
+ * \image html image15.gif
+ *
+ * Select \b Contacts to display contacts from the selected contact database in
+ * the listbox.
+ *
+ * Select \b Groups to display contact groups from the selected contact database
+ * in the listbox.
+ *
+ * \image html image17.gif
+ *
+ * Select \b Create to create a new contact group. There can be more than one
+ * group with the same name in the contact database.
+ *
+ * Select \b Delete to delete selected contact group. This method does not
+ * delete contacts from the group.
+ *
+ * Selecting \b Create from the <B>Contact groups</B> submenu displays the
+ * following dialog:
+ *
+ * \image html image20.gif
+ *
+ * Selecting \b Delete from the <B>Contact groups</B> submenu displays the
+ * following dialog:
+ *
+ * \image html image21.gif
+ *
+ * Select \b Exit at any time to exit the application.
+ *
+ * This use case demonstrates how to create a contacts database, add a contact,
+ * a contact group and add a contact to the contact group. The Contacts example
+ * is opened for the first time.
+ *
+ * -# Create the new contact database.
+ * -# Select Create from the Contacts submenu to add the new contact.
+ * -# Write the contact information and press the Done button.
+ * -# Select Groups from the Show submenu.
+ * -# Select Create from the Contact groups submenu.
+ * -# Enter a name for the contact group.
+ * -# Select Contacts from the Show submenu.
+ * -# Select Add to contact group from the Contacts submenu.
+ * -# Select a group for the contact and press the Select button.
+ * -# The contact is added to the selected contact group.
+ *
+ *
+ * \section Arch_sec 3. Architecture
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, and Container classes.
+ *
+ *
+ * \section Design_sec 4. Design and Implementation
+ *
+ * This section describes the design and implementation of the Contact Database
+ * Example. First, the general design of the application is demonstrated, after
+ * which separate subsections, describe how the following tasks are
+ * implemented:
+ *
+ * - Handling a contact (creating, deleting, editing).
+ * - Creating a contact template.
+ * - Handling a contact group (creating, editing, deleting).
+ *
+ * The following UML diagram illustrates the general architecture of the
+ * contact API example application:
+ *
+ * \image html image23.gif
+ *
+ * In this example CContactDatabase, CPbkContactEngine and CPbkContactEditorDlg
+ * are the classes for contacts handling.
+ *
+ * \subsection Sub41 4.1 Handling a contact (creating, deleting, editing)
+ *
+ * Creating a contact involves the following steps:
+ *
+ * - Create a CPbkContactEngine object and connect it to the contact database.
+ * - Create an empty contact (CPbkContactItem) by using the
+ *   CPbkContactEngine::CreateEmptyContactL method.
+ * - Launch the CPbkContactEditorDlg dialog. Parameters of the NewL method
+ *   inform if a Contact Item is a new contact (not yet in the database).
+ *
+ * \subsection Sub411 4.1.1 Creating a new contact
+ *
+ * \image html image24.gif
+ *
+ * -# User selects Create from the Contacts submenu.
+ * -# AppUI calls AddNewContactDlg function.
+ * -# A new Phonebook engine object is created and a connection to the file is
+ *    established.
+ * -# The contacts dialog resources is loaded.
+ * -# A new empty contact is created.
+ * -# The Contacts dialog is launched.
+ * -# MObjectProvider is set. If the container contained other controls then it
+ *    would be necessary to call the container's method SetMopParent with the
+ *    AppUi as parameter.
+ * -# The Contacts dialog is shown.
+ *
+ * \subsection Sub412 4.1.2 Deleting a contact
+ *
+ * The following diagram illustrates the contact deletion sequence.
+ * 
+ * \image html image25.gif
+ *
+ * -# User selects Delete from the Contacts submenu. 
+ * -# AppUI calls the DeleteContactDlg function.
+ * -# Confirmation dialog is created.
+ * -# Confirmation dialog is opened with the following query: 'Delete selected
+ *    contact?’ If the command is cancelled, a jump out occurs.
+ * -# A new Phonebook engine object is created and connected to the contact
+ *    database.
+ * -# Contact is deleted from the contact database.
+ *
+ */

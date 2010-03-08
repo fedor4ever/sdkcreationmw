@@ -1,0 +1,34 @@
+<books xmlns="http://www.w3.org/2001/books20/book" xmlns:nv="http://www.w3.org/2002/01/novel">
+	<nv:book type="novel" id="1234567890">
+		<autor no="1.0">
+			<name>Jan Kowalski</name>
+			<adress>Cracow</adress>
+			<male/>
+		</autor>
+		<title>Test title</title>
+		<desc>Book about.....
+		two line content
+		</desc>
+	</nv:book>
+	<nv:book type="novel" id="1234567891">
+		<autor no="2.0">
+			<name>Anna Malinowska</name>
+			<adress>Helsinki</adress>
+			<phone>123 123 365 645</phone>
+			<female/>
+		</autor>
+		<title>Title 2</title>
+	</nv:book>
+	<book id="62346577890" xmlns="" xmlns:test="http://www.w3.org/2002/01/test">
+		<autor test:no="1.0">
+			<test:name>Jan Kowalski</test:name>
+			<adress>Cracow</adress>
+			<male/>
+		</autor>
+		<title>Test title 2</title>
+		<desc>Book about.....
+		second line
+		third line
+		</desc>
+	</book>
+</books>

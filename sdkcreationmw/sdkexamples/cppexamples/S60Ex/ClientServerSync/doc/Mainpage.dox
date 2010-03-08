@@ -1,0 +1,319 @@
+/*! \mainpage Synchronous Client/Server Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates the architecture of a simple client server
+ * application utilising synchronous calls to the server. The server
+ * supplies the current time to its clients.
+ *
+ * <HR>
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CServer2
+ * - CSession2
+ * - RMessagePtr2
+ * - RMessage2
+ * - RSessionBase
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example exists as a complete application, and has the standard
+ * Symbian OS application architecture employing the Application, Document,
+ * UI, and View classes. The example makes use of several other Symbian OS
+ * concepts which the reader should be aware of before attempting to understand
+ * this example. These are:
+ *
+ * - Inter process communication, in particular the following topics:
+ *   - Inter-process communication overview.
+ *   - Client/server overview.
+ *   - Using client/server.
+ *
+ * - Thread and process management, in particular the following topics:
+ *   - Thread and process management overview.
+ *   - Semaphores overview.
+ *   - Threads and processes overview.
+ *   - Using semaphores.
+ *
+ * <HR>
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * The application initially presents a default time to the user, as shown in
+ * the following screenshot.
+ *
+ * \image html initial_screen.jpg
+ *
+ * The Options menu presents the following choices:
+ *
+ * \image html options_menu.jpg
+ *
+ * - Select <b>Display Time</b> to request a time update from the server.
+ * - Select <b>Exit</b> to exit the application.
+ *
+ * On selecting <b>Display Time</b>, the display will be updated, to reflect the
+ * server supplied time, as shown in the following screenshot.
+ *
+ * \image html updated_time.jpg
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example exists as a complete application and has the standard
+ * Symbian OS application architecture employing the Application, Document,
+ * UI, and View classes. The reader should be familiar with this architecture
+ * before proceeding.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * The following component diagram illustrates the split of classes over the
+ * Client and Server components, and their inter-relationships.
+ *
+ * \image html client-server_components.jpg
+ *
+ * The client is a standard Symbian OS application, utilising an
+ * RSessionBase-derived object to communicate with the server.
+ * The server is implemented as an EXE.
+ *
+ * In the following description, an overview of this example's design is
+ * presented in the Design Overview section. This is followed by a description
+ * of two use case scenarios, where the user:
+ * - Invokes the application - here, the application establishes communication
+ * with the server, creating the server if necessary. This is achieved using
+ * the RTimeServerSession class, and is described in the Creating a session
+ * section.
+ * - Makes a server request - the application uses the established session to
+ * request data from the server. This is described in the Making a server
+ * request section.
+ *
+ * <HR>
+ *
+ * \subsection Sub31 3.1 Design overview
+ *
+ * The Symbian OS client/server architecture uses four key concepts:
+ * server (CServer2), session (CSession2 and RSessionBase), sub-session
+ * (RSubSessionBase), and message (RMessage2, and RMessagePtr2).
+ *
+ * Servers derive from CServer2, and are responsible for handling any requests
+ * from clients to establish connections.
+ *
+ * The session represents the channel of communication between client and
+ * server. Clients use a derivation of RSessionBase, and servers use a
+ * derivation from CSession2.
+ *
+ * The following class diagram shows the server-session associations for this
+ * example.
+ *
+ * \image html server-session_classes.png
+ *
+ * A client can create multiple sessions with a server. It is more
+ * resource-efficient to use sub-sessions, but this feature is not employed in
+ * this example, for simplicity.
+ *
+ * The RMessage2 class is the data structure passed between client and server.
+ * The client does not manipulate this directly; they use a TIpcArgs object to
+ * package the message information that is to be sent to the server.
+ * Server side sessions read from, and write to, this structure to receive and
+ * send data.
+ *
+ * <HR>
+ *
+ * \subsection Sub32 3.2 Creating a session
+ *
+ * To create a session, the client must establish a channel of communication
+ * with the server. The following diagram shows the sequence involved.
+ *
+ * \image html session_sequence_diagram.png
+ *
+ * -# Connect is called on construction of the document. This function is
+ * responsible for starting the server, if necessary, and establishing
+ * communication with the server.
+ * -# It is necessary to start the server if it is not already running.
+ * StartServer accomplishes this, and returns an appropriate error code on
+ * completion. This is described further in the Starting the server section.
+ * -# If the server was started successfully (or was already running), a
+ * session is created by calling the inherited CreateSession function. This
+ * takes three parameters. These are:
+ *    - Server name - this is used to search for an already existing server.
+ *    - Version - the lowest version of the server with which this client is
+ *    compatible.
+ *    - Message slots - the number of asynchronous message requests that the
+ *    client can have outstanding at any time. For a synchronous server, this
+ *    is zero.
+ * -# The CreateSession function calls corresponding function from kernel side.
+ * The actual name of this function is undocumented.
+ * -# The kernel layer calls the server's NewSessionL function. The exact
+ * mechanism is not documented but is included to show the complete sequence
+ * of events. NewSessionL verifies the client version, returning an error if
+ * it is not compatible with the server. It then creates a new
+ * CTimeServerSession to handle the client/server communication.
+ * -# The session is created using the standard Symbian OS two-phase
+ * construction.
+ * -# The new session is registered with the server, using IncrementSessions.
+ * The server keeps a count of the number of open sessions. The
+ * DecrementSessions function is called when a server session is destroyed, and
+ * terminates the server when there are no more open sessions.
+ *
+ * <hr>
+ *
+ * \subsection Sub321 3.2.1 Starting the server
+ *
+ * A server needs its own thread of execution. In this example, the client uses
+ * StartServer to check whether the server is running. If the server is not
+ * running, a thread is created and the server is started.
+ *
+ * The following diagram shows the sequence involved in creating the server.
+ *
+ * \image html start_server_sequence.png
+ *
+ * -# The StartServer function attempts to find an already running server. If
+ * it cannot, it will create a new server, waiting until the server has been
+ * created before returning.
+ * -# A new TFindServer object is created with the server name to search for.
+ * -# The call to TFindServer::Next returns KErrNone if the server was found.
+ * -# A new RSemaphore is created.
+ * -# The call to RSemaphore::CreateGlobal is passed the semaphore name to use.
+ * The semaphore needs to be global since the client and server run in separate
+ * processes (on the target). The server uses this semaphore to tell the client
+ * when the server construction is complete.
+ * -# CreateServerProcess will create and run the server. This is described in
+ * the Creating a process for the server.
+ * -# The client now waits for the server to initialise and become ready to
+ * accept requests. It accomplishes this by calling RSemaphore::Wait.
+ * -# When the server issues a corresponding RSemaphore::Signal, the client
+ * will continue. The semaphore is now closed using RSemaphore::Close.
+ *
+ * <HR>
+ *
+ * \subsection Sub322 3.2.2 Creating a process for the server
+ *
+ * The sequence involved in creating a process for the server is shown below.
+ * On emulator it creates a thread, because server must run as a thread in the
+ * emulator's process, and a process in target device.
+ *
+ * \image html server_process_creating.png
+ *
+ * -# The CreateServerProcess function is responsible for creating a process
+ * for the server to run in, then starting the server.
+ * -# A handle for manipulating the server is created using RProcess::Create.
+ * -# The RProcess::Create is supplied with three parameters. These are:
+ *    - Server file name - the name of the server, including the path, to be
+ *    executed.
+ *    - Parameters - any data to be passed to the server (in this case, no data
+ *    is passed).
+ *    - UID - the UID of the server executable.
+ * -# The process has now been created by the kernel. The process is suspended
+ * until a call to RProcess::Resume is made.
+ * -# The process is signalled to start by calling RProcess::Resume.
+ * -# Kernel's DProcess::Resume() is called.
+ * -# The E32Main is called, which is the EXE entry point.
+ * -# The E32Main call starts processing at the
+ * CTimeServer::ThreadFunction. This is described in the Server-side
+ * initialisation section.
+ * -# The handle to the server is no longer required, and is closed. Close must
+ * be called here, otherwise this process would have an open reference to the
+ * server's process. This would prevent the process being released after the
+ * server terminates.
+ *
+ * <HR>
+ *
+ * \subsection Sub323 3.2.3 Server-side initialisation
+ *
+ * An EXE component implements the E32Main function, which provides the API
+ * for the operating system to start the executable. This function returns the
+ * address of the ThreadFunction function to be called.
+ *
+ * The following diagram shows the initialisation the server undergoes on
+ * startup.
+ *
+ * \image html server_startup.png
+ *
+ * -# Kernel calls EXE entrypoint E32Main().
+ * -# CTimeServer::ThreadFunction is responsible for setting up any services
+ * that this thread/process requires, as well as creating an instance of the
+ * CTimeServer class to service requests from clients. It is important to note
+ * that ThreadFunction cannot leave. Any errors that occur need to be handled
+ * or must raise a panic, as there is no way to pass error information back
+ * to the calling thread.
+ * -# A cleanup stack is constructed and initialised. A thread/process does
+ * not have a cleanup stack by default, so one has to be created for it.
+ * -# CTimeServer::ThreadFunctionL is called within a TRAP to do the remainder
+ * of the construction that can leave. Following steps 5 -14 are executed
+ * inside of this function.
+ * -# An active scheduler is required, to handle active objects. It is
+ * created
+ * -# The active scheduler is installed.
+ * -# An anonymous instance of CTimeServer is created.
+ * -# As all the work of the server is activated via the active scheduler,
+ * it is not necessary to refer to server. The ConstructL calls CServer::StartL.
+ * -# The CServer::StartL call adds the server to the active scheduler and
+ * signals an active object request.
+ * -# Semaphore is created.
+ * -# Handle to the global semaphore is created.
+ * -# The global semaphore is signalled. This indicates that the server has now
+ * been constructed and is ready to use. The client will return from its
+ * RSemaphore::Wait the next time that it is scheduled by the run time system.
+ * -# Semaphore is closed.
+ * -# The active scheduler is started by calling CActiveScheduler::Start. This
+ * function only returns when CActiveScheduler::Stop() is called, which should
+ * occur when the final client is closed. Note that an active scheduler must
+ * have a pending active object before the call to CActiveScheduler::Start()
+ * is made. This was performed in steps 7 - 9.
+ *
+ * <HR>
+ *
+ * \subsection Sub33 3.3 Making a server request
+ *
+ * The RMessage2 class is used to transfer information between the client and
+ * the server.
+ *
+ * An instance of an RMessage2 object is automatically created for the session
+ * when the client calls the RSessionBase::SendReceive. This function can take
+ * a parameter that is a reference to TIpcArgs object, which can contain up
+ * to four 32-bit data arguments to be passed to server.
+ *
+ * The sequence involved in making a server request is shown below.
+ *
+ * \image html server_request.png
+ *
+ * -# RequestTime is called by the application in response to the user
+ * selecting the Display Time option. A reference to a TTime object is passed
+ * into this function. A descriptor is now created, representing this TTime
+ * object. This descriptor's address is added into TIpcArgs object,
+ * which is passed to the inherited SendReceive function.
+ * -# The call to SendReceive results in the client thread being suspended.
+ * -# SendReceive calls undocumented function from kernel side.
+ * -#  The kernel calls the ServiceL function of the associated server session
+ * and passes the appropriate RMessage2 object. This object specifies the
+ * operation to be performed by the server and also the message parameters.
+ * It also allows the server to indicate to the client when the request has
+ * completed, and raise a panic upon the client.
+ * -# ServiceL checks the requested service using RMessage2::Function.
+ * -# If requested service is ETimeServRequestTime it calls RequestTimeL,
+ * otherwise it raises a panic upon the client.
+ * -# RequestTimeL calculates the current time and creates a new descriptor
+ * representing it. RMessage2::WriteL is now called with the descriptor
+ * as parameter. The first parameter of the WriteL function is index value
+ * identifying the argument. This value must be 0 because the client's descriptor
+ * is the first argument. This function call causes the time to be written to
+ * the client's address space.
+ *
+ * <HR>
+ *
+ * \subsection Sub34 3.4 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in both mmp-files as CAPABILITY NONE.
+ *
+ */

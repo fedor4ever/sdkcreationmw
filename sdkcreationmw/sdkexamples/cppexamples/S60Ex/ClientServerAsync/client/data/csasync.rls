@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+// LOCALISATION STRINGS
+
+//d:Command in options list.
+//d:Start clock.
+rls_string STRING_r_csas_submenu_start "Start Clock"
+
+//d:Command in options list.
+//d:Stop clock.
+rls_string STRING_r_csas_submenu_stop "Stop Clock"
+
+//d:Command in options list.
+//d:Exit the program.
+rls_string STRING_r_csas_submenu_exit "Exit"
+
+//d:Caption string for app.
+rls_string STRING_r_csas_caption_string "Asynchronous Client/Server"
+
+//d:Short caption string for app.
+rls_string STRING_r_csas_short_caption_string "CSAsync"
+
+
+// End of File

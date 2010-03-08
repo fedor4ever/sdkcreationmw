@@ -1,0 +1,64 @@
+/*! \mainpage OpenGL ES Environmental Mapping Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates one possible way of implementing environmental mapping.
+ *  The example consists of the same two models as used in SimpleLighting example which are
+ *  environmental mapped. The user can rotate both objects with the joystick.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  Environmental mapping in this example is implemented by using averaged vertex normals (n-vectors) as texture input
+ *  coordinates. An average vertex normal is calculated by averaging every surface normal that is connected to that
+ *  particular vertex. The texture coordinates are actually normals, 4D coordinates, where the last value is 1.
+ *  These coordinate values are given to texture matrix, which rotates them in the same way as the model view matrix
+ *  does. Output from the texture matrix is also a 4D vector, where only the first two components are used as (u,v)
+ *  texture coordinates. Since the first three coordinates form a unit vector, also the norm of (u,v) is at most 1,
+ *  leading to the fact that only a circular area of the texture is used as an environmental map.
+ *
+ *  Normally the input texture coordinates would be the coordinates of the reflected ray with respect to the object
+ *  vertex normal. This means that the method implemented in this example gives only an approximation of the
+ *  reflectance. An advantage is that the averaged normals can be calculated apriori.
+ *  See the CalculateTextureCoordinates(…) method in file EnvMapping.cpp for additional comments.
+ *
+ *  The restrictions of implementing the environmental mapping in this way are that we can use only one environmental
+ *  texture at a time, and only the rotations of the camera and the object are allowed, that is, neither the camera
+ *  nor object may move around. Both the rotations of the camera and the object are also multiplied within the current
+ *  texture matrix. See methods DrawDuck(…) and DrawHead(…) for additional information and comments on setting the texture matrix.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

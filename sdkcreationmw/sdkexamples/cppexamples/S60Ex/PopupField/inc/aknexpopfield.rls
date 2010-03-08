@@ -1,0 +1,229 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+rls_string STRING_r_expp_caption_string "Pop-up Field"
+
+// MenuBar
+rls_string STRING_r_expp_menubar               "Options"
+rls_string STRING_r_expp_menu_state            "Popup field state"
+rls_string STRING_r_expp_menu_pop_list         "Popup selection"
+rls_string STRING_r_expp_menu_select           "Select item"
+rls_string STRING_r_expp_menu_softkey          "Softkey"
+rls_string STRING_r_expp_menu_moving           "Moving"
+rls_string STRING_r_expp_menu_item             "Item of selection"
+rls_string STRING_r_expp_menu_own_val          "Enter own value"
+rls_string STRING_r_expp_menu_data             "Data type"
+rls_string STRING_r_expp_menu_graphic          "With graphic"
+rls_string STRING_r_expp_menu_focus            "Focus color"
+rls_string STRING_r_expp_menu_page             "Focus in pages"
+rls_string STRING_r_expp_menu_fldtext          "Field text"
+rls_string STRING_r_expp_menu_attribset        "Attrib Set"
+rls_string STRING_r_expp_menu_exit             "Exit"
+
+// Sub menubar of "Popup field state" menu
+rls_string STRING_r_expp_menu_out01            "view or edit state"
+rls_string STRING_r_expp_menu_out02            "Select item to edit"
+rls_string STRING_r_expp_menu_out03            "edit state"
+
+// Sub menubar of "Popup selection list" menu
+rls_string STRING_r_expp_menu_out04            "Select item to edit"
+rls_string STRING_r_expp_menu_out05            "In view state, not available to select"
+rls_string STRING_r_expp_menu_out06            "In edit state, accessing select list"
+rls_string STRING_r_expp_menu_out07            "Expanded selection list"
+rls_string STRING_r_expp_menu_out08            "Highlighted item"
+
+// Sub menubar of "Select item" menu
+rls_string STRING_r_expp_menu_out09            "Optionally set up"
+rls_string STRING_r_expp_menu_out10            "Selected value"
+rls_string STRING_r_expp_menu_out11            "List shrinking"
+rls_string STRING_r_expp_menu_out12            "Use right soft key."
+
+// Sub menubar of "Softkey" menu
+rls_string STRING_r_expp_menu_out13            "Defined logical texts for softkeys"
+
+// Sub menubar of "Moving" menu
+rls_string STRING_r_expp_menu_out14            "Movable up/down"
+rls_string STRING_r_expp_menu_out15            "Select or Exit"
+rls_string STRING_r_expp_menu_out16            "Focus moving in edit state"
+rls_string STRING_r_expp_menu_out17            "Focus moving in view state"
+rls_string STRING_r_expp_menu_out18            "Scrolling selection list"
+
+// Sub menubar of "Item of selection list" menu
+rls_string STRING_r_expp_menu_out19            "Item of selection list1"
+rls_string STRING_r_expp_menu_out20            "Item of selection list2"
+
+// Sub menubar of "Enter own value" menu
+rls_string STRING_r_expp_menu_out21            "Enter own value1"
+rls_string STRING_r_expp_menu_out22            "Enter own value2"
+rls_string STRING_r_expp_menu_out23            "Enter own value3"
+rls_string STRING_r_expp_menu_out24            "Enter own value4"
+
+// Sub menubar of "Data type" menu
+rls_string STRING_r_expp_menu_out25            "Data type1"
+rls_string STRING_r_expp_menu_out26            "Data type2"
+rls_string STRING_r_expp_menu_out27            "Data type3"
+
+// Sub menubar of "With graphic" menu
+rls_string STRING_r_expp_menu_out28            "With graphic1"
+rls_string STRING_r_expp_menu_out29            "With graphic2"
+
+// Sub menubar of "Focus color" menu
+rls_string STRING_r_expp_menu_out30            "Focus color 1"
+rls_string STRING_r_expp_menu_out31            "Focus color 2"
+
+// Sub menubar of "Focus in pages" menu
+rls_string STRING_r_expp_menu_out32            "Focus in pages"
+
+// Sub menubar of "Field Text" menu
+rls_string STRING_r_expp_menu_out33            "Field text"
+
+// Sub menubar of "Attrib Set" menu
+rls_string STRING_r_expp_menu_out34            "Attrib set"
+
+// Extra manu item for AttribSetDialog
+rls_string STRING_r_expp_menu_edit_entry       "Edit entry"
+
+// Messages
+rls_string STRING_r_expp_label_title           "Pop-up Field\nExample application"
+rls_string STRING_r_expp_operation             "Press right softkey to\ndisplay next view"
+
+// Label field text
+rls_string STRING_r_expp_label_pop00           "pop0"
+rls_string STRING_r_expp_label_pop01           "pop1"
+rls_string STRING_r_expp_label_pop02           "pop2"
+rls_string STRING_r_expp_label_pop03           "pop3"
+rls_string STRING_r_expp_label_pop04           "pop4"
+rls_string STRING_r_expp_label_pop05           "pop5"
+rls_string STRING_r_expp_label_pop06           "pop6"
+rls_string STRING_r_expp_label_pop07           "pop7"
+rls_string STRING_r_expp_label_pop08           "pop8"
+rls_string STRING_r_expp_label_pop09           "pop9"
+rls_string STRING_r_expp_label_pop10           "pop10"
+rls_string STRING_r_expp_label_pop11           "pop11"
+rls_string STRING_r_expp_label_pop12           "pop12"
+rls_string STRING_r_expp_label_txt             "txt"
+rls_string STRING_r_expp_label_txt01           "txt1"
+rls_string STRING_r_expp_label_txt02           "txt2"
+rls_string STRING_r_expp_label_txt03           "txt3"
+rls_string STRING_r_expp_label_txt04           "txt4"
+rls_string STRING_r_expp_label_txt05           "txt5"
+rls_string STRING_r_expp_label_txt06           "txt6"
+rls_string STRING_r_expp_label_num             "num"
+rls_string STRING_r_expp_label_num01           "num1"
+rls_string STRING_r_expp_label_num02           "num2"
+rls_string STRING_r_expp_label_num03           "num3"
+rls_string STRING_r_expp_label_num04           "num4"
+rls_string STRING_r_expp_label_num05           "num5"
+rls_string STRING_r_expp_label_num06           "num6"
+rls_string STRING_r_expp_label_phon            "phon"
+rls_string STRING_r_expp_label_phon01          "phon1"
+rls_string STRING_r_expp_label_phon02          "phon2"
+rls_string STRING_r_expp_label_phon03          "phon3"
+rls_string STRING_r_expp_label_phon04          "phon4"
+rls_string STRING_r_expp_label_phon05          "phon5"
+rls_string STRING_r_expp_label_phon06          "phon6"
+rls_string STRING_r_expp_label_time            "time"
+rls_string STRING_r_expp_label_time01          "time1"
+rls_string STRING_r_expp_label_time02          "time2"
+rls_string STRING_r_expp_label_time03          "time3"
+rls_string STRING_r_expp_label_time04          "time4"
+rls_string STRING_r_expp_label_time05          "time5"
+rls_string STRING_r_expp_label_time06          "time6"
+rls_string STRING_r_expp_label_date            "date"
+rls_string STRING_r_expp_label_date01          "date1"
+rls_string STRING_r_expp_label_date02          "date2"
+rls_string STRING_r_expp_label_date03          "date3"
+rls_string STRING_r_expp_label_date04          "date4"
+rls_string STRING_r_expp_label_date05          "date5"
+rls_string STRING_r_expp_label_date06          "date6"
+rls_string STRING_r_expp_label_dura            "dura"
+rls_string STRING_r_expp_label_dura01          "dura1"
+rls_string STRING_r_expp_label_dura02          "dura2"
+rls_string STRING_r_expp_label_dura03          "dura3"
+rls_string STRING_r_expp_label_dura04          "dura4"
+rls_string STRING_r_expp_label_dura05          "dura5"
+rls_string STRING_r_expp_label_dura06          "dura6"
+rls_string STRING_r_expp_label_fldtext01       "fldtext01"
+rls_string STRING_r_expp_label_fldtext02       "fldtext02"
+rls_string STRING_r_expp_label_attribset01     "attribset01"
+rls_string STRING_r_expp_label_attribset02     "attribset02"
+
+// Text in popfield selection list
+rls_string STRING_r_expp_list_text01           "Select item 1"
+rls_string STRING_r_expp_list_text02           "Select item 2"
+rls_string STRING_r_expp_list_text03           "Select item 3"
+rls_string STRING_r_expp_list_text04           "Select item 4"
+rls_string STRING_r_expp_list_text05           "Select item 5"
+rls_string STRING_r_expp_list_text06           "Select item 6"
+rls_string STRING_r_expp_list_text07           "Select item 7"
+rls_string STRING_r_expp_list_text08           "Select item 8"
+rls_string STRING_r_expp_list_text09           "Select item 9"
+rls_string STRING_r_expp_list_text10           "Select item 10"
+rls_string STRING_r_expp_list_text11           "Select item 11"
+rls_string STRING_r_expp_list_text12           "Select item 12"
+rls_string STRING_r_expp_list_other            "Other..."
+
+// Phone array text in popfield selection list
+rls_string STRING_r_expp_list_phone01          "11 1111 111111"
+rls_string STRING_r_expp_list_phone02          "22 2222 222222"
+rls_string STRING_r_expp_list_phone03          "33 3333 333333"
+rls_string STRING_r_expp_list_phone04          "44 4444 444444"
+rls_string STRING_r_expp_list_phone05          "55 5555 555555"
+rls_string STRING_r_expp_list_phone06          "66 6666 666666"
+
+// Time array text in popfield selection list
+rls_string STRING_r_expp_time_text             "000000."
+
+// Date array text in popfield selection list
+rls_string STRING_r_expp_date_text             "20000000:"
+
+// Navipane page label text
+rls_string STRING_r_expp_label_page1           "text"
+rls_string STRING_r_expp_label_page2           "num"
+rls_string STRING_r_expp_label_page3           "phon"
+rls_string STRING_r_expp_label_page4           "time"
+rls_string STRING_r_expp_label_page5           "date"
+rls_string STRING_r_expp_label_page6           "dura"
+
+// Each format string text
+rls_string STRING_r_expp_num_format            "%d"
+rls_string STRING_r_expp_phon_format           "%d"
+rls_string STRING_r_expp_time_format           "%-B%:0%J%:1%T%:2%S%:3%+B"
+rls_string STRING_r_expp_date_format           "%D%M%Y%/0%1%/1%2%/2%3%/3"
+rls_string STRING_r_expp_dura_format           "%02d:%02d'%02d\""
+
+// Hint text
+rls_string STRING_r_expp_hint_text             "PopField"
+rls_string STRING_r_expp_hint_text2            "PopupFieldText"
+
+// Data query prompt
+rls_string STRING_r_expp_query_prompt          "Enter other item"
+
+// For Cba
+rls_string STRING_r_expp_cba_next_options      "Options"
+rls_string STRING_r_expp_cba_next              "Next"
+
+// Extra strings for AttribSet Dialog
+rls_string STRING_r_expp_empty_text_replacement        "An empty value."
+rls_string STRING_r_expp_other_text_replacement        "Another value."
+rls_string STRING_r_expp_empty_list_note               "This list is empty."
+
+// End of File

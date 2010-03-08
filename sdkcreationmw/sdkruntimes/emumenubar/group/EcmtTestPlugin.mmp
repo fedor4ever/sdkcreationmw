@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for test plugin
+*
+*/
+
+
+// These headers define the UID values
+#include "..\core\inc\EcmtUids.h"
+#include "..\plugins\test\EcmtTestPluginUids.h"
+
+TARGET          TestPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KTESTPLUGIN_DLL_UID
+CAPABILITY			CAP_ECOM_PLUGIN
+VENDORID				VID_DEFAULT
+
+SOURCEPATH			..\plugins\test
+SOURCE					EcmtTestPlugin.cpp
+
+USERINCLUDE			.
+USERINCLUDE     ..\core\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY         euser.lib
+
+START RESOURCE KTESTPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+    TARGET TestPlugin.rsc
+#endif
+END

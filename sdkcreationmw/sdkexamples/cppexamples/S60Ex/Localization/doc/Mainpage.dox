@@ -1,0 +1,92 @@
+/*! \mainpage Localization
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates how to localize an application to adapt to the
+ * selected phone language.
+ * The application has five sets of localized strings (English, German, Chinese,
+ * Japanese, and Thai) for the application name, labels, text, and image.
+ * The application also presents number, currency, date, and time localization,
+ * in which the TLocale method is used to localize them.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - TLocale
+ * - CFbsBitmap
+ * - StringLoader
+ * - TBuf, TReal, TRealFormat, and TTime
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * It is recommended that reader is familiarize with following Symbian concepts
+ * - "Internalization and Localization" and usage of the same in S60 platform.
+ * Refer the following document for more information.
+ * <A HREF="http://www.forum.nokia.com/info/sw.nokia.com/id/1b500b95-06f8-4272-85db-4f4d2c70a83e/S60_Platform_Internationalization_and_Localization_Guide_v1_0_en.pdf.html">Internationalization and Localization Guide</A>
+ * - Writing the resource file for Different Languages
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ *  Localization follows traditional Symbian OS Control-based architecture.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The program capabilities are defined in the localization_s60_3rd_ed.mmp files: CAPABILITY NONE
+ *
+ * \subsection Sub32 3.2 ScalableUI
+ *
+ * The program takes screen parameters in the start of the application and
+ * works with all screen modes.
+ * The program supports changing the screen layout while the program is
+ * running. Note that this support must be coded in the application and this
+ * code resides in the CLocalizationAppView::SizeChanged() method.
+ *
+ * \subsection Sub33 3.3 Localization
+ *
+ * Localization application is localized for English, German, Chinese,
+ * Japanese, and Thai. The localization.loc includes language
+ * specific resource files, which all each define the same resource strings in
+ * specific language.
+ *
+ * The Localization example has as five language specific resource file, in
+ * each the Language specific translated  * strings for "Number", "currency",
+ * "Date", "Time", and "Text" are present along with the national flag image
+ * file of corresponding country.
+ *
+ * When localizing to languages, which do not use Western alphabets,
+ * such as Chinese or Japanese, a couple of additional steps needs to be taken.
+ * As the language cannot be written in ASCII, the language-specific
+ * resource file(.l31, .l32, and .l33) has to
+ * - be written in UTF-8 format, and
+ * - contain a line CHARACTER_SET UTF8.
+ *
+ * This application depicts "Run time Localization", which means Several
+ * localized resources are installed. By default, the device language and
+ * locale is used. The language is chosen based on the priorities of included
+ * language resource and language supported by the device.
+ *
+ * \subsection Sub34 3.4 API TLocale
+ *
+ * The beauty of Localization may go waste without usage of API TLocale
+ * Date, Time, and Currency in this example are formatted according to the
+ * locale settings with the help of TLocal API.
+ *
+ * \subsection Sub35 3.5 MMP files
+ *
+ * The Localization example has two mmp files, in order to support the use of
+ * Localization example in both S60 2.X and S60 3.X versions of S60 platform.
+ * - The MMP file for S60 2.x is: localization_s60_2nd_ed.mmp
+ * - The MMP file for S60 3.x is: localization_s60_3rd_ed.mmp
+ *
+ */

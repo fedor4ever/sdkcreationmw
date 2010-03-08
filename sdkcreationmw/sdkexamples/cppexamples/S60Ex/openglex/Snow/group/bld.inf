@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+PRJ_PLATFORMS
+DEFAULT ARMV5_ABIV2
+
+PRJ_EXPORTS
+..\..\pictures\cloud.jpg        ..\release\wins\udeb\z\private\A000021E\cloud.jpg
+..\..\pictures\snow.jpg         ..\release\wins\udeb\z\private\A000021E\snow.jpg
+..\..\pictures\snowy_tree.gif   ..\release\wins\udeb\z\private\A000021E\snowy_tree.gif
+..\..\pictures\snowy_ground.jpg ..\release\wins\udeb\z\private\A000021E\snowy_ground.jpg
+
+..\..\pictures\cloud.jpg        ..\release\winscw\udeb\z\private\A000021E\cloud.jpg
+..\..\pictures\snow.jpg         ..\release\winscw\udeb\z\private\A000021E\snow.jpg
+..\..\pictures\snowy_tree.gif   ..\release\winscw\udeb\z\private\A000021E\snowy_tree.gif
+..\..\pictures\snowy_ground.jpg ..\release\winscw\udeb\z\private\A000021E\snowy_ground.jpg
+
+PRJ_MMPFILES
+gnumakefile icons_scalable_dc.mk
+Snow.mmp

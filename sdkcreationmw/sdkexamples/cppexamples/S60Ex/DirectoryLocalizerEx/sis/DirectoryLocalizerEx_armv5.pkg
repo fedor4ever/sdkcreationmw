@@ -1,0 +1,38 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+; DirectoryLocalizerEx_armv5.pkg
+;Languages
+&EN
+
+;Header
+#{"DirectoryLocalizerEx"},(0xA0000277),1,0,0
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.2
+[0x102752AE], 0, 0, 0, {"Series60ProductID"}
+
+; Files to install
+"..\..\..\epoc32\release\armv5\urel\DirectoryLocalizerEx.exe"                 -"!:\sys\bin\DirectoryLocalizerEx.exe"
+"..\..\..\epoc32\data\z\resource\apps\DirectoryLocalizerEx.RSC"               -"!:\resource\apps\DirectoryLocalizerEx.RSC"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\DirectoryLocalizerEx_reg.RSC"   -"!:\private\10003a3f\import\apps\DirectoryLocalizerEx_reg.RSC"
+
+;required for application to be covered by backup/restore facility
+"backup_registration.xml"  -"!:\private\A0000277\backup_registration.xml"

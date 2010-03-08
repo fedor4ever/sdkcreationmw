@@ -1,0 +1,116 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    SRAP // 4 letter ID
+
+#include <eikon.rh>
+#include "SatelliteReference.rls"
+#include "SatelliteReference.hrh"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="Satellite Reference App"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys=r_satellitereference_hotkeys;
+    menubar=r_satellitereference_menubar;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;     
+    }
+
+//----------------------------------------------------
+//
+//    r_satellitereference_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_satellitereference_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_satellitereference_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_satellitereference_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_satellitereference_menu; txt="File"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_satellitereference_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_satellitereference_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=ESatelliteInfoCmd; txt=STRING_r_sateref_Satellite_status; },
+        MENU_ITEM { command=EAknCmdExit; txt=STRING_r_satref_exit; }
+        };
+    }
+//----------------------------------------------------
+//
+//    r_satellitereference_localisable_app_info
+//
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_satellitereference_localisable_app_info
+    {
+    short_caption = "SatRef";
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = "SatelliteRef";
+        number_of_icons = 1;
+        icon_file =
+                "\\resource\\apps\\lsatviewrefapp_aif.mif";
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_satref_service_rule_name
+//    Logical service rule name
+//
+//----------------------------------------------------
+//
+RESOURCE TBUF r_satref_service_rule_name
+    {
+    buf = STRING_r_satref_logical_rule_name;
+    }
+
+
+
+

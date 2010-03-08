@@ -1,0 +1,420 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines literal strings for a specific language
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+//d:Defines the application title
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_title                 "LmRefApp"
+
+//d:Defines the landmarks view title
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_view                  "Landmarks"
+
+//d:Defines the categories view title
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_categories_view       "Categories"
+
+//d:Describes the command open landmark
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_open_item             "Open"
+
+//d:Describes the command edit landmark
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_edit_item             "Edit"
+
+//d:Describes the command to save landmark
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_save_item             "Save"
+
+//d:Describes the command for creating a new category
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_new_cat_item          "New Category"
+
+//d:Describes the command for creating a new landmark
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_new_lm_item           "New landmark"
+
+//d:Describes the sub command for creating a landmark based on current
+//d:location
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_add_current_item      "Current location"
+
+//d:Describes the sub command for creating a landmark based on current
+//d:location
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_edit_cat_item         "Edit categories"
+
+//d:Decribes the menu item on the edit landmark menu for fetching the current
+//d:location
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_current_loc           "Fetch current location"
+
+//d:Describes the sub command for creating an empty landmark
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_add_blank_item        "Blank"
+
+//d:Describes the command for renaming category
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_rename_item           "Rename"
+
+//d:Describes the command for deleting an item
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_delete_item           "Delete"
+
+//d:Describes the command for exiting the application
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_exit_item             "Exit"
+
+//d:Defines the error when editing a landmark and no data supplied
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_empty_landmark_error  "Enter landmark data"
+
+//d:Defines the error when editing a landmark and the supplied latitude
+//d:is illegal. (Longitude is undefined)
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_latitude_error        "Illegal latitude"
+
+//d:Defines the error when editing a landmark and the supplied longitude
+//d:is illegal. (Latitude is undefined)
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_longitude_error       "Illegal longitude"
+
+//d:Defines the error when editing a landmark and the supplied altitude
+//d:is illegal.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_altitude_error        "Illegal altitude"
+
+//d:Defines the error when editing a landmark and the horizontal accuracy
+//d:is illegal.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_hor_acc_error         "Illegal horizontal accuracy"
+
+//d:Defines the error when editing a landmark and the vertical accuracy
+//d:is illegal.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_ver_acc_error         "Illegal vertical accuracy"
+
+//d:Defines the error when editing a landmark and the coverage radius
+//d:is illegal.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_radius_error          "Illegal coverage radius"
+
+//d:Defines the error when editing a landmark and either the latitude or the
+//d:longitude are undefined.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_lat_long_error        "Latitude and longitude must be defined together"
+
+//d:Defines the error when editing a landmark and the supplied altitude
+//d:is legal but no latitude or longitude is defined.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_alt_lat_long_error    "Setting altitude requires that latitude and longitude are defined"
+
+//d:Defines the error when editing a landmark and the supplied horizontal
+//d:accuracy is legal but no latitude or longitude is defined.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_hacc_lat_long_error   "Setting horizontal accuracy requires that latitude and longitude are defined"
+
+//d:Defines the error when editing a landmark and the supplied vertical
+//d:accuracy is legal but no altitude is defined.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_vacc_alt_error        "Setting vertical accuracy requires that altitude is defined"
+
+//d:Decribes the name field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_name                  "Name"
+
+//d:Decribes the description field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_description           "Description"
+
+//d:Decribes the categories field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_categories            "Categories"
+
+//d:Decribes the latitude field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_latitude              "Latitude"
+
+//d:Decribes the longitude field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_longitude             "Longitude"
+
+//d:Decribes the altitude field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_altitude              "Altitude"
+
+//d:Decribes the horizontal accuracy field of a landmark in the edit landmark
+//d:dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_hor_acc               "Horizontal accuracy"
+
+//d:Decribes the vertical accuracy field of a landmark in the edit landmark
+//d:dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_ver_acc               "Vertical accuracy"
+
+//d:Decribes the radius field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_radius                "Coverage Radius"
+
+//d:Decribes the street field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_street                "Street"
+
+//d:Decribes the postal code field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_postal                "Postal/ZIP"
+
+//d:Decribes the city field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_city                  "City"
+
+//d:Decribes the country field of a landmark in the edit landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_country               "Country"
+
+//d:Decribes the name field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_name_short            "name"
+
+//d:Decribes the description field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_description_short     "info"
+
+//d:Decribes the category field of a landmark in the view landmark dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_category_short        "category"
+
+//d:Decribes the latitude field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_latitude_short        "latitude"
+
+//d:Decribes the longitude field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_longitude_short       "longitude"
+
+//d:Decribes the altitude field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_altitude_short        "altitude"
+
+//d:Decribes the horizontal accuracy field of a landmark in the edit landmark
+//d:dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_hor_acc_short         "hor.acc."
+
+//d:Decribes the vertical accuracy field of a landmark in the edit landmark
+//d:dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_ver_acc_short         "vert.acc."
+
+//d:Decribes the radius field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_radius_short          "coverage"
+
+//d:Decribes the street field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_street_short          "street"
+
+//d:Decribes the postal code field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_postal_short          "postal"
+
+//d:Decribes the city field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_city_short            "city"
+
+//d:Decribes the country field of a landmark in the landmark info view.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_country_short         "country"
+
+//d:Describes what is done when the default landmarks database is initialized.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_initializing          "Initializing database..."
+
+//d:Describes what is done when current location is retrieved.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_acquiring_loc         "Acquiring location..."
+
+//d:Query that asks the user if it is OK to delete a specific category.
+//d:%S is the name of the current category to be deleted.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_delete_category       "Delete category \"%S\""
+
+//d:The title of the rename category dialog.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_new_category          "New Category:"
+
+//d:Description of the category name editor
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_category_name         "Category name:"
+
+//d:Definition of the undefined category choice.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_undefined_category    "None"
+
+//d:Query that asks the user if it is OK to delete a specific landmark.
+//d:%S is the name of the current landmark to be deleted.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_delete_landmark       "Delete landmark \"%S\""
+
+//d:Title of the dialog used for assigning categories to a landmark.
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_edit_cat_title        "Categories"
+
+//d:Definition of a the message displayed when acquiring location fails.
+//d:%d represents error code
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_acquiring_loc_error   "Acquiring location failed (reason: %d)"
+
+//d:Edit button title
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_edit                   "Edit"
+
+//d:Back button title
+//l:
+//w:
+//
+rls_string STRING_r_lmrefapp_back                   "Back"
+
+// End of File
+

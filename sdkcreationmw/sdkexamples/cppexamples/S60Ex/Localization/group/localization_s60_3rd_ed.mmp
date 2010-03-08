@@ -1,0 +1,67 @@
+/*
+* Copyright (c) 2005 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+
+TARGET            Localization.exe
+TARGETTYPE        exe
+UID		  		  0x0 0xE0005B00
+SECUREID		      0xE0005B00
+VENDORID	  	  0
+CAPABILITY	  	  None
+
+EPOCSTACKSIZE	  0x5000
+
+USERINCLUDE       ..\inc
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+SOURCEPATH        ..\src
+SOURCE            Localization.cpp
+SOURCE            LocalizationApplication.cpp
+SOURCE            LocalizationAppView.cpp
+SOURCE            LocalizationAppUi.cpp
+SOURCE            LocalizationDocument.cpp
+
+SOURCEPATH        ..\data
+
+START RESOURCE    Localization.rss
+HEADER
+TARGETPATH        resource\apps
+END //RESOURCE
+
+START RESOURCE    Localization_reg.rss
+TARGETPATH 	  	  \private\10003a3f\apps
+END //RESOURCE
+
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib
+LIBRARY           eikcore.lib
+LIBRARY           avkon.lib
+LIBRARY           commonengine.lib
+LIBRARY		  	  efsrv.lib
+LIBRARY           estor.lib
+LIBRARY           bafl.lib
+LIBRARY           fbscli.lib
+LIBRARY           ws32.lib
+
+LANG SC 01 03 31 32 33       // STD ENGLISH, ENGLISH, GERMAN, CHINESE, JAPANESE, and THAI
+
+// End of File

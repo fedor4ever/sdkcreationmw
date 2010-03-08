@@ -1,0 +1,15 @@
+;
+; $Id: wsocku.def,v 1.5 2005/11/30 07:40:42 slava Exp $
+;
+; NOTE: some of these functions (specifically, WsockQueryConfiguration and
+; WsockSetConfiguration) are accessed by ordinal from Wsock ECMT plugin.
+; Don't change them! Likewise, the prototypes of these functions must 
+; not be changed without making appropriate changes to the ECMT plugin.
+;
+EXPORTS
+    WsockCreateProtocolFamily    @ 1 NONAME
+    WsockCreateAgentFactory      @ 2 NONAME
+    WsockCreateInterfaceFactory  @ 3 NONAME
+    WsockQueryConfiguration      @ 4 NONAME
+    WsockSetConfiguration        @ 5 NONAME
+    WsockCreateProtocolFamily6   @ 6 NONAME

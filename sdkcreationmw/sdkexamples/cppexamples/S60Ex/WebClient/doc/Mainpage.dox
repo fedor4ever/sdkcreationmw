@@ -1,0 +1,66 @@
+/*! \mainpage WebClient Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example application describes how to retrive files from internet over HTTP.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *   This example exists as a complete application, and has the standard Symbian OS application architecture. The example makes use of several other Symbian OS and Internet concepts which the reader should be aware of before attempting to understand this example. These are:
+ *
+ *   - Familiarity with HTTP protocol
+ *   - Familiarity with Emulator's TCP/IP connectivity
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in %Webclient.mmp file: CAPABILITY NetworkServices.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  The program takes screen parameters in the start of the application and works with all screen modes. The program supports changing the screen layout while the program is running.
+ *
+ *  \subsection Sub33 3.3 Building the example application
+ *
+ *   This example can be built in directory Webclient\\group by running the following commands:<br>
+ *
+ *     bldmake bldfiles<br>
+ *     abld build winscw udeb<br>
+ *
+ *    In addition it is possible to create project for CodeWarrior IDE by running
+ *    the following command:<br>
+ *
+ *       abld makefile cw_ide
+ *
+ *  \subsection Sub34 3.4 Design
+ *
+ *  \subsubsection SubSub341 3.4.1 Overview of the WebClient application
+ *
+ *   The main view consists of three parts. The uppermost part of the screen contains all received HTTP header fields and their values. The middle part contains the received raw data (e.g., HTML page, no parsing or formatting is provided), and the last part contains the status messages of the HTTP transaction, such as errors.
+ *
+ *  \subsubsection SubSub342 3.4.2 Option menu
+ *
+ *  The Options menu commands are handled in CWebClientAppUi::HandleCommandL(). Request URL opens URL query dialog. When desired URL is entered, application inserts "http://" to URL, if it does not contain http or https prefix. CWebClientEngine::IssueHTTPGetL() method is called to start the HTTP client session.
+ *
+ *  With HTTP Header, HTTP Source and Transaction Status options focus can be changed between application windows. Options menu command are handled in CWebClientContainer::HandleCommandL().
+ *
+ *  \subsubsection Sub343 3.4.3 Main view
+ *
+ *  The main view is implemented in class CWebClientContainer. CEikLabel is used for URL name and three CEikRichTextEditor windows for information from returned web page. The application supports changing the screen layout while the program is running. Function HandleResourceChangeL() in class CWebClientAppUi is called when the resolution is changed.
+ *
+ *  \subsubsection Sub344 3.4.4 HTTP client session
+ *
+ *  Class CWebClientEngine contains the implementation of HTTP Client API usage. CWebClientEngine contains also implementation of basic authentication with authentication filters provided by the API. User name/password dialog is shown when authentication is required to enter a URL.
+ *
+ */

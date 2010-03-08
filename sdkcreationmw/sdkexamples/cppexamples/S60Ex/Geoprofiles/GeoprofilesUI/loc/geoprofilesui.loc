@@ -1,0 +1,238 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localization strings for project Geo Profiles
+*
+*/
+
+
+/**
+ *  Default (implementation English) Resource localisation file.
+ */
+ 
+// LOCALIZATION STRINGS
+
+// d: Title pane text for Geo Profiles Application
+// l: title_pane_t2/opt9
+// r:
+//
+#define qtn_geoprofiles_title               "GeoProfiles"
+
+// d: Grid layout text for Geo Profiles Application
+// d: in the Application shell
+// l: cell_app_pane_t1
+// r:
+//
+#define qtn_geoprofiles_grid                "GeoProfiles"
+
+// d: List layout text for Geo Profiles Application
+// d: in the Application shell
+// l:list_single_large_graphic_pane_t1
+// r:
+//
+#define qtn_geoprofiles_list                "GeoProfiles"
+
+// d: Options menu Add
+// l: 
+// r:
+//
+#define qtn_options_geoprofiles_add         "Add"
+
+// d: Options menu Open
+// l: 
+// r:
+//
+#define qtn_options_geoprofiles_open        "Open"
+
+// d: Options menu Delete
+// l: 
+// r:
+//
+#define qtn_options_geoprofiles_delete      "Delete"
+
+// d: Options menu Exit
+// l: 
+// r:
+//
+#define qtn_options_geoprofiles_exit        "Exit"
+
+// d: Softkeys Options
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_options     "Options"
+
+// d: Softkeys Exit
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_exit        "Exit"
+
+// d: Softkeys Open
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_open        "Open"
+
+// d: Softkeys Ok
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_ok          "Ok"
+
+// d: Softkeys Select
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_select      "Select"
+
+// d: MSK Change
+// l: 
+// r:
+//
+#define qtn_msk_geoprofiles_change          "Change"
+
+// d: MSK Edit
+// l: 
+// r:
+//
+#define qtn_msk_geoprofiles_edit            "Edit"
+
+
+// d: Softkey Cancel
+// l: 
+// r:
+//
+#define qtn_softkey_geoprofiles_cancel      "Cancel"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_name            "Location"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_profile         "Change to profile"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_radius         "Radius"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_type	        "Mode" 
+
+// d: Label for Current Place
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_place           "Location"
+
+
+// d: Label for Current Place
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_currentplace     "Current place"
+
+// d: Label for Landmarks
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_landmarks        "Landmarks"
+
+// d: Label for Defining Location
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_define           "Define"
+
+// d: Label for Filling up all the fields
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_incomplete       "Please fill all fields before saving"
+
+// d: Label for Creating a new profile
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_creating         "Creating GeoProfile ..."
+
+// d: Label for updating an exisiting profile
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_updating         "Updating GeoProfile ..."
+
+// d: Label for deleting an existing profile
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_deleting         "Deleting GeoProfile ..."
+
+// d: Label for fectching location information
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_currentlocation  "Fetching location ..."
+
+// d: Label for Defining Entry type trigger
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_entry           "On Entry"
+
+// d: Label for Defining Exit type trigger
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_exit            "On Exit"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_noprofiles     "Go to 'Options'->'Add' to add a geoprofile"
+
+// d:
+// l: 
+// r:
+//
+#define qtn_lbl_geoprofiles_locationname   "Location name"
+
+// d: Label for not being able to save location
+// l:
+// r:
+//
+#define qtn_lbl_geoprofiles_location_fail  "Unable to save location"
+
+// d: Label for not being able to complete operation
+// l:
+// r:
+//
+#define qtn_lbl_geoprofiles_operation_fail  "Unable to complete operation"
+
+
+
+
+
+
+

@@ -1,0 +1,143 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is a localisation file for AddressBook
+*    			 A .rls file is the one and only place where the logical strings
+*     			 to be localised are defined.
+*
+*/
+
+
+#ifndef ADDRESSBOOK_RLS
+#define ADDRESSBOOK_RLS
+
+// LOCALISATION STRINGS
+
+// EXAMPLES:
+
+//d:app name in buf
+//l:tbuf_1
+//w:
+//r:3.0
+rls_string STRING_r_addressbook_buf "AddressBook"
+
+//d:app name in grid
+//l:cell_app_pane_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_caption "AddressBook"
+
+//d:app name in list
+//l:list_single_large_graphic_pane_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_short_caption "AddressBook"
+
+//d:type of application
+//l:menu_title_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_type "App"
+
+//d:option menu
+//l:menu_item_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_option_menu_1 "Connect"
+
+//d:option menu
+//l:menu_item_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_option_menu_2 "Search"
+
+//d:option menu
+//l:menu_item_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_option_menu_3 "Add to contacts"
+
+//d:option menu
+//l:menu_item_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_option_menu_4 "About"
+
+//d:option menu
+//l:menu_item_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_option_menu_5 "Exit"
+
+//d:dialog for searching
+//l:dlg_line_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_search_dialog_1 "Search for"
+
+//d:dialog for searching
+//l:dlg_line_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_search_dialog_2 "Search for:"
+
+//d:dialog for searching
+//l:dlg_line_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_search_dialog_3 "Searching..."
+
+//d:dialog for connecting
+//l:dlg_line_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_connecting_dialog "Connecting..."
+
+
+//d:icon file name in grid
+//l:cell_app_pane_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_icon_file_1 "\\resource\\apps\\AddressBook_aif.mif"
+
+//d:app name in registration
+//l:app_registration_info_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_registration "AddressBook"
+
+//d:icon file name in registration
+//l:app_registration_info_1
+//w:
+//r:3.0
+//
+rls_string STRING_r_addressbook_loc_resource_file_1 "\\resource\\apps\\AddressBook"
+
+#endif      // ADDRESSBOOK_RLS
+
+// End of File
+

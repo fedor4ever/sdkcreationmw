@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+source 		seislave\TcpServer.cpp
+source 		seislave\TcpServerHandler.cpp
+
+source 		seislave\commands\SeiCommand.cpp
+source 		seislave\commands\InstallCommand.cpp
+source 		seislave\commands\RemoveCommand.cpp
+source 		seislave\commands\ListCommand.cpp
+source 		seislave\commands\GetInfoCommand.cpp
+source 		seislave\commands\StartCommand.cpp
+source 		seislave\commands\CloseCommand.cpp
+source 		seislave\commands\TestCommand.cpp
+source 		seislave\commands\QuitCommand.cpp
+source 		seislave\commands\GetPortCommand.cpp
+source 		seislave\commands\HandshakeCommand.cpp
+
+source 		seislave\socketio\SocketReader.cpp
+source 		seislave\socketio\SocketWriter.cpp
+

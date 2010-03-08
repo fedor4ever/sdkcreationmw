@@ -1,0 +1,73 @@
+/*! \mainpage Messaging Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This tutorial demonstrates the use of SendUI API for creating SMS, MMS and email messages. The CSendUi class creates the proper editors and enables messaging functionality in your own application.
+ *
+ *  The tutorial starts by listing the pre-requisites the user should know before starting this example, and describes how to build and run the example.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *  This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The example makes use of other Symbian OS concepts which the reader should be aware of before attempting to understand this example.
+ *  These are:
+ *
+ * 	- the idea of the SendUI API
+ *
+ *  This application supports changing the screen size when program is running. The messaging settings for SMS, MMS and email should have been configured properly before using Messaging example application.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in %Messaging.mmp file:
+ *  CAPABILITY NetworkServices ReadUserData WriteUserData.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *  The program takes screen parameters in the start of the application and works with all screen modes. The program supports changing the screen layout while the program is running.
+ *
+ *  \subsection Sub33 3.3 Building the example application
+ *
+ *  This example can be built in directory Messaging\\group by running the following commands:<br>
+ *  bldmake bldfiles<br>
+ *  abld build winscw udeb
+ *
+ *  It is possible to create project for CodeWarrior IDE by running the following command:<br>
+ *  abld makefile cw_ide
+ *
+ *  In addition it is possible to create project form CodeWarrior IDE:
+ *
+ *  Open CodeWarrior IDE<br>
+ *  Select File -> Import from .mmp file<br>
+ *  Browse to chat/group folder and select messaging.mmp<br>
+ *  Select Project -> Make<br>
+ *  Select Project -> Run<br>
+ *
+ *  After successful build, application can be found and started from:
+ *	Applications > Installed > Messaging
+ *
+ *	\subsection Sub34 3.4 Design
+ *
+ *	Messaging application example uses SendUI API to launch the message editor and provide messaging functionality. The example is quite simple, because all functionality except handling the Options menu items is provided by SendUI API.
+ *
+ *  The main point of this program is to demonstrate the easy use of existing messaging functionality through a public API.
+ *
+ *	\subsubsection Subsub341 3.4.1 Use of SendUI API
+ *
+ *  The SendUI API is used through CSendUI class which is instantiated in the ConstructL method of CMessagingAppUi class. CSendUi object is deleted in the destructor of CMessagingAppUi. The SMS, MMS and email editors are launched in CMessagingAppUi::CreateAndSendMessageL method which takes as its parameter the type of editor expected to be launched.
+ *
+ *	\subsubsection Subsub342 3.4.2 Using the Options menu
+ *
+ *  The CMessagingAppUi::HandleCommandL() method calls the wanted handler methods depending the aCommand parameter. Selecting "Create SMS", "Create MMS" or "Create email" options will call the CreateAndSendMessageL method with a parameter defining the wanted message type. It would be easy to add more create message options in similiar way to any other message types available.
+ *
+ */

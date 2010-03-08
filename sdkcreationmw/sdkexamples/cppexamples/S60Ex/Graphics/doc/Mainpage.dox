@@ -1,0 +1,247 @@
+/*! \mainpage Graphics Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates two methods of drawing bitmaps to the screen.
+ * Usually, any bitmaps that are to be displayed are copied directly to the
+ * screen using the Window Server. This is done using the CWindowGc class
+ * that every application has access to. This class has a number of useful
+ * methods for manipulating bitmaps, such as BitBlt() and BitBltMasked().
+ *
+ * Using the Window Server directly in this manner can present problems
+ * however:
+ * - Sometimes images need to be built up over a long period of time.
+ *   Displaying the image as it is built up can be untidy and confusing for
+ *   the user.
+ * - If a large number of moving objects are drawn to the display, the
+ *   display may flicker. This happens if the Windows Server gets flushed
+ *   before all the objects have been drawn to it.
+ *
+ * To overcome these problems, an 'off-screen bitmap' can be used which is
+ * the same size as the actual display. Instead of drawing a number of
+ * images directly to the screen using the Window Server, they are drawn
+ * to this off-screen bitmap. Once all images have been written, the
+ * Window Server is used to copy the modified off-screen bitmap to the
+ * screen. Thus, all images are effectively written to the screen in one
+ * operation, thus completely removing any flicker.
+ * This example demonstrates the animation of some sprites using both methods.
+ *
+ * The following sections explain the importance of the colour depth and
+ * masking, with respect to drawing an image.
+ *
+ * \subsection Sub11 1.1 Colour Depth
+ *
+ * Colour depth refers to the number of bits that are used to store the
+ * colour information for each pixel. It is important to get the right
+ * colour depth for an image, as it can have a great impact on how quickly
+ * an image is displayed. If the colour depth of an image is different
+ * than the colour depth of the display, the image has to be converted to
+ * the correct colour depth before it is drawn. This conversion slows down
+ * the drawing process. Images are generally stored in a compressed form,
+ * in an MBM file. MBM files are generated using the Symbian OS BmConv tool.
+ * When running this tool on a bitmap, it is possible to specify the required
+ * colour depth of each compressed image. This should usually be set to 12
+ * bits, as this is the colour depth of the display and hence will require
+ * no conversion when displayed.
+ *
+ * \subsection Sub12 1.2 Masking
+ *
+ * Masks can be used to select which parts of a bitmap are drawn by the
+ * BitBltMasked function of the Windows Server. If a pixel in the mask is
+ * black, then the corresponding pixel is copied from the bitmap; if a
+ * pixel in the mask is white, then the corresponding pixel is not copied
+ * from the bitmap, which has the effect of displaying the background at
+ * that pixel location. This example uses a mask to draw circles to the
+ * screen. Without a mask, the circles would appear in a white square that
+ * moved around the screen as the image was animated. Note that mask is not
+ * copied to the screen, but is simply used to decide which pixels should
+ * get copied to the screen. Therefore, in order to reduce memory
+ * requirements, masks should have a colour depth of just 2 bits, rather
+ * than a colour depth of 12 bits.
+ *
+ * \subsection Sub13 1.3 APIs demonstrated
+ *
+ * - CFbsBitmapDevice
+ * - CFbsBitGc
+ * - AknIconUtils
+ *
+ * <HR>
+ *
+ * \subsection Sub14 1.4 Prerequisites
+ *
+ * The example makes use of several other Symbian OS concepts which the reader
+ * should be aware of before attempting to understand this example. These are:
+ * - Windows Server
+ * - Graphics Context
+ * - Bitmaps
+ * - Timers
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, and View classes.
+ *
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * The Graphics example logic is concentrated in the CGraphicsAppView class.
+ * This controls the drawing of an image to the display.
+ *
+ * In the following sections, the following will be described:
+ * - Construction of a CGraphicsAppView object.
+ * - Using a periodic timer to run periodic events.
+ * - Drawing all images directly to the screen.
+ * - Drawing some images indirectly to the screen.
+ * - Standard re-drawing of the screen.
+ *
+ * The example also makes use of some 'helper functions'. These functions
+ * simplify tasks such as creating a bitmap. Because these functions might
+ * be useful to a number of applications, they have been moved into their
+ * own namespace. Any application needing to use these functions then has
+ * access to them without having to re-implement them.
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * Graphics Example does not require any capabilities. The capabilities are defined
+ * as NONE in mmp-file.
+ *
+ * \subsection Sub32 3.2 Construction
+ *
+ * The CGraphicsAppView class loads all the necessary bitmaps, creates any
+ * devices and contexts that it will need, instantiates a timer that will
+ * be used for animation purposes, and initialises the sprite objects:
+ * the 2 balls (bitmaps) and one star (svg) which will be animated).
+ *
+ * The construction details are illustrated in the following diagram:
+ * \image html ViewConstruction.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The CGraphicsAppview class is instantiated.
+ * -# CreateBitmapL is called for each bitmap that is loaded from disk:
+ *    these bitmap files are the background, the ball, and the ball mask.
+ * -# CreateBitmapL is called to create an off-screen bitmap for use in the
+ *    off-screen demonstration.
+ * -# CreateBitmapDeviceL is called to create a graphics device, which will
+ *    be used to perform drawing to an in-memory bitmap.
+ * -# CreateGraphicsContextL is called to create a graphics context, used for
+ *    drawing bitmaps to the screen.
+ * -# CPeriodic::NewL is called, to instantiate a new timer object. This
+ *    will be used to generate periodic requests to update the screen.
+ * -# SetUpSpritesL is called, to initialise the three sprite objects.
+ *
+ * \subsection Sub32 3.3 Animation
+ *
+ * When the user starts one of the two types of animation demonstrations,
+ * the CGraphicsAppView object will start its CPeriodic timer. Once running,
+ * this will periodically make a call to the Period function. This will
+ * update the sprite positions, and directly update the screen. These
+ * periodic interrupts will continue until the user requests that the
+ * animation be stopped.
+ *
+ * Rather than using the DrawNow function, the animation manages its own
+ * contexts, using Activate, Deactivate, etc. This is done because the
+ * actual time at which the DrawNow function will re-draw the screen cannot
+ * be predicted in advance.
+ *
+ * These operations are illustrated in the following diagram.
+ *
+ * \image html PeriodicDraw.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The StartNoOffScreenDemo method is called.
+ * -# The StartTimer method is called, which...
+ * -# ... calls the CPeriodic::Start function to start the periodic timer.
+ * -# Once the timeout period has elapsed, the Period method gets called.
+ * -# The Period method just calls DoPeriodTask, which contains all the logic
+ *    to be executed after each timer period.
+ * -# The CSprite::Move method is called for each sprite, to update the
+ *    positions of the sprites. Note that the window size is passed to the
+ *    Move function each time it is used, which allows the view class to
+ *    change the window size without affecting the sprite class.
+ * -# The current graphics context is made active, so that the screen may
+ *    be updated.
+ * -# The UpdateDisplay method is called, to update the screen. This method
+ *    performs different actions, depending on whether the writes to the
+ *    screen are to use the off-screen bitmap or not.
+ * -# Once the screen has been redrawn, the Deactivate method is called.
+ * -# Steps 4 to 11 are repeated until the user requests that the animation
+ *    be stopped, at which point the StopDemo function will be called.
+ * -# Animation is then stopped by stopping the periodic timer.
+ *
+ * \subsubsection Sub331 3.3.1 Drawing directly to the screen
+ *
+ * The UpdateDisplay function performs different actions, depending on the
+ * type of screen writes to be performed. When not using off-screen bitmaps,
+ * all bitmaps are written directly to the screen. This may cause flicker,
+ * and may look unsightly if lots of images have to be written to the screen.
+ *
+ * These operations are illustrated in the following diagram.
+ * \image html DirectDraw.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The UpdateDisplay function is called, to update the screen. This
+ *    function performs different actions, depending on whether the writes
+ *    to the screen are to use the off-screen bitmap or not. In this case,
+ *    the sprites will written directly to the screen.
+ * -# The BitBlt function is called, to draw the background bitmap directly
+ *    to the screen.
+ * -# The BitBltMasked function is called for each sprite in turn, to write
+ *    the round sprites directly to the screen.
+ *
+ * \subsubsection Sub332 3.3.2 Drawing using an off-screen bitmap
+ *
+ * The UpdateDisplay method performs different actions depending on the type
+ * of screen writes to be performed. When using an off-screen bitmap, all
+ * images are written to the off-screen bitmap. Once all images have been
+ * written to this off-screen bitmap, it is then copied directly to the
+ * screen. This avoids any flicker, and looks much smoother if lots of
+ * objects are to be written to the screen, as the user only sees the
+ * result of the one final update.
+ *                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *
+ * These operations are illustrated in the following diagram.                                                                                                                                                                                                                                                                                                                                                                                                          * <HR>
+ *
+ * \image html OffScreenDraw.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The UpdateDisplay method is called, to update the screen. This method
+ *    performs different actions, depending on whether the writes to the
+ *    screen are to use the off-screen bitmap or not. In this case, the
+ *    sprites will written to the off-screen bitmap, rather than directly
+ *    to the screen.
+ * -# The BitBlt function is called, to re-initialise the off-screen bitmap
+ *    by copying the background bitmap to it.
+ * -# The BitBltMaskedEntireBitmap function is called for each sprite in
+ *    turn, to write the round sprites over the background bitmap in the
+ *    off-screen bitmap.
+ * -# The BitBlt function is called, to write the off-screen bitmap, built
+ *    up by the steps above, to the screen.
+ *
+ * \subsection Sub34 3.4 Standard re-drawing
+ *
+ * Occasionally, the animation screen may be covered by another window or
+ * dialog box. When this window or dialog box is cleared, the animation
+ * screen will need to be re-drawn. To request this, the framework
+ * automatically calls the Draw method, which has to be implemented by the
+ * application view. Here, the Draw method just uses the same standard
+ * UpdateDisplay function as used by the periodic timer calls.
+ *
+ * These operations are illustrated below.
+ * \image html StandardRedraw.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The framework calls the Draw method, to request that the application's
+ *    screen be re-drawn.
+ * -# The UpdateDisplay method is called to update the screen. This will
+ *    perform the appropriate actions depending on whether the off-screen
+ *    bitmap is to be used. See sections Drawing directly to the screen
+ *    and Drawing using an off-screen bitmap for the further details.
+ *
+ */

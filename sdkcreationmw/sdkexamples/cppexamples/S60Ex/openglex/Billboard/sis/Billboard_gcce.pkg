@@ -1,0 +1,43 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;Languages
+&EN
+
+;Header
+#{"Billboard"}, (0xA0000212), 1, 0, 0,TYPE=SA
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Files to install
+"..\..\..\..\epoc32\release\gcce\urel\Billboard.exe"                       -"!:\sys\bin\Billboard.exe"
+"..\..\..\..\epoc32\data\z\resource\apps\Billboard.RSC"                    -"!:\resource\apps\Billboard.RSC"
+"..\..\..\..\epoc32\data\Z\private\10003a3f\import\apps\billboard_reg.RSC" -"!:\private\10003a3f\import\apps\billboard_reg.RSC"
+"..\..\..\..\epoc32\data\z\resource\apps\billboard_icon.mif"  			        -"!:\resource\apps\billboard_icon.mif"
+
+"..\..\pictures\tree.gif"                                               -"!:\private\A0000212\tree.gif"
+"..\..\pictures\grass.jpg"                                              -"!:\private\A0000212\grass.jpg"
+"..\..\pictures\cloud.jpg"                                              -"!:\private\A0000212\cloud.jpg"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						                                    -"!:\private\A0000212\backup_registration.xml"
+

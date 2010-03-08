@@ -1,0 +1,25 @@
+/*
+ ============================================================================
+ Name		: HsWidget.hrh
+ Author	  : 
+ Copyright   : Your copyright notice
+ Description : This file contains declarations for constants of HsWidget.
+ The file can be included in C++ or resource file.
+ ============================================================================
+ */
+#ifndef __HSWIDGET_HRH__
+#define __HSWIDGET_HRH__
+
+#define _UID3 0xA0007E04
+
+// HsWidget enumerate command codes
+enum THsWidgetIds
+	{
+	ERegisterWidget = 0x6001, // start value must not be 0
+	EChangeWidgetValues,
+	ERemoveWidget,
+	EHelp,
+	EAbout
+	};
+
+#endif // __HSWIDGET_HRH__

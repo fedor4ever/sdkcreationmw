@@ -1,0 +1,160 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  resources for the module
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME DLRX // 4 letter id
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.hrh>
+#include <avkon.mbg>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkonicons.hrh>
+
+#include <appinfo.rh>
+
+#include "DirectoryLocalizer.rh"
+#include "directorylocalizerex.hrh"
+#include "directorylocalizerex.rls"
+
+
+
+//  RESOURCE DEFINITIONS
+//-----------------------------------------------------------------------------
+//
+//    RSS_SIGNATURE
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    TBUF16
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16
+    {
+    buf = STRING_r_app_name;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    EIK_APP_INFO
+//
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_directorylocalizerex_menubar_main;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_directorylocalizerex_menubar
+//    MenuBar
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_directorylocalizerex_menubar_main
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_directorylocalizerex_menu;            
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_directorylocalizerex_menu
+//    Menu pane
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_directorylocalizerex_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EDirLocalizerAddFromResId;
+            txt = STRING_r_dirlocalizerex_addfromresid;
+            },
+        MENU_ITEM
+            {
+            command = EDirLocalizerSetupFromResRd;
+            txt = STRING_r_dirlocalizerex_setupfromresrd;
+            },
+        MENU_ITEM 
+            {
+            command = EDirLocalizerSetupFromResId;
+            txt = STRING_r_dirlocalizerex_setupfromresid;
+            },
+        MENU_ITEM 
+            {
+            command = EDirLocalizerGetExtraData;
+            txt = STRING_r_dirlocalizerex_getextradata;
+            },
+        MENU_ITEM 
+            {
+            command = EDirLocalizerGetIconIndex;
+            txt = STRING_r_dirlocalizerex_geticonindex;
+            },
+        MENU_ITEM // Menu "Exit"
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_directorylocalizerex_menu_exit;
+            }
+        };
+    }
+
+RESOURCE DIRECTORYLOCALIZER r_example_localizer_entries
+    {
+	directories =
+	{
+	DIRECTORY 
+            {
+            fullPath = "c:\\example\\"; 
+            localizedName = "Example"; 
+            extraData = "New localizer"; 
+            iconIndex = 0; 
+            },
+	DIRECTORY 
+            { 
+            fullPath = "c:\\example2\\";
+            localizedName = "Example2"; 
+            extraData = "New localizer 2"; 
+            iconIndex = 0; 
+            }
+	};
+    }
+
+

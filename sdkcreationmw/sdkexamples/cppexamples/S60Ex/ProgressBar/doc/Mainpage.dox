@@ -1,0 +1,169 @@
+/*! \mainpage Progress Bar Control Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This tutorial explains how to use progress bars. Progress bars show the
+ * progress status of an operation.
+ *
+ * The example application can do the following:
+ * - Increase the progress bar gauge value incrementally.
+ * - Change progress bar final value.
+ * - Display progress bar information.
+ *
+ * The following are examples of progress bars:
+ * - Download status
+ * - Mail receiving status
+ * - Loading status
+ *
+ * The following figure (UML diagram) shows key classes of the progress bar
+ * example application. This example uses the Timer class object to generate
+ * events. This should be replaced by the classes that issue events in actual
+ * applications.
+ *
+ * \image html classes.png
+ *
+ * \b Note: The class indicated by a yellow color is the concrete class of the
+ * progress bar.
+ *
+ * <HR>
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CEikProgressInfo
+ * - CTimer
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The example makes use of the standard Symbian OS application framework
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example.
+ *
+ * <HR>
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * The initial view is shown immediately after the example application is
+ * launched. The bar as a whole shows total operation, and it is filled from
+ * left to right according to the progress status of the operation.
+ *
+ * Initial view:
+ * \image html initial_view.jpg
+ *
+ * The Options menu displays four choices, <b>Change final values</b>,
+ * <b>Show info 1</b>, <b>Show info 2</b> and <b>Exit</b>.
+ *
+ * The Options menu:
+ * \image html options_menu.jpg
+ *
+ * - Select Change final values to change the number of blocks of the progress bars.
+ * - Select Show info 1 or Show info 2 to get information of certain progress bar.
+ * When selecting one or the other of these menu items, the information note is
+ * displayed and progress bar information is listed on it. Information contains
+ * following data: Text type, Split width between blocks, Number of the blocks,
+ * Width, Height, Current value.
+ * - Select Exit at any time to exit the application.
+ *
+ * Select Show info 1 from the Options menu.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * The example makes use of the standard Symbian OS application framework
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Resource definition
+ *
+ * PROGRESSINFO, defined in "eikon.rh" , contains all settings that can be used
+ * in the resource file. Following example illustrates how to use PROGRESSINFO
+ * resource:
+ *
+ * \code
+ * RESOURCE PROGRESSINFO r_my_progress_bar
+ *    {
+ *    text_type = 0;
+ *    splits_in_block = 0;
+ *    finalval = 15;
+ *    width = 120;
+ *    height = 10;
+ *    }
+ * \endcode
+ *
+ * Explanations of PROGRESSINFO resource initializers:
+ *
+ * <table border=0>
+ * <tr><td><b>text_type</b></td><td>Text type to display. (0: none, 1: percentage, 2:fraction)
+ * </td></tr><tr><td><b>splits_in_block</b></td><td>Gap between the blocks
+ * </td></tr><tr><td><b>finalval</b></td><td>Total number of blocks
+ * </td></tr><tr><td><b>width</b></td><td>Width of the progress bar [in pixel]
+ * </td></tr><tr><td><b>height</b></td><td>Height of the progress bar [in pixel]
+ * </table>
+ *
+ * <HR>
+ *
+ * \subsection Sub32 3.2 Constructing the progress bar
+ *
+ * The progress bar can be constructed according to two methods:
+ *
+ * - with the resource file
+ * - without the resource file
+ *
+ * \subsection Sub321 3.2.1 Construction with the resource file
+ *
+ * The following figure shows how to construct the progress bar with the
+ * resource file. The function ConstructFromResourceL is called according to
+ * the resource data. Next, the progress bar is constructed.
+ *
+ * \image html construct_from_resource.gif
+ *
+ * \subsection Sub321 3.2.1 Construction without the resource file
+ *
+ * The following figure shows how to construct the progress bar without the
+ * resource file. Whether or not there is a resource file, CEikProgressInfo::SInfo
+ * must be defined and passed to the constructor as a parameter. The second
+ * constructor must be called ConstructL.
+ *
+ * \image html construct_from_code.gif
+ *
+ * <HR>
+ *
+ * \subsection Sub33 3.3 Runtime operations
+ *
+ * The function IncrementAndDraw steps the current position of the progress bar
+ * forward or backward along the bar.
+ *
+ * The gauge value changes depend on the parameter value. For example, when 1
+ * is set to the parameter, the gauge value increases 1 and when -1 is set to
+ * the parameter, the gauge value decreases 1. To move the gauge to the target
+ * position, use SetAndDraw function. For example, when the function SetAndDraw
+ * is invoked with the "0" parameter, the progress bar gauge is reset.
+ *
+ * \image html runtime_operations.gif
+ *
+ * In this example the final value of progress bar could be changed. The final
+ * value is realised by calling IncrementAndDraw with parameter 1 from the
+ * CAknExPbarTimer::RunL.
+ *
+ * <HR>
+ *
+ * \subsection Sub34 3.4 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in mmp-files as CAPABILITY NONE.
+ *
+ */

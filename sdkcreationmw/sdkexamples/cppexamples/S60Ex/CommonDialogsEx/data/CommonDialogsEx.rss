@@ -1,0 +1,194 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains all the resources for the commondialogsex.
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    TEZT // 4 letter ID
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+
+#include "CommonDialogsEx.hrh"
+#include "CommonDialogsEx.rls"
+
+#include <CommonDialogs.hrh>
+#include <CommonDialogs.rh>
+
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="CommonDialogsEx"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar=r_commondialogsex_menubar;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// ---------------------------------------------------------
+//    Provide Caption and Icon Info 
+//
+// ---------------------------------------------------------
+//
+
+RESOURCE LOCALISABLE_APP_INFO r_commondialogsex_localisable_app_info
+    {
+    short_caption = STRING_r_apps_commondialogsex_grid;
+
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_apps_commondialogsex_list;
+        number_of_icons = 1;
+        icon_file="\\Resource\\Apps\\CommonDialogsEx_aif.mif";
+        };
+    }
+
+
+RESOURCE MENU_BAR r_commondialogsex_menubar
+    {
+    titles=
+        {
+        MENU_TITLE 
+            { 
+            menu_pane = r_commondialogsex_options_menu; 
+            txt = text_softkey_options; 
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_commondialogsex_options_menu
+    {
+    items=
+        {
+        MENU_ITEM 
+            { 
+            cascade = r_commondialogsex_memory_dialog_menu;      
+            txt = STRING_r_commondialogsex_menu_memory_selection; 
+            },
+        MENU_ITEM 
+            { 
+            cascade = r_commondialogsex_memory_setting_menu;     
+            txt = STRING_r_commondialogsex_menu_memory_setting; 
+            },
+        MENU_ITEM 
+            { 
+            cascade = r_commondialogsex_file_dialog_menu;        
+            txt = STRING_r_commondialogsex_menu_file_selection; 
+            },
+        MENU_ITEM 
+            { 
+            cascade = r_commondialogsex_prompt_dialog_menu;      
+            txt = STRING_r_commondialogsex_menu_filename_prompt; 
+            },
+        MENU_ITEM 
+            { 
+            command = EAknCmdExit; 
+            txt = STRING_r_commondialogsex_menu_exit; 
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_commondialogsex_memory_dialog_menu
+    {
+    items =
+        {
+        MENU_ITEM 
+            { 
+            command = ECommonDialogsExCmd101; 
+            txt = STRING_r_commondialogsex_menu_default; 
+            },
+        MENU_ITEM 
+            { 
+            command = ECommonDialogsExCmd102; 
+            txt = STRING_r_commondialogsex_menu_multi; 
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_commondialogsex_memory_setting_menu
+    {
+    items =
+        {
+        MENU_ITEM 
+            { 
+            command = ECommonDialogsExCmd201;
+            txt = STRING_r_commondialogsex_menu_default; 
+            },
+        MENU_ITEM 
+            {
+            command = ECommonDialogsExCmd202;
+            txt = STRING_r_commondialogsex_menu_multi;
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_commondialogsex_file_dialog_menu
+    {
+    items =
+        {
+        MENU_ITEM 
+            { 
+            command = ECommonDialogsExCmd301;
+            txt = STRING_r_commondialogsex_menu_default; 
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_commondialogsex_prompt_dialog_menu
+    {
+    items =
+        {
+        MENU_ITEM 
+            {
+            command = ECommonDialogsExCmd401;
+            txt = STRING_r_commondialogsex_menu_default; 
+            }
+        };
+    }
+
+RESOURCE DIALOG r_commondialogsex_settings_dialog
+    {
+    buttons = R_AVKON_SOFTKEYS_SELECT_BACK;
+    flags = EEikDialogFlagWait | EEikDialogFlagNoDrag
+            | EEikDialogFlagCbaButtons | EEikDialogFlagNoTitleBar
+            | EEikDialogFlagFillAppClientRect;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtSettingListBox;
+            id = ECommonDialogsExSettingsListboxId;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = LISTBOX
+                {
+                flags = EAknListBoxSelectionList;
+                };
+            }
+        };
+    }
+
+RESOURCE TBUF r_string_commondialogsex_set_memory
+    {
+    buf = STRING_r_commonDialogsex_set_memory;
+    }
+ 
+// End of File

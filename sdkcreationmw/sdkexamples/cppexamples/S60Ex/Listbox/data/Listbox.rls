@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+//Short caption string for app.
+rls_string STRING_r_listbox_short_caption_string "ListboxEx"
+
+//Long caption string for app.
+rls_string STRING_r_listbox_caption_string "Listbox example"
+
+//Options menu item for Graphic and Number views
+rls_string STRING_r_listbox_add "Add item"
+
+//Options menu item for Graphic and Number views
+rls_string STRING_r_listbox_remove "Remove item"
+
+//Options menu item for all views. Opens "Change listbox" submenu.
+rls_string STRING_r_listbox_change "Change listbox"
+
+//Menu item for "Change listbox" submenu
+rls_string STRING_r_listbox_number_style_listbox "Number style listbox";
+
+//Menu item for "Change listbox" submenu
+rls_string STRING_r_listbox_graphic_style_listbox "Graphic style listbox";
+
+//Menu item for "Change listbox" submenu
+rls_string STRING_r_listbox_setting_listbox "Setting style listbox";
+
+//Options menu item for setting view.
+rls_string STRING_r_listbox_change_settingitem "Change"
+
+//Options menu item and Exit softkey
+rls_string STRING_r_listbox_exit "Exit"
+
+//Options menu
+rls_string STRING_r_listbox_options "Options"
+
+//String for empty listbox
+rls_string STRING_r_listbox_emptytext "Add items or change listbox type"
+
+//String for Add item data query, shown in Graphic view
+rls_string STRING_r_listbox_add_item_dialog "Item text:"
+
+//Listbox item for number view 
+rls_string STRING_r_listbox_ns1 "1\tItem"
+
+//Listbox item for number view 
+rls_string STRING_r_listbox_ns2 "2\tItem"
+
+//Listbox item for number view 
+rls_string STRING_r_listbox_ns3 "3\tItem"
+
+//Listbox item for number view 
+rls_string STRING_r_listbox_ns4 "4\tItem"
+
+//"User name" setting item title
+rls_string STRING_r_listbox_username_setting_title "User name"
+
+//"Connection to server" setting item title
+rls_string STRING_r_listbox_conntoserv_setting_title "Connection to server"
+
+//Connection mode "ON" value for Connection to server setting page
+rls_string STRING_r_listbox_connection_on "On"
+
+//Connection mode "OFF" value for Connection to server setting page
+rls_string STRING_r_listbox_connection_off "Off"
+
+//Connection mode "When needed" value for Connection to server setting page
+rls_string STRING_r_listbox_connection_when_needed "When needed"
+// End of File
+

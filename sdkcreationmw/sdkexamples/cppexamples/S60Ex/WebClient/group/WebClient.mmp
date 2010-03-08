@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2005-2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+TARGET          WebClient.exe
+TARGETTYPE      exe
+UID             0x0 0xA00001E9 
+VENDORID        0x0
+EPOCSTACKSIZE   0x5000
+
+SOURCEPATH      ..\src
+SOURCE          WebClient.cpp 
+SOURCE          WebClientApp.cpp 
+SOURCE          WebClientAppUi.cpp
+SOURCE          WebClientContainer.cpp
+SOURCE          WebClientDocument.cpp
+SOURCE          WebClientEngine.cpp
+
+SOURCEPATH      ..\data
+
+START RESOURCE  WebClient.rss
+HEADER
+TARGETPATH      resource\apps
+END
+
+START RESOURCE  WebClient_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END
+
+USERINCLUDE     . 
+USERINCLUDE     ..\inc
+
+SYSTEMINCLUDE   .
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+SYSTEMINCLUDE   \epoc32\include\ecom
+SYSTEMINCLUDE   \epoc32\include\libc
+
+LIBRARY         euser.lib
+LIBRARY         apparc.lib
+LIBRARY         cone.lib
+LIBRARY         eikcore.lib 
+LIBRARY         eikcoctl.lib
+LIBRARY         avkon.lib
+LIBRARY         eikctl.lib
+LIBRARY         commonengine.lib    // for stringloader 
+LIBRARY         bafl.lib            // for string pools
+LIBRARY         InetProtUtil.lib    // for UriParser
+LIBRARY         http.lib
+LIBRARY         ecom.lib
+LIBRARY         esock.lib
+
+LANG SC
+CAPABILITY      NetworkServices
+

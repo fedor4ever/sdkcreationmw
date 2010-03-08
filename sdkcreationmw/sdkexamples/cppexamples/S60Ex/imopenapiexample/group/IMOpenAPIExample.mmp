@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+TARGET      IMOpenAPIExample.exe
+TARGETTYPE  exe
+
+UID  0x100039CE 0xA0000186
+
+VENDORID    0
+CAPABILITY  NetworkServices ReadUserData ReadDeviceData WriteDeviceData
+
+// Needed in exe-apps
+epocstacksize 0x5000
+
+START RESOURCE ..\data\IMOpenAPIExample.rss
+	HEADER
+	TARGETPATH resource\apps
+END  // RESOURCE
+
+START RESOURCE ..\data\IMOpenAPIExample_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END  // RESOURCE
+
+
+SOURCEPATH ..\src
+SOURCE  IMOpenAPIExampleApp.cpp 
+SOURCE  IMOpenAPIExampleAppUi.cpp
+SOURCE  IMOpenAPIExampleDocument.cpp
+SOURCE  IMOpenAPIExampleContainer.cpp
+SOURCE  IMOpenAPIExamplemodel.cpp
+SOURCE  IMOpenAPIExampleGrid.cpp
+
+USERINCLUDE . 
+USERINCLUDE ..\inc
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY euser.lib apparc.lib cone.lib eikcore.lib CommonEngine.lib
+LIBRARY eikcoctl.lib avkon.lib ecom.lib fbscli.lib bafl.lib 
+LIBRARY ws32.lib agentdialog.lib
+
+LANG     SC
+
+// End of File
+

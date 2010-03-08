@@ -1,0 +1,133 @@
+/*! \mainpage Landmarks UI Reference Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ * \n\ref Summary_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *	The Landmarks UI reference application is a UI application that demonstrates the usage of the selector and editor dialogs exported by the Landmarks UI application. These dialogs are used to list and select landmarks or categories and modify or view a selected landmark.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *	This example makes use of the standard Series 60/Symbian OS application framework comprising of the Application, Document, UI, and View classes. The reader should be familiar with the areas mentioned above.
+ *
+ *	<HR>
+ *
+ *  \section UI_sec 3. User interface
+ *  This chapter explains how the Landmarks UI reference application appears to the end-user, and how it can be used.
+ *
+ * 	\subsection Sub31 3.1 Capabilities
+ *
+ *	The program capabilities are defined in lmuirefapp.mmp -file: NetworkServices Location ReadUserData WriteUserData LocalServices
+ *
+ *	\subsection Sub32 3.2 ScalableUI
+ *
+ *	The program takes screen parameters in the start of the application and works with all screen modes. The program does not support changing of the screen layout while program is running.
+ *
+ *  	\subsection Sub33 3.3 Initial view
+ *
+ *   When the Landmarks UI reference application is launched, it displays the default view. The <b>Options</b> menu of the view has commands for functions such as adding, deleting, editing and viewing landmarks.
+ *
+ *
+ *  	\subsection Sub34 3.4 Creating a new landmark
+ *
+ *  To create a new landmark, select the <b>New Landmarks</b> item from the <b>Options</b> menu. After the selection, the landmark editor is launched where you can edit different landmark fields. The softkey <b>Done</b> finishes the landmark editing and saves the landmark to the database.
+ *
+ *  	\subsection Sub35 3.5 Editing a landmark
+ *
+ *  Selecting the <b>Edit Landmarks</b> item from the <b>Options</b> menu enables you to modify an already existing landmark. After the selection, the landmark editor is launched. All the editable fields are displayed in the editor.
+ *
+ *  When editing a landmark, the location fields latitude, longitude, altitude, horizontal accuracy, and vertical accuracy can be manually edited or automatically updated by selecting the menu <b>Current location</b> from the <b>Options</b> menu of the editor. A location is then acquired and the location fields in the editor are updated according to the location that was retrieved. If the location retrieval fails for some reason, the location fields are not modified but the reason for the acquisition failure is displayed in an Information note.
+ *
+ *  A landmark can belong to one or several landmark categories. When editing the categories field, a markable list of the categories can be launched by selecting the item <b>Select categories</b> from the <b>Options</b> menu or by pressing any key except the right and left softkeys and the Arrow up and Arrow down keys. In the list, categories can be added to or removed from a landmark by using the Selection key and the Arrow up and Arrow down keys. The softkey <b>Ok</b> finishes selecting the categories.
+ *
+ *  	\subsection Sub36 3.6 Viewing a landmark
+ *
+ *  An already existing landmark can be viewed by selecting the <b>View Landmarks</b> item from the <b>Options</b> menu of the main view. The landmark editor is launched in the View mode. All the defined landmark fields are displayed.
+ *
+ *
+ *  	\subsection Sub37 3.7 Deleting a landmark
+ *
+ *  To delete a landmark, select <b>Delete Landmarks</b> from the <b>Options</b> menu. After the selection, the landmark selector dialog is launched enabling you to select a landmark to be deleted. After that, a query dialog is launched for confirming the delete operation. If the query is accepted, the landmark is deleted from the database.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 4. Design and Implementation
+ *
+ *  	\subsection Sub41 4.1 Design
+ *
+ * 	The class diagram of the Landmarks UI reference application is shown in the following figure.
+ *
+ <img src="ClassDiagram.PNG"><h5 align="center">Figure 8 Class diagram of the Landmarks UI reference application</h5></img>
+ * 	 \subsection Sub42 4.2 Implementation
+ *
+ *		\subsubsection Subsub421 4.2.1 Sequence diagrams
+ *
+ *		\subsubsection Subsub4211 4.2.1.1 Application start-up
+ *
+ *  When the Landmarks UI reference application is started, most of the classes are instantiated and the landmark database is opened. The following figure demonstrates this briefly.
+ *
+ <img src="ApplicationStartUp.PNG"><h5 align="center">Figure 9 Application start-up</h5></img>
+ *
+ *  1. The framework creates the document class, which in turn opens the landmark database (Steps 1 and 2).
+ *
+ *  2. The framework creates the Application UI class of the application and it in turn creates a single view, CLmUiRefAppView (Steps 3 and 4).
+ *
+ *  3. Activating the view creates the container CLmUiRefAppContainer.(Step5).
+ *
+ *		\subsubsection Subsub4212 4.2.1.2 Creating a new landmark
+ *
+ *  The following figure describes the creation of a new blank landmark.
+ *
+ <img src="CreatingNewLandmark2.PNG"><h5 align="center">Figure 10 Creating a new landmark</h5></img>
+ *
+ *  1. The user has activated the menu command for creating a new blank landmark (Step 1).
+ *
+ *  2. A blank landmark is created (Steps 2 and 3).
+ *
+ *  3. The landmark editor is created and launched (Steps 4 and 5).
+ *
+ *  4. If the user selects the Ok option when the dialog is dismissed, the edited data is saved to the landmark and the application returns to the main view (Step 6).
+ *
+ *		\subsubsection Subsub4213 4.2.1.3 Deleting a landmark
+ *
+ *  The following figure shows the sequence of deleting a landmark.
+ *
+ <img src="CreatingNewLandmark2.PNG"><h5 align="center">Figure 11 Deleting a landmark</h5></img>
+ *
+ *  1. The user has activated the menu command for deleting a landmark (Step1).
+ *
+ *  2. The landmark selector dialog is created and launched (Steps 2, 3 and 4).
+ *
+ *  3. The user selects a landmark to be deleted (Step 5).
+ *
+ *  4. The selected landmarks is deleted (Step 6).
+ *
+ *		\subsubsection Subsub4214 4.2.1.4 Editing and viewing a landmark
+ *
+ *  The following figure shows the sequence of editing or viewing a landmark in the landmark database.
+ *
+ <img src="EditingandViewingLandmark.PNG"><h5 align="center">Figure 12 Editing and viewing a landmark</h5></img>
+ *
+ *  1. The user has activated the menu command for editing (or viewing) a landmark (Step 1).
+ *
+ *  2. The landmark selector dialog is created and launched (Steps 2, 3, 4 and 5).
+ *
+ *  3. The selected landmark is opened for editing or viewing (Steps 6, 7 and 8).
+ *
+ *	<HR>
+ *
+ *  \section Summary_sec 5. Summary
+ *
+ *  The Landmarks UI reference application demonstrates:
+ * How to make use of the Landmarks UI Selector dialog to launch a selector and select a single landmark from a list of landmarks.
+ * How to make use of the Landmarks UI Add/Edit dialog to edit and view the landmark contents.
+ *
+ */

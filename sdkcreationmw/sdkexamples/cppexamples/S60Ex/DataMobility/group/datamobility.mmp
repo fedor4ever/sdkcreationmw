@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is project file specification for datamobility.
+*
+*/
+
+
+TARGET            datamobility.exe
+TARGETTYPE        exe
+UID 0x100039CE 0xA000027F
+
+SOURCEPATH        ..\src
+SOURCE            datamobility.cpp
+SOURCE            datamobilityapplication.cpp
+SOURCE            datamobilityappmenuview.cpp
+SOURCE            datamobilityappmenucontainer.cpp
+SOURCE            datamobilityappoutputview.cpp
+SOURCE            datamobilityappoutputcontainer.cpp
+SOURCE            datamobilityappui.cpp
+SOURCE            datamobilitydocument.cpp
+SOURCE            standardapplication.cpp
+SOURCE            applicationusingsnap.cpp
+SOURCE            alrapplication.cpp
+SOURCE            alrapplicationusingnopref.cpp
+SOURCE            applicationtriggeringconndlg.cpp
+SOURCE            applicationusinguisettings.cpp
+
+SOURCEPATH        ..\data
+
+START RESOURCE    datamobility.rss
+HEADER
+TARGETPATH        resource\apps
+END //RESOURCE
+
+START RESOURCE    datamobility_reg.rss
+#ifdef WINSCW
+TARGETPATH        \private\10003a3f\apps
+#else
+TARGETPATH        \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+
+
+USERINCLUDE       ..\inc
+
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib
+LIBRARY           eikcore.lib
+LIBRARY           eikcoctl.lib
+LIBRARY           avkon.lib
+LIBRARY           bafl.lib
+LIBRARY           insock.lib
+LIBRARY           esock.lib
+LIBRARY           commdb.lib
+LIBRARY           netmeta.lib
+LIBRARY           cmmanager.lib commonengine.lib
+
+LANG              SC
+
+VENDORID          0
+SECUREID          0xA000027F
+CAPABILITY        NetworkServices
+
+// End of File

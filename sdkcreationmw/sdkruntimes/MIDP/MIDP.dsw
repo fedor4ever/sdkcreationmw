@@ -1,0 +1,89 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "emulator"=.\emulator\emulator.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name slib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name jnilib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name wlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xrpc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "jnilib"=..\..\NmitShared\src\native\jnilib\jnilib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "slib"=..\..\NmitShared\src\native\slib\slib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "wlib"=..\..\NmitShared\src\native\wlib\wlib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "xrpc"=..\..\NmitShared\src\native\xrpc\xrpc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

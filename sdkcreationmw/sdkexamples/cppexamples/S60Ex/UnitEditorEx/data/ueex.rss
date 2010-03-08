@@ -1,0 +1,224 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+NAME HELL
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rh>
+#include <avkonicons.hrh> // AVKON_ICON_FILE
+#include <avkon.rsg> 
+#include <avkon.mbg> // EMbmAvkonQgn_...
+#include <appinfo.rh>
+
+#include "ueex.hrh"
+#include "ueex_loc.rls"
+
+// ---------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// ---------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+// ---------------------------------------------------------
+//   
+//    Default Document Name
+//
+// ---------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name { buf=""; }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_ueex_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_ueex_localisable_app_info
+	{
+	short_caption = STRING_short_caption;
+	caption_and_icon =
+		{
+		CAPTION_AND_ICON_INFO 
+			{
+			caption = STRING_r_UEEx_caption;
+			number_of_icons = 1;
+			icon_file = "\\resource\\apps\\ueex_aif.mif";
+			}
+		};
+	}
+// ---------------------------------------------------------
+//   
+//   r_ueex_menubar
+//   Menubar for UEEx example
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_BAR r_ueex_menubar
+    {
+    titles =
+        {
+        MENU_TITLE {menu_pane = r_ueex_menu;}
+        };
+    }
+
+
+// ---------------------------------------------------------
+//   
+//   r_ueex_menu
+//   Menu for "Options"
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_PANE r_ueex_menu
+    {
+    items = 
+        {
+        MENU_ITEM { command = EAknSoftkeyExit; txt = "Exit"; }
+        };
+    }
+
+RESOURCE MENU_BAR r_form_menubar
+    {
+    titles =
+        {
+        MENU_TITLE 
+            {
+            menu_pane = r_form_menu;
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_form_menu
+    {
+    items = 
+        {
+        MENU_ITEM { command = ECmdSetValue; txt = STRING_r_ueex_setvalue; },
+        MENU_ITEM { command = ECmdSetNan; txt = STRING_r_ueex_setnan; },
+        MENU_ITEM { command = ECmdSetMinMax; txt = STRING_r_ueex_setminmax; },
+        MENU_ITEM { command = ECmdSetUnit; txt = STRING_r_ueex_setunit; },
+        MENU_ITEM { command = ECmdSetCustomUnit; txt = STRING_r_ueex_setcustomunit; },
+        MENU_ITEM { command = ECmdSetMaxFractionalDigits; txt = STRING_r_ueex_setmaxfractionaldigits; },
+        MENU_ITEM { command = ECmdGetValue; txt = STRING_r_ueex_getvalue; },
+        MENU_ITEM { command = EAknCmdExit; txt = STRING_r_ueex_exit; }
+        };
+    }
+    
+RESOURCE DIALOG r_dialog1
+    {
+    flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+        EEikDialogFlagNoTitleBar | EEikDialogFlagNoBorder |
+        EEikDialogFlagCbaButtons | EEikDialogFlagWait;
+    buttons = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    form = r_form1;
+    }
+
+RESOURCE DIALOG r_newminquery
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY
+                {
+                layout = ENumberLayout;
+                label = STRING_r_ueex_query_newminvalue;
+                control = AVKON_INTEGER_EDWIN
+                    {
+                    };
+                };
+            }
+        };
+    }
+
+RESOURCE DIALOG r_newmaxquery
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY
+                {
+                layout = ENumberLayout;
+                label = STRING_r_ueex_query_newmaxvalue;
+                control = AVKON_INTEGER_EDWIN
+                    {
+                    };
+                };
+            }
+        };
+    }
+    
+/**
+ * The resource below defines the form used in the application. Notable
+ * part is the DLG_LINE which shows how to use a unit editor in a form,
+ * and also defines a unit editor resource AVKON_UNIT_EDITOR. The
+ * documentation for AVKON_UNIT_EDITOR can be found in eikon.rh, for unit and
+ * flag enumerations see enums TAknUnitEditorUnits and TAknUnitEditorFlags
+ * in eikon.hrh.
+ */
+RESOURCE FORM r_form1
+    {
+    flags = EEikFormShowBitmaps | EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly;
+    items =
+        {
+        DLG_LINE
+            {
+            type =EAknCtUnitEditor;
+            prompt = "Unit Editor";
+            id = EUEExUnitEditor;
+            control = AVKON_UNIT_EDITOR
+                {
+                max = 20;
+                min = -5;
+                value = 2;
+                unit = EAknUnitEditorMetricSpeed;
+                flags = EAknUnitEditorAllowUninitialized;
+                };
+            bmpfile=AVKON_ICON_FILE;
+            bmpid=EMbmAvkonQgn_prop_folder_small;
+            bmpmask=EMbmAvkonQgn_prop_folder_small_mask;
+            tooltip="Unit Editor";
+            }
+        };
+    }
+

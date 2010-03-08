@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is a localisation file for datamobility
+*                A .rls file is the one and only place where the logical
+*                strings to be localised are defined.
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Caption string for application.
+rls_string STRING_r_caption_string                              "datamobility"
+
+// Third item in "Options" menu pane
+rls_string STRING_r_exit                                        "Exit"
+
+rls_string STRING_r_loc_resource_file_1                         "\\resource\\apps\\datamobility"
+
+// Navipanel titles
+rls_string STRING_r_navi_menu_view                              "Menu"
+rls_string STRING_r_navi_output_view                            "Output view"
+
+// Menu
+rls_string STRING_r_menulist_standard_application               "\tStandard Application"
+rls_string STRING_r_menulist_application_using_snap             "\tApplication Using SNAP"
+rls_string STRING_r_menulist_triggering_connection_dialog       "\tTriggering Connection Dialog"
+rls_string STRING_r_menulist_alr_application                    "\tALR Application"
+rls_string STRING_r_menulist_alr_application_using_dft_conn     "\tALR Application Using Dft Conn"
+rls_string STRING_r_menulist_using_connection_setting           "\tUsing Connection Setting"
+
+// Output view text
+rls_string STRING_r_output_start_connection_with_preferences    "Start connection with preferences:"
+rls_string STRING_r_output_iap_id                               "IAP Id: %N"
+rls_string STRING_r_output_connection_started                   "Connection started."
+rls_string STRING_r_output_runl_status_error                    "RunL status error: %N"
+rls_string STRING_r_output_snap_id                              "SNAP Id: %N"
+rls_string STRING_r_output_connection_started_with_iap_id       "Connection started with IAP Id: %N"
+rls_string STRING_r_output_prompt_connection_dialog             "Prompt connection dialog."
+rls_string STRING_r_output_preferredcarrieravailable            "PreferredCarrierAvailable:"
+rls_string STRING_r_output_old_iap_id                           "Old IAP Id: %N"
+rls_string STRING_r_output_new_iap_id                           "New IAP Id: %N"
+rls_string STRING_r_output_it_is_upgrade                        "It is Upgrade."
+rls_string STRING_r_output_it_is_not_upgrade                    "It is not Upgrade."
+rls_string STRING_r_output_it_is_seamless                       "It is Seamless."
+rls_string STRING_r_output_it_is_not_seamless                   "It is not Seamless."
+rls_string STRING_r_output_we_ask_to_migrate                    "We ask to migrate to the Preferred Carrier."
+rls_string STRING_r_output_newcarrieractive_iap_id              "NewCarrierActive IAP Id: %N"
+rls_string STRING_r_output_we_accept_it                         "We accept it."
+rls_string STRING_r_output_mobility_error                       "Mobility error: %N"
+rls_string STRING_r_output_application_registered_for_mobility  "Application registered for mobility"
+rls_string STRING_r_output_message_notifications                "message notifications."
+rls_string STRING_r_output_runerror_error                       "RunError error: %N"
+rls_string STRING_r_output_start_connection_with_no_preferences "Start connection with no preferences:"
+rls_string STRING_r_output_user_cancelled_the_selection         "User cancelled the selection."
+rls_string STRING_r_output_attempt_to_use_the_dft_connection    "Attempt to use the default connection."
+
+// End of File

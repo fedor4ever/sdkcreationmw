@@ -1,0 +1,14 @@
+;
+; $Id: ECMTMENUBAR2U.DEF,v 1.4 2005/05/20 23:57:24 slava Exp $
+;
+; EcmtMenubar exports
+; NOTE: some functions are accessed directly by ordinal.
+;
+
+EXPORTS
+	MenubarInit @ 1 NONAME
+	MenubarAttach @ 2 NONAME
+	MenubarDetach @ 3 NONAME
+	MenubarWndProc @ 4 NONAME
+	MenubarStartupComplete @ 5 NONAME
+

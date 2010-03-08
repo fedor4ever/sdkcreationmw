@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JBuilder XML Project-->
+<project>
+  <property category="build" name="CopyExtensions.1" value="co"/>
+  <property category="build" name="CopyExtensions.10" value="wmls"/>
+  <property category="build" name="CopyExtensions.11" value="xhtml"/>
+  <property category="build" name="CopyExtensions.12" value="xml"/>
+  <property category="build" name="CopyExtensions.2" value="css"/>
+  <property category="build" name="CopyExtensions.3" value="dtd"/>
+  <property category="build" name="CopyExtensions.4" value="ent"/>
+  <property category="build" name="CopyExtensions.5" value="mod"/>
+  <property category="build" name="CopyExtensions.6" value="si"/>
+  <property category="build" name="CopyExtensions.7" value="sl"/>
+  <property category="build" name="CopyExtensions.8" value="smil"/>
+  <property category="build" name="CopyExtensions.9" value="wml"/>
+  <property category="idl" name="ProcessIDL" value="false"/>
+  <property category="javaFormatting" name="packageThreshold" value="0"/>
+  <property category="jbuilder.debug" name="ShowBreakpointInNoTracingClass" value="0"/>
+  <property category="runtime" name="DefaultConfiguration" value="-1"/>
+  <property category="runtime" name="ExcludeDefaultForZero" value="1"/>
+  <property category="serverservices" name="disabled.services" value="connector"/>
+  <property category="sys" name="AuthorLabel" value="@author"/>
+  <property category="sys" name="BackupPath" value="../../bak/wtkdev"/>
+  <property category="sys" name="BeansInstantiate" value="false"/>
+  <property category="sys" name="BraceStyle" value="0"/>
+  <property category="sys" name="CheckStable" value="1"/>
+  <property category="sys" name="Company" value="Nokia"/>
+  <property category="sys" name="CompanyLabel" value="Company:"/>
+  <property category="sys" name="Copyright" value="Copyright (c) 1999"/>
+  <property category="sys" name="CopyrightLabel" value="Copyright:"/>
+  <property category="sys" name="DefaultPath" value="../wtkdev"/>
+  <property category="sys" name="Description" value="Your description"/>
+  <property category="sys" name="DescriptionLabel" value="Description:"/>
+  <property category="sys" name="DocPath" value="doc"/>
+  <property category="sys" name="EventMatch" value="false"/>
+  <property category="sys" name="EventStyle" value="1"/>
+  <property category="sys" name="ExcludeClassEnabled" value="0"/>
+  <property category="sys" name="IncludeTestPath" value="1"/>
+  <property category="sys" name="InstanceVisibility" value="0"/>
+  <property category="sys" name="JDK" value="1.4.1"/>
+  <property category="sys" name="LastTag" value="0"/>
+  <property category="sys" name="Libraries" value=""/>
+  <property category="sys" name="MakeStable" value="0"/>
+  <property category="sys" name="OutPath" value="../../classes/wtkdev"/>
+  <property category="sys" name="SourcePath" value="../wtkdev"/>
+  <property category="sys" name="TestPath" value="../wtkdev"/>
+  <property category="sys" name="Title" value="XRPC"/>
+  <property category="sys" name="TitleLabel" value="Title:"/>
+  <property category="sys" name="Version" value=""/>
+  <property category="sys" name="VersionLabel" value="@version"/>
+  <property category="sys" name="WorkingDirectory" value="../../"/>
+  <property category="sys" name="enable.auto.packages" value="false"/>
+  <property category="webserver" name="servletEngine" value="Tomcat 4.0"/>
+  <node name="com.nokia.wtk.device" type="Package"/>
+</project>

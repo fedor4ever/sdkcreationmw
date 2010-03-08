@@ -1,0 +1,64 @@
+/*! \mainpage Filelist Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This tutorial explains how to use the grid control for Avkon applications. A grid is used to layout items in grid style. The grid control is derived from the listbox control.
+ *
+ *	The tutorial starts by listing the pre-requisites the user should know before starting this example, and describes how to build and run the example.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *  This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The example makes use of other Symbian OS concepts which the reader should be aware of before attempting to understand this example. These are:
+ *
+ *  - Familiarity with the file server architecture.
+ *  - How to use a single item selection grid
+ *
+ *  This application supports changing the screen size when program is running.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in the Filelist.mmp file: CAPABILITY NONE
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *	The program takes screen parameters in the start of the application and works with all screen modes. The program support changing the screen layout while the program is running. The program determinates new size for grid cells and image in cell.
+ *
+ *  \subsection Sub33 3.3 Building the example application
+ *
+ *  <p>This example can be built in directory filelist\\group by running the following commands:<br>
+ *  bldmake bldfiles <br>
+ *  abld build winscw udeb</p>
+ *  <p>In addition it is possible to create project for CodeWarrior IDE by running the following command:<br>
+ *  abld makefile cw_ide</p>
+ *
+ *  \subsection Sub34 3.4 Design
+ *
+ *  S60 provides a number of different types of grid. In this example Selection grid -type is used. It is derived from CAknGrid-class.
+ *
+ *  \subsubsection Subsub341 3.4.1 Constructing the grid
+ *
+ *  The grid is constructed without a resource file in Container's Construct().
+ *  Initial parameters for grid are set in SetGridInitialParametersL().
+ *  Next an icon and a text in the grid's cell are added using LoadGraphicsL() and AddDataL() in CreateGridResourceL().
+ *  The file names in private folder are fetched using File Server's GetDir()-method.
+ *
+ *  \subsubsection Subsub342 3.4.2 Using the Options menu
+ *
+ *  The Options menu commands are handled in CFilelistAppUi::HandleCommandL().
+ *  When private folder is changed, CFilelistContainer::ChangePrivateFolderL() calls SetFolderID() to set new folder ID, then it creates new filelist (CreateFilelistL()) and adds fetched data to grid with AddDataL().
+ *  Protected folder -option in the Options menu demostrates how the framework handles protected resourse activity. Return value from GetDir() is shown in error note inform that the application hasn't access to protected folder.
+ *  SetNaviPaneTextL() is used to show active folder name in navication pane.
+ *
+ */

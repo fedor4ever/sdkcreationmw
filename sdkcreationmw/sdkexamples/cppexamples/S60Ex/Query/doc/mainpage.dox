@@ -1,0 +1,454 @@
+/*! \mainpage Query Example
+ *
+ * \ref Intro_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This tutorial explains how to use a query control. A query control displays a
+ * dialog for interaction between the user and application. There are two types
+ * of query control. One is the query dialog, and the other is the global list
+ * query.
+ *
+ * A query dialog is only displayed within an application, while a global list
+ * query is displayed on top even when another application moves to the
+ * foreground.
+ *
+ * The query example application demonstrates the following functions:
+ *
+ * Query dialog:
+ *
+ * - Selecting <B>Yes</B>/<B>No</B>
+ * - Selecting <B>OK</B>/<B>Cancel</B>
+ * - Inputting data (text, number, date, time, duration, secret)
+ * - Selecting a list item
+ * - Selecting multiple list items
+ *
+ * Global list query:
+ *
+ * - Selecting a list item
+ *
+ * The following are examples of how queries are used:
+ *
+ * - Confirmation of operation
+ * - Informing the user of mandatory input data
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The following UML diagram shows key classes of the query example application.
+ * CAknxxxQueryDialogs are described in more detail in section 2.
+ *
+ * \image html IMAGE_QUERY001.GIF
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The AknExQuery example application shows how to use query control classes.
+ * The following are very important to understand:
+ *
+ * - Classes that are related to the query
+ * - Resource definition
+ * - Implementing query-related classes and handling functions in them
+ *
+ * <HR>
+ *
+ * \section UI_sec 2. User Interface
+ *
+ * This section explains how the queries are displayed to the user and explains
+ * how to operate them.
+ *
+ * \subsection Sub21 2.1 Initial view
+ *
+ * When the example application launches, the following screen in is displayed
+ * first.
+ *
+ * \image html IMAGE_QUERY002.GIF
+ *
+ * \subsection Sub22 2.2 Text input
+ *
+ * Press the right soft key (<B>Next</B>) in the initial view, and the dialog
+ * below opens. In this dialog, the user can input text. Press the <B>Ok</B> or
+ * <B>Cancel</B> key, and the dialog closes.
+ *
+ * \image html IMAGE_QUERY003.GIF
+ *
+ * When the dialog closes, press the right soft key (<B>Next</B>) to open the
+ * next dialog in the example application. To close this dialog, press the
+ * \b Ok or \b Cancel key. When the user presses the \b Ok key, user input data
+ * is displayed.
+ *
+ * \image html IMAGE_QUERY006.GIF
+ *
+ * When the dialog closes, press the right soft key (<B>Next</B>) to open the
+ * next dialog. To close this dialog, press the \b Ok or \b Cancel key. When the
+ * user presses the \b Ok key, user input data is displayed.
+ *
+ * \image html IMAGE_QUERY008.GIF
+ *
+ * \subsection Sub23 2.3 Selecting Yes/No
+ *
+ * The next dialog illustrates Yes/No selection (see the figure below). To open
+ * it, press the right soft key (<B>Next</B>) after the previous dialog (see the
+ * Text input figure) closes. To close this dialog, press the \b Yes or \b No
+ * key.
+ *
+ * \image html IMAGE_QUERY010.GIF
+ *
+ * \subsection Sub24 2.4 Selecting OK/Cancel
+ *
+ * The next dialog illustrates OK/Cancel selection (see the figure below). To
+ * open this dialog, press the right soft key (<B>Next</B>) after the previous
+ * dialog (see the Selecting Yes/No figure) closes. To close this dialog, press
+ * the \b Ok or \b Cancel key.
+ *
+ * \image html IMAGE_QUERY011.GIF
+ *
+ * \subsection Sub25 2.5 Multiple line input
+ *
+ * To open the multiple line input dialog (left screen in the figure below),
+ * press the right soft key (<B>Next</B>) after the previous dialog closes. This
+ * dialog illustrates multiple line data input (Date and Duration input). To
+ * close this dialog, press \b Ok or the \b Cancel key. The example application
+ * proceeds to the next step (middle screen in the figure below). In this
+ * dialog, the user can select "Date and Duration" or "Time and Duration". To
+ * open the next dialog (right screen in the figure below), press the select
+ * key.
+ *
+ * This dialog shows Time and Duration input.
+ *
+ * \image html IMAGE_QUERY018.GIF
+ *
+ * \subsection Sub26 2.6 Selecting a list item
+ *
+ * The next step shows selection from a list. After all dialogs in the Multiple
+ * line input figure are closed, press the right soft key (<B>Next</B>). A
+ * dialog that demonstrates selection from a list opens. To close this dialog,
+ * press the \b Ok or \b Cancel key.
+ *
+ * \image html IMAGE_QUERY021.GIF
+ *
+ * To open the next dialog, press the right soft key (<B>Next</B>). This dialog
+ * demonstrates another type of list item selection. To close this dialog, press
+ * the \b Ok or \b Cancel key.
+ *
+ * \image html IMAGE_QUERY022.GIF
+ *
+ * \subsection Sub27 2.7 Selecting multiple list items
+ *
+ * While the previous dialog illustrates single item selection, the next dialog
+ * illustrates multiple item selection. To select a check box, move the cursor
+ * to the required line and press the select key. The user can select more than
+ * one item (right screen in figure below). To close this dialog, press the
+ * \b Ok or \b Cancel key.
+ *
+ * \image html IMAGE_QUERY023.GIF
+ *
+ * \subsection Sub28 2.8 Global list query
+ *
+ * When multiple selection is finished, press the right soft key (<B>Next</B>)
+ * to display a global list query (left screen in the figure below). A global
+ * list query is always displayed on top, even when another application moves to
+ * the foreground (middle screen in the figure below). Press \b Ok or \b Cancel
+ * to display the index number of the selected item in the list (right screen in
+ * the figure below). To close the dialog, press \b Ok.
+ *
+ * \image html IMAGE_QUERY026.GIF
+ *
+ * \subsection Sub29 2.9 Options menu
+ *
+ * The user can select a desired dialog directly by selecting Options when no
+ * dialogs are shown. The menu below is displayed when \b Options is selected.
+ *
+ * \image html IMAGE_QUERY029.GIF
+ *
+ *
+ * \section Design_sec 3. Design and implementation
+ *
+ * \subsection Sub31 3.1 Resource definition
+ *
+ * The structure definition of resources for a query dialog is defined in
+ * "avkon.rh". These are defined in an .rss file using the structure
+ * AVKON_CONFIRMATION_QUERY and AVKON_DATA_QUERY. A list data array is used for
+ * resource definition of the global list query.
+ *
+ * \subsection Sub311 3.1.1 Yes/No or OK/Cancel selection dialog
+ *
+ * The resource code for a Yes/No selection dialog is very similar to that of an
+ * OK/Cancel selection dialog. The value of the dialog buttons in DIALOG is the
+ * only difference between them.
+ *
+ * <I>Yes/No selection dialog</I>
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexquery_confirmation_query
+ *   {
+ *   flags = EGeneralQueryFlags;
+ *   buttons = R_AVKON_SOFTKEYS_YES_NO;
+ *   items =
+ *     {
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtQuery;
+ *       id = EGeneralQuery;
+ *       control = AVKON_CONFIRMATION_QUERY
+ *         {
+ *         layout = EConfirmationQueryLayout;
+ *         label = STRING_r_aknexquery_con_label_text;
+ *         bmpfile = AKNEXQUERY_BMPFILE_NAME;
+ *         bmpid = AKNEXQUERY_BITMAP_MASK_FLAG;
+ *         };
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * \subsection Sub312 3.1.2 Data input dialog
+ *
+ * Regarding the resource code of the data input dialog, the member values in
+ * the AVKON_DATA_QUERY structure need to be set for each data type. The
+ * following are two examples of resource code. One is single data input, the
+ * other is multiple data input.
+ *
+ * <I>Single data input</I>
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexquery_data_query
+ *   {
+ *   flags = EGeneralQueryFlags;
+ *   buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+ *   items =
+ *     {
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtQuery;
+ *       id = EGeneralQuery;
+ *       control = AVKON_DATA_QUERY
+ *         {
+ *         layout = EDataLayout;
+ *         label = STRING_r_aknexquery_data_label_text;
+ *         control = EDWIN
+ *           {
+ *           flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+ *           width = AKNTAQUERY_EDWIN_WIDTH;
+ *           maxlength = AKNTAQUERY_EDWIN_MAXLENGTH;
+ *           // added to limit expanding in forms. 
+ *           // If you want full screen use 6 here
+ *           max_view_height_in_lines = AKNEXQUERY_EDWIN_LINES; 
+ *           // if you have the line above, you must have this. 
+ *           // It's calculable from LAF
+ *           base_line_delta = 21; 
+ *           };
+ *         };
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * <I>Multiple data input</I>
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexquery_multi_line_date_and_duration_layout
+ *   {
+ *   flags = EGeneralQueryFlags;
+ *   buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+ *   items =
+ *     {
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtMultilineQuery;
+ *       id = EMultilineFirstLine;
+ *       control = AVKON_DATA_QUERY
+ *         {
+ *         layout = EMultiDataFirstEdwin;
+ *         label = STRING_r_aknexquery_date_label_text;
+ *         control = DATE_EDITOR
+ *           {
+ *           minDate = DATE
+ *             {
+ *             year = AKNEXQUERY_DATE_EDITOR_MIN_DATE;
+ *             };
+ *           maxDate = DATE
+ *             {
+ *             year = AKNEXQUERY_DATE_EDITOR_MAX_DATE;
+ *             };
+ *           flags = AKNEXQUERY_DATE_EDITOR_FLAGS;
+ *           };
+ *         };
+ *       },
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtMultilineQuery;
+ *       id = EMultilineSecondLine;
+ *       control = AVKON_DATA_QUERY
+ *         {
+ *         layout = EMultiDataSecondEdwin;
+ *         label = STRING_r_aknexquery_dura_label_text;
+ *         control = DURATION_EDITOR
+ *           {
+ *           minDuration = DURATION
+ *             {
+ *             };
+ *           maxDuration = DURATION
+ *             {
+ *             seconds = AKNEXQUERY_DURATION_EDITOR_MAX_SECOND;
+ *             };
+ *           flags = AKNEXQUERY_DURATION_EDITOR_FLAGS;
+ *           };
+ *         };
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * For the multiple line query, it is necessary to define two DLG_LINE
+ * structures. The first line for the multiple line query is identified by
+ * EMultilineFirstLine in "id". The second line is identified by
+ * EMultilineSecondLine in "id".
+ *
+ * \subsection Sub313 3.1.3 Select list item dialog
+ *
+ * The following is the resource code for the Select list item dialog. Selecting
+ * an item or items in the listbox is defined in the 'flags' of LISTBOX.
+ *
+ * <I>Select list item dialog</I>
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexquery_list_single_pane
+ *   {
+ *   flags = EGeneralQueryFlags;
+ *   buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+ *   items =
+ *     {
+ *     DLG_LINE
+ *       {
+ *       type = EAknCtListQueryControl;
+ *       id = EListQueryControl;
+ *       control = AVKON_LIST_QUERY_CONTROL
+ *         {
+ *         listtype = EAknCtSinglePopupMenuListBox;
+ *         listbox = LISTBOX
+ *           {
+ *           flags = EAknListBoxMenuList;
+ *           height = AKNEXQUERY_LISTBOX_HEIGHT;
+ *           width = AKNEXQUERY_LISTBOX_WIDTH;
+ *           array_id = r_aknexquery_list_single_pane_item;
+ *           };
+ *         heading = STRING_r_aknexquery_list_title;
+ *         };
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * \subsection Sub314 3.1.4 Global list query
+ *
+ * The following is the resource code for the global list query. In this
+ * resource definition, a data array of text strings that is shown in the
+ * listbox needs to be set.
+ *
+ * <I>Global list query</I>
+ *
+ * \code
+ * RESOURCE ARRAY r_aknexquery_sub_popup_data
+ *   {
+ *   items =
+ *     {
+ *     LBUF
+ *       {
+ *       txt = STRING_r_aknexquery_sub_popup_data1;
+ *       },
+ *     LBUF
+ *       {
+ *       txt = STRING_r_aknexquery_sub_popup_data2;
+ *       },
+ *     LBUF
+ *       {
+ *       txt = STRING_r_aknexquery_sub_popup_data3;
+ *       },
+ *     LBUF
+ *       {
+ *       txt = STRING_r_aknexquery_sub_popup_data4;
+ *       },
+ *     LBUF
+ *       {
+ *       txt = STRING_r_aknexquery_sub_popup_data5;
+ *       }
+ *     };
+ *   }
+ * \endcode
+ *
+ * \subsection Sub32 3.2 Displaying a query dialog and getting a user response
+ *
+ * Constructing a query dialog is very similar to constructing a normal dialog.
+ * When constructing a query dialog, the target query dialog object to show is
+ * created. At this time, the reference is passed to the object to get user
+ * response data. After this construction, the ExecuteLD function is called to
+ * display the query dialog.
+ *
+ * When the user responds to this dialog, the query dialog sets the value of the
+ * soft key event of \b OK or \b Cancel (or Yes or No) into the reference that
+ * is passed at the construction phase. Then the query dialog closes itself and
+ * deletes the query dialog object by itself. The program returns to the
+ * application from the dialog after the dialog is deleted. In this example
+ * application, input text data is shown in the application view.
+ *
+ * \code
+ * TBuf<KAknExQueryTextBufLength> textData;
+ * CAknTextQueryDialog* dlg;
+ * dlg = new ( ELeave )CAknTextQueryDialog( textData, CAknQueryDialog::ENoTone );
+ * TBool answer( dlg->ExecuteLD( aQueryResourceId ) );
+ * if ( aDisplayFlag && answer )
+ *     {
+ *     iLabelResultMessage->SetTextL( textData );
+ *     }
+ * \endcode
+ *
+ * The following sequence diagram shows the life of a query dialog from the time
+ * it is instantiated until it is deleted.
+ *
+ * \image html IMAGE_QUERY033.GIF
+ *
+ * \subsection Sub33 3.3 Displaying a global query and getting a user response
+ *
+ * Using a global list query is different from the query dialog described above.
+ *
+ * At first, the active object (CAknExQueryGlobalListObserver class) is
+ * instantiated, (see (a)), then CAknExQueryGlobalListObserver::Start() is
+ * called. Next, the global list query (CAknGlobalListQuery class) is
+ * instantiated, (see (c)), then the iStatus variable of the active object is
+ * set into CAknGlobalListQuery::ShowListQueryL() as a parameter and then this
+ * function is called. Now the global list query is shown. When the user selects
+ * a list item and presses the \b OK or \b Cancel soft key, a soft key event
+ * occurs and the global list query is closed and the
+ * CAknExQueryGlobalListObserver::RunL() function is called by the active object
+ * framework. Then an index number (-1 is set when Cancel is selected) of the
+ * list that is selected in the global list query is set to iStatus of the
+ * active object by the notify framework.
+ *
+ * \code
+ * iDisplayDialog = ETrue;
+ * SetTextToLabelL( R_AKNEXQUERY_OPERATE_MESSAGE );
+ * CDesCArray* textArray =
+ * iCoeEnv->ReadDesCArrayResourceL(R_AKNEXQUERY_SUB_POPUP_DATA);
+ * CleanupStack::PushL(textArray);
+ * iGlobalListObserver = CAknTaQueryGlobalListObserver::NewL( this );    // (a)
+ * iGlobalListObserver->Start();                                     // <-- (b)
+ * iGlobalListQuery = CAknGlobalListQuery::NewL();                   // <-- (c)
+ * iGlobalListObserver->SetSelectItemFlag();
+ * iGlobalListQuery->ShowListQueryL(textArray, iGlobalListObserver->iStatus, 0);
+ *  // (d)
+ * CleanupStack::PopAndDestroy(); // textArray
+ * iDisplayDialog = EFalse;
+ * \endcode
+ *
+ * The following sequence diagram shows the life of the active object and global
+ * list query:
+ *
+ * \image html IMAGE_QUERY034.GIF
+ *
+ *
+ */

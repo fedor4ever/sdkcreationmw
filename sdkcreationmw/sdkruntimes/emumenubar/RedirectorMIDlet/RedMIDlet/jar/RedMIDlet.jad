@@ -1,0 +1,10 @@
+MIDlet-Name: Std.out Redir
+MIDlet-Version: 0.0.1
+MIDlet-Vendor: Nokia
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Jar-URL: RedMIDlet.jar
+MIDlet-Jar-Size: 12209
+MIDlet-Description: Redirector MIDlet
+MIDlet-Icon: /redirection.png
+MIDlet-1: Sdt.out redir, /redirection.png, com.nokia.tools.redMIDlet.RedMIDlet

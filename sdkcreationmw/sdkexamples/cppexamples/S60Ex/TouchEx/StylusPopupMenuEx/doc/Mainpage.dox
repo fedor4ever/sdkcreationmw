@@ -1,0 +1,53 @@
+/*! \mainpage StylusPopupMenu Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates the use of CAknStylusPopUpMenu.A floating popup menu 
+ * which is meant for stylus usage only.The menu appears near to the tapping position. 
+ * When an item is tapped the menu calls its observer's (iMenuObserver) ProcessCommandL. 
+ * Typically the observer is application's AppUi. It is then the
+ *  observer's responsibility to handle the command appropriately.
+ *  The observer is informed with KErrCancel if the menu is closed without 
+ *  making a selection. 
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CAknStylusPopUpMenu
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, App UI, Document and Container classes.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * Most of the important application code is in the styluspopupmenuexcontainer.cpp.
+ *
+ * Key events are as below.
+ *
+ * AddMenuItemL 					: Adds a menu item. If the menu contains maximum amount of
+ * 													items, the function will do nothing. Inserted item will be
+ * 													placed last.
+ * RemoveMenuItem 				: Removes a menu item.
+ * SetItemDimmed  				: Hides / shows a menu item.
+ * ShowMenu								: Shows the stylus popup menu. If it's already visible nothing happens.
+ * SetPosition						: Sets the position of the stylus popup menu. 
+ * ConstructFromResourceL	: Constructs the menu from resource.
+ * HandleControlEventL		: Method to handle events that occur when user selects a menu item.
+ *
+ * Events from the Options menu are handled in the CStylusPopupMenuExAppUi.
+ * 
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in mmp-files as CAPABILITY NONE.
+ *
+ */

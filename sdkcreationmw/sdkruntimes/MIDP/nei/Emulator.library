@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>Emulator</fullname>
+  <class>
+    <path>[lib/emulator.jar]</path>
+  </class>
+  <source>
+    <path>[lib/emulator.jar]</path>
+  </source>
+  <lastmodsaved>1130191347250</lastmodsaved>
+</library>

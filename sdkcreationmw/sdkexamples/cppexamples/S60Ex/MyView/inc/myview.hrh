@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains the declarations for constants of MyView
+*
+*/
+
+
+
+#ifndef MYVIEW_HRH
+#define MYVIEW_HRH
+
+enum TMyViewCommandIds
+    {
+    EMyViewCmdAppTest1 = 1,
+    EMyViewCmdView1Cmd1,
+    EMyViewCmdView1Cmd2,
+    EMyViewCmdView1Cmd3,
+    EMyViewCmdView2Cmd1,
+    EMyViewCmdView2Cmd2,
+    EMyViewCmdView2Cmd3,
+    EMyViewCmdView2Cmd4
+    };
+
+enum TMyViewTabViewId
+    {
+    EMyViewView1Tab= 1,
+    EMyViewView2Tab
+    };
+ 
+
+
+
+#endif      // MYVIEW_HRH

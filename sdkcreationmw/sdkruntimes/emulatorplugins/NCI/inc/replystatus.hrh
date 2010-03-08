@@ -1,0 +1,64 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef REPLYSTATUS_H
+#define REPLYSTATUS_H
+
+// Using HTTP Style status codes
+
+//_LIT8(KStatusContinue,			  "100");	// Continue
+//_LIT8(KStatusSwitchingProtocols,  "101");	// Switching Protocols
+_LIT8(KStatusOK,				  "200");   // OK
+_LIT8(KStatusCreated,			  "201");	// Created
+_LIT8(KStatusAccepted,			  "202");	// Accepted
+//_LIT8(KStatusNonAuthInfo,	      "203");	// Non-Authoritative Information
+//_LIT8(KStatusNoContent,			  "204");	// No Content
+//_LIT8(KStatusResetContent,		  "205");   // Reset Content
+//_LIT8(KStatusPartialContent,	  "206");   //Partial Content
+_LIT8(KStatusMultipleChoices,	  "300");   // Multiple Choices
+_LIT8(KStatusMovedPermanently,	  "301");   // Moved Permanently
+//_LIT8(KStatusFound,				  "302");   // Found
+//_LIT8(KStatusSeeOther,			  "303");   // See Other
+//_LIT8(KStatusNotModified,		  "304");   // Not Modified
+//_LIT8(KStatusUseProxy,			  "305");   // Use Proxy
+//_LIT8(KStatusTemporaryRedirect,	  "307");   // Temporary Redirect
+_LIT8(KStatusBadRequest,		  "400");   // Bad Request
+//_LIT8(KStatusUnauthorized,		  "401");   // Unauthorized
+//_LIT8(KStatusPaymentRequired,	  "402");   // Payment Required
+//_LIT8(KStatusForbidden,			  "403");   // Forbidden
+_LIT8(KStatusNotFound,			  "404");   // Not Found
+//_LIT8(KStatusMethodNotAllowed,	  "405");   // Method Not Allowed
+_LIT8(KStatusNotAcceptable,		  "406");   // Not Acceptable
+//_LIT8(KStatusProxyAuthRequired,	  "407");   // Proxy Authentication Required
+_LIT8(KStatusRequestTimeout,	  "408");   // Request Time-out
+//_LIT8(KStatusConflict,			  "409");   // Conflict
+//_LIT8(KStatusGone,				  "410");   // Gone
+//_LIT8(KStatusLengthRequired,	  "411");   // Length Required
+//_LIT8(KStatusPreconditionFailed,  "412");   // Precondition Failed
+//_LIT8(KStatusRequEntityTooLarge,  "413");   // Request Entity Too Large
+//_LIT8(KStatusRequestURITooLarge,  "414");   // Request-URI Too Large
+//_LIT8(KStatusUnsuprMediaType,	  "415");   // Unsupported Media Type
+//_LIT8(KStatusReqRangeNotSatis,	  "416");   // Requested range not satisfiable
+//_LIT8(KStatusExpectationFailed,	  "417");   // Expectation Failed
+_LIT8(KStatusInternalServerError, "500");   // Internal Server Error
+_LIT8(KStatusNotImplemented,	  "501");   // Not Implemented
+//_LIT8(KStatusBadGateway,		  "502");   // Bad Gateway
+_LIT8(KStatusServiceUnavailable,  "503");   // Service Unavailable
+//_LIT8(KStatusGatewayTime-out,	  "504");   // Gateway Time-out
+//_LIT8(KStatusHTTPVersionNotSup,   "505");   // HTTP Version not supported
+
+#endif // REPLYSTATUS_H

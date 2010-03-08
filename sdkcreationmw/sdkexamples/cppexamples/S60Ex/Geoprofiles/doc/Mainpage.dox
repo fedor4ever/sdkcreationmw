@@ -1,0 +1,129 @@
+/*! \mainpage GeoProfiles Example
+ *
+ * \ref Introduction
+ * \n\ref Prerequistes_Section
+ * \n\ref Emulator_SubSection
+ * \n\ref Design_Section
+ * \n\ref GeoProfilesApp_SubSection
+ * \n\ref GeoProfilesHanlder_SubSection
+ *
+ * <HR>
+ *
+ * \section Introduction 1. About this Example
+ *
+ * The purpose of this application is to provide an example, including
+ * source code, of the use of the Location based Trigerring Framework which
+ * developers can use to understand the main use cases of Location based     
+ * trigerring.
+ *
+ * The sample is a small location based profile changer application called  
+ * GeoProfiles, which enables the user to automatically change their Profile
+ * based on his/her location. 
+ * 
+ * The application will be used in S60 3.2 terminals and onwards. 
+ *
+ * <HR>
+ *
+ * \section Prerequistes_Section 2. Prerequisites
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example.
+ *
+ * This example uses Location based Trigerring API to create triggers. It would
+ * be good if the user has read the Location Trigerring API Specification
+ * and then uses the example.
+ *
+ * It's good to have GPRS Connection support for a device and using A-GPS for
+ * acquiring Location information to ensure a seamless user experience.
+ *
+ * \subsection Emulator_SubSection 2.1 Emulator
+ *
+ * In emulator configure usage of Simulation PSY by installing SimPsyConfigurator
+ * from Forum Nokia.
+ *
+ * <b>Note :</b> Inorder to enable logging for GeoProfiles, create folder 
+ * <i> epos </i> under directory <i> C:/logs </i>
+ *
+ * <HR>
+ *
+ * \section Design_Section 3. Design and Implementation
+ *
+ * This section provides a brief description of the architecture and design of 
+ * GeoProfiles. It can be seen as composed of two separate components required
+ * to create and update user profiles:
+ * - GeoProfiles Application
+ * - GeoProfiles Handler
+ *
+ * \subsection GeoProfilesApp_SubSection 3.1 GeoProfiles Application
+ *
+ * GeoProfiles Application is a typical S60 Application comprising of a App,
+ * AppUi, Document, View and Container Class. This application is responsible
+ * for Creating Triggers, Updating Triggers and Deleting Triggers.
+ *
+ * \image html GeoProfilesApplication.jpg
+ * <b> <center> Figure 1: GeoProfiles Application Class Diagram </center></b>
+ * 
+ * <b> <center> Class Descriptions </center></b>
+ * <b> CGeoProfilesApp </b> 
+ * Application class for GeoProfiles. This is a part of the standard
+ * implementation of S60 Application class which holds the document.
+ *
+ * <b> CGeoProfilesDocument </b>
+ * Document class for GeoProfiles. This is a part of the standard
+ * implementation of S60 Document class.
+ *
+ * <b> CGeoProfilesAppUi </b>
+ * Application UI class for GeoProfiles. This is a part of the standard
+ * implementation of S60 Application UI class. The Application UI
+ * aggregates the GeoProfiles view.
+ *
+ * <b> CGeoProfilesView </b>
+ * View class for GeoProfiles. The View lists the currently active
+ * triggers and the properties associated with a GeoProfile. The user
+ * can add, delete and modify GeoProfiles from this view.
+ *
+ * <b> CGeoProfilesContainer </b>
+ * Container class for GeoProfiles. The container holds the list box
+ * for displaying GeoProfiles and also provides first level handling
+ * of user input.
+ *
+ * <b> MLbtTriggerChangeEventObserver </b>
+ * Event change notifier to communicate changes in GeoProfiles. These
+ * changes are triggered by changes to the underlying Location Based
+ * Trigerring Engine.
+ *
+ * <b> CGeoProfilesEngine </b>
+ * Business logic for all operations for GeoProfiles. This class is
+ * responsible for interfacing with Location Based Trigerring for 
+ * creation, modification and deletion of triggers.
+ *
+ * <b> CGeoProfile </b>
+ * Storage class for GeoProfiles. It is used as an exchange medium to
+ * receive information from end user and communicate to the engine
+ * class.
+ *
+ * <b> CGeoProfilesLBModel </b>
+ * List box model for GeoProfiles application. 
+ *
+ * <b> CGeoProfileEditor </b>
+ * Editor implementation for GeoProfiles. This class aggregates all UI
+ * components used to receive input from the end user.
+ *
+ * <b> CGeoPlaceSelector </b>
+ * Aggregation component for selecting location information. The user
+ * can currently use Location Acquistion APIs to obtain his/her current
+ * location or select a location from Landmarks API.
+ *
+ * <b> CGeoProfileSelector </b>
+ * Aggregation class for selecting a profile.
+ *
+ * \subsection GeoProfilesHanlder_SubSection 3.2 GeoProfiles Handler
+ *
+ * GeoProfiles Handler is an executable which gets invoked when a Trigger fires.
+ * The executable is typically invoked when the condition set for a particular
+ * trigger is satisfied i.e., when the user enters/exits a particular location.
+ * The executable then activates the profile corresponding to the trigger.
+ *
+ */

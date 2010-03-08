@@ -1,0 +1,168 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    FLIS // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include <Filelist.mbg>
+#include "Filelist.hrh"
+#include "Filelist.rls"
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "Filelist"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_filelist_hotkeys;
+    menubar = r_filelist_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//
+//    r_filelist_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_filelist_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_filelist_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_filelist_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_filelist_menu; txt = "File"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_filelist_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_filelist_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EFilelistCmdAppPrivFolder1; txt = STRING_r_filelist_private_folder1; },
+        MENU_ITEM { command = EFilelistCmdAppPrivFolder2; txt = STRING_r_filelist_private_folder2; },
+        MENU_ITEM { command = EFilelistCmdAppProtFolder; txt = STRING_r_filelist_protected_folder; },
+        MENU_ITEM { command = EAknCmdExit; txt = STRING_r_filelist_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_filelist_localisable_app_info
+//
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_filelist_localisable_app_info
+    {
+    short_caption = STRING_r_filelist_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_filelist_caption_string;
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\Filelist.mif";
+	};
+    }
+
+//------------------------------------------------------------------------------
+//
+//    r_filelist_formatstring
+//    formatted string for grid item
+//
+//------------------------------------------------------------------------------
+//
+RESOURCE TBUF40 r_filelist_formatstring
+    {
+    buf = STRING_r_filelist_format_item;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_filelist_errornote_text
+//    For error note.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF256 r_filelist_errornote_text
+    {
+    buf = STRING_r_filelist_errornote_text;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_filelist_navi_pane_text1
+//    Text in navi pane.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE NAVI_LABEL r_filelist_navi_pane_text1
+    {
+    txt = STRING_r_filelist_private_folder1;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_filelist_navi_pane_text2
+//    Text in navi pane
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE NAVI_LABEL r_filelist_navi_pane_text2
+    {
+    txt = STRING_r_filelist_private_folder2;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_filelist_emptytext
+//    For empty grid.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF256 r_filelist_emptytext
+    {
+    buf = STRING_r_filelist_emptytext;
+    }
+
+
+// End of File

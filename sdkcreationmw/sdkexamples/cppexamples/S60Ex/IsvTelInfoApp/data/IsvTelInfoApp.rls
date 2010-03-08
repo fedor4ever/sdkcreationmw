@@ -1,0 +1,196 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localisation Strings for IsvTelInfoApp
+*
+*/
+
+
+//  LOCALISATION STRINGS
+rls_string STRING_r_IsvTelInfoApp_title   		     	 	 "IsvTelInfoApp"
+
+// Caption
+rls_string STRING_r_apps_tafm_list         		      	 "IsvTelInfoApp"
+rls_string STRING_r_apps_tafm_grid          		     "IsvTelInfoApp"
+
+// MenuBar
+rls_string STRING_r_IsvTelInfoApp_menubar        	   	 	 "Option"
+rls_string STRING_r_IsvTelInfoApp_menu_exit                 "Exit"
+
+rls_string STRING_r_IsvTelInfoApp_menu_launch_phops  	 	 "Launch"
+
+
+// Messages
+rls_string STRING_r_IsvTelInfoApp_label_title                "IsvTelInfoApp\nExample Application"
+rls_string STRING_r_IsvTelInfoApp_label_operation            "IsvTelInfoApp\nExample Application"
+
+
+//Status pane text for pages
+rls_string STRING_r_IsvTelInfoApp_status_pane_page_phoneInfo      	 "Phone Information"
+rls_string STRING_r_IsvTelInfoApp_status_pane_page_barringStatus  	 "Barring Status"
+rls_string STRING_r_IsvTelInfoApp_status_pane_page_misc	       	 "Miscellaneous Status"
+
+//Network related
+rls_string STRING_r_IsvTelInfoApp_form_label_nw_registration    	"Network Registration Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_barringallincoming      		"All-Incoming Bar Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_barringincomingroaming 		"Incoming-Roaming Bar Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_barringalloutgoing      		"All-Outgoing Bar Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_barringoutgoinginternational	"Outgoing-Intl Bar Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_barringoutgoinginternationalexhc  "Outgoing-IntlExHc Bar Status"
+
+rls_string STRING_r_IsvTelInfoApp_form_label_waiting             		"Call Waiting Status"
+
+rls_string STRING_r_IsvTelInfoApp_form_label_identity_unspecified   		"Identity Unspecified"
+rls_string STRING_r_IsvTelInfoApp_form_label_identity_presentation  		"Identity Presentation Status"
+rls_string STRING_r_IsvTelInfoApp_form_label_identity_restriction   		"Identity Restriction Status"
+
+
+// Label field text for General status menu
+rls_string STRING_r_IsvTelInfoApp_form_label_phonemfr              "Manufacturer"
+rls_string STRING_r_IsvTelInfoApp_form_label_phonemodel            "Model Number"
+rls_string STRING_r_IsvTelInfoApp_form_label_phonesernum           "Serial Number"
+rls_string STRING_r_IsvTelInfoApp_form_label_subscriber_id         "Subscriber ID"
+
+
+// Slider label text
+rls_string STRING_r_IsvTelInfoApp_form_label_sdmin  "min"
+rls_string STRING_r_IsvTelInfoApp_form_label_sdmax  "max"
+rls_string STRING_r_IsvTelInfoApp_form_value_label  "%U"
+rls_string STRING_r_IsvTelInfoApp_form_header_label "HeaderLabel"
+
+// Bitmap file path
+// +++++1234567890123456789012345678901++123456789012345678901234567890++++
+rls_string STRING_r_IsvTelInfoApp_bmpfile_path      "Z:\\System\\Data\\avkon.mbm"
+
+// Sample Editor text
+rls_string STRING_r_IsvTelInfoApp_form_edwin_text   "Edwin text."
+rls_string STRING_r_IsvTelInfoApp_form_secret_text  "Password"
+
+// Derived Form Menu text
+rls_string STRING_r_IsvTelInfoApp_menu_change_focus               "Change Focus"
+rls_string STRING_r_IsvTelInfoApp_menu_try_change_focus_to_first  "Try To Focus First"
+rls_string STRING_r_IsvTelInfoApp_menu_try_change_focus_to_middle "Try To Focus Middle"
+rls_string STRING_r_IsvTelInfoApp_menu_try_change_focus_to_last   "Try To Focus Last"
+rls_string STRING_r_IsvTelInfoApp_menu_rotate_focus_by_one        "Rotate Focus +1"
+rls_string STRING_r_IsvTelInfoApp_menu_rotate_focus_by_three      "Rotate Focus +3"
+rls_string STRING_r_IsvTelInfoApp_menu_rotate_focus_by_minus_two  "Rotate Focus -2"
+
+rls_string STRING_r_IsvTelInfoApp_menu_set_caption                "Set Caption"
+rls_string STRING_r_IsvTelInfoApp_menu_set_caption_from_resource  "From Resource"
+rls_string STRING_r_IsvTelInfoApp_menu_set_caption_from_user      "From User"
+
+
+rls_string STRING_r_IsvTelInfoApp_menu_activate_page              "Activate Page"
+rls_string STRING_r_IsvTelInfoApp_menu_activate_first_page        "First Page"
+
+rls_string STRING_r_IsvTelInfoApp_menu_checks                     "Checks"
+rls_string STRING_r_IsvTelInfoApp_menu_active_page                "Active Page"
+rls_string STRING_r_IsvTelInfoApp_menu_get_border_style           "Get Border Style"
+rls_string STRING_r_IsvTelInfoApp_menu_get_flags                  "Get Flags"
+rls_string STRING_r_IsvTelInfoApp_menu_get_line                   "1st Line on 1st page"
+
+rls_string STRING_r_IsvTelInfoApp_menu_reset_line                  "Reset Line"
+rls_string STRING_r_IsvTelInfoApp_menu_reset_line_minimum_sizes    "Minimum Sizes"
+
+rls_string STRING_r_IsvTelInfoApp_menu_pre_n_post                  "Pre N Post"
+
+rls_string STRING_r_IsvTelInfoApp_menu_size_n_pos                  "Size N Pos"
+rls_string STRING_r_IsvTelInfoApp_menu_size_n_pos_10x10            "10 x 10"
+rls_string STRING_r_IsvTelInfoApp_menu_size_n_pos_100x100          "100 x 100"
+
+rls_string STRING_r_IsvTelInfoApp_menu_save_test                  "Save Test"
+rls_string STRING_r_IsvTelInfoApp_menu_set_changes_pending_true   "Changes Pending True"
+rls_string STRING_r_IsvTelInfoApp_menu_set_changes_pending_false  "Changes Pending False"
+
+
+// texts used in derived form
+rls_string STRING_r_IsvTelInfoApp_resource_caption    "Resource"
+
+
+//===========================================================================
+//Common Error string
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrString     			"Error"
+rls_string STRING_r_IsvTelInfoApp_TelStr_SuccessString 			"Success"
+
+//Call Not active
+rls_string STRING_r_IsvTelInfoApp_TelStr_CallNotActive  		"Call Not Active"
+
+//Standard Error strings
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrNotFound			"Error Not Found"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrGeneral 			"Error General"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrCancel			 	"Cancel"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrNoMemory 			"No Memory"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrNotSupported 		"Command Not Supported"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrArgument 			"Error in Arguments"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrTotalLossOfPrecision "Loss of Precision"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrBadHandle			"Bad Handle"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrOverflow 			"Error Overflow"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrUnderflow 			"Error Underflow"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrAlreadyExists 		"Already Exists"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrInUse 				"Error In Use"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrServerTerminated	"Error Server Terminated"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrServerBusy 	 	"Server Busy"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrUnknown 			"Error Unkonown"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrCorrupt 			"Error Corrupt"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrAccessDenied 		"Access Denied"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrCommsLineFail		"Line Fail"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrTimedOut 			"Time Out"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrCouldNotConnect 	"Could not Connect"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrCouldNotDisconnect 	"Could not Disconnect"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrHardwareNotAvailable "Hardware Not available"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrSessionClosed 		"Session Closed"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrPermissionDenied 	"Permission Denied"
+rls_string STRING_r_IsvTelInfoApp_TelStr_ErrorDefault 			"Error"
+
+//Menu command texts for General Fetch Menu
+rls_string STRING_r_IsvTelInfoApp_form_label_fetch      		"Fetch"
+
+
+rls_string STRING_r_IsvTelInfoApp_Err_EmuApiNotSupported   	"Emulator:API not supported"
+
+//Waiting Status
+rls_string STRING_r_IsvTelInfoApp_Status_Active 				"Active"
+rls_string STRING_r_IsvTelInfoApp_Status_NotActive 			"Not Active"
+rls_string STRING_r_IsvTelInfoApp_Status_NotProvisioned 		"Not Provisioned"
+rls_string STRING_r_IsvTelInfoApp_Status_NotAvailable 			"Not Available"
+rls_string STRING_r_IsvTelInfoApp_Status_Unknown 				"Unknown"
+
+//Call barring conditions
+rls_string STRING_r_IsvTelInfoApp_TelStr_BarCondition1 "AllIncoming"
+rls_string STRING_r_IsvTelInfoApp_TelStr_BarCondition2 "IncomingRoaming"
+rls_string STRING_r_IsvTelInfoApp_TelStr_BarCondition3 "AllOutgoing"
+rls_string STRING_r_IsvTelInfoApp_TelStr_BarCondition4 "OutgoingInternationalExHC"
+rls_string STRING_r_IsvTelInfoApp_TelStr_BarCondition5 "OutgoingInternational"
+
+//Id services
+rls_string STRING_r_IsvTelInfoApp_TelStr_IdService1 "CallerPresentation"
+rls_string STRING_r_IsvTelInfoApp_TelStr_IdService2 "CallerRestriction"
+
+//Identity Status
+rls_string STRING_r_IsvTelInfoApp_IdStatus_ActivePerm 			"Active Permanent"
+rls_string STRING_r_IsvTelInfoApp_IdStatus_DefaultRestricted   "Active Default Restricted"
+rls_string STRING_r_IsvTelInfoApp_IdStatus_DefaultAllowed 		"Active Default Allowed"
+rls_string STRING_r_IsvTelInfoApp_IdStatus_NotProvisioned 		"Not Provisioned"
+rls_string STRING_r_IsvTelInfoApp_IdStatus_Unknown 			"Unknown"
+
+// Network Regisration
+rls_string STRING_r_IsvTelInfoApp_NwReg_Unknown 			"Unknown"
+rls_string STRING_r_IsvTelInfoApp_NwReg_NoRegNoSrvc 		"Not Registered, No Service"
+rls_string STRING_r_IsvTelInfoApp_NwReg_NoRegEmergSrvc 	"Not Registered, Emergency Only"
+rls_string STRING_r_IsvTelInfoApp_NwReg_NoRegSearching 	"Not Registered, Searching "
+rls_string STRING_r_IsvTelInfoApp_NwReg_RegBusy 			"Registered,but Nw busy"
+rls_string STRING_r_IsvTelInfoApp_NwReg_RegHome 			"On Home Network"
+rls_string STRING_r_IsvTelInfoApp_NwReg_RegDenied 			"Registration Denied"
+rls_string STRING_r_IsvTelInfoApp_NwReg_RegRoaming 		"Registrated, Roaming"
+
+// End of File

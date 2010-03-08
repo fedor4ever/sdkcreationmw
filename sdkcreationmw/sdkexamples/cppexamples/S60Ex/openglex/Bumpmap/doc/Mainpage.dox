@@ -1,0 +1,55 @@
+/*! \mainpage OpenGL ES Bumpmap Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates how to do DOT3 bumpmapping in OpenGL ES applications. The example is very
+ *  simplified in that the viewer is assumed to be on the z axis when doing the bumpmapping calculations.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  <P>The calculations for the bumpmapping use a fixed tangent matrix that assumes the viewer is always located
+ *  on Z-axis. For information on how to calculate the tangent matrix in other cases see:
+ *  http://www.blacksmith-studios.dk/projects/downloads/tangent_matrix_derivation.php and
+ *  http://www.codesampler.com/oglsrc/oglsrc_4.htm//ogl_dot3_bump_mapping</P>
+ *
+ *  <P>Class design is very simple, the framework consists of the usual App, AppUi, Document and Container classes.
+ *  CBumpMap class is the main OpenGL drawing class and handles the drawing of the bumpmapped rectangle.
+ *  CFireFly handles moving and drawing of the firefly. CBumpMap class that owns the CFireFly instance also queries
+ *  the current location of the firefly to use that as the light source coordinate in the bumpmapping calculations.</P>
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

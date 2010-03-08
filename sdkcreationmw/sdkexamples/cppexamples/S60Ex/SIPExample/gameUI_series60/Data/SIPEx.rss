@@ -1,0 +1,396 @@
+/*
+* Copyright (c) 2004-2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    SLGA
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+#include "SIPEx.rls"
+#include "SIPEx.hrh"
+
+//  CONSTANTS  
+#define EDWIN_LENGTH 16
+
+//  RESOURCE DEFINITIONS 
+
+// -----------------------------------------------------------------------------
+//   
+// Resource file signature
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+
+// -----------------------------------------------------------------------------
+//   
+// Default document name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF 
+    { 
+	buf = "SIPEx"; 
+    }
+
+// -----------------------------------------------------------------------------
+//   
+// EikApp info (defines used status pane)
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = r_sip_ex_status_pane;
+    }
+    
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_view1
+//    Resource definition for View 1
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_sip_ex_view1
+    {
+    menubar = r_sip_ex_menubar;  
+    cba = r_sip_ex_view1_cba;  
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_view1_cba
+//    Resource definition for View 1 cba
+//
+// -----------------------------------------------------------------------------
+//    
+RESOURCE CBA r_sip_ex_view1_cba
+    {
+    buttons =
+		{
+		CBA_BUTTON { id = EAknSoftkeyOptions; txt = sip_ex_cba_options; },
+		CBA_BUTTON { id = ECmdChangeViewToLog; txt = sip_ex_view2_name; }
+		};
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_view2
+//    Resource definition for View 2
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_sip_ex_view2
+    {
+    menubar = r_sip_ex_menubar;  
+    cba = r_sip_ex_view2_cba; 
+    }
+    
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_view2_cba
+//    Resource definition for View 2 cba
+//
+// -----------------------------------------------------------------------------
+//    
+RESOURCE CBA r_sip_ex_view2_cba
+    {
+    buttons =
+		{
+		CBA_BUTTON { id = EAknSoftkeyOptions; txt = sip_ex_cba_options; },
+		CBA_BUTTON { id = ECmdChangeViewToGame; txt = sip_ex_view1_name; }
+		};
+    }
+    
+// -----------------------------------------------------------------------------
+//   
+// r_sip_ex_menubar
+// The resources for SIPEx menubar
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_sip_ex_menubar
+    {      
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_sip_ex_menu; }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//   
+// r_sip_ex_menu
+// The resources for SIPEx menubar
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_sip_ex_menu
+    {
+    items =
+        {
+        MENU_ITEM
+	        {
+            command = ECmdInviteForGame;
+            txt = sip_ex_invite_for_game;
+            }, 
+        MENU_ITEM
+	        {
+            command = ECmdEnableProfile;
+            txt = sip_ex_enable_profile;
+            }, 
+        MENU_ITEM
+	        {
+            command = ECmdDisableProfile;
+            txt = sip_ex_disable_profile;
+            }, 
+        MENU_ITEM
+            {
+            command = ECmdSendIM;
+            txt = sip_ex_send_im_cmd;
+            },
+        MENU_ITEM
+            {
+            command = ECmdEndGame;
+            txt = sip_ex_end_game_cmd;
+            },
+        MENU_ITEM
+	        {
+            command = EEikCmdExit;
+            txt = sip_ex_exit;
+            }
+        };
+    }
+    
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_status_pane
+//    Here we define the StatusPane to include
+//    Navipane with tabs
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE STATUS_PANE_APP_MODEL r_sip_ex_status_pane
+    {
+    panes=
+        {
+        SPANE_PANE
+            {
+            id = EEikStatusPaneUidNavi;
+            type = EAknCtNaviPane;
+            resource = r_sip_ex_navi_decorator;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    r_sip_ex_navi_decorator
+//    Here we define the tabs for the NaviPane in StatusPane
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_sip_ex_navi_decorator
+    {
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+        {
+        tab_width = EAknTabWidthWithTwoTabs;  // two tabs
+        active = 0;
+        tabs = {
+            TAB
+                {
+                id = ESIPExView1Id; // from application hrh
+                txt = sip_ex_view1_name;
+                },
+            TAB
+                {
+                id = ESIPExView2Id;
+                txt = sip_ex_view2_name;
+                }
+            };
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//   
+// r_accept_invitation_dlg
+// 
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_accept_invitation_dlg
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_YES_NO;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//   
+// r_invite_address_dlg
+// 
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_invite_address_dlg
+    {
+    flags = EAknGeneralQueryFlags;
+
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+       {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = ESIPExInviteAddressId;
+            control = AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = sip_ex_invite_address_line;
+                control = EDWIN 
+                    {
+                    avkon_flags = EAknEditorFlagSupressShiftMenu;
+                    maxlength = ESIPMaxAddrLen;
+                    width = EDWIN_LENGTH; 
+                    lines = 1;
+                    max_view_height_in_lines = 1;
+                    };
+                };
+            }
+        };
+    }
+      
+// -----------------------------------------------------------------------------
+//   
+// r_instant_message_dlg
+// The dialog for instant message sending
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_instant_message_dlg
+    {
+    flags = EAknGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = ESIPExIMAddressLineId;
+            control = AVKON_DATA_QUERY 
+                { 
+                layout = EMultiDataFirstEdwin;
+                label = sip_ex_im_address_line;
+                control = EDWIN 
+                    {
+                    flags = EEikEdwinInclusiveSizeFixed | 
+                            EEikEdwinNoLineOrParaBreaks; 
+                    avkon_flags = EAknEditorFlagSupressShiftMenu;
+                    maxlength = ESIPMaxAddrLen;
+                    width = EDWIN_LENGTH;
+                    lines = 1;
+                    max_view_height_in_lines = 1;
+                    };
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = ESIPExIMMessageLineId;
+            control = AVKON_DATA_QUERY 
+                { 
+                layout = EMultiDataSecondEdwin;
+                label = sip_ex_im_msg_line;
+                control = EDWIN 
+                    {
+                    flags = EEikEdwinInclusiveSizeFixed | 
+                            EEikEdwinNoLineOrParaBreaks;  
+                    avkon_flags = EAknEditorFlagSupressShiftMenu;
+                    maxlength = ESIPMaxMsgLen;
+                    width = EDWIN_LENGTH;
+                    lines = 1;
+                    max_view_height_in_lines = 1;
+                    };
+                };
+            }
+        };
+            
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    The text resources
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_sip_ex_title_txt 
+    { 
+    buf = sip_ex_title_txt;
+    }
+    
+RESOURCE TBUF r_error_in_address_txt 
+    { 
+    buf = sip_ex_error_in_address;
+    }
+
+RESOURCE TBUF r_sip_ex_not_connected_txt
+    {
+    buf = sip_ex_not_connected_txt;
+    }
+
+RESOURCE TBUF r_sip_ex_not_registered_txt
+    {
+    buf = sip_ex_not_registered_txt;
+    }
+
+RESOURCE TBUF r_sip_ex_im_received
+    {
+    buf = sip_ex_im_received;
+    }
+    
+RESOURCE TBUF r_sip_ex_accept_invitation_dlg_title
+    {
+    buf = sip_ex_accept_invitation_dlg_title;
+    }
+
+RESOURCE TBUF r_sip_ex_accept_invitation
+    {
+    buf = sip_ex_accept_invitation;
+    }
+    
+// End of File
+    

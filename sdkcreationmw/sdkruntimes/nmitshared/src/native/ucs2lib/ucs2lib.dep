@@ -1,0 +1,32 @@
+# Microsoft Developer Studio Generated Dependency File, included by ucs2lib.mak
+
+.\src\ucs2.c : \
+	"..\slib\include\s_bitset.h"\
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_dom.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_hist.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lib.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_math.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_opt.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_prop.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_stack.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\slib\include\s_xml.h"\
+	".\include\ucs2lib.h"\
+	

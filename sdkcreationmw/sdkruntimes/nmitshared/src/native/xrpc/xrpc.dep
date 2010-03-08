@@ -1,0 +1,218 @@
+# Microsoft Developer Studio Generated Dependency File, included by xrpc.mak
+
+.\src\x_client.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_core.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_data.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_expat.c : \
+	"..\expat\lib\expat.h"\
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_libxml.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_parse.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_server.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	
+
+.\src\x_util.c : \
+	"..\slib\include\s_buf.h"\
+	"..\slib\include\s_def.h"\
+	"..\slib\include\s_event.h"\
+	"..\slib\include\s_file.h"\
+	"..\slib\include\s_hash.h"\
+	"..\slib\include\s_itr.h"\
+	"..\slib\include\s_lock.h"\
+	"..\slib\include\s_mem.h"\
+	"..\slib\include\s_mutex.h"\
+	"..\slib\include\s_os.h"\
+	"..\slib\include\s_queue.h"\
+	"..\slib\include\s_random.h"\
+	"..\slib\include\s_strbuf.h"\
+	"..\slib\include\s_thread.h"\
+	"..\slib\include\s_util.h"\
+	"..\slib\include\s_vector.h"\
+	"..\slib\include\s_win32.h"\
+	"..\slib\include\s_wkq.h"\
+	"..\ucs2lib\include\ucs2lib.h"\
+	".\include\xcore.h"\
+	".\include\xparse.h"\
+	".\include\xrpc.h"\
+	".\src\x_int.h"\
+	".\src\x_parse.h"\
+	

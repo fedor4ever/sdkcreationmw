@@ -1,0 +1,289 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains all the resources for the MyView.
+*                EIK_APP_INFO is used to create Navipane for the entire Application.
+*                BaseConstructL is used to build the above and both views on demand:
+*                r_myview_view1 and r_myview_view2
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    VIEW // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include "myview.hrh"
+#include "MyView.rls"
+
+
+#ifdef EKA2
+    #include <appinfo.rh>
+#endif
+
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="MyView"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = r_myview_status_pane;
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_hotkeys
+//    Hotkeys for the application
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_myview_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_view1
+//    Resource definition for View 1
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_myview_view1
+    {
+    hotkeys=r_myview_hotkeys;
+    menubar=r_myview_menubar_view1;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_menubar_view1
+//    Menubar for view 1
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_myview_menubar_view1
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_myview_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_myview_view1_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_view1_menu
+//    Menupane for view 1, includes the menu item
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_myview_view1_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EMyViewCmdView1Cmd1; txt = qtn_view1_option_item1; },
+        MENU_ITEM { command=EMyViewCmdView1Cmd2; txt = qtn_view1_option_item2; },
+        MENU_ITEM { command=EMyViewCmdView1Cmd3; txt = qtn_view1_option_item3; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_view2
+//    Resource definition for View 2
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_myview_view2
+    {
+    hotkeys=r_myview_hotkeys;
+    menubar=r_myview_menubar_view2;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_menubar_view2
+//    Menubar for View2
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_myview_menubar_view2
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_myview_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_myview_view2_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_view2_menu
+//    MenuPane and its Items for View 2
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_myview_view2_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EMyViewCmdView2Cmd1; txt = qtn_view2_option_item1; },
+        MENU_ITEM { command=EMyViewCmdView2Cmd2; txt = qtn_view2_option_item2; },
+        MENU_ITEM { command=EMyViewCmdView2Cmd3; txt = qtn_view2_option_item3; },
+        MENU_ITEM { command=EMyViewCmdView2Cmd4; txt = qtn_view2_option_item4; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_app_menu
+//    MenuPane and MenuItems for the application
+//    This will show in all views' menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_myview_app_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EAknCmdExit; txt="Exit"; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_status_pane
+//    Here we define the StatusPane to include
+//    Navipane with tabs
+//
+//----------------------------------------------------
+//
+
+RESOURCE STATUS_PANE_APP_MODEL r_myview_status_pane
+    {
+    panes=
+        {
+        SPANE_PANE
+            {
+            id = EEikStatusPaneUidNavi;
+            type = EAknCtNaviPane;
+            resource = r_myview_navi_decorator;
+            }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_myview_navi_decorator
+//    Here we define the tabs for the NaviPane in StatusPane
+//
+//----------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_myview_navi_decorator
+    {
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+        {
+        tab_width = EAknTabWidthWithTwoTabs;  // two tabs
+        active = 0;
+        tabs = {
+            TAB
+                {
+                id = EMyViewView1Tab; // from application hrh
+                txt = qtn_view1_tab;
+                },
+            TAB
+                {
+                id = EMyViewView2Tab;
+                txt = qtn_view2_tab;
+                }
+            };
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+// r_contact_number_query
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_contact_number_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY
+                {
+                layout = ENumberLayout;
+                label = "Contact number:";
+                control = AVKON_INTEGER_EDWIN
+                    {
+                    min = 1;
+                    max = 999;
+                    };
+                };
+            }
+        };
+    }
+
+
+#ifdef EKA2
+// -----------------------------------------------------------------------------
+//
+// Resources for messages.
+//
+// -----------------------------------------------------------------------------
+//
+//RESOURCE TBUF32 r_myview_caption_string { buf=qtn_app_caption_string; }
+
+// ----------------------------------------------------------------------------
+//
+// r_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
+    {
+    short_caption = qtn_app_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = qtn_app_caption_string;
+
+        number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\MyView.mif";
+	    };
+    }
+#endif
+
+
+// End of File

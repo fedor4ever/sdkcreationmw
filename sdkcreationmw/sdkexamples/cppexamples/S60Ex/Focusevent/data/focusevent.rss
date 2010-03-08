@@ -1,0 +1,130 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME FOCU    // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "FocusEvent.hrh"
+#include "FocusEvent.rls"
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE 
+    {
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name 
+    { 
+    buf=""; 
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_focusevent_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//   r_focusevent_menubar
+//   Menubar for FocusEvent example
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_focusevent_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_focusevent_menu; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//   
+//   r_FocusEvent_menu
+//   Menu for "Options"
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_focusevent_menu
+    {
+    items = 
+        {
+        MENU_ITEM { command = EAknSoftkeyExit; txt = STRING_r_focu_exit_text; }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//   
+// Resources for messages.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_focu_gained_focus_text
+{ buf = STRING_r_focu_gained_focus_text; }
+
+RESOURCE TBUF r_focu_lost_focus_text
+{ buf = STRING_r_focu_lost_focus_text; }
+
+RESOURCE TBUF r_focu_caption_string
+{ buf = STRING_r_focu_caption_string; }
+
+// ---------------------------------------------------------------------------- 
+//
+// r_focusevent_localisable_app_info
+//
+// ---------------------------------------------------------------------------- 
+//
+RESOURCE LOCALISABLE_APP_INFO r_focusevent_localisable_app_info
+    {
+    short_caption = STRING_r_focu_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_focu_caption_string;
+
+        number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\FocusEvent_aif.mif";
+	    };
+    }
+
+// End of File

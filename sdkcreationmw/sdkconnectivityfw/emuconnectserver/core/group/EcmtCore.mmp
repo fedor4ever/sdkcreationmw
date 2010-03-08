@@ -1,0 +1,86 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for system core
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include "..\inc\EcmtUids.h"
+
+TARGET          EcmtCore.exe
+TARGETTYPE      exe
+UID             0x0 KECMT_SERVER_UID
+epocstacksize   0x5000 
+
+// PowerMgmt - needed by MidpPlugin
+// AllFiles  - needed by WsockPlugin
+// DiskAdmin - needed by EventSim
+#ifdef WINS
+CAPABILITY      CAP_APPLICATION PowerMgmt DiskAdmin AllFiles
+#else
+CAPABILITY      CAP_APPLICATION PowerMgmt
+#endif
+VENDORID        VID_DEFAULT
+SECUREID        KECMT_SERVER_UID
+
+SOURCEPATH      ..\src
+SOURCE          EcmtServer.cpp
+SOURCE          EcmtServerSession.cpp
+SOURCE          EcmtServerDebugTrace.cpp
+SOURCE          EcmtMessaging.cpp
+SOURCE          EcmtMessageEvent.cpp
+SOURCE          EcmtSocketsEngine.cpp
+SOURCE          EcmtSocketsReader.cpp
+SOURCE          EcmtSocketsWriter.cpp
+
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\..\..\..\sdkruntimes\emumenubar\osutils\inc
+USERINCLUDE     ..\..\..\..\sdkruntimes\loggingapi\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+SOURCEPATH  ..\data
+START RESOURCE EcmtCore_reg.rss
+TARGETPATH \private\10003a3f\apps
+END
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+LIBRARY         charconv.lib
+LIBRARY         efsrv.lib
+LIBRARY         flogger.lib
+
+#ifdef WINS
+LIBRARY         EcmtOsUtils.lib
+LIBRARY         emulator.lib
+LIBRARY			apgrfx.lib
+LIBRARY			ws32.lib 
+#endif
+
+LANG            SC
+
+START WINS
+win32_library   user32.lib
+win32_library   kernel32.lib
+END
+
+/*
+ * Local Variables:
+ * mode: c++
+ * c-basic-offset: 4
+ * indent-tabs-mode: nil
+ * compile-command: "./ABLD.BAT build winscw udeb"
+ * End:
+ */

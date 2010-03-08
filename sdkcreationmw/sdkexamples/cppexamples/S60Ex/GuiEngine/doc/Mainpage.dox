@@ -1,0 +1,291 @@
+/*! \mainpage GUI/Engine Split Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1 About this Example
+ *
+ * The GUI/Engine example demonstrates how to split an application into two
+ * components, an 'engine' dll and a GUI application. This configuration
+ * separates the GUI parts of an application from the engine data or 'model'
+ * that the application uses. This has several advantages:
+ * - Changes to the user interface are less likely to affect the model.
+ * - When porting to another Symbian OS device, typically the model remains
+ *   intact and all that needs to change is the GUI.
+ *
+ * This example allows the user to place two types of shape onto the display,
+ * either a circle or a rectangle. These shapes are placed onto the display
+ * using a cursor. This is moved using the direction keys. A shape is placed
+ * at the cursor position when the directional rocker is pressed.
+ *
+ * As well as demonstrating the GUI/Engine split, this example also shows how
+ * to save and restore model data. When the application exits, the positions
+ * of all the shapes are saved to the file system. This information is then
+ * restored when the application is re-started.
+ *
+ * This example documentation starts by explaining how to use the application.
+ * Next it presents an overview of the design and major use case scenarios.
+ * Finally, it explores the major use case scenarios in more detail.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CStreamStore
+ * - CStreamDictionary
+ * - RWriteStream and RReadStream
+ * - RStoreWriteStream and RStoreReadStream
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The example uses Symbian OS Store Streams. The reader is recommended to
+ * read the following topics from the Symbian OS SDK documentation before
+ * proceeding:
+ * - Store streams overview
+ * - Introduction to store streams
+ * - Storing and restoring
+ *
+ *
+ * \subsection Sub13 Building and Using
+ *
+ * To build the Gui/Engine example application, go to the GuiEngine/group
+ * directory and build the application.
+ *
+ * The Gui/Engine application consists of two modules, which should be built
+ * in the following order:
+ * -# engine
+ * -# gui
+ *
+ * The definition for the whole application can be found in the bld.inf file
+ * in the group subdirectory of the applications main directory.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example exists as a complete application and has the standard Symbian
+ * OS application architecture employing the Application, Document, UI, and
+ * View classes. The reader should be familiar with this architecture before
+ * proceeding.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * The application consists of two main components:
+ * - GUI component: the standard set of GUI classes that provides the user
+ *   interface framework.
+ * - Engine component: provides the model and data for use by the GUI component.
+ *
+ * The GUI component exists as a standard Symbian OS Application and as such
+ * this architecture is not described further in this document. The Engine
+ * component exists as a Shared Library DLL providing a fixed API that can be
+ * used by more than one program.
+ *
+ * To illustrate the Gui/Engine split, as well as saving and restoring data,
+ * consider the following scenarios where the end user:
+ * - Invokes the application. Here the application recovers previously drawn
+ *   shapes from its associated default application file. It then renders
+ *   these shapes on the canvas. The application also recovers the state of
+ *   the Shape menu.
+ * - Draws a shape on the canvas - the application renders the shape at the
+ *   cursor position.
+ * - Clears the canvas - all shapes are removed from the canvas.
+ * - Exits the application - shape information and menu state is serialised
+ *   to the default application file.
+ *
+ * \ref Sub32 section provides a design overview of this example.
+ *
+ * \ref Sub33 the application section through \ref Sub36
+ * section describe in detail the processes involved in the above scenarios.
+ * These are: invoking the application, drawing a shape, clearing the canvas
+ * and exiting the application, respectively.
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in mmp-files as CAPABILITY NONE.
+ *
+ * \subsection Sub32 3.2 Design Overview
+ *
+ * The following component diagram illustrates the split of classes over the
+ * GUI and Engine components, and their inter-relationships:
+ * \image html component.jpg
+ * <b> <center> </center></b>
+ *
+ * As mentioned previously, the GUI component implements the standard set of
+ * Symbian OS application classes. The Engine component provides a managed
+ * list of shapes, CShapeListManager, to the GUI. This provides functions to
+ * manipulate the contents of the list, and also externalise and internalise
+ * the list contents. Items in the list are of an abstract base class TShape.
+ * Concrete implementations are provided by TCircle and TRectangle.
+ *
+ * The following class diagram shows this structure:
+ * \image html class.jpg
+ * <b> <center> </center></b>
+ *
+ * Since the Engine component exists as a DLL, its API functions must be
+ * exported. Exported functions are marked in their header using IMPORT_C
+ * (see CShapeListManager for an example). In the corresponding implementation,
+ * the functions are marked with EXPORT_C, as in CShapeListManager::AddShapeL.
+ *
+ * \subsection Sub33 3.3 Invoking the application
+ *
+ * Since this is a file-based application, it is necessary to have a file
+ * associated with the application. This is used to save and restore data.
+ * This application uses the 'default document file' and is created (if it
+ * doesn't already exist) by the framework, at application start-up. The
+ * filename is specified in the application's .rss file, and must be the
+ * second resource specified in the file. For this example, the file is
+ * specified as follows:
+ * \code
+ * RESOURCE TBUF { buf="GuiEngineState"; }
+ * \endcode
+ *
+ * A CStreamStore representing this file is passed to the application's
+ * document class, during invocation. A CStreamDictionary is also provided
+ * to enable the application to identify individual streams from the stream
+ * store. In this application, the stream store holds two streams. These are:
+ * - A list of shapes
+ * - The state of the GUI
+ *
+ * The following diagram shows the sequence involved in restoring these
+ * streams when the user invokes the application:
+ * \image html invocation.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The framework calls the document's RestoreL function when the application
+ *    is started. A CStreamStore object representing the default document file,
+ *    is supplied along with its root stream dictionary.
+ * -# The safest approach to reading in the contents of the model is to:
+ *     - Create a new instantiation of the model.
+ *     - Read in the file contents.
+ *     - Destroy the old model.
+ *    This way, if the reading of the file fails, the old model remains. This
+ *    is not a problem for this example since explicit options to save or load
+ *    are not provided.A new instance of the engine (CShapeListManager) is now
+ *    created.
+ * -# This example stores two streams in the default application file. One for
+ *    the model, and one for the GUI state. Here, the model's stream identifier
+ *    is returned by calling CStreamDictionary::At, and providing a UID. This
+ *    application uses the application UID for the model, and a further UID for
+ *    the GUI state.
+ * -# The model's RestoreL function is now called, passing it the file and
+ *    stream identifier.
+ * -# The shape list is first cleared,
+ * -# then a stream is created and
+ * -# opened using the supplied file and stream identifier. InternalizeL is now
+ *    called, passing the newly created stream. InternalizeL is the standard
+ *    Symbian OS function that should be implemented for 'store aware' classes
+ *    in order to read the class state from a stream.
+ * -# The number of shapes present in the stream is read, and then 4 steps are
+ *    repeated for each.
+ * -# The shape type is required before a shape can be created. Each shape in
+ *    the file is prepended by a descriptor indicating the shape type.
+ *    This is now read, and
+ * -# an appropriate shape instantiated.
+ * -# This shape's InternalizeL function can now be called to populate its
+ *    member variables. This diagram shows a TCircle being created.
+ * -# The shape is added to the list using the RPointerArray::Append function.
+ * -# Control now returns to the document's RestoreL function, where the old
+ *    model is deleted, and replaced by the new one. The GUI state is now
+ *    recovered. Calling CStreamDictionary::At with the GUI UID generates a
+ *    stream identifier which is now passed to the AppUi's RestoreL function.
+ *    This now recovers the selected shape type from its corresponding stream.
+ *    This is not pictured, since it is a similar process to that described above.
+ * -# The framework now calls the AppUi's HandleModelChangeL function which
+ *    commands the view to redraw. The redrawing of the display is described
+ *    in the Drawing a shape section. The filename in the task list is now
+ *    updated to show the current file.
+ *
+ * \subsection Sub34 3.4 Drawing a shape
+ *
+ * The following diagram shows the sequence involved when the user places a
+ * shape on the canvas:
+ * \image html drawshape.jpg
+ * <b> <center> </center></b>
+ *
+ * -# The framework notifies the application that an event has occurred through
+ *    the view's OfferKeyEventL function. The event type is checked for an
+ *    EStdKeyDevice3 event before continuing with this sequence.
+ *    The EStdKeyDevice3 event signifies that the directional rocker has been
+ *    pressed.
+ * -# The currently selected shape type is examined, and a new shape of that
+ *    type is created using the current cursor position.
+ * -# The newly created shape is passed to the model, using the AddShapeL function.
+ * -# The model stores the shape by calling RPointerArray::Append. The model now
+ *    has the responsibility for deleting the shape when it is no longer required.
+ * -# The view now calls its inherited DrawNow function, which calls the view's
+ *    Draw function.
+ * -# In the Draw function, the canvas is cleared and set up ready
+ *    for redrawing shapes (not shown on diagram).
+ * -# CShapeListManager::GetNextShape is called to return the next shape to be
+ *    drawn.
+ * -# The view then calls TCircle::Draw to render the shape.
+ *
+ * \subsection Sub35 3.5 Clearing the canvas
+ * The following diagram shows the sequence involved when the user selects
+ * Clear from the Options menu:
+ * \image html clearcanvas.jpg
+ * <b> <center> </center></b>
+ *
+ * -# When the user selects Clear, the UI's HandleCommandL function is called by
+ *    the framework.
+ * -# This, in turn, calls the view's Clear function.
+ * -# The view calls the model's Clear function, which...
+ * -# ... removes and destroys the shapes in the store by calling
+ *    RPointerArray::ResetAndDestroy.
+ * -# The view now calls its inherited DrawNow function, which calls the view's
+ *    Draw function.
+ * -# In the Draw function, the canvas is cleared and set up ready for redrawing
+ *    the shapes (not shown on diagram).
+ * -# GetNextShape will return NULL here, since the model has just been cleared,
+ *    so no shapes will be drawn.
+ *
+ * \subsection Sub36 3.6 Exiting the application
+ *
+ * The following diagram shows the sequence involved when the user selects
+ * Exit from the Options menu:
+ * \image html exitapplication.jpg
+ * <b> <center> </center></b>
+ *
+ * -# When the user presses Exit, the UI's HandleCommandL function is called
+ *    by the framework.
+ * -# This, in turn, calls its inherited SaveL function.
+ * -# The SaveL calls the document's StoreL function, passing it the default
+ *    document file and root stream dictionary.
+ * -# The document now calls CShapeListManager::StoreL causing the model to
+ *    store its state. This is described in the CShapeListManager::StoreL section.
+ * -# The stream identifier, returned by the previous operation, is now written
+ *    to the root stream dictionary using CStreamDictionary::AssignL.
+ * -# The UI now calls CGuiEngineAppUi::StoreL to store its state. This follows
+ *    a similar pattern to step 4; however, only the selected shape identifier
+ *    is written to the file.
+ * -# The stream identifier, returned by the previous operation, is now written
+ *    to the root stream dictionary using CStreamDictionary::AssignL.
+ *
+ * \subsubsection Subsub361 3.6.1 CShapeListManager::StoreL
+ *
+ * The following diagram shows the sequence involved in the
+ * CShapeListManager::StoreL function (continued from the previous diagram):
+ * \image html man_storel.jpg
+ * <b> <center> </center></b>
+ *
+ * -# StoreL is called, and passed a CStreamStore object representing the
+ *    default document file.
+ * -# A stream is created and
+ * -# prepared for writing by calling RStoreStream::CreateLC. This call must
+ *    be matched by a call to CommitL before the RStoreStream object is deleted.
+ * -# ExternalizeL is now called, and is passed the stream as a parameter.
+ *    ExternalizeL is the standard Symbian OS function that should be
+ *    implemented for 'store aware' classes in order to write the class state
+ *    to a stream.
+ * -# The number of shapes in the model is determined using RPointerArray::Count,
+ * -# and this is written to the stream using RStoreStream::WriteInt16L.
+ * -# The shape list is now iterated through, and each shape instructed to
+ *    externalise itself.
+ * -# RStoreStream::CommitL can now be called to ensure that any buffered data
+ *    is written to the stream.
+ *
+ */

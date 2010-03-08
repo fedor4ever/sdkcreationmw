@@ -1,0 +1,26 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localizable strings for EcmtCommonPlugin
+*
+*/
+
+
+#define qtn_ecmt_internal_error			"Internal error"
+#define qtn_ecmt_file_not_found 		"Could not open"
+#define qtn_ecmt_file_corrupted			"File is corrupted"
+#define qtn_ecmt_file_write_error		"Error writing file"
+#define qtn_ecmt_netcards_error			"Error running"
+#define qtn_ecmt_commsdb_error			"CommsDB modifications failed with code"
+#define qtn_ecmt_irda_bt_error			"Cannot select the same COM port for both Bluetooth and IrDA" 
+#define qtn_ecmt_no_active_ini_files	"No active configurations in EPOC.INI"

@@ -1,0 +1,215 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+NAME HELP
+
+// INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "HelpExample.hrh"
+#include "HelpExample.rls"
+
+// RESOURCE DEFINITIONS
+// ----------------------------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE {}
+
+// ----------------------------------------------------------------------------
+//   
+//    Default Document Name
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name { buf=""; }
+
+// ----------------------------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    { menubar = r_helpexample_menubar; cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT; }
+
+
+// ----------------------------------------------------------------------------
+//   
+//   r_helpexample_menubar
+//   Menubar for HelpExample example
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_helpexample_menubar
+    {
+    titles = { MENU_TITLE { menu_pane = r_helpexample_menu; } };
+    }
+
+
+// ----------------------------------------------------------------------------
+//   
+//   r_helpexample_menu
+//   Menu for "Options"
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_helpexample_menu
+    {
+    items = 
+        {
+            MENU_ITEM 
+        { 
+                command = EShowHelpfulDialog; 
+                txt = STRING_r_help_helpexample_ShowForm; 
+            },
+            MENU_ITEM 
+            { 
+                command = ELaunchHelpForContext; 
+                txt = STRING_r_help_helpexample_Help; 
+            },
+            MENU_ITEM 
+            { 
+                command = EAknSoftkeyExit; 
+                txt = STRING_r_help_helpexample_Exit; 
+            }
+        };
+    }
+
+
+// ----------------------------------------------------------------------------
+//   
+//   r_form_menubar
+//   Menubar for HelpExample form
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_form_menubar
+    {
+    titles =
+        { 
+        MENU_TITLE { menu_pane = r_form_menu; } 
+        };
+    }
+
+
+// ----------------------------------------------------------------------------
+//   
+//   r_form_menu
+//   Menu for "Options" in when viewing form
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_form_menu
+    {
+    items = 
+        {
+            MENU_ITEM 
+            { 
+                command = ELaunchHelpForContext; 
+                txt = STRING_r_help_helpexample_ViewHelp; 
+            }
+        };
+    }
+
+
+// ----------------------------------------------------------------------------
+//   
+//   r_helpful_dialog
+//   Dialog to contain form
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_helpful_dialog
+    {
+    flags = EEikDialogFlagNoDrag | 
+            EEikDialogFlagFillAppClientRect | 
+            EEikDialogFlagNoTitleBar | 
+            EEikDialogFlagButtonsRight | 
+            EEikDialogFlagCbaButtons | 
+            EEikDialogFlagNoBorder;
+    buttons = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    form = r_helpful_dialog_form;
+    }
+
+// ----------------------------------------------------------------------------
+//   
+//   r_helpful_dialog_form
+//   Form with three entries, 2 of which will provide context 
+//   sensitive help
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE FORM r_helpful_dialog_form
+    {
+    items =
+        {
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_help_dialog1_prompt;
+            id = EHelpExampleEdwin1;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = R_AKN_DEFAULT_FORM_EDITOR;
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_help_dialog2_prompt;
+            id = EHelpExampleEdwin2;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = R_AKN_DEFAULT_FORM_EDITOR;
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = STRING_r_help_dialog3_prompt;
+            id = EHelpExampleEdwin3;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = R_AKN_DEFAULT_FORM_EDITOR;
+            }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_helpexample_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_helpexample_localisable_app_info
+    {
+    short_caption = STRING_r_help_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_help_caption_string;
+
+        number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\HelpExample_aif.mif";
+	    };
+    }
+
+
+// End of File

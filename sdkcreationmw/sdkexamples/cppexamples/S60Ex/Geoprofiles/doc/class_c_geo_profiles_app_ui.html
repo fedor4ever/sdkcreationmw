@@ -1,0 +1,508 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoProfilesAppUi Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoProfilesAppUi Class Reference</h1><!-- doxytag: class="CGeoProfilesAppUi" --><!-- doxytag: inherits="CAknViewAppUi" --><code>#include &lt;<a class="el" href="geoprofilesappui_8h-source.html">geoprofilesappui.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoProfilesAppUi:
+<p><center><img src="class_c_geo_profiles_app_ui.png" usemap="#CGeoProfilesAppUi_map" border="0" alt=""></center>
+<map name="CGeoProfilesAppUi_map">
+</map>
+<a href="class_c_geo_profiles_app_ui-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+GeoProfiles Application's App UI class. This class extents the CAknAppUi class for GeoProfiles. 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8h-source.html#l00036">36</a> of file <a class="el" href="geoprofilesappui_8h-source.html">geoprofilesappui.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_app_ui.html#9ce34ba0b947863222da3c63d0481044">ConstructL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_app_ui.html#41b7a9a0504c021203ab8d7ca90b41bf">~CGeoProfilesAppUi</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_app_ui.html#a682d228622cea7790645ce10f591242">HandleCommandL</a> (TInt aCommand)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual TKeyResponse&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_app_ui.html#0664643ad6fd66cf11afb7fdf7f5c6cc">HandleKeyEventL</a> (const TKeyEvent &amp;aKeyEvent, TEventCode aType)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_app_ui.html#61cab730422c8c507c28f0de88513f81">iGeoProfilesView</a></td></tr>
+
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="41b7a9a0504c021203ab8d7ca90b41bf"></a><!-- doxytag: member="CGeoProfilesAppUi::~CGeoProfilesAppUi" ref="41b7a9a0504c021203ab8d7ca90b41bf" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfilesAppUi::~CGeoProfilesAppUi           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Virtual destructor 
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8cpp-source.html#l00049">49</a> of file <a class="el" href="geoprofilesappui_8cpp-source.html">geoprofilesappui.cpp</a>.<div class="fragment"><pre class="fragment"><a name="l00050"></a>00050     {        
+<a name="l00051"></a>00051     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="9ce34ba0b947863222da3c63d0481044"></a><!-- doxytag: member="CGeoProfilesAppUi::ConstructL" ref="9ce34ba0b947863222da3c63d0481044" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesAppUi::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of the two phase constructor<p>
+Called by the Application framework 
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8cpp-source.html#l00033">33</a> of file <a class="el" href="geoprofilesappui_8cpp-source.html">geoprofilesappui.cpp</a>.
+<p>
+References <a class="el" href="geoprofilesappui_8h-source.html#l00069">iGeoProfilesView</a>, and <a class="el" href="geoprofilesview_8cpp-source.html#l00078">CGeoProfilesView::NewL()</a>.<div class="fragment"><pre class="fragment"><a name="l00034"></a>00034     {
+<a name="l00035"></a>00035     BaseConstructL( EAknEnableSkin | EAknEnableMSK );
+<a name="l00036"></a>00036         
+<a name="l00037"></a>00037     <span class="comment">// Create the View object and add it to the View stack</span>
+<a name="l00038"></a>00038     <a class="code" href="class_c_geo_profiles_view.html">CGeoProfilesView</a>* view = <a class="code" href="class_c_geo_profiles_view.html#990716240ccf3341f7fdbf289ec927ad">CGeoProfilesView::NewL</a>();
+<a name="l00039"></a>00039     CleanupStack::PushL( view );        
+<a name="l00040"></a>00040     AddViewL( view );
+<a name="l00041"></a>00041     CleanupStack::Pop( view );
+<a name="l00042"></a>00042     <a class="code" href="class_c_geo_profiles_app_ui.html#61cab730422c8c507c28f0de88513f81">iGeoProfilesView</a> = view;
+<a name="l00043"></a>00043     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="a682d228622cea7790645ce10f591242"></a><!-- doxytag: member="CGeoProfilesAppUi::HandleCommandL" ref="a682d228622cea7790645ce10f591242" args="(TInt aCommand)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesAppUi::HandleCommandL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aCommand</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CAknViewAppUi 
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8cpp-source.html#l00068">68</a> of file <a class="el" href="geoprofilesappui_8cpp-source.html">geoprofilesappui.cpp</a>.<div class="fragment"><pre class="fragment"><a name="l00069"></a>00069     {
+<a name="l00070"></a>00070     <span class="keywordflow">switch</span> ( aCommand )
+<a name="l00071"></a>00071         {
+<a name="l00072"></a>00072         <span class="keywordflow">case</span> EAknSoftkeyExit: 
+<a name="l00073"></a>00073         <span class="keywordflow">case</span> EEikCmdExit:
+<a name="l00074"></a>00074             {
+<a name="l00075"></a>00075             Exit();
+<a name="l00076"></a>00076             <span class="keywordflow">break</span>;
+<a name="l00077"></a>00077             }
+<a name="l00078"></a>00078        <span class="keywordflow">default</span>: 
+<a name="l00079"></a>00079             {                                       
+<a name="l00080"></a>00080             <span class="keywordflow">break</span>; 
+<a name="l00081"></a>00081             }
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="0664643ad6fd66cf11afb7fdf7f5c6cc"></a><!-- doxytag: member="CGeoProfilesAppUi::HandleKeyEventL" ref="0664643ad6fd66cf11afb7fdf7f5c6cc" args="(const TKeyEvent &amp;aKeyEvent, TEventCode aType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TKeyResponse CGeoProfilesAppUi::HandleKeyEventL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TKeyEvent &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aKeyEvent</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TEventCode&nbsp;</td>
+          <td class="mdname" nowrap> <em>aType</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [private, virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CAknViewAppUi 
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8cpp-source.html#l00057">57</a> of file <a class="el" href="geoprofilesappui_8cpp-source.html">geoprofilesappui.cpp</a>.<div class="fragment"><pre class="fragment"><a name="l00060"></a>00060     {
+<a name="l00061"></a>00061     <span class="keywordflow">return</span> EKeyWasNotConsumed;
+<a name="l00062"></a>00062     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="61cab730422c8c507c28f0de88513f81"></a><!-- doxytag: member="CGeoProfilesAppUi::iGeoProfilesView" ref="61cab730422c8c507c28f0de88513f81" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_view.html">CGeoProfilesView</a>* <a class="el" href="class_c_geo_profiles_app_ui.html#61cab730422c8c507c28f0de88513f81">CGeoProfilesAppUi::iGeoProfilesView</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+GeoProfiles Application's view class 
+<p>
+Definition at line <a class="el" href="geoprofilesappui_8h-source.html#l00069">69</a> of file <a class="el" href="geoprofilesappui_8h-source.html">geoprofilesappui.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesappui_8cpp-source.html#l00033">ConstructL()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoprofilesappui_8h-source.html">geoprofilesappui.h</a><li><a class="el" href="geoprofilesappui_8cpp-source.html">geoprofilesappui.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

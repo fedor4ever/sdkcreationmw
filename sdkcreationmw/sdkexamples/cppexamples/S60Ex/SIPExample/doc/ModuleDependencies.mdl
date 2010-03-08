@@ -1,0 +1,1280 @@
+
+(object Petal
+    version    	42
+    _written   	"Microsoft Visual Modeler 2.0.8139"
+    charSet    	0)
+
+(object Design "Logical View"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    defaults   	(object defaults
+	rightMargin 	0.250000
+	leftMargin 	0.250000
+	topMargin  	0.250000
+	bottomMargin 	0.500000
+	pageOverlap 	0.250000
+	clipIconLabels 	TRUE
+	autoResize 	TRUE
+	snapToGrid 	TRUE
+	gridX      	16
+	gridY      	16
+	defaultFont 	(object Font
+	    size       	9
+	    face       	"Tahoma"
+	    bold       	FALSE
+	    italics    	FALSE
+	    underline  	FALSE
+	    strike     	FALSE
+	    color      	0
+	    default_color 	TRUE)
+	showMessageNum 	3
+	showClassOfObject 	TRUE
+	notation   	"Unified")
+    root_usecase_package 	(object Class_Category "Use Case View"
+	quid       	"429C59870159"
+	exportControl 	"Public"
+	global     	TRUE
+	logical_models 	(list unit_reference_list)
+	logical_presentations 	(list unit_reference_list
+	    (object UseCaseDiagram "Main"
+		quid       	"429C59880242"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    root_category 	(object Class_Category "Logical View"
+	quid       	"429C59870158"
+	exportControl 	"Public"
+	global     	TRUE
+	subsystem  	"Component View"
+	quidu      	"429C5987015A"
+	logical_models 	(list unit_reference_list
+	    (object Class_Category "User Services"
+		attributes 	(list Attribute_Set
+		    (object Attribute
+			tool       	"VisualBasic"
+			name       	"TierPackage"
+			value      	"User Services"))
+		quid       	"429C59880260"
+		documentation 	"User services provide the visual interface for presenting information and gathering data in an application. The user services connect the user with the application and request the business and/or data services needed by the user to execute business tasks."
+		visible_categories 	(list visibility_relationship_list
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"Business Services"))
+			quid       	"429C59880266"
+			supplier   	"Logical View::Business Services"
+			quidu      	"429C59880262")
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"Data Services"))
+			quid       	"429C59880267"
+			supplier   	"Logical View::Data Services"
+			quidu      	"429C59880264"))
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "Package Overview"
+			quid       	"429C59880261"
+			title      	"Package Overview"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list))))
+	    (object Class_Category "Business Services"
+		attributes 	(list Attribute_Set
+		    (object Attribute
+			tool       	"VisualBasic"
+			name       	"TierPackage"
+			value      	"Business Services"))
+		quid       	"429C59880262"
+		documentation 	"Business services respond to requests from the user (or other business services) in order to execute a business task. They accomplish this by requesting the data services needed and applying formal procedures and business rules to the relevant data. This protocol insulates the user from direct interaction with the database. Because business rules tend to change more frequently than the specific business tasks they support, they are ideal candidates for encapsulating in components that are physically separate from the application logic itself."
+		visible_categories 	(list visibility_relationship_list
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"User Services"))
+			quid       	"429C59880268"
+			supplier   	"Logical View::User Services"
+			quidu      	"429C59880260")
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"Data Services"))
+			quid       	"429C59880269"
+			supplier   	"Logical View::Data Services"
+			quidu      	"429C59880264"))
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "Package Overview"
+			quid       	"429C59880263"
+			title      	"Package Overview"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list))))
+	    (object Class_Category "Data Services"
+		attributes 	(list Attribute_Set
+		    (object Attribute
+			tool       	"VisualBasic"
+			name       	"TierPackage"
+			value      	"Data Services"))
+		quid       	"429C59880264"
+		documentation 	"Data services maintain, access, and update data. They also manage and satisfy requests to manipulate data that are initiated by business services. Separating data services allows the data structure and access mechanisms to be maintained, modified, or, if necessary, even re-architected without affecting business or user services."
+		visible_categories 	(list visibility_relationship_list
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"User Services"))
+			quid       	"429C5988026A"
+			supplier   	"Logical View::User Services"
+			quidu      	"429C59880260")
+		    (object Visibility_Relationship
+			attributes 	(list Attribute_Set
+			    (object Attribute
+				tool       	"VisualBasic"
+				name       	"TierPackage"
+				value      	"Data Services"))
+			quid       	"429C5988026B"
+			supplier   	"Logical View::Business Services"
+			quidu      	"429C59880262"))
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "Package Overview"
+			quid       	"429C59880265"
+			title      	"Package Overview"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list))))
+	    (object Class_Category "ChipFlipExample"
+		quid       	"429C599201D3"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list
+		    (object Class "CCommunicationChannel API"
+			quid       	"429C59CC0338"
+			used_nodes 	(list uses_relationship_list
+			    (object Uses_Relationship
+				quid       	"429C5A8F009F"
+				label      	"uses"
+				supplier   	"Logical View::ChipFlipExample::MCommunicationChannelObserver"
+				quidu      	"429C59FC021D")))
+		    (object Class "MCommunicationChannelObserver"
+			quid       	"429C59FC021D"
+			stereotype 	"interface")
+		    (object Class "An application"
+			quid       	"429C5A6F00EF"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"429C5A8603CC"
+				supplier   	"Logical View::ChipFlipExample::MCommunicationChannelObserver"
+				quidu      	"429C59FC021D")))
+		    (object Class "CSipEngine"
+			quid       	"429C5AA0010C"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"429C5AB800FB"
+				supplier   	"Logical View::ChipFlipExample::MCommunicationChannelObserver"
+				quidu      	"429C59FC021D")))
+		    (object Class "CSocketEngine"
+			quid       	"429C5AAA02F0"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"429C5AB6011A"
+				supplier   	"Logical View::ChipFlipExample::MCommunicationChannelObserver"
+				quidu      	"429C59FC021D")))
+		    (object Class "Chipflip Engine"
+			quid       	"429C5AD2003E"
+			used_nodes 	(list uses_relationship_list
+			    (object Uses_Relationship
+				quid       	"429C5B12023F"
+				label      	"uses"
+				supplier   	"Logical View::ChipFlipExample::MObserver"
+				quidu      	"429C5AFF0136")))
+		    (object Class "Chipflip AppUI"
+			quid       	"429C5ADB035B"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"429C5B0F007A"
+				supplier   	"Logical View::ChipFlipExample::MObserver"
+				quidu      	"429C5AFF0136")))
+		    (object Class "MObserver"
+			quid       	"429C5AFF0136"
+			stereotype 	"interface"))
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "Package Overview"
+			quid       	"429C599201D4"
+			title      	"Package Overview"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list
+			    (object ClassView "Class" "Logical View::ChipFlipExample::CCommunicationChannel API" @1
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(752, 1664)
+				label      	(object ItemLabel
+				    Parent_View 	@1
+				    location   	(494, 1616)
+				    nlines     	1
+				    max_width  	516
+				    justify    	0
+				    label      	"CCommunicationChannel API")
+				icon_style 	"Icon"
+				quidu      	"429C59CC0338"
+				width      	534
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object NoteView @2
+				location   	(704, 2016)
+				label      	(object ItemLabel
+				    Parent_View 	@2
+				    location   	(294, 1844)
+				    nlines     	7
+				    max_width  	784
+				    label      	
+|Library API:
+|- register and unregister SIP profiles
+|- Begin and end SIP sessions
+|- Connect a socket
+|- Start listening for socket connections
+|- Send messages via connected socket
+				    )
+				width      	844
+				height     	356)
+			    (object AttachView "" @3
+				stereotype 	TRUE
+				client     	@2
+				supplier   	@1
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::MCommunicationChannelObserver" @4
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1712, 1664)
+				label      	(object ItemLabel
+				    Parent_View 	@4
+				    location   	(1411, 1636)
+				    nlines     	1
+				    max_width  	602
+				    justify    	0
+				    label      	"MCommunicationChannelObserver")
+				stereotype 	(object ItemLabel
+				    Parent_View 	@4
+				    location   	(1411, 1589)
+				    anchor     	10
+				    nlines     	1
+				    max_width  	602
+				    justify    	0
+				    label      	"<<interface>>")
+				icon       	"interface"
+				icon_style 	"Label"
+				quidu      	"429C59FC021D"
+				width      	620
+				height     	172
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::An application" @5
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2064, 1200)
+				label      	(object ItemLabel
+				    Parent_View 	@5
+				    location   	(1932, 1152)
+				    nlines     	1
+				    max_width  	264
+				    justify    	0
+				    label      	"An application")
+				icon_style 	"Icon"
+				quidu      	"429C5A6F00EF"
+				width      	282
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object InheritView "" @6
+				stereotype 	TRUE
+				quidu      	"429C5A8603CC"
+				client     	@5
+				supplier   	@4
+				line_style 	0)
+			    (object UsesView "uses" @7
+				label      	(object ItemLabel
+				    Parent_View 	@7
+				    location   	(1210, 1664)
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	72
+				    justify    	0
+				    label      	"uses")
+				stereotype 	TRUE
+				quidu      	"429C5A8F009F"
+				client     	@1
+				supplier   	@4
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::CSipEngine" @8
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1360, 1200)
+				label      	(object ItemLabel
+				    Parent_View 	@8
+				    location   	(1248, 1152)
+				    nlines     	1
+				    max_width  	224
+				    justify    	0
+				    label      	"CSipEngine")
+				icon_style 	"Icon"
+				quidu      	"429C5AA0010C"
+				width      	242
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::CSocketEngine" @9
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1712, 1200)
+				label      	(object ItemLabel
+				    Parent_View 	@9
+				    location   	(1565, 1152)
+				    nlines     	1
+				    max_width  	294
+				    justify    	0
+				    label      	"CSocketEngine")
+				icon_style 	"Icon"
+				quidu      	"429C5AAA02F0"
+				width      	312
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object InheritView "" @10
+				stereotype 	TRUE
+				quidu      	"429C5AB6011A"
+				client     	@9
+				supplier   	@4
+				line_style 	0)
+			    (object InheritView "" @11
+				stereotype 	TRUE
+				quidu      	"429C5AB800FB"
+				client     	@8
+				supplier   	@4
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::Chipflip Engine" @12
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(960, 848)
+				label      	(object ItemLabel
+				    Parent_View 	@12
+				    location   	(818, 800)
+				    nlines     	1
+				    max_width  	284
+				    justify    	0
+				    label      	"Chipflip Engine")
+				icon_style 	"Icon"
+				quidu      	"429C5AD2003E"
+				width      	302
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::Chipflip AppUI" @13
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1728, 64)
+				label      	(object ItemLabel
+				    Parent_View 	@13
+				    location   	(1596, 16)
+				    nlines     	1
+				    max_width  	264
+				    justify    	0
+				    label      	"Chipflip AppUI")
+				icon_style 	"Icon"
+				quidu      	"429C5ADB035B"
+				width      	282
+				height     	118
+				annotation 	8
+				autoResize 	TRUE)
+			    (object NoteView @14
+				location   	(1616, 848)
+				label      	(object ItemLabel
+				    Parent_View 	@14
+				    location   	(1478, 788)
+				    nlines     	2
+				    max_width  	240
+				    label      	"Library type DLL")
+				width      	300
+				height     	132)
+			    (object AttachView "" @15
+				stereotype 	TRUE
+				client     	@14
+				supplier   	@13
+				line_style 	0)
+			    (object AttachView "" @16
+				stereotype 	TRUE
+				client     	@12
+				supplier   	@14
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::ChipFlipExample::MObserver" @17
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(928, 384)
+				label      	(object ItemLabel
+				    Parent_View 	@17
+				    location   	(796, 356)
+				    nlines     	1
+				    max_width  	264
+				    justify    	0
+				    label      	"MObserver")
+				stereotype 	(object ItemLabel
+				    Parent_View 	@17
+				    location   	(796, 309)
+				    anchor     	10
+				    nlines     	1
+				    max_width  	264
+				    justify    	0
+				    label      	"<<interface>>")
+				icon       	"interface"
+				icon_style 	"Label"
+				quidu      	"429C5AFF0136"
+				width      	282
+				height     	172
+				annotation 	8
+				autoResize 	TRUE)
+			    (object InheritView "" @18
+				stereotype 	TRUE
+				quidu      	"429C5B0F007A"
+				client     	@13
+				supplier   	@17
+				line_style 	0)
+			    (object UsesView "uses" @19
+				label      	(object ItemLabel
+				    Parent_View 	@19
+				    location   	(944, 628)
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	72
+				    justify    	0
+				    label      	"uses")
+				stereotype 	TRUE
+				quidu      	"429C5B12023F"
+				client     	@12
+				supplier   	@17
+				line_style 	0)
+			    (object NoteView @20
+				location   	(432, 384)
+				label      	(object ItemLabel
+				    Parent_View 	@20
+				    location   	(204, 318)
+				    nlines     	2
+				    max_width  	421
+				    label      	"Event and error notifications")
+				width      	481
+				height     	144)
+			    (object AttachView "" @21
+				stereotype 	TRUE
+				client     	@20
+				supplier   	@17
+				line_style 	0)
+			    (object NoteView @22
+				location   	(1616, 1984)
+				label      	(object ItemLabel
+				    Parent_View 	@22
+				    location   	(1259, 1918)
+				    nlines     	2
+				    max_width  	678
+				    label      	"Reporting events, errors, received invites, and received messages")
+				width      	738
+				height     	144)
+			    (object AttachView "" @23
+				stereotype 	TRUE
+				client     	@22
+				supplier   	@7
+				line_style 	0))))))
+	logical_presentations 	(list unit_reference_list
+	    (object Tier_Diagram "Three-Tiered Service Model"
+		quid       	"429C5988026C"
+		title      	"Three-Tiered Service Model"
+		documentation 	"A three-tiered architectural approach separates the various components of a client/server system into three tiers of services. The user services, business and other middle tier services, and data services are the logical tiers that collaborate in an application"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list
+		    (object TierView "User Services" @24
+			label      	(object ItemLabel
+			    Parent_View 	@24
+			    location   	(6, 6)
+			    nlines     	2
+			    max_width  	-12
+			    justify    	0
+			    label      	"User Services")
+			icon_style 	"Icon"
+			hidden     	TRUE
+			quidu      	"429C59880260"
+			width      	300
+			height     	180)
+		    (object TierView "Business Services" @25
+			location   	(600, 0)
+			label      	(object ItemLabel
+			    Parent_View 	@25
+			    location   	(606, 6)
+			    nlines     	2
+			    max_width  	-12
+			    justify    	0
+			    label      	"Business Services")
+			icon_style 	"Icon"
+			hidden     	TRUE
+			quidu      	"429C59880262"
+			width      	300
+			height     	180)
+		    (object TierView "Data Services" @26
+			location   	(1200, 0)
+			label      	(object ItemLabel
+			    Parent_View 	@26
+			    location   	(1206, 6)
+			    nlines     	2
+			    max_width  	-12
+			    justify    	0
+			    label      	"Data Services")
+			icon_style 	"Icon"
+			hidden     	TRUE
+			quidu      	"429C59880264"
+			width      	300
+			height     	180)))))
+    root_subsystem 	(object SubSystem "Component View"
+	quid       	"429C5987015A"
+	physical_models 	(list unit_reference_list
+	    (object module "sipclient" "NotAModuleType" "NotAModulePart"
+		quid       	"429C64800159"
+		stereotype 	"LIB")
+	    (object module "sipcodec" "NotAModuleType" "NotAModulePart"
+		quid       	"429C67330037"
+		stereotype 	"LIB")
+	    (object module "sdpcodec" "NotAModuleType" "NotAModulePart"
+		quid       	"429C674E0362"
+		stereotype 	"LIB")
+	    (object module "sipprofilecli" "NotAModuleType" "NotAModulePart"
+		quid       	"429C676000F0"
+		stereotype 	"LIB")
+	    (object module "SIPExSocketEngine" "NotAModuleType" "NotAModulePart"
+		quid       	"42A40BE300D5"
+		stereotype 	"TARGETTYPE: DLL")
+	    (object module "SIPExSIPEngine" "NotAModuleType" "NotAModulePart"
+		quid       	"42A40C380239"
+		stereotype 	"TARGETTYPE: DLL"
+		visible_modules 	(list dependency_list
+		    (object Dependency_Relationship
+			quid       	"42A40C5501AB"
+			supplier   	"Component View::sipcodec"
+			quidu      	"429C67330037"
+			supplier_is_spec 	TRUE)
+		    (object Dependency_Relationship
+			quid       	"42A40C5803AF"
+			supplier   	"Component View::sdpcodec"
+			quidu      	"429C674E0362"
+			supplier_is_spec 	TRUE)
+		    (object Dependency_Relationship
+			quid       	"42A40C5B00EF"
+			supplier   	"Component View::sipprofilecli"
+			quidu      	"429C676000F0"
+			supplier_is_spec 	TRUE)
+		    (object Dependency_Relationship
+			quid       	"42A40C5D0295"
+			supplier   	"Component View::sipclient"
+			quidu      	"429C64800159"
+			supplier_is_spec 	TRUE)))
+	    (object module "SIPExResolverPluginDll" "NotAModuleType" "NotAModulePart"
+		quid       	"42A40C9B0002"
+		stereotype 	"TARGETTYPE: PLUGIN")
+	    (object module "SIPEx" "NotAModuleType" "NotAModulePart"
+		quid       	"42A40D520355"
+		stereotype 	"TARGETTYPE: EXE"
+		visible_modules 	(list dependency_list
+		    (object Dependency_Relationship
+			quid       	"42A40D570161"
+			supplier   	"Component View::SIPExEngine"
+			quidu      	"42A40DAD01CB"
+			supplier_is_spec 	TRUE)))
+	    (object module "SIPExEngine" "NotAModuleType" "NotAModulePart"
+		quid       	"42A40DAD01CB"
+		stereotype 	"TARGETTYPE: DLL"
+		visible_modules 	(list dependency_list
+		    (object Dependency_Relationship
+			quid       	"42A40DC10256"
+			supplier   	"Component View::SIPExSIPEngine"
+			quidu      	"42A40C380239"
+			supplier_is_spec 	TRUE)
+		    (object Dependency_Relationship
+			quid       	"42A40DD302B3"
+			supplier   	"Component View::SIPExSocketEngine"
+			quidu      	"42A40BE300D5"
+			supplier_is_spec 	TRUE))))
+	physical_presentations 	(list unit_reference_list
+	    (object Module_Diagram "SIPexample"
+		quid       	"429C59880241"
+		title      	"SIPexample"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	41
+		items      	(list diagram_item_list
+		    (object ModView "Component View::SIPExSocketEngine" "NotAModuleType" "NotAModulePart" @27
+			location   	(2288, 1152)
+			label      	(object ItemLabel
+			    Parent_View 	@27
+			    location   	(2172, 1174)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	440
+			    label      	"SIPExSocketEngine")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@27
+			    location   	(2172, 1104)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	437
+			    label      	"<<TARGETTYPE: DLL>>")
+			icon       	"TARGETTYPE: DLL"
+			icon_style 	"Icon"
+			quidu      	"42A40BE300D5"
+			width      	794
+			autoResize 	TRUE
+			width      	794
+			height     	162)
+		    (object ModView "Component View::sdpcodec" "NotAModuleType" "NotAModulePart" @28
+			location   	(576, 2080)
+			label      	(object ItemLabel
+			    Parent_View 	@28
+			    location   	(530, 2102)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	170
+			    label      	"sdpcodec")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@28
+			    location   	(530, 2032)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	170
+			    label      	"<<LIB>>")
+			icon       	"LIB"
+			icon_style 	"Icon"
+			quidu      	"429C674E0362"
+			width      	306
+			autoResize 	TRUE
+			width      	306
+			height     	162)
+		    (object ModView "Component View::sipclient" "NotAModuleType" "NotAModulePart" @29
+			location   	(1984, 2048)
+			label      	(object ItemLabel
+			    Parent_View 	@29
+			    location   	(1938, 2070)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	170
+			    label      	"sipclient")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@29
+			    location   	(1938, 2000)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	170
+			    label      	"<<LIB>>")
+			icon       	"LIB"
+			icon_style 	"Icon"
+			quidu      	"429C64800159"
+			width      	306
+			autoResize 	TRUE
+			width      	306
+			height     	162)
+		    (object ModView "Component View::SIPExSIPEngine" "NotAModuleType" "NotAModulePart" @30
+			location   	(1376, 1600)
+			label      	(object ItemLabel
+			    Parent_View 	@30
+			    location   	(1260, 1622)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	440
+			    label      	"SIPExSIPEngine")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@30
+			    location   	(1260, 1552)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	437
+			    label      	"<<TARGETTYPE: DLL>>")
+			icon       	"TARGETTYPE: DLL"
+			icon_style 	"Icon"
+			quidu      	"42A40C380239"
+			width      	794
+			autoResize 	TRUE
+			width      	794
+			height     	162)
+		    (object ModView "Component View::sipprofilecli" "NotAModuleType" "NotAModulePart" @31
+			location   	(1504, 2064)
+			label      	(object ItemLabel
+			    Parent_View 	@31
+			    location   	(1453, 2084)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	191
+			    label      	"sipprofilecli")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@31
+			    location   	(1453, 2014)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	170
+			    label      	"<<LIB>>")
+			icon       	"LIB"
+			icon_style 	"Icon"
+			quidu      	"429C676000F0"
+			width      	344
+			height     	181
+			autoResize 	TRUE
+			width      	344
+			height     	181)
+		    (object ModView "Component View::sipcodec" "NotAModuleType" "NotAModulePart" @32
+			location   	(1008, 2064)
+			label      	(object ItemLabel
+			    Parent_View 	@32
+			    location   	(962, 2086)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	170
+			    label      	"sipcodec")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@32
+			    location   	(962, 2016)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	170
+			    label      	"<<LIB>>")
+			icon       	"LIB"
+			icon_style 	"Icon"
+			quidu      	"429C67330037"
+			width      	306
+			autoResize 	TRUE
+			width      	306
+			height     	162)
+		    (object ModView "Component View::SIPExResolverPluginDll" "NotAModuleType" "NotAModulePart" @33
+			location   	(608, 1424)
+			label      	(object ItemLabel
+			    Parent_View 	@33
+			    location   	(475, 1446)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	507
+			    label      	"SIPExResolverPluginDll")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@33
+			    location   	(475, 1376)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	503
+			    label      	"<<TARGETTYPE: PLUGIN>>")
+			icon       	"TARGETTYPE: PLUGIN"
+			icon_style 	"Icon"
+			quidu      	"42A40C9B0002"
+			width      	914
+			autoResize 	TRUE
+			width      	914
+			height     	162)
+		    (object ModView "Component View::SIPEx" "NotAModuleType" "NotAModulePart" @34
+			location   	(1376, 768)
+			label      	(object ItemLabel
+			    Parent_View 	@34
+			    location   	(1259, 790)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	445
+			    label      	"SIPEx")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@34
+			    location   	(1259, 720)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	441
+			    label      	"<<TARGETTYPE: EXE>>")
+			icon       	"TARGETTYPE: EXE"
+			icon_style 	"Icon"
+			quidu      	"42A40D520355"
+			width      	802
+			autoResize 	TRUE
+			width      	802
+			height     	162)
+		    (object ModView "Component View::SIPExEngine" "NotAModuleType" "NotAModulePart" @35
+			location   	(1376, 1152)
+			label      	(object ItemLabel
+			    Parent_View 	@35
+			    location   	(1260, 1174)
+			    anchor_loc 	3
+			    nlines     	2
+			    max_width  	440
+			    label      	"SIPExEngine")
+			stereotype 	(object ItemLabel
+			    Parent_View 	@35
+			    location   	(1260, 1104)
+			    anchor     	10
+			    anchor_loc 	3
+			    nlines     	1
+			    max_width  	437
+			    label      	"<<TARGETTYPE: DLL>>")
+			icon       	"TARGETTYPE: DLL"
+			icon_style 	"Icon"
+			quidu      	"42A40DAD01CB"
+			width      	794
+			autoResize 	TRUE
+			width      	794
+			height     	162)
+		    (object ModVisView "" @36
+			stereotype 	TRUE
+			quidu      	"42A40C5803AF"
+			client     	@30
+			supplier   	@28
+			line_style 	0)
+		    (object ModVisView "" @37
+			stereotype 	TRUE
+			quidu      	"42A40C5D0295"
+			client     	@30
+			supplier   	@29
+			line_style 	0)
+		    (object ModVisView "" @38
+			stereotype 	TRUE
+			quidu      	"42A40C5B00EF"
+			client     	@30
+			supplier   	@31
+			line_style 	0)
+		    (object ModVisView "" @39
+			stereotype 	TRUE
+			quidu      	"42A40C5501AB"
+			client     	@30
+			supplier   	@32
+			line_style 	0)
+		    (object ModVisView "" @40
+			stereotype 	TRUE
+			quidu      	"42A40DC10256"
+			client     	@35
+			supplier   	@30
+			line_style 	0)
+		    (object ModVisView "" @41
+			stereotype 	TRUE
+			quidu      	"42A40DD302B3"
+			client     	@35
+			supplier   	@27
+			line_style 	0)
+		    (object ModVisView "" @42
+			stereotype 	TRUE
+			quidu      	"42A40D570161"
+			client     	@34
+			supplier   	@35
+			line_style 	0)
+		    (object NoteView @43
+			location   	(2096, 768)
+			label      	(object ItemLabel
+			    Parent_View 	@43
+			    location   	(1958, 708)
+			    nlines     	2
+			    max_width  	240
+			    label      	"gameui")
+			width      	300
+			height     	132)
+		    (object NoteView @44
+			location   	(592, 1040)
+			label      	(object ItemLabel
+			    Parent_View 	@44
+			    location   	(454, 980)
+			    nlines     	2
+			    max_width  	240
+			    label      	"gameengine")
+			width      	300
+			height     	132)
+		    (object NoteView @45
+			location   	(368, 1712)
+			label      	(object ItemLabel
+			    Parent_View 	@45
+			    location   	(230, 1652)
+			    nlines     	2
+			    max_width  	240
+			    label      	"resolverplugin")
+			width      	300
+			height     	132)
+		    (object AttachView "" @46
+			stereotype 	TRUE
+			client     	@45
+			supplier   	@33
+			line_style 	0)
+		    (object AttachView "" @47
+			stereotype 	TRUE
+			client     	@44
+			supplier   	@35
+			line_style 	0)
+		    (object AttachView "" @48
+			stereotype 	TRUE
+			client     	@43
+			supplier   	@34
+			line_style 	0)
+		    (object NoteView @49
+			location   	(2288, 1408)
+			label      	(object ItemLabel
+			    Parent_View 	@49
+			    location   	(2150, 1348)
+			    nlines     	2
+			    max_width  	240
+			    label      	"socketengine")
+			width      	300
+			height     	132)
+		    (object NoteView @50
+			location   	(2144, 1680)
+			label      	(object ItemLabel
+			    Parent_View 	@50
+			    location   	(2006, 1620)
+			    nlines     	2
+			    max_width  	240
+			    label      	"sipengine")
+			width      	300
+			height     	132)
+		    (object AttachView "" @51
+			stereotype 	TRUE
+			client     	@49
+			supplier   	@27
+			line_style 	0)
+		    (object AttachView "" @52
+			stereotype 	TRUE
+			client     	@30
+			supplier   	@50
+			line_style 	0)))))
+    process_structure 	(object Processes
+	quid       	"429C5987015B"
+	ProcsNDevs 	(list
+	    (object Process_Diagram "Deployment View"
+		quid       	"429C5987015D"
+		title      	"Deployment View"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    properties 	(object Properties
+	attributes 	(list Attribute_Set
+	    (object Attribute
+		tool       	"Repository"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"SourceSafe"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"TypeLibImporter"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"VC++"
+		name       	"propertyId"
+		value      	"809135966")
+	    (object Attribute
+		tool       	"VC++"
+		name       	"default__Class"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"VC++"
+			name       	"Generate"
+			value      	TRUE)
+		    (object Attribute
+			tool       	"VC++"
+			name       	"HeaderFile"
+			value      	"AUTO GENERATE")))
+	    (object Attribute
+		tool       	"VC++"
+		name       	"default__Operation"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"VC++"
+			name       	"OperationIsConst"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"VC++"
+			name       	"OperationKindSet"
+			value      	(list Attribute_Set
+			    (object Attribute
+				tool       	"VC++"
+				name       	"Non-virtual"
+				value      	200)
+			    (object Attribute
+				tool       	"VC++"
+				name       	"Abstract"
+				value      	201)
+			    (object Attribute
+				tool       	"VC++"
+				name       	"Virtual"
+				value      	202)))
+		    (object Attribute
+			tool       	"VC++"
+			name       	"OperationKind"
+			value      	("OperationKindSet" 200))))
+	    (object Attribute
+		tool       	"VC++"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"VJ++"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"propertyId"
+		value      	"783606378")
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Class"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"CreatableSet"
+			value      	(list Attribute_Set
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"Private"
+				value      	221)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"PublicNotCreatable"
+				value      	213)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"SingleUse"
+				value      	214)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"GlobalSingleUse"
+				value      	215)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"MultiUse"
+				value      	219)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"GlobalMultiUse"
+				value      	220)))
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"OptionBase"
+			value      	"0")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"OptionExplicit"
+			value      	TRUE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"OptionCompare"
+			value      	("CompareSet" 202))
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"Creatable"
+			value      	("CreatableSet" 221))
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateInitialization"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateTermination"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"CollectionClass"
+			value      	"Collection")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"CompareSet"
+			value      	(list Attribute_Set
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"None"
+				value      	202)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"Binary"
+				value      	203)
+			    (object Attribute
+				tool       	"Visual Basic"
+				name       	"Text"
+				value      	204)))))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Operation"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"OperationName"
+			value      	"$operation")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"LibraryName"
+			value      	"")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"AliasName"
+			value      	"")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"IsStatic"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"EntryCode"
+			value      	(value Text ""))
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"ExitCode"
+			value      	(value Text ""))))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Attribute"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"IsConst"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"New"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"WithEvents"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"Subscript"
+			value      	"")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"NameIfUnlabeled"
+			value      	"the$supplier")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateDataMember"
+			value      	TRUE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"DataMemberName"
+			value      	"$relationship")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateGetOperation"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateSetOperation"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateLetOperation"
+			value      	FALSE)))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Role"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"New"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"WithEvents"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"Subscript"
+			value      	"")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"NameIfUnlabeled"
+			value      	"the$supplier")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateDataMember"
+			value      	TRUE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"DataMemberName"
+			value      	"$relationship")
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateGetOperation"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateSetOperation"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"GenerateLetOperation"
+			value      	FALSE)))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Inherit"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"ImplementsDelegation"
+			value      	TRUE)))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"default__Module-Spec"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"Visual Basic"
+			name       	"ProjectFile"
+			value      	"")))
+	    (object Attribute
+		tool       	"Visual Basic"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"VisualStudio"
+		name       	"HiddenTool"
+		value      	FALSE))
+	quid       	"429C5987015C"))

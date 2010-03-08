@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>NmitSharedApp</fullname>
+  <class>
+    <path>../../classes/app</path>
+  </class>
+  <source>
+    <path>../app</path>
+  </source>
+  <required>NmitSharedUtil</required>
+</library>

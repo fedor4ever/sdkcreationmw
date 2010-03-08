@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+// APPLICATION INFORMATION
+
+// Caption string
+#define rls_app_caption_string          "Registrierung"
+#define rls_app_short_caption_string    "Registrierung"
+
+// MenuBar
+#define rls_appl_register               "Register"
+#define rls_appl_exit                   "Beenden"
+  
+// SettingList
+#define rls_setting_title               "Registrierung"
+
+// Item of Setting List
+#define rls_name_item_title             "Name"
+#define rls_email_item_title            "Email"
+#define rls_phone_item_title            "Telefonnummer"
+#define rls_birth_item_title            "Geburtstag"
+#define rls_time_item_title             "Zeit"
+#define rls_gender_item_title           "Geschlecht"
+#define rls_login_item_title            "Anmeldung Name"
+#define rls_passw_item_title            "Passwort"
+#define rls_slider_item_title           "Slider"
+#define rls_accept_item_title           "Akzptiere emails"
+
+// Setting Page title
+#define rls_name_title                  "Name"
+#define rls_email_title                 "Email"
+#define rls_phone_title                 "Telefonnummer"
+#define rls_birth_title                 "Geburtstag"
+#define rls_time_title                  "Zeit"
+#define rls_gender_title                "Geschlecht"
+#define rls_login_title                 "Anmeldung Name"
+#define rls_passw_title                 "Passwort"
+#define rls_slider_title                "Slider"
+#define rls_accept_title                "Akzptiere emails"
+
+// Other Texts
+#define rls_binary_male                 "Männlich"
+#define rls_binary_female               "Weiblich"
+
+#define rls_binary_accept               "Ja"
+#define rls_binary_reject               "Nein"
+
+#define rls_slider_minlabel             "Weniger"
+#define rls_slider_maxlabel             "Mehr"
+
+// Notify Texts
+#define rls_error_text                  "Email Adresse must eine @ enhalten!"
+#define rls_info_text                   "Registrierung ist gut gelungen"
+
+// End of File

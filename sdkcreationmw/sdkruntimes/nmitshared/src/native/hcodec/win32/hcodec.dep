@@ -1,0 +1,33 @@
+# Microsoft Developer Studio Generated Dependency File, included by hcodec.mak
+
+..\src\hc_decoder.c : \
+	"..\include\hcodec.h"\
+	"..\src\hc_pages.h"\
+	"..\src\hc_util.h"\
+	"..\src\other_util.h"\
+	
+
+..\src\hc_encoder.c : \
+	"..\include\hcodec.h"\
+	"..\src\hc_pages.h"\
+	"..\src\hc_util.h"\
+	"..\src\other_util.h"\
+	
+
+..\src\hc_pages.c : \
+	"..\include\hcodec.h"\
+	"..\src\hc_pages.h"\
+	"..\src\hc_util.h"\
+	
+
+..\src\hc_util.c : \
+	"..\include\hcodec.h"\
+	"..\src\hc_pages.h"\
+	"..\src\hc_util.h"\
+	
+
+..\src\other_util.c : \
+	"..\include\hcodec.h"\
+	"..\src\hc_util.h"\
+	"..\src\other_util.h"\
+	

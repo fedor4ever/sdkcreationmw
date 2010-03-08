@@ -1,0 +1,559 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+// RESOURCE IDENTIFIER
+NAME    REGI // 4 letter ID
+
+// INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include "Registration.hrh"
+
+#ifdef LANGUAGE_01 // if language code is for UK
+	#include "Registration_01.rls"
+#elif defined LANGUAGE_03 // if language code is for German
+	#include "Registration_03.rls"
+#endif 
+
+
+// CONSTANTS
+// for Text Setting Page
+#define TEXT_SETTING_PAGE_WIDTH                     9
+#define TEXT_SETTING_PAGE_LINES                     1
+#define TEXT_SETTING_PAGE_MAXLENGTH13               13
+#define TEXT_SETTING_PAGE_MAXLENGTH20               20
+#define TEXT_SETTING_PAGE_MAXLENGTH30               30
+
+// for Alpha Password Setting Page
+#define ALPHA_PASSWORD_LENGTH_OF_STRING             8
+
+// for Slider Setting Page
+#define SLIDER_SETTING_PAGE_MINVALUE                0
+#define SLIDER_SETTING_PAGE_MAXVALUE                100
+#define SLIDER_SETTING_PAGE_STEP                    1
+
+// for Time Setting Page
+#define TIME_EDITOR_MIN_SECOND                      0
+#define TIME_EDITOR_MIN_MINUTE                      0
+#define TIME_EDITOR_MIN_HOUR                        0
+#define TIME_EDITOR_MAX_SECOND                      59
+#define TIME_EDITOR_MAX_MINUTE                      59
+#define TIME_EDITOR_MAX_HOUR                        23
+
+
+// RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "Registration"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_registration_hotkeys;
+    menubar = r_registration_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;     
+    }
+
+//----------------------------------------------------
+//   
+//    r_registration_hotkeys
+//    Only hotkey for exit is defined
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_registration_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_registration_menubar
+//    Menubar is not visible in Series 60
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_registration_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_registration_menu; txt = "File"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_registration_menu
+//    Options menu items
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_registration_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = ERegistrationCmdAppRegister; txt = rls_appl_register; },
+        MENU_ITEM { command = EAknCmdExit; txt = rls_appl_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_registration_localisable_app_info
+//    Application name and startup icon
+//
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_registration_localisable_app_info
+    {
+    short_caption = rls_app_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = rls_app_caption_string;
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\Registration.mif";
+    };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_registration_menu
+//    Setting list items
+//
+//----------------------------------------------------
+//    
+RESOURCE AVKON_SETTING_ITEM_LIST r_registration_setting_item_list
+  {
+  title = rls_setting_title;
+  
+  items = 
+    {
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingName;
+      setting_page_resource = r_registration_name_setting_page;
+      name = rls_name_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingEmail;
+      setting_page_resource = r_registration_email_setting_page;
+      name = rls_email_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingPhone;
+      setting_page_resource = r_registration_phone_setting_page;
+      name = rls_phone_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingDate;
+      setting_page_resource = r_registration_date_setting_page;
+      name = rls_birth_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingTime;
+      setting_page_resource = r_registration_time_setting_page;
+      name = rls_time_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingGender;
+      setting_page_resource = r_registration_gender_setting_page;
+      associated_resource = r_registration_popup_setting_gender_texts;
+      name = rls_gender_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingLogin;
+      setting_page_resource = r_registration_login_setting_page;
+      name = rls_login_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingPassWord;
+      setting_page_resource = r_registration_password_setting_page;
+      name = rls_passw_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingSlider;
+      setting_page_resource = r_registration_slider_setting_page;
+      name = rls_slider_title;
+      },
+    AVKON_SETTING_ITEM
+      {
+      identifier = ERegistrationSettingAccept;
+      setting_page_resource = r_registration_accept_setting_page;
+      associated_resource = r_registration_popup_setting_accept_texts;
+      name = rls_accept_title;
+      }
+    };
+  }    
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_name_setting_page
+//    Name setting uses Edwin editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_name_setting_page
+    {
+    label = rls_name_item_title;
+    type = EEikCtEdwin;
+    editor_resource_id = r_registration_edwin;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_edwin
+//    Edwin editor with only text input mode
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EDWIN r_registration_edwin
+    {
+    width = TEXT_SETTING_PAGE_WIDTH;
+    lines = TEXT_SETTING_PAGE_LINES;
+    maxlength = TEXT_SETTING_PAGE_MAXLENGTH20;
+    allowed_input_modes = EAknEditorTextInputMode;
+    }
+  
+//-----------------------------------------------------------------------------
+//
+//    r_registration_email_setting_page
+//    Email setting uses Edwin editor
+//
+//-----------------------------------------------------------------------------
+// 
+RESOURCE AVKON_SETTING_PAGE r_registration_email_setting_page
+    {
+    label = rls_email_item_title;
+    type = EEikCtEdwin;
+    editor_resource_id = r_registration_email_edwin;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_email_edwin
+//    Edwin editor with email character table and lower case text
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EDWIN r_registration_email_edwin
+    {
+    width = TEXT_SETTING_PAGE_WIDTH;
+    lines = TEXT_SETTING_PAGE_LINES;
+    maxlength = TEXT_SETTING_PAGE_MAXLENGTH30;
+    special_character_table = R_AVKON_EMAIL_ADDR_SPECIAL_CHARACTER_TABLE_DIALOG;
+    default_case = EAknEditorLowerCase;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_phone_setting_page
+//    Phone setting uses Edwin editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_phone_setting_page
+    {
+    label = rls_phone_item_title;
+    type = EEikCtEdwin;
+    editor_resource_id = r_registration_integer_edwin;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_integer_edwin
+//    Edwin editor with only numeric input mode
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EDWIN r_registration_integer_edwin
+    {
+    default_input_mode = EAknEditorNumericInputMode;
+    maxlength = TEXT_SETTING_PAGE_MAXLENGTH13;
+    allowed_input_modes = EAknEditorNumericInputMode;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_date_setting_page
+//    Date setting uses Date editor
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_date_setting_page
+    {
+    label= rls_birth_item_title;
+    type = EEikCtDateEditor;
+    editor_resource_id = r_registration_date;
+    }
+
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_date
+//    Date editor with min and max years
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE DATE_EDITOR r_registration_date
+    {
+    minDate = DATE {year=1900;};
+    maxDate = DATE {year=2050;};
+    flags=0;
+    }
+
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_time
+//    Time editor with min and max years
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE TIME_EDITOR r_registration_time
+    {
+    minTime = TIME
+        {
+        second = TIME_EDITOR_MIN_SECOND;
+        minute = TIME_EDITOR_MIN_MINUTE;
+        hour = TIME_EDITOR_MIN_HOUR;
+        };
+    maxTime = TIME
+        {
+        second = TIME_EDITOR_MAX_SECOND;
+        minute = TIME_EDITOR_MAX_MINUTE;
+        hour = TIME_EDITOR_MAX_HOUR;
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_time_setting_page
+//    Date setting uses Date editor
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_time_setting_page
+    {
+    label= rls_time_item_title;
+    type = EEikCtTimeEditor;
+    editor_resource_id = r_registration_time;
+    }
+    
+//----------------------------------------------------------------------------
+//
+//    r_registration_popup_setting_gender_texts
+//    Gender setting uses value array
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_registration_popup_setting_gender_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_registration_gender_texts;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_gender_texts
+//    Gender options are female and male, female is default
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_registration_gender_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = rls_binary_male; },
+        AVKON_ENUMERATED_TEXT { value=0; text = rls_binary_female; }
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_gender_setting_page
+//    Gender setting label
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_gender_setting_page
+    {   
+    number= 0;
+    label= rls_gender_item_title;
+    type = EAknCtPopupSettingList;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_login_setting_page
+//    Login setting uses Edwin editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_login_setting_page
+    {
+    label = rls_login_item_title;
+    type = EEikCtEdwin;
+    editor_resource_id = r_registration_edwin;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_password_setting_page
+//    Password setting uses Secreted editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_password_setting_page
+    {
+    label = rls_passw_item_title;
+    type = EEikCtSecretEd;
+    editor_resource_id = r_registration_password;
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_password
+//    Secreted editor with password length
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE SECRETED r_registration_password
+    {
+    num_letters = ALPHA_PASSWORD_LENGTH_OF_STRING;
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_slider
+//    Slider editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE SLIDER r_registration_slider
+    {
+    layout = EAknSettingsItemSliderLayout;
+    minvalue = SLIDER_SETTING_PAGE_MINVALUE;
+    maxvalue = SLIDER_SETTING_PAGE_MAXVALUE;
+    step = SLIDER_SETTING_PAGE_STEP;
+    valuetype = EAknSliderValuePercentage;
+    minlabel = rls_slider_minlabel;
+    maxlabel = rls_slider_maxlabel;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_registration_slider_setting_page
+//    Password setting uses Secreted editor
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_slider_setting_page
+    {
+    label = rls_slider_item_title;
+    type = EAknCtSlider;
+    editor_resource_id = r_registration_slider;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_popup_setting_accept_texts
+//    Accept emails uses value array
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_registration_popup_setting_accept_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_registration_accept_texts;
+    }
+
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_accept_texts
+//    Accept options are yes and no, yes is default
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_registration_accept_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = rls_binary_reject; },
+        AVKON_ENUMERATED_TEXT { value=0; text = rls_binary_accept; }
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_accept_setting_page
+//    Accept emails setting label
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_registration_accept_setting_page
+    {   
+    number= 0;
+    label= rls_accept_item_title;
+    type = EAknCtPopupSettingList;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_err_text
+//    Error text when checking validity of input
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE TBUF40 r_registration_err_text
+    {
+    buf = rls_error_text;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_info_text
+//    Registration succeeded text when checking validity of input
+//
+//----------------------------------------------------------------------------
+//    
+RESOURCE TBUF40 r_registration_info_text
+    {
+    buf = rls_info_text;
+    }
+
+
+// End of File

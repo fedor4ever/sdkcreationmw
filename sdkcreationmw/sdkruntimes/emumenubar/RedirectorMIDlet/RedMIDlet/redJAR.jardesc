@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+    <jar path="F:/S60_3rd_MIDP_SDK/bin/Series60SDK_dev/Series60_tools/Ecmt/RedirectorMIDlet/RedMIDlet/jar/RedMIDlet.jar"/>
+    <options overwrite="true" compress="true" exportErrors="true" exportWarnings="true" saveDescription="true" descriptionLocation="/RedMIDlet/redJAR.jardesc" useSourceFolders="false" buildIfNeeded="true" includeDirectoryEntries="false"/>
+    <manifest manifestVersion="1.0" usesManifest="true" reuseManifest="true" saveManifest="true" generateManifest="false" manifestLocation="/RedMIDlet/jar/MANIFEST.MF">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportOutputFolder="true" exportJavaFiles="false">
+        <folder path="/RedMIDlet/preverified"/>
+        <file path="/RedMIDlet/redirection.png"/>
+    </selectedElements>
+</jardesc>

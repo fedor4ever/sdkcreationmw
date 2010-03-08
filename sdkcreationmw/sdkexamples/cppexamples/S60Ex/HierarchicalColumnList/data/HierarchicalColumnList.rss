@@ -1,0 +1,167 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource definitions for project HierarchicalColumnList
+*
+*/
+
+
+
+NAME HCLE
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "HierarchicalColumnList.hrh"
+
+
+// ---------------------------------------------------------------------------
+// Defines the resource file signature.
+// This resource should be empty.
+// ---------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+
+// ---------------------------------------------------------------------------
+// r_default_document_name
+// Default Document Name.
+// ---------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name { buf=""; }
+
+
+// ---------------------------------------------------------------------------
+// Defines default menu and CBA key.
+// ---------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_hierarchicalcolumnlist_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+
+// ---------------------------------------------------------------------------
+// r_hierarchicalcolumnlist_menubar
+// Menubar for HierarchicalColumnList example
+// ---------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_hierarchicalcolumnlist_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_hierarchicalcolumnlist_menu;
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------------------------
+// r_hierarchicalcolumnlist_menu
+// Menu for "Options"
+// ---------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_hierarchicalcolumnlist_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            command = EHclExampleCmdExpand;
+            txt = qtn_msk_expand;
+            },
+        MENU_ITEM
+            {
+            command = EHclExampleCmdCollapse;
+            txt = "Collapse";
+            },
+        MENU_ITEM
+            {
+            command = EHclExampleCmdOpen;
+            txt = "Open";
+            },
+        MENU_ITEM
+            {
+            txt = "Edit List";
+            cascade = R_AVKON_MENUPANE_MARKABLE_LIST_IMPLEMENTATION;
+            },
+       MENU_ITEM
+            {
+            txt = "Change";
+            cascade = r_hierarchicalcolumnlist_settings_menu;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = "Exit";
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------------------------
+// r_hierarchicalcolumnlist_settings_menu
+// ---------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_hierarchicalcolumnlist_settings_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EHclExampleCmdChangeLooping;
+            txt = "Looping";
+            flags = EEikMenuItemCheckBox;
+            },
+        MENU_ITEM
+            {
+            command = EHclExampleCmdChangeMarquee;
+            txt = "Marquee";
+            flags = EEikMenuItemCheckBox;
+            },
+        MENU_ITEM
+            {
+            command = EHclExampleCmdChangeMarkable;
+            txt = "Markable";
+            flags = EEikMenuItemCheckBox;
+            },
+        MENU_ITEM
+            {
+            command = EHclExampleCmdChangeIndicators;
+            txt = "Tab mode indicators";
+            flags = EEikMenuItemCheckBox;
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------------------------
+// r_localisable_app_info
+// ---------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
+    {
+    short_caption = "HCList";
+    caption_and_icon = CAPTION_AND_ICON_INFO
+        {
+        caption = "Hierarchical Column List";
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\HierarchicalColumnList_aif.mif";
+        };
+    }

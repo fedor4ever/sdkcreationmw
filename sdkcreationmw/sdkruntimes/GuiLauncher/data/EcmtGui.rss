@@ -1,0 +1,510 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Symbian resource file
+ *
+*/
+
+
+NAME ECMT
+
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <appinfo.rh>
+#include <data_caging_paths_strings.hrh>
+
+#include "EcmtGui.hrh"
+#include "EcmtGui.loc"
+
+// ---------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// ---------------------------------------------------------
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+// ---------------------------------------------------------
+//   
+//    Default Document Name
+//
+// ---------------------------------------------------------
+RESOURCE TBUF r_default_document_name
+    {
+    buf="ECMT";
+    }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_ecmtgui_log_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//    r_ecmtgui_log_view
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ecmtgui_log_view
+    {
+    menubar = r_ecmtgui_log_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+    
+
+ 
+// ---------------------------------------------------------
+//   
+//   r_ecmtgui_log_menubar
+//   Menubar for EcmtGui
+//
+// ---------------------------------------------------------
+RESOURCE MENU_BAR r_ecmtgui_log_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_ecmtgui_log_menu;
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------
+//   
+//   r_ecmtgui_menu
+//   Menu for "Options"
+//
+// ---------------------------------------------------------
+RESOURCE MENU_PANE r_ecmtgui_log_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdStart;
+            txt = qtn_start_server;
+            },
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdStop;
+            txt = qtn_stop_server;
+            },
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdClearLog;
+            txt = qtn_clear_log;
+            },
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdWlanOdd;
+            txt = "WLAN ODD";
+            },       
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdSettings;
+            txt = "Settings";
+            },
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = qtn_exit;
+            }
+        };
+    }
+    
+//----------------------------------------------------
+//    r_ecmtgui_settings_view
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ecmtgui_settings_view
+    {
+    menubar = r_ecmtgui_settings_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    }   
+
+// ---------------------------------------------------------
+//   
+//   r_ecmtgui_settings_menubar
+//   Menubar for EcmtGui
+//
+// ---------------------------------------------------------
+RESOURCE MENU_BAR r_ecmtgui_settings_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_ecmtgui_settings_menu;
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------
+//   
+//   r_ecmtgui_settings_menu
+//   Menu for "Options"
+//
+// ---------------------------------------------------------
+RESOURCE MENU_PANE r_ecmtgui_settings_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            command = EEcmtGuiCmdChange;
+            txt = "Change";
+            },
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = qtn_exit;
+            }
+        };
+    }
+
+
+RESOURCE AVKON_SETTING_ITEM_LIST r_ecmtgui_setting_item_list
+  {
+  title = "Setting title";
+  initial_number = 1;
+  items = 
+    {
+    
+    AVKON_SETTING_ITEM
+      {
+      identifier = EEcmtGuiSettingBearer;
+      setting_page_resource = r_ecmtgui_bearer_setting_page;
+      associated_resource = r_ecmtgui_popup_setting_bearer;
+      name = "Bearer";
+      }
+      
+    };
+  }   
+
+//----------------------------------------------------------------------------
+//
+//    r_ecmtgui_popup_setting_bearer
+//    Bearer setting uses value array
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_ecmtgui_popup_setting_bearer
+    {
+    flags = 0;
+    setting_texts_resource = r_ecmtgui_bearer_texts;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_ecmtgui_bearer_texts
+//    
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_ecmtgui_bearer_texts
+    {
+    items =
+        {
+        //AVKON_ENUMERATED_TEXT { value=0; text = "USB"; },
+        //AVKON_ENUMERATED_TEXT { value=1; text = "WLAN"; },
+        //AVKON_ENUMERATED_TEXT { value=2; text = "Bluetooth"; }
+        };
+    }
+   
+
+//----------------------------------------------------------------------------
+//
+//    r_registration_gender_setting_page
+//    Gender setting label
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ecmtgui_bearer_setting_page
+    {   
+    //number= 0;
+    label= "Select bearer";
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_ecmtgui_bearer_popup_setting_list;
+    }
+    
+RESOURCE POPUP_SETTING_LIST r_ecmtgui_bearer_popup_setting_list
+    {
+    flags = 0;
+    }
+
+
+
+// ---------------------------------------------------------
+//   String resources
+// ---------------------------------------------------------
+RESOURCE TBUF r_server_running
+	{
+	buf = qtn_server_running;
+	}
+
+RESOURCE TBUF r_server_start_error
+	{
+	buf = qtn_server_start_error;
+	}
+
+RESOURCE TBUF r_server_stopped
+	{
+	buf = qtn_stopped;
+	}
+
+RESOURCE TBUF r_error_getting_notification
+	{
+	buf = qtn_error_getting_notification;
+	}
+
+// ---------------------------------------------------------
+//   Application info
+// ---------------------------------------------------------
+RESOURCE LOCALISABLE_APP_INFO r_ecmtgui_app_info
+    {
+    short_caption = qtn_app_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = qtn_app_caption_string;
+        number_of_icons = 1;
+        icon_file = APP_BITMAP_DIR"\\EcmtGui_AIF.mif";
+        //number_of_icons = 2;
+        //icon_file = APP_BITMAP_DIR"\\EcmtGui_AIF.mbm";
+        };
+    }
+
+
+
+RESOURCE AVKON_LIST_QUERY r_ecmtgui_list_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                heading = "Select WLAN IAP";
+                
+                listbox = AVKON_LIST_QUERY_LIST
+                    {
+                    //array_id = r_demo_list_query_item;                    
+                    };                
+                };
+            }
+        };
+    }
+    
+RESOURCE ARRAY r_demo_list_query_item
+
+    {
+
+    items =
+
+        {
+
+        LBUF {txt = "First item"; },
+
+        LBUF {txt = "Second item"; },
+
+        LBUF {txt = "Third item"; }
+
+        };
+
+    }
+//--------------------------------------------------------------------
+//	resorce for Ecmt wlan odd view
+//--------------------------------------------------------------------
+
+RESOURCE CBA r_listbox_settingview_options_exit__change
+    {
+    flags = 0;
+    buttons =
+        {
+        CBA_BUTTON {id=EAknSoftkeyOptions; txt=qtn_r_listbox_options;},
+        CBA_BUTTON {id=EAknSoftkeyBack; txt="Back";},
+        //CBA_BUTTON {id=EAknSoftkeyExit; txt=qtn_r_listbox_exit;},
+        CBA_BUTTON {id=EListboxCmdChange; txt=qtn_r_listbox_change_settingitem;}
+        };
+    }
+
+RESOURCE AVKON_VIEW r_listbox_settings_view
+    {
+    menubar = r_listbox_settings_menubar;
+    cba = r_listbox_settingview_options_exit__change;
+    }   
+
+RESOURCE MENU_BAR r_listbox_settings_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_listbox_settings_menu;
+            }
+        };
+    }
+ 
+RESOURCE MENU_PANE r_listbox_settings_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            command = EListboxCmdChange;
+            txt = "Edit";
+            },
+        MENU_ITEM
+            {
+            command = EIp;
+            txt = "IP address";
+            },
+       MENU_ITEM
+           {
+           command = EDeleteJavaDir;
+           txt = "Disable Debug";
+           },            
+       MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt =  "Exit";
+            }
+        };
+    }
+RESOURCE AVKON_SETTING_ITEM_LIST r_listbox_setting_item_list
+  {
+  title = "Setting list title";
+  initial_number = 1;
+  items = 
+    { 
+    AVKON_SETTING_ITEM
+      {
+      identifier = EListboxSettingUsername;
+      setting_page_resource = r_ecmt_odd_setting_page;
+      name = "System IP";
+      },
+      AVKON_SETTING_ITEM
+        {
+        identifier = EListboxSettingUsername;
+        setting_page_resource = r_ecmt_port_odd_setting_page;
+        name = "Port num";
+        }      
+    };
+  }   
+
+RESOURCE POPUP_SETTING_LIST r_listbox_popup_setting_list
+    {
+    flags = 0;
+    }
+    
+//------------------------------------------------------------
+//resource for ip address editor box
+//------------------------------------------------------------
+
+
+RESOURCE AVKON_SETTING_PAGE r_ecmt_odd_setting_page
+    {   
+    label= "System IP";
+    type = EEikCtEdwin;
+    editor_resource_id = r_Ecmt_odd_editor;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL__OK;
+    invalid_contents_softkey_resource = R_AVKON_SOFTKEYS_CANCEL;
+    }
+
+RESOURCE EDWIN r_Ecmt_odd_editor
+    {
+    flags=0;
+    width=9;
+    lines=1;
+    maxlength=20;
+    default_input_mode=EAknEditorNumericInputMode;
+    flags = EEikEdwinNoLineOrParaBreaks;
+    avkon_flags=0;
+    }
+
+//--------------------------------------------------------------------
+//	resource for port nuber editor box
+//--------------------------------------------------------------------
+
+
+RESOURCE AVKON_SETTING_PAGE r_ecmt_port_odd_setting_page
+    {   
+    label= "Port num";
+    type = EEikCtEdwin;
+    editor_resource_id = r_Ecmt_odd_port_editor;
+    softkey_resource = R_AVKON_SOFTKEYS_OK_CANCEL__OK;
+    invalid_contents_softkey_resource = R_AVKON_SOFTKEYS_CANCEL;
+    }
+
+//-------------------------------------------------------------
+//	port number editor box
+//-------------------------------------------------------------
+
+RESOURCE EDWIN r_Ecmt_odd_port_editor
+    {
+    width=9;
+    lines=1;
+    maxlength=4;
+    default_input_mode=EAknEditorNumericInputMode;
+    allowed_input_modes = EAknEditorNumericInputMode;
+    flags = EEikEdwinNoLineOrParaBreaks|EAknEditorNumericInputMode;
+    avkon_flags=0;
+    }
+    
+//------------------------------------------------------------------
+//	IP address dlg
+//------------------------------------------------------------------
+
+
+RESOURCE DIALOG r_ip_address_dialog
+{
+    flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+    buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    items=
+    {
+        DLG_LINE
+        {
+            type = EAknCtPopupHeadingPane;
+            id = EAknMessageQueryHeaderId;
+            control = AVKON_HEADING
+            {
+                label = "IP Address";
+                headinglayout = R_AVKON_WML_SIGN_QUERY_HEADING_PANE;
+            };
+        },
+        DLG_LINE
+        {
+            type = EAknCtMessageQuery;
+            id = EAknMessageQueryContentId;
+            control = AVKON_MESSAGE_QUERY
+            {
+                message = "java odd using wlan conectivity";
+            };
+        }
+    };
+}
+

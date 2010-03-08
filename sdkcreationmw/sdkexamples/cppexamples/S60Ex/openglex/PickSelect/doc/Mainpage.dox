@@ -1,0 +1,58 @@
+/*! \mainpage OpenGL ES Pick Select Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates one possible way of implementing object and polygon selection.
+ *  The example consists of two parts: the first is a single rotating cube, whose polygons can
+ *  be chosen. The second part consists of two rotating cubes that can be separately chosen.
+ *  The user can choose the mode from the menu. The example can be extended to any kind of
+ *  OpenGL ES application, but you might want to look the other example applications as well
+ *  for how to use other, different kinds of, OpenGL ES features.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses and the Open GL ES API.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  In this example, the user can freely move a selection cursor or a cross on the screen and select an object or
+ *  a surface by pressing the joystick button down. See the source code in PickSelect.cpp for more information about
+ *  the choosing of the alpha values for the polygon/object. Remember that the color of the polygon (and the alpha
+ *  value) is determined by the color of the last pixel of the triangle triplet. The picking and selection are
+ *  implemented using the object’s alpha color values. Although this restricts the usage of, for example, blending,
+ *  the implementation is quite simple and it gives a hint of how to implement more sophisticated selection methods.
+ *  When the user presses the joystick button, the cursor’s current location pixel’s alpha value is read and then
+ *  checked to determine whether the cursor was on any polygon/object. If this is the case, the polygon/object is
+ *  drawn in white color, otherwise nothing happens.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application. This code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

@@ -1,0 +1,454 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    EXDB // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include "contacts.hrh"
+#include "contacts.rls"
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="Contacts"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys=r_contacts_hotkeys;
+    menubar=r_contacts_contacts_menubar;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;     
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_hotkeys
+//    The hot keys for Contacts example
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_contacts_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_contacts_menubar
+//    The menu bar for the Contacts example
+//	  Show Contacts has been seleted
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_contacts_contacts_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_contacts_contacts_menu; txt=STRING_r_contacts_file; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_groups_menubar
+//    The menu bar for the Contacts example. 
+//	  Show Contact groups has been seleted
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_contacts_groups_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_contacts_groups_menu; txt=STRING_r_contacts_file; }
+        };
+    }
+
+
+
+//----------------------------------------------------
+//   
+//    r_contacts_select_grp_menubar
+//    The menu bar for the Contacts example. 
+//	  Add contact to grp has been selected
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_contacts_select_grp_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_contacts_select_grp_menu; txt=STRING_r_contacts_file; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_show_contactorgroups_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_show_contactorgroups_sub_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EContactsShowContacts; txt=STRING_r_contacts_show_contacts;},
+		MENU_ITEM { command=EContactsShowGroups; txt=STRING_r_contacts_show_groups;}
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_open_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_open_sub_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EContactsDefaultDB; txt=STRING_r_contacts_open_default_db; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_create_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_create_sub_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EContactsCreateTemplate; txt=STRING_r_contacts_create_template;}
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_contacts_groups_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_groups_sub_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EContactsCreateContactGroup; txt=STRING_r_contacts_create_group; },
+		MENU_ITEM { command=EContactsDeleteContactGroup; txt=STRING_r_contacts_delete_group; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_contact_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_contact_sub_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EContactsEditContact; txt=STRING_r_contacts_edit_contact; },
+        MENU_ITEM { command=EContactsCreateContact; txt=STRING_r_contacts_create_contact; },
+		MENU_ITEM { command=EContactsSelectGrp; txt=STRING_r_contacts_add_to_group; },
+		MENU_ITEM { command=EContactsDeleteContact; txt=STRING_r_contacts_delete_contact; }
+        };
+    }
+//----------------------------------------------------
+//   
+//    r_contacts_contact_group_sub_menu
+//    The sub menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_contact_group_sub_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EContactsCreateContactGroup; txt=STRING_r_contacts_create_group; },
+		MENU_ITEM { command=EContactsDeleteContactGroup; txt=STRING_r_contacts_delete_group; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_contacts_contacts_menu
+//    The menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_contacts_menu
+    {
+    items=
+        {
+		MENU_ITEM { cascade=r_contacts_open_sub_menu; txt=STRING_r_contacts_open;},
+		MENU_ITEM { cascade=r_contacts_create_sub_menu; txt=STRING_r_contacts_create;},
+		MENU_ITEM { cascade=r_contacts_contact_sub_menu; txt=STRING_r_contacts_contacts;},
+		MENU_ITEM { cascade=r_contacts_show_contactorgroups_sub_menu; txt=STRING_r_contacts_show;},
+		MENU_ITEM { command=EAknCmdExit; txt=STRING_r_contacts_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_groups_menu
+//    The menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_groups_menu
+    {
+    items=
+        {
+		MENU_ITEM { cascade = r_contacts_open_sub_menu; txt=STRING_r_contacts_open;},
+		MENU_ITEM { cascade = r_contacts_create_sub_menu; txt=STRING_r_contacts_create;},
+		MENU_ITEM { cascade = r_contacts_groups_sub_menu; txt=STRING_r_contacts_edit_group;},
+		MENU_ITEM { cascade = r_contacts_show_contactorgroups_sub_menu; txt=STRING_r_contacts_show;},
+		MENU_ITEM { command = EAknCmdExit; txt=STRING_r_contacts_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_select_grp_menu
+//    The menu options for the Contacts application
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_contacts_select_grp_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=EContactsAddContactToGrp; txt=STRING_r_contacts_add_to_group; },
+        MENU_ITEM { command=EContactsCancelSelectGrp; txt=STRING_r_contacts_back; }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_confirmation_query
+//    Resource of Confirmation Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_contacts_confirmation_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_YES_NO;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                label = STRING_r_contacts_con_label_text;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_textbox_query
+//    Resource of Data Query.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_contacts_textbox_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = STRING_r_contacts_create_db_message;
+                control = EDWIN
+                    {
+                    flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    width = EContactsEdwinWidth;
+                    maxlength = EContactsEdwinMaxLength;
+                    max_view_height_in_lines = EContactsEdwinLines; 
+                    base_line_delta = EContactsEdwinBaseLineDelta; 
+                    };
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+// String resources
+//
+//-----------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_delete_contact_message
+//    Label of Delete contact message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_delete_contact_message
+    {
+    buf = STRING_r_contacts_delete_contact_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_delete_group_message
+//    Label of Delete contact group message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_delete_group_message
+    {
+    buf = STRING_r_contacts_delete_group_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_create_group_message
+//    Label of create contact group message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_create_group_message
+    {
+    buf = STRING_r_contacts_create_group_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_create_group_message
+//    Label of create contact template message.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_create_template_message
+    {
+    buf = STRING_r_contacts_create_template_message;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_db_not_found
+//    Label of database not found
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_db_not_found
+    {
+    buf = STRING_r_contacts_db_not_found;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_no_db_selected
+//    Label of database not selected
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_no_db_selected
+    {
+    buf = STRING_r_contacts_no_db_selected;
+    }
+	
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_no_contact_selected
+//    Label of contact not selected
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_no_contact_selected
+    {
+    buf = STRING_r_contacts_no_contact_selected;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_default_db
+//    Label of default database title
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_default_db
+    {
+    buf = STRING_r_contacts_default_db;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_contacts_no_db
+//    Label of no database title
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_contacts_no_db
+    {
+    buf = STRING_r_contacts_no_db;
+    }
+
+//----------------------------------------------------
+//   
+//    r_contacts_localisable_app_info
+//
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_contacts_localisable_app_info
+    {
+    short_caption = STRING_r_contacts_short_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_contacts_caption_string;
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\Contacts_aif.mif";
+	};
+    }
+
+		        
+// End of File

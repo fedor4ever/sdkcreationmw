@@ -1,0 +1,287 @@
+/*! \mainpage Asynchronous Client/Server Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates the architecture of a simple client server
+ * application utilising asynchronous calls to the server. The server supplies
+ * the current time to its clients.
+ *
+ * <HR>
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CActive
+ * - CServer2
+ * - CSession2
+ * - RMessagePtr2
+ * - RMessage2
+ * - RSessionBase
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example. The example makes use of several other Symbian OS concepts which
+ * the reader should be aware of before attempting to understand this example.
+ * These are:
+ *
+ * - Asynchronous programming, in particular the following topics:
+ *   - Inter-process communication overview.
+ *   - Client/server overview.
+ *   - Using client/server.
+ *   - CActive
+ *
+ * - Thread and process management, in particular the following topics:
+ *   - Thread and process management overview.
+ *   - Semaphores overview.
+ *   - Threads and processes overview.
+ *   - Using semaphores.
+ *
+ * <HR>
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * The application initially presents a default time to the user, as shown
+ * in the following screenshot.
+ *
+ * \image html initial_screen.png
+ *
+ * The Options menu presents the following choices:
+ *
+ * \image html options_menu.png
+ *
+ * - Select <b>Start Clock</b> to start updating the displayed time.
+ * - Select <b>Exit</b> at any time, to exit the application.
+ *
+ * On selecting <b>Start Clock</b>, the display will be updated periodically
+ * with the current time. While the clock is running, the Options menu presents
+ * the following choices:
+ *
+ * \image html options_menu_running.png
+ *
+ * - Select <b>Stop Clock</b> to stop updating the displayed time.
+ * - Select <b>Exit</b> at any time, to exit the application.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example exists as a complete application and has the standard
+ * Symbian OS application architecture employing the Application, Document,
+ * UI, and View classes. The reader should be familiar with this architecture
+ * before proceeding.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * The following component diagram illustrates the split of classes over the
+ * client and server components, and their inter-relationships.
+ *
+ * \image html component.jpg
+ *
+ * The client is a standard Symbian OS application, utilising an
+ * RSessionBase-derived object to communicate with the server. The server is
+ * implemented as an EXE.
+ *
+ * In the following description, an overview of this example's design is
+ * presented in the Design overview section. This is followed by a description
+ * of three use case scenarios, where the user:
+ *
+ * - Invokes the application - here, the application establishes communication
+ * with the server, creating the server if necessary. This is achieved using
+ * the RTimeServerSession class, and is described in the Creating a session
+ * section.
+ * - Makes a server request - the application uses the established session to
+ * request data from the server. This is described in the Making a server
+ * request section.
+ * - Cancels a server request - the user cancels an outstanding request. This
+ * is described in the Canceling a server request section.
+ *
+ * <HR>
+ *
+ * \subsection Sub31 3.1 Design overview
+ *
+ * The Symbian OS client/server architecture uses four key concepts:
+ * server (CServer2), session (CSession2 and RSessionBase), sub-session
+ * (RSubSessionBase), and message (RMessage2, and RMessagePtr2).
+ *
+ * Servers derive from CServer2, and are responsible for handling any requests
+ * from clients to establish connections.
+ *
+ * The session represents the channel of communication between client and
+ * server. Clients use a derivation of RSessionBase, and servers use a
+ * derivation from CSession2.
+ *
+ * The following class diagram shows the server-session associations for this
+ * example.
+ *
+ * \image html classes.png
+ *
+ * A client can create multiple sessions with a server. However, it is more
+ * resource-efficient to use sub-sessions. This feature is not employed in this
+ * example, for simplicity.
+ *
+ * The RMessage2 class is the data structure passed between client and server.
+ * The client does not manipulate this directly, as it is encapsulated in the
+ * client-side interface. Server side sessions read from, and write to, this
+ * structure to receive and send data.
+ *
+ * To handle asynchronous services, the client requires the use of an active
+ * object. In this case, the active object is an instance of the
+ * CCSAsyncRequestHandler class. This is responsible for managing the
+ * asynchronous nature of this example. It issues requests (through the
+ * RTimeServerSession class) for asynchronous services, and receives
+ * notification of completion through its RunL method. It uses an observer,
+ * MAsyncTimeObserver, to report the completion of requests to interested
+ * parties.
+ *
+ * <HR>
+ *
+ * \subsection Sub32 3.2 Creating a session
+ *
+ * The sequence involved in creating a session is very similar to that
+ * described in the Synchronous Client/Server Example, and hence is not
+ * described in this document. The only differences in this case are that the
+ * session is created by the CCSAsyncRequestHandler class, and the number of
+ * asynchronous message slots specified in the RSessionBase::Connect call is
+ * no longer zero.
+ *
+ * <HR>
+ *
+ * \subsection Sub33 3.3 Making a server request
+ *
+ * The RMessage2 and RMessagePtr2 classes are used to transfer information
+ * between the client and the server. These classes have several useful
+ * methods:
+ *
+ * - RMessage2 allows client to specify the required server operation.
+ * - RMessage2 allows four 32-bit words of information to be passed back and
+ * forth between the client and server.
+ * - RMessagePtr2 allows the server to signal when a client's request has
+ * completed, using the Complete method.
+ * - RMessagePtr2 allows the server to panic its client.
+ *
+ * An instance of an RMessage2 object is automatically created for the session
+ * when the client calls one of the RSessionBase::SendReceive or
+ * RSessionBase::Send methods. These methods can take a parameter that is a
+ * reference to TIpcArgs object, which can have up to four 32-bit arguments.
+ *
+ * The sequence involved in making an asynchronous server request is shown
+ * below.
+ *
+ * \image html requesttime.jpg
+ *
+ * -# RequestTime is called in response to the user selecting Start Clock. This
+ * calls CCSAsyncRequestHandler::RequestTime.
+ * -# The RTimeServerSession::RequestTime is called and a TTime reference, and the
+ * active object's iStatus flag are passed to it.
+ * -# A descriptor is now created, representing the supplied TTime object. This
+ * descriptor's address is entered into the TIpcArgs object, which is passed to
+ * the inherited SendReceive method. SendReceive is an asynchronous method, and
+ * returns immediately.
+ * -# The SetActive method is called, to indicate that the active object has
+ * issued a request that is now outstanding. CCSAsyncRequestHandler::RunL will
+ * be called when the server completes the request.
+ *
+ * As a result of the call to SendReceive, the framework calls the
+ * CTimeServerSession::ServiceL of the associated server-side session, as shown
+ * in the following diagram.
+ *
+ * \image html servicel.png
+ *
+ * -# CTimeServerSession::ServiceL is called by the kernel, and passed an
+ * RMessage2 encapsulating the client's request.
+ * -# RMessage2::Function is called to determine the request type.
+ * -# If the request is for a time update, RequestTimeL is called.
+ * -# The received request (RMessage2) is stored. The session now registers its
+ * interest in the server's time updates by calling CTimeServer::WaitForTickL.
+ * -# The server uses an instance of the CHeartbeat class to notify sessions
+ * of a time update. New instance is created here if the heartbeat is not
+ * already created.
+ * -# The heartbeat is also started, if it was not already created in previous
+ * step.
+ * -# When the next heartbeat occurs, CTimeServer::Beat is called.
+ * -# The Beat function calls SendTimeToSessions, which iterates over all
+ * established sessions, calling CTimeServerSession::SendTimeToClient.
+ * -# SendTimeToClient is called.
+ * -# SendTimeToClient calculates the current time and creates a new descriptor
+ * representing it (using TPtr8 since it's binary data). RMessage2::WriteL
+ * is now called, with the created descriptor as parameter. First parameter
+ * of the WriteL is zero identifying the argument index value. The descriptor
+ * at the client side was the first argument, so server has to write into the
+ * first argument (index 0). If server writes to index 1, in this case, WriteL
+ * would return error KErrBadDescriptor. The WriteL function call causes the
+ * time to be written to the client's address space.
+ * -# The server session then signals the client, using the RMessage2::Complete
+ * method. This causes the client's CCSAsyncRequestHandler::RunL method to be
+ * called, as shown in the following diagram.
+ *
+ * Once the server has completed the request, the active object which initiated
+ * the request will be signalled, and its RunL method called, as shown in the
+ * following diagram.
+ *
+ * \image html runl.jpg
+ *
+ * -# The active scheduler calls the RunL method in response to the server
+ * completing the request.
+ * -# The observer is notified and the time is updated to the screen if the
+ * status flag indicates successful completion of the request.
+ * -# A new request is scheduled, to keep the clock 'running'.
+ *
+ * <HR>
+ *
+ * \subsection Sub34 3.4 Canceling a server request
+ *
+ * When the user selects Stop Clock, the following sequence is entered.
+ *
+ * \image html cancel.jpg
+ *
+ * -# CancelRequest is called in response to the user selecting Stop Clock from
+ * the Options menu.
+ * -# To handle cancelled requests, active objects should call CActive::Cancel
+ * and also implement a DoCancel method. This will be called as a result of
+ * calling CActive::Cancel.
+ * -# DoCancel is called, which instructs the session to cancel the outstanding
+ * request by calling RTimeServerSession::CancelRequestTime.
+ * -# CancelRequestTime() is called.
+ * -# The synchronous request is now sent to the server, instructing it to
+ * cancel the outstanding request by calling SendReceive. The framework will
+ * call the corresponding server-side session's ServiceL method as shown in the
+ * following sequence.
+ *
+ * As a result of the call to SendReceive, the framework calls the
+ * CTimeServerSession::ServiceL of the associated server-side session, as shown
+ * in the following diagram.
+ *
+ * \image html servicel-cancel.png
+ *
+ * -# ServiceL is called by the framework in response to a request from the
+ * client.
+ * -# The requested method is checked by examining the returned id from
+ * RMessage2::Function. In this case, it indicates that the client has
+ * requested cancellation of an outstanding request. The servicing of this
+ * request should complete in as short a time as possible, since the client
+ * waits for completion.
+ * -# If a previous request is pending, the server completes it by calling
+ * Complete on the stored request's associated RMessage2.
+ * -# The cancellation request is now completed, freeing the client to continue
+ * processing.
+ *
+ * <HR>
+ *
+ * \subsection Sub35 3.5 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in both mmp-files as CAPABILITY NONE.
+ *
+ */

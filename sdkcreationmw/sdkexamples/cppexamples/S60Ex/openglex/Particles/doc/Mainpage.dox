@@ -1,0 +1,55 @@
+/*! \mainpage OpenGL ES Particles Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates drawing point sprites, which is a method of applying a texture to traditional
+ *  OpenGL point primitives. Point sprites have been supported in OpenGL ES since version 1.1. Point
+ *  sprites are useful for implementing particle effects, such as explosions, or for simulating volumetric
+ *  phenomena such as fire and smoke. This example draws an animated string of particles around the screen
+ *  using point sprites.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. OpenGL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implemention
+ *
+ *  This example draws a string of particles moving around the screen. Each particle is drawn as a simple point
+ *  primitive, but since the example enables the point sprite feature, textured billboards are rendered instead
+ *  of simple points. To make the example more visually interesting, a feedback texture is used to
+ *  blend the framebuffer contents with those of the previous frame.
+ *
+ *  All the point sprite code related can be found in the class <a class="el" href="class_c_particles.html">CParticles</a>.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

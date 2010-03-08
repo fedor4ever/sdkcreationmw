@@ -1,0 +1,172 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  LOCALISATION STRINGS
+
+// Caption
+rls_string STRING_r_aknexquery_caption_string     "Query"
+
+//
+// For menu
+//
+rls_string STRING_r_aknexquery_app_menu_text1   "Data Query"
+rls_string STRING_r_aknexquery_app_menu_text2   "Confirmation Query"
+rls_string STRING_r_aknexquery_app_menu_text3   "List Query"
+rls_string STRING_r_aknexquery_app_menu_text4   "MultiSelection Query"
+rls_string STRING_r_aknexquery_app_menu_text7   "MultiLine Data Query"
+rls_string STRING_r_aknexquery_app_menu_text9   "Exit"
+ 
+//
+// For r_aknexquery_data_list_menu1
+//
+rls_string STRING_r_aknexquery_data_list_text1   "TEXT INPUT 1"
+rls_string STRING_r_aknexquery_data_list_text4   "TEXT INPUT 2"
+rls_string STRING_r_aknexquery_data_list_text8   "TEXT INPUT 3"
+
+//
+// For r_aknexquery_data_list_menu2
+//
+rls_string STRING_r_aknexquery_data_list_text10  "SELECT YES/NO"
+rls_string STRING_r_aknexquery_data_list_text16  "SELECT OK/CANCEL"
+
+//
+// For r_aknexquery_data_list_menu3
+//
+rls_string STRING_r_aknexquery_data_list_text48  "SELECT LIST 1"
+rls_string STRING_r_aknexquery_data_list_text52  "SELECT LIST 2"
+rls_string STRING_r_aknexquery_data_list_text61  "GLOBAL LIST"
+
+//
+// For r_aknexquery_data_list_menu4
+//
+rls_string STRING_r_aknexquery_data_list_text54  "MULTISELECT LIST"
+
+//
+// For r_aknexquery_data_list_menu7
+//
+rls_string STRING_r_aknexquery_data_list_text44  "MULTIPLE INPUT"
+
+//
+// For operation message 
+//
+rls_string STRING_r_aknexquery_title_message     "Query\nExample Application"
+rls_string STRING_r_aknexquery_operate_message   "Press right softkey to\ndisplay next sample"
+
+//
+// For confirmation query
+//
+rls_string STRING_r_aknexquery_con_label_text    "Do you wish\nto continue\nthe task?"
+
+//
+// For answer message
+//
+rls_string STRING_r_aknexquery_yes_ok_message    "approved"
+rls_string STRING_r_aknexquery_no_can_message    "discarded"
+
+//
+// For data query
+//
+rls_string STRING_r_aknexquery_data_label_text   "Enter name :"
+rls_string STRING_r_aknexquery_initial_text      "abcdefg"
+
+//
+// For date query
+//
+rls_string STRING_r_aknexquery_date_label_text   "Enter date :"
+rls_string STRING_r_aknexquery_date_initial      "20000222:"
+
+//
+// For time query
+//
+rls_string STRING_r_aknexquery_time_label_text   "Enter time :"
+rls_string STRING_r_aknexquery_time_initial      "20000222:100500.000000"
+
+//
+// For duration query
+//
+rls_string STRING_r_aknexquery_dura_label_text   "Enter duration :"
+
+//
+// For listbox item of multiline handler
+//
+rls_string STRING_r_aknexquery_multiline_item17  " Date and Duration"
+rls_string STRING_r_aknexquery_multiline_item18  " Time and Duration"
+
+//
+// For sub popup data
+//
+rls_string STRING_r_aknexquery_sub_popup_data1   "Item 1"
+rls_string STRING_r_aknexquery_sub_popup_data2   "Item 2"
+rls_string STRING_r_aknexquery_sub_popup_data3   "Item 3"
+rls_string STRING_r_aknexquery_sub_popup_data4   "Item 4"
+rls_string STRING_r_aknexquery_sub_popup_data5   "Item 5"
+
+//
+// For list query tittle message
+//
+rls_string STRING_r_aknexquery_list_title        "Welcome note :"
+
+//
+// For list single pane
+//
+rls_string STRING_r_aknexquery_list_item1        "Edit"
+rls_string STRING_r_aknexquery_list_item2        "On"
+rls_string STRING_r_aknexquery_list_item3        "Off"
+
+//
+// For list single graphic pane
+//      
+rls_string STRING_r_aknexquery_head_graph_item1  "1\tHead1\tEdit"
+rls_string STRING_r_aknexquery_head_graph_item2  "1\tHead2\tOn"
+rls_string STRING_r_aknexquery_head_graph_item3  "1\tHead3\tOff"
+
+//
+// For multiselection query
+//
+rls_string STRING_r_aknexquery_selection_title   "Ringing :"
+rls_string STRING_r_aknexquery_selection_item1   "1\tVIP"
+rls_string STRING_r_aknexquery_selection_item2   "1\tFamily"
+rls_string STRING_r_aknexquery_selection_item3   "1\tcolleagues"
+rls_string STRING_r_aknexquery_selection_item4   "1\tClients"
+rls_string STRING_r_aknexquery_selection_item5   "1\tFriends"
+
+//
+// For number query with heading
+//
+rls_string STRING_r_aknexquery_numquery_withhead_head   "Heading text"
+
+//
+// For ShowListQueryL
+//
+rls_string STRING_r_aknexquery_querydiscarded "Query discarded!!"
+rls_string STRING_r_aknexquery_item_selected  "Item %d selected"
+
+//
+// For Cba
+//
+rls_string STRING_r_aknexquery_cba_options       "Options"
+rls_string STRING_r_aknexquery_cba_next          "Next"
+
+//
+// For message
+//
+rls_string STRING_r_aknexquery_received_message  "Received: "  
+rls_string STRING_r_aknexquery_approved_message  "Query approved!!"
+
+// 
+// End of file

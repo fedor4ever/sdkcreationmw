@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+PRJ_EXPORTS
+
+aboutbox.rtf		\epoc32\data\aboutbox.rtf
+StartupMode_Notification.rtf		\epoc32\data\StartupMode_Notification.rtf
+
+// Export client interface
+..\..\loggingapi\inc\EcmtClient.h
+
+#ifndef SDK_MIDP
+// Export netcards.exe
+netcards.exe 		\epoc32\tools\netcards.exe
+#endif // SDK_MIDP
+
+PRJ_MMPFILES
+
+#ifdef WINS
+// Required by EcmtCore
+EcmtOsUtils.mmp
+
+nmakefile zlib.mk
+nmakefile slib.mk
+nmakefile wlib.mk
+nmakefile nmitlib.mk
+nmakefile httpfile.mk
+#include "..\..\FileLoader\group\bld.inf"
+EcmtMenubar.mmp
+
+//!BEGIN_INTERNAL
+//nmakefile reglib.mk
+EcmtMenubar2.mmp
+//!END_INTERNAL
+
+#include "..\SDKLauncher\bld.inf"
+
+nmakefile EcmtGw.mk
+nmakefile EcmtMan.mk
+nmakefile prefs.mk
+#endif
+
+#include "..\..\..\sdkconnectivityfw\emuconnectserver\group\bld.inf" 
+
+

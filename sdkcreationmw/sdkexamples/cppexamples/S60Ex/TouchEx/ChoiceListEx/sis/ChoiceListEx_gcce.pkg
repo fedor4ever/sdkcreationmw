@@ -1,0 +1,43 @@
+;
+; Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+
+;Languages
+&EN
+; Package header
+#{"ChoiceListEx"},(0xA000027D),2,2,0
+
+;
+;Localised Vendor name
+;
+%{"Forum Nokia"}
+
+;
+;Unique Vendor name
+;
+:"Forum Nokia"
+
+;Supports S60 v 3.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+; Input files
+"..\..\..\..\Epoc32\release\gcce\urel\ChoiceListEx.exe"					-"!:\sys\bin\ChoiceListEx.exe"
+"..\..\..\..\Epoc32\data\Z\Resource\apps\ChoiceListEx.rsc"				-"!:\resource\apps\ChoiceListEx.rsc"
+"..\..\..\..\Epoc32\data\Z\private\10003a3f\import\apps\ChoiceListEx_reg.rsc"	-"!:\private\10003a3f\import\apps\ChoiceListEx_reg.rsc"
+
+;
+; Backup & Restore
+;
+;"backup_registration.xml"-"!:\private\0xA000027D\backup_registration.xml"

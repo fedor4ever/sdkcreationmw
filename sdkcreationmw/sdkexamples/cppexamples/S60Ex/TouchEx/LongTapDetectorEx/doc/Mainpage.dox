@@ -1,0 +1,53 @@
+/*! \mainpage LongTapDetector Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates the use of CAknLongTapDetector. Receives pointer events from 
+ * owner application or owner control and returns location if a long tap event occurs.
+ * After short period of time (default 0,15s) animation is displayed next to stylus on the 
+ * screen to inform the user of long tap functionality. Animation can be turned OFF by 
+ * application if wanted.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CAknLongTapDetector
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, App UI, Document and Container classes.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * Most of the important application code is in the longtapdetectorexcontainer.cpp.
+ *
+ * Key events are as below.
+ *
+ * HandleLongTapEventL 					: Callback method. Get's called when a long tap occurs.
+ * PointerEventL 								: Receives and handles pointer events from owner's 
+ *																HandlePointerEventL()-method.Used to control timers 
+ *																in detecting long tap events.
+ * SetTimeDelayBeforeAnimation  : Sets new time delay before long tap detector animation 
+ * 																starts .Default delay is 0,15s.
+ * SetLongTapDelay							: Sets new time delay before long tap detector event is  
+ *																returned. Default delay is 0,8s.
+ * EnableLongTapAnimation				: Sets long tap animation ON/OFF. Default is ON.
+ * IsAnimationRunning						: Checks if the animation is running
+ * MonitorWsMessage							: This function is used to capture key events during the 
+ *																longtap animation.If such events are received, the 
+ *																longtap animation is then cancelled.
+ *  
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in mmp-files as CAPABILITY NONE.
+ *
+ */

@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+rls_string r_blank						" "
+
+// Agent menu
+rls_string r_debugagent_menuagent_txt_agent						"Agent"
+
+rls_string r_debugagent_menuagent_txt_start						"Start"
+rls_string r_debugagent_menuagent_txt_stop						"Stop"
+rls_string r_debugagent_menuagent_txt_connect						"Connect"
+rls_string r_debugagent_menuagent_txt_clearscreen				"Clear screen"
+rls_string r_debugagent_menuagent_txt_exit						"Exit"
+
+// Settings menu
+rls_string r_debugagent_menuagent_txt_settings					"Settings"
+
+rls_string r_debugagent_menusettings_txt_settings_agent	  		"Agent"
+rls_string r_debugagent_menusettings_txt_settings_cleanup  		"Cleanup"
+
+
+// Agent Settings Dialog
+rls_string r_debugagent_agent_settings_dialog_txt_title			"DebugAgent Settings"	
+rls_string r_debugagent_agent_settings_dialog_txt_autoclean		"Auto clean on startup"
+rls_string r_debugagent_agent_settings_dialog_txt_agent_port	"Local port"
+rls_string r_debugagent_agent_settings_dialog_txt_filelog		"Log to file"
+rls_string r_debugagent_agent_settings_dialog_txt_usepin		"Pin authentication"
+rls_string r_debugagent_agent_settings_dialog_txt_pc_host	"PC host"
+rls_string r_debugagent_agent_settings_dialog_txt_pc_port	"PC port"
+
+

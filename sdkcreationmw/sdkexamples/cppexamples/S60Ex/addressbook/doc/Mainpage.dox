@@ -1,0 +1,540 @@
+/*! \mainpage AddressBook Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ * \n\ref Build_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ * The purpose of this application is to provide an example, including
+ * source code, of the use of the Nokia Web Services Framework so that
+ * developers can test and run the application against a live server.
+ * The server will be hosted by Forum Nokia and provide the interface
+ * specified later in this document.
+ *
+ * The sample is a small address book application, which enables the user to
+ * find information such as name, address, phone number, job title, and so on
+ * about other users. The sample utilizes a Liberty-based address book web
+ * service hosted by Forum Nokia, which providers the interface specified
+ * in section \ref Sub34.
+ * The service will not be perfect address book service, as that is not
+ * needed to show the use of the Web Services framework. Those enhancements
+ * would make no difference on the use of the Web Services Framework and so
+ * would be just unnecessary work for this example.
+ *
+ * The application will be used in S60 3.0 terminals. It is using Symbian
+ * native interfaces provided by native Nokia Web Services Framework.
+ * The latter framework takes care of tasks such as authentication, service
+ * discovery and connection management thus letting the application developer
+ * to focus on the application level logic.
+ *
+ * \image html AddressBookIntroduction.jpg
+ * <b> <center> figure1: Environment overview </center></b>
+ *
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ * This example makes use of the standard Symbian OS application framework,
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example. It is also assumed that the reader is familiar with the concepts
+ * related to Web Services. Knowledge of Liberty Alliance specifications
+ * (http://www.projectliberty.org/) is an asset.
+ *
+ * It's necessary to have LAN Connection support for an emulator and GPRS
+ * Connection support for a device.
+ *
+ * \subsection Sub21 2.1 Emulator
+ *
+ * In emulator configure network settings from tools->Preferences-network.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * This section starts with explaining the capabilities that the program can
+ * use. After that, the support using different screen modes are explained.
+ * And then in this section is detailed the design and implementation of each
+ * of the following four components required to get information about some
+ * employee used mechanism of Web Services:
+ * - Connection
+ * - Searching
+ * - AddToContant
+ * - BrowseCard
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The program capabilities are defined in %AddressBook.mmp file:
+ * CAPABILITY NetworkServices ReadUserData WriteUserData WriteDeviceData
+ * ReadDeviceData.
+ *
+ * \subsection Sub32 3.2 ScalableUI
+ *
+ * The program takes screen parameters in the start of the application and
+ * works with all screen modes. The program supports changing the screen
+ * layout while the program is running.
+ *
+ * \subsection Sub33 3.3 Connection
+ *
+ * \image html AddressBookConnection.jpg
+ * <b> <center> figure 2: Connection </center></b>
+ *
+ * Message Description
+ *
+ * 1: CAddressBookAppUi::HandleCommandL(TInt aCommand) is called on the AppUi
+ *    object whenever the user selects a menu option. The argument aCommand
+ *    indicates the command the user selected. In case if the user chose
+ *    "EaddressBookCmdAppConnect" to connect with a provider than function
+ *    CAknWaitNoteWrapper::ExecuteL(R_CONNECTING_NOTE, *this, ETrue) runs the
+ *    active scheduler, that calls CAknWaitNoteWrapper::RunL(), it checks:
+ *
+ * 3: Is process already done? - function CAddressBookAppUi::IsProcessDone()
+ *    (it is overridden from interface MAknBackgroundProcess).
+ *
+ * 4: If process is not done yet then CAknWaitNoteWrapper::RunL() calls
+ *    CAddressBookAppUi::StepL() that does one step of processing (it is
+ *    overridden from interface MAknBackgroundProcess). This step establishes
+ *    connection.
+ *
+ * 5: CAddressBookEngine::ConnectL() is run from CAddressBookAppUi::StepL().
+ *    Makes a connection to an ID-WSF  service. When
+ *    CAddressBookEngine::ConnectL() is called the first time, authentication
+ *    and discovery services are connected and the user is therefore
+ *    authenticated and the service is connected.
+ *    When CAddressBookEngine::ConnectL() is called again and the credentials
+ *    received from  authentication and discovery services are valid, there
+ *    are no need to connect to them again. This means that
+ *    CAddressBookEngine::SetStatus(const TInt aStatus) will be called almost
+ *    immediately with value CONNECTED, but in device GPRS or data connection
+ *    is not opened yet (but instead it is opened when search occurs).
+ *
+ * 6: CAddressBookEngine::RegisterIdentityProviderL() is called from
+ *    CAddressBookEngine::ConnectL(). It registers  services. It creates the
+ *    CSenServiceManager instance and uses it to  register Identity Provider
+ *    and Authentication Service (AS) Description.
+ *    The AS is also associated with the registered IdentityProvider.
+ *
+ * 7: CAddressBookEngine::SetStatus(const TInt aStatus) gets status info
+ *    about connection (STATUS_NEW, STATUS_READY or STATUS_EXIRED) to be
+ *    initialized.
+ *    It is called by CSenServiceConnectionImpl::RunL() that is called by
+ *    active scheduler from CAddressBookAppUi::HandleCommandL(TInt aCommand)
+ *    in case "EAddressBookCmdAppConnect".
+ *
+ * 8: CAddressBookAppUi::ConnectionReady() calls when connection is done.
+ *
+ * 9-11: Checks Is process already done - function
+ *    CAddressBookAppUi::IsProcessDone()? If connection is established the
+ *    active scheduler calls functions CAddressBookAppUi::ProcessFinished()
+ *    and CAddressBookAppUi::DialogDismissedL(TInt aButtonId) which is
+ *    overridden from interface MaknBackgroundProcess.
+ *
+ * \subsection Sub34 3.4 "AddressBookConstants.h" file
+ *
+ * This file contains constants that describe Address Book service. This
+ * information is localized in the separate file specially that to avoid
+ * modifications inside the source code if will be some changes in the
+ * Address Book service (for example ProviderContract /EndPoint
+ * /testAuthentication ID /testPassword /Provider ID /WS Framework ID).
+ *
+ * The service is hosted by Forum Nokia and its connection parameters are
+ * listed in the table below.
+ *
+ * \image html AddressBookServiceParameters.jpg
+ * <b> <center> figure 3: Address Book service connection parameters </center></b>
+ *
+ * \subsection Sub35 3.5 Searching
+ *
+ * \image html AddressBookSearching.jpg
+ * <b> <center> figure 4: Searching</center></b>
+ *
+ * Message Description
+ *
+ * 1: CAddressBookAppUi::HandleCommandL(TInt aCommand) is called on the AppUi
+ *    object whenever the user selects a menu option. The argument aCommand
+ *    indicates the command the user selected. In case if the user chose
+ *    "EAddressBookCmdAppSearch" to search contact information about an
+ *    employee than function
+ *    CAknWaitNoteWrapper::ExecuteL(R_SEARCHING_NOTE, *this) runs the active
+ *    scheduler, that calls CSenServiceConnectionImpl::RunL() and it calls
+ *    function CAddressBookEngine::HandleMessageL(const TDesC8& aMessage)
+ *    (it is overridden from interface MSenServiceConsumer) for receiving
+ *    messages from the CSenServiceConnection::SendL() function.
+ *
+ * 2: CAddressBookView::Draw() draws help information "How need to search".
+ *
+ * 3: CAddressBookView::Draw() draws the window for typing query.
+ *
+ * 4-8: CAddressBookEngine::SendSearchL(const TDesC& aSearchPattern) sends
+ *    query entered by user. Create a search pattern from the descriptor and
+ *    send it to the WSP. The message from server is received through
+ *    CAddressBookEngine::HandleMessageL(const TDesC8& aMessage) or an error
+ *    is received through
+ *    CAddressBookEngine::HandleErrorL(const TInt aErrorCode, const TDesC8& aError).
+ *
+ * 12-38: Receiving and parsing message from server. Xmlparser calls
+ *    CAddressBookEngine::StartElementL(const TDesC8& aNsUri, const TDesC8&
+ *    aLocalName, const TDesC8& aQName, const RAttributeArray& aAttrs) every
+ *    time a new element tag is found and CAddressBookEngine::EndElementL(
+ *    const TDesC8& aNsUri, const TDesC8& aLocalName, const TDesC8& aQName)
+ *    every time a closing element tag is found.
+ *    In our case we are interested in the <Status> and <Card> elements.
+ *    When Status is found, we compare if attribute 'Code' is OK or not.
+ *    CSenXmlUtils::LocalName() only extracts out a possible XML prefix
+ *    (i.e. 'ab:OK'). When local name is 'Card', we have encountered a
+ *    contact-object.  Then we make a new CAddressBookContact and delegate
+ *    the parsing to it.
+ *
+ * 39-46: CAddressBookAppUi::SearchFinishedL(RPointerArray<CAddressBookContact>&
+ *    aContactArray) finishes searching and CAddressBookView::UpdateL(
+ *    RPointerArray<CAddressBookContact>& aContactArray) parses information
+ *    and creates received information in convenient for user view.
+ *
+ * 47,48: Checks Is process already done - function
+ *    CAddressBookAppUi::IsProcessDone()? If connection is established the
+ *    active scheduler calls functions CAddressBookAppUi::ProcessFinished()
+ *    and CAddressBookAppUi::DialogDismissedL(TInt aButtonId) which is
+ *    overridden from interface MaknBackgroundProcess.
+ *
+ * 49: CAddressBookView::Draw() draws the list of contacts matched under
+ *    user's query.
+ *
+ * \subsubsection Subsub351 3.5.1 Structure for address card
+ *
+ * Below is the structure for address cards presented in XML style to give
+ * an idea what data is supported for cards.
+ *
+ * <HR>
+ * \code
+ *
+ * <Card>
+ *     <N>
+ *         <FAMILY/>
+ *         <GIVEN/>
+ *         <MIDDLE/>
+ *     </N>
+ *     <ADR>
+ *         <POBOX/>
+ *         <EXTADR/>
+ *         <STREET/>
+ *         <LOCALITY/>
+ *         <REGION/>
+ *         <PCODE/>
+ *         <CTRY/>
+ *     </ADR>
+ *     <TEL type="FAX/CELL/PREF"/>
+ *     <TEL type="FAX/CELL/PREF"/>
+ *     <TEL type="FAX/CELL/PREF"/>
+ *     <TEL type="FAX/CELL/PREF"/>
+ *     <EMAIL/>
+ *     <TITLE/>
+ *     <ORG>
+ *         <ORGNAME/>
+ *         <ORGUNIT/>
+ *         <ORGUNIT/>
+ *         <ORGUNIT/>
+ *         <ORGUNIT/>
+ *     </ORG>
+ * </Card>
+ * \endcode
+ * <HR>
+ *
+ * \subsubsection Subsub352 3.5.2 Message examples
+ *
+ * This section contains message examples. First there is a basic query to
+ * request address cards containing phone number 1234. The only changing
+ * parts are the <ResourceID> and <Select> parameters.  The <Select> parameter
+ * defines, what is requested. See \ref Subsub353, for more details.
+ *
+ * <HR>
+ * \code
+ * <ab:Query xmlns:ab="urn:nokia:test:addrbook:2004-09">
+ *     <ab:ResourceID>XYZ</ab:ResourceID>
+ *     <ab:QueryItem>
+ *         <ab:Select>/ab:Card[ab:TEL="1234"]</ab:Select>
+ *     </ab:QueryItem>
+ * </ab:Query>
+ * \endcode
+ * <HR>
+ *
+ * The response has two changing parts. Status code depends on the processing
+ * results on the service side. The <Data> element contains the returned data.
+ * It may include one or more <Card> elements. Each card element has those
+ * elements for which content/values are specified.
+ *
+ * <HR>
+ * \code
+ * <ab:QueryResponse xmlns:ab="urn:nokia:test:addrbook:2004-09">
+ *    <ab:Status code="OK"/>
+ *    <ab:Data>
+ *        <ab:Card>
+ *            <ab:N>
+ *                <ab:FAMILY>Smith</ab:FAMILY>
+ *                <ab:GIVEN>John</ab:GIVEN>
+ *            </ab:N>
+ *            <ab:ADR>
+ *                <ab:EXTADR>Room 123</ab:EXTADDR>
+ *                <ab:STREET>1st ST 123</ab:STREET>
+ *                <ab:LOCALITY>Huitsi</ab:LOCALITY>
+ *                <ab:REGION>Nevada</ab:REGION>
+ *                <ab:PCODE>7698532</ab:PCODE>
+ *            </ab:ADR>
+ *            <ab:TEL>1234</ab:TEL>
+ *            <ab:TEL type="CELL">2122345</ab:TEL>
+ *            <ab:EMAIL>john.smith@acme.com</ab:EMAIL>
+ *            <ab:TITLE>Gadget Manager</ab:TITLE>
+ *        </ab:Card>
+ *    </ab:Data>
+ * </ab:QueryResponse>
+ *
+ * \endcode
+ * <HR>
+ * \code
+ * <ab:Query xmlns:ab="urn:nokia:test:addrbook:2004-09">
+ *     <ab:ResourceID>XYZ</ab:ResourceID>
+ *     <ab:QueryItem>
+ *         <ab:Select>/ab:Card[ab:N/ab:FAMILY="Smith" and ab:N/ab:GIVEN="John"]</ab:Select>
+ *     </ab:QueryItem>
+ * </ab:Query>
+ * \endcode
+ * <HR>
+ * \code
+ * <ab:QueryResponse xmlns:ab="urn:nokia:test:addrbook:2004-09">
+ *     <ab:Status code="OK"/>
+ *     <ab:Data>
+ *         <ab:Card>
+ *             <ab:N>
+ *                 <ab:FAMILY>Smith</ab:FAMILY>
+ *                 <ab:GIVEN>John</ab:GIVEN>
+ *             </ab:N>
+ *             <ab:ADR>
+ *                 <ab:EXTADR>Room 123</ab:EXTADDR>
+ *                 <ab:STREET>1st ST 123</ab:STREET>
+ *                 <ab:LOCALITY>Huitsi</ab:LOCALITY>
+ *                 <ab:REGION>Nevada</ab:REGION>
+ *                 <ab:PCODE>7698532</ab:PCODE>
+ *             </ab:ADR>
+ *             <ab:TEL>1234</ab:TEL>
+ *             <ab:TEL type="CELL">2122345</ab:TEL>
+ *             <ab:EMAIL>john.smith@acme.com</ab:EMAIL>
+ *             <ab:TITLE>Gadget Manager</ab:TITLE>
+ *         </ab:Card>
+ *     </ab:Data>
+ * </ab:QueryResponse>
+ * \endcode
+ * <HR>
+ *
+ * \subsubsection Subsub353 3.5.3 Select
+ *
+ * The Select parameter is a string containing an XPath expression based on
+ * XPath 1.0. Some examples on the expressions that can be used on the client
+ * side can be found below:
+ * - Querying based on the phone number: /ab:Card[ab:TEL="1234"]
+ * - Querying based on the family name: /ab:Card[ab:N/ab:FAMILY="Smith"]
+ * - Querying based on the given name: /ab:Card[ab:N/ab:GIVEN="John"]
+ * - Querying based on the family and given name:
+ *   /ab:Card[ab:N/ab:FAMILY="Smith" and ab:N/ab:GIVEN="John"]
+ *
+ * \subsection Sub36 3.6 AddToContact
+ *
+ * \image html AddressBookAddToContact.jpg
+ * <b> <center> figure5: Add to Contact</center></b>
+ *
+ * Message Description
+ *
+ * 1: CAddressBookAppUi::HandleCommandL(TInt aCommand) is called on the AppUi
+ *    object whenever the user selects a menu option. The argument aCommand
+ *    indicates the command the user selected. In case if the user chose
+ *    "EAddressBookCmdAppAdd" to add contact in phone book.
+ *
+ * 2,3: CAddressBookEngine::GetContact(TInt aPosition, CAddressBookContact*&
+ *    aContact) and CAddressBookView::CurrentContact() get information from
+ *    current contact.
+ *
+ * 4: CPbkContactEngine::CreateEmptyContactL() creates an empty item for
+ *    contact information.
+ *
+ * 5-10: CAddressBookContact::PhoneL(), CAddressBookContact::MobilePhoneL(),
+ *    CAddressBookContact::SelectedPhoneL(const TDesC8& aType),
+ *    CAddressBookAppUi::UpdateFieldL(CPbkContactItem* modifiableItem,
+ *    TPbkFieldId fieldId, const TDesC8& newValue) add in this item
+ *    information about the mobile and general phones.
+ *
+ * 11-13: CAddressBookContact::FirstName(), CAddressBookContact::ChildValue(
+ *    const TDesC8& aFirstElement, const TDesC8& aSecondElement),
+ *    CAddressBookAppUi::UpdateFieldL(CPbkContactItem* modifiableItem,
+ *    TPbkFieldId fieldId, const TDesC8& newValue) also add information about
+ *    the first name. The same steps follow for adding information about last
+ *    name/fax/email/organization/title and street.
+ *
+ * 14: CPbkContactEngine::AddNewContactL() adds new item about contact
+ *    information in phonebook's database.
+ *
+ * \subsection Sub37 3.7 BrowseCard
+ *
+ * \image html AddressBookBrowseCard.jpg
+ * <b> <center> figure6: Browse Card</center></b>
+ *
+ * Message Description
+ *
+ * 1: CAddressBookView::HandleListBoxEventL(CEikListBox*, TListBoxEvent
+ *    aEventType) is called whenever the user presses "enter" button
+ *    (EeventEnterKeyPressed) to browse full information about the employee.
+ *
+ * 2,3: CAddressBookView::OpenItemL() and CAddressBookEngine::GetContact(TInt
+ *    aPosition, CAddressBookContact*& aContact) get information about current
+ *    contact.
+ *
+ * 4-6: CAddressBookView::AppendRowL(TPtrC8 aValue, const TDesC8& aFieldName,
+ *    CDesCArray& aArray), CAddressBookContact::LastName(),
+ *    CAddressBookContact::SelectedPhoneL(const TDesC8& aType) convert
+ *    information about last name that to draw it as the separate row.
+ *
+ * 7-9: CAddressBookView::AppendRowL(TPtrC8 aValue, const TDesC8& aFieldName,
+ *    CDesCArray& aArray), CAddressBookContact::PhoneL(),
+ *    CAddressBookContact::ChildValue(const TDesC8& aFirstElement, const
+ *    TDesC8& aSecondElement) convert information about phone that to draw
+ *    it as the separate row. The same steps follow for first name/middle
+ *    name/extra address/street/locality/region/post code/country/mobile
+ *    phone/fax/email/title/organization/unit.
+ *
+ * 10: CAddressBookView::ChangeCbaL(TInt aResourceId, TDrawNow aDrawNow) sets
+ *    aResourceId = R_AVKON_SOFTKEYS_OPTIONS_BACK and state = EdrawNow.
+ *
+ * 11: CAddressBookView::Draw() draws full information about employee who was
+ *    found as rows.
+ *
+ * <HR>
+ *
+ * \section Build_sec 4. Building and Running
+ *
+ * When the application starts up, the following screen appears:
+ *
+ * \image html image001.jpg
+ * <b> <center> </center></b>
+ *
+ * Selecting the Options soft key displays the following 3 choices:
+ *
+ * \image html image003.jpg
+ * <b> <center> </center></b>
+ *
+ * - Select About to display the information about this application.
+ *
+ * \image html image005.jpg
+ * <b> <center> </center></b>
+ *
+ * - Select Connect to connect to the authentication service.
+ * - Select Exit at any time to exit the application.
+ *
+ * \subsection Sub41 4.1 Select Connect from the Options menu.
+ *
+ * \subsubsection Subsub411 4.1.1 Introduction
+ *
+ * Address book is provided by the imaginary enterprise and is its internal
+ * address book, which employees of the enterprise can use to find address &
+ * phone number information related to other people.
+ *
+ * A user can make queries by providing some values. The address cards
+ * matching those values are returned. E.g. a family name can be given and
+ * all address cards containing exactly that family name will be returned,
+ * unless there are e.g. more than ten cards matching that value in which
+ * case a status code indicating too many matches will be returned and the
+ * end user should give more parameters, e.g. give also the given name.
+ *
+ * \subsubsection Subsub412 4.1.2 Use scenario
+ *
+ * 1. User chooses Connect from the Options menu.
+ *
+ * \image html image007.jpg
+ * <b> <center> </center></b>
+ *
+ * 2. At this point application asks for available address book services
+ * (the company address book service based on the ProviderID).
+ * This note appears only once during first time of connection with service.
+ *
+ * \image html image008.jpg
+ * <b> <center> </center></b>
+ *
+ * 3. So WebServices connects to the authentication service, gets a resource
+ * offering for the discovery service and gets available address book
+ * services, unless the information is already cached.
+ *
+ * \image html image009.jpg
+ * <b> <center> </center></b>
+ *
+ * 4. Appears a list of access points from which is needed to choose right.
+ * (For emulator it is "Ethernet with Daemon", for hardware it corresponds
+ * with SIM card.)
+ *
+ * 5. Appears the new options menu, where Search need to find an information
+ * about somebody.
+ *
+ * \image html image011.jpg
+ * <b> <center> </center></b>
+ *
+ * 6. When user chooses this point of menu appears the next note:
+ *
+ * \image html image013.jpg
+ * <b> <center> </center></b>
+ *
+ * 7. A screen for entering query parameters is displayed. Note: although
+ * the different address book services contain a bit different data, both
+ * have same available query parameters.
+ *
+ * \image html image015.jpg
+ * <b> <center> </center></b>
+ *
+ * 8. User types the query parameters, e.g. first name of a colleague to get
+ * the rest of the information or the phone number of a missed call to check,
+ * who called.
+ *
+ * \image html image017.jpg
+ * <b> <center> </center></b>
+ *
+ * 9. As a response one of the following alternatives is received:
+ *
+ * - One address card matching the query. This must be displayed to the user.
+ * - More than one address card matching the query.
+ *
+ * \image html image019.jpg
+ * <b> <center> </center></b>
+ *
+ * User can browse all the returned address cards.
+ *
+ * \image html image021.jpg
+ * <b> <center> </center></b>
+ * \image html image023.jpg
+ * <b> <center> </center></b>
+ * \image html image025.jpg
+ * <b> <center> </center></b>
+ * \image html image027.jpg
+ * <b> <center> </center></b>
+ * \image html image029.jpg
+ * <b> <center> </center></b>
+ *
+ * - A status code indicating that too many card matched the query and a new
+ *   query with more parameters (e.g. given name in addition to the family
+ *   name) must be supplied to get address cards. This must be indicated to
+ *   the user and a query screen with previously supplied parameters provided
+ *   so that the user can easily add more and make new query.
+ * - OK status code, but no address card, as there was no matching card. User
+ *   must be told that no matching address cards were found.
+ * - Some error code, as there was something wrong in the request or some
+ *   problems in the backend system. Some status must be displayed to the
+ *   user and user can try again.
+ * - Nothing is received, as there were problems in communication channels,
+ *   etc. Some timeout must be implemented to return to normal operation
+ *   (user might try another search, close application, throw the terminal
+ *   to a wall, etc)
+ *
+ * 10. If one or more than one address card matching the query there is
+ * opportunity to add them to contacts.
+ *
+ * \image html image031.jpg
+ *
+ */

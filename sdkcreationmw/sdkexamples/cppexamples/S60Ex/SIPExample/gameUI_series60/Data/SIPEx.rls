@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+rls_string sip_ex_caption "SIPEx"
+
+rls_string sip_ex_title_txt "SIPEx:%U"
+
+rls_string sip_ex_exit "Exit"
+
+rls_string sip_ex_invite_address_dlg_title "Invitation"
+
+rls_string sip_ex_invite_address_line "Invitees address"
+
+rls_string sip_ex_error_in_address	"Not valid address"
+
+rls_string sip_ex_not_connected_txt "Not connected"
+
+rls_string sip_ex_not_registered_txt	"Not registered"
+
+rls_string sip_ex_invite_for_game "Invite for game"
+
+rls_string sip_ex_disable_profile "Disable profile"
+
+rls_string sip_ex_enable_profile	"Enable profile"
+
+rls_string sip_ex_instant_message_dlg_title "Instant message"
+
+rls_string sip_ex_im_address_line "Receiver address"
+
+rls_string sip_ex_send_im_cmd "Send instant message"
+
+rls_string sip_ex_im_msg_line "Message"
+
+rls_string sip_ex_end_game_cmd "End game"
+
+rls_string sip_ex_im_received "Message from %0U:\n%1U"
+
+rls_string sip_ex_accept_invitation "Accept game invitation from %U?"
+
+rls_string sip_ex_view1_name "Game"
+
+rls_string sip_ex_view2_name "Log"
+
+rls_string sip_ex_cba_options "Options"
+
+// End of File

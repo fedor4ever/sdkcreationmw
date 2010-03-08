@@ -1,0 +1,40 @@
+[sockman]
+protocols= tcp,udp,icmp,icmp6,tcp.ip6,udp.ip6,icmp.ip6,icmp6.ip6
+
+[tcp]
+filename= wsock.prt
+index= 1
+
+[udp]
+filename= wsock.prt
+index= 2
+
+[icmp]
+filename= wsock.prt
+index= 3
+
+[icmp6]
+filename= wsock.prt
+index= 4
+
+[tcp.ip6]
+filename= wsock6.prt
+index= 1
+
+[udp.ip6]
+filename= wsock6.prt
+index= 2
+
+[icmp.ip6]
+filename= wsock6.prt
+index= 3
+
+[icmp6.ip6]
+filename= wsock6.prt
+index= 4
+
+[nifman]
+default= wsocka
+
+[interfaces]
+wsocki= wsocki.nif

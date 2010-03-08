@@ -1,0 +1,88 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is the project specification file for AddressBook.
+*
+*/
+
+
+// Target information
+TARGET      AddressBook.exe
+TARGETTYPE  exe
+
+UID         0x100039CE 0xA0000180
+
+epocstacksize 0x5000
+
+CAPABILITY NetworkServices ReadUserData WriteUserData \
+		WriteDeviceData ReadDeviceData
+
+VENDORID   0
+
+SOURCEPATH ..\src
+SOURCE  AddressBookApp.cpp 
+SOURCE  AddressBookAppUi.cpp
+SOURCE  AddressBookDocument.cpp
+SOURCE  AddressBookView.cpp
+SOURCE  AddressBookEngine.cpp
+SOURCE  AddressBookContact.cpp
+
+START RESOURCE ..\data\AddressBook.rss
+HEADER
+TARGETPATH resource\apps
+END  // RESOURCE
+
+START RESOURCE ..\data\AddressBook_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END
+
+USERINCLUDE . 
+USERINCLUDE ..\inc
+
+SYSTEMINCLUDE   .
+
+SYSTEMINCLUDE    \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+SYSTEMINCLUDE    \epoc32\include\Xml
+
+LIBRARY euser.lib 
+LIBRARY apparc.lib 
+LIBRARY cone.lib 
+LIBRARY eikcore.lib 
+LIBRARY eikcoctl.lib 
+LIBRARY avkon.lib 
+LIBRARY bafl.lib 
+LIBRARY eikctl.lib
+LIBRARY	flogger.lib 
+LIBRARY egul.lib 
+LIBRARY fbscli.lib 
+LIBRARY PBKENG.LIB 
+LIBRARY cntmodel.lib 
+LIBRARY aknskins.lib //for skin sbackground
+LIBRARY gdi.lib
+
+LIBRARY SenServDesc.lib 
+LIBRARY SenXml.lib 
+LIBRARY SenServConn.lib
+LIBRARY SenServMgr.lib
+
+
+LANG SC
+
+// End of File
+

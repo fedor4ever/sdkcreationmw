@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+target			JDbgAgt.exe
+targettype		exe
+
+CAPABILITY	ProtServ TrustedUI NetworkServices WriteDeviceData
+VENDORID 0x70000001
+SECUREID 0x10208DDD
+
+
+UID			0 0x10201CCA
+
+systeminclude	\epoc32\include
+systeminclude	\epoc32\include\libc
+systeminclude	\epoc32\include\j2me
+
+userinclude	..\..\..\..\include
+userinclude	..\..\..\..\src\driver\cmdline
+
+//Dima:
+userinclude ..\..\..\..\..\..\..\..\javainstaller\installationfrontend\inc
+
+sourcepath	..\..\..\..\src\
+
+
+#include "..\..\..\engine\swi\swiengine.mmp"
+#include "..\..\..\slave\seislave.mmp"
+#include "..\..\..\utils\utils.mmp"
+
+
+source		driver\Driver.cpp
+source		driver\cmdline\main.cpp
+source		driver\cmdline\CmdLineDriver.cpp
+
+//Dima:
+//library		ifeui.lib
+
+library		euser.lib efsrv.lib esock.lib edbms.lib charconv.lib insock.lib
+library		MIDP2DBV2.lib midp2client.lib
+debuglibrary	flogger.lib
+
+
+#ifndef DEBUG_AGENT_ENGINE_SWI_MMP
+library		ezlib.lib 
+#endif
+
+
+#ifdef WINS
+library			estlib.lib
+library			estw32.lib
+#endif

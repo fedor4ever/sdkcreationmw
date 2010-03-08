@@ -1,0 +1,212 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+NAME BUEX
+
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rh>
+#include <avkon.rsg> 
+#include <appinfo.rh>
+
+#include "styluspopupmenuex.hrh"
+#include "styluspopupmenuexample_loc.rls"
+
+// ---------------------------------------------------------
+//   
+//    Define the resource file signature 
+//    This resource should be empty.
+//
+// ---------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+// ---------------------------------------------------------
+//   
+//    Default Document Name
+//
+// ---------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name { buf=""; }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_styluspopupmenuex_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// ---------------------------------------------------------
+//   
+//    Define default menu and CBA key.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_styluspopupmenuex_localisable_app_info
+	{
+	short_caption = STRING_r_styluspopupmenuex_short_caption;
+	caption_and_icon =
+		{
+		CAPTION_AND_ICON_INFO 
+			{
+			caption = STRING_r_styluspopupmenuex_caption;
+			number_of_icons = 1;
+			icon_file = "\\resource\\apps\\styluspopupmenuex_aif.mif";
+			}
+		};
+	}
+	
+// ---------------------------------------------------------
+//   
+//   r_styluspopupmenuex_menubar
+//   Menubar for stylus popup menu example
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_BAR r_styluspopupmenuex_menubar
+    {
+    titles =
+        {
+        MENU_TITLE 
+            { 
+            menu_pane = r_styluspopupmenuex_menu; 
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------
+//   
+//   r_styluspopupmenuex_menu
+//   Menu for "Options"
+//
+// ---------------------------------------------------------
+//
+RESOURCE MENU_PANE r_styluspopupmenuex_menu
+    {
+    items = 
+        {
+        MENU_ITEM
+            {
+            cascade = r_styluspopupmenuex_menu_cascade;
+            txt = STRING_r_styluspopupmenuex_create_from;
+            },
+        MENU_ITEM 
+            {
+            command = EAknCmdExit;   
+            txt = STRING_r_styluspopupmenuex_exit;
+            }
+        };
+    }
+RESOURCE MENU_PANE r_styluspopupmenuex_menu_cascade
+	{
+    items =
+        {
+        MENU_ITEM
+            {
+						command = ECmdCreateMenuFromResource;
+						txt = STRING_r_styluspopupmenuex_from_resource;
+            flags = EEikMenuItemCheckBox|EEikMenuItemSymbolIndeterminate;
+            },
+        MENU_ITEM
+            {
+						command = ECmdCreateMenuFromCode;
+						txt = STRING_r_styluspopupmenuex_from_code;
+            flags = EEikMenuItemCheckBox|EEikMenuItemSymbolIndeterminate;
+            }
+        };
+   }
+
+//-----------------------------------------------------------------------------
+//    r_styluspopupmenuex_appname
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_styluspopupmenuex_appname
+    {
+    buf = STRING_r_styluspopupmenuex_caption;
+    }
+    
+RESOURCE STYLUS_POPUP_MENU r_styluspopupmenuex_styluspopupmenu
+    {
+    items = 
+        {
+        STYLUS_POPUP_MENU_ITEM
+            {
+            txt=STRING_r_styluspopupmenuex_menuitem_1;
+            command = EMenuItem1;
+            },
+        STYLUS_POPUP_MENU_ITEM
+            {
+            txt=STRING_r_styluspopupmenuex_menuitem_2;
+            command = EMenuItem2;
+            },
+        STYLUS_POPUP_MENU_ITEM
+            {
+            txt=STRING_r_styluspopupmenuex_menuitem_3;
+            command = EMenuItem3;
+            },
+        STYLUS_POPUP_MENU_ITEM
+            {
+            txt=STRING_r_styluspopupmenuex_menuitem_4;
+            command = EMenuItem4;
+            }        
+        };
+     }
+     
+//-----------------------------------------------------------------------------
+//    r_styluspopupmenuex_item_selected
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_styluspopupmenuex_item_selected
+    {
+    buf = STRING_r_styluspopupmenuex_item_selected;
+    }
+    
+//-----------------------------------------------------------------------------
+//    r_styluspopupmenuex_popupmenu_cancelled
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_styluspopupmenuex_popupmenu_cancelled
+    {
+    buf = STRING_r_styluspopupmenuex_popupmenu_cancelled;
+    }
+    
+//-----------------------------------------------------------------------------
+//    r_styluspopupmenuex_menu_created
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_styluspopupmenuex_menu_created
+    {
+    buf = STRING_r_styluspopupmenuex_menu_created;
+    }
+
+//-----------------------------------------------------------------------------
+//    r_styluspopupmenuex_setting_changed
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_styluspopupmenuex_setting_changed
+    {
+    buf = STRING_r_styluspopupmenuex_setting_changed;
+    }    
+    

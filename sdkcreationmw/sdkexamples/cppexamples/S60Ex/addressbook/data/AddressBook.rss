@@ -1,0 +1,266 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  his file contains all the resources for the AddressBook.
+*
+*/
+
+
+// RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+// INCLUDES
+#include "AddressBook.hrh"
+#include "AddressBook.rls"
+
+#include <appinfo.rh>
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf =STRING_r_addressbook_buf; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_addressbook_hotkeys;
+    menubar = r_addressbook_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// RESOURCE DEFINITIONS
+
+// ----------------------------------------------------------------------------
+//
+// r_addressbook_hotkeys
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE HOTKEYS r_addressbook_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_addressbook_menubar
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_addressbook_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_addressbook_menu; txt = STRING_r_addressbook_type; }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_addressbook_menu
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_addressbook_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EAddressBookCmdAppConnect;
+        			txt = STRING_r_addressbook_option_menu_1; },
+        MENU_ITEM { command = EAddressBookCmdAppSearch;
+        			txt = STRING_r_addressbook_option_menu_2; },
+        MENU_ITEM { command = EAddressBookCmdAppAdd;
+        			txt = STRING_r_addressbook_option_menu_3; },
+        MENU_ITEM { command = EAddressBookCmdAppConnectAbout;
+        			txt = STRING_r_addressbook_option_menu_4; },
+        MENU_ITEM { command = EAknCmdExit;
+        			txt = STRING_r_addressbook_option_menu_5; }
+        };
+    }
+
+// DIALOGS
+
+// ----------------------------------------------------------------------------
+//
+// r_demo_search_dialog
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_demo_search_dialog
+{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+	items =
+	{
+		DLG_LINE
+		{
+			type = EAknCtQuery;
+			id = EGeneralQuery;
+			control = AVKON_DATA_QUERY
+			{
+				layout = ECodeLayout;
+				label = STRING_r_addressbook_search_dialog_1;
+				control = EDWIN
+				{
+					maxlength = 15;
+				};
+			};
+		}
+	};
+}
+
+// ----------------------------------------------------------------------------
+//
+// r_my_data_query_dialog
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_my_data_query_dialog
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtQuery;
+      id = EGeneralQuery;
+      control = AVKON_DATA_QUERY
+        {
+        layout = EDataLayout;
+        label = STRING_r_addressbook_search_dialog_2;
+        control = EDWIN
+          {
+          flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+          width = 15;
+          lines = 1;
+          maxlength = 15;
+          };
+        };
+      }
+    };
+  }
+
+// ----------------------------------------------------------------------------
+//
+// r_searching_note
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_searching_note
+  {
+  flags = EAknWaitNoteFlags;
+  buttons = R_AVKON_SOFTKEYS_CANCEL;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtNote;
+      id = EWaitNote;
+      control = AVKON_NOTE
+        {
+        layout = EWaitLayout;
+        singular_label = STRING_r_addressbook_search_dialog_3;
+		imagefile = "";
+		imageid = EMbmAvkonQgn_note_progress;
+		imagemask = EMbmAvkonQgn_note_progress_mask;
+		animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+        };
+      }
+    };
+  }
+
+// ----------------------------------------------------------------------------
+//
+// r_connecting_note
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_connecting_note
+  {
+  flags = EAknWaitNoteFlags | EEikDialogFlagCbaButtons;
+  buttons = R_AVKON_SOFTKEYS_CANCEL;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtNote;
+      id = EWaitNote;
+      control = AVKON_NOTE
+        {
+        layout = EWaitLayout;
+        singular_label = STRING_r_addressbook_connecting_dialog;
+
+		imagefile = "";
+		imageid = EMbmAvkonQgn_note_progress;
+		imagemask = EMbmAvkonQgn_note_progress_mask;
+		animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+        };
+
+      }
+    };
+  }
+
+// ----------------------------------------------------------------------------
+//
+// r_search_help
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_search_help
+  {
+  flags = EAknWaitNoteFlags;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtNote;
+      id = EWaitNote;
+      control = AVKON_NOTE
+        {
+        layout = EWaitLayout;
+        singular_label = STRING_r_addressbook_connecting_dialog;
+		imagefile = "";
+		imageid = EMbmAvkonQgn_note_progress;
+		imagemask = EMbmAvkonQgn_note_progress_mask;
+		animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+        };
+      }
+    };
+  }
+
+// ----------------------------------------------------------------------------
+//
+// r_addressbook_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_addressbook_localisable_app_info
+    {
+    short_caption = STRING_r_addressbook_short_caption;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_addressbook_caption;
+        number_of_icons = 1;
+	   	icon_file = STRING_r_addressbook_icon_file_1;
+ 		};
+    }
+
+// End of File
+

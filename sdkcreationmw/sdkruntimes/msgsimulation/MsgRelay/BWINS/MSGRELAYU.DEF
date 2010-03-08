@@ -1,0 +1,15 @@
+EXPORTS
+	??0CMessageRelay@@IAE@XZ @ 1 NONAME ; CMessageRelay::CMessageRelay(void)
+	??1CMessageRelay@@UAE@XZ @ 2 NONAME ; CMessageRelay::~CMessageRelay(void)
+	??1CMessageWriter@@UAE@XZ @ 3 NONAME ; CMessageWriter::~CMessageWriter(void)
+	?ConstructL@CMessageRelay@@IAEXPAVCMessageWriter@@@Z @ 4 NONAME ; void CMessageRelay::ConstructL(class CMessageWriter *)
+	?ConstructL@CMessageWriter@@AAEXXZ @ 5 NONAME ; void CMessageWriter::ConstructL(void)
+	?NewL@CMessageRelay@@SAPAV1@PAVCMessageWriter@@@Z @ 6 NONAME ; class CMessageRelay * CMessageRelay::NewL(class CMessageWriter *)
+	?NewL@CMessageWriter@@SAPAV1@XZ @ 7 NONAME ; class CMessageWriter * CMessageWriter::NewL(void)
+	?NewLC@CMessageRelay@@SAPAV1@PAVCMessageWriter@@@Z @ 8 NONAME ; class CMessageRelay * CMessageRelay::NewLC(class CMessageWriter *)
+	?NewLC@CMessageWriter@@SAPAV1@XZ @ 9 NONAME ; class CMessageWriter * CMessageWriter::NewLC(void)
+	?NewMessageL@CMessageRelay@@QAEHAAVTPtr8@@W4TMessageType@@@Z @ 10 NONAME ; int CMessageRelay::NewMessageL(class TPtr8 &, enum TMessageType)
+	?SetWriter@CMessageRelay@@QAEXPAVCMessageWriter@@@Z @ 11 NONAME ; void CMessageRelay::SetWriter(class CMessageWriter *)
+	?StartRelayL@CMessageRelay@@QAEXXZ @ 12 NONAME ; void CMessageRelay::StartRelayL(void)
+	?WriteMessageL@CMessageWriter@@UAEXAAVTPtr8@@W4TMessageType@@@Z @ 13 NONAME ; void CMessageWriter::WriteMessageL(class TPtr8 &, enum TMessageType)
+

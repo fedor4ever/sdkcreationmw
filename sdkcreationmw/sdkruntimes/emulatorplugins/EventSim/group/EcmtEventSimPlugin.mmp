@@ -1,0 +1,79 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for EcmtEventSim plugin
+*
+*/
+
+#include <platform_paths.hrh>
+
+// These headers define the UID values
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtEventSimPluginUids.h"
+
+TARGET          EcmtEventSimPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KEVENTSIMPLUGIN_DLL_UID
+CAPABILITY      CAP_ECOM_PLUGIN -CommDD -MultimediaDD -SurroundingsDD -TrustedUI -DRM -NetworkControl
+VENDORID        VID_DEFAULT
+
+SOURCEPATH	..\src
+SOURCE		EcmtEventSimPlugin.cpp
+SOURCE		EventWrapper.cpp
+SOURCE		EcmtMMCEvent.cpp
+SOURCE 		WinsDrives.cpp
+
+//MMC
+USERINCLUDE     ..\..\Common\inc
+SOURCEPATH      ..\..\Common\src
+SOURCE	        ecmtfile.cpp
+SOURCE		EcmtSeekFile.cpp
+
+APP_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include\ecom
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+USERINCLUDE     ..\..\..\..\..\Ecmt\osutils\inc
+USERINCLUDE     \s60\osext\systemswextensions\dosservices\dosserver\inc
+
+LIBRARY euser.lib
+LIBRARY AlarmClient.lib
+LIBRARY AlarmShared.lib
+LIBRARY efsrv.lib //for fileserver
+LIBRARY DSClient.lib // for dos client
+LIBRARY DSClientDOS.lib// for dos event sender
+LIBRARY PhoneClient.lib
+LIBRARY charconv.lib // for CnvUtfConverter
+LIBRARY EcmtOsUtils.lib
+LIBRARY SysUtil.lib
+
+LIBRARY	accclient.lib
+LIBRARY	acccontrol.lib
+LIBRARY	accpolicy.lib
+LIBRARY accsrvutil.lib
+LIBRARY	accpolcom.lib
+LIBRARY	CONE.LIB  
+LIBRARY EIKCORE.LIB 
+LIBRARY	ws32.lib 
+
+
+SOURCEPATH  ..\data
+START RESOURCE KEVENTSIMPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+    TARGET EcmtEventSimPlugin.rsc
+#endif
+END
+
+START WINS
+win32_library   user32.lib	
+END

@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for the SDK plugin
+*
+*/
+
+
+// These headers define the UID values
+#include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
+#include "..\inc\EcmtSdkPluginUids.h"
+
+TARGET          EcmtSdkPlugin.dll
+TARGETTYPE      PLUGIN
+UID             KECOM_DLL_UID KSDKPLUGIN_DLL_UID
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+SOURCEPATH	..\src
+SOURCE		EcmtSdkPlugin.cpp
+
+USERINCLUDE	..\inc
+USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\ecom
+
+LIBRARY         ws32.lib
+LIBRARY         cone.lib
+LIBRARY         euser.lib
+LIBRARY         eikcore.lib
+LIBRARY         emulator.lib
+LIBRARY         ecmtclient.lib
+
+SOURCEPATH	..\data
+START RESOURCE KSDKPLUGIN_RSS
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET         EcmtSdkPlugin.rsc
+#endif
+END
+
+// The following two lines are necessary to generate the .lib file
+DEFFILE	..\bwins\EcmtSdkPluginU.def
+NOSTRICTDEF
+
+START WINS
+WIN32_LIBRARY   kernel32.lib
+END

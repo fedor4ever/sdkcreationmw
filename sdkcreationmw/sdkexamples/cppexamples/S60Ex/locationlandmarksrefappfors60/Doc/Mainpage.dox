@@ -1,0 +1,3419 @@
+/*! \mainpage Landmarks Reference Application Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref AppOutput_sec
+ * \n\ref Design_sec
+ * \n\ref Error_sec
+ * \n\ref Summary_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *	This tutorial explains the Landmarks reference application, demonstrating how landmarks and landmark categories can be managed. The basic Landmarks API and Landmarks Search API are utilized for this demonstration. In particular, the following operations are exercised:
+ *
+ * Creating landmarks
+ * Removing landmarks
+ * Reading landmarks completely
+ * Reading landmarks partially
+ * Editing landmarks
+ * Updating a landmark to the current location
+ * Sorting landmarks
+ * Filtering out a subset of landmarks
+ * Creating categories
+ * Removing categories
+ * Reading categories
+ * Renaming categories
+ * Sorting categories
+ * Filtering out a subset of categories
+ * Initializing the default landmark database
+ * Observing and handling database events
+ * Visualizing the progress of an asynchronous landmark function in a progress dialog
+ *
+ *  The structure of the tutorial is based on the architecture of the Landmark reference application.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *	This example is a view-based application that makes use of the standard Symbian OS application framework comprising of the Application, Document, UI, and View classes. It also uses standard UI components, such as lists, dialogs and editors, which are described in other SDK examples (see <http://www.forum.nokia.com/>). Further, active objects are used to realize the execution of asynchronous functions and Location Acquisition API is used for acquiring locations. The reader should be familiar with active objects and Location Acquisition API.
+ *
+ *  	\subsection Sub21 2.1 Platform Security aspects
+ *
+ *  The Landmarks reference application requires the Location, ReadUserData and WriteUserData capabilities.
+ *
+ *	<HR>
+ *
+ *  \section AppOutput_sec 3. Application Output
+ *
+ *  	\subsection Sub31 3.1 Initializing a database
+ *
+ *  When started for the very first time, the Landmarks reference application will create and initialize the default landmark database if necessary. This will be indicated by a progress bar monitoring the initialization (see figure 1).
+ *
+ <img src="InitializingDB.png"><h5 align="center">Figure 1 Initializing a database</h5></img>
+ *
+ *  	\subsection Sub32 3.2 Landmarks view
+ *
+ *  When the Landmarks reference application has been launched, it displays the Landmarks view as default. The Landmarks view consists of a list box and a search field. If the database does not contain any landmarks, the list box will be empty (see figure 2). Otherwise, the existing landmarks will be sorted in alphabetical order and displayed in the list box..
+ *
+ <img src="EmptyLandmarksView.png"><h5 align="center">Figure 2 Empty Landmarks view</h5></img>
+ *
+ *  	\subsection Sub33 3.3 Creating landmarks
+ *
+ *  To create a new landmark, select the <b>New landmark</b> item and then the sub menu item <b>Blank</b> from the <b>Options</b> menu. A landmark editor will be launched where you can edit some landmark fields. The command button <b>Done</b> finishes the landmark editing and saves the changes. The created landmark will be stored in the database resulting in a database event that is distributed to the Landmarks reference application. The Landmarks reference application will handle the event by refreshing its list of sorted landmarks and the created landmark will appear in the list.
+ *
+ <img src="CreatingLandmark.png"><h5 align="center">Figure 3 Creating a landmark</h5></img>
+ *
+ *  Another way to create a new landmark is to select the <b>New landmark</b> item and then the sub menu item <b>Current location</b> in the <b>Options</b> menu. A location is then acquired before the landmark editor is launched. The editor's location fields will be automatically configured with data based on the location that was acquired. If no location was acquired, the fields will be blank and the reason to the acquisition failure will be displayed in an Information note.
+ *
+ <img src="CreatingLandmark_2.png"><h5 align="center">Figure 4 Creating a landmark by selecting Current location from the Options menu</h5></img>
+ *
+ *  	\subsection Sub34 3.4 Editing landmarks
+ *
+ *  An already existing landmark can be viewed and/or edited by selecting the item <b>Open</b> from the <b>Options</b> menu. First, the Landmark Information view is opened. In this mode, only the defined fields are displayed. By pressing the left softkey <b>Edit</b>, the Landmark Edit dialog is opened and all the editable fields are displayed.
+ *
+ <img src="EditingLandmark.png"><h5 align="center">Figure 5 Editing a landmark</h5></img>
+ *
+ *  When editing a landmark, the location fields <b>Latitude</b>, <b>Longitude</b>, <b>Altitude</b>, <b>Horizontal accuracy</b>, and <b>Vertical accuracy</b> can be manually edited or automatically updated by selecting the item <b>Fetch current location</b> from the <b>Options</b> menu. A location is then acquired and the location fields in the editor are updated according to the location that was retrieved. If the location retrieval failed for some reason, the location fields will not be modified but the reason to the acquisition failure will be displayed in an Information note.
+ *
+ <img src="FetchCurrentLocation.png"><h5 align="center">Figure 6 Fetch current location</h5></img>
+ *
+ *  A landmark can belong to one or several landmark categories. When editing the <b>Categories</b> field, a markable list of the categories can be launched by selecting the menu item <b>Edit categories</b>. In the list, categories can be added/removed from a landmark by using the Selection key and the Arrow up and Arrow down keys. The left softkey <b>Ok</b> finishes selecting categories. Pressing the softkey <b>Done</b> back in the editor dialog opens a query asking whether to save the changes. If <b>No</b> is pressed, then no changes are applied to the landmark.
+ *
+ <img src="EditingCategories.png"><h5 align="center">Figure 7 Editing categories</h5></img>
+ *
+ *  	\subsection Sub35 3.5 Filtering landmarks
+ *
+ *  As the number of landmarks grows, browsing for a specific landmark becomes tedious. In this case, filtering out those landmarks whose name contains a certain letter or phrase is helpful. By feeding the search field with text, the list of landmarks will be filtered to display only those landmarks whose name contains the supplied phrase.
+ *
+ <img src="FilteringLandmarks.png"><h5 align="center">Figure 8 Filtering landmarks</h5></img>
+ *
+ *
+ *
+ *
+ *  This procedure is described in detail in Sections 4.2.2 and 4.2.13.
+ *
+ *  	\subsection Sub36 3.6 Deleting landmarks
+ *
+ *  To delete a landmark, select the <b>Delete</b> item from the <b>Options</b> menu and accept the query dialog that is launched. The Landmarks Framework will notify the application that a specific landmark has been removed from the database and the landmark will disappear from the Landmarks view
+ *
+ <img src="DeletingLandmark.png"><h5 align="center">Figure 9 Deleting a landmark</h5></img>
+ *
+ *  	\subsection Sub37 3.7 Categories view
+ *
+ *  There is another view, the Landmark Categories view. This view is similar to the Landmarks view as it contains a listbox and a search field, but this view displays the landmark categories. When the database was initialized, global categories were created and they can be viewed by switching to the Categories view. The views can be switched by using the Arrow left and Arrow right keys
+ *
+ <img src="CategoriesView.png"><h5 align="center">Figure 10 Categories view</h5></img>
+ *
+ *  	\subsection Sub38 3.8 Creating categories
+ *
+ *  It is possible to define new categories if the global ones are not sufficient. A new category is defined by selecting the item <b>New Category</b> from the <b>Options</b> menu. After the selection, a dialog is launched where the user can define a name for the category. If the dialog is accepted, the category is stored in the database resulting in a database event that is distributed to the application. The application will handle the event by refreshing its list of sorted categories.
+ *
+ <img src="CreatingCategory.png"><h5 align="center">Figure 11 Creating a category</h5></img>
+ *
+ *  	\subsection Sub39 3.9 Renaming categories
+ *
+ *  A non-global category can be renamed after it has been created. This is analogous to creating a new category and it is done by selecting the <b>Rename</b> item from the <b>Options</b> menu.
+ *
+ <img src="RenamingCategory.png"><h5 align="center">Figure 12 Renaming a category</h5></img>
+ *
+ *  	\subsection Sub310 3.10 Deleting categories
+ *
+ *  A non-global category can also be deleted. This is done by selecting the <b>Delete</b> item from the <b>Options</b> menu and accepting the subsequent query dialog.
+ *
+ <img src="DeletingCategory.png"><h5 align="center">Figure 13 Deleting a category</h5></img>
+ *
+ *  	\subsection Sub311 3.11 Filtering categories
+ *
+ *  It is possible to filter categories. The filtering of categories follows the same procedure as when filtering landmarks (see Section 3.1.5).
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 4. Design and Implementation
+ *
+ *  This chapter starts by giving an overview of some of the algorithms used in this application. It then details the design of each of the two application components: the application UI and the application engine. Finally, the realization of the most important use cases is visualized as sequence diagrams
+ *
+ *  \subsection Sub41 4.1 Design
+ *
+ *  Figure 14 shows the class diagram for the Landmarks reference application.
+ *
+ *  The figure shows that the application can be logically divided into two components: the application UI and the application engine. The application UI is dependent on the application engine that is in turn dependent on the Landmarks APIs. Throughout this document, all the classes that are a part of Landmarks API are indicated with blue color and the classes that are a part of Landmarks Search API  are indicated with red color.
+ *
+ <img src="LandmarksRefArchitecture.png"><h5 align="center">Figure 14 Landmarks reference application architecture</h5></img>
+ *
+ *  \subsubsection Subsub411 4.1.1 Application UI
+ *
+ *  The application UI is responsible for displaying data for the user and catching and reacting to user activity. It uses the application engine to execute commands initiated by the user. Figure 15 below illustrates the most important classes of the application UI. The figure is followed by a brief description of each class.
+ *
+ <img src="AppUIClassDiagram.png"><h5 align="center">Figure 15 Application UI class diagram</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=168pt>
+<p class=Tabletextbold><b>Class</b></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=270pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">MLandmarksDbObserver</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This interface should be implemented by classes that
+ are interested in handling database events.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">MLandmarksOperationObserver</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>Many operations offered by the application engine are
+ asynchronous. Classes in the application UI that invoke these functions
+ need to be notified when these asynchronous operations are completed.
+ <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ is a generic callback interface implemented by such classes.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksAppUi</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksAppUi</span>
+ inherits from <span style="font-family: 'Courier New';">CAknViewAppUi</span>,
+ which indicates that this is a view-based application. It creates the
+ two application views for displaying landmarks and categories as well
+ as the application engine. It also initializes the landmarks database
+ if necessary. For this reason, it implements the <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ interface to be notified when initialization is completed. It takes care
+ of application global events such as exiting the application and switching
+ views.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksView</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the view displaying landmarks. It has <span
+ style="font-family: 'Courier New';">CLandmarksContainer</span> that is
+ responsible for the graphical components of the view. It handles commands
+ from the menu items such as deleting landmarks, editing landmarks, creating
+ blank landmarks and creating landmarks based on the current location.
+ To be able to fetch the current location, it implements the <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ interface that is notified when an asynchronous location acquisition request
+ is completed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksContainer</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksContainer</span>
+ contains a listbox displaying landmark names and a search field for filtering
+ the displayed landmarks. The listbox is dependent on the search field
+ and the responsibility of this class is to update the listbox and the
+ listbox model with new landmarks whenever the search field has been updated
+ or an event from the database has been reported. Since filtering is an
+ asynchronous process, it implements <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ to be notified about the progress of the filter process. It also implements
+ the <span style="font-family: 'Courier New';">MLandmarksDbObserver</span>
+ interface to be notified about database events.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksModel</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the data model for the listbox with landmarks.
+ The model consists of a list of the landmark IDs, a list of the landmark
+ icons and a list of the landmark names.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesView</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the view displaying categories. It has <span
+ style="font-family: 'Courier New';">CLandmarksCategoriesContainer</span>
+ that is responsible for the graphical components of the view. It handles
+ commands from the menu items such as deleting, renaming and creating categories.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesContainer</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesContainer</span>
+ contains a listbox displaying category names and a search field for filtering
+ the displayed categories. The listbox is dependent on the search field
+ and the responsibility of this class is to update the listbox and the
+ listbox model with new categories whenever the search field has been updated
+ or an event from the database has been reported. Since filtering is an
+ asynchronous process, it implements <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ to be notified about the progress of the filtering process. It also implements
+ the <span style="font-family: 'Courier New';">MLandmarksDbObserver</span>
+ interface to be notified about database events.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesModel</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the data model for the listbox with categories.
+ The model consists of a list of the category IDs, a list of the category
+ icons and a list of the category names.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksContainerBase</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is an abstract class defining the look and behavior
+ of the view containers. It takes care of creating and destroying the graphical
+ components of a view container.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksInfoView</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the view displaying a landmark's information.
+ It does not show empty fields. If 'Edit' left softkey is pressed it opens
+ editor dialog using <span style="font-family: 'Courier New';">CLandmarksEditDialog</span>.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksInfoContainer</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This container controls a listbox, which displays landmark's
+ information. It is used by <span style="font-family: 'Courier New';">CLandmarkInfoView</span>
+ and it uses <span style="font-family: 'Courier New';">CLandmarksInfoModel</span>.</p>
+<p class=Tabletext>This class is another candidate to be a listener of
+ <span style="font-family: 'Courier New';">MLandmarksDbObserver</span>.
+ If some changes happen to the landmark being shown, the view can be updated.
+ However, for simplicity's sake, this is not implemented.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksInfoModel</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is the data model for the landmark's information
+ view. It provides methods for building the container's listbox items.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksEditDialog</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This class is a dialog for editing a specific landmark.
+ It allows the user to update a landmark to the current location. For this
+ reason, it implements <span style="font-family: 'Courier New';">MLandmarksOperationObserver</span>
+ to be notified when a location retrieval is completed. It is also used
+ when a new landmark is being created, in which case an empty landmark
+ is edited.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesDialog</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This class is not shown in figure 15 for simplicity. It is used by <span style="font-family: 'Courier New';">CLandmarksEditDialog</span>
+ to allow the changing of landmark categories. It is derived from the <span
+ style="font-family: 'Courier New';">CAknMarkableListDialog</span> class.</a></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksPositionRequest</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This class is inherits from <span style="font-family: 'Courier New';">CActive</span>
+ and is responsible for acquiring the current location. Location Acquisition
+ API is used for this purpose. It first tries to utilize the default positioning
+ module. If this fails, it tries to fetch the last known location. If that
+ also fails, no location is returned. During the location retrieval, a
+ Wait note is displayed where the user can cancel the operation.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub412 4.1.2 Application Engine
+ *
+ *  The application engine is a UI-independent component responsible for executing the commands captured by the application UI. It uses Landmarks API and Landmarks Search API in the Landmarks Framework to accommodate this. Figure 16 below illustrates the classes of the application engine. The figure is followed by a brief description of each class.
+ *
+ <img src="AppEngClassDiagram.png"><h5 align="center">Figure 16 Application engine class diagram</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=168pt>
+<p class=Tabletextbold><b>Class</b></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=270pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksApplicationEngine</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This class provides the interface to the application
+ engine. It encapsulates the whole engine and can be seen as a wrapper
+ since it contains no complex logic but forwards most requests to the appropriate
+ engine class.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksDbEventHandler</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>Inside the application engine, there is only one instance
+ of the <span style="font-family: 'Courier New';">CPosLandmarkDatabase</span>
+ class. Each instance of <span style="font-family: 'Courier New';">CPosLandmarkDatabase</span>
+ accepts only one database observer. The <span style="font-family: 'Courier New';">CLandmarksDbEventHandler</span>
+ instance is the object that is notified when an event has occurred. The
+ task for this object is to allow several other objects to register for
+ database events and to notify them whenever such an event occurs.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksEngineBase</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This is an abstract base class for view engines. View
+ engines are active objects, which explains why this class inherits from
+ <span style="font-family: 'Courier New';">CActive</span>. It has a <span
+ style="font-family: 'Courier New';">CLandmarksLmOpWrapper</span> instance
+ to monitor the execution progress of asynchronous Landmarks Framework
+ functions. It contains a <span style="font-family: 'Courier New';">CPosLandmarkSearch</span>
+ instance to be able to search for landmarks and categories and it handles
+ setting the priority of a view engine. A view engine should have low priority
+ when its corresponding view is deactivated and normal priority when its
+ view is activated.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksEngine</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This view engine serves the Landmarks view. All the
+ functions this view needs to execute are implemented by this class, e.g.
+ filtering landmarks, reading landmarks, removing landmarks, etc.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksCategoriesEngine</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>This view engine serves the Categories view. All the
+ functions this view needs to execute are implemented by this class, e.g.
+ filtering categories, creating categories, committing categories, etc.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 168.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=168pt>
+<p class=Tabletext><span style="font-family: 'Courier New';">CLandmarksLmOpWrapper</span></td>
+<td style="x-cell-content-align: top;
+			width: 270.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=270pt>
+<p class=Tabletext>As stated before, several time-consuming operations
+ in the Landmarks Framework return a handle to themselves when executed.
+ Such a handle is an instance of the <span style="font-family: 'Courier New';">CPosLmOperation</span>
+ class and makes it possible to execute the operation incrementally. <span
+ style="font-family: 'Courier New';">CPosLmOpWrapper</span> is an active
+ object that wraps a <span style="font-family: 'Courier New';">CPosLmOperation</span>
+ instance. Its task is to take care of the incremental execution.</td></tr>
+</table>
+ *
+ *  \subsection Sub42 4.2 Implementation
+ *
+ *  \subsubsection Subsub421 4.2.1 Algorithms and the usage of asynchronous functions
+ *
+ *  One key concept when designing one-threaded graphical Symbian applications is to avoid synchronous time-consuming methods. Instead, asynchronous functions that execute time-consuming operations incrementally, i.e. in several small steps, should be used. This gives the UI a chance to respond to user activity whenever needed. The Landmarks Framework is designed to accommodate this. In most cases, a handle is returned to a time-consuming function when it is started. With such a handle, it is possible to execute those operations asynchronously and incrementally. When filtering landmarks or categories, searching, sorting and reading is needed. These operations are time-consuming, especially when a large number of items are involved. This fact has a great impact on the design of the Landmarks reference application.
+ *
+ *  \subsubsection Subsub422 4.2.2 Filtering landmarks
+ *
+ *  When filtering landmarks, the following criteria must be considered:
+ *
+ *  A filter change is caught by the application UI that is the initiator of a filter operation
+ *  Filtering can be split into two sub-operations: searching/sorting and reading.
+ *  Filtering must be done incrementally in order to keep the UI ready to respond to user activity.
+ *  The filtering operation must be carried out by active objects since the Landmarks Framework requires this.
+ *  In order to update the UI as fast as possible, all the landmarks that match a specific filter cannot be read before updating the UI. Since reading is done incrementally, it is better if the landmarks read so far are displayed. As the number of read landmarks increases, the list is dynamically updated in the background.
+ *  Only the name field and the icon field of a landmark need to be read. This implies that it is sufficient to read landmarks partially.
+ *
+ *  All these criteria end up in the following filtering algorithm:
+ *
+ <img src="FilteringLandmarksStateChart.png"><h5 align="center">Figure 17 Filtering landmarks state chart</h5></img>
+ *
+ *  1. The initial state is that the list of landmarks is updated.
+ *
+ *  2. The list needs to be updated either because the filter has changed or because a database event has been reported.
+ *
+ *  3. The application UI initiates the application engine to start a search and sort operation. This operation is done asynchronously and incrementally.
+ *
+ *  4. The search/sort operation may be cancelled for some reason (for example, the filter might have changed) and the application UI cancels the search operation in the application engine and returns to the initial state to wait for a new event.
+ *
+ *  5. The incremental search/sort operation is not ready and another step of the incremental search has to be executed.
+ *
+ *  6. The search/sort operation is completed and the reading of the found landmarks can be started.
+ *
+ *  7. The application UI is notified about the search result and the list displaying the old landmarks is emptied.
+ *
+ *  8. If no items are found, the application UI returns to the initial state.
+ *
+ *  9. If there are any landmarks matching the filter, the application UI initiates the application engine to start a landmark read operation.
+ *
+ *  10. Reading landmarks is done asynchronously, incrementally and partially. Reading landmarks partially means that a subset of all the landmark attributes is read. In this case, only the landmark name and the landmark icon are read.
+ *
+ *  11. The read operation may also be cancelled for some reason (for example, the filter might have changed) and the application UI cancels the operation in the application engine and returns to the initial state to wait for a new event.
+ *
+ *  12. If less than one page of landmarks has been read, the reading of landmarks continues incrementally.
+ *
+ *  13. If a complete page of landmarks has been read, these landmarks can be displayed before reading the next page. This decreases the response time considerably.
+ *
+ *  14. The application UI is notified that a new page of landmarks has been successfully read and the page is appended to the list.
+ *
+ *  15. If there are more landmarks to be read, reading is continued.
+ *
+ *  16. If there are no more landmarks to read, the application UI returns to the initial state.
+ *
+ *  \subsubsection Subsub423 4.2.3 Filtering categories
+ *
+ *  Filtering categories is very similar to filtering landmarks. In fact, step 1-9 in figure 16 and figure 17 are identical. The only difference is that the Landmarks Framework allows neither partial nor incremental reading of categories. This results in the algorithm illustrated in figure 17.
+ *
+ <img src="FilteringCategoriesStateChart.png"><h5 align="center">Figure 18 Filtering categories state chart</h5></img>
+ *
+ *  \subsubsection Subsub424 4.2.4 Acquiring the current location
+ *
+ *  Acquiring the current location does not involve the Landmarks Framework at all. Instead, Location Acquisition API is used. Figure 18 describes the algorithm used by the Landmarks reference application for acquiring the current location.
+ *
+ <img src="AcquiringCurrentLocationStateChart.png"><h5 align="center">Figure 18 Acquiring the current location state chart</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Transition</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When acquiring a location, first the default positioning
+ module is used.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>2</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the default positioning module succeeds, the location
+ is accepted.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>3</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the request for the current location is cancelled,
+ no location is acquired.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the default positioning module fails to acquire the
+ location, an attempt to acquire the last known location is made.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If acquiring the last known location succeeds, the location
+ is accepted.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>6-7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If acquiring the last known location fails for some
+ reason, no location is acquired.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub425 4.2.5 Application startup
+ *
+ *  When the application is started, most of the classes are instantiated and certain other important things take place: the database is initialized, partial read parameters are set and database observers are registered. Figure 19 describes this briefly.
+ *
+ <img src="ApplicationStartup.png"><h5 align="center">Figure 19 Application startup</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-3</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Before creating any views, the <span style="font-family: 'Courier New';">CLandmarksAppUi</span>
+ instance creates the application engine.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>4-5</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the Landmarks view engine is created, partial read
+ parameters are set.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The Categories view engine is created.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7-8</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Before the database can be utilized by any view, it
+ must be initialized. This is done asynchronously.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>9-11</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the database has been initialized, it is safe to
+ create and activate the views.</p>
+<p class=Tabletext><b style="font-weight: bold;">Note:</b> <span style="font-family: 'Courier New';">CLandmarksInfoView</span>
+ is also created at this stage.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>12-13</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the Landmarks view is activated for the first,
+ time its container is created. During the construction, the container
+ registers itself as an observer of database events. This procedure is
+ repeated by the Categories view when it is activated for the first time.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>14</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The last step of the initialization is to start populating
+ the listbox with landmarks.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub426 4.2.6 Setting the partial read parameters
+ *
+ *  During the application startup, the partial read parameters are set. The partial read parameters are used when reading landmarks during filtering. Figure 20 shows how this is done in detail..
+ *
+ <img src="SettingPartialReadParameters.png"><h5 align="center">Figure 20 Setting the partial read parameters</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-3</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>During the construction of <span style="font-family: 'Courier New';">CLandmarksEngine</span>,
+ a new <span style="font-family: 'Courier New';">CPosLmPartialReadParameters</span>
+ instance is created.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The attributes to set are landmark name and landmark
+ icon as this is the only information displayed in the listbox. Note that
+ these partial read parameters have impact when reading landmarks partially.
+ When reading a landmark completely, they have no impact at all.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The new partial read parameters are set to the database.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub427 4.2.7 Initializing the database
+ *
+ *  During the application startup, the database is initialized if necessary. Figure 21 shows how this is done in detail.
+ *
+ <img src="InitializingDatabase.png"><h5 align="center">Figure 21 Initializing the database</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>During the construction of <span style="font-family: 'Courier New';">CLandmarksAppUi</span>,
+ it tries to start initializing the database if needed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the database needs to be initialized, a database
+ initialization operation is prepared and an operation handle is returned.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The incremental initialization is started by executing
+ the next step.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>8-9</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the database needs to be initialized, <span style="font-family: 'Courier New';">CLandmarksAppUi</span>
+ creates and launches a progress dialog. Otherwise, no action is taken
+ since the database is already prepared for use.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>10-12</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The first incremental step of the initialization process
+ is completed and the <span style="font-family: 'Courier New';">CLandmarksAppUi</span>
+ instance is notified. It handles this event by updating the progress bar
+ according to the progress status of the operation.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>13</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The next step of the initialization is executed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>14-16</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Step 10-13 are repeated until the initialization process
+ is totally completed. Finally, the progress dialog is dismissed.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub428 4.2.8 Registering a database observer and handling database events
+ *
+ *  During the application startup, the landmarks container is registered as a database observer in order to keep its data up-to-date. Whenever a landmark or a category is updated, removed or created, an event is generated to all registered objects.
+ *
+ <img src="DatabaseEvents.png"><h5 align="center">Figure 22 Database events</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-2</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>During the application startup, the view containers
+ are registered as database observers to the application engine.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>3-4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If there is no database event handler, it is dynamically
+ created. During the construction, it starts to listen for database events.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Whenever an event is generated, the database event handler
+ catches and distributes the event to all registered observers, i.e. the
+ view containers.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The view containers investigate the event and start
+ to refresh their contents if necessary.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>8</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the database event handler has distributed the
+ event to all registered observers, it immediately starts listening for
+ new events.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub429 4.2.9 Compacting the database
+ *
+ *  Whenever a landmark or a category is added, updated or removed, the contents of the database are updated. New data is added to the database, but obsolete data is not automatically removed. If the database is never compacted, its size will grow continuously. It is recommended that clients of the Landmarks Framework compact the database when the level of valid information in the database is too low. The Landmarks reference application checks this level before writing anything to the database. Figure 23 describes how this is carried out.
+ *
+ <img src="CompactingDatabase.png"><h5 align="center">Figure 23 Database events</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-2</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>A write operation is going to be performed and the size
+ of the database is retrieved.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>3-4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The usage of the database is investigated and if the
+ database usage is below a certain level, a compact operation is requested.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The compact operation can be executed asynchronously
+ or synchronously. In this case, it is executed synchronously and it is
+ automatically deleted by the framework.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub4210 4.2.10 Adding a landmark
+ *
+ *  There are two ways of creating a new landmark: either a landmark based on the current location is created or a blank one is created. Figure 24 describes the creation of a new landmark based on the current location. When creating a blank landmark, the only difference is that steps 2, 3 and 6 in Figure 24 are omitted.
+ *
+ <img src="AddingLandmark.png"><h5 align="center">Figure 24 Adding a landmark</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-3</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user has activated the menu command for adding a
+ landmark. The framework generates an event that is handled by the Landmarks
+ view. A new landmark object instance is created in memory.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>4-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The edit dialog is created and started.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The current location is acquired if the user creates
+ a landmark based on the current location and the blank landmark is updated
+ with this location. If no location was acquired, the landmark remains
+ blank.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>8-12</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user edits the landmark’s fields and then accepts
+ the changes. The data from the input fields is saved to the landmark.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>13-14</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The landmark is stored in the database.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>15</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Since a write operation has taken place in the database,
+ the level of obsolete contents is checked and the database is compacted
+ if necessary.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub4211 4.2.11 Acquiring the current location
+ *
+ *  The algorithm for acquiring the current location is described in detail in Section 4.2.4. Figure 25 describes the special case when the default positioning module fails to retrieve a location but the last known location is successfully acquired. In this diagram, a new landmark is to be created. The sequence is, however, identical when updating the location of a landmark to the current location during editing. The CLandmarksView object can be replaced with a CLandmarksEditDialog object.
+ *
+ <img src="AcquiringCurrentLocation.png"><h5 align="center">Figure 25 Acquiring the current locationk</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user has activated the menu command for adding a
+ landmark based on the current location. The framework generates an event
+ that is handled by the Landmarks view.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>2-4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>A request is made to acquire the current location. A
+ Wait note is created and launched.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5-7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If not already initialized, a connection is established
+ with Location Server, a sub-session to the default positioning module
+ is opened and this application is set as the location requestor.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>8</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The default positioning module is requested to retrieve
+ a location.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>9-10</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The default positioning module completes the request
+ and the status is checked. If the request was not successful, another
+ trial is made to acquire the last known location.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>11-12</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The request for the last known location is completed
+ and the status is checked. The Wait note is dismissed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>13</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The caller that requested the current location is notified
+ with the status of the request.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub4212 4.2.12 Deleting a landmark
+ *
+ *  Deleting a landmark is straightforward. The name of the landmark to be deleted is read and displayed in a query dialog. If the query is accepted, the landmark is removed.
+ *
+ <img src="DeletingLandmark_2.png"><h5 align="center">Figure 26 Deleting a landmark</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user has activated the menu command for deleting
+ a landmark. The framework generates an event that is handled by the Landmarks
+ view.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>2-3</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The ID of the selected landmark is fetched from the
+ listbox model.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>4-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The selected landmark is read and its name is extracted.
+ A query dialog is launched asking the user to confirm if the landmark
+ should be deleted.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7-8</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>If the query is accepted, the landmark is removed from
+ the database.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>9</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Since a write operation has taken place in the database,
+ the level of obsolete contents must be checked. If necessary, the database
+ should be compacted to prevent unrestrained growth.</td></tr>
+</table>
+ *
+ *  \subsubsection Subsub4213 4.2.13 Filtering landmarks
+ *
+ *  The algorithm for filtering landmarks is described in detail in Section 4.2.2. Figure 27 shows how this algorithm is realized. In the middle of the diagram, a blue dashed horizontal line indicates when the search/sort phase is completed and the reading phase is started.
+ *
+ <img src="FilteringLandmarks_2.png"><h5 align="center">Figure 27 Filtering landmarks</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1-2</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user has updated the filter in the search field
+ of the Landmarks view. Since <span style="font-family: 'Courier New';">CLandmarksContainer</span>
+ is observing the search field, it is notified by the framework. The container
+ handles this event by initiating a new landmark search operation with
+ the current filter.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>3-4</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The application engine prepares the search operation
+ by constructing the search criteria; only those landmarks whose name contains
+ the filter will be qualified as matches.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>5-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The search/sort operation is created. Note the second
+ parameter indicating that the found matches should be sorted by name in
+ ascending order. Since searching is a heavy operation, an operation handle
+ is returned.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The first step of the search/sort operation is executed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>8-9</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The first step of the search/sort operation is completed
+ and the next step is started if the operation was not fully completed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>10-15</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The last step of the search/sort operation is completed
+ and the matches are retrieved. First an iterator is retrieved, and from
+ this iterator, an array of landmark ids is fetched. The container that
+ initiated the search operation is notified that the sorted matches can
+ be fetched.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>16-18</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The observer fetches the filtered landmarks and initiates
+ a read operation.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>19-21</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>One page of landmarks is prepared to be partially read.
+ Only the name and the icon of the landmarks will be read. The first incremental
+ step of reading the page is started.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>22-23</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The first incremental step of reading a page of landmarks
+ is completed. If all the landmarks in the page were not read, the next
+ step of the read operation is executed.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>24-29</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the page has been completely read, the container
+ that initiated the read operation is notified. The container fetches the
+ landmarks and updates its listbox of landmarks by appending the current
+ page to it.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>30-32</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The next page of landmarks is prepared to be read and
+ the procedure of reading a page of landmarks is repeated.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>33-34</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When there are no more landmarks to read, the container
+ is notified that the read operation is ready.</td></tr>
+</table>
+ *
+ *  Another method to filter landmarks is to use the CPosLmDisplayData class from Landmarks Search API along with the CPosLandmarksSearch class. This approach allows the receiving of a landmark's data already during the search operation and avoiding the additional step of reading landmarks.
+ *
+ *  \subsubsection Subsub4214 4.2.14 Renaming a category
+ *
+ *  This section describes the operation of renaming a category. The creation and deletion of a category are very similar to this operation.
+ *
+ <img src="RenamingCategory_2.png"><h5 align="center">Figure 28 Renaming a category</h5></img>
+ *
+ *  <table border="1" cellspacing="3" cellpadding="1">
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=60pt>
+<p class=Tabletextbold><b>Message</b></td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border: solid #000000 .5pt;
+			border-left: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;
+			background-color: #cccccc;"
+	bgcolor=#CCCCCC
+	valign=top
+	width=378pt>
+<p class=Tabletextbold><b>Description</b></td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>1</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The user has activated the menu command for renaming
+ a category. The framework generates an event that is handled by the Categories
+ view.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>2-6</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The ID of the selected category is fetched from the
+ listbox model.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>7-10</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>A request is sent to the application engine to read
+ the selected category from the database. The category is read and returned.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>11</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The name of the category is extracted and a text query
+ editor is launched and initialized with the category name.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>12</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>When the name has been edited and the dialog dismissed,
+ the category is updated with the new name.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>13-14</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>The category is committed to the database.</td></tr>
+
+<tr>
+<td style="x-cell-content-align: top;
+			width: 60.0pt;
+			border: solid #000000 .5pt;
+			border-top: none;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=60pt>
+<p class=Tabletext>15</td>
+<td style="x-cell-content-align: top;
+			width: 378.0pt;
+			border-top: none;
+			border-left: none;
+			border-bottom: solid #000000 .5pt;
+			border-right: solid #000000 .5pt;
+			padding: 0cm 5.4pt 0cm 5.4pt;
+			padding-left: 0px;
+			padding-top: 0px;
+			padding-right: 0px;
+			padding-bottom: 0px;"
+	valign=top
+	width=378pt>
+<p class=Tabletext>Since a write operation has taken place in the database,
+ the level of obsolete contents must be checked. If necessary, the database
+ should be compacted to prevent unrestrained growth.</td></tr>
+</table>
+ *
+ *	<HR>
+ *
+ *  \section Error_sec 5. Error Situations
+ *
+ *  Whenever a location acquisition or landmark manipulating error occurs, an Information note is shown to the user. The Landmarks reference application does not allow storing empty landmarks and it also handles situations when invalid landmark data is entered by showing an error message to the user.
+ *
+ *	<HR>
+ *
+ *  \section Summary_sec 6. Summary
+ *
+ *  The Landmarks reference application demonstrates how to manage and display landmarks and landmark categories using the Landmarks Framework. The application is split into two components: an application UI and an application engine, the latter communicating directly with the Landmarks Framework. The application emphasizes how to take advantage of the asynchronous services offered by the Landmarks Framework and how to display the results from such services in GUI components
+ *
+ */

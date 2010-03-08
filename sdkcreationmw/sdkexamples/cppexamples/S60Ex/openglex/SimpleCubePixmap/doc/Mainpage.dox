@@ -1,0 +1,52 @@
+/*! \mainpage OpenGL ES Simple Cube Pixmap Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example is based on SimpleCube example but instead of onscreen window rendering a Pixmap surface is used.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  To create the Pixmap surface, a config that supports Pixmaps must be chosen. Otherwise the creation process
+ *  is the same as with window surfaces. When creating the bitmap the size must be specified. This size is automatically
+ *  used as the OpenGL ES framebuffer size when creating the Pixmap surface. Additionally, the bitmap’s color depth has
+ *  to match the EGL config and the config has to support Pixmap rendering.
+ *
+ *  Because pixmaps are single-buffered offscreen surfaces they are not directly visible on the screen. Bitmaps do not
+ *  have any location attribute so the location on the screen have to be specified. To display a bitmap the Draw() method
+ *  must be modified to do blitting of the bitmap to the screen.
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running.
+ *
+ */

@@ -1,0 +1,587 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoProfileSelector Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoProfileSelector Class Reference</h1><!-- doxytag: class="CGeoProfileSelector" --><!-- doxytag: inherits="CBase" --><code>#include &lt;<a class="el" href="geoprofileselector_8h-source.html">geoprofileselector.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoProfileSelector:
+<p><center><img src="class_c_geo_profile_selector.png" usemap="#CGeoProfileSelector_map" border="0" alt=""></center>
+<map name="CGeoProfileSelector_map">
+</map>
+<a href="class_c_geo_profile_selector-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+Geo Profile Selector 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoprofileselector_8h-source.html#l00030">30</a> of file <a class="el" href="geoprofileselector_8h-source.html">geoprofileselector.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#822ddf31c855da1d60032e709ccec1ca">~CGeoProfileSelector</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#6c371326ef3b267afa14c1dcf767d2c3">SelectGeoProfileL</a> (TInt &amp;aProfileId)</td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_profile_selector.html">CGeoProfileSelector</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#94389c6729b439332fc74a54ac683740">NewLC</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#91759ec978117e2e6de845238def3f91">CGeoProfileSelector</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#9ce34ba0b947863222da3c63d0481044">ConstructL</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile_selector.html#0c643e8663025f092aeed93d44c25c4f">iProfilePopupTitle</a></td></tr>
+
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="822ddf31c855da1d60032e709ccec1ca"></a><!-- doxytag: member="CGeoProfileSelector::~CGeoProfileSelector" ref="822ddf31c855da1d60032e709ccec1ca" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfileSelector::~CGeoProfileSelector           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Destructor. Frees all the resources 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8cpp-source.html#l00048">48</a> of file <a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a>.
+<p>
+References <a class="el" href="geoprofileselector_8h-source.html#l00065">iProfilePopupTitle</a>.<div class="fragment"><pre class="fragment"><a name="l00049"></a>00049     {
+<a name="l00050"></a>00050     <span class="keyword">delete</span> <a class="code" href="class_c_geo_profile_selector.html#0c643e8663025f092aeed93d44c25c4f">iProfilePopupTitle</a>;
+<a name="l00051"></a>00051     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="91759ec978117e2e6de845238def3f91"></a><!-- doxytag: member="CGeoProfileSelector::CGeoProfileSelector" ref="91759ec978117e2e6de845238def3f91" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfileSelector::CGeoProfileSelector           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Constructor 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8cpp-source.html#l00040">40</a> of file <a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofileselector_8cpp-source.html#l00057">NewLC()</a>.<div class="fragment"><pre class="fragment"><a name="l00041"></a>00041     {    
+<a name="l00042"></a>00042     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="94389c6729b439332fc74a54ac683740"></a><!-- doxytag: member="CGeoProfileSelector::NewLC" ref="94389c6729b439332fc74a54ac683740" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profile_selector.html">CGeoProfileSelector</a> * CGeoProfileSelector::NewLC           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Constructs a new instance of CGeoProfileSelector 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8cpp-source.html#l00057">57</a> of file <a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a>.
+<p>
+References <a class="el" href="geoprofileselector_8cpp-source.html#l00040">CGeoProfileSelector()</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00467">CGeoProfileEditor::HandleProfileSelectionL()</a>.<div class="fragment"><pre class="fragment"><a name="l00058"></a>00058     {
+<a name="l00059"></a>00059     <a class="code" href="class_c_geo_profile_selector.html">CGeoProfileSelector</a>* <span class="keyword">self</span> = <span class="keyword">new</span> ( ELeave ) <a class="code" href="class_c_geo_profile_selector.html#91759ec978117e2e6de845238def3f91">CGeoProfileSelector</a>();
+<a name="l00060"></a>00060     CleanupStack::PushL( <span class="keyword">self</span> );
+<a name="l00061"></a>00061     <span class="keyword">self</span>-&gt;ConstructL();
+<a name="l00062"></a>00062     <span class="keywordflow">return</span> <span class="keyword">self</span>;                                                                  
+<a name="l00063"></a>00063     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="6c371326ef3b267afa14c1dcf767d2c3"></a><!-- doxytag: member="CGeoProfileSelector::SelectGeoProfileL" ref="6c371326ef3b267afa14c1dcf767d2c3" args="(TInt &amp;aProfileId)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfileSelector::SelectGeoProfileL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aProfileId</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Select Profile 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8cpp-source.html#l00079">79</a> of file <a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00467">CGeoProfileEditor::HandleProfileSelectionL()</a>.<div class="fragment"><pre class="fragment"><a name="l00080"></a>00080     {
+<a name="l00081"></a>00081     TInt retVal = KErrCancel;
+<a name="l00082"></a>00082     
+<a name="l00083"></a>00083     <span class="comment">// Index for profile selection</span>
+<a name="l00084"></a>00084     TInt index = 0;
+<a name="l00085"></a>00085         
+<a name="l00086"></a>00086     <span class="comment">// Load the Title text</span>
+<a name="l00087"></a>00087     HBufC* title = StringLoader::LoadLC( R_LBL_GEOPROFILES_PROFILE );
+<a name="l00088"></a>00088         
+<a name="l00089"></a>00089     <span class="comment">// Obtain the list of profiles</span>
+<a name="l00090"></a>00090     MProEngEngine* profileEng = ProEngFactory::NewEngineL();
+<a name="l00091"></a>00091     CleanupReleasePushL( *profileEng );
+<a name="l00092"></a>00092    
+<a name="l00093"></a>00093     MProEngProfileNameArray* profileNames = profileEng-&gt;ProfileNameArrayLC();
+<a name="l00094"></a>00094             
+<a name="l00095"></a>00095     <span class="comment">// Create the list Query Dialog</span>
+<a name="l00096"></a>00096     CAknListQueryDialog* placeQuery = <span class="keyword">new</span>( ELeave ) CAknListQueryDialog( &amp;index );
+<a name="l00097"></a>00097     placeQuery-&gt;PrepareLC( R_GEOPROFILES_LIST_QUERY );
+<a name="l00098"></a>00098           
+<a name="l00099"></a>00099     <span class="comment">// Assign Title Text</span>
+<a name="l00100"></a>00100     CAknPopupHeadingPane *  heading = placeQuery-&gt;QueryHeading();
+<a name="l00101"></a>00101     <span class="keywordflow">if</span>( heading )
+<a name="l00102"></a>00102         {
+<a name="l00103"></a>00103         heading-&gt;SetTextL( *title );
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105        
+<a name="l00106"></a>00106     <span class="comment">// Descriptor array</span>
+<a name="l00107"></a>00107     CDesCArrayFlat* array = <span class="keyword">new</span> ( ELeave ) CDesCArrayFlat( 4 );
+<a name="l00108"></a>00108     CleanupStack::PushL( array );
+<a name="l00109"></a>00109     
+<a name="l00110"></a>00110     HBufC* profileName = HBufC::NewLC( 256 );
+<a name="l00111"></a>00111     TPtr profileNamePtr = profileName-&gt;Des();
+<a name="l00112"></a>00112         
+<a name="l00113"></a>00113     <span class="keywordflow">for</span> ( TInt i = 0; i &lt; profileNames-&gt;MdcaCount(); i++ )
+<a name="l00114"></a>00114         {
+<a name="l00115"></a>00115         profileNamePtr.Zero();
+<a name="l00116"></a>00116         profileNamePtr.Append( KTab );
+<a name="l00117"></a>00117         profileNamePtr.Append( profileNames-&gt;MdcaPoint( i ));
+<a name="l00118"></a>00118         
+<a name="l00119"></a>00119         array-&gt;AppendL( *profileName );
+<a name="l00120"></a>00120         }
+<a name="l00121"></a>00121     
+<a name="l00122"></a>00122     <span class="comment">// Cleanup the profile Name buffer</span>
+<a name="l00123"></a>00123     CleanupStack::PopAndDestroy( profileName );
+<a name="l00124"></a>00124     
+<a name="l00125"></a>00125     <span class="comment">// Assign the Item text array</span>
+<a name="l00126"></a>00126     placeQuery-&gt;SetItemTextArray( array );
+<a name="l00127"></a>00127     placeQuery-&gt;SetOwnershipType(  ELbmOwnsItemArray );
+<a name="l00128"></a>00128     CleanupStack::Pop( array );
+<a name="l00129"></a>00129       
+<a name="l00130"></a>00130     <span class="keywordflow">if</span> ( placeQuery-&gt;RunLD())
+<a name="l00131"></a>00131         {
+<a name="l00132"></a>00132         retVal = KErrNone;
+<a name="l00133"></a>00133         
+<a name="l00134"></a>00134         <span class="comment">// Obtain the Profile Name and Profile ID at index</span>
+<a name="l00135"></a>00135         aProfileId = profileNames-&gt;ProfileId( index );
+<a name="l00136"></a>00136         }
+<a name="l00137"></a>00137         
+<a name="l00138"></a>00138     CleanupStack::PopAndDestroy( 3, title );    
+<a name="l00139"></a>00139     <span class="keywordflow">return</span> retVal;    
+<a name="l00140"></a>00140     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="9ce34ba0b947863222da3c63d0481044"></a><!-- doxytag: member="CGeoProfileSelector::ConstructL" ref="9ce34ba0b947863222da3c63d0481044" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfileSelector::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of two phase construction 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8cpp-source.html#l00069">69</a> of file <a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a>.
+<p>
+References <a class="el" href="geoprofileselector_8h-source.html#l00065">iProfilePopupTitle</a>.<div class="fragment"><pre class="fragment"><a name="l00070"></a>00070     {
+<a name="l00071"></a>00071     <span class="comment">// Allocate the Title text</span>
+<a name="l00072"></a>00072     <a class="code" href="class_c_geo_profile_selector.html#0c643e8663025f092aeed93d44c25c4f">iProfilePopupTitle</a> = NULL;
+<a name="l00073"></a>00073     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="0c643e8663025f092aeed93d44c25c4f"></a><!-- doxytag: member="CGeoProfileSelector::iProfilePopupTitle" ref="0c643e8663025f092aeed93d44c25c4f" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC* <a class="el" href="class_c_geo_profile_selector.html#0c643e8663025f092aeed93d44c25c4f">CGeoProfileSelector::iProfilePopupTitle</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Title text for pop-up dialog Owns 
+<p>
+Definition at line <a class="el" href="geoprofileselector_8h-source.html#l00065">65</a> of file <a class="el" href="geoprofileselector_8h-source.html">geoprofileselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofileselector_8cpp-source.html#l00069">ConstructL()</a>, and <a class="el" href="geoprofileselector_8cpp-source.html#l00048">~CGeoProfileSelector()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoprofileselector_8h-source.html">geoprofileselector.h</a><li><a class="el" href="geoprofileselector_8cpp-source.html">geoprofileselector.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

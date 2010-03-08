@@ -1,0 +1,86 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource strings for EcmtCommonPlugin
+*
+*/
+
+
+#include <eikon.rh>
+#include "EcmtCommonPlugin.loc"
+
+NAME ECMT
+
+RESOURCE RSS_SIGNATURE { }
+
+// -----------------------------------------------------------------------------
+//   
+// Resource struct for UTF strings
+//
+// -----------------------------------------------------------------------------
+//
+
+STRUCT UTFSTRING
+	{
+	BUF8 buf;
+	}
+
+// -----------------------------------------------------------------------------
+//   
+// Error messages
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE UTFSTRING r_internal_error
+	{
+	buf = qtn_ecmt_internal_error;
+	}
+
+RESOURCE UTFSTRING r_file_not_found
+	{
+	buf = qtn_ecmt_file_not_found;
+	}
+
+RESOURCE UTFSTRING r_file_corrupted
+	{
+	buf = qtn_ecmt_file_corrupted;
+	}
+
+RESOURCE UTFSTRING r_file_write_error
+	{
+	buf = qtn_ecmt_file_write_error;
+	}
+
+RESOURCE UTFSTRING r_netcards_error
+	{
+	buf = qtn_ecmt_netcards_error;
+	}
+
+RESOURCE UTFSTRING r_commsdb_error
+	{
+	buf = qtn_ecmt_commsdb_error;
+	}
+
+RESOURCE UTFSTRING r_irda_bt_error
+	{
+	buf = qtn_ecmt_irda_bt_error;
+	}
+
+RESOURCE UTFSTRING r_no_active_ini_files
+	{
+	buf = qtn_ecmt_no_active_ini_files;
+	}
+
+
+// End of File

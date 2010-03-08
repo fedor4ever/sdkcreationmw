@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+rls_string STRING_r_chat_btmenu "Use Bluetooth"
+rls_string STRING_r_chat_ipmenu "Use TCP/IP"
+rls_string STRING_r_chat_start "Start Chat"
+rls_string STRING_r_chat_connect "Connect"
+rls_string STRING_r_chat_disconnect "Disconnect"
+rls_string STRING_r_chat_stop "Stop Chat"
+rls_string STRING_r_chat_send "Send Message"
+rls_string STRING_r_chat_clear "Clear List"
+
+// menu exit
+rls_string STRING_r_chat_exit "Exit"
+
+// For data query
+rls_string STRING_r_chat_data_label_text   "Write Message :"
+rls_string STRING_r_chat_data_server_text  "Server Name :"
+
+// example caption strings for app
+rls_string STRING_r_chat_caption_string "Chat"
+rls_string STRING_r_chat_short_caption_string "Chat"
+
+// resources for message strings
+rls_string STRING_r_chat_service_name "Serial Port"
+rls_string STRING_r_chat_service_description "Simple chat example"
+
+//Error messages
+rls_string STRING_r_chat_err_nrrc_no_records "NRRC No records"
+rls_string STRING_r_chat_err_cant_get_attribute "Can't get attribute "
+rls_string STRING_r_chat_err_attr_req_com "AttrReqCom"
+rls_string STRING_r_chat_err_no_device_selected "No device selected"
+rls_string STRING_r_chat_err_connection_error "Connection error"
+rls_string STRING_r_chat_err_lost_connection "Lost connection"
+rls_string STRING_r_chat_err_message_failed "Message Failed"
+rls_string STRING_r_chat_err_failed_to_disconnect "Failed to disconnect"
+rls_string STRING_r_chat_no_bt "Bluetooth unavailable."
+rls_string STRING_r_chat_err_timeout "Time out"
+
+// connection messages
+rls_string STRING_r_chat_connected "Connected"
+rls_string STRING_r_chat_str_disconnected "Disconnected"
+rls_string STRING_r_chat_disconnect_complete "Disconnect complete"
+rls_string STRING_r_chat_found_service "Found service"
+rls_string STRING_r_chat_data_received "Data Recieved"
+rls_string STRING_r_chat_client_busy "Client busy"
+rls_string STRING_r_chat_str_releasing_conn "Releasing connection"
+rls_string STRING_r_chat_str_connecting "Connecting to service"
+rls_string STRING_r_chat_err_no_conn "No connection!"
+rls_string STRING_r_chat_str_serv_err "Server Error"
+rls_string STRING_r_chat_str_get_port "Get port = "
+rls_string STRING_r_chat_str_accept_next_conn "Accept next connection"
+
+
+// End of File

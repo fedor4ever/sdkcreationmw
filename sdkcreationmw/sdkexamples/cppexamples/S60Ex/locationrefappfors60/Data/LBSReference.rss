@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    LBSR // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.hrh>
+#include <avkon.rh>
+#include <appinfo.rh>
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="LBSReference"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    cba=R_AVKON_SOFTKEYS_EXIT;     
+    }
+
+RESOURCE ARRAY r_loc_ref_list_array
+    {
+
+    items =
+        {
+        LBUF {txt = "\tInitialising\tPlease wait..."; }
+        };
+
+    }
+
+
+RESOURCE LISTBOX r_loc_listbox_resource
+    {
+    array_id = r_loc_ref_list_array;
+    flags = EAknListBoxViewerFlags;
+    }
+
+RESOURCE LOCALISABLE_APP_INFO r_lbs_localisable_app_info
+    {
+    short_caption = "Lbs Ref";
+    caption_and_icon = CAPTION_AND_ICON_INFO 
+	{
+        caption="Lbs Reference App";
+        number_of_icons = 1;
+	icon_file = 
+        	"\\resource\\apps\\lrefappfors60_aif.mif";
+            };
+    }
+
+// End of File

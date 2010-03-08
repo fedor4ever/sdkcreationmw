@@ -1,0 +1,59 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+;
+; Installation file for BrCtlSampleApp Application
+
+;Languages
+&EN
+
+;Header
+#{"BrCtlSampleApp"},(0xA0000181),1,0,0
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports S60 v 3.0
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+; Browser Control Sample App 
+"..\..\..\epoc32\release\gcce\urel\BrCtlSampleApp.exe"			-"!:\sys\bin\BrCtlSampleApp.exe"
+
+; Browser resources and bitmaps
+"..\..\..\epoc32\data\z\resource\apps\BrCtlSampleApp.rsc"		-"!:\Resource\apps\BrCtlSampleApp.rsc"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\BrCtlSampleApp_reg.RSC"	-"!:\private\10003a3f\import\apps\BrCtlSampleApp_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\BrCtlSampleApp_AIF.mif"		-"!:\Resource\apps\BrCtlSampleApp_AIF.mif"
+
+;required for application to be covered by backup/restore facility 
+"backup_registration.xml"						-"!:\private\A0000181\backup_registration.xml"
+
+; Sample html pages
+"..\data\samplepages\sample1.htm"   - "!:\brctlsampleapp\sample1.htm"
+"..\data\samplepages\sample10.htm"  - "!:\brctlsampleapp\sample10.htm"
+"..\data\samplepages\sample11.htm"  - "!:\brctlsampleapp\sample11.htm"
+"..\data\samplepages\sample2.htm"   - "!:\brctlsampleapp\sample2.htm"
+"..\data\samplepages\sample3.htm"   - "!:\brctlsampleapp\sample3.htm"
+"..\data\samplepages\sample4.htm"   - "!:\brctlsampleapp\sample4.htm"
+"..\data\samplepages\sample5.htm"   - "!:\brctlsampleapp\sample5.htm"
+"..\data\samplepages\sample6.htm"   - "!:\brctlsampleapp\sample6.htm"
+"..\data\samplepages\sample7.htm"   - "!:\brctlsampleapp\sample7.htm"
+"..\data\samplepages\sample8.htm"   - "!:\brctlsampleapp\sample8.htm"
+"..\data\samplepages\sample9.htm"   - "!:\brctlsampleapp\sample9.htm"
+"..\data\samplepages\img4.jpg"      - "!:\brctlsampleapp\img4.jpg"
+"..\data\samplepages\img5.jpg"      - "!:\brctlsampleapp\img5.jpg"
+

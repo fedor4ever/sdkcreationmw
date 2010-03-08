@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+#include "..\Common\group\bld.inf"
+#include "..\HttpTraffic\group\bld.inf"
+#include "..\MsgRelay\group\bld.inf"
+#include "..\PushURL\group\bld.inf"
+#include "..\SDK\group\bld.inf"
+// #include "..\SimPsy\group\bld.inf"
+#include "..\TaskManager\group\bld.inf"
+#include "..\EventSim\group\bld.inf"
+#include "..\Wsock\group\bld.inf"
+
+#ifndef SDK_CPP
+// Plugins not present in C++ SDK
+#include "..\MidpDebug\group\bld.inf"
+#include "..\SocketForward\group\bld.inf"
+#include "..\NCI\group\bld.inf"
+#endif // SDK_CPP
+
+//  End of File  

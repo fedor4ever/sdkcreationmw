@@ -1,0 +1,336 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    CHAT // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include "Chat.hrh"
+#include "Chat.rls"
+
+//  CONSTANTS
+
+#define CHAT_EDWIN_WIDTH 5
+#define CHAT_EDWIN_LINES 5
+#define CHAT_EDWIN_MAXLENGTH 128
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "Chat"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_chat_hotkeys;
+    menubar = r_chat_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//
+//    r_chat_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_chat_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_chat_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_chat_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_chat_menu; }
+         };
+    }
+
+//----------------------------------------------------
+//
+//    r_chat_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_chat_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EChatBtChat; cascade = r_chat_bt_menu; txt = STRING_r_chat_btmenu; },
+        MENU_ITEM { command = EChatIpChat; cascade = r_chat_ip_menu; txt = STRING_r_chat_ipmenu; },
+        MENU_ITEM { command = EChatDisconnect; txt = STRING_r_chat_disconnect; },
+        MENU_ITEM { command = EChatStopBtChat; txt = STRING_r_chat_stop; },
+        MENU_ITEM { command = EChatStopIpChat; txt = STRING_r_chat_stop; },
+        MENU_ITEM { command = EChatSendMessage; txt = STRING_r_chat_send; },
+        MENU_ITEM { command = EChatClearList; txt = STRING_r_chat_clear; },
+        MENU_ITEM { command = EAknCmdExit; txt = STRING_r_chat_exit; }
+        };
+    }
+
+RESOURCE MENU_PANE r_chat_bt_menu
+    {
+  items =
+        {
+        MENU_ITEM { command = EChatStartChat; txt = STRING_r_chat_start; },
+        MENU_ITEM { command = EChatConnect; txt = STRING_r_chat_connect; }
+        };
+    }
+
+RESOURCE MENU_PANE r_chat_ip_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EChatStartIpChat; txt = STRING_r_chat_start; },
+        MENU_ITEM { command = EChatIpConnect; txt = STRING_r_chat_connect; }
+        };
+    }
+
+RESOURCE LOCALISABLE_APP_INFO r_chat_localisable_app_info
+    {
+    short_caption = STRING_r_chat_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_chat_caption_string;
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\ChatEx.mif";
+        };
+    }
+//----------------------------------------------------
+//
+//    r_chat_data_query
+//    Recource of Data query
+//
+//----------------------------------------------------
+//
+
+RESOURCE DIALOG r_chat_data_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = STRING_r_chat_data_label_text;
+                control = EDWIN
+                    {
+                    flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    width = CHAT_EDWIN_WIDTH;
+                    maxlength = CHAT_EDWIN_MAXLENGTH;
+                    // added to limit expanding in forms.
+                    // If you want full screen use 6 here
+                    max_view_height_in_lines = CHAT_EDWIN_LINES;
+                    // if you have the line above, you must have this.
+                    // It's calculable from LAF
+                    base_line_delta = 21;
+                    };
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//
+//    r_chat_serverdata_query
+//    Recource of Data query
+//
+//----------------------------------------------------
+//
+
+RESOURCE DIALOG r_chat_serverdata_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = STRING_r_chat_data_server_text;
+                control = EDWIN
+                    {
+                    flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    width = CHAT_EDWIN_WIDTH;
+                    // lines = AKNEXQUERY_EDWIN_LINES;
+                    maxlength = CHAT_EDWIN_MAXLENGTH;
+                    // added to limit expanding in forms.
+                    // If you want full screen use 6 here
+                    max_view_height_in_lines = CHAT_EDWIN_LINES;
+                    // if you have the line above, you must have this.
+                    // It's calculable from LAF
+                    base_line_delta = 21;
+                    };
+                };
+            }
+        };
+    }
+// ----------------------------------------------------------------------------
+//
+//      Resources for messages.
+//
+// ----------------------------------------------------------------------------
+
+RESOURCE TBUF r_chat_service_description
+    {
+    buf = STRING_r_chat_service_description;
+    }
+
+RESOURCE TBUF r_chat_service_name
+    {
+    buf = STRING_r_chat_service_name;
+    }
+
+RESOURCE TBUF r_chat_err_nrrc_no_records
+    {
+    buf = STRING_r_chat_err_nrrc_no_records;
+    }
+
+RESOURCE TBUF r_chat_err_cant_get_attribute
+    {
+    buf = STRING_r_chat_err_cant_get_attribute;
+    }
+
+RESOURCE TBUF r_chat_err_attr_req_com
+    {
+    buf = STRING_r_chat_err_attr_req_com;
+    }
+
+RESOURCE TBUF r_chat_err_no_device_selected
+    {
+        buf = STRING_r_chat_err_no_device_selected;
+    }
+
+RESOURCE TBUF r_chat_err_connection_error
+    {
+    buf = STRING_r_chat_err_connection_error;
+    }
+
+RESOURCE TBUF r_chat_err_lost_connection
+    {
+    buf = STRING_r_chat_err_lost_connection;
+    }
+
+RESOURCE TBUF r_chat_err_message_failed
+    {
+    buf = STRING_r_chat_err_message_failed;
+    }
+
+RESOURCE TBUF r_chat_disconnect_complete
+    {
+    buf = STRING_r_chat_disconnect_complete;
+    }
+
+RESOURCE TBUF r_chat_err_failed_to_disconnect
+    {
+    buf = STRING_r_chat_err_failed_to_disconnect;
+    }
+
+RESOURCE TBUF r_chat_found_service
+    {
+    buf = STRING_r_chat_found_service;
+    }
+
+RESOURCE TBUF r_chat_data_received
+    {
+    buf = STRING_r_chat_data_received;
+    }
+
+RESOURCE TBUF r_chat_client_busy
+    {
+    buf = STRING_r_chat_client_busy;
+    }
+
+RESOURCE TBUF r_chat_err_no_conn
+    {
+    buf = STRING_r_chat_err_no_conn;
+    }
+
+RESOURCE TBUF r_chat_err_timeout
+    {
+    buf = STRING_r_chat_err_timeout;
+    }
+
+RESOURCE TBUF r_chat_str_releasing_conn
+    {
+    buf = STRING_r_chat_str_releasing_conn;
+    }
+
+RESOURCE TBUF r_chat_str_connecting
+    {
+    buf = STRING_r_chat_str_connecting;
+    }
+
+
+RESOURCE TBUF r_chat_connected
+    {
+    buf = STRING_r_chat_connected;
+    }
+
+RESOURCE TBUF r_chat_str_disconnected
+    {
+    buf = STRING_r_chat_str_disconnected;
+    }
+
+RESOURCE TBUF r_chat_str_serv_err
+    {
+    buf = STRING_r_chat_str_serv_err;
+    }
+
+RESOURCE TBUF r_chat_str_get_port
+    {
+    buf = STRING_r_chat_str_get_port;
+    }
+
+RESOURCE TBUF r_chat_accept_next_conn
+    {
+    buf = STRING_r_chat_str_accept_next_conn;
+    }
+
+RESOURCE TBUF r_chat_no_bt
+    {
+    buf = STRING_r_chat_no_bt;
+    }
+
+
+// End of File

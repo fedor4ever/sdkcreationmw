@@ -1,0 +1,678 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoProfilesLBModel Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoProfilesLBModel Class Reference</h1><!-- doxytag: class="CGeoProfilesLBModel" --><!-- doxytag: inherits="CBase,MDesCArray" --><code>#include &lt;<a class="el" href="geoprofileslbmodel_8h-source.html">geoprofileslbmodel.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoProfilesLBModel:
+<p><center><img src="class_c_geo_profiles_l_b_model.png" usemap="#CGeoProfilesLBModel_map" border="0" alt=""></center>
+<map name="CGeoProfilesLBModel_map">
+</map>
+<a href="class_c_geo_profiles_l_b_model-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+List box model for Geo Profiles Application<p>
+This class provides the implementation of the list-box model for Geo Profiles lists. 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8h-source.html#l00035">35</a> of file <a class="el" href="geoprofileslbmodel_8h-source.html">geoprofileslbmodel.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#48a670ac61662fc8253f1aff795bd527">~CGeoProfilesLBModel</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#3974cf300cf1acd0070c9dee1345a409">UpdateModel</a> (RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *aGeoProfiles)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#4db8b909344da0ace0181801de48b8c6">MdcaCount</a> () const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual TPtrC16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#f850c950d6b85b81aeb4cf4119d8a53d">MdcaPoint</a> (TInt aIndex) const </td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#a2e901ea5e6d9ce9ee3eca454f8c181e">NewL</a> (RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *aGeoProfiles)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#375d2b4ee2b432b41f694c8331a84bb2">CGeoProfilesLBModel</a> (RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *aGeoProfiles)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#9ce34ba0b947863222da3c63d0481044">ConstructL</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC16 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#04fb56a9c5c1c56ed0335a50a6065a82">iBuffer</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a></td></tr>
+
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="48a670ac61662fc8253f1aff795bd527"></a><!-- doxytag: member="CGeoProfilesLBModel::~CGeoProfilesLBModel" ref="48a670ac61662fc8253f1aff795bd527" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfilesLBModel::~CGeoProfilesLBModel           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Destructor. Frees all the resources 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00042">42</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8h-source.html#l00084">iBuffer</a>.<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043     {
+<a name="l00044"></a>00044     <span class="comment">// Delete the Conversion buffer</span>
+<a name="l00045"></a>00045     <span class="keyword">delete</span> <a class="code" href="class_c_geo_profiles_l_b_model.html#04fb56a9c5c1c56ed0335a50a6065a82">iBuffer</a>;   
+<a name="l00046"></a>00046     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="375d2b4ee2b432b41f694c8331a84bb2"></a><!-- doxytag: member="CGeoProfilesLBModel::CGeoProfilesLBModel" ref="375d2b4ee2b432b41f694c8331a84bb2" args="(RPointerArray&lt; CGeoProfile &gt; *aGeoProfiles)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfilesLBModel::CGeoProfilesLBModel           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aGeoProfiles</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Overloaded constructor 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00032">32</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00052">NewL()</a>.<div class="fragment"><pre class="fragment"><a name="l00034"></a>00034     :<a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a>( aGeoProfiles )
+<a name="l00035"></a>00035     {    
+<a name="l00036"></a>00036     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="a2e901ea5e6d9ce9ee3eca454f8c181e"></a><!-- doxytag: member="CGeoProfilesLBModel::NewL" ref="a2e901ea5e6d9ce9ee3eca454f8c181e" args="(RPointerArray&lt; CGeoProfile &gt; *aGeoProfiles)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a> * CGeoProfilesLBModel::NewL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aGeoProfiles</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Constructs a new instance of Geo Profiles list box model. 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00052">52</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00032">CGeoProfilesLBModel()</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesview_8cpp-source.html#l00101">CGeoProfilesView::ConstructL()</a>.<div class="fragment"><pre class="fragment"><a name="l00054"></a>00054     {
+<a name="l00055"></a>00055     <a class="code" href="class_c_geo_profiles_l_b_model.html">CGeoProfilesLBModel</a>* <span class="keyword">self</span> = <span class="keyword">new</span> ( ELeave ) <a class="code" href="class_c_geo_profiles_l_b_model.html#375d2b4ee2b432b41f694c8331a84bb2">CGeoProfilesLBModel</a>( aGeoProfiles );
+<a name="l00056"></a>00056     CleanupStack::PushL( <span class="keyword">self</span> );
+<a name="l00057"></a>00057     <span class="keyword">self</span>-&gt;ConstructL();
+<a name="l00058"></a>00058     CleanupStack::Pop( <span class="keyword">self</span> );
+<a name="l00059"></a>00059     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00060"></a>00060     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="3974cf300cf1acd0070c9dee1345a409"></a><!-- doxytag: member="CGeoProfilesLBModel::UpdateModel" ref="3974cf300cf1acd0070c9dee1345a409" args="(RPointerArray&lt; CGeoProfile &gt; *aGeoProfiles)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesLBModel::UpdateModel           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">RPointerArray&lt; <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> &gt; *&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aGeoProfiles</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Updates the Geo Profiles model 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00076">76</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8h-source.html#l00089">iGeoProfiles</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesview_8cpp-source.html#l00349">CGeoProfilesView::ProfileStatusChangedL()</a>.<div class="fragment"><pre class="fragment"><a name="l00078"></a>00078     {
+<a name="l00079"></a>00079     <a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a> = aGeoProfiles;
+<a name="l00080"></a>00080     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="4db8b909344da0ace0181801de48b8c6"></a><!-- doxytag: member="CGeoProfilesLBModel::MdcaCount" ref="4db8b909344da0ace0181801de48b8c6" args="() const " --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfilesLBModel::MdcaCount           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from MDesCArray 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00086">86</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8h-source.html#l00089">iGeoProfiles</a>.<div class="fragment"><pre class="fragment"><a name="l00087"></a>00087     {
+<a name="l00088"></a>00088     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a>-&gt;Count();       
+<a name="l00089"></a>00089     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="f850c950d6b85b81aeb4cf4119d8a53d"></a><!-- doxytag: member="CGeoProfilesLBModel::MdcaPoint" ref="f850c950d6b85b81aeb4cf4119d8a53d" args="(TInt aIndex) const " --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TPtrC16 CGeoProfilesLBModel::MdcaPoint           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aIndex</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from MDesCArray 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00095">95</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8h-source.html#l00084">iBuffer</a>, and <a class="el" href="geoprofileslbmodel_8h-source.html#l00089">iGeoProfiles</a>.<div class="fragment"><pre class="fragment"><a name="l00096"></a>00096     {
+<a name="l00097"></a>00097     <span class="comment">// Create formatted item string.</span>
+<a name="l00098"></a>00098     <span class="comment">// list item string format: // Format "\t%S\t\t%S"</span>
+<a name="l00099"></a>00099         TPtr16  buf( <a class="code" href="class_c_geo_profiles_l_b_model.html#04fb56a9c5c1c56ed0335a50a6065a82">iBuffer</a>-&gt;Des());
+<a name="l00100"></a>00100         buf.Zero();
+<a name="l00101"></a>00101             
+<a name="l00102"></a>00102     <span class="keywordflow">if</span> ( <a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a>-&gt;Count() &lt; aIndex )
+<a name="l00103"></a>00103         {
+<a name="l00104"></a>00104         <span class="keywordflow">return</span> buf;
+<a name="l00105"></a>00105         }
+<a name="l00106"></a>00106        
+<a name="l00107"></a>00107     <span class="comment">// Pack the contents into the Buffer. We dont have to re-allocate the buffer</span>
+<a name="l00108"></a>00108     <span class="comment">// everytime. Currently the string length is restricted to 256. </span>
+<a name="l00109"></a>00109     <span class="comment">// </span>
+<a name="l00110"></a>00110     <span class="comment">// !!! Could be a potential problem !!!!!</span>
+<a name="l00111"></a>00111                     
+<a name="l00112"></a>00112     <span class="comment">// Tabulator Defintion</span>
+<a name="l00113"></a>00113     _LIT( KTab, <span class="stringliteral">"\t"</span> );
+<a name="l00114"></a>00114     
+<a name="l00115"></a>00115         <span class="comment">// Append the Tab Key</span>
+<a name="l00116"></a>00116         buf.Append( KTab );    
+<a name="l00117"></a>00117         
+<a name="l00118"></a>00118         <span class="comment">// Append the Geo Profile Name</span>
+<a name="l00119"></a>00119         buf.Append( (*<a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a>)[ aIndex ]-&gt;GeoPlaceName());
+<a name="l00120"></a>00120         
+<a name="l00121"></a>00121         <span class="comment">// Append the Tab Key</span>
+<a name="l00122"></a>00122         buf.Append( KTab );
+<a name="l00123"></a>00123         
+<a name="l00124"></a>00124         <span class="comment">// Append the Tab Key</span>
+<a name="l00125"></a>00125         buf.Append( KTab );
+<a name="l00126"></a>00126                 
+<a name="l00127"></a>00127         <span class="comment">// Append the Geo Profile Name</span>
+<a name="l00128"></a>00128         buf.Append( (*<a class="code" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">iGeoProfiles</a>)[ aIndex ]-&gt;ProfileName());
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130     <span class="keywordflow">return</span> buf;
+<a name="l00131"></a>00131     
+<a name="l00132"></a>00132     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="9ce34ba0b947863222da3c63d0481044"></a><!-- doxytag: member="CGeoProfilesLBModel::ConstructL" ref="9ce34ba0b947863222da3c63d0481044" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfilesLBModel::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of the two phase constructor 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00066">66</a> of file <a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a>.
+<p>
+References <a class="el" href="geoprofileslbmodel_8h-source.html#l00084">iBuffer</a>.<div class="fragment"><pre class="fragment"><a name="l00067"></a>00067     {
+<a name="l00068"></a>00068     <span class="comment">// Allocate the Conversion buffer</span>
+<a name="l00069"></a>00069     <a class="code" href="class_c_geo_profiles_l_b_model.html#04fb56a9c5c1c56ed0335a50a6065a82">iBuffer</a> = HBufC::NewL( KGeoProfilesBufferSize );
+<a name="l00070"></a>00070     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="04fb56a9c5c1c56ed0335a50a6065a82"></a><!-- doxytag: member="CGeoProfilesLBModel::iBuffer" ref="04fb56a9c5c1c56ed0335a50a6065a82" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC16* <a class="el" href="class_c_geo_profiles_l_b_model.html#04fb56a9c5c1c56ed0335a50a6065a82">CGeoProfilesLBModel::iBuffer</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Buffer for packing the MdcaPoint<p>
+Owns 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8h-source.html#l00084">84</a> of file <a class="el" href="geoprofileslbmodel_8h-source.html">geoprofileslbmodel.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00066">ConstructL()</a>, <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00095">MdcaPoint()</a>, and <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00042">~CGeoProfilesLBModel()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="73a6c52f7c0e2b6c12d38ae05d405421"></a><!-- doxytag: member="CGeoProfilesLBModel::iGeoProfiles" ref="73a6c52f7c0e2b6c12d38ae05d405421" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">RPointerArray&lt;<a class="el" href="class_c_geo_profile.html">CGeoProfile</a>&gt;* <a class="el" href="class_c_geo_profiles_l_b_model.html#73a6c52f7c0e2b6c12d38ae05d405421">CGeoProfilesLBModel::iGeoProfiles</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Profile Array 
+<p>
+Definition at line <a class="el" href="geoprofileslbmodel_8h-source.html#l00089">89</a> of file <a class="el" href="geoprofileslbmodel_8h-source.html">geoprofileslbmodel.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00086">MdcaCount()</a>, <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00095">MdcaPoint()</a>, and <a class="el" href="geoprofileslbmodel_8cpp-source.html#l00076">UpdateModel()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoprofileslbmodel_8h-source.html">geoprofileslbmodel.h</a><li><a class="el" href="geoprofileslbmodel_8cpp-source.html">geoprofileslbmodel.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

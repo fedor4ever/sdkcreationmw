@@ -1,0 +1,58 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+ *
+*/
+
+
+#ifndef __ECMTGUI_HRH__
+#define __ECMTGUI_HRH__
+
+/** 
+ *  EcmtGui enumerate command codes
+ *  @ingroup EcmtGui
+ */
+enum TEcmtGuiIds
+{
+    EEcmtGuiCmdStart = 1,		// start value must not be 0
+    EEcmtGuiCmdStop,
+    EEcmtGuiCmdClearLog,
+    //for ecmt odd using wlan
+    EEcmtGuiCmdWlanOdd,
+    EEcmtGuiCmdChange,
+    EEcmtGuiCmdSettings,
+    EIp,
+    EDeleteJavaDir
+};
+
+enum TEcmtOdd
+    {
+    EListboxSettingUsername,
+    EListboxSettingConnectMode,
+    EListboxCmdChange
+    };
+
+enum TEcmtGuiViewIds
+		{
+		EEcmtLogViewId,
+		EEcmtSettingsViewId,
+		EListboxSettingView
+		};
+
+enum TEcmtGuiSettingItems
+    {
+    EEcmtGuiSettingBearer
+    };
+   
+#endif

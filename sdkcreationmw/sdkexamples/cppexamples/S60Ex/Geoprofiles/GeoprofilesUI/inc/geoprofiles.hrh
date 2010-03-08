@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Commands for Geo Profiles Application.
+*
+*/
+
+
+#ifndef GEOPROFILES_HRH
+#define GEOPROFILES_HRH
+
+/**
+ * Geo Profiles Application commands
+ */
+enum TGeoProfilesCommands
+	{
+	EGeoProfilesNone = 0x6000,
+	EGeoProfilesAdd,
+	EGeoProfilesOpen,
+	EGeoProfilesDelete
+	};                  
+
+/**
+ * Form Element Ids
+ */
+enum TGeoProfileFormIds
+    {
+    EGeoProfileIdNone   = 0,
+    EGeoPlace,
+    EGeoProfileName,
+    EGeoProfileType,
+    EGeoRadius
+    };
+    
+// Constant Defintions
+#define KGeoPlaceNameMaxLength          256
+
+#define KGeoProfileRadiusMaxLength      3
+
+#define KGeoProfileRadiusMax            500
+
+#define KGeoProfileRadiusMin            100
+
+#define KGeoProfileRadiusUnsetValue     -1
+
+#define KGeoProfileTriggerModeLength    50
+
+#define KGeoProfileNameMaxLength        256
+    
+#endif
+	

@@ -1,0 +1,73 @@
+﻿
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="copyright" content="(C) Copyright 2007"/><meta name="DC.rights.owner" content="(C) Copyright 2007"/><meta name="DC.Type" content="mobileconcept"/><meta name="DC.Title" content="Creating a GCCE UREL build of an example application"/><meta name="DC.Format" content="XHTML"/><meta name="DC.Identifier" content="GUID-FDB2C970-1356-4749-A856-005D5D0166D1"/><title> S60 Example Applications</title><script type="text/javascript" src="js/utils.js">//</script><script type="text/javascript" src="js/gui.js">//</script><script type="text/javascript" src="js/common.js">//</script><script type="text/javascript" src="js/toc.js">//</script><script type="text/javascript" src="js/page.js">//</script><script type="text/javascript" src="js/s60/white_toc.js">//</script><script type="text/javascript" src="js/s60/page.js">//</script><link href="css/html.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/print.css" rel="stylesheet" type="text/css" media="print"/><link href="css/nwg.css" rel="stylesheet" type="text/css" media="all"/><link href="css/s60/white.css" rel="stylesheet" type="text/css" media="all"/><script>if( self == top ){ window.location.replace( "../../../?topic=/com.nokia.s60.sdk.cppapi_5.0/GUID-441D327D-D737-42A2-BCEA-FE89FBCA2F35/GUID-FDB2C970-1356-4749-A856-005D5D0166D1.html");}</script>
+</head><body onload="initPage();"><!--BEGIN: HEADER--><!--END: HEADER--><!--BEGIN: BODY SECTION--><div class="body"><!--begin: content--><div class="contentLeft prTxt"><h1 class="pageHeading" id="GUID-FDB2C970-1356-4749-A856-005D5D0166D1"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-FDB2C970-1356-4749-A856-005D5D0166D1"><!----></a>Creating a GCCE UREL build of an example application</h1>
+<div><h3>Creating a GCCE UREL build of an example application from the command
+line interface</h3><ol>
+<li id="GUID-B92F5283-1269-40C2-8DCF-58965C68DAF5"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-B92F5283-1269-40C2-8DCF-58965C68DAF5"><!----></a>
+<p>In the Windows <strong>Start</strong> menu, open the <strong>Command Prompt by choosing
+Start &gt; All Programs &gt; Accessories &gt; Command Prompt</strong>.</p>
+</li>
+<li id="GUID-E956ECD9-E325-4F2C-9071-087F292B3398"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-E956ECD9-E325-4F2C-9071-087F292B3398"><!----></a>
+<p>In the command prompt, use the cd command to switch to the directory
+in which the example application is located (in this case the <em>Hello World
+Basic</em> example application):</p>
+<p><code>cd &lt;S60_SDK_installation_directory&gt;\S60CppExamples\HelloWorldBasic</code></p>
+</li>
+<li id="GUID-03B95A8B-C187-4B88-A80F-620C9DC34398"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-03B95A8B-C187-4B88-A80F-620C9DC34398"><!----></a>
+<p>Use the <code>cd</code> command to go to the <code>group</code> directory:</p>
+<p><code>cd group</code></p>
+</li>
+<li id="GUID-1322939B-EA8D-4B5F-B09F-6D310F7970BC"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-1322939B-EA8D-4B5F-B09F-6D310F7970BC"><!----></a>
+<p>Enter the following command:</p>
+<p><code>bldmake bldfiles</code></p>
+</li>
+<li id="GUID-AACC72BD-9B3C-43F4-8613-59A88E95C393"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-AACC72BD-9B3C-43F4-8613-59A88E95C393"><!----></a>
+<p>Enter the following command:</p>
+<p><code>abld build gcce urel</code></p>
+<p>or</p>
+<p><code>abld build gcce udeb</code> (if you want to utilize the
+on-device debugging feature provided by the SDK)</p>
+</li>
+</ol><p>The build script creates a GCCE UREL build of the application to the
+following directory:</p><p><code>&lt;S60_SDK_installation_directory&gt;\Epoc32\release\gcce\urel\HelloWorldBasic.exe</code></p><p>Next, you need to <a href="GUID-0377E6E3-7927-432B-BF6F-4DD8A243654A.html#GUID-0377E6E3-7927-432B-BF6F-4DD8A243654A">create
+a .sis file</a> of the application.</p></div>
+<div><h3>Creating a GCCE UREL build of an example application with Carbide.c++</h3><p>To create a GCCE UREL build of an example application with Carbide.c++,
+do the following:</p><ol>
+<li id="GUID-3BA89ED0-804E-4236-B64F-1C75ED8E3F1F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-3BA89ED0-804E-4236-B64F-1C75ED8E3F1F"><!----></a>
+<p>Select <strong>Project &gt; Properties</strong> from the menu bar. </p>
+</li>
+<li id="GUID-4FF2B8A7-D2C6-4E92-BCA6-E82D3F3A119E"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-4FF2B8A7-D2C6-4E92-BCA6-E82D3F3A119E"><!----></a>
+<p>In the <strong>Properties</strong> dialog, click <strong>C/C++ Build</strong> in the dialog
+TOC. </p>
+</li>
+<li id="GUID-159EE313-2962-4E88-B245-D72E8DFAAE0D"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-159EE313-2962-4E88-B245-D72E8DFAAE0D"><!----></a>
+<p>Select "S60 5.0 GCCE UREL" from the <strong>Configuration</strong> drop-down menu.</p>
+</li>
+<li id="GUID-D8326777-2E89-4B5C-A2EB-7B68270F7762"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-D8326777-2E89-4B5C-A2EB-7B68270F7762"><!----></a>
+<p>Click <strong>OK</strong>.</p>
+</li>
+<li id="GUID-C70039B0-5944-4B4F-9B11-334B6EA5F70F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-C70039B0-5944-4B4F-9B11-334B6EA5F70F"><!----></a>
+<p>Select <strong>Project &gt; Build Project</strong> from the menu bar.</p>
+</li>
+</ol><p>Carbide.c++ creates a build of your project according to the current
+configuration determined in the <strong>Properties</strong> dialog - in this case, a
+GCCE build - as well as the <code>.sis</code> file of this project,
+which is needed for installing it to a real device.</p><p>Next, you need to <a href="GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D.html#GUID-3EE1C0ED-D7E4-40E3-90DF-20028E49943D">sign
+the .sis file</a>.</p><p>For more information on building a project and installing an application
+to real S60 device, please refer to the following topics in the Carbide.c++
+Help:</p><ul>
+<li>
+<p><strong>Carbide.c++ User Guide &gt; Getting Started &gt; First Application Example
+&gt; 5. Building a Symbian OS Executable</strong></p>
+</li>
+<li>
+<p><strong>Carbide.c++ User Guide &gt; Getting Started &gt; First Application Example
+&gt; 6. Deploying Programs</strong></p>
+</li>
+<li>
+<p><strong>C/C++ Development User Guide &gt; Tasks &gt; Building projects</strong></p>
+</li>
+</ul></div>
+<!--end: content--><!--start: sidebar--><!--end: sidebar--></div><!--END: BODY SECTION--><!--BEGIN: FOOTER--><div class="footer"><hr/><div class="copy">© Nokia 2009</div></div><!--END: FOOTER--></body></html>

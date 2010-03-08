@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+TARGET          OcrExample.exe
+TARGETTYPE      exe
+UID             0x0 0xA00001F3
+VENDORID        0x0
+EPOCSTACKSIZE   0x5000
+//EPOCHEAPSIZE    0x5000
+
+SOURCEPATH ..\src
+SOURCE OcrExample.cpp
+SOURCE OcrExampleApp.cpp
+SOURCE OcrExampleDocument.cpp
+SOURCE OcrExampleAppui.cpp
+SOURCE OcrExampleImageView.cpp
+SOURCE OcrExampleImageContainer.cpp
+SOURCE OcrExampleSettingsContainer.cpp
+SOURCE OcrExampleSettingsData.cpp
+SOURCE OcrExampleTextContainer.cpp
+SOURCE ImageHandler.cpp
+SOURCE LayoutForm.cpp
+SOURCE RectScaler.cpp
+SOURCE SettingsList.cpp
+
+SOURCEPATH ..\data
+
+START RESOURCE OcrExample.rss
+HEADER
+TARGETPATH resource\apps
+END
+
+START RESOURCE OcrExample_reg.rss
+#ifdef WINSCW
+TARGETPATH    \private\10003a3f\apps
+#else
+TARGETPATH    \private\10003a3f\import\apps
+#endif
+END
+
+USERINCLUDE ..\inc
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY apparc.lib
+LIBRARY avkon.lib
+LIBRARY bitmaptransforms.lib
+LIBRARY cone.lib
+LIBRARY CommonDialogs.lib
+LIBRARY euser.lib
+LIBRARY efsrv.lib
+LIBRARY eikcore.lib
+LIBRARY eikcoctl.lib
+LIBRARY eikctl.lib
+LIBRARY eikdlg.lib
+LIBRARY estor.lib
+LIBRARY fbscli.lib
+LIBRARY form.lib
+LIBRARY imageconversion.lib
+LIBRARY ocrsrv.lib
+LIBRARY uiklaf.lib
+
+LANG SC
+CAPABILITY NONE

@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is the project specification file for RichTextEditor.
+*
+*/
+
+
+TARGET              RichTextEditor.app
+TARGETTYPE          app
+UID                 0x100039CE 0x01EF0030 
+TARGETPATH          \system\apps\RichTextEditor
+
+SOURCEPATH          ..\src
+SOURCE              RichTextEditorApp.cpp 
+SOURCE              RichTextEditorAppUi.cpp
+SOURCE              RichTextEditorDocument.cpp
+SOURCE              RichTextEditorContainer.cpp
+SOURCE              MyPicture.cpp
+
+SOURCEPATH          ..\data
+RESOURCE            RichTextEditor.rss
+RESOURCE            RichTextEditor_caption.rss
+
+// Additional SOURCE definitions used when importing to Carbide IDE
+#ifdef _CARBIDE_CPP_
+SOURCE              picture.mbm
+SOURCEPATH          ..\sis
+SOURCE              RichTextEditor_S60_2nd_Ed_Carbide.pkg
+#endif  // Carbide
+
+LANG                SC
+
+USERINCLUDE         ..\inc
+
+SYSTEMINCLUDE       \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY             euser.lib
+LIBRARY             avkon.lib 
+LIBRARY             apparc.lib
+LIBRARY             cone.lib
+LIBRARY             eikcore.lib 
+LIBRARY             eikcoctl.lib
+LIBRARY             gdi.lib
+LIBRARY             etext.lib
+LIBRARY             fbscli.lib
+LIBRARY             eikctl.lib
+LIBRARY             estor.lib
+
+AIF RichTextEditor.aif ..\aif RichTextEditorAif.rss c8 context_pane_icon.bmp context_pane_icon_mask.bmp list_icon.bmp list_icon_mask.bmp

@@ -1,0 +1,87 @@
+<project name="SEI - Symbian Emulator Interface" default="build" basedir=".">
+
+  <!-- Code generation -->
+  <property name="debug" value="true"/>
+  <property name="optimize" value="on"/>
+  <property name="verbose" value="off"/>
+  <property name="debug" value="off"/>
+  <property name="compress" value="off"/>
+  <property name="target.vm" value="1.4"/>
+
+  <!-- Build environment -->
+  <property name="NmitShared" location="../../../NmitShared"/>
+  <property name="dist.dir" location="../dist/S60_3rd_MIDP_SDK"/>
+  <property name="ecmt.dist.dir" location="${dist.dir}/epoc32/tools/ecmt"/>
+  <property name="jar.file" value="nei.jar"/>
+  <property name="src.dir" location="src"/>
+  <property name="shared.src.dir" location="${NmitShared}/src"/>
+  <property name="lib.dir" location="lib"/>
+  <property name="build.dir" location="build"/>
+  <property name="emulator.jar" location="${lib.dir}/emulator.jar"/>
+  <property name="classes.dir" location="${build.dir}/classes"/>
+
+  <!-- Clean -->
+  <target name="clean" description="Remove temporary files"> 
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- Make dirs, etc. -->
+  <target name="prepare">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+  </target>
+
+  <!-- Compile SEI -->
+  <target name="compile" depends="prepare">
+    <javac destdir="${classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+
+      <!-- Classpath -->
+      <classpath path="${emulator.jar}"/>
+
+      <!-- Sources -->
+      <src path="${src.dir}"/>
+      <src path="${shared.src.dir}/xrpc"/>
+
+      <!-- Packages to compile  -->
+      <include name="com/nokia/j2me/sei/*.java"/>
+      <include name="com/symbian/tools/j2me/sei/prefs/Main.java"/>
+      <include name="com/symbian/tools/j2me/sei/emulator/Main.java"/>
+      <include name="com/symbian/tools/j2me/sei/emulator/session/win32/SessionImpl.java"/>
+      <include name="com/symbian/tools/j2me/sei/emulator/session/target/SessionImpl.java"/>
+
+    </javac>
+
+    <!-- Copy resources -->
+    <copy todir="${classes.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/*.properties"/>
+        <include name="**/*.gif"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <!-- Buld the jar file -->
+  <target name="jar" depends="compile" description="Make jar file">
+    <jar jarfile="${build.dir}/${jar.file}" 
+         basedir="${classes.dir}"
+         compress="${compress}">
+    </jar>
+  </target>
+
+  <!-- Dist target -->
+  <target name="dist" depends="jar"
+          description="Build and copy jar file to the distribution area">
+    <copy todir="${ecmt.dist.dir}">
+      <fileset file="${build.dir}/${jar.file}"/>
+    </copy>
+  </target>
+
+  <!-- Build target -->
+  <target name="build" depends="dist"/>
+
+</project>

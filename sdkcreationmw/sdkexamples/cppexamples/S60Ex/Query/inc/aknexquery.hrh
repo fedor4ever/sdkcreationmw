@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#ifndef __AKNEXQUERY_HRH__
+#define __AKNEXQUERY_HRH__
+
+enum TAknExQueryMenuCommands
+    {
+    EAknExQueryNoOutline = 0x600,
+
+    // Data Query
+    EAknExQueryOutline1,
+    EAknExQueryOutline4,
+    EAknExQueryOutline8,
+
+    // Confirmation Query
+    EAknExQueryOutline10,
+    EAknExQueryOutline16,
+
+    // Multi Selection Query
+    EAknExQueryOutline54,
+
+    // Multiline Data Query
+    EAknExQueryOutline44,
+
+    // List query
+    EAknExQueryOutline48,
+    EAknExQueryOutline52,
+
+    // Global List Query.
+    EAknExQueryOutline61
+    };
+
+enum TAknExQueryListBoxCommands
+    {
+    // ListBox item commands
+    EAknExQueryListBoxCmdData1,
+    EAknExQueryListBoxCmdData2
+    };
+
+enum TAknExQueryCba
+	{
+	EAknExQueryCbaCmdNext = 0x6300
+	};
+
+#endif
+
+// End of File

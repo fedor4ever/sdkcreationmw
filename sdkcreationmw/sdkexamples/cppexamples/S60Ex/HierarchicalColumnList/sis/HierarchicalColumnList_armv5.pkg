@@ -1,0 +1,42 @@
+;
+; Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 
+;
+
+;Languages
+&EN
+
+; Package header
+#{"HierarchicalColumnList"}, (0xA0007E00), 2, 2, 0
+
+;
+;Localised Vendor name
+;
+%{"Forum Nokia"}
+
+;
+;Unique Vendor name
+;
+:"Forum Nokia"
+
+;Supports S60 v 3.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+
+; Input files
+"..\..\..\epoc32\release\armv5\urel\HierarchicalColumnList.exe" 	-"!:\sys\bin\HierarchicalColumnList.exe"
+"..\..\..\epoc32\data\z\private\10003a3f\import\apps\HierarchicalColumnList_reg.rsc" -"!:\private\10003a3f\import\apps\HierarchicalColumnList_reg_reg.rsc"
+"..\..\..\epoc32\data\z\resource\apps\HierarchicalColumnList.rsc" -"!:\resource\apps\HierarchicalColumnList.rsc"
+"..\..\..\epoc32\data\z\resource\apps\HierarchicalColumnList_aif.mif" -"!:\resource\apps\HierarchicalColumnList_aif.mif"
+

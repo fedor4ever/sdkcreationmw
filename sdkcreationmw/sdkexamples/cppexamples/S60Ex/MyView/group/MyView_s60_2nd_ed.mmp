@@ -1,0 +1,59 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  The project specification file for MyView application.
+*
+*/
+
+
+TARGET  		MyView.app
+TARGETTYPE  	app
+UID  			0x100039CE 0x01EF0018  
+TARGETPATH 		\system\apps\MyView
+LANG     		SC
+
+SOURCEPATH 		..\src
+SOURCE  		MyViewApp.cpp 
+SOURCE  		MyViewAppUi.cpp
+SOURCE  		MyViewDocument.cpp
+SOURCE  		MyViewContainer.cpp
+SOURCE  		MyViewView.cpp
+SOURCE  		MyViewView2.cpp
+SOURCE  		MyViewContainer2.cpp
+
+// needed for adding /sis contents to IDE when importing to Carbide
+#ifdef _CARBIDE_CPP_
+SOURCEPATH      ..\sis
+SOURCE          MyView_Carbide.pkg
+
+SOURCEPATH		..\data
+RESOURCE		MyView.rls
+
+USERINCLUDE  	..\data
+
+#endif
+
+RESOURCE 		..\data\MyView.rss
+
+USERINCLUDE  	..\inc
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY 		euser.lib apparc.lib cone.lib eikcore.lib 
+LIBRARY 		eikcoctl.lib avkon.lib PbkView.lib hal.lib
+ 
+AIF MyView.aif ..\aif MyViewaif.rss c8 context_pane_icon.bmp context_pane_icon_mask.bmp list_icon.bmp list_icon_mask.bmp
+

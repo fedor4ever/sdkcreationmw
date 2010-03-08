@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<project name="WtkDev Package" default="lib" basedir="..">
+
+<!--==========================================-->
+<!-- ANT BUILD FILE FOR WTKDEV PKG	-->
+<!--					-->
+<!-- To use:				-->
+<!-- % ant -buildfile wtkdev.build.xml	-->
+<!--==========================================-->
+
+<!--==========================================-->
+<!--set global properties for this build-->
+<!--==========================================-->
+<property name="name" value="Device Interfaces"/>
+<property name="build" value="classes/wtkdev"/>
+<property name="verbose" value="off"/>
+<property name="debug" value="off"/>
+
+<property name="build.classes" value="${build}/classes"/>
+<property name="src" value="src/wtkdev"/>
+
+<!-- Note: This package has NO dependancies -->
+<property name="classpath" value=""/>
+
+<!-- Distribution layout -->
+<property name="lib" value="${basedir}/lib"/>
+
+<!-- Final jar -->
+<property name="wtkdev.jar" value="wtkdev.jar"/>
+
+<!--==========================================-->
+<!--TARGET [PREPARE]-->
+<!--==========================================-->
+<target name="prepare" description="Prepare build environment">
+	<echo>Preparing WTKDEV Build Environment</echo>
+	<tstamp/>
+
+	<!-- remove old stuff -->
+	<delete dir="${build.classes}" quiet="true"/>
+
+	<!-- create the build directory structure -->
+	<echo>Creating output directories...</echo>
+	<mkdir dir="${build}"/>
+	<mkdir dir="${build.classes}"/>
+	<mkdir dir="${lib}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [COMPILE]-->
+<!--==========================================-->
+<target name="compile" depends="prepare" description="Compile java sources">
+
+	<echo>Building WTKDEV Device Interfaces...</echo>
+	<javac 
+		srcdir="${src}"
+		destdir="${build.classes}"
+		includes="**/*.java"
+		classpath="${classpath}"
+		verbose="${verbose}"
+		debug="${debug}"
+	/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [ARCHIVE]-->
+<!--==========================================-->
+<target name="archive" depends="compile" description="Archive java classes">
+
+	<!-- NOTE: no resources here -->
+
+	<echo>Archiving sources ..</echo>
+	<jar 
+		jarfile="${build}/${wtkdev.jar}"
+		basedir="${build.classes}"
+         />
+</target>
+
+<!--==========================================-->
+<!--TARGET [DIST]-->
+<!--==========================================-->
+<target name="lib" depends="archive" description="Build Distribution">
+
+	<!-- Just copy the jar -->
+	<copy todir="${lib}">
+	  <fileset dir="${build}" includes="${wtkdev.jar}"/>
+	</copy>
+	<echo>Built WTKDEV Device Interface Package!</echo>
+
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLEAN]-->
+<!--==========================================-->
+<target name="clean" description="Delete entire build">
+	<delete dir="${build}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLOBBER]-->
+<!--==========================================-->
+<target name="clobber" depends="clean" description="Delete entire lib">
+	<delete file="${lib}/${wtkdev.jar}"/>
+</target>
+</project>

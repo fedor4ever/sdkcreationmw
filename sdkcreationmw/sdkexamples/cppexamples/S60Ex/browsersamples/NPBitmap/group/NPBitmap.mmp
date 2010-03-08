@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build mmp file
+*
+*/
+
+
+TARGET  NPBitmap.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0xA000018C
+
+SOURCEPATH ..\src
+
+CAPABILITY NetworkServices LocalServices ReadUserData WriteUserData \
+	ReadDeviceData WriteDeviceData SwEvent UserEnvironment DRM NetworkControl
+
+VENDORID        0
+
+START BITMAP allbitmaps.mbm
+#if defined(WINSCW)
+TARGETPATH ..\..\winscw\c\npbitmap
+#else
+TARGETPATH ..\..\data\Z\Resource\apps
+#endif
+HEADER
+SOURCEPATH ..\gfx
+SOURCE c24 redflower.bmp blueflower.bmp
+END
+
+
+USERINCLUDE ..\src
+USERINCLUDE ..\inc
+
+
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE \epoc32\include\ecom
+SYSTEMINCLUDE ..\inc
+
+SOURCE E32NpDllEntryPoint.cpp
+SOURCE bitmapplugin.cpp
+SOURCE bitmapecommain.cpp
+SOURCE bitmapecominst.cpp
+
+SOURCEPATH      ..\Data
+START RESOURCE A000018C.rss
+TARGET NPBitmap.rsc
+END
+
+LIBRARY euser.lib estlib.lib cone.lib fbscli.lib efsrv.lib
+LIBRARY ecom.lib
+

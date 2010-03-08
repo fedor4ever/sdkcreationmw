@@ -1,0 +1,839 @@
+<!-- build.xml -->
+<project name="Series 60 ECMT Manager project" default="build" basedir=".">
+  <!-- property file="./product.properties" / -->  
+
+  <description>
+    Series 60 ECMT Manager project
+  </description>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Properties ***************************** -->
+  <!-- ********************************************************** -->
+  <property name="product.title" value="ECMT-Manager"/>
+  <property name="product.version" value="3.0.3"/>
+  <!-- root dirs-->
+  <property name="java.src.dir" value="src"/>
+  <property name="rsrc.dir" value="rsrc"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="build.dir" value="build"/>
+  <!-- resources -->
+  <property name="config.dir" value="${rsrc.dir}/config"/>
+  <property name="resources.dir" value="${rsrc.dir}/resources"/>
+  <property name="cmd.dir" value="${rsrc.dir}/cmd"/>
+  <!-- ecmt folder -->
+  <property name="ecmt.dir" value="${build.dir}/ecmt"/>
+  <property name="ecmt.resources.dir" value="${ecmt.dir}/resources"/>
+  <property name="ecmt.config.dir" value="${ecmt.dir}/config"/>
+  <property name="ecmt.lib.dir" value="${ecmt.dir}/lib"/>
+  <property name="ecmt.language.dir" value="${ecmt.dir}/language"/>
+  <property name="ecmt.log.dir" value="${ecmt.dir}/log"/>
+  <property name="ecmt.plugins.dir" value="${ecmt.dir}/plugins"/>
+
+  <property name="log4j.jar" value="log4j-1.2.8.jar"/>
+  <property name="seiprefs.jar" value="seiprefs.jar"/>
+
+  <property name="Series60SDK_dev" location="../../.."/>
+  <property name="NmitShared" location="${Series60SDK_dev}/sdkruntimes/NmitShared"/>
+  <property name="SDKDiagnostics" location="${Series60SDK_dev}/sdkruntimes/sdkdiagnosticsui"/>
+
+  <property name="shared.src.dir" location="${NmitShared}/src"/>
+  <property name="diagnostics.src.dir" location="${SDKDiagnostics}/src"/>
+  <property name="sei.src.dir" location="${Series60SDK_dev}/sdkruntimes/midp/nei/src"/>
+  <property name="midp.root.dir" location="{Series60SDK_dev}/sdkruntimes/midp"/>
+  <property name="midp.build.file" location="${midp.root.dir}/build.xml"/>
+  <property name="midp.build.dir" location="${midp.root.dir}/build"/>
+  <property name="classes.dir" location="${build.dir}/classes"/>
+  <property name="epdt.classes.dir" location="${classes.dir}/epdt"/>
+  <property name="seiprefs.classes.dir" location="${classes.dir}/seiprefs"/>
+  <property name="unzip.classes.dir" location="${classes.dir}/unzip"/>
+
+  <property name="plugins.classes.dir" location="${classes.dir}/plugins"/>
+  <property name="winsock.plugin.classes.dir" location="${plugins.classes.dir}/winsock"/>
+  <property name="ethernet.plugin.classes.dir" location="${plugins.classes.dir}/ethernet"/>
+  <property name="route.plugin.classes.dir" location="${plugins.classes.dir}/route"/>
+  <property name="cppdebug.plugin.classes.dir" location="${plugins.classes.dir}/cppdebug"/>
+  <property name="general.plugin.classes.dir" location="${plugins.classes.dir}/general"/>
+  <property name="pan.plugin.classes.dir" location="${plugins.classes.dir}/pan"/>
+  <property name="platsec.plugin.classes.dir" location="${plugins.classes.dir}/platsec"/>
+  <property name="taskman.plugin.classes.dir" location="${plugins.classes.dir}/taskman"/>
+  <property name="output.plugin.classes.dir" location="${plugins.classes.dir}/output"/>
+  <property name="httptraffic.plugin.classes.dir" location="${plugins.classes.dir}/httptraffic"/>
+  <property name="eventsim.plugin.classes.dir" location="${plugins.classes.dir}/eventsim"/>
+  <property name="securityconf.plugin.classes.dir" location="${plugins.classes.dir}/securityconf"/>
+  <property name="seisuite.plugin.classes.dir" location="${plugins.classes.dir}/seisuite"/>
+  <property name="seidebug.plugin.classes.dir" location="${plugins.classes.dir}/seidebug"/>
+
+  <property name="optimize" value="on"/>  
+  <property name="verbose" value="off"/>  
+  <property name="debug" value="off"/>    
+  <property name="compress" value="off"/> 
+  <property name="target.vm" value="1.4"/>
+
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Build ********************************** -->
+  <!-- ********************************************************** -->
+
+  <target name="build" 
+          depends="cpp,midp"
+          description="Build everything">
+  </target>
+
+  <target name="cpp" 
+          depends="ecmt-manager,cpp-plugins,zip-tool"
+          description="Build C++ distribution">
+  </target>
+
+  <target name="midp" 
+          depends="ecmt-manager,midp-plugins,zip-tool"
+          description="Build MIDP distribution">
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Clean ********************************** -->
+  <!-- ********************************************************** -->
+
+  <target name="clean" description="removing temporary files"> 
+    <delete dir="${ecmt.dir}"/>
+    <delete dir="${classes.dir}"/>
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Make dirs, etc ************************* -->
+  <!-- ********************************************************** -->
+
+  <target name="prepare">
+    <!-- make dirs -->
+    <mkdir dir="${ecmt.dir}"/>
+    <mkdir dir="${ecmt.resources.dir}"/>
+    <mkdir dir="${ecmt.log.dir}"/>
+    <mkdir dir="${ecmt.plugins.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <mkdir dir="${epdt.classes.dir}"/> 
+    <mkdir dir="${unzip.classes.dir}"/>
+    <mkdir dir="${plugins.classes.dir}"/>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- *************** Compile EcmtManager ********************** -->
+  <!-- ********************************************************** -->
+
+  <target name="compile-ecmt-manager" depends="prepare">
+   
+    <!-- Compile -->
+    <javac destdir="${epdt.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+
+      <!-- Classpath -->
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+
+      <!-- Sources -->
+      <src path="${java.src.dir}"/>
+      <src path="${diagnostics.src.dir}"/>
+      <src path="${shared.src.dir}/util"/>
+      <src path="${shared.src.dir}/app"/>
+      <src path="${shared.src.dir}/bookmarks"/>
+      <src path="${shared.src.dir}/wtkdev"/>
+
+      <!-- Main class -->
+      <include name="com/nokia/epdt/Main.java"/>
+
+      <!-- Device interfaces -->
+      <include name="com/nokia/wtk/device/*.java"/>
+
+      <!-- Additional classes shared by plugins -->
+      <include name="com/nokia/wtk/util/HTTPStatus.java"/>
+      <include name="com/nokia/wtk/util/gui/SolidBorder.java"/>
+      <include name="com/nokia/wtk/util/gui/BorderPanel.java"/>
+      <include name="com/nokia/wtk/util/gui/BMPImage.java"/>
+      <include name="com/nokia/wtk/util/gui/WBMPImage.java"/>
+      <include name="com/nokia/wtk/util/wbxml/DecoderTool.java"/>
+      <include name="com/nokia/wtk/app/FindDialog.java"/>
+      <include name="com/nokia/wtk/diagnostics/views/support/*.java"/>
+      <include name="com/nokia/wtk/diagnostics/browser/*.java"/>
+      <include name="com/nokia/epdt/core/*.java"/>
+      <include name="com/nokia/epdt/core/plugin/*.java"/>
+      <include name="com/nokia/epdt/core/config/ini/epoc/*.java"/>
+
+    </javac>
+
+    <!-- Copy resources -->
+    <copy todir="${epdt.classes.dir}">
+
+      <!-- EcmtManager -->
+      <fileset dir="${java.src.dir}">
+        <include name="**/*.properties"/>
+        <!-- Plugins are packaged separately -->
+        <exclude name="com/nokia/epdt/plugins/s60/**/*.properties"/>
+      </fileset>
+
+      <!-- Diagnostics -->
+      <fileset dir="${diagnostics.src.dir}">
+        <include name="com/nokia/wtk/diagnostics/gui/resources/*.properties"/>
+        <include name="com/nokia/wtk/diagnostics/gui/resources/*.gif"/>
+        <include name="com/nokia/wtk/diagnostics/gui/resources/*.png"/>
+        <include name="com/nokia/wtk/diagnostics/views/resources/*.properties"/>
+        <include name="com/nokia/wtk/diagnostics/views/resources/*.gif"/>
+        <include name="com/nokia/wtk/diagnostics/debug/resources/*.properties"/>
+        <include name="com/nokia/wtk/diagnostics/debug/resources/*.gif"/>
+      </fileset>
+
+      <!-- Utils -->
+      <fileset dir="${shared.src.dir}/util">
+        <include name="com/nokia/wtk/util/gui/resources/DisclosurePanel.properties"/>
+        <include name="com/nokia/wtk/util/gui/resources/*.gif"/>
+      </fileset>
+
+      <!-- App framework -->
+      <fileset dir="${shared.src.dir}/app">
+        <include name="**/resources/*.properties"/>
+        <include name="**/resources/*.gif"/>
+      </fileset>
+
+      <!-- Bookmarks -->
+      <fileset dir="${shared.src.dir}/bookmarks">
+        <include name="**/resources/*.properties"/>
+        <include name="**/resources/*.gif"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <!-- **********************************************************  -->
+  <!-- *************** Compile SEI preferences ******************  -->
+  <!-- **********************************************************  -->
+
+  <!-- Compile SEI preferences -->
+  <target name="compile-seiprefs"
+          depends="prepare"
+          description="Compile SEI preferences">
+    <mkdir dir="${seiprefs.classes.dir}"/>
+    <javac destdir="${seiprefs.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+
+      <!-- Sources -->
+      <src path="${sei.src.dir}"/>
+
+      <!-- Files to compile  -->
+      <include name="com/symbian/tools/j2me/sei/preferences/UserPreferences.java"/>
+      <include name="com/symbian/tools/j2me/sei/preferences/KDPPreferences.java"/>
+      <include name="com/symbian/tools/j2me/sei/utils/SuitePreferencesView.java"/>
+      <include name="com/symbian/tools/j2me/sei/utils/SecurityPreferencesView.java"/>
+    </javac>
+
+    <!-- Copy resources -->
+    <copy todir="${seiprefs.classes.dir}">
+      <fileset dir="${sei.src.dir}">
+        <include name="com/symbian/tools/j2me/sei/utils/*.properties"/>
+        <include name="com/symbian/tools/j2me/sei/preferences/*.properties"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <!-- **********************************************************  -->
+  <!-- *************** Build SEI preferences jar ****************  -->
+  <!-- **********************************************************  -->
+
+  <target name="seiprefs-jar" 
+          depends="compile-seiprefs"
+          description="Build SEI preferences jar">
+    <jar jarfile="${ecmt.dir}/${seiprefs.jar}" 
+         basedir="${seiprefs.classes.dir}"
+         compress="${compress}">
+    </jar>
+  </target>
+
+  <!-- **********************************************************  -->
+  <!-- *************** Build epdt.jar ***************************  -->
+  <!-- **********************************************************  -->
+
+  <target name="ecmt-manager"
+          depends="compile-ecmt-manager" 
+          description="Make epdt.jar">
+
+    <!-- make epdt.jar  -->
+    <jar jarfile="${ecmt.dir}/epdt.jar" 
+         basedir="${epdt.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Class-Path" value=". ./lib/${log4j.jar}"/>
+        <attribute name="Main-Class" value="com.nokia.epdt.Main"/>
+      </manifest>
+    </jar>
+
+    <!-- Copy resources -->
+    <copy toDir="${ecmt.resources.dir}">
+      <fileset dir="${resources.dir}"/>
+    </copy>
+    <!-- Copy config -->
+    <copy toDir="${ecmt.config.dir}">
+      <fileset dir="${config.dir}"/>
+    </copy>
+    <!-- Copy the library files to the ecmt.lib directory -->
+    <copy toDir="${ecmt.lib.dir}">
+      <fileset dir="${lib.dir}">
+        <include name="*.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Buld Zip tool ************************** -->
+  <!-- ********************************************************** -->
+
+  <target name="zip-tool" depends="prepare">
+    <!-- Compile -->
+    <javac destdir="${unzip.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/zip/ZipManager.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${unzip.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/general/**/*.properties"/>
+        <include name="com/nokia/epdt/zip/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create the jar -->
+    <jar destfile="${ecmt.dir}/unzip.jar"
+         basedir="${unzip.classes.dir}" 
+         compress="${compress}">
+      <manifest>
+        <attribute name="Class-Path" value=". ./lib/${log4j.jar}"/>
+        <attribute name="Main-Class" value="com.nokia.epdt.zip.ZipManager"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Winsock plugin ************************* -->
+  <!-- ********************************************************** -->
+
+  <target name="winsock-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${winsock.plugin.classes.dir}"/>
+    <javac destdir="${winsock.plugin.classes.dir}"
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/winsock/WinsockPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${winsock.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/winsock/**/*.gif"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/winsock.jar"
+         basedir="${winsock.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.winsock.WinsockPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** Ethernet plugin ************************ -->
+  <!-- ********************************************************** -->
+
+  <target name="ethernet-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${ethernet.plugin.classes.dir}"/>
+    <javac destdir="${ethernet.plugin.classes.dir}"
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/ethernet/EthernetPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${ethernet.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/ethernet/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/ethernet.jar"
+         basedir="${ethernet.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.ethernet.EthernetPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ************** EventSimulation plugin ******************** -->
+  <!-- ********************************************************** -->
+
+  <target name="eventsim-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${eventsim.plugin.classes.dir}"/>
+    <javac destdir="${eventsim.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/eventsim/EventSimPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${eventsim.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.properties"/>
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.gif"/>
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.png"/>
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.xml"/>
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.sms"/>
+        <include name="com/nokia/epdt/plugins/s60/eventsim/**/*.mms"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/eventsim.jar"
+         basedir="${eventsim.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.eventsim.EventSimPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ******************* Route plugin ************************* -->
+  <!-- ********************************************************** -->
+
+  <target name="route-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${route.plugin.classes.dir}"/>
+    <javac destdir="${route.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/route/RoutePlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${route.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/route/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/route.jar"
+         basedir="${route.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.route.RoutePlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ***************** CppDebug plugin ************************ -->
+  <!-- ********************************************************** -->
+
+  <target name="cppdebug-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${cppdebug.plugin.classes.dir}"/>
+    <javac destdir="${cppdebug.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/cpp/debug/CppDebugPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${cppdebug.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/cpp/debug/**/*.properties"/>
+        <include name="com/nokia/epdt/plugins/s60/emulator/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/cppdebug.jar"
+         basedir="${cppdebug.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.cpp.debug.CppDebugPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ************** GeneralSettings plugin ******************** -->
+  <!-- ********************************************************** -->
+
+  <target name="general-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${general.plugin.classes.dir}"/>
+    <javac destdir="${general.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/general/GeneralSettingsPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${general.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/general/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/general.jar"
+         basedir="${general.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.general.GeneralSettingsPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ******************* PAN plugin *************************** -->
+  <!-- ********************************************************** -->
+
+  <target name="pan-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${pan.plugin.classes.dir}"/>
+    <javac destdir="${pan.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/pan/PanPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${pan.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/pan/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/pan.jar"
+         basedir="${pan.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.pan.PanPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ************* PlatformSecurity plugin ******************** -->
+  <!-- ********************************************************** -->
+
+  <target name="platsec-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${platsec.plugin.classes.dir}"/>
+    <javac destdir="${platsec.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/platsec/PlatformSecurityPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${platsec.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/platsec/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/platsec.jar"
+         basedir="${platsec.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.platsec.PlatformSecurityPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- *************** TaskManager plugin *********************** -->
+  <!-- ********************************************************** -->
+
+  <target name="taskman-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${taskman.plugin.classes.dir}"/>
+    <javac destdir="${taskman.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/taskman/TaskManagerPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${taskman.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/taskman/**/*.properties"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/taskman.jar"
+         basedir="${taskman.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.taskman.TaskManagerPlugin"/>
+        <attribute name="Plug-in-Title-Long" value="Task Manager"/>
+        <attribute name="Plug-in-Title-Short" value="Task Manager"/>
+        <attribute name="Plug-in-Open-Default" value="true"/>
+        <attribute name="Plug-in-Width-Default" value="400"/>
+        <attribute name="Plug-in-Height-Default" value="300"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- *************** HttpTraffic plugin *********************** -->
+  <!-- ********************************************************** -->
+
+  <target name="httptraffic-plugin" depends="compile-ecmt-manager">
+
+    <!-- Compile -->
+    <mkdir dir="${httptraffic.plugin.classes.dir}"/>
+    <javac destdir="${httptraffic.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <src path="${diagnostics.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/httptraffic/HttpTrafficPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${httptraffic.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/httptraffic/**/*.properties"/>
+      </fileset>
+      <fileset dir="${diagnostics.src.dir}">
+        <include name="com/nokia/wtk/diagnostics/gui/traffic/resources/*.properties"/>
+        <include name="com/nokia/wtk/diagnostics/gui/traffic/resources/*.gif"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/httptraffic.jar"
+         basedir="${httptraffic.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.httptraffic.HttpTrafficPlugin"/>
+        <attribute name="Plug-in-Title-Long" value="HTTP Traffic"/>
+        <attribute name="Plug-in-Title-Short" value="Trafic"/>
+        <attribute name="Plug-in-Open-Default" value="true"/>
+        <attribute name="Plug-in-Width-Default" value="400"/>
+        <attribute name="Plug-in-Height-Default" value="300"/>
+      </manifest>
+    </jar>
+  </target>
+  
+  <!-- ********************************************************** -->
+  <!-- *************** SecurityConf MIDP plugin ***************** -->
+  <!-- ********************************************************** -->
+
+  <target name="securityconf-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${securityconf.plugin.classes.dir}"/>
+    <javac destdir="${securityconf.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/securityconf/SecurityConfPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${securityconf.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/securityconf/**/*.properties"/>
+        <include name="com/nokia/epdt/plugins/s60/securityconf/**/*.xpf"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/securityconf.jar"
+         basedir="${securityconf.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.securityconf.SecurityConfPlugin"/>
+      </manifest>
+    </jar>
+  </target>
+  
+
+  
+  <!-- ********************************************************** -->
+  <!-- *************** SeiSuite MIDP plugin ********************* -->
+  <!-- ********************************************************** -->
+
+  <target name="seisuite" depends="compile-ecmt-manager,seiprefs-jar">
+    <!-- Compile -->
+    <mkdir dir="${seisuite.plugin.classes.dir}"/>
+    <javac destdir="${seisuite.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${ecmt.dir}/${seiprefs.jar}"/>
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/seisuite/SeiSuitePlugin.java"/>
+
+    </javac>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/seisuite.jar"
+         basedir="${seisuite.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.seisuite.SeiSuitePlugin"/>
+        <attribute name="Class-Path" value="${seiprefs.jar}"/>
+      </manifest>
+    </jar>
+  </target>
+  
+    <!-- ********************************************************** -->
+  <!-- *************** SeiDebug MIDP plugin ****************** -->
+  <!-- ********************************************************** -->
+
+  <target name="seidebug" depends="compile-ecmt-manager,seiprefs-jar">
+    <!-- Compile -->
+    <mkdir dir="${seidebug.plugin.classes.dir}"/>
+    <javac destdir="${seidebug.plugin.classes.dir}"
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${ecmt.dir}/${seiprefs.jar}"/>
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/seidebug/SeiDebugPlugin.java"/>
+    </javac>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/seidebug.jar"
+         basedir="${seidebug.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.seidebug.SeiDebugPlugin"/>
+        <attribute name="Class-Path" value="${seiprefs.jar}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- **************** SystemOut plugin ************************ -->
+  <!-- ********************************************************** -->
+
+  <target name="output-plugin" depends="compile-ecmt-manager">
+    <!-- Compile -->
+    <mkdir dir="${output.plugin.classes.dir}"/>
+    <javac destdir="${output.plugin.classes.dir}" 
+           optimize="${optimize}"
+           verbose="${verbose}"
+           target="${target.vm}"
+           debug="${debug}">
+      <classpath path="${lib.dir}/${log4j.jar}"/>
+      <classpath path="${epdt.classes.dir}"/>
+      <src path="${java.src.dir}"/>
+      <src path="${diagnostics.src.dir}"/>
+      <include name="com/nokia/epdt/plugins/s60/output/SystemOutPlugin.java"/>
+    </javac>
+    <!-- Copy resources -->
+    <copy todir="${output.plugin.classes.dir}">
+      <fileset dir="${java.src.dir}">
+        <include name="com/nokia/epdt/plugins/s60/output/**/*.properties"/>
+      </fileset>
+      <fileset dir="${diagnostics.src.dir}">
+        <include name="com/nokia/wtk/diagnostics/gui/log/resources/*.properties"/>
+        <include name="com/nokia/wtk/diagnostics/gui/log/resources/*.gif"/>
+      </fileset>
+    </copy>
+    <!-- Create jar -->
+    <jar destfile="${ecmt.plugins.dir}/output.jar"
+         basedir="${output.plugin.classes.dir}"
+         compress="${compress}">
+      <manifest>
+        <attribute name="Plug-in-Module" value="com.nokia.epdt.plugins.s60.output.SystemOutPlugin"/>
+        <attribute name="Plug-in-Title-Long" value="SystemOut"/>
+        <attribute name="Plug-in-Title-Short" value="SystemOut"/>
+        <attribute name="Plug-in-Open-Default" value="true"/>
+        <attribute name="Plug-in-Width-Default" value="400"/>
+        <attribute name="Plug-in-Height-Default" value="300"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ********************************************************** -->
+  <!-- ******************** Plugins ***************************** -->
+  <!-- ********************************************************** -->
+
+  <!-- Plugins that are common to both C++ and MIDP SDKs -->
+  <target name="common-plugins"
+          depends="eventsim-plugin,route-plugin,general-plugin,pan-plugin,taskman-plugin,httptraffic-plugin,output-plugin,winsock-plugin"
+          description="Build common plugins">
+  </target>
+
+  <!-- Plugins that are specific to MIDP SDK -->
+  <target name="midp-plugins"
+          depends="common-plugins,securityconf-plugin,seidebug,seisuite"
+          description="Build MIDP plugins">
+  </target>
+
+  <!-- Plugins that are specific C++ SDK -->
+  <target name="cpp-plugins"
+          depends="common-plugins,cppdebug-plugin,platsec-plugin"
+          description="Build C++ plugins">
+  </target>
+
+  <!-- All plugins -->
+  <target name="plugins"
+          depends="midp-plugins,cpp-plugins"
+          description="Build all plugins">
+  </target>
+
+</project>

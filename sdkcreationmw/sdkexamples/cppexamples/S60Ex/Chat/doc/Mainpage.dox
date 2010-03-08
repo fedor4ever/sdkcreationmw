@@ -1,0 +1,69 @@
+/*! \mainpage Chat Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This tutorial explains how to use Bluetooth or TCP/IP connection for sending messages from one device to another and vice versa. Bluetooth Serial Port service is used in Bluetooth connection. Implementation is socket-based.
+ *
+ *  The tutorial starts by listing the pre-requisites the user should know before starting this example, and describes how to build and run the example.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *
+ *  This example exists as a complete application, and has the standard Symbian OS application architecture employing the Application, Document, UI, and View classes. The example makes use of other Symbian OS concepts which the reader should be aware of before attempting to understand this example. These are:
+ *  - How to use Bluetooth
+ *  - How to use TCP/IP connection
+ *  - How to use sockets
+ *
+ *  Before running this example, Bluetooth or Network connection must be enabled and configured. The application needs to be installed into two devices, one functioning as server and the other as client. When example is started, the application will show the same view on both devices.
+ *
+ *  This application supports changing the screen size when program is running.
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The program capabilities are defined in %Chat.mmp file: CAPABILITY LocalServices NetworkServices.
+ *
+ *  \subsection Sub32 3.2 ScalableUI
+ *
+ *	The program takes screen parameters in the start of the application and works with all screen modes. The program support changing the screen layout while the program is running.
+ *
+ *  \subsection Sub33 3.3 Building the example application
+ *
+ *  This example can be built in directory chat\\group by running the following commands:<br>
+ *  bldmake bldfiles<br>
+ *  abld build winscw udeb
+ *
+ *  It is possible to create project for CodeWarrior IDE by running the following command:<br>
+ *  abld makefile cw_ide
+ *
+ *  In addition it is possible to create project form CodeWarrior IDE:<br>
+ *  Open CodeWarrior IDE<br>
+ *  Select File -> Import from .mmp file<br>
+ *  Browse to chat/group folder and select chat.mmp<br>
+ *  Select Project -> Make<br>
+ *  Select Project -> Run<br>
+ *
+ *  After successful build, application can be found and started from
+ *  Applications > Installed > Chat
+ *
+ *  \subsection Sub34 3.4 Design
+ *  Chat example uses Symbian OS Bluetooth service facilities and Socket classes. Bluetooth Serial Port service is used in Bluetooth connection.
+ *
+ *  \subsubsection Subsub341 3.4.1 Using the Options menu
+ *  The Options menu commands are handled in CChatAppUi::HandleCommandL() fuction. Use Bluetooth -> Start Chat Option starts the Bluetooth Chat server by calling ChatBt's StartL() function. Server will then advertise to other Bluetooth devices that it has Serial Port service and it is able to receive and send messages. On the screen will appear a series of log reports to show this starting has succeeded and that the device is listening for the incoming connection. Client device can connect to server by selecting Use Bluetooth -> Connect from Options menu. Connect calls ChatBt's ConnectL() function. As connect is selected, a list of recently discovered Bluetooth devices will appear on the screen. Screen is implemented by listbox element. As connection has been made, server device and client device will indicate that they are now connected.
+ *
+ *  Use TCP/IP -> Start Chat starts the server by calling ChatInet's StartL() function. Before starting user has to select Accesspoint to use. Server will then has a service and it is able to receive and send messages. Client device can connect to server by selecting Connect from Use TCP/IP submenu. Connect calls ChatInet's ConnectL() function. As connect is selected, server address is asked from user. After giving correct server address, user has to select Accespoint to use.
+ *
+ *  As connection has been made successfully via Bluetooth or TCP/IP, there are Disconnect, Send Message, Clear List and Exit in Options in client device's Options menu and Stop Chat, Send Message, Clear List and Exit in Server device's Options menu. Disconnect disconnects the connection and Stop Chat stops server and disconnects the connection. Disconnect calls DisconnectL() function and Stop Chat calls StopL() function. With Send Message option, client device can send messages to server device and vice versa. Send Message calls first Container's ShowDataQueryL function. This function draws "Write Message" query. After that send message calls SendMessageL(text) function to deliver message from client to server or vice versa. Clear list clears the view by empting the listbox. Exit closes the application.   *
+ *
+ */

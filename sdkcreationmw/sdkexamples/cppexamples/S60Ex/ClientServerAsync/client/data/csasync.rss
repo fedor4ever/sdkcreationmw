@@ -1,0 +1,135 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+NAME CSAS
+
+// INCLUDE FILES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "CSAsync.hrh"
+#include "CSAsync.rls"
+
+
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+        {
+        // No implementation required
+        }
+
+// -----------------------------------------------------------------------------
+//
+//    Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF
+        {
+        buf="";
+        }
+
+// -----------------------------------------------------------------------------
+//
+//    Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_csasync_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_csasync_menubar
+//   Menubar for CSAsync example
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_csasync_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_csasync_menu;
+            }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_csasync_menu
+//   Menu for "Options"
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_csasync_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EStartClock;
+            txt = STRING_r_csas_submenu_start;
+            },
+        MENU_ITEM
+            {
+            command = EStopClock;
+            txt = STRING_r_csas_submenu_stop;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_csas_submenu_exit;
+            }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+// r_csasync_localisable_app_info
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_csasync_localisable_app_info
+    {
+    short_caption = STRING_r_csas_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_csas_caption_string;
+
+        number_of_icons = 2;
+	   	icon_file = "\\resource\\apps\\csasync.mif";
+	    };
+    }
+
+// End of File

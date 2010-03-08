@@ -1,0 +1,194 @@
+# Microsoft Developer Studio Generated Dependency File, included by wmlsenc.mak
+
+.\src\bytecode.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\codenode.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\codenode.h"\
+	".\src\common.h"\
+	".\src\conspool.h"\
+	".\src\funcpool.h"\
+	".\src\lex.h"\
+	".\src\library.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\opcodes.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\conspool.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\conspool.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\funcpool.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\codenode.h"\
+	".\src\common.h"\
+	".\src\funcpool.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\opcodes.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\lex.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\library.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\library.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\main.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\codenode.h"\
+	".\src\common.h"\
+	".\src\conspool.h"\
+	".\src\funcpool.h"\
+	".\src\lex.h"\
+	".\src\library.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\memmana.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\pragpool.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\symtable.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\common.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	
+
+.\src\wmlsyacc.c : \
+	"$(RB_WPS)\server\include\primitive_types.h"\
+	"$(RB_WPS)\server\include\wmlsapi.h"\
+	"$(RB_WPS)\server\include\wps_service.h"\
+	"$(RB_WPS)\server\include\wps_wsltypes.h"\
+	"$(RB_WPS)\server\include\wpss_type.h"\
+	".\src\bytecode.h"\
+	".\src\codenode.h"\
+	".\src\common.h"\
+	".\src\conspool.h"\
+	".\src\funcpool.h"\
+	".\src\lex.h"\
+	".\src\main.h"\
+	".\src\memmana.h"\
+	".\src\pragpool.h"\
+	".\src\symtable.h"\
+	".\src\wmlsyacc.h"\
+	

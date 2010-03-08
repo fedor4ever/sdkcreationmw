@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+// 
+// $Id: bld.inf,v 1.7 2005/11/30 07:40:42 slava Exp $
+//
+
+PRJ_PLATFORMS
+//WINS
+WINSCW
+
+PRJ_EXPORTS
+// This was for 2.8
+// ..\data\wsock.esk \epoc32\wins\c\System\data\wsock.esk
+// Also, ip.tcpip.esk has to  be removed.
+
+// In 3.0 wsock.esk must be renamed into ip.tcpip.esk, otherwise it 
+// gets ignored
+..\data\wsock.esk \epoc32\WINSCW\c\private\101f7989\ESock\ip.tcpip.esk 
+
+PRJ_MMPFILES
+wsock.mmp
+wsocka.mmp
+wsocki.mmp
+wsock6.mmp

@@ -1,0 +1,18 @@
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+            xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">
+      http://schemas.xmlsoap.org/ws/2005/02/rm/TerminateSequence
+    </a:Action>
+    <a:To s:mustUnderstand="1">
+      http://server-machine/SecureReliableMessaging/ReliableOneWay.svc
+    </a:To>
+  </s:Header>
+  <s:Body>
+    <TerminateSequence xmlns="http://schemas.xmlsoap.org/ws/2005/02/rm">
+      <Identifier>
+        urn:uuid:0afb8d36-bf26-4776-b8cf-8c91fddb5496
+      </Identifier>
+    </TerminateSequence>
+  </s:Body>
+</s:Envelope>

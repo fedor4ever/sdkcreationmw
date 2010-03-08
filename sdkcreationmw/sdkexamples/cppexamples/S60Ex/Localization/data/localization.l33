@@ -1,0 +1,62 @@
+/*
+* ==============================================================================
+*  Name        : localization.l33
+*  Part of     : localization
+*  Interface   :
+*  Description : Resource File for Thai
+*  Version     :
+*
+*  Copyright (c) 2005 - 2007 Nokia Corporation.
+*  This material, including documentation and any related
+*  computer programs, is protected by copyright controlled by
+*  Nokia Corporation.
+* ==============================================================================
+*/
+
+CHARACTER_SET UTF8
+
+//  LOCALISATION STRINGS
+
+//d:Caption string for app.
+#define qtn_loc_caption_string "โลคัลไลเซชัน"
+
+//d:Short caption string for app.
+#define qtn_loc_short_caption_string "โลคัลไลเซชัน"
+
+//d:First item in "Options" menu pane
+#define qtn_loc_commandnumber "หมายเลข"
+
+//d:Second item in "Options" menu pane
+#define qtn_loc_commandcurrency "สกุลเงิน"
+
+//d:Third item in "Options" menu pane
+#define qtn_loc_commanddate "วันที่"
+
+//d:Fourth item in "Options" menu pane
+#define qtn_loc_commandtime "เวลา"
+
+//d:Fifth item in "Options" menu pane
+#define qtn_loc_commandtext "ตัวอักษร"
+
+//d:Sixth item in "Options" menu pane
+#define qtn_loc_commandimage "รูปภาพ"
+
+//d:Third item in "Options" menu pane, "exit" event.
+#define qtn_loc_exit "ออก"
+
+//d:When user requests ELocalizationCommand5 event, text below is shown.
+#define qtn_loc_commandtext_text "%0U ภรรยาของฉัน มีรถ %1U คัน"
+
+// the paths in following string are different for 3rd & 2nd platforms
+#ifdef EKA2
+
+//d:When user requests ELocalizationCommand6 event, below image is shown.
+#define qtn_loc_commandimage_bmpfile "%U\\resource\\apps\\Localization_33.mbm"
+
+#else
+
+#define qtn_loc_commandimage_bmpfile "%U\\system\\apps\\Localization\\Localization_33.mbm"
+
+#endif
+
+// End of File

@@ -1,0 +1,336 @@
+/*! \mainpage MyView Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * The MyView example demonstrates
+ * - How to create more than one View
+ * - How to switch between Different views within application
+ * - How to switch to an external application's view
+ * - How to pass the message between the views
+ *
+ * Each 'view' has:
+ * - A Control Button Array (CBA) that defines the operation of the soft keys.
+ * - A Menu bar, that is displayed on selecting the Options soft key.
+ * - Operations which are invoked when the view is activated or deactivated.
+ * - The ability to handle menu commands.
+ * - A visual appearance on the display.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CAknView
+ * - CAknViewAppUi
+ * - CCoeControl
+ * - CAknNavigationControlContainer
+ * - CAknTabGroup
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The example makes use of the standard Symbian OS application framework
+ * comprising the Application, Document, UI, and View classes. The reader
+ * should be aware of this architecture before attempting to understand this
+ * example.
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * When the application starts up, the following screen is displayed.
+ * Check the Focused Navigation pane area
+ *
+ * \image html MYVIEW1.JPG
+ *
+ * Views can be switched from Navigation pane.
+ *
+ * \image html MYVIEW2.JPG
+ *
+ * - Navigate to <b>view1</b>
+ * - Open the <b>Option Menu</b> of <b>View1</b>
+ *   When Option Menu opens, Four choices are displayed as follows
+ *
+ * \image html MYVIEW3.JPG
+ *
+ * - Select <b>Send msg and uid</b>
+ * - Displays the Information Note in <b>View2</b>
+ *   This demonstrates how the message and uid can be passed to other view
+ *
+ * \image html MYVIEW7.JPG
+ *
+ * - Open the option menu of <b>View2</b>
+ * - Five Options are displayed in Option Menu
+ *
+ * \image html MYVIEW4.JPG
+ *
+ * - Select <b>Calender month view</b>
+ * - Note that View is switched to Calender application's month view
+ *
+ * \image html MYVIEW5.JPG
+ *
+ *
+ * - Navigate to View2
+ * - Open the Option Menu
+ * - Select <b>Start recording </b>
+ *  The view is switched to Voice Recorder application's recording view
+ *
+ * \image html MYVIEW6.JPG
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * This example exists as a complete application and has the Avkon
+ * View-Switching architecture comprising the the Application, Document, UI,
+ * and View classes.
+ *
+ * View architecture is widely used in application development in the
+ * S60 platform. A GUI application can create several views and display
+ * different application data or UI controls in each view.
+ * Each view has its own control stack. Each view’s container and
+ * controls are created when it is called forward, and destroyed
+ * when another view of the same application is called forward.
+ * When activating a view, a message ID and a message can be passed.
+ * This provides a great deal of functionality that you can build and use in
+ * existing applications.
+ *
+ * \subsection Sub21 2.1 View architecture overview
+ *
+ * In the AppUi class of a traditional Eikon GUI application, you create
+ * the container class, which creates all the controls. In a view architecture
+ * GUI application, you create a view class, derived from CAknView in the AppUi,
+ * which is derived from CAknViewAppUi. CAknViewAppUi adds view-handling methods
+ * to CAknAppUi. The activation and deactivation of a view are handled in the view
+ * class. This is done in the functions DoActivateL() and DoDeActivateL().
+ * In these functions the container class is created and destroyed. The container
+ * class in turn creates and destroys the controls in the container.
+ *
+ * \subsection Sub22 2.2 Switching views
+ *
+ * To switch to a view within your application, you can use the AppUi class
+ * method ActivateLocalViewL(). The parameter for ActivateLocalViewL() is a TUid.
+ * The following is an example of view switching:
+ *
+ * \code
+ *
+ * const TUid KDemo1ViewId = { 1 }; // UID of the first view
+ * ActivateLocalViewL(KDemo1ViewId); // activate view 1
+ *
+ * \endcode
+ *
+ * A new view is activated first and the previous view is deactivated after that.
+ * This allows quick view switching to take place. When deactivating, all controls,
+ * including menus and dialogs, are also closed down. System dialogs automatically
+ * handle this. If you need to save data in your dialog when the dialog is open but
+ * the view is being shut down, you need to save the data when handling
+ * EAknSoftkeyCancel. In these cases Cancel/back route in the dialog is followed.
+ *
+ * \subsection Sub23 2.3 Sending messages
+ *
+ * ActivateLocalViewL() has been overloaded to include MessageUid and a message.
+ * MessageUid is a TUid and it is usually used for a specific dialog page in a
+ * view or to execute a certain functionality. Messages are in TDesC8 descriptors
+ * and can be used to pass data between the views. Here is an example:
+ *
+ * \code
+ *
+ * const TUid KViewUid= {1};
+ * const TUid KCustomMessageUid= {2};
+ * TBuf8<255> customMessage;
+ * customMessage.Copy(_L8("Some data here"));
+ * ActivateLocalViewL(KViewUid, KCustomMessageUid, customMessage);
+ *
+ * \endcode
+ *
+ * \subsection Sub24 2.4 DoActivateL and the previous view ID
+ *
+ * The purpose of DoActivateL() in the view class is to create the container and
+ * also to handle the messages that are passed. In addition to those described
+ * in the previous section, DoActivateL() gets the TVwsViewId for the previous view.
+ * This can be used to switch back to the original view with or without a message,
+ * which may be useful within your own application views. If your application is
+ * called by another application, and when the user exits your application,
+ * the previous view is automatically restored. Knowing the previous view can be
+ * useful if you want to specify which application to respond to.
+ *
+ * \subsection Sub25 2.5 DoDeActivateL
+ *
+ * DoDeActivateL is called when another view has been activated and the previous
+ * active window needs to be shut down. This order makes view switching fast.
+ * In DoDeActivateL the view is removed from the stack and therefore the view’s
+ * container and its controls are destroyed.
+ *
+ * \subsection Sub26 2.6 Using other applications’ views
+ *
+ * To activate a view of an external application, use ActivateViewL() of the AppUi
+ * class. ActivateViewL() behaves in the same way as ActivateLocalViewL().
+ * The only difference is that ActivateViewL() takes the TVwsViewId parameter type
+ * instead of TUid. TVwsViewId consists of the UID of the application and the UID of
+ * the view in that application. Here is an example:
+ *
+ * \code
+ *
+ * const TUid KGalleryUid = { 0x101f8599 };
+ * CCoeAppUi::ActivateViewL(TVwsViewId(KGalleryUid, TUid::Uid(1)));
+ * ActivateViewL() has been overloaded in the same way as ActivateLocalViewL()
+ * to pass messages. Here is an example:
+ * const TUid KCustomMessageUid= {2};
+ * TBuf8<255> customMessage;
+ * customMessage.Copy(_L8("Some data here"));
+ * const TUid KGalleryUid = { 0x101f8599 };
+ * CCoeAppUi::ActivateViewL(TVwsViewId(KGalleryUid, TUid::Uid(1)), KCustomMessageUid, customMessage);
+ *
+ * \endcode
+ *
+ * When the user exits the launched application, the framework will automatically
+ * return the original view from where the ActivateViewL() was called.
+ *
+ * More information of using external views, refer to document
+ * <b>S60 Platform: Utilizing External Application Views</b>, which can be
+ * found from Forum Nokia's web-site.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * The view properties listed in the \ref Intro_sec section are defined in
+ * the Resource file, and the View and Container classes. The Resource file
+ * contains entries of type AVKON_VIEW for each view. Each AVKON_VIEW
+ * entry can define an Options menu bar and CBA keys. The View class is
+ * derived from CAknView and defines the view activation and deactivation
+ * behaviour, as well as the menu command handling. The Container class is
+ * derived from CCoeControl. It is responsible for the drawing to the screen
+ * and may contain other controls.
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application does not require any capabilities.
+ * The program capabilities are defined in mmp-files as CAPABILITY NONE.
+ *
+ * \subsection Sub32 3.2 The resource file
+ *
+ * In this example the Resource file (MultiViews.rss) contains two
+ * AVKON_VIEW entries, one for each view. The code snippets below show the
+ * entries for the two views. The resource EIK_APP_INFO does not include
+ * entries for the menu bar and CBA since this is defined on a per view basis.
+ *
+ * Resource entries for both views:
+ * \code
+ * RESOURCE EIK_APP_INFO
+ *   {
+ *   status_pane = r_myview_status_pane;
+ *   }
+ * .
+ * .
+ * .
+ * RESOURCE AVKON_VIEW r_myview_view1
+ *   {
+ *   hotkeys=r_myview_hotkeys;
+ *   menubar=r_myview_menubar_view1;
+ *   cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+ *   }
+ * .
+ * .
+ * .
+ * RESOURCE AVKON_VIEW r_myview_view2
+ *   {
+ *   hotkeys=r_myview_hotkeys;
+ *   menubar=r_myview_menubar_view2;
+ *   cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+ *   }
+ * \endcode
+ *
+ * \subsection Sub33 3.3 The View classes
+ *
+ * A view class defines objects which encapsulate such tasks as handling menu
+ * options. The views' classes are defined in <b>CMyViewView</b>
+ * and <b>CMyViewView2</b>. The class hierarchy is illustrated in the following
+ * diagram. The methods DoActivateL and DoDeactivate define the views'
+ * activation and deactivation behaviour. HandleCommandL captures the menu
+ * command invocations.
+ *
+ * MyView hierarchy diagram:
+ * \image html VIEW_HIERARCHY.JPG
+ *
+ * \subsection Sub34 3.4 Container classes
+ *
+ * A container class defines objects which manage drawing to the screen. The
+ * container's classes are defined in <b>CMyViewContainer</b> and
+ * <b>CMyViewContainer2</b> The class hierarchy is illustrated in the following
+ * diagram.
+ *
+ * MyView container hierarchy:
+ * \image html CONTAINER_HIERARCHY.JPG
+ *
+ * The Draw method draws the screen. In this example the containers simply
+ * draw different coloured screens; in a more sophisticated example the
+ * containers could be different dialogs. Switching between views is achieved
+ * by calling ActivateLocalViewL on the CMyViewAppUi objects.
+ *
+ * \subsection Sub35 3.5 Creation and Activation of a View
+ *
+ * Normally an application's AppUI is derived from CAknAppUi. However, when
+ * using CAknView it must be derived from CAknAppViewUi, because
+ * CAknAppViewUi adds support for classes which are derived from
+ * CAknView. The construction sequence of this class and the View classes
+ * is illustrated in the sequence diagram below.
+ * \image html CONSTRUCT.JPG
+ *
+ * -# The framework completes the construction of the App UI by calling its
+ * ConstructL method.
+ * -# The ConstructL method first calls the base class's BaseConstructL.
+ * This performs such tasks as reading the resource file associated with the
+ * application.
+ * -# The application view CMyViewView is constructed, using the
+ * standard Symbian OS two phase construction.
+ * -# The construction sequence calls the base class's BaseConstructL. It
+ * will read the R_MYVIEW_VIEW1 resource defined for the view, as
+ * described in the \ref Sub32 section.
+ * -# The application view CMyViewView2 is constructed, using the
+ * standard Symbian OS two phase construction.
+ * -# The construction sequence calls the base class's BaseConstructL. It
+ * will read the R_MYVIEW_VIEW2 resource defined for the view.
+ * -# AddViewL registers the view 1 with the AppUi.
+ * -# AddViewL registers the view 2 with the AppUi.
+ * -# SetDefaultViewL is called which will cause the specified view to be
+ * activated on startup.
+ * -# The framework calls the DoActivateL of view 1.
+ * -# DoActivateL creates the Container object.
+ *
+ * Note that in order to receive key-related events, the application would have
+ * to be modified as follows:
+ *
+ * - The containers would have to override the OfferKeyEventL method. The
+ * body of this method would interpret the key event.
+ * - After the call to NewL (message 11 above) the new container instance
+ * would have be added to the App UI's control stack, by calling
+ * AddToStackL.
+ *
+ * Also if the container contained other controls then it would be necessary to
+ * call the container's method SetMopParent with the App Ui as parameter.
+ *
+ * \subsection Sub36 3.6 Command Invocation
+ *
+ * The following sequence diagram shows the sequence of events that occurs on
+ * selecting the menu option to switch views.
+ *
+ * \image html DOACTIVATE.JPG
+ *
+ * -# Menu command <b>Switch to View2</b> is selected, View's HandleCommandL
+ * method is called with the command parameter <b>EMyViewCmdView1Cmd1</b>.
+ * -# HandleCommandL calls ActivateLocalViewL with the ViewId <b>KView2Id</b>
+ * -# The framework calls the DoActivateL method of view 2.
+ * -# The DoActivateL creates the Container 2 object.
+ * -# The framework calls DoDeactivate on view 1.
+ * -# DoDeactivate removes Container 1 from the app UI's control stack.
+ * -# DoDeactivate deletes Container 1.
+ *
+ * \subsection Sub37 3.7 MMP Files
+ *
+ * The Myview example has two mmp files, in order to support the use of
+ * MyView example in both S60 2.X and S60 3.X versions of S60 platform
+ * - The MMP file for S60 2.x is: MyView_s60_2nd_ed.mmp
+ * - The MMP file for S60 3.x is: MyView_s60_3rd_ed.mmp
+ *
+ */

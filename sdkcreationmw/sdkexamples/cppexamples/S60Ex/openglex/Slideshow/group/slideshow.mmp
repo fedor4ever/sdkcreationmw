@@ -1,0 +1,76 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//New style application exe
+TARGET          slideshow.exe
+TARGETTYPE      exe
+UID             0x100039CE 0xA0000224
+
+EPOCSTACKSIZE   30000
+
+// This example uses many large textures and needs to allocate
+// a bigger heap (3 megabytes) to make these fit in memory
+EPOCHEAPSIZE    3145728 3145728
+
+VENDORID        0
+CAPABILITY      NONE
+
+SOURCEPATH      ..\..\Utils
+SOURCE          Mathutils.cpp
+SOURCE          Glutils.cpp
+SOURCE          Utils3d.cpp
+SOURCE          Textureutils.cpp
+
+SOURCEPATH      ..\src
+SOURCE          Slideshow.cpp
+SOURCE          Slideshowapp.cpp
+SOURCE          Slideshowappui.cpp
+SOURCE          Slideshowdocument.cpp
+SOURCE          Slideshowcontainer.cpp
+SOURCE          Slideshowrenderers.cpp
+
+START RESOURCE  ..\data\slideshow.rss
+HEADER
+TARGETPATH      \\resource\\apps
+LANG            SC
+END //RESOURCE
+
+USERINCLUDE     .
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\..\Utils
+
+SYSTEMINCLUDE   .
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY         euser.lib apparc.lib cone.lib eikcore.lib
+LIBRARY         avkon.lib fbscli.lib efsrv.lib
+LIBRARY         ImageConversion.lib
+LIBRARY         ws32.lib
+LIBRARY         libgles_cm.lib
+
+
+START RESOURCE ..\data\slideshow_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END

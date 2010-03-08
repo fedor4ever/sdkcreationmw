@@ -1,0 +1,112 @@
+/*! @mainpage DriveInfo Console Application Example
+ *
+ *  @ref Intro_sec
+ *  @n
+ *  @ref Arch_sec
+ *  @n
+ *  @ref Design_sec
+ *
+ *  <HR>
+ *
+ *  @section Intro_sec 1. About this Example
+ *
+ *  DriveInfo example demonstrates how to create a simple console
+ *  application on Symbian OS.
+ *  The application itself is quite simple: it inquires and displays various
+ *  information regarding disk drives.
+ *
+ *  @subsection Sub11 1.1. APIs demonstrated
+ *
+ *  - RFs
+ *  - CCommandLineArguments
+ *  - CConsoleBase
+ *
+ *  @subsection Sub12 1.2. Prerequisites
+ *
+ *  None.
+ *
+ *  <HR>
+ *
+ *  @section Arch_sec 2. Architecture
+ *
+ *  This console application is essentially just a set of functions.
+ *
+ *  <HR>
+ *
+ *  @section Design_sec 3. Design and Implementation
+ *
+ *  This example application is based on Symbian's own example application of
+ *  a same name and more or less same functionality.
+ *
+ *  However, some additional things have been implemented:
+ *  - DriveInfo example demonstrates, how you can make an icon for a
+ *    console application (which is shown in Installed-folder): to get the icon
+ *    for the console application it is enough just to make an application
+ *    registration resource file and deal with it in mmp-file in normal
+ *    fashion.
+ *    @n@n
+ *  - DriveInfo example also handles commandline arguments: you can specify
+ *    drive(s) of which information is shown instead of all drives, which is
+ *    the default mode.
+ *
+ *  @subsection Sub31 3.1 Capabilities
+ *
+ *  The application does not require any capabilities.
+ *  The program capabilities are defined in DriveInfo.mmp file:
+ *  CAPABILITY NONE.
+ *
+ *  @subsection Sub32 3.2 ScalableUI
+ *
+ *  Not applicable.
+ *
+ *  @subsection Sub33 3.3 Launch sequence
+ *
+ *  This section explains the sequence of interactions that occur on the objects
+ *  described in the last section when the application is run and the user
+ *  selects the Hello menu option. The following sections describe the steps in more detail.
+ *
+ *  -# The application is launched, the framework loads the application EXE and
+ *    the E32Main() function implemented in CommonFramework.h is called.
+ *    @n@n
+ *  -# E32Main() creates clean-up stack (because for the console applications it
+ *    not readily available) and calls a help-function callExampleL() within
+ *    trap-harness.
+ *    @n@n
+ *  -# callExampleL() creates Console-object and pushes it to clean-up stack.
+ *    Then the actual example application in doExampleL() is called - again
+ *    within trap-harness.
+ *    @n@n
+ *  -# doExampleL() creates CCommandLineArguments-object and starts fileserver
+ *    session. If commandline arguments are given, then drive and volume
+ *    information is inquiried for each specified drive (PrintDriveVolInfo());
+ *    otherwise information is inquiried for all existing drives
+ *    (PrintAllDrivesVolInfo()).
+ *
+ *  @subsection Sub34 3.4 DriveInfo without arguments
+ *
+ *  When you start DriveInfo either from its icon from Installed-folder or
+ *  from shell without any commandline arguments, the application will print out
+ *  all valid drive letters as well as corresponding drive-number.
+ *
+ *  Then the application will display all the drives that are actually available
+ *  in the device (or emulated in the emulator). This information is acquired
+ *  with fsSession::DriveList().
+ *
+ *  Next drive and volume information is shown for each available drive.
+ *  These pieces of information are acquired with fsSession::Drive() and
+ *  fsSession::Volume().
+ *
+ *  @subsection Sub35 3.5 DriveInfo with commandline arguments
+ *
+ *  DriveInfo-application can take arguments a list of specified drives of which
+ *  drive and volume information is shown.
+ *
+ *  To be able to give commandline arguments, DriveInfo has to be started from
+ *  the shell (DOS-prompt or EShell). The drive can be specified either as a
+ *  letter or number.
+ *
+ *  @code
+ *  C:\> driveinfo C E 25
+ *  @endcode
+ *
+ */

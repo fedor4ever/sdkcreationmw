@@ -1,0 +1,41 @@
+/*! \mainpage [APPName]
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * [a short description on what the example app does (user's point of view)
+ * and what functionality it dmeonstrates]
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * [list the APIs whose use the example demonstrates]
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * [List here IF the app requires some special prerequisites, such as setting
+ * up a server or knowledge of some technology
+ * Also mention if some feature that is not available in the emulator is needed]
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * [Briefly explain the general architecture of the application here]
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * [tell what capabilities are needed by the application]
+ *
+ * [describe the implementation of the app here, highlighting some interesting
+ * bits about using the demonstrated APIs]
+ *
+ */

@@ -1,0 +1,217 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This file contains all the resources for the RichTextEditor.
+*     
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    BWIZ // 4 letter ID
+
+//  INCLUDES
+#include <eikon.rh>
+#include "richtexteditor.loc"
+#include "RichTextEditor.hrh"
+
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+#ifdef EKA2 
+#include <appinfo.rh>
+#endif
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=""; }
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar=r_main_menubar;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_BACK;     
+    }
+
+RESOURCE TBUF256 r_type_ii_dialog_tbuf_demo_text 
+    {
+    buf = qtn_app_demo_text ;
+    }
+
+//----------------------------------------------------
+//   
+//    r_main_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_main_menubar
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_main_menu; txt="File"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_main_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_main_menu
+    {
+    items=
+        {
+  MENU_ITEM { command=EAknCmdExit; txt="Exit"; },
+	MENU_ITEM
+	   {
+            command = ERichTextCmdAppTextFormat; 
+            cascade = r_type_menu_textformat;
+            txt = "Character format";
+            },
+	MENU_ITEM
+	   {
+            command = ERichTextCmdAppColor; 
+            cascade = r_type_menu_color;
+            txt = "Change Color";
+            },
+	MENU_ITEM
+	   {
+            command = ERichTextCmdAppAlignment; 
+            cascade = r_type_menu_alignment;
+            txt = "Set Alignment";
+            },
+	MENU_ITEM
+	   {
+            command = ERichTextCmdAppFont; 
+            cascade = r_type_menu_font;
+            txt = "Change Font";
+            },
+	MENU_ITEM
+	   {
+            command = ERichTextCmdAppDemo; 
+            txt = "Demo Text";
+            }			
+        };
+    }
+
+
+RESOURCE MENU_PANE r_type_menu_textformat
+    {
+    items =
+        {
+        MENU_ITEM { command=ERichTextCmdAppSetbold; txt="Bold"; },
+        MENU_ITEM { command=ERichTextCmdAppSetItalic; txt="Italic"; },
+        MENU_ITEM { command=ERichTextCmdAppSetUnderline; txt="Underline"; },
+        MENU_ITEM { command=ERichTextCmdAppSetStrikethrough; txt="Strikethrough"; }
+        };
+    }
+
+RESOURCE MENU_PANE r_type_menu_color
+    {
+    items =
+        {
+        MENU_ITEM { command=ERichTextCmdAppSetRed; txt="Red"; },
+        MENU_ITEM { command=ERichTextCmdAppSetGreen; txt="Green"; },
+        MENU_ITEM { command=ERichTextCmdAppSetBlue; txt="Blue"; },
+        MENU_ITEM { command=ERichTextCmdAppSetBlack; txt="Black"; }
+        };
+    }
+
+
+
+RESOURCE MENU_PANE r_type_menu_alignment
+    {
+    items =
+        {
+        MENU_ITEM { command=ERichTextCmdAppLeft; txt="Left"; },
+        MENU_ITEM { command=ERichTextCmdAppCenter; txt="Center"; },
+        MENU_ITEM { command=ERichTextCmdAppRight; txt="Right"; }
+        };
+    }
+
+
+RESOURCE MENU_PANE r_type_menu_font
+    {
+    items =
+        {
+        #ifdef EKA2
+        MENU_ITEM { command=ERichTextCmdAppFont1; txt="Primary Font"; },
+        MENU_ITEM { command=ERichTextCmdAppFont2; txt="Secondary Font"; },
+        MENU_ITEM { command=ERichTextCmdAppFont3; txt="Primary Small Font"; }
+        #else
+        MENU_ITEM { command=ERichTextCmdAppFont1; txt="Latin plain"; },
+        MENU_ITEM { command=ERichTextCmdAppFont2; txt="Latin bold"; },
+        MENU_ITEM { command=ERichTextCmdAppFont3; txt="Big Latin"; }
+        #endif
+        };
+    }
+
+//								
+///    Demo Texts:		
+//		  Their content is at the loc-file		
+
+RESOURCE TBUF256 r_type_dialog_tbuf_intro_text 
+    {
+    buf = qtn_app_demo_intro;
+    }
+
+RESOURCE TBUF256 r_type_dialog_tbuf_intro_help_text
+	{
+	buf = qtn_app_demo_intro_help;
+	}
+
+
+//								
+///    Statusline Texts:		
+//				
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_alignment 
+    {
+    buf = qtn_app_indicator_alignment;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_character_format 
+    {
+    buf = qtn_app_indicator_character_format;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_font
+    {
+    buf = qtn_app_indicator_font;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_strike_on
+    {
+    buf = qtn_app_indicator_strike_on;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_strike_off
+    {
+    buf = qtn_app_indicator_strike_off;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_color 
+    {
+    buf = qtn_app_indicator_color;
+    }
+
+RESOURCE TBUF32 r_type_dialog_tbuf_indicator_demo 
+    {
+    buf = qtn_app_indicator_demo;
+    }
+
+// End of File

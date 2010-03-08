@@ -1,0 +1,136 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+;
+; Installation inf for Series 60 Bluetooth driver
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%Nokia%
+DriverVer=12/09/2004
+
+[SourceDisksNames]
+1="S60BT Installation Disk",,,
+
+[SourceDisksFiles]
+S60BT.sys = 1
+S60BT.inf = 1
+
+[Manufacturer]
+%MfgName%=Nokia
+
+[Nokia]
+%DeviceDescription%=S60BT.Dev,USB\VID_1310&PID_0001  ; SiW
+%DeviceDescription%=S60BT.Dev,USB\VID_044e&PID_3001  ; ALPS based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_049F&PID_0027  ; COMPAQ CSR based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_030A  ; IBM CSR based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0309  ; TDK CSR based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0310  ; IBM BDC CSR based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0319  ; TDK USB ADAPTER
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0320  ; TDK CSR BC2 based VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0317  ; ULTRAPORT
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0318  ; BDC
+%DeviceDescription%=S60BT.Dev,USB\VID_0BDB&PID_1000  ; Ericsson Business Mobile Networks BV VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0BDB&PID_1002  ; Ericsson Multipoint VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0A12&PID_0001  ; CSR VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_08EA&PID_ABBA  ; Ericsson VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0A5C&PID_200A ; Broadcom VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0A5C&PID_2035 ; Broadcom VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_055D&PID_0BB1  ; SAMSUNG BC02 external
+%DeviceDescription%=S60BT.Dev,USB\VID_0C10&PID_0000  ; Silicon Wave VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0B7A&PID_07D0  ; Zeevo VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_413C&PID_8000  ; Dell BC02 VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_1668&PID_0441  ; IBM integrated BT Modem VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_1668&PID_2441  ; IBM Integrated Bluetooth III VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0F4D&PID_1000 ; Microtune USB Bluetooth Device VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0DB0&PID_1967  ; MSI USB Device VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_045E&PID_007E  ; Microsoft
+%DeviceDescription%=S60BT.Dev,USB\VID_0400&PID_0807  ; National Semi Bluetooth board
+%DeviceDescription%=S60BT.Dev,USB\VID_0483&PID_5000  ; STM VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0451&PID_1234  ; TI VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0451&PID_ffff  ; TI VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_044e&PID_2014  ; SONY VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0D9A&PID_0001  ; FORMOSA VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_049F&PID_0086 ; BLUETHUMB USB Device VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_046D&PID_C707  ; LOGITECH VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_046D&PID_C708  ; LOGITECH VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_046D&PID_C709  ; LOGITECH VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0FD1&PID_0001  ; Giant VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_050D&PID_0083	; Belkin  Vid&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_04AD&PID_2501 ; Panasoic VId&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0547&PID_0001 ; ICSI USB Device VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0471&PID_0809  ; Philips BluePearl VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_11D9&PID_2600 ; Itronix Bluetooth Device VId&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_0A12&PID_ffff  ; CSR DFU VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_08EA&PID_ABBB  ; Ericsson VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_030B  ; TDK CSR VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0321  ; TDK CSR VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_030C  ; IBM CSR VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_04BF&PID_0311  ; IBM BDC VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_044e&PID_ffff  ; ALPS DFU VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_413C&PID_8010  ; Dell BC02 VID&PID
+%DeviceDescription%=S60BT.Dev,USB\VID_1668&PID_1441  ; IBM Integrated Bluetooth III VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_1668&PID_3441  ; IBM integrated BT Modem VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_0DB0&PID_ffff  ; MSI USB Device VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_049F&PID_0036  ; BLUETHUMB Device VID&PID DFU
+%DeviceDescription%=S60BT.Dev,USB\VID_0FD1&PID_ffff  ; Giant DFU
+%DeviceDescription%=S60BT.Dev,USB\Class_e0&SubClass_01&Prot_01  ; Bluetoot Class device
+
+;[PreCopySection]
+;HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+S60BT.Files.Ext = 10,System32\Drivers
+S60BT.Files.Inf = 10,INF
+
+[S60BT.Dev]
+CopyFiles=S60BT.Files.Ext
+AddReg=S60BT.AddReg
+
+[S60BT.Dev.NT]
+CopyFiles=S60BT.Files.Ext, S60BT.Files.Inf
+AddReg=S60BT.AddReg
+
+[S60BT.Dev.NT.Services]
+Addservice = S60BT, 0x00000002, S60BT.AddService
+
+[S60BT.AddService]
+DisplayName    = %S60BT.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\s60bt.sys
+LoadOrderGroup = Base
+
+[S60BT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,s60bt.sys
+
+[S60BT.Files.Ext]
+s60bt.sys
+
+[S60BT.Files.Inf]
+s60bt.inf
+
+[Strings]
+Nokia="Nokia"
+MfgName="Nokia"
+DeviceDescription="Bluetooth for S60 SDK"
+S60BT.SvcDesc="Bluetooth for S60 SDK"

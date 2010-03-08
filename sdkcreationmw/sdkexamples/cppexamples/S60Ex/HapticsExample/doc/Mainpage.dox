@@ -1,0 +1,167 @@
+/*! \mainpage Haptic Ball
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ *
+ * This example demonstrates how to use Haptics API on S60 application.
+ * The Haptics API provides the ability to control the device's haptics feature and can be used to play
+ * different kinds of haptic effects. The application shows e.g. how to load, start, modify and stop haptic
+ * effects in different situations and some initialization related issues that are
+ * necessary in order to get all features to use.
+ * 
+ * \image html initialScreen.png
+ *
+ * Initially application draws a ball at the bottom right corner of the screen.
+ * There are two options to get ball moving; "drag mode" and "sensor mode".
+ * - In "drag mode" (default) ball can be dragged using touch screen or hardware keys.
+ * When ball is released it begins to fall and bounces from screen borders.
+ * - In "sensor mode" (activated from options menu) ball can be moved by tilting the phone.
+ *
+ * Different haptic effects are given when something happens on the screen (dragging,
+ * falling or bouncing). Falling and bouncing effects are related to velocity of the ball.
+ * Dragging effect is continuous stable vibration.
+ *
+ * Options menu offers also possibility to enable/disable haptic effects and
+ * modify basic strength of haptics.
+ *
+ *
+ * \subsection Sub11 1.1. About haptic effects
+ *
+ * There are two categories of haptic effects: Simple effects and Timeline effects.\n
+ * Timeline effects consist of simple effects scheduled in time. The Haptics API does not provide functions to
+ * create Timeline effects. Rather, Timeline effects must be created using PC based haptic effect creation
+ * tools for example Immersion VibeTonz Studio.
+ * 
+ * Simple effect category contains 2 different effect types:
+ * - MagSweep effects vibrate at a magnitude- and device-dependent rate.
+ * - Periodic effects allow the period or speed of vibration to be explicitly controlled independent of magnitude.
+ *
+ * Both MagSweep and Periodic effects have a set of envelope parameters that control the duration and strength of
+ * the vibration over time.\n
+ * Parameters are described in the table below.
+ * <table border="1">
+ * <tr>
+ * <th>Parameter</th>
+ * <th>Description</th>
+ * </tr>
+ * <tr>
+ * <td>Duration</td>
+ * <td>Overall duration of the effect.</td>
+ * </tr>
+ * <tr>
+ * <td>Magnitude</td>
+ * <td>Strength of the effect in the interval between the attack and fade intervals.</td>
+ * </tr>
+ * <tr>
+ * <td>Period</td>
+ * <td>The rate at which impulses are played. <b>(only for Periodic effect)</b></td>
+ * </tr>
+ * <tr>  
+ * <td>Attack Time</td>
+ * <td>Attack interval duration.</td>
+ * </tr>
+ * <tr>
+ * <td>Attack Level</td>
+ * <td>Initial strength of the effect.</td>
+ * </tr>
+ * <tr>
+ * <td>Fade Time</td>
+ * <td>Fade interval duration.</td>
+ * </tr>
+ * <tr>
+ * <td>Fade Level</td>
+ * <td>Final strength of the effect.</td>
+ * </tr>
+ * </table>
+ *
+ * \subsection Sub12 1.2. APIs demonstrated
+ *
+ *  - Haptics API
+ *
+ * \subsection Sub13 1.3. Prerequisites
+ *
+ * - Haptic feature needs to be unlocked by setting a lisence key acquired from Forum Nokia. Key is delivered as
+ * character string and to get the application working a license key must be
+ * placed to header file hapticsexamplelicense.h.
+ * - It is recommended to run application on real device because effects are not played in the emulator.
+ * - used device needs to be capable of playing advanced haptics effects
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Application architecture
+ *
+ * Haptic Ball example follows traditional Symbian OS Control-based architecture.
+ *
+ * <HR>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * The application capabilities are defined in hapticsexample.mmp file:
+ * ReadDeviceData.
+ *
+ * \subsection Sub32 3.2 ScalableUI & Touch Screen
+ *
+ * The application works with all screen modes and with touch screen.
+ *  
+ * \subsection Sub33 3.3 Haptics API usage
+ * Following subsections explain the usage of Haptics API on this example
+ * application.
+ *
+ * \subsection Sub331 3.3.1 CHapticsExampleAppView::ConstructL()
+ * ConstructL() does basic initializations to get haptics feature working as intended.
+ * Actions described in the first three bullets are mandatory for all applications.
+ * Loading effect data buffer (the last bullet) is mandatory for this application because it uses
+ * effects stored to effect (.ivt) file.
+ * - creates haptics client by calling static method CHWRMHaptics::NewL()
+ * - gets information about supported actuators and opens one of them.
+ *   - SupportedActuators()
+ *   - OpenActuatorL()
+ * - sets the license key
+ *   - SetDeviceProperty()
+ * - sets the haptics priority
+ *   - SetDeviceProperty()
+ * - sets the basic strength of haptics effects
+ *   - SetDeviceProperty()
+ * - reserves haptics for this application
+ *   - ReserveHapticsL()
+ * - loads the effect data buffer to the haptics system
+ *   - LoadEffectData()
+ *
+ * Effects which are loaded to haptics system is read from file hapticsexample.ivt. That file contains 6 bounce effects
+ * named from "Bounce1" to "Bounce6". These kind of files can be created with PC based haptic
+ * effect creation tool.
+ *
+ *
+ * \subsection Sub332 3.3.2 CHapticsExampleAppView::HandlePointerEventL
+ * When ball is dragged with touch screen or with direction buttons, MagSweep effect (dragging effect) is started
+ * by calling PlayMagSweepEffect().
+ * If falling effect is playing currently it is stopped before dragging effect is started.
+ * 
+ * After dragging when finger is lift up from screen or OK key is pressed dragging effect is stopped and
+ * ball starts to fall freely.
+ * 
+ * 
+ * \subsection Sub333 3.3.3 CHapticsExampleAppView::UpdateFallEffect
+ * Purpose of function UpdateFallEffect() is to control Periodic effect in case when ball is moving freely i.e.
+ * after dragging or in sensor mode.
+ * If the effect is not currently playing, it is started with initial 'magnitude' and 'period'
+ * values. Otherwise currently playing effect is modified by altering 'magnitude' and 'period' values
+ * depending on velocity of the ball.
+ *
+ *
+ * \subsection Sub334 3.3.4 CHapticsExampleAppView::PlayBounceEffect
+ * PlayBounceEffect() function plays one of the 6 bounce effects from the effect buffer loaded at application start up.
+ * API method PlayEffect() uses effect index to distinguish which effect is played. In this case only
+ * effect name is known so GetEffectIndexFromName() is called prior to PlayEffect().
+ * Selected effect depends on velocity of the ball.
+ * If loading of the effect buffer failed at start up, hard coded MagSweep effect is played instead.
+ */
+

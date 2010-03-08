@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Client interface for EcmtServer
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+TARGET          T_MsgSession.app
+TARGETTYPE      app
+UID             0x100039ce 0x101f8c30
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+USERINCLUDE     ..\Inc
+SYSTEMINCLUDE   \epoc32\include
+
+SOURCEPATH      ..\Group
+DOCUMENT        readme.txt
+DOCUMENT        T_MsgSession.pkg
+DOCUMENT        bld.inf
+DOCUMENT        ..\Inc\T_MsgSession.loc
+DOCUMENT        ..\Aif\T_MsgSessionAif.rss
+
+RESOURCE        T_MsgSession.rss
+
+SOURCEPATH      ..\Src
+SOURCE          T_MsgSessionApp.cpp
+SOURCE          T_MsgSessionDoc.cpp
+SOURCE          T_MsgSessionView.cpp
+SOURCE          T_MsgSessionAppUi.cpp
+SOURCE          T_MsgSessionMain.cpp
+
+LIBRARY         euser.lib apparc.lib eikcore.lib cone.lib ws32.lib gsmu.lib estor.lib efsrv.lib
+LIBRARY			MsgSession.lib
+
+// application should have two icons, bitmap sizes are 64x50 and 25x20 pixels
+// AIF t_msgsession.aif ..\Aif T_MsgSessionAif.rss c12 // add bitmap file names here
+// example file names: icon64x50.bmp mask64x50.bmp icon25x20.bmp mask25x20.bmp
+
+// End of file

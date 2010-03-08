@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<project name="SDKDiagnostics Package" default="develop" basedir=".">
+
+<!--==========================================-->
+<!-- ANT BUILD FILE FOR SDKDIAGNOSTICS PKG  -->
+<!--          -->
+<!-- To use:        -->
+<!-- % ant -buildfile sdkdiagnostics.build.xml  -->
+<!--==========================================-->
+
+<!--==========================================-->
+<!--set global properties for this build-->
+<!--==========================================-->
+<property name="name" value="SDKDiagnostics"/>
+<property name="build" value="build"/>
+<property name="verbose" value="off"/>
+<property name="debug" value="on"/>
+<property name="javadoc.dir" value="javadoc"/>
+
+
+<property name="build.classes" value="${build}/classes"/>
+<property name="src" value="${basedir}/src"/>
+
+<property name="nmit.shared.dir" value="${basedir}/../NmitShared"/>
+<property name="lib.path" value="${nmit.shared.dir}/lib"/>
+
+<!-- Distribution layout -->
+<property name="dist" value="${basedir}/dist"/>
+<property name="dist.lib" value="${dist}/lib"/>
+<property name="dist.doc" value="${dist}/doc"/>
+
+
+<property name="classpath" value="${lib.path}/app.jar;
+                                  ${lib.path}/hcodec.jar;
+                                  ${lib.path}/bookmarks.jar;
+                                  ${lib.path}/wtkdev.jar;
+                                  ${lib.path}/http.jar;
+                                  ${lib.path}/mms.jar;
+                                  ${lib.path}/util.jar"/>
+                                  
+<patternset id="jars.list">
+  <include name="app.jar"/>
+  <include name="hcodec.jar"/>
+  <include name="bookmarks.jar"/>
+  <include name="wtkdev.jar"/>
+  <include name="http.jar"/>
+  <include name="mms.jar"/>
+  <include name="util.jar"/>
+</patternset>
+
+<!-- Manifest Info -->
+<property name="manifest" value="${build}/sdkDiagnostics.manifest"/>
+
+<!-- Final jar -->
+<property name="sdkDiagnostics.jar" value="sdkDiagnostics.jar"/>
+
+<!--==========================================-->
+<!--TARGET [PREPARE]-->
+<!--==========================================-->
+<target name="prepare" description="Prepare build environment">
+  <echo>Preparing Build Environment for SDKDiagnostics package </echo>
+  <tstamp/>
+
+  <!-- remove old stuff -->
+  <delete dir="${build.classes}" quiet="true"/>
+  <delete dir="${javadoc.dir}" quiet="true"/>
+
+  <!-- create the build directory structure -->
+  <echo>Creating output directories...</echo>
+  <mkdir dir="${build}"/>
+  <mkdir dir="${build.classes}"/>
+  <mkdir dir="${javadoc.dir}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [COMPILE]-->
+<!--==========================================-->
+<target name="compile" depends="prepare" description="Compile java sources">
+
+  <echo>Building SDKDiagnostics...</echo>
+  <javac 
+    srcdir="${src}"
+    destdir="${build.classes}"
+    includes="**/*.java"
+    classpath="${classpath}"
+    verbose="${verbose}"
+    debug="${debug}"
+  />
+  
+</target>
+
+<!--==========================================-->
+<!--TARGET [ARCHIVE]-->
+<!--==========================================-->
+<target name="archive" description="Archive java classes and resources">
+
+  <echo>Copying resource files..</echo>
+
+  <copy todir="${build.classes}">
+    <fileset dir="${src}" 
+                   includes="com/nokia/wtk/**/resources/*"
+          />
+  </copy>
+
+  <echo>Creating manifest..</echo>
+
+  <delete file="${manifest}" quiet="true"/>
+
+  <!-- NOTE: THERE MUST BE NO EXTRA WHITE SPACE AT END OF LINES -->
+
+  <echo>Archiving sources and resources..</echo>
+  <jar
+    jarfile="${build}/${sdkDiagnostics.jar}"
+    basedir="${build.classes}"
+         />
+</target>
+
+<!--==========================================-->
+<!--TARGET [DEVELOP]-->
+<!--==========================================-->
+<target name="develop" depends="compile,archive" description="Build Distribution">
+
+  <mkdir dir="${dist.lib}"/>
+
+  <!-- Just copy the jar -->
+  <copy todir="${dist.lib}">
+    <fileset dir="${build}" includes="${sdkDiagnostics.jar}"/>
+    <fileset dir="${lib.path}">
+      <patternset refid="jars.list"/>
+    </fileset>      
+
+  </copy>
+  <echo>Built SDKDiagnostics Package!</echo>
+
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLEAN]-->
+<!--==========================================-->
+<target name="clean" description="Delete entire build">
+  <delete dir="${build}"/>
+  <delete dir="${dist}"/>
+  <delete dir="${javadoc.dir}"/>
+</target>
+
+<!--==========================================-->
+<!--TARGET [CLOBBER]-->
+<!--==========================================-->
+<target name="clobber" depends="clean" description="Delete entire package">
+  <delete dir="${dist}"/>
+</target>
+</project>

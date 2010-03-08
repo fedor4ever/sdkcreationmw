@@ -1,0 +1,179 @@
+/*! \mainpage Content Listing Framework Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This example demonstrates, how to use Content Listing Framework API
+ * (henceforth CLF) including some of its advanced features such 
+ * as grouping (MCLFCustomGrouper), sorting (MCLFCustomSorter) and 
+ * filtering (MCLFPostFilter).
+ *
+ * \note Before you can do anything meaningful with this example, you need
+ * to have some music files in your emulator/device.
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - Content Listing Framework API
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * It is recommended that the reader first familiarizes herself with CLF API
+ * usage in SDK help.
+ *
+ * Additionally the example makes use of several other Symbian and S60 features
+ * of which the reader should be aware of:
+ * - Active Objects
+ * - File Server session
+ * - Lists
+ * - Query and Wait Dialogs
+ * - CMdaAudioPlayerUtility
+ *
+ * It is also recommended that the reader has generic knowledge of the media 
+ * file types and metadata formats supported by the S60 platform.
+ *
+ * <HR>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * CLF Example application design follows Avkon View-switching architecture.
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * CLF Example does not require any capabilities. The capabilities are defined
+ * as NONE in mmp-file.
+ *
+ * \subsection Sub32 3.2 Start-up
+ *
+ * When CLF Example application is started, the framework completes the
+ * construction of the application by calling CCEAppUi::ConstructL()
+ * during which two view objects of the application are created:
+ * - Music View by calling CCEMusicView::NewLC(), and
+ * - Group View by calling CCEGroupView::NewLC().
+ *
+ * CCEAppUi also has three data objects as members:
+ * - \link CCEAppUi::iEngine iEngine\endlink,
+ * - \link CCEAppUi::iModel iModel\endlink, and
+ * - \link CCEAppUi::iObserver iObserver\endlink.
+ *
+ * The Content Listing Engine (MCLFContentListingEngine) is used 
+ * for creating the List Model (MCLFItemListModel), 
+ * sending update notifications to the CLF Server and receiving 
+ * notification from the CLF Server via the Operation Observer
+ * (MCLFOperationObserver). The List Model 
+ * instance is configured by calling SetWantedMediaTypesL() with an array as 
+ * an parameter holding a list of the media types that are to be included
+ * in the List Model. The available media types are defined in 
+ * CLFContentListing.hrh. 
+ * 
+ * CLF List Models can also be created using a 
+ * CLF_LIST_MODEL resource structure, see CLFContentListing.rh for more 
+ * details.
+ * 
+ * \subsection Sub33 3.3 Group View
+ *
+ * When the Content Listing Framework Example application is started the 
+ * the Group View (CCEGroupView) is activated. 
+ *
+ * CCEGroupView::DoActivateL creates CCEGroupContainer 
+ * and refreshes the List Model's contents asynchronously by calling 
+ * iModel->RefreshL(). When the List Model is refreshed CLF calls the 
+ * Operation Observer's HandleOperationEventL() method.
+ *
+ * The Group View options menu provides commands for grouping the music files 
+ * by album or artist name and an option for clearing the grouping and showing
+ * all files. Grouping by artist name is done using a custom grouper 
+ * implemented in CCECustomGrouper. The grouping is set to the list model in 
+ * CCEGroupView::GroupListItemsL(). After the grouping is changed, the List 
+ * Model is refreshed to make the new grouping active. 
+ *
+ * When the user activates an item from the Group View, a CLF post-filter is 
+ * created by calling CCEPostFilter::NewL(). At construction, the post-filter
+ * is configured based on the active grouping state. The post-filter is then 
+ * set to the List Model. Finally, the List Model refresh is started and
+ * Music View activated.
+ *
+ * \subsection Sub34 3.4 Music View
+ *
+ * At the Music View activation, CCEMusicContainer is created and the 
+ * listbox contents populated in CCEMusicView::PopulateListBoxL().
+ *
+ * Music View Options allows the user to play or rename the music files or 
+ * sort the list by album name, artist name, title, genre, time stamp or by
+ * random order. Random order sorting is implemented using a custom sorter 
+ * implemented in CCECustomSorter. 
+ *
+ * For music playing Music View uses the CCESoundPlayer class. 
+ * CCESoundPlayer uses internally CMdaAudioPlayerUtility to play the music.
+ *
+ * File renaming is implemented in CCEMusicView::RenameMusicFileL().
+ * First a CAknTextQueryDialog is launched for querying the new file name 
+ * from the user. After the new name is entered, a new File Server session 
+ * is opened and the file renamed using RFs::Rename().
+ * If the file renaming was successful, then the Content Listing Engine
+ * is instructed to update itself by calling 
+ * MCLFContentListingEngine::UpdateItemsL(). When the CLF Engine has been 
+ * updated, it will send an event to the Operation Observer. The Operation
+ * Observer then relays the notification to the Music View by calling 
+ * CCEMusicView::ItemsChangedL(). Music View then launches a wait note
+ * by calling CCEWaitNote::OpenWaitNoteL() and refreshes the List Model 
+ * while the wait note is shown to the user. When the List Model is updated,
+ * the listbox's contents are refreshed and the wait note closed by calling 
+ * CCEWaitNote::CloseWaitNoteL().
+ * 
+ * Functionality for setting the primary and secondary sorting style is 
+ * implemented in CCEMusicView::SetSortingL(). CLF List Model's sorting 
+ * is changed by first creating a new MCLFSortingStyle instance by calling 
+ * ContentListingFactory::NewSortingStyleLC() and then setting the 
+ * desired sorting fields and sorting type with
+ * MCLFSortingStyle::AddFieldL() and MCLFSortingStyle::SetSortingDataType(), 
+ * respectively. Finally the sorting style is set to the List Model by calling 
+ * MCLFItemListModel::SetCustomSorter() and the List Model refreshed with 
+ * MCLFItemListModel::RefreshL(). 
+ *
+ * Secondary sorting style (used for items that do not have any of the
+ * fields used by the primary sorting style) is set similarly by 
+ * constructing a new MCLFSortingStyle and setting the fields and sorting
+ * type. The only difference to primary sorting style is that a secondary 
+ * sorting style is set to the List Model using 
+ * MCLFItemListModel::AppendSecondarySortingStyleL().
+ * 
+ * Note that when only the item sorting of a List Model needs to be changed, 
+ * it is not necessary to do a full refresh of the model. This is achieved
+ * by passing ECLFRefreshSorting and ECLFRefreshPostFilter parameters to 
+ * RefreshL(). The ECLFRefreshSorting causes CLF not to retrieve possible 
+ * new items from the server but to only update the List Model's sorting.
+ * The ECLFRefreshPostFilter parameter is needed because a custom post-filter 
+ * is in use and the filtering needs to be taken into account when the items 
+ * are sorted.
+ *
+ * Sorting styles can also be constructed from resource. In this example
+ * a secondary sorting style is constructed from the following 
+ * resource structure in CLFExample.rss:
+ *
+ * \code
+ * RESOURCE CLF_SORTING_STYLE r_ce_secondary_sorting_style
+ *     {
+ *     // Sort ordering: Ascending
+ *     ordering = ECLFOrderingAscending;
+ * 
+ *     // Field data type: Text string
+ *     data_type = ECLFItemDataTypeDesC;
+ * 
+ *     fields =
+ *         {
+ *         // Sort by file name
+ *         CLF_FIELD_ID { field_id = ECLFFieldIdFileName; }
+ *         };
+ *     }
+ * \endcode
+ *
+ */

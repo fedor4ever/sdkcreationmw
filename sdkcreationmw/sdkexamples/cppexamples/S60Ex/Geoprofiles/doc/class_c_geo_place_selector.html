@@ -1,0 +1,1253 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoPlaceSelector Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoPlaceSelector Class Reference</h1><!-- doxytag: class="CGeoPlaceSelector" --><!-- doxytag: inherits="CActive" --><code>#include &lt;<a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoPlaceSelector:
+<p><center><img src="class_c_geo_place_selector.png" usemap="#CGeoPlaceSelector_map" border="0" alt=""></center>
+<map name="CGeoPlaceSelector_map">
+</map>
+<a href="class_c_geo_place_selector-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+Geo Profile Place selector 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00033">33</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Types</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#7010a5cc6f925b7cc0d6a445ee21e1df">EGeoPlaceSelection</a> { <b>EPlaceCurrentLocation</b>, 
+<b>EPlaceLandmark</b>, 
+<b>EPlaceNetworkCell</b>
+ }</td></tr>
+
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#43d37abf52bd98053eebf7e60044a1eb">~CGeoPlaceSelector</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#1a8a094c98c67d5be6bc4b11f46dcac4">SelectGeoPlaceL</a> (TInt &amp;aPlaceType, TLocality &amp;aLocality, TPtr &amp;aPlaceName)</td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_place_selector.html">CGeoPlaceSelector</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#94389c6729b439332fc74a54ac683740">NewLC</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#c905464eba16692c47feb2b07f8d7581">CGeoPlaceSelector</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#9ce34ba0b947863222da3c63d0481044">ConstructL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#98dcd20e4dd117488a6a90dadd4dfac5">RunL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#79737b00f2b6a07492c7caf4220c6691">DoCancel</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#74042c1aea3d054a4f7b33f1b19eb9a1">DisplayPlacePopUpL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#bfc5abe6450a1ebfe6d80e440e4a87f8">SelectPlaceFromLandmarkL</a> (TLocality &amp;aLocality, TPtr &amp;aPlaceName)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#8855ad3c4c341d6ae05736b2dad813df">SelectPlaceFromCurrentLocationL</a> (TLocality &amp;aLocality)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#d8a0daa204eb1d9cc9c7fa79c7d49c7c">LaunchWaitDialogL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#149738495421a28e525806f7cf394bcf">DismissWaitDialog</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#90b6d1323284e3bddb367c4f9606d25e">iPlacePopupTitle</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CAknWaitDialog *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">iDialogState</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TBool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#e27ce25761b11d8682f80d3c21a1d6ef">iMapsAvailable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">RPositionServer&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#2fd325e8f3ad0cd0f67a39cca15fa423">iServer</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">RPositioner&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a></td></tr>
+
+</table>
+<hr><h2>Member Enumeration Documentation</h2>
+<a class="anchor" name="7010a5cc6f925b7cc0d6a445ee21e1df"></a><!-- doxytag: member="CGeoPlaceSelector::EGeoPlaceSelection" ref="7010a5cc6f925b7cc0d6a445ee21e1df" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">enum <a class="el" href="class_c_geo_place_selector.html#7010a5cc6f925b7cc0d6a445ee21e1df">CGeoPlaceSelector::EGeoPlaceSelection</a>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Enumeration Defintions 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00039">39</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.<div class="fragment"><pre class="fragment"><a name="l00040"></a>00040         {
+<a name="l00041"></a>00041         EPlaceCurrentLocation,
+<a name="l00042"></a>00042         EPlaceLandmark,
+<a name="l00043"></a>00043         EPlaceNetworkCell    
+<a name="l00044"></a>00044         };
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="43d37abf52bd98053eebf7e60044a1eb"></a><!-- doxytag: member="CGeoPlaceSelector::~CGeoPlaceSelector" ref="43d37abf52bd98053eebf7e60044a1eb" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoPlaceSelector::~CGeoPlaceSelector           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Destructor. Frees all the resources 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00052">52</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8h-source.html#l00117">iPlacePopupTitle</a>, <a class="el" href="geoplaceselector_8h-source.html#l00147">iPositioner</a>, and <a class="el" href="geoplaceselector_8h-source.html#l00142">iServer</a>.<div class="fragment"><pre class="fragment"><a name="l00053"></a>00053     {
+<a name="l00054"></a>00054     <span class="comment">// Cancel any outstanding request</span>
+<a name="l00055"></a>00055     Cancel();
+<a name="l00056"></a>00056     
+<a name="l00057"></a>00057     <a class="code" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a>.Close();
+<a name="l00058"></a>00058     <a class="code" href="class_c_geo_place_selector.html#2fd325e8f3ad0cd0f67a39cca15fa423">iServer</a>.Close();
+<a name="l00059"></a>00059     
+<a name="l00060"></a>00060     <span class="keyword">delete</span> <a class="code" href="class_c_geo_place_selector.html#90b6d1323284e3bddb367c4f9606d25e">iPlacePopupTitle</a>;
+<a name="l00061"></a>00061     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="c905464eba16692c47feb2b07f8d7581"></a><!-- doxytag: member="CGeoPlaceSelector::CGeoPlaceSelector" ref="c905464eba16692c47feb2b07f8d7581" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoPlaceSelector::CGeoPlaceSelector           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Constructor 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00043">43</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00067">NewLC()</a>.<div class="fragment"><pre class="fragment"><a name="l00044"></a>00044     :CActive( EPriorityStandard )
+<a name="l00045"></a>00045     {    
+<a name="l00046"></a>00046     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="94389c6729b439332fc74a54ac683740"></a><!-- doxytag: member="CGeoPlaceSelector::NewLC" ref="94389c6729b439332fc74a54ac683740" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_place_selector.html">CGeoPlaceSelector</a> * CGeoPlaceSelector::NewLC           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Constructs a new instance of CGeoPlaceSelector 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00067">67</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8cpp-source.html#l00043">CGeoPlaceSelector()</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00494">CGeoProfileEditor::HandlePlaceSelectionL()</a>.<div class="fragment"><pre class="fragment"><a name="l00068"></a>00068     {
+<a name="l00069"></a>00069     <a class="code" href="class_c_geo_place_selector.html">CGeoPlaceSelector</a>* <span class="keyword">self</span> = <span class="keyword">new</span> ( ELeave ) <a class="code" href="class_c_geo_place_selector.html#c905464eba16692c47feb2b07f8d7581">CGeoPlaceSelector</a>();
+<a name="l00070"></a>00070     CleanupStack::PushL( <span class="keyword">self</span> );
+<a name="l00071"></a>00071     <span class="keyword">self</span>-&gt;ConstructL();
+<a name="l00072"></a>00072     <span class="keywordflow">return</span> <span class="keyword">self</span>;                                                                  
+<a name="l00073"></a>00073     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="1a8a094c98c67d5be6bc4b11f46dcac4"></a><!-- doxytag: member="CGeoPlaceSelector::SelectGeoPlaceL" ref="1a8a094c98c67d5be6bc4b11f46dcac4" args="(TInt &amp;aPlaceType, TLocality &amp;aLocality, TPtr &amp;aPlaceName)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoPlaceSelector::SelectGeoPlaceL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPlaceType</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TLocality &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aLocality</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TPtr &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPlaceName</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Select Place 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00096">96</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8cpp-source.html#l00161">DisplayPlacePopUpL()</a>, <a class="el" href="geoplaceselector_8cpp-source.html#l00280">SelectPlaceFromCurrentLocationL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00234">SelectPlaceFromLandmarkL()</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00494">CGeoProfileEditor::HandlePlaceSelectionL()</a>.<div class="fragment"><pre class="fragment"><a name="l00099"></a>00099     {   
+<a name="l00100"></a>00100     TInt retVal = KErrCancel;
+<a name="l00101"></a>00101     retVal = <a class="code" href="class_c_geo_place_selector.html#74042c1aea3d054a4f7b33f1b19eb9a1">DisplayPlacePopUpL</a>();
+<a name="l00102"></a>00102     <span class="keywordflow">switch</span> ( retVal )
+<a name="l00103"></a>00103         {
+<a name="l00104"></a>00104         <span class="keywordflow">case</span> EPlaceCurrentLocation:
+<a name="l00105"></a>00105             {
+<a name="l00106"></a>00106             retVal = <a class="code" href="class_c_geo_place_selector.html#8855ad3c4c341d6ae05736b2dad813df">SelectPlaceFromCurrentLocationL</a>( aLocality );
+<a name="l00107"></a>00107             aPlaceType = CGeoProfile::ECoordinate;
+<a name="l00108"></a>00108             <span class="keywordflow">break</span>;    
+<a name="l00109"></a>00109             }
+<a name="l00110"></a>00110         <span class="keywordflow">case</span> EPlaceNetworkCell:
+<a name="l00111"></a>00111             {
+<a name="l00112"></a>00112             <span class="keywordflow">break</span>;              
+<a name="l00113"></a>00113             }
+<a name="l00114"></a>00114         <span class="keywordflow">case</span> EPlaceLandmark:
+<a name="l00115"></a>00115             {
+<a name="l00116"></a>00116             retVal = <a class="code" href="class_c_geo_place_selector.html#bfc5abe6450a1ebfe6d80e440e4a87f8">SelectPlaceFromLandmarkL</a>( aLocality, aPlaceName );
+<a name="l00117"></a>00117             aPlaceType = CGeoProfile::ECoordinate;
+<a name="l00118"></a>00118             }
+<a name="l00119"></a>00119         <span class="keywordflow">default</span>:
+<a name="l00120"></a>00120             {
+<a name="l00121"></a>00121             <span class="keywordflow">break</span>;
+<a name="l00122"></a>00122             }
+<a name="l00123"></a>00123         }
+<a name="l00124"></a>00124     
+<a name="l00125"></a>00125     <span class="keywordflow">if</span> ( !retVal )
+<a name="l00126"></a>00126         {
+<a name="l00127"></a>00127         HBufC* title = StringLoader::LoadLC( R_LBL_GEOPROFILES_LOCATIONNAME );
+<a name="l00128"></a>00128         
+<a name="l00129"></a>00129         <span class="comment">// Ask the User to enter a suitable name</span>
+<a name="l00130"></a>00130         CAknTextQueryDialog* nameQuery = CAknTextQueryDialog::NewL( aPlaceName );
+<a name="l00131"></a>00131         retVal = !nameQuery-&gt;ExecuteLD( R_GEOPROFILES_NAME_QUERYDIALOG, title-&gt;Des());
+<a name="l00132"></a>00132         CleanupStack::PopAndDestroy( title );     
+<a name="l00133"></a>00133         }          
+<a name="l00134"></a>00134     <span class="keywordflow">return</span> retVal;
+<a name="l00135"></a>00135     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="9ce34ba0b947863222da3c63d0481044"></a><!-- doxytag: member="CGeoPlaceSelector::ConstructL" ref="9ce34ba0b947863222da3c63d0481044" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoPlaceSelector::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of two phase construction 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00079">79</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8h-source.html#l00137">iMapsAvailable</a>, <a class="el" href="geoplaceselector_8h-source.html#l00117">iPlacePopupTitle</a>, <a class="el" href="geoplaceselector_8h-source.html#l00147">iPositioner</a>, and <a class="el" href="geoplaceselector_8h-source.html#l00142">iServer</a>.<div class="fragment"><pre class="fragment"><a name="l00080"></a>00080     {
+<a name="l00081"></a>00081     <span class="comment">// Allocate the Title text</span>
+<a name="l00082"></a>00082     <a class="code" href="class_c_geo_place_selector.html#90b6d1323284e3bddb367c4f9606d25e">iPlacePopupTitle</a> = NULL;
+<a name="l00083"></a>00083     
+<a name="l00084"></a>00084     <a class="code" href="class_c_geo_place_selector.html#e27ce25761b11d8682f80d3c21a1d6ef">iMapsAvailable</a> = EFalse;
+<a name="l00085"></a>00085     
+<a name="l00086"></a>00086     User::LeaveIfError( <a class="code" href="class_c_geo_place_selector.html#2fd325e8f3ad0cd0f67a39cca15fa423">iServer</a>.Connect());
+<a name="l00087"></a>00087     User::LeaveIfError( <a class="code" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a>.Open( <a class="code" href="class_c_geo_place_selector.html#2fd325e8f3ad0cd0f67a39cca15fa423">iServer</a> ));
+<a name="l00088"></a>00088     
+<a name="l00089"></a>00089     CActiveScheduler::Add( <span class="keyword">this</span> );
+<a name="l00090"></a>00090     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="98dcd20e4dd117488a6a90dadd4dfac5"></a><!-- doxytag: member="CGeoPlaceSelector::RunL" ref="98dcd20e4dd117488a6a90dadd4dfac5" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoPlaceSelector::RunL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CActive 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00141">141</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8cpp-source.html#l00350">DismissWaitDialog()</a>, and <a class="el" href="geoplaceselector_8h-source.html#l00127">iLocAcqState</a>.<div class="fragment"><pre class="fragment"><a name="l00142"></a>00142     {
+<a name="l00143"></a>00143     <a class="code" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a> = iStatus.Int();
+<a name="l00144"></a>00144     <a class="code" href="class_c_geo_place_selector.html#149738495421a28e525806f7cf394bcf">DismissWaitDialog</a>();
+<a name="l00145"></a>00145     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="79737b00f2b6a07492c7caf4220c6691"></a><!-- doxytag: member="CGeoPlaceSelector::DoCancel" ref="79737b00f2b6a07492c7caf4220c6691" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoPlaceSelector::DoCancel           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Inherited from CActive 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00151">151</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8cpp-source.html#l00350">DismissWaitDialog()</a>, <a class="el" href="geoplaceselector_8h-source.html#l00127">iLocAcqState</a>, and <a class="el" href="geoplaceselector_8h-source.html#l00147">iPositioner</a>.<div class="fragment"><pre class="fragment"><a name="l00152"></a>00152     {
+<a name="l00153"></a>00153     <a class="code" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a>.CancelRequest( EPositionerNotifyPositionUpdate );
+<a name="l00154"></a>00154     <a class="code" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a> = KErrNotFound;
+<a name="l00155"></a>00155     <a class="code" href="class_c_geo_place_selector.html#149738495421a28e525806f7cf394bcf">DismissWaitDialog</a>();       
+<a name="l00156"></a>00156     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="74042c1aea3d054a4f7b33f1b19eb9a1"></a><!-- doxytag: member="CGeoPlaceSelector::DisplayPlacePopUpL" ref="74042c1aea3d054a4f7b33f1b19eb9a1" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoPlaceSelector::DisplayPlacePopUpL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Display Place Dialog 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00161">161</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00096">SelectGeoPlaceL()</a>.<div class="fragment"><pre class="fragment"><a name="l00162"></a>00162     {
+<a name="l00163"></a>00163     TInt retVal = KErrCancel;
+<a name="l00164"></a>00164        
+<a name="l00165"></a>00165     <span class="comment">// Index for profile selection</span>
+<a name="l00166"></a>00166     TInt index = 0;
+<a name="l00167"></a>00167         
+<a name="l00168"></a>00168     <span class="comment">// Load the Title text</span>
+<a name="l00169"></a>00169     HBufC* title = StringLoader::LoadLC( R_LBL_GEOPROFILES_PLACE );
+<a name="l00170"></a>00170         
+<a name="l00171"></a>00171     <span class="comment">// Create the list Query Dialog</span>
+<a name="l00172"></a>00172     CAknListQueryDialog* placeQuery = <span class="keyword">new</span>( ELeave ) CAknListQueryDialog( &amp;index );
+<a name="l00173"></a>00173     placeQuery-&gt;PrepareLC( R_GEOPROFILES_LIST_QUERY );
+<a name="l00174"></a>00174           
+<a name="l00175"></a>00175     <span class="comment">// Assign Title Text</span>
+<a name="l00176"></a>00176     CAknPopupHeadingPane *  heading = placeQuery-&gt;QueryHeading();
+<a name="l00177"></a>00177     <span class="keywordflow">if</span>( heading )
+<a name="l00178"></a>00178         {
+<a name="l00179"></a>00179         heading-&gt;SetTextL( *title );
+<a name="l00180"></a>00180         }
+<a name="l00181"></a>00181        
+<a name="l00182"></a>00182     <span class="comment">// Descriptor array</span>
+<a name="l00183"></a>00183     CDesCArrayFlat* array = <span class="keyword">new</span> ( ELeave ) CDesCArrayFlat( 4 );
+<a name="l00184"></a>00184     CleanupStack::PushL( array );
+<a name="l00185"></a>00185     
+<a name="l00186"></a>00186     HBufC* placeName = HBufC::NewLC( 256 );
+<a name="l00187"></a>00187     TPtr placeNamePtr = placeName-&gt;Des();
+<a name="l00188"></a>00188    
+<a name="l00189"></a>00189     <span class="comment">// Append the Current Place Label</span>
+<a name="l00190"></a>00190     HBufC* currentplace = StringLoader::LoadLC( R_LBL_GEOPROFILES_CURRENTPLACE );
+<a name="l00191"></a>00191     placeNamePtr.Zero();
+<a name="l00192"></a>00192     placeNamePtr.Append( KTab );
+<a name="l00193"></a>00193     placeNamePtr.Append( currentplace-&gt;Des());
+<a name="l00194"></a>00194     array-&gt;AppendL( *placeName );    
+<a name="l00195"></a>00195     CleanupStack::PopAndDestroy( currentplace );   
+<a name="l00196"></a>00196     
+<a name="l00197"></a>00197     <span class="comment">// Append the Landmark Label</span>
+<a name="l00198"></a>00198     HBufC* landmark = StringLoader::LoadLC( R_LBL_GEOPROFILES_LANDMARKS );
+<a name="l00199"></a>00199     placeNamePtr.Zero();
+<a name="l00200"></a>00200     placeNamePtr.Append( KTab );
+<a name="l00201"></a>00201     placeNamePtr.Append( landmark-&gt;Des());
+<a name="l00202"></a>00202     array-&gt;AppendL( *placeName );
+<a name="l00203"></a>00203     CleanupStack::PopAndDestroy( landmark );
+<a name="l00204"></a>00204                 
+<a name="l00205"></a>00205     <span class="comment">// Cleanup the profile Name buffer</span>
+<a name="l00206"></a>00206     CleanupStack::PopAndDestroy( placeName );
+<a name="l00207"></a>00207     
+<a name="l00208"></a>00208     <span class="comment">// Assign the Item text array</span>
+<a name="l00209"></a>00209     placeQuery-&gt;SetItemTextArray( array );
+<a name="l00210"></a>00210     placeQuery-&gt;SetOwnershipType(  ELbmOwnsItemArray );
+<a name="l00211"></a>00211     CleanupStack::Pop( array );
+<a name="l00212"></a>00212       
+<a name="l00213"></a>00213     <span class="keywordflow">if</span> ( placeQuery-&gt;RunLD())
+<a name="l00214"></a>00214         {
+<a name="l00215"></a>00215         <span class="keywordflow">if</span> ( index == 3 &amp;&amp; !<a class="code" href="class_c_geo_place_selector.html#e27ce25761b11d8682f80d3c21a1d6ef">iMapsAvailable</a> )
+<a name="l00216"></a>00216             {
+<a name="l00217"></a>00217             retVal = index + 1;
+<a name="l00218"></a>00218             }
+<a name="l00219"></a>00219         <span class="keywordflow">else</span>
+<a name="l00220"></a>00220             {
+<a name="l00221"></a>00221             retVal = index;    
+<a name="l00222"></a>00222             }        
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224         
+<a name="l00225"></a>00225     CleanupStack::PopAndDestroy( title );
+<a name="l00226"></a>00226     <span class="keywordflow">return</span> retVal;    
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="bfc5abe6450a1ebfe6d80e440e4a87f8"></a><!-- doxytag: member="CGeoPlaceSelector::SelectPlaceFromLandmarkL" ref="bfc5abe6450a1ebfe6d80e440e4a87f8" args="(TLocality &amp;aLocality, TPtr &amp;aPlaceName)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoPlaceSelector::SelectPlaceFromLandmarkL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TLocality &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aLocality</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TPtr &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPlaceName</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Select place from Landmark 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00234">234</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00096">SelectGeoPlaceL()</a>.<div class="fragment"><pre class="fragment"><a name="l00236"></a>00236     {
+<a name="l00237"></a>00237     TInt retVal = KErrCancel;
+<a name="l00238"></a>00238     
+<a name="l00239"></a>00239     TLmkItemIdDbCombiInfo lmkInfo;
+<a name="l00240"></a>00240     
+<a name="l00241"></a>00241     <span class="comment">// Create a Landmarks object</span>
+<a name="l00242"></a>00242     CLmkLandmarkSelectorDlg* dlg =  CLmkLandmarkSelectorDlg::NewL();
+<a name="l00243"></a>00243     <span class="keywordflow">if</span> ( dlg-&gt;ExecuteLD( lmkInfo ) )
+<a name="l00244"></a>00244         {        
+<a name="l00245"></a>00245         CPosLandmarkDatabase* lmkDb = lmkInfo.GetLmDb();
+<a name="l00246"></a>00246         CleanupStack::PushL( lmkDb );
+<a name="l00247"></a>00247         CPosLandmark* lmk = lmkDb-&gt;ReadLandmarkLC( lmkInfo.GetItemId() );
+<a name="l00248"></a>00248         
+<a name="l00249"></a>00249         <span class="comment">//retrieve lat long info</span>
+<a name="l00250"></a>00250         TLocality locality;
+<a name="l00251"></a>00251         lmk-&gt;GetPosition( locality );
+<a name="l00252"></a>00252         <span class="keywordflow">if</span>( !Math::IsNaN( locality.Latitude() ) &amp;&amp; 
+<a name="l00253"></a>00253             !Math::IsNaN( locality.Longitude()))
+<a name="l00254"></a>00254             {
+<a name="l00255"></a>00255             aLocality = locality;
+<a name="l00256"></a>00256             
+<a name="l00257"></a>00257             <span class="comment">// Store the name if it exists</span>
+<a name="l00258"></a>00258             TPtrC landmarkName;
+<a name="l00259"></a>00259             lmk-&gt;GetLandmarkName( landmarkName );
+<a name="l00260"></a>00260             
+<a name="l00261"></a>00261             <span class="keywordflow">if</span> ( landmarkName.Length() &amp;&amp; landmarkName.Length() &lt; KGeoPlaceNameMaxLength )
+<a name="l00262"></a>00262                 {
+<a name="l00263"></a>00263                 aPlaceName.Copy( landmarkName );
+<a name="l00264"></a>00264                 }
+<a name="l00265"></a>00265             retVal = KErrNone;
+<a name="l00266"></a>00266             }
+<a name="l00267"></a>00267         <span class="keywordflow">else</span>
+<a name="l00268"></a>00268             {
+<a name="l00269"></a>00269             User::Leave( KErrNotFound );    
+<a name="l00270"></a>00270             }
+<a name="l00271"></a>00271         CleanupStack::PopAndDestroy( 2, lmkDb );       
+<a name="l00272"></a>00272         }
+<a name="l00273"></a>00273     <span class="keywordflow">return</span> retVal;
+<a name="l00274"></a>00274     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="8855ad3c4c341d6ae05736b2dad813df"></a><!-- doxytag: member="CGeoPlaceSelector::SelectPlaceFromCurrentLocationL" ref="8855ad3c4c341d6ae05736b2dad813df" args="(TLocality &amp;aLocality)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoPlaceSelector::SelectPlaceFromCurrentLocationL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TLocality &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aLocality</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Select place from current Location 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00280">280</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8h-source.html#l00132">iDialogState</a>, <a class="el" href="geoplaceselector_8h-source.html#l00127">iLocAcqState</a>, <a class="el" href="geoplaceselector_8h-source.html#l00147">iPositioner</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00334">LaunchWaitDialogL()</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00096">SelectGeoPlaceL()</a>.<div class="fragment"><pre class="fragment"><a name="l00281"></a>00281     {
+<a name="l00282"></a>00282     <span class="keywordflow">if</span> ( IsActive())
+<a name="l00283"></a>00283         {
+<a name="l00284"></a>00284         User::Leave( KErrInUse );
+<a name="l00285"></a>00285         }
+<a name="l00286"></a>00286         
+<a name="l00287"></a>00287     <span class="comment">// Initialize the server options</span>
+<a name="l00288"></a>00288     _LIT(KRequestorName, <span class="stringliteral">"Geo Profiles "</span>);    
+<a name="l00289"></a>00289         User::LeaveIfError( <a class="code" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a>.SetRequestor( 
+<a name="l00290"></a>00290                             CRequestor::ERequestorService,
+<a name="l00291"></a>00291                             CRequestor::EFormatApplication,
+<a name="l00292"></a>00292                             KRequestorName ));
+<a name="l00293"></a>00293                             
+<a name="l00294"></a>00294     <span class="comment">// Issue a Location Request</span>
+<a name="l00295"></a>00295     TPositionInfo posInfo;
+<a name="l00296"></a>00296     <a class="code" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">iPositioner</a>.NotifyPositionUpdate( posInfo, iStatus );
+<a name="l00297"></a>00297     SetActive();    
+<a name="l00298"></a>00298     
+<a name="l00299"></a>00299     <a class="code" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a> = KErrNotFound;
+<a name="l00300"></a>00300     <a class="code" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">iDialogState</a> = KErrNone;
+<a name="l00301"></a>00301     
+<a name="l00302"></a>00302     <span class="comment">// Launch the Wait Dialog which will block the thread</span>
+<a name="l00303"></a>00303     <a class="code" href="class_c_geo_place_selector.html#d8a0daa204eb1d9cc9c7fa79c7d49c7c">LaunchWaitDialogL</a>();
+<a name="l00304"></a>00304     
+<a name="l00305"></a>00305     <span class="keywordflow">if</span>( <a class="code" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a> )
+<a name="l00306"></a>00306         {
+<a name="l00307"></a>00307         <span class="comment">// If Location Acquistion Failed, leave with the corresponding error code.</span>
+<a name="l00308"></a>00308         User::Leave( <a class="code" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">iLocAcqState</a> );
+<a name="l00309"></a>00309         }
+<a name="l00310"></a>00310         
+<a name="l00311"></a>00311     <span class="keywordflow">if</span> ( !<a class="code" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">iDialogState</a> )
+<a name="l00312"></a>00312         {
+<a name="l00313"></a>00313         <span class="comment">// Now Copy the Location Information</span>
+<a name="l00314"></a>00314         TPosition position;
+<a name="l00315"></a>00315         posInfo.GetPosition( position );
+<a name="l00316"></a>00316         
+<a name="l00317"></a>00317         <span class="keywordflow">if</span>( !Math::IsNaN( position.Latitude() ) &amp;&amp; 
+<a name="l00318"></a>00318             !Math::IsNaN( position.Longitude()))
+<a name="l00319"></a>00319             {
+<a name="l00320"></a>00320             aLocality = position;
+<a name="l00321"></a>00321             }
+<a name="l00322"></a>00322         <span class="keywordflow">else</span>
+<a name="l00323"></a>00323             {
+<a name="l00324"></a>00324             User::Leave( KErrNotFound );   
+<a name="l00325"></a>00325             }                
+<a name="l00326"></a>00326         }                            
+<a name="l00327"></a>00327     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">iDialogState</a>;
+<a name="l00328"></a>00328     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="d8a0daa204eb1d9cc9c7fa79c7d49c7c"></a><!-- doxytag: member="CGeoPlaceSelector::LaunchWaitDialogL" ref="d8a0daa204eb1d9cc9c7fa79c7d49c7c" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoPlaceSelector::LaunchWaitDialogL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Launches the Wait dialog 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00334">334</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8h-source.html#l00132">iDialogState</a>, and <a class="el" href="geoplaceselector_8h-source.html#l00122">iWaitDialog</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00280">SelectPlaceFromCurrentLocationL()</a>.<div class="fragment"><pre class="fragment"><a name="l00335"></a>00335     {
+<a name="l00336"></a>00336     <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> = <span class="keyword">new</span> ( ELeave ) CAknWaitDialog (( REINTERPRET_CAST( CEikDialog**, &amp;<a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> )), ETrue );          
+<a name="l00337"></a>00337     <span class="keywordflow">if</span>( !( <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a>-&gt;ExecuteLD( R_LBL_GEOPROFILES_WAITDLG_CURRENTLOCATION )))
+<a name="l00338"></a>00338         {
+<a name="l00339"></a>00339         <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> = NULL;
+<a name="l00340"></a>00340         <a class="code" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">iDialogState</a> = KErrAbort;
+<a name="l00341"></a>00341         Cancel();    
+<a name="l00342"></a>00342         }
+<a name="l00343"></a>00343     <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> = NULL;
+<a name="l00344"></a>00344     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="149738495421a28e525806f7cf394bcf"></a><!-- doxytag: member="CGeoPlaceSelector::DismissWaitDialog" ref="149738495421a28e525806f7cf394bcf" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoPlaceSelector::DismissWaitDialog           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Dismisses the Wait dialog 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8cpp-source.html#l00350">350</a> of file <a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a>.
+<p>
+References <a class="el" href="geoplaceselector_8h-source.html#l00122">iWaitDialog</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00151">DoCancel()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00141">RunL()</a>.<div class="fragment"><pre class="fragment"><a name="l00351"></a>00351     {
+<a name="l00352"></a>00352     <span class="keywordflow">if</span> ( <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> )
+<a name="l00353"></a>00353         {               
+<a name="l00354"></a>00354         TRAPD( err, <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a>-&gt;ProcessFinishedL());
+<a name="l00355"></a>00355         <span class="keywordflow">if</span> ( err )
+<a name="l00356"></a>00356                 {
+<a name="l00357"></a>00357                     <span class="keyword">delete</span> <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a>;                      
+<a name="l00358"></a>00358                 }
+<a name="l00359"></a>00359             <a class="code" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">iWaitDialog</a> = NULL;
+<a name="l00360"></a>00360         } 
+<a name="l00361"></a>00361     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="90b6d1323284e3bddb367c4f9606d25e"></a><!-- doxytag: member="CGeoPlaceSelector::iPlacePopupTitle" ref="90b6d1323284e3bddb367c4f9606d25e" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC* <a class="el" href="class_c_geo_place_selector.html#90b6d1323284e3bddb367c4f9606d25e">CGeoPlaceSelector::iPlacePopupTitle</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Title text for pop-up dialog Owns 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00117">117</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00079">ConstructL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00052">~CGeoPlaceSelector()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="08a346f69e11d14fc982d23026669219"></a><!-- doxytag: member="CGeoPlaceSelector::iWaitDialog" ref="08a346f69e11d14fc982d23026669219" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CAknWaitDialog* <a class="el" href="class_c_geo_place_selector.html#08a346f69e11d14fc982d23026669219">CGeoPlaceSelector::iWaitDialog</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Wait dialog for obtaining current position 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00122">122</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00350">DismissWaitDialog()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00334">LaunchWaitDialogL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="a64ef71abb2386e4e28ddb6fbd00edbe"></a><!-- doxytag: member="CGeoPlaceSelector::iLocAcqState" ref="a64ef71abb2386e4e28ddb6fbd00edbe" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_place_selector.html#a64ef71abb2386e4e28ddb6fbd00edbe">CGeoPlaceSelector::iLocAcqState</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Location Acquistion Request status 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00127">127</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00151">DoCancel()</a>, <a class="el" href="geoplaceselector_8cpp-source.html#l00141">RunL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00280">SelectPlaceFromCurrentLocationL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="4d12fcdfb123dc9251fc1174aad3c1f7"></a><!-- doxytag: member="CGeoPlaceSelector::iDialogState" ref="4d12fcdfb123dc9251fc1174aad3c1f7" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_place_selector.html#4d12fcdfb123dc9251fc1174aad3c1f7">CGeoPlaceSelector::iDialogState</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Dialog Dismissal State 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00132">132</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00334">LaunchWaitDialogL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00280">SelectPlaceFromCurrentLocationL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="e27ce25761b11d8682f80d3c21a1d6ef"></a><!-- doxytag: member="CGeoPlaceSelector::iMapsAvailable" ref="e27ce25761b11d8682f80d3c21a1d6ef" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TBool <a class="el" href="class_c_geo_place_selector.html#e27ce25761b11d8682f80d3c21a1d6ef">CGeoPlaceSelector::iMapsAvailable</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Boolean variable to check whether Maps is present 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00137">137</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00079">ConstructL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="2fd325e8f3ad0cd0f67a39cca15fa423"></a><!-- doxytag: member="CGeoPlaceSelector::iServer" ref="2fd325e8f3ad0cd0f67a39cca15fa423" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">RPositionServer <a class="el" href="class_c_geo_place_selector.html#2fd325e8f3ad0cd0f67a39cca15fa423">CGeoPlaceSelector::iServer</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Handle to Location Server 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00142">142</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00079">ConstructL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00052">~CGeoPlaceSelector()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="8a0505b4eef75a4a072d085f52863c01"></a><!-- doxytag: member="CGeoPlaceSelector::iPositioner" ref="8a0505b4eef75a4a072d085f52863c01" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">RPositioner <a class="el" href="class_c_geo_place_selector.html#8a0505b4eef75a4a072d085f52863c01">CGeoPlaceSelector::iPositioner</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Handle to Server session 
+<p>
+Definition at line <a class="el" href="geoplaceselector_8h-source.html#l00147">147</a> of file <a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a>.
+<p>
+Referenced by <a class="el" href="geoplaceselector_8cpp-source.html#l00079">ConstructL()</a>, <a class="el" href="geoplaceselector_8cpp-source.html#l00151">DoCancel()</a>, <a class="el" href="geoplaceselector_8cpp-source.html#l00280">SelectPlaceFromCurrentLocationL()</a>, and <a class="el" href="geoplaceselector_8cpp-source.html#l00052">~CGeoPlaceSelector()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoplaceselector_8h-source.html">geoplaceselector.h</a><li><a class="el" href="geoplaceselector_8cpp-source.html">geoplaceselector.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

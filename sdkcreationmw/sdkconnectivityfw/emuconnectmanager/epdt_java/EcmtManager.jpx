@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JBuilder XML Project-->
+<project>
+  <property category="build" name="CopyExtensions.1" value="xml"/>
+  <property category="generalFormatting" name="blockIndent" value="4"/>
+  <property category="javaFormatting" name="alwaysClasses" value="1"/>
+  <property category="javaFormatting" name="arrayInitDataOnNewLine" value="0"/>
+  <property category="javaFormatting" name="catchOnNewLine" value="0"/>
+  <property category="javaFormatting" name="elseOnNewLine" value="0"/>
+  <property category="javaFormatting" name="extendsOnNewLine" value="0"/>
+  <property category="javaFormatting" name="finallyOnNewLine" value="0"/>
+  <property category="javaFormatting" name="implementsOnNewLine" value="0"/>
+  <property category="javaFormatting" name="indentCase" value="0"/>
+  <property category="javaFormatting" name="spaceBeforeLparen" value="0"/>
+  <property category="javaFormatting" name="whileOnNewLine" value="0"/>
+  <property category="javadoc" name="custom.tags.1" value="todo;a;To Do:"/>
+  <property category="runtime" name="ConfigurationCount" value="1"/>
+  <property category="runtime" name="DefaultConfiguration" value="-1"/>
+  <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="runtime.0" name="ConfigurationName" value="EcmtManager"/>
+  <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
+  <property category="runtime.0" name="application.class" value="com.nokia.epdt.Main"/>
+  <property category="runtime.0" name="application.vmparameters" value="-DlogLevel=DEBUG -Dnokia.wtk.verbose=true -Dstart=core -Dcommand=open -Dhost=127.0.0.1 -Dport=49359 -Depoc.root=\ -Dsdk.home=\epoc32\tools\java\sei\winscw\udeb\hmidps60v30"/>
+  <property category="runtime.1" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="runtime.1" name="ConfigurationName" value="Prefs"/>
+  <property category="runtime.1" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
+  <property category="runtime.1" name="application.class" value="com.nokia.epdt.Main"/>
+  <property category="runtime.1" name="application.vmparameters" value="-DlogLevel=DEBUG -Dnokia.wtk.verbose=true -Dstart=core -Dcommand=show_preferences -Dhost=127.0.0.1 -Dport=49359 -Depoc.root=\ -Dsdk.home=\epoc32\tools\java\sei\winscw\udeb\hmidps60v30"/>
+  <property category="serverservices" name="disabled.services" value=""/>
+  <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
+  <property category="sys" name="AuthorLabel" value="@author"/>
+  <property category="sys" name="BackupPath" value="bak"/>
+  <property category="sys" name="CheckStable" value="1"/>
+  <property category="sys" name="Company" value=""/>
+  <property category="sys" name="CompanyLabel" value="Company:"/>
+  <property category="sys" name="Copyright" value="Copyright (c) 2005"/>
+  <property category="sys" name="CopyrightLabel" value="Copyright:"/>
+  <property category="sys" name="DefaultPath" value="src"/>
+  <property category="sys" name="Description" value=""/>
+  <property category="sys" name="DescriptionLabel" value="Description:"/>
+  <property category="sys" name="DocPath" value="doc"/>
+  <property category="sys" name="ExcludeClassEnabled" value="0"/>
+  <property category="sys" name="IncludeTestPath" value="1"/>
+  <property category="sys" name="InstanceVisibility" value="2"/>
+  <property category="sys" name="JDK" value="1.4.1"/>
+  <property category="sys" name="JvmVersion" value="1.2"/>
+  <property category="sys" name="LastTag" value="0"/>
+  <property category="sys" name="Libraries" value="NmitSharedUtil;NmitSharedBookmarks;NmitSharedWtkdev;NmitSharedApp;SDKDiagnostics;Log4J;seiprefs"/>
+  <property category="sys" name="MakeStable" value="0"/>
+  <property category="sys" name="OutPath" value="build/classes/EcmtManager"/>
+  <property category="sys" name="SourcePath" value="src;rsrc"/>
+  <property category="sys" name="TestPath" value="src"/>
+  <property category="sys" name="Title" value=""/>
+  <property category="sys" name="TitleLabel" value="Title:"/>
+  <property category="sys" name="Version" value="1.0"/>
+  <property category="sys" name="VersionLabel" value="@version"/>
+  <property category="sys" name="WorkingDirectory" value="rsrc"/>
+  <property category="sys" name="enable.auto.packages" value="false"/>
+  <node name="com.nokia.epdt" type="Package"/>
+  <node name="com.nokia.epdt.core" type="Package"/>
+  <node name="com.nokia.epdt.core.action" type="Package"/>
+  <node name="com.nokia.epdt.core.command" type="Package"/>
+  <node name="com.nokia.epdt.core.config" type="Package"/>
+  <node name="com.nokia.epdt.core.config.ini.epoc" type="Package"/>
+  <node name="com.nokia.epdt.core.connection" type="Package"/>
+  <node name="com.nokia.epdt.core.messaging" type="Package"/>
+  <node name="com.nokia.epdt.core.plugin" type="Package"/>
+  <node name="com.nokia.epdt.core.ui" type="Package"/>
+  <node name="com.nokia.epdt.core.ui.diagnostics" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.cpp.debug" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.emulator" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.ethernet" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.ethernetcapture" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.eventsim" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.general" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.httptraffic" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.midp" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.output" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.pan" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.platsec" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.route" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.securityconf" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.seidebug" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.seisuite" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.taskman" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.winsock" type="Package"/>
+  <node name="com.nokia.epdt.plugins.s60.winsock.resources" type="Package"/>
+  <node name="com.nokia.epdt.zip" type="Package"/>
+  <node name="resources" type="Package"/>
+</project>

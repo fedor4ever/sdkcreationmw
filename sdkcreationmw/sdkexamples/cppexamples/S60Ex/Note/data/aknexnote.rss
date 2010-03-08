@@ -1,0 +1,384 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME EXNT
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.hrh>
+#include <appinfo.rh>
+#include <avkon.mbg>
+
+#include "aknexnote.hrh"
+#include "aknexnote.rls"
+
+
+//   CONSTANTS
+#define AKNEXNOTE_IMAGE_MASK 0xffff
+#define AVKON_BMPFILE_NAME "\\resource\\apps\\avkon2.mbm"
+                                                                              
+//-----------------------------------------------------------------------------
+//
+//  RESOURCE DEFINITIONS
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//   TBUF16
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF16
+    {
+    buf = "AknExNote";
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    EIK_APP_INFO
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = R_AVKON_STATUS_PANE_LAYOUT_USUAL;
+    menubar = r_aknexnote_menubar;
+    cba = r_aknexnote_cba_options_next;
+        }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_view
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_aknexnote_view
+    {
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_menubar
+//    MenuBar
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_aknexnote_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_aknexnote_menu;
+            txt = STRING_r_exnt_menubar;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_view_menu
+//    Menu pane
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_aknexnote_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknExNoteCmdOutline01;
+            txt = STRING_r_exnt_menu_outline01;
+            },
+        MENU_ITEM
+            {
+            command = EAknExNoteCmdOutline05;
+            txt = STRING_r_exnt_menu_outline05;
+            },
+        MENU_ITEM
+            {
+            command = EAknExNoteCmdOutline08;
+            txt = STRING_r_exnt_menu_outline08;
+            },
+        MENU_ITEM
+            {
+            command = EAknExNoteCmdOutline35;
+            txt = STRING_r_exnt_menu_outline35;
+            },
+        MENU_ITEM
+            {
+            command = EAknExNoteCmdOutline53;
+            txt =  STRING_r_exnt_menu_outline53;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_exnt_menu_exit;
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_error_note
+//    For error note.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexnote_error_note
+    {
+    flags = EAknErrorNoteFlags;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EAknExNoteCtrlIdErrorNote;
+            control = AVKON_NOTE
+                {
+                layout = EGeneralLayout;
+                singular_label = STRING_r_exnt_error_singular;
+                plural_label = STRING_r_exnt_error_plural;
+                imagefile = AVKON_BMPFILE_NAME;
+                imageid = EMbmAvkonQgn_note_error;
+                imagemask = EMbmAvkonQgn_note_error_mask;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_progress_note
+//    For progress note.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexnote_progress_note
+    {
+    flags = EAknProgressNoteFlags;
+    buttons = r_aknexnote_softkeys_cancel;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EAknExNoteCtrlIdProgressNote;
+            control = AVKON_NOTE
+                {
+                layout = EProgressLayout;
+                singular_label = STRING_r_exnt_progress_singular;
+                plural_label = STRING_r_exnt_progress_plural;
+                imagefile = AVKON_BMPFILE_NAME;
+                imageid = EMbmAvkonQgn_note_progress;
+                imagemask = EMbmAvkonQgn_note_progress_mask;
+                };
+            }
+        };
+    }
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_dynamic_text
+//    For Dynamic text.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexnote_dynamic_text
+    {
+    flags = EAknDialogGenericNoteFlags;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EAknExNoteCtrlIdDynamicText;
+            control = AVKON_NOTE
+                {
+                layout = EGeneralLayout;
+                singular_label = STRING_r_exnt_dym_text_singular;
+                plural_label = STRING_r_exnt_dym_text_plural;
+                imagefile = AVKON_BMPFILE_NAME;
+                imageid = EMbmAvkonQgn_prop_nrtyp_address;
+                imagemask = EMbmAvkonQgn_prop_nrtyp_address_mask;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_wait_note_softkey_cancel
+//    Wait note with softkey Cancel.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_aknexnote_wait_note_softkey_cancel
+    {
+    flags = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EAknExNoteCtrlIdWaitNote;
+            control= AVKON_NOTE 
+                { 
+                layout = EWaitLayout;
+                singular_label = STRING_r_exnt_wait_prompt;
+                imagefile = AVKON_BMPFILE_NAME;
+                imageid = EMbmAvkonQgn_note_voice;
+                imagemask = EMbmAvkonQgn_note_voice_mask;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_aknexnote_softkeys_cancel
+//    For Softkey of wait note.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_aknexnote_softkeys_cancel
+    {
+    buttons =
+        {
+        CBA_BUTTON
+            {
+            txt = STRING_r_exnt_softkey_empty;
+            },
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyCancel;
+            txt = STRING_r_exnt_softkey_cancel;
+            }
+        };
+    }
+
+// ----------------------------------------------------------------------------
+//
+//    r_aknexnote_cba_options_next
+//    ?description
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE CBA r_aknexnote_cba_options_next
+    {
+    buttons =
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOptions; 
+            txt = STRING_r_exnt_cba_options;
+            },
+        AVKON_CBA_BUTTON
+            {
+            id = EAknExNoteCbaCmdNext;
+            txt = STRING_r_exnt_cba_next;
+            }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+// Resources for messages.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF256 r_aknexnote_text_status_pane_title53
+    {
+    buf = STRING_r_exnt_menu_outline53;
+    }
+
+RESOURCE TBUF256 r_aknexnote_shownotel_globalconfirmationnote_text
+    {
+    buf = STRING_r_exnt_shownotel_globalconfirmationnote_text;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_label_title
+    {
+    buf = STRING_r_exnt_label_title;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_label_operation
+    {
+    buf = STRING_r_exnt_label_operation;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_status_pane_title01
+    {
+    buf = STRING_r_exnt_menu_outline01;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_status_pane_title05
+    {
+    buf = STRING_r_exnt_menu_outline05;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_status_pane_title08
+    {
+    buf = STRING_r_exnt_menu_outline08;
+    }
+
+RESOURCE TBUF256 r_aknexnote_text_status_pane_title35
+    {
+    buf = STRING_r_exnt_menu_outline35;
+    }
+
+RESOURCE TBUF256 r_aknexnote_global_confirmation_note_text
+    {
+    buf = STRING_r_exnt_global_con_text;
+    }
+
+// ---------------------------------------------------------------------------- 
+//
+// r_exgr_localisable_app_info
+//
+// ---------------------------------------------------------------------------- 
+//
+RESOURCE LOCALISABLE_APP_INFO r_exnt_localisable_app_info
+    {
+    short_caption = STRING_r_exnt_caption_string;
+    caption_and_icon = 
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_exnt_caption_string;
+
+        number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\AknExNote_aif.mif";
+	    };
+    }
+
+// End of File

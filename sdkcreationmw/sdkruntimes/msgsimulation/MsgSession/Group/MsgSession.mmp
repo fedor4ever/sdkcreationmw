@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Client interface for EcmtServer
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+
+TARGET          MsgSession.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101f8c2f
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+USERINCLUDE     ..\Inc
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\OpenLIB
+
+DOCUMENT        MsgSession.pkg
+DOCUMENT        bld.inf
+
+SOURCEPATH      ..\Src
+SOURCE          MsgSessionDll.cpp
+
+LIBRARY         euser.lib
+LIBRARY         openlib.lib
+
+// End of file

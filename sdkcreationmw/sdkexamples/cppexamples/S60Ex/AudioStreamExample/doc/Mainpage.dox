@@ -1,0 +1,142 @@
+/*! \mainpage AudioStreaming Example
+ *
+ * \ref Intro_sec
+ * \n\ref Arch_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * Audio Streaming Example demonstrates the use of Audio Streaming API that
+ * provides functionality for recording audio stream into a buffer, and playback
+ * of the audio buffer.Also, the recorded audio stream can be saved into a file
+ * and further loaded to be played again.Sample files can be PCM encoded or
+ * AMR-NB-encoded audio files. This application is designed to run in both
+ * <b>S60 2nd Edition</b>  and <b>S60 3rd Edition</b> devices.
+ *
+ * List the functionalities of the application:
+ * - Play
+ * - Record
+ * - Stop
+ * - Load
+ * - Save
+ * - Encoding
+ * - Exit
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * - CMdaAudioInputStream
+ * - CMdaAudioOutputStream
+ * - MMdaAudioInputStreamCallback
+ * - MMdaAudioOutputStreamCallback.
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * Audio Streaming API is part of the Symbian Multimedia Framework (MMF) and
+ * supported from S60 2nd Edition onwards.User is expected to have an acquaintance
+ * with the Symbian Multimedia Framework.
+ *
+ * \subsection Sub13 1.3 Running this example
+ *
+ * Ensure the following points before building this example.<br>
+ * <b>MOBILE DEVICE (S60 3rd Edition)</b><br>
+ * Ensure that the sample.aud/amr files located at /AudioStreamExample/data
+ * have been copied to /epoc32/winscw/c/system/Apps/audiostream/ in your SDK
+ * installation directory<br>
+ * <br><b>MOBILE DEVICE (S60 2nd Edition)</b> <br>
+ * Ensure that the sample.aud/amr files located at /AudioStreamExample/data
+ * have been copied to /epoc32/winscw/c/system/Apps/audiostream/ in your SDK
+ * installation directory<br>
+ * <br><b>EMULATOR (S60 3rd Edition)</b><br>
+ * Ensure that the sample.aud/amr files located at /AudioStreamExample/data
+ * have been copied to /epoc32/winscw/c/private/e01ff1c3/ in your SDK
+ * installation directory<br>
+ * <br><b>EMULATOR (S60 2nd Edition)</b><br>
+ * Ensure that the sample.aud/amr files located at /AudioStreamExample/data
+ * have been copied to /epoc32/winscw/c/system/Apps/audiostream/ in your SDK
+ * installation directory<br>
+ *
+ * \section Arch_sec 2. Architecture
+ *
+ * Audio streaming example follows traditional Symbian OS Control-based
+ * architecture. CAudioStreamEngine is engine class which, inherits from
+ * MMdaAudioInputStreamCallback and MMdaAudioOutputStreamCallback.
+ * CAudioStreamEngine class defines audio functions (Play, Record, LoadFile,
+ * Stop) and the callback functions to get the error status of the audio
+ * operations.
+ *
+ * \image html AUDIOSTREAM_ENGINE.JPG
+ * <b> <center> </center></b>
+ *
+ * \section Design_sec 3. Design and Implementation
+ *
+ * \subsection Sub31 3.1 Capabilities
+ *
+ * Since this example implements recording functionality, program is defined
+ * with the UserEnvironment capability.<br>
+ * The program capabilities are defined in the AudioStream_s60_3rd_ed.mmp file: CAPABILITY UserEnvironment
+ *
+ *
+ * \subsection Sub32 3.2 Features
+ *
+ * The heart of this application is CAudioStreamEngine class, which inherits
+ * MMdaAudioInputStreamCallback and MMdaAudioOutputStreamCallback.
+ * CAudioStreamEngine implements <b>CMdaAudioInputStream</b> for input stream
+ * (Recording) and <b>CMdaAudioOutputStream</b> for output stream(Playing).
+ * The important functionalities of example are discussed below.
+ *
+ * - \link CAudioStreamEngine::Play Play \endlink <br>
+ *  This operation is implemented using the out stream class
+ *  CMdaAudioOutputStream, which is used to pass the audio data from buffers to
+ *  output stream. This class supports following callback functions from server
+ *  to notify the client:
+ *  - \link CAudioStreamEngine::MaoscOpenComplete MaoscOpenComplete() \endlink
+ *    will be called when the audio streaming object is open and ready to stream
+ *    data back to the audio hardware as a result of a previous call to Open().
+ *  - \link CAudioStreamEngine::MaoscBufferCopied MaoscBufferCopied() \endlink
+ *    will be called each time audio data has been successfully copied to the lower
+ *    layers of the MMF as a result of a previous ReadL().
+ *  - \link CAudioStreamEngine::MaoscPlayComplete MaoscPlayComplete() \endlink
+ *    will be called when the audio data stream has been closed as a result of a
+ *    previous Stop().
+ *
+ * - \link CAudioStreamEngine::Record Record \endlink <br>
+ *  This functionality is implemented using CMdaAudioInputStream, which is used
+ *  to pass audio data from audio hardware to buffer. This class supports
+ *  following callback functions from server to notify the client:
+ *  - \link CAudioStreamEngine::MaiscOpenComplete MaiscOpenComplete() \endlink
+ *    will be called when the audio streaming object is open and ready to stream
+ *    data back to the user as a result of a previous call to Open().
+ *  - \link CAudioStreamEngine::MaiscBufferCopied MaiscBufferCopied() \endlink
+ *    will be called multiple times while the FIFO (queued via ReadL()) is
+ *    emptied. Note: Each buffer will be flagged with KErrAbort if received
+ *    after Stop() on is called.
+ *  - \link CAudioStreamEngine::MaiscRecordComplete MaiscRecordComplete() \endlink
+ *    will be called once all remaining buffers have been read or after Stop()
+ *    has been called
+ *
+ * - \link CAudioStreamEngine::Stop Stop \endlink <br>
+ *  This function uses both CMdaAudioInputStream and CMdaAudioOutputStream
+ *  classes depending upon whether the audio is recording or playing:
+ *  - in case of playing <b>CMdaAudioOutputStream::Stop()</b> is used and the
+ *    result is notified via \link CAudioStreamEngine::MaoscPlayComplete MaoscPlayComplete() \endlink
+ *  - in case of recording <b>CMdaAudioInputStream::Stop()</b> is used and the
+ *    result is notified via \link CAudioStreamEngine::MaiscRecordComplete MaiscRecordComplete() \endlink.
+ *
+ * - \link CAudioStreamEngine::SetEncodingL Encoding \endlink <br>
+ *  The purpose of this API is to encode the audio data. By default the audio
+ *  data is encoded as PCM (Pulse-code modulation). This example also demonstrates
+ *  encoding of audio data to AMR-NB (Adaptive Multi-Rate). If the AMR-NB is not
+ *  supported by the platform then default PCM encoding is used.
+ *  <b>CMdaAudioInputStream::SetDataTypeL(TFourCC aAudioType)</b> is used to
+ *  carry out the purpose of encoding.
+ *
+ * \subsection Sub33 3.3 MMP Files
+ *
+ * This example has two mmp files, in order to support both S60 2.X and
+ * S60 3.X versions of S60 platform
+ * - The MMP file for S60 2.x is: AudioStream_s60_2nd_ed.mmp
+ * - The MMP file for S60 3.x is: AudioStream_s60_3rd_ed.mmp
+ *
+ */

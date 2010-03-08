@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+TARGET      Graphics.exe
+TARGETTYPE  exe
+EPOCSTACKSIZE 0x5000
+UID         0x100039CE 0xA00001F8
+VENDORID    0x0
+
+SOURCEPATH        ..\src
+SOURCE            sprite.cpp
+SOURCE            Graphics.cpp
+SOURCE            GraphicsApplication.cpp
+SOURCE            GraphicsAppView.cpp
+SOURCE            GraphicsAppUi.cpp
+SOURCE            GraphicsDocument.cpp
+
+SOURCEPATH        ..\..\helperfunctions
+SOURCE            bitmapmethods.cpp
+SOURCE            IconFileProvider.cpp
+
+USERINCLUDE       ..\inc
+USERINCLUDE       ..\..\helperfunctions
+
+SYSTEMINCLUDE     \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+SOURCEPATH        ..\data
+
+START RESOURCE graphics.rss
+HEADER
+TARGETPATH resource\apps
+END
+
+START RESOURCE graphics_reg.rss
+#ifdef WINSCW
+TARGETPATH    \private\10003a3f\apps
+#else
+TARGETPATH    \private\10003a3f\import\apps
+#endif
+END
+
+LIBRARY     euser.lib
+LIBRARY     apparc.lib
+LIBRARY     cone.lib
+LIBRARY     eikcore.lib
+LIBRARY     avkon.lib
+LIBRARY     fbscli.lib
+LIBRARY     efsrv.lib
+LIBRARY     bitgdi.lib
+LIBRARY     Commonengine.lib
+LIBRARY     aknicon.lib
+
+LANG              SC
+CAPABILITY NONE
+
+
+// End of File

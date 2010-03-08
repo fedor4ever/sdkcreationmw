@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2005 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+
+#ifndef __LOCALIZATION_LOC__
+#define __LOCALIZATION_LOC__
+
+#ifdef LANGUAGE_SC			// language code for UK
+#include "..\data\localization.l01"
+
+#elif LANGUAGE_01			// language code for UK
+#include "..\data\localization.l01"
+
+#elif defined LANGUAGE_03		// language code for German
+#include "..\data\localization.l03"
+
+#elif defined LANGUAGE_31		// language code for Chinese
+#include "..\data\localization.l31"
+
+#elif defined LANGUAGE_32		// language code for Japanese
+#include "..\data\localization.l32"
+
+#elif defined LANGUAGE_33		// language code for Thai
+#include "..\data\localization.l33"
+
+#endif
+#endif

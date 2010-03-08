@@ -1,0 +1,76 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+//
+// $Id: wsock.mmp,v 1.14 2006/04/10 13:50:43 slava Exp $
+//
+
+#include <platform_paths.hrh>
+
+TARGET          wsock.prt
+TARGETTYPE      dll
+
+#ifdef EKA2
+CAPABILITY      ALL -TCB
+#endif // EKA2
+
+#include "../inc/WinsockUid.h"
+
+UID 0x10003d38 KWinsockProtocolUid
+
+MACRO           WSOCK_ENABLE_DEBUG_TRACE
+MACRO           WSOCK_IPV6
+
+// if defined, failed assert will trigger break-point during debugger-session
+// (not much use to 3rd part developers, so disabled by default)
+//MACRO         WSOCK_ASSERT_BREAKPOINT
+
+SOURCEPATH      ..\src
+SOURCE          wsock.cpp
+SOURCE          WinsockAgent.cpp
+SOURCE          WinsockAgentFactory.cpp
+SOURCE          WinsockAgentCallback.cpp
+SOURCE          WinsockInterface.cpp
+SOURCE          WinsockInterfaceFactory.cpp
+SOURCE          WinsockProtocolFamily.cpp
+SOURCE          WinsockProtocol.cpp
+SOURCE          WinsockServProvider.cpp
+SOURCE          WinsockSelectThread.cpp
+SOURCE          WinsockHostResolver.cpp
+SOURCE          WinsockUtils.cpp
+
+USERINCLUDE     ..\inc
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\comms-infras
+
+LIBRARY         euser.lib
+LIBRARY         esock.lib
+LIBRARY         esocksvr.lib
+LIBRARY         nifman.lib 
+LIBRARY         commdb.lib 
+LIBRARY         charconv.lib
+LIBRARY         insock.lib
+LIBRARY         mbufmgr.lib
+
+#ifdef EKA2
+LIBRARY         emulator.lib
+#endif // EKA2
+
+START WINS
+WIN32_LIBRARY   ws2_32.lib
+WIN32_LIBRARY   Kernel32.lib
+END

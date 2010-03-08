@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>NmitSharedWtkdev</fullname>
+  <class>
+    <path>../../classes/wtkdev</path>
+  </class>
+  <source>
+    <path>../wtkdev</path>
+  </source>
+</library>

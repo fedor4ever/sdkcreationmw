@@ -1,0 +1,108 @@
+/*
+* Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains all the resources for the AudioStream.
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include "audiostream.hrh"
+#include "audiostream.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "AudioStream"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_audiostream_hotkeys;
+    menubar = r_audiostream_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;     
+    }
+
+//----------------------------------------------------
+//   
+//    r_audiostream_hotkeys
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_audiostream_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_audiostream_menubar
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_audiostream_menubar
+    {
+    titles =
+        {
+        MENU_TITLE { menu_pane = r_audiostream_menu; txt = "Cmds"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_audiostream_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_audiostream_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EAudioStreamCmdPlay; txt = qtn_appl_play; },
+        MENU_ITEM { command = EAudioStreamCmdRecord; txt = qtn_appl_record; },
+        MENU_ITEM { command = EAudioStreamCmdStop; txt = qtn_appl_stop; },
+        MENU_ITEM { command = EAudioStreamCmdLoad; txt = qtn_appl_load; },
+        MENU_ITEM { command = EAudioStreamCmdSave; txt = qtn_appl_save; },
+        MENU_ITEM { command = EAudioStreamCmdSelectEncoding; 
+		cascade = r_audiostream_encoding_menu; txt = qtn_appl_select_encoding; }, 
+        MENU_ITEM { command = EAknCmdExit; txt = qtn_options_exit; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_audiostream_encoding_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_audiostream_encoding_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EAudioStreamCmdPcm; txt = qtn_appl_pcm; },
+        MENU_ITEM { command = EAudioStreamCmdAmr; txt = qtn_appl_amr; }
+        };
+    }
+
+// End of File

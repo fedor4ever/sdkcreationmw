@@ -1,0 +1,1702 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="header_files/filelist.xml">
+<title>CGeoProfile Class Reference</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Hunashikatti Shrinivas</o:Author>
+  <o:LastAuthor>Hunashikatti Shrinivas</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2009-04-23T15:51:00Z</o:Created>
+  <o:LastSaved>2009-04-23T15:54:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>4</o:Words>
+  <o:Characters>24</o:Characters>
+  <o:Company>Nokia Oyj</o:Company>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>27</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href=style.css>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#0033CC;
+	font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codesdk, li.codesdk, div.codesdk
+	{mso-style-name:codesdk;
+	margin-top:16.0pt;
+	margin-right:0in;
+	margin-bottom:16.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.caption, li.caption, div.caption
+	{mso-style-name:caption;
+	margin-top:5.0pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.codesdktable, li.codesdktable, div.codesdktable
+	{mso-style-name:codesdktable;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.tabletext, li.tabletext, div.tabletext
+	{mso-style-name:tabletext;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.codecondensed, li.codecondensed, div.codecondensed
+	{mso-style-name:codecondensed;
+	margin-top:9.5pt;
+	margin-right:0in;
+	margin-bottom:9.5pt;
+	margin-left:0in;
+	mso-line-height-alt:8.0pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link="#0033CC" vlink="#0033CC" style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:#EEEEEE;mso-padding-alt:
+ 0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:.75pt'>
+  <td width="100%" style='width:100.0%;padding:.75pt .75pt .75pt .75pt;
+  height:.75pt'>
+  <p class=MsoNormal style='mso-line-height-alt:.75pt'><i><span
+  style='font-size:9.5pt;font-family:Arial;color:black'>Example Application
+  Guide</span></i><span style='font-size:9.5pt;font-family:Arial;color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='line-height:125%'><span style='color:black'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
+<!-- Generated by Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+    <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+    <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+  </ul></div>
+<h1>CGeoProfile Class Reference</h1><!-- doxytag: class="CGeoProfile" --><!-- doxytag: inherits="CBase" --><code>#include &lt;<a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>&gt;</code>
+<p>
+<p>Inheritance diagram for CGeoProfile:
+<p><center><img src="class_c_geo_profile.png" usemap="#CGeoProfile_map" border="0" alt=""></center>
+<map name="CGeoProfile_map">
+</map>
+<a href="class_c_geo_profile-members.html">List of all members.</a><hr><a name="_details"></a><h2>Detailed Description</h2>
+Geo Profile Exchange Structure 
+<p>
+
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00032">32</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Types</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#76f571b4836356ec7e5737c68bf217b3">TGeoPlaceType</a> { <b>EUndefined</b>, 
+<b>ECoordinate</b>, 
+<b>ENetworkCell</b>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#fabf418c69a4b54f77a561bf0767804f">TGeoTriggerType</a> { <b>EEntryTrigger</b>, 
+<b>EExitTrigger</b>
+ }</td></tr>
+
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#cf24d8c898a1c5a0da95f30cf8628464">~CGeoProfile</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TPtrC&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#9f4d711b7d49c2db1623677c1edcbc18">GeoPlaceName</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TPtrC&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#5f414fad410dafd9dd35fd21fc4d4814">ProfileName</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#36db1998bbd3e7ca920f54661088c0c0">GeoProfileId</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#73c6ac9d3f26f4d1b2f1ab6accb9a1ce">SetGeoProfileIdL</a> (TInt aGeoProfileId)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#e14c2b5e4e9b190d7faf2c41ded3a34b">GeoPositionType</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TLocality &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#306aa2bb62c804a8ead759d65f74f78c">GeoPositionInfo</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#c36338bc1dcdf197d19b8774f86218ca">SetGeoPositionInfoL</a> (const TDesC &amp;aGeoPlaceName, TLocality &amp;aPositionInfo)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#8b79e2493915d5c022bafd78347ed4c8">GeoProfileRadius</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#5d6f49ec86fc2bfc63fe3519afc86152">SetGeoProfileRadius</a> (TInt aRadius)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#fe9088f1ba3cfa7f65d0c0c1a7b23dd3">TriggerId</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#067a0a570d79a1c55647ad8d091b7883">SetTriggerId</a> (TInt aTriggerId)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#8dadd44d028aadaed4538925f53d94bd">TriggerType</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#7b267dbf3dd7338e7ccf63134a3a8dc3">SetTriggerType</a> (TInt aTriggerType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#ba767d14ba6f08d559bed97ebbcf497e">PartialInternalizeL</a> (const TDesC &amp;aInputBuffer)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#fa08f77de8a3c6f65a49f03599148110">PartialExternalizeLC</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#990716240ccf3341f7fdbf289ec927ad">NewL</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_c_geo_profile.html">CGeoProfile</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#ff67000c79986aad2cc73811ad04ab35">NewL</a> (const TDesC &amp;aGeoPlaceName, TLocality &amp;aPositionInfo, TInt aGeoProfileId=0, TInt aProfileRadius=100, TInt aTriggerId=-1, TInt aTriggerType=EEntryTrigger)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#87ae3c781f8b38b890df8bed3895ea02">CGeoProfile</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#cb7edf7da4750989e9eca501ea6f7821">ConstructL</a> (const TDesC &amp;aGeoPlaceName, TInt aGeoProfileId, TLocality &amp;aPositionInfo, TInt aProfileRadius, TInt aTriggerId, TInt aTriggerType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#f3a8a137c8f0cbae947fffa3ef8cf286">SetProfileNameL</a> (const TDesC &amp;aProfileName)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#d17b974b66c89f72106a8db390ae1d02">SetGeoPositionType</a> (TInt aPositionType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#b082459c8aac8a5928adc593965fb650">SetGeoPlaceNameL</a> (const TDesC &amp;aGeoPlaceName)</td></tr>
+
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBufC *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TLocality&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">TInt&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">iTriggerType</a></td></tr>
+
+</table>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="cf24d8c898a1c5a0da95f30cf8628464"></a><!-- doxytag: member="CGeoProfile::~CGeoProfile" ref="cf24d8c898a1c5a0da95f30cf8628464" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfile::~CGeoProfile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [virtual]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Destructor. Frees all the resources 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00054">54</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00196">iGeoPlaceName</a>, and <a class="el" href="geoprofile_8h-source.html#l00202">iProfileName</a>.<div class="fragment"><pre class="fragment"><a name="l00055"></a>00055     {
+<a name="l00056"></a>00056     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::~CGeoProfile"</span> )
+<a name="l00057"></a>00057     
+<a name="l00058"></a>00058     <span class="comment">// Delete the member variables</span>
+<a name="l00059"></a>00059     delete <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a>;
+<a name="l00060"></a>00060     
+<a name="l00061"></a>00061     delete <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a>;  
+<a name="l00062"></a>00062     
+<a name="l00063"></a>00063     GEOPROFILEDEBUG("- <a class="code" href="class_c_geo_profile.html">CGeoProfile</a>::~<a class="code" href="class_c_geo_profile.html">CGeoProfile</a>" )
+<a name="l00064"></a>00064     }   
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="87ae3c781f8b38b890df8bed3895ea02"></a><!-- doxytag: member="CGeoProfile::CGeoProfile" ref="87ae3c781f8b38b890df8bed3895ea02" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">CGeoProfile::CGeoProfile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+C++ Constructor 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00042">42</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00080">NewL()</a>.<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043     :<a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a>( EUndefined ),
+<a name="l00044"></a>00044     <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a>( KMinGeoProfileRadius ),
+<a name="l00045"></a>00045     <a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a>( 0xFFFFFFF ),
+<a name="l00046"></a>00046     <a class="code" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">iTriggerType</a>( EEntryTrigger )    
+<a name="l00047"></a>00047     {    
+<a name="l00048"></a>00048     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="990716240ccf3341f7fdbf289ec927ad"></a><!-- doxytag: member="CGeoProfile::NewL" ref="990716240ccf3341f7fdbf289ec927ad" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profile.html">CGeoProfile</a> * CGeoProfile::NewL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Constructs a new instance of CGeoProfile Entry 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00070">70</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, <a class="el" href="geoprofilesview_8cpp-source.html#l00229">CGeoProfilesView::HandleCommandL()</a>, and <a class="el" href="geoprofilesengine_8cpp-source.html#l00339">CGeoProfilesEngine::ListProfilesL()</a>.<div class="fragment"><pre class="fragment"><a name="l00071"></a>00071     {
+<a name="l00072"></a>00072     TLocality locality;    
+<a name="l00073"></a>00073     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#990716240ccf3341f7fdbf289ec927ad">NewL</a>( KNullDesC(), locality, KErrNotFound, EUndefined );                                                                  
+<a name="l00074"></a>00074     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ff67000c79986aad2cc73811ad04ab35"></a><!-- doxytag: member="CGeoProfile::NewL" ref="ff67000c79986aad2cc73811ad04ab35" args="(const TDesC &amp;aGeoPlaceName, TLocality &amp;aPositionInfo, TInt aGeoProfileId=0, TInt aProfileRadius=100, TInt aTriggerId=-1, TInt aTriggerType=EEntryTrigger)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top"><a class="el" href="class_c_geo_profile.html">CGeoProfile</a> * CGeoProfile::NewL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aGeoPlaceName</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TLocality &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPositionInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aGeoProfileId</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aProfileRadius</em> = <code>100</code>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aTriggerId</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aTriggerType</em> = <code>EEntryTrigger</code></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [static]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Constructs a new instance of CGeoProfile Entry. 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00080">80</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8cpp-source.html#l00042">CGeoProfile()</a>.<div class="fragment"><pre class="fragment"><a name="l00086"></a>00086     {
+<a name="l00087"></a>00087     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::NewL"</span> ) 
+<a name="l00088"></a>00088     
+<a name="l00089"></a>00089     <a class="code" href="class_c_geo_profile.html">CGeoProfile</a>* <span class="keyword">self</span> = <span class="keyword">new</span> ( ELeave ) <a class="code" href="class_c_geo_profile.html#87ae3c781f8b38b890df8bed3895ea02">CGeoProfile</a>();
+<a name="l00090"></a>00090     CleanupStack::PushL( <span class="keyword">self</span> );
+<a name="l00091"></a>00091     <span class="keyword">self</span>-&gt;ConstructL( aGeoPlaceName, 
+<a name="l00092"></a>00092                       aGeoProfileId, 
+<a name="l00093"></a>00093                       aPositionInfo, 
+<a name="l00094"></a>00094                       aProfileRadius, 
+<a name="l00095"></a>00095                       aTriggerId, 
+<a name="l00096"></a>00096                       aTriggerType );
+<a name="l00097"></a>00097     CleanupStack::Pop( <span class="keyword">self</span> );
+<a name="l00098"></a>00098     
+<a name="l00099"></a>00099     GEOPROFILEDEBUG(<span class="stringliteral">"- CGeoProfile::NewL"</span> ) 
+<a name="l00100"></a>00100     return self;                                                                  
+<a name="l00101"></a>00101     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="9f4d711b7d49c2db1623677c1edcbc18"></a><!-- doxytag: member="CGeoProfile::GeoPlaceName" ref="9f4d711b7d49c2db1623677c1edcbc18" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TPtrC CGeoProfile::GeoPlaceName           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the Geo-Profile Name 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00146">146</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00196">iGeoPlaceName</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00415">CGeoProfileEditor::LoadPlaceL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00147"></a>00147     {
+<a name="l00148"></a>00148     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a>-&gt;Des();
+<a name="l00149"></a>00149     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="5f414fad410dafd9dd35fd21fc4d4814"></a><!-- doxytag: member="CGeoProfile::ProfileName" ref="5f414fad410dafd9dd35fd21fc4d4814" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TPtrC CGeoProfile::ProfileName           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the Profile Name 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00155">155</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00202">iProfileName</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00396">CGeoProfileEditor::LoadProfileL()</a>.<div class="fragment"><pre class="fragment"><a name="l00156"></a>00156     {
+<a name="l00157"></a>00157     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a>-&gt;Des();
+<a name="l00158"></a>00158     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="36db1998bbd3e7ca920f54661088c0c0"></a><!-- doxytag: member="CGeoProfile::GeoProfileId" ref="36db1998bbd3e7ca920f54661088c0c0" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfile::GeoProfileId           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the Item Id 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00179">179</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00207">iGeoProfileId</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00180"></a>00180     {
+<a name="l00181"></a>00181     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a>;
+<a name="l00182"></a>00182     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="73c6ac9d3f26f4d1b2f1ab6accb9a1ce"></a><!-- doxytag: member="CGeoProfile::SetGeoProfileIdL" ref="73c6ac9d3f26f4d1b2f1ab6accb9a1ce" args="(TInt aGeoProfileId)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetGeoProfileIdL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aGeoProfileId</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting the Profile Name 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00188">188</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00207">iGeoProfileId</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00164">SetProfileNameL()</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00467">CGeoProfileEditor::HandleProfileSelectionL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00348">PartialInternalizeL()</a>.<div class="fragment"><pre class="fragment"><a name="l00189"></a>00189     {
+<a name="l00190"></a>00190     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::SetGeoProfileIdL"</span> ) 
+<a name="l00191"></a>00191     
+<a name="l00192"></a>00192     <span class="comment">// Obtain the list of profiles</span>
+<a name="l00193"></a>00193     MProEngEngine* profileEng = ProEngFactory::NewEngineL();
+<a name="l00194"></a>00194     CleanupReleasePushL( *profileEng );
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196     MProEngProfileNameArray* profileNames = profileEng-&gt;ProfileNameArrayLC();
+<a name="l00197"></a>00197     TInt index = 0;
+<a name="l00198"></a>00198     index = profileNames-&gt;FindById( aGeoProfileId );
+<a name="l00199"></a>00199     <span class="keywordflow">if</span> ( KErrNotFound == index )
+<a name="l00200"></a>00200         {
+<a name="l00201"></a>00201         <span class="comment">// Setting the Default Value of index back to 0</span>
+<a name="l00202"></a>00202         <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a> = profileEng-&gt;ActiveProfileId();
+<a name="l00203"></a>00203         index = profileNames-&gt;FindById( <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a> );
+<a name="l00204"></a>00204         }
+<a name="l00205"></a>00205     <span class="keywordflow">else</span>
+<a name="l00206"></a>00206         {
+<a name="l00207"></a>00207         <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a> = profileNames-&gt;ProfileId( index );      
+<a name="l00208"></a>00208         }      
+<a name="l00209"></a>00209     <a class="code" href="class_c_geo_profile.html#f3a8a137c8f0cbae947fffa3ef8cf286">SetProfileNameL</a>( profileNames-&gt;MdcaPoint( index ));
+<a name="l00210"></a>00210     CleanupStack::PopAndDestroy( 2 );
+<a name="l00211"></a>00211     
+<a name="l00212"></a>00212     GEOPROFILEDEBUG(<span class="stringliteral">"- CGeoProfile::SetGeoProfileIdL"</span> ) 
+<a name="l00213"></a>00213     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="e14c2b5e4e9b190d7faf2c41ded3a34b"></a><!-- doxytag: member="CGeoProfile::GeoPositionType" ref="e14c2b5e4e9b190d7faf2c41ded3a34b" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfile::GeoPositionType           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Location Information Type 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00219">219</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00217">iPositionType</a>.
+<p>
+Referenced by <a class="el" href="geoprofilesengine_8cpp-source.html#l00208">CGeoProfilesEngine::AddProfileL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00540">CGeoProfileEditor::CheckIfSavableL()</a>, and <a class="el" href="geoprofilesengine_8cpp-source.html#l00460">CGeoProfilesEngine::DoUpdateProfileL()</a>.<div class="fragment"><pre class="fragment"><a name="l00220"></a>00220     {
+<a name="l00221"></a>00221     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a>;
+<a name="l00222"></a>00222     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="306aa2bb62c804a8ead759d65f74f78c"></a><!-- doxytag: member="CGeoProfile::GeoPositionInfo" ref="306aa2bb62c804a8ead759d65f74f78c" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TLocality &amp; CGeoProfile::GeoPositionInfo           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Location Information 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00237">237</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00212">iPositionInfo</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00238"></a>00238     {
+<a name="l00239"></a>00239     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a>;
+<a name="l00240"></a>00240     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="c36338bc1dcdf197d19b8774f86218ca"></a><!-- doxytag: member="CGeoProfile::SetGeoPositionInfoL" ref="c36338bc1dcdf197d19b8774f86218ca" args="(const TDesC &amp;aGeoPlaceName, TLocality &amp;aPositionInfo)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetGeoPositionInfoL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aGeoPlaceName</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TLocality &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPositionInfo</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting Location Information 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00246">246</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00212">iPositionInfo</a>, <a class="el" href="geoprofile_8cpp-source.html#l00323">SetGeoPlaceNameL()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00228">SetGeoPositionType()</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00494">CGeoProfileEditor::HandlePlaceSelectionL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00248"></a>00248     {    
+<a name="l00249"></a>00249     <span class="keywordflow">if</span> ( !Math::IsNaN( aPositionInfo.Latitude()) &amp;&amp; 
+<a name="l00250"></a>00250          !Math::IsNaN( aPositionInfo.Longitude()))
+<a name="l00251"></a>00251         {
+<a name="l00252"></a>00252         <a class="code" href="class_c_geo_profile.html#d17b974b66c89f72106a8db390ae1d02">SetGeoPositionType</a>( ECoordinate );
+<a name="l00253"></a>00253         <a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a> = aPositionInfo;
+<a name="l00254"></a>00254         <a class="code" href="class_c_geo_profile.html#b082459c8aac8a5928adc593965fb650">SetGeoPlaceNameL</a>( aGeoPlaceName );      
+<a name="l00255"></a>00255         }    
+<a name="l00256"></a>00256     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="8b79e2493915d5c022bafd78347ed4c8"></a><!-- doxytag: member="CGeoProfile::GeoProfileRadius" ref="8b79e2493915d5c022bafd78347ed4c8" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfile::GeoProfileRadius           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the radius 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00262">262</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00222">iProfileRadius</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00415">CGeoProfileEditor::LoadPlaceL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00263"></a>00263     {
+<a name="l00264"></a>00264     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a>;
+<a name="l00265"></a>00265     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="5d6f49ec86fc2bfc63fe3519afc86152"></a><!-- doxytag: member="CGeoProfile::SetGeoProfileRadius" ref="5d6f49ec86fc2bfc63fe3519afc86152" args="(TInt aRadius)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetGeoProfileRadius           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aRadius</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting the radius 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00289">289</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00222">iProfileRadius</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00275">CGeoProfileEditor::HandleControlStateChangeL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00290"></a>00290     {
+<a name="l00291"></a>00291     <span class="keywordflow">if</span> ( aRadius &lt; KMinGeoProfileRadius )
+<a name="l00292"></a>00292         {
+<a name="l00293"></a>00293         <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a> = KMinGeoProfileRadius; 
+<a name="l00294"></a>00294         }
+<a name="l00295"></a>00295     <span class="keywordflow">else</span>
+<a name="l00296"></a>00296         {
+<a name="l00297"></a>00297         <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a> = aRadius;  
+<a name="l00298"></a>00298         }
+<a name="l00299"></a>00299     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="fe9088f1ba3cfa7f65d0c0c1a7b23dd3"></a><!-- doxytag: member="CGeoProfile::TriggerId" ref="fe9088f1ba3cfa7f65d0c0c1a7b23dd3" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfile::TriggerId           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the Trigger Id 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00280">280</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00227">iTriggerId</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, and <a class="el" href="geoprofilesengine_8cpp-source.html#l00313">CGeoProfilesEngine::RemoveProfileL()</a>.<div class="fragment"><pre class="fragment"><a name="l00281"></a>00281     {
+<a name="l00282"></a>00282     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a>;
+<a name="l00283"></a>00283     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="067a0a570d79a1c55647ad8d091b7883"></a><!-- doxytag: member="CGeoProfile::SetTriggerId" ref="067a0a570d79a1c55647ad8d091b7883" args="(TInt aTriggerId)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetTriggerId           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aTriggerId</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting the Trigger Id 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00271">271</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00227">iTriggerId</a>.<div class="fragment"><pre class="fragment"><a name="l00272"></a>00272     {
+<a name="l00273"></a>00273     <a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a> = aTriggerId;
+<a name="l00274"></a>00274     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="8dadd44d028aadaed4538925f53d94bd"></a><!-- doxytag: member="CGeoProfile::TriggerType" ref="8dadd44d028aadaed4538925f53d94bd" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt CGeoProfile::TriggerType           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for obtaining the Trigger Type 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00305">305</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00232">iTriggerType</a>.
+<p>
+Referenced by <a class="el" href="geoprofileeditor_8cpp-source.html#l00094">CGeoProfileEditor::ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00446">CGeoProfileEditor::LoadTriggerTypeL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00306"></a>00306     {
+<a name="l00307"></a>00307     <span class="keywordflow">return</span> <a class="code" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">iTriggerType</a>;    
+<a name="l00308"></a>00308     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="7b267dbf3dd7338e7ccf63134a3a8dc3"></a><!-- doxytag: member="CGeoProfile::SetTriggerType" ref="7b267dbf3dd7338e7ccf63134a3a8dc3" args="(TInt aTriggerType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetTriggerType           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aTriggerType</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting the Trigger Type 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00314">314</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00232">iTriggerType</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofileeditor_8cpp-source.html#l00275">CGeoProfileEditor::HandleControlStateChangeL()</a>, and <a class="el" href="geoprofileeditor_8cpp-source.html#l00126">CGeoProfileEditor::OkToExitL()</a>.<div class="fragment"><pre class="fragment"><a name="l00315"></a>00315     {
+<a name="l00316"></a>00316     <a class="code" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">iTriggerType</a> = aTriggerType;
+<a name="l00317"></a>00317     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ba767d14ba6f08d559bed97ebbcf497e"></a><!-- doxytag: member="CGeoProfile::PartialInternalizeL" ref="ba767d14ba6f08d559bed97ebbcf497e" args="(const TDesC &amp;aInputBuffer)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::PartialInternalizeL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aInputBuffer</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Internalized the information available from the buffer The buffer must be in following format 1. Profile ID ( Integer ) 2. Location Type ( Integer ) 3. Horizontal Accuracy ( Integer ) 4. Radius ( Integer ) 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00348">348</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00212">iPositionInfo</a>, <a class="el" href="geoprofile_8cpp-source.html#l00228">SetGeoPositionType()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00188">SetGeoProfileIdL()</a>.<div class="fragment"><pre class="fragment"><a name="l00349"></a>00349     {
+<a name="l00350"></a>00350     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::PartialInternalizeL"</span> ) 
+<a name="l00351"></a>00351     
+<a name="l00352"></a>00352     TInt32 value = 0;
+<a name="l00353"></a>00353     TLex lexer( aInputBuffer );
+<a name="l00354"></a>00354     
+<a name="l00355"></a>00355     <span class="comment">// Read Profile Id   </span>
+<a name="l00356"></a>00356     User::LeaveIfError( lexer.Val( value ));
+<a name="l00357"></a>00357     <a class="code" href="class_c_geo_profile.html#73c6ac9d3f26f4d1b2f1ab6accb9a1ce">SetGeoProfileIdL</a>( value );
+<a name="l00358"></a>00358     lexer.Inc();
+<a name="l00359"></a>00359     
+<a name="l00360"></a>00360     <span class="comment">// Read the Position Type Info</span>
+<a name="l00361"></a>00361     User::LeaveIfError( lexer.Val( value ));
+<a name="l00362"></a>00362     <a class="code" href="class_c_geo_profile.html#d17b974b66c89f72106a8db390ae1d02">SetGeoPositionType</a>( value );
+<a name="l00363"></a>00363     lexer.Inc();    
+<a name="l00364"></a>00364     
+<a name="l00365"></a>00365     <span class="comment">// Write the Horizontal Accuracy</span>
+<a name="l00366"></a>00366     User::LeaveIfError( lexer.Val( value ));
+<a name="l00367"></a>00367     <span class="keywordflow">if</span> ( value == -1 )
+<a name="l00368"></a>00368         {
+<a name="l00369"></a>00369         TRealX nan;
+<a name="l00370"></a>00370         nan.SetNaN();
+<a name="l00371"></a>00371         iPositionInfo.SetHorizontalAccuracy( nan );        
+<a name="l00372"></a>00372         }
+<a name="l00373"></a>00373     <span class="keywordflow">else</span>
+<a name="l00374"></a>00374         {
+<a name="l00375"></a>00375         iPositionInfo.SetHorizontalAccuracy( value );      
+<a name="l00376"></a>00376         }
+<a name="l00377"></a>00377     lexer.Inc();        
+<a name="l00378"></a>00378         
+<a name="l00379"></a>00379     <span class="comment">// Set the profile radius</span>
+<a name="l00380"></a>00380     User::LeaveIfError( lexer.Val( value ));
+<a name="l00381"></a>00381     SetGeoProfileRadius( value );
+<a name="l00382"></a>00382     lexer.Inc();
+<a name="l00383"></a>00383     
+<a name="l00384"></a>00384     GEOPROFILEDEBUG(<span class="stringliteral">"- CGeoProfile::PartialInternalizeL"</span> )     
+<a name="l00385"></a>00385     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="fa08f77de8a3c6f65a49f03599148110"></a><!-- doxytag: member="CGeoProfile::PartialExternalizeLC" ref="fa08f77de8a3c6f65a49f03599148110" args="()" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC * CGeoProfile::PartialExternalizeLC           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Partially externalizes the contents of the Geo Profile to a buffer The following fields are externalized and in the following format 1. Profile ID ( Integer ) 2. Location Type ( Integer ) 3. Horizontal Accuracy ( Integer ) 4. Radius ( Integer ) 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00391">391</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00207">iGeoProfileId</a>, <a class="el" href="geoprofile_8h-source.html#l00212">iPositionInfo</a>, <a class="el" href="geoprofile_8h-source.html#l00217">iPositionType</a>, and <a class="el" href="geoprofile_8h-source.html#l00222">iProfileRadius</a>.<div class="fragment"><pre class="fragment"><a name="l00392"></a>00392     {
+<a name="l00393"></a>00393     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::PartialExternalizeLC"</span> ) 
+<a name="l00394"></a>00394     
+<a name="l00395"></a>00395     HBufC* buffer = HBufC::NewLC( 256 );
+<a name="l00396"></a>00396     TPtr bufferPtr = buffer-&gt;Des();
+<a name="l00397"></a>00397 
+<a name="l00398"></a>00398     <span class="comment">// Write Geo Profile Id</span>
+<a name="l00399"></a>00399     bufferPtr.AppendNum( <a class="code" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">iGeoProfileId</a> );
+<a name="l00400"></a>00400     bufferPtr.Append( KDeliminator );
+<a name="l00401"></a>00401     
+<a name="l00402"></a>00402     <span class="comment">// Write Position Type</span>
+<a name="l00403"></a>00403     bufferPtr.AppendNum( <a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a> );
+<a name="l00404"></a>00404     bufferPtr.Append( KDeliminator );
+<a name="l00405"></a>00405         
+<a name="l00406"></a>00406     <span class="comment">// Write the Horizontal Accuracy</span>
+<a name="l00407"></a>00407     if ( Math::IsNaN( <a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a>.HorizontalAccuracy()))
+<a name="l00408"></a>00408         {
+<a name="l00409"></a>00409         bufferPtr.AppendNum( -1 );    
+<a name="l00410"></a>00410         }
+<a name="l00411"></a>00411     <span class="keywordflow">else</span>
+<a name="l00412"></a>00412         {
+<a name="l00413"></a>00413        bufferPtr.AppendNum( <a class="code" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">iPositionInfo</a>.HorizontalAccuracy());
+<a name="l00414"></a>00414         }
+<a name="l00415"></a>00415     bufferPtr.Append( KDeliminator );
+<a name="l00416"></a>00416         
+<a name="l00417"></a>00417     <span class="comment">// Write the Radius</span>
+<a name="l00418"></a>00418     bufferPtr.AppendNum( <a class="code" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">iProfileRadius</a> ); 
+<a name="l00419"></a>00419     bufferPtr.Append( KDeliminator );
+<a name="l00420"></a>00420     
+<a name="l00421"></a>00421     GEOPROFILEDEBUG(<span class="stringliteral">"- CGeoProfile::PartialExternalizeLC"</span> ) 
+<a name="l00422"></a>00422     
+<a name="l00423"></a>00423     return buffer;
+<a name="l00424"></a>00424     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="cb7edf7da4750989e9eca501ea6f7821"></a><!-- doxytag: member="CGeoProfile::ConstructL" ref="cb7edf7da4750989e9eca501ea6f7821" args="(const TDesC &amp;aGeoPlaceName, TInt aGeoProfileId, TLocality &amp;aPositionInfo, TInt aProfileRadius, TInt aTriggerId, TInt aTriggerType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::ConstructL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aGeoPlaceName</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aGeoProfileId</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TLocality &amp;&nbsp;</td>
+          <td class="mdname" nowrap> <em>aPositionInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aProfileRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aTriggerId</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>TInt&nbsp;</td>
+          <td class="mdname" nowrap> <em>aTriggerType</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Second phase of two phase construction 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00107">107</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00196">iGeoPlaceName</a>, <a class="el" href="geoprofile_8h-source.html#l00202">iProfileName</a>, <a class="el" href="geoprofile_8h-source.html#l00227">iTriggerId</a>, <a class="el" href="geoprofile_8cpp-source.html#l00323">SetGeoPlaceNameL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00246">SetGeoPositionInfoL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00188">SetGeoProfileIdL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00289">SetGeoProfileRadius()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00314">SetTriggerType()</a>.<div class="fragment"><pre class="fragment"><a name="l00113"></a>00113     {
+<a name="l00114"></a>00114     GEOPROFILEDEBUG(<span class="stringliteral">"+ CGeoProfile::ConstructL"</span> ) 
+<a name="l00115"></a>00115     
+<a name="l00116"></a>00116     <span class="comment">// Create all member variables</span>
+<a name="l00117"></a>00117     <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a> = HBufC::NewL( KGeoPlaceNameMaxLength );    
+<a name="l00118"></a>00118     
+<a name="l00119"></a>00119     <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a> = HBufC::NewL( KGeoProfileNameMaxLength );
+<a name="l00120"></a>00120     <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a>-&gt;Des().Zero();
+<a name="l00121"></a>00121     
+<a name="l00122"></a>00122     <a class="code" href="class_c_geo_profile.html#b082459c8aac8a5928adc593965fb650">SetGeoPlaceNameL</a>( KNullDesC());
+<a name="l00123"></a>00123         
+<a name="l00124"></a>00124     <span class="comment">// Copy the Item Id</span>
+<a name="l00125"></a>00125     <a class="code" href="class_c_geo_profile.html#73c6ac9d3f26f4d1b2f1ab6accb9a1ce">SetGeoProfileIdL</a>( aGeoProfileId );
+<a name="l00126"></a>00126     
+<a name="l00127"></a>00127     <span class="comment">// Copy the Location information contents</span>
+<a name="l00128"></a>00128     <a class="code" href="class_c_geo_profile.html#c36338bc1dcdf197d19b8774f86218ca">SetGeoPositionInfoL</a>( aGeoPlaceName, aPositionInfo );
+<a name="l00129"></a>00129     
+<a name="l00130"></a>00130     <span class="comment">// Set the profile Radius</span>
+<a name="l00131"></a>00131     <a class="code" href="class_c_geo_profile.html#5d6f49ec86fc2bfc63fe3519afc86152">SetGeoProfileRadius</a>( aProfileRadius );
+<a name="l00132"></a>00132     
+<a name="l00133"></a>00133     <span class="comment">// Set the Trigger id</span>
+<a name="l00134"></a>00134     <a class="code" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">iTriggerId</a> = aTriggerId; 
+<a name="l00135"></a>00135     
+<a name="l00136"></a>00136     <span class="comment">// Set Trigger Type</span>
+<a name="l00137"></a>00137     <a class="code" href="class_c_geo_profile.html#7b267dbf3dd7338e7ccf63134a3a8dc3">SetTriggerType</a>( aTriggerType );
+<a name="l00138"></a>00138     
+<a name="l00139"></a>00139     GEOPROFILEDEBUG(<span class="stringliteral">"- CGeoProfile::ConstructL"</span> )    
+<a name="l00140"></a>00140     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="f3a8a137c8f0cbae947fffa3ef8cf286"></a><!-- doxytag: member="CGeoProfile::SetProfileNameL" ref="f3a8a137c8f0cbae947fffa3ef8cf286" args="(const TDesC &amp;aProfileName)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetProfileNameL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aProfileName</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting the Profile Name 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00164">164</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00188">SetGeoProfileIdL()</a>.<div class="fragment"><pre class="fragment"><a name="l00165"></a>00165     {
+<a name="l00166"></a>00166     <span class="keywordflow">if</span> ( aProfileName.Length() &gt; KGeoProfileNameMaxLength )
+<a name="l00167"></a>00167         {
+<a name="l00168"></a>00168         User::Leave( KErrOverflow );
+<a name="l00169"></a>00169         }
+<a name="l00170"></a>00170         
+<a name="l00171"></a>00171     <span class="comment">// Copy the corresponding profile name</span>
+<a name="l00172"></a>00172     <a class="code" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">iProfileName</a>-&gt;Des().Copy( aProfileName );    
+<a name="l00173"></a>00173     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="d17b974b66c89f72106a8db390ae1d02"></a><!-- doxytag: member="CGeoProfile::SetGeoPositionType" ref="d17b974b66c89f72106a8db390ae1d02" args="(TInt aPositionType)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetGeoPositionType           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">TInt&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aPositionType</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting Location Information 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00228">228</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+References <a class="el" href="geoprofile_8h-source.html#l00217">iPositionType</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00348">PartialInternalizeL()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00246">SetGeoPositionInfoL()</a>.<div class="fragment"><pre class="fragment"><a name="l00229"></a>00229     {
+<a name="l00230"></a>00230     <a class="code" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">iPositionType</a> = aPositionType;
+<a name="l00231"></a>00231     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="b082459c8aac8a5928adc593965fb650"></a><!-- doxytag: member="CGeoProfile::SetGeoPlaceNameL" ref="b082459c8aac8a5928adc593965fb650" args="(const TDesC &amp;aGeoPlaceName)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void CGeoProfile::SetGeoPlaceNameL           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">const TDesC &amp;&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>aGeoPlaceName</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [private]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Accessor method for setting Location name 
+<p>
+Definition at line <a class="el" href="geoprofile_8cpp-source.html#l00323">323</a> of file <a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00246">SetGeoPositionInfoL()</a>.<div class="fragment"><pre class="fragment"><a name="l00324"></a>00324     {    
+<a name="l00325"></a>00325     <span class="keywordflow">if</span> ( aGeoPlaceName.Length() &gt; KGeoPlaceNameMaxLength )
+<a name="l00326"></a>00326         {
+<a name="l00327"></a>00327         User::Leave( KErrOverflow );
+<a name="l00328"></a>00328         }
+<a name="l00329"></a>00329     
+<a name="l00330"></a>00330     <span class="keywordflow">if</span> ( !aGeoPlaceName.Length())
+<a name="l00331"></a>00331         {
+<a name="l00332"></a>00332         HBufC* placeName = StringLoader::LoadLC( R_LBL_GEOPROFILES_DEFINE );    
+<a name="l00333"></a>00333         <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a>-&gt;Des().Copy( placeName-&gt;Des());    
+<a name="l00334"></a>00334         CleanupStack::PopAndDestroy( placeName );
+<a name="l00335"></a>00335         <a class="code" href="class_c_geo_profile.html#d17b974b66c89f72106a8db390ae1d02">SetGeoPositionType</a>( EUndefined );       
+<a name="l00336"></a>00336         }
+<a name="l00337"></a>00337     <span class="keywordflow">else</span>
+<a name="l00338"></a>00338         {
+<a name="l00339"></a>00339         <span class="comment">// Copy the corresponding profile name</span>
+<a name="l00340"></a>00340         <a class="code" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">iGeoPlaceName</a>-&gt;Des().Copy( aGeoPlaceName );             
+<a name="l00341"></a>00341         }  
+<a name="l00342"></a>00342     }
+</pre></div>
+<p>
+    </td>
+  </tr>
+</table>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="2f62105d6a06394d9c9b440da65bbfbe"></a><!-- doxytag: member="CGeoProfile::iGeoPlaceName" ref="2f62105d6a06394d9c9b440da65bbfbe" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC* <a class="el" href="class_c_geo_profile.html#2f62105d6a06394d9c9b440da65bbfbe">CGeoProfile::iGeoPlaceName</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Geo Profile Name Owns 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00196">196</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00146">GeoPlaceName()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00054">~CGeoProfile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="99ef76cd5c2973d6e552f9b87a1ee22d"></a><!-- doxytag: member="CGeoProfile::iProfileName" ref="99ef76cd5c2973d6e552f9b87a1ee22d" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">HBufC* <a class="el" href="class_c_geo_profile.html#99ef76cd5c2973d6e552f9b87a1ee22d">CGeoProfile::iProfileName</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Profile Name Owns 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00202">202</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00155">ProfileName()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00054">~CGeoProfile()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="c9e1cbe534683de69ae0ff3299094f04"></a><!-- doxytag: member="CGeoProfile::iGeoProfileId" ref="c9e1cbe534683de69ae0ff3299094f04" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_profile.html#c9e1cbe534683de69ae0ff3299094f04">CGeoProfile::iGeoProfileId</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Geo Profile Identifier 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00207">207</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00179">GeoProfileId()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00391">PartialExternalizeLC()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00188">SetGeoProfileIdL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="bcfe56ff634fa7cc1b286a26ba92d6e7"></a><!-- doxytag: member="CGeoProfile::iPositionInfo" ref="bcfe56ff634fa7cc1b286a26ba92d6e7" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TLocality <a class="el" href="class_c_geo_profile.html#bcfe56ff634fa7cc1b286a26ba92d6e7">CGeoProfile::iPositionInfo</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Geo Profile Location 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00212">212</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00237">GeoPositionInfo()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00391">PartialExternalizeLC()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00348">PartialInternalizeL()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00246">SetGeoPositionInfoL()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="b5b2cfbcca4c1508df5a4043c2dbbf84"></a><!-- doxytag: member="CGeoProfile::iPositionType" ref="b5b2cfbcca4c1508df5a4043c2dbbf84" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_profile.html#b5b2cfbcca4c1508df5a4043c2dbbf84">CGeoProfile::iPositionType</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Position Type 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00217">217</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00219">GeoPositionType()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00391">PartialExternalizeLC()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00228">SetGeoPositionType()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="c4f95059eefee1194f85ec89b32b6a21"></a><!-- doxytag: member="CGeoProfile::iProfileRadius" ref="c4f95059eefee1194f85ec89b32b6a21" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_profile.html#c4f95059eefee1194f85ec89b32b6a21">CGeoProfile::iProfileRadius</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Radius of the profile 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00222">222</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00262">GeoProfileRadius()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00391">PartialExternalizeLC()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00289">SetGeoProfileRadius()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d7588611bebcf956456703446be7223b"></a><!-- doxytag: member="CGeoProfile::iTriggerId" ref="d7588611bebcf956456703446be7223b" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_profile.html#d7588611bebcf956456703446be7223b">CGeoProfile::iTriggerId</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Trigger Id 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00227">227</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00107">ConstructL()</a>, <a class="el" href="geoprofile_8cpp-source.html#l00271">SetTriggerId()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00280">TriggerId()</a>.    </td>
+  </tr>
+</table>
+<a class="anchor" name="d3632a9bf7ea8b741dfb6eefece81ae5"></a><!-- doxytag: member="CGeoProfile::iTriggerType" ref="d3632a9bf7ea8b741dfb6eefece81ae5" args="" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">TInt <a class="el" href="class_c_geo_profile.html#d3632a9bf7ea8b741dfb6eefece81ae5">CGeoProfile::iTriggerType</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Trigger Type 
+<p>
+Definition at line <a class="el" href="geoprofile_8h-source.html#l00232">232</a> of file <a class="el" href="geoprofile_8h-source.html">geoprofile.h</a>.
+<p>
+Referenced by <a class="el" href="geoprofile_8cpp-source.html#l00314">SetTriggerType()</a>, and <a class="el" href="geoprofile_8cpp-source.html#l00305">TriggerType()</a>.    </td>
+  </tr>
+</table>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="geoprofile_8h-source.html">geoprofile.h</a><li><a class="el" href="geoprofile_8cpp-source.html">geoprofile.cpp</a></ul>
+<hr>
+
+<table x-use-null-cells
+		style="x-cell-content-align: top;
+				width: 100%;
+				border-spacing: 0px;
+				border-spacing: 0px;"
+		cellspacing=0
+		width=100%>
+  <col style="width: 50%;">
+  <col style="width: 50%;">
+
+  <tr style="x-cell-content-align: top;"
+	valign=top>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-right-style: None;
+			border-left-style: None;
+			border-top-style: None;
+			border-bottom-style: None;"
+	width=50%>
+  <p style="font-family: Arial;"><small style="font-size: smaller;">© Nokia 2009</small></td>
+  <td style="width: 50%;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-top-style: None;
+			border-bottom-style: None;
+			border-right-style: None;"
+	width=50%>
+  <p style="text-align: right; margin-right: -4px;"
+	align=right><span style="font-weight: bold;"><a href="#Top"
+													title="Back to top"><img
+ src="top.gif"
+	x-maintain-ratio=TRUE
+	alt="Back to top"
+	style="border: none;
+			width: 18px;
+			height: 15px;
+			float: none;
+			border-style: none;
+			border-style: none;"
+	width=18
+	height=15
+	border=0></a></span></td></tr>
+ </table>
+</body>
+</html>
+

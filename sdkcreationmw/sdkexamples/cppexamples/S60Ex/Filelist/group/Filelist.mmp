@@ -1,0 +1,73 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*
+*/
+
+
+TARGET		Filelist.exe
+TARGETTYPE  	exe
+UID			0x0 0xA0000183 
+VENDORID		0x0
+EPOCSTACKSIZE	0x5000
+
+SOURCEPATH ..\src
+SOURCE  Filelist.cpp 
+SOURCE  FilelistApp.cpp 
+SOURCE  FilelistAppui.cpp
+SOURCE  FilelistDocument.cpp
+SOURCE  FilelistContainer.cpp
+
+SOURCEPATH ..\data
+
+START RESOURCE Filelist.rss
+HEADER
+TARGETPATH resource\apps
+END
+
+START RESOURCE Filelist_reg.rss
+#ifdef WINSCW
+TARGETPATH 	  \private\10003a3f\apps
+#else
+TARGETPATH 	  \private\10003a3f\import\apps
+#endif
+END
+
+USERINCLUDE . 
+USERINCLUDE ..\inc
+
+
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+SYSTEMINCLUDE   \epoc32\include\libc
+
+LIBRARY	euser.lib 
+LIBRARY	apparc.lib
+LIBRARY	cone.lib
+LIBRARY	eikcore.lib 
+LIBRARY eikcoctl.lib
+LIBRARY avkon.lib
+LIBRARY	egul.lib    // for CGulIcon
+LIBRARY	bafl.lib
+LIBRARY	eikdlg.lib
+LIBRARY	efsrv.lib
+LIBRARY	aknicon.lib
+LIBRARY	gdi.lib
+
+
+LANG SC
+
+CAPABILITY	  	  NONE
+

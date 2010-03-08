@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2007-2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+TARGET		  		iostream.exe
+TARGETTYPE	  		exe
+UID			 		0 0xA0007DF9
+
+USERINCLUDE	 		..\inc
+
+SOURCEPATH      	..\data
+START RESOURCE  	iostream_reg.rss
+#ifdef WINSCW
+TARGETPATH 	    	\private\10003a3f\apps
+#else
+TARGETPATH 	    	\private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+SOURCEPATH	  		..\src
+SOURCE		  		iostream.cpp
+
+SYSTEMINCLUDE	    \epoc32\include 
+SYSTEMINCLUDE		\epoc32\include\stdapis
+SYSTEMINCLUDE		\epoc32\include\stdapis\sys
+SYSTEMINCLUDE		\epoc32\include\stdapis\stlport
+SYSTEMINCLUDE		\epoc32\include\stdapis\stlport\stl
+
+
+STATICLIBRARY		libcrt0.lib
+LIBRARY				libstdcpp.lib
+LIBRARY				libc.lib
+LIBRARY				libpthread.lib
+LIBRARY				euser.lib
+
+
+OPTION CW -wchar_t on
+MACRO  _WCHAR_T_DECLARED

@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  Include Files
+
+#include <aiftool.rh>           // AIF_DATA resource
+#include "T_MsgSession.loc"           // ELanguage and T_T_MSGSESSION_CAPTION
+
+
+//  Application Information
+
+RESOURCE AIF_DATA
+    {
+    // Application UID specified in MMP-file
+    app_uid = 0x101f8c30;
+
+    // Application name, defined in LOC-file
+    caption_list = CAPTION
+        {
+        code = ELanguage;
+        caption = T_T_MSGSESSION_CAPTION;
+        };
+
+    // Number of application icons defined in MMP-file
+    num_icons = 0;      // should have two icons, see AIF line in MMP-file
+
+    //
+    // add application capabilities data here
+    //
+    }
+
+
+// End of file

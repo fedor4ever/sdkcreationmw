@@ -1,0 +1,116 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+#ifndef JAVA_DEBUG_AGENT_EXE
+#  define JAVA_DEBUG_AGENT_EXE JavaDebugAgent.exe
+#endif // JAVA_DEBUG_AGENT_EXE
+
+#ifndef JAVA_DEBUG_AGENT_RSS
+#  define JAVA_DEBUG_AGENT_RSS JavaDebugAgent.rss
+#endif // JAVA_DEBUG_AGENT_RSS
+
+//Currently we don't want to show an icon of debug agent
+#ifndef JAVA_DEBUG_AGENT_REG_RSS
+#  define JAVA_DEBUG_AGENT_REG_RSS JavaDebugAgent_reg.rss
+#endif // JAVA_DEBUG_AGENT_REG_RSS
+
+#include "../src/JavaDebugAgentUid.h"
+
+TARGET          JAVA_DEBUG_AGENT_EXE
+TARGETTYPE      EXE
+UID             0x100039CE JAVA_DEBUG_AGENT_UID
+SECUREID        0x10208DDD // DebugAgent secure id hardcoded in CMIDP2Server
+CAPABILITY      ProtServ TrustedUI NetworkServices WriteDeviceData NetworkControl
+VENDORID        VID_DEFAULT
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   \epoc32\include\libc
+SYSTEMINCLUDE   \epoc32\include\j2me
+
+MACRO SUPPORT_CONNECT_FROM_IDE
+
+USERINCLUDE     ..\src
+USERINCLUDE     ..\debugagent_orig\include
+SOURCEPATH      ..\debugagent_orig\src
+SOURCE          driver\Driver.cpp
+
+
+#include "..\debugagent_orig\group\engine\swi\swiengine.mmp"
+#include "..\debugagent_orig\group\slave\seislave.mmp"
+#include "..\debugagent_orig\group\utils\utils.mmp"
+
+SOURCEPATH      ..\src
+SOURCE          JavaDebugAgentApp.cpp
+SOURCE          JavaDebugAgentAppUi.cpp
+SOURCE          JavaDebugAgentLogView.cpp
+SOURCE          JavaDebugAgentLogScreen.cpp
+SOURCE          JavaDebugAgentBasicLogView.cpp
+SOURCE          JavaDebugAgentFullScreenLogView.cpp
+SOURCE          JavaDebugAgentSettings.cpp
+SOURCE          JavaDebugAgentSettingsView.cpp
+SOURCE          JavaDebugAgentSettingsScreen.cpp
+SOURCE          JavaDebugAgentSettingsApItem.cpp
+SOURCE          JavaDebugAgentConnector.cpp
+SOURCE          JavaDebugAgentKeepAlive.cpp
+SOURCE          JavaDebugAgentDriver.cpp
+
+SOURCEPATH      ..\data
+
+START RESOURCE  JAVA_DEBUG_AGENT_RSS
+HEADER
+TARGETPATH resource\apps
+END
+
+//Currently we don't want to show an icon of debug agent
+START RESOURCE  JAVA_DEBUG_AGENT_REG_RSS
+TARGETPATH      \private\10003a3f\apps
+END
+
+LIBRARY         aknskins.lib
+LIBRARY         apengine.lib
+LIBRARY         apparc.lib
+LIBRARY         apsettingshandlerui.lib
+LIBRARY         avkon.lib
+LIBRARY         bafl.lib
+LIBRARY         bitgdi.lib
+LIBRARY         charconv.lib
+LIBRARY         commdb.lib
+LIBRARY         commonengine.lib
+LIBRARY         cone.lib
+LIBRARY         edbms.lib
+LIBRARY         efsrv.lib
+LIBRARY         eikcoctl.lib
+LIBRARY         eikcore.lib
+LIBRARY         eikdlg.lib
+LIBRARY         esock.lib
+LIBRARY         estor.lib
+LIBRARY         etext.lib
+LIBRARY         euser.lib
+LIBRARY         fbscli.lib
+LIBRARY         form.lib
+LIBRARY         gdi.lib
+LIBRARY         insock.lib
+LIBRARY         midp2client.lib
+LIBRARY         midp2dbv2.lib
+LIBRARY         ws32.lib
+//Try:
+LIBRARY         SWInstCli.lib
+LIBRARY         javaregistry.lib
+DEBUGLIBRARY    flogger.lib

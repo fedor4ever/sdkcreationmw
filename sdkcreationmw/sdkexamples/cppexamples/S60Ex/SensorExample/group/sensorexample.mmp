@@ -1,0 +1,83 @@
+/*
+* Copyright (c) 2007, 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+TARGET            sensorexample.exe
+TARGETTYPE        exe
+UID               0x100039CE 0xA0007DFF
+
+SECUREID          0x2000B175
+EPOCSTACKSIZE     0x5000
+
+SOURCEPATH        ..\src
+SOURCE            sensorexample.cpp
+SOURCE            sensorexampleapplication.cpp
+SOURCE            sensorexampleappview.cpp
+SOURCE            sensorexampleappui.cpp
+SOURCE            sensorexampledocument.cpp
+SOURCE            sensorexampledatalistener.cpp
+
+SOURCEPATH        ..\data
+
+START RESOURCE    sensorexample.rss
+HEADER
+TARGETPATH resource\apps
+END //RESOURCE
+
+START RESOURCE    sensorexample_reg.rss
+#ifdef WINSCW
+TARGETPATH    \private\10003a3f\apps
+#else
+TARGETPATH    \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+
+
+USERINCLUDE       ..\inc
+
+SYSTEMINCLUDE   .
+
+SYSTEMINCLUDE    \epoc32\include
+SYSTEMINCLUDE    \epoc32\include\mw
+SYSTEMINCLUDE    \epoc32\include\app
+
+LIBRARY           euser.lib
+LIBRARY           apparc.lib
+LIBRARY           cone.lib
+LIBRARY           eikcore.lib
+LIBRARY           avkon.lib
+LIBRARY           efsrv.lib
+LIBRARY           estor.lib
+LIBRARY           eikcoctl.lib
+LIBRARY           eikdlg.lib
+LIBRARY           eikctl.lib
+LIBRARY           bafl.lib
+LIBRARY           gdi.lib
+LIBRARY           sensrvclient.lib
+LIBRARY           sensrvutil.lib
+
+
+
+LANG SC 01
+
+VENDORID          0
+CAPABILITY        ReadDeviceData WriteDeviceData
+//NONE
+
+// End of File
+

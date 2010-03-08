@@ -1,0 +1,696 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    OCRE // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+#include <appinfo.rh>
+#include <CommonDialogs.rh>
+#include "OcrExample.hrh"
+#include "OcrExample.rls"
+
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf = "OcrExample"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    hotkeys = r_ocr_example_hotkeys;
+    menubar = r_image_view_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//    r_ocr_example_hotkeys
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_ocr_example_hotkeys
+    {
+    control =
+        {
+        HOTKEY { command = EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_ocr_example_image_view
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ocr_example_image_view
+    {
+    menubar = r_image_view_menubar;
+
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+//----------------------------------------------------
+//    r_ocr_example_settings_view
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ocr_example_settings_view
+    {
+    //cba = R_AVKON_SOFTKEYS_BACK;
+    cba = R_AVKON_SOFTKEYS_OK_EMPTY;
+    }
+
+//----------------------------------------------------
+//    r_ocr_example_text_view
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_ocr_example_text_view
+    {
+    cba = R_AVKON_SOFTKEYS_BACK;
+    }
+
+//----------------------------------------------------
+//    r_image_view_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_image_view_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_image_view_menu;
+            txt = "";
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    Image View menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_image_view_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdOpenFile;
+            txt = STRING_r_ocr_open_file_cmnd;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdAnalyzeImage;
+            txt = STRING_r_ocr_analyze_cmnd;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdRecognizeImage;
+            txt = STRING_r_ocr_recognize_cmnd;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdRecognizeBlockMenu;
+            txt = STRING_r_ocr_recognize_cmnd;
+            cascade = r_image_view_recognize_submenu;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdToggleCrosshair;
+            txt = STRING_r_ocr_toggle_crosshair_cmnd;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdSettings;
+            txt = STRING_r_ocr_setting_title;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdExit;
+            txt = STRING_r_ocr_exit_cmnd;
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    Submenu in Recognize-command
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_image_view_recognize_submenu
+    {
+  items =
+        {
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdRecognizeBlock;
+            txt = STRING_r_ocr_recognize_block_cmnd;
+            },
+        MENU_ITEM
+            {
+            command = EOcrExampleCmdRecognizeRegion;
+            txt = STRING_r_ocr_recognize_region_cmnd;
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    Application name and startup icon
+//----------------------------------------------------
+//
+RESOURCE LOCALISABLE_APP_INFO r_ocr_example_localisable_app_info
+    {
+    short_caption = STRING_r_app_short_caption_string;
+    caption_and_icon =
+    CAPTION_AND_ICON_INFO
+        {
+        caption = STRING_r_app_caption_string;
+        number_of_icons = 1;
+        icon_file = "\\resource\\apps\\OcrExample.mif";
+      };
+    }
+
+//----------------------------------------------------
+// File Open Dialog
+//----------------------------------------------------
+//
+RESOURCE MEMORYSELECTIONDIALOG r_ocr_select_dialog
+    {
+    locations =
+        {
+        LOCATION { root_path = "C:\\Data\\Images\\"; },
+        LOCATION { root_path = "E:\\Data\\Images\\"; }
+        };
+    }
+
+//----------------------------------------------------
+//    Setting list items
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_ITEM_LIST r_ocr_setting_item_list
+    {
+    // flags
+    title = STRING_r_ocr_setting_title;
+
+    items =
+        {
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingHighlightColor;
+            setting_page_resource = r_ocr_color_setting_page;
+            associated_resource = r_ocr_color_texts;
+            name = STRING_r_ocr_highlight_item;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingEnglish;
+            setting_page_resource = r_ocr_binary_setting_page;
+            associated_resource = r_ocr_popup_setting_binary_texts;
+            name = STRING_r_ocr_lang_english;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingChinese;
+            setting_page_resource = r_ocr_binary_setting_page;
+            associated_resource = r_ocr_popup_setting_binary_texts;
+            name = STRING_r_ocr_lang_chinese;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingJapanese;
+            setting_page_resource = r_ocr_binary_setting_page;
+            associated_resource = r_ocr_popup_setting_binary_texts;
+            name = STRING_r_ocr_lang_japanese;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingCrosshairHeigth;
+            setting_page_resource = r_ocr_height_setting_page;
+            name = STRING_r_ocr_crosshair_height;
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = EOCRExampleSettingCrosshairWidth;
+            setting_page_resource = r_ocr_width_setting_page;
+            name = STRING_r_ocr_crosshair_width;
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    r_ocr_skew_setting_page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ocr_skew_setting_page
+    {
+    label  = STRING_r_ocr_skew_item;
+    type   = EAknCtPopupSettingList;
+    }
+
+//----------------------------------------------------
+//    r_ocr_binary_setting_page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ocr_binary_setting_page
+    {
+    type   = EAknCtPopupSettingList;
+    }
+
+//----------------------------------------------------
+//    r_ocr_popup_setting_binary_texts
+//----------------------------------------------------
+//
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_ocr_popup_setting_binary_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_on_off_texts;
+    }
+
+//----------------------------------------------------
+//    r_on_off_texts
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_on_off_texts
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=1; text = STRING_r_binary_on; },
+        AVKON_ENUMERATED_TEXT { value=0; text = STRING_r_binary_off; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_popup_setting_list
+//----------------------------------------------------
+//
+RESOURCE POPUP_SETTING_LIST r_popup_setting_list
+    {
+    flags = 0;
+    }
+
+//----------------------------------------------------
+//    r_ocr_color_setting_page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ocr_color_setting_page
+    {
+    //hint_text =
+    label  = STRING_r_ocr_highlight_item;
+    type   = EAknCtPopupSettingList;
+    editor_resource_id = r_popup_setting_list;
+    }
+
+//----------------------------------------------------
+//    r_ocr_color_texts
+//----------------------------------------------------
+//
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_ocr_color_texts
+    {
+    flags = 0;
+    setting_texts_resource = r_color_enum_text;
+    popped_up_texts_resource = r_color_enum_text_array;
+    }
+
+//----------------------------------------------------
+//    r_color_enum_text
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_color_enum_text
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT { value=0; text = STRING_r_color_red; },
+        AVKON_ENUMERATED_TEXT { value=1; text = STRING_r_color_yellow; },
+        AVKON_ENUMERATED_TEXT { value=2; text = STRING_r_color_black; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_color_enum_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_color_enum_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_color_red; },
+        LBUF { txt = STRING_r_color_yellow; },
+        LBUF { txt = STRING_r_color_black; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_ocr_height_setting_page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ocr_height_setting_page
+    {
+    label = STRING_r_ocr_crosshair_height;
+    type = EAknCtSlider;
+    editor_resource_id = r_settinglist_persentage_slider;
+    }
+
+//----------------------------------------------------
+//    r_ocr_width_setting_page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_ocr_width_setting_page
+    {
+    label = STRING_r_ocr_crosshair_width;
+    type = EAknCtSlider;
+    editor_resource_id = r_settinglist_persentage_slider;
+    }
+
+//----------------------------------------------------
+//    r_settinglist_persentage_slider
+//----------------------------------------------------
+//
+RESOURCE SLIDER r_settinglist_persentage_slider
+    {
+    layout = EAknSettingsItemSliderLayout;
+    minvalue = 0;
+    maxvalue = 100;
+    step = 5;
+    valuetype = EAknSliderValuePercentage;
+    minlabel = STRING_r_minimum;
+    maxlabel = STRING_r_maximum;
+    }
+
+//----------------------------------------------------
+//    r_recognize_block_form_dialog
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_recognize_block_form_dialog
+    {
+	flags = EAknDialogGenericFullScreen;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    form = r_recognize_block_form;
+    }
+
+//----------------------------------------------------
+//    r_recognize_block_form
+//----------------------------------------------------
+//
+RESOURCE FORM r_recognize_block_form
+    {
+	flags = EEikFormEditModeOnly;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_layout_type;
+            id = EOCRExampleFormLayout;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_layout_popup_text_array;
+                active = 0;
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_background_color;
+            id = EOCRExampleFormBackground;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_backround_popup_text_array;
+                active = 0;
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_lines_type;
+            id = EOCRExampleFormTextType;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_lines_popup_text_array;
+                active = 0;
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    r_layout_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_layout_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_layout_horizontal; },
+        LBUF { txt = STRING_r_layout_vertical; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_backround_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_backround_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_light; },
+        LBUF { txt = STRING_r_dark; },
+        LBUF { txt = STRING_r_unknown; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_lines_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_lines_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_lines_multi; },
+        LBUF { txt = STRING_r_lines_single; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_analyze_layout_form_dialog
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_analyze_layout_form_dialog
+    {
+	flags = EAknDialogGenericFullScreen;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    form = r_analyze_layout_form;
+    }
+
+//----------------------------------------------------
+//    r_analyze_layout_form
+//----------------------------------------------------
+//
+RESOURCE FORM r_analyze_layout_form
+    {
+	flags = EEikFormEditModeOnly;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_skew_setting;
+            id = EOCRExampleFormSkew;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_binary_popup_text_array;
+                active = 0;
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_brightness;
+            id = EOCRExampleFormBrightness;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_brightness_popup_text_array;
+                active = 0;
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    r_binary_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_binary_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_binary_on; },
+        LBUF { txt = STRING_r_binary_off; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_brightness_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_brightness_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_normal; },
+        LBUF { txt = STRING_r_light; },
+        LBUF { txt = STRING_r_dark; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_recognize_region_form_dialog
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_recognize_region_form_dialog
+    {
+	flags = EAknDialogGenericFullScreen;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+    form = r_recognize_region_form;
+    }
+
+//----------------------------------------------------
+//    r_recognize_region_form
+//----------------------------------------------------
+//
+RESOURCE FORM r_recognize_region_form
+    {
+	flags = EEikFormEditModeOnly;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_content_type;
+            id = EOCRExampleFormContentType;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_content_popup_text_array;
+                active = 0;
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtPopupFieldText;
+            prompt = STRING_r_background_color;
+            id = EOCRExampleFormBackground;
+            itemflags = EEikDlgItemTakesEnterKey |
+                        EEikDlgItemOfferAllHotKeys;
+
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield = POPUP_FIELD
+                    {
+                    width = 12;
+                    };
+                textarray = r_backround_popup_text_array;
+                active = 0;
+                };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//    r_content_popup_text_array
+//----------------------------------------------------
+//
+RESOURCE ARRAY r_content_popup_text_array
+    {
+    items =
+        {
+        LBUF { txt = STRING_r_content_email; },
+        LBUF { txt = STRING_r_content_telnum; },
+        LBUF { txt = STRING_r_content_www; }
+        };
+    }
+
+//----------------------------------------------------
+//    r_ocr_waitnote
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_ocr_waitnote
+	{
+	flags = EAknWaitNoteFlags;
+	buttons = R_AVKON_SOFTKEYS_CANCEL;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EOcrExampleWaitNote;
+			control= AVKON_NOTE
+				{
+				layout = EWaitLayout;
+				singular_label = STRING_r_waitnote_text;
+				animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+				};
+			}
+		};
+	}
+
+
+// End of File

@@ -1,0 +1,433 @@
+/*! \mainpage Browser Control Sample Application
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About the Browser Control Sample Application Example
+ *
+ *    This example shows how easy it is to create a browser control that will enable you to display
+ *    web related content. In addition, this sample application demonstrates how to
+ *    customize the browser control to fit the unique needs of your host application, by showing you
+ *    how to customize soft keys, dialogs, scroll bars, etc.
+ *
+ *	 <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *    Symbian OS key concepts
+ *
+ *
+ *	<HR>
+ *
+ *  \section Design_sec 3. Design and Implementation
+ *
+ *   The Browser Control Sample Application was designed to accompany the Browser Control API
+ *   Developers Guide. Each of the menu options in the Sample App Menu 1 and 2 demonstrate various
+ *   functional use cases that could be useful when developing your own application. For a more detailed
+ *   explaination of these use cases please refer to the API Guide.
+ *
+ *  \subsection Sub31 3.1 Application Menu Choices
+ *
+ *   When you start the Browser Control Sample Application you will notice the Options softkey.
+ *
+ *   Opening the Options menu displays 3 menu choices:
+ *
+ *   1. Tools
+ *
+ *   2. Sample App Menu 1
+ *
+ *   3. Sample App Menu 2
+ *
+ *   4. Exit
+ *
+ *   Tools menu options:
+ *
+ *   1. Restore settings
+ *
+ *   	- Restores the settings for small screen, security warnings, loading images, and enabling ecma script
+ *
+ *   2. Reload
+ *
+ *   	- Reloads the page
+ *
+ *   3. Back
+ *
+ *   	- Loads the previous page in the history stack
+ *
+ *   4. Forward
+ *
+ *   	- Loads the next page in the history stack
+ *
+ *
+ *   Sample App Menu 1 options:
+ *
+ *   1. Basic BrCtl
+ *
+ *   2. BrCtl Observers
+ *
+ *   3. Load Content using File Handle
+ *
+ *   4. Load Content using Buffer
+ *
+ *   5. Incremental Loading
+ *
+ *   6. Special Load Requests
+ *
+ *   7. Customized Dialogs
+ *
+ *   8. Customized Softkeys
+ *
+ *   9. Embedded Links
+ *
+ *   10. Customized Scrollbars
+ *
+ *   Sample App Menu 2 options:
+ *
+ *   1. Handle State Changed
+ *
+ *   2. Change Size Extents
+ *
+ *   3. Page Info
+ *
+ *   4. Content Size and Image Count
+ *
+ *
+ *   \subsubsection Sub331 3.3.1 Basic BrCtl
+ *
+ *   Basic Browser Control functionality includes:
+ *   - 	Downloading and displaying Web content
+ *
+ *   - 	Resolving links
+ *
+ *   - 	Retrieving the following information about the downloaded content:
+ *
+ *   		-  Display size needed to see all of the content (ContentSize function)
+ *
+ *   		-  WML options associated with the current page (WMLOptionMenuItemsL function)
+ *
+ *   		-  Value of a specified browser setting (BrowserSettingL function)
+ *
+ *   		-  Indication of whether or not a particular URL is in the cache (IsUrlInCache function)
+ *
+ *   		-  Information about the page, such as its title, URL, and content (PageInfoLC function)
+ *
+ *   		-  Indication of whether there is a previous or next element in the history stack (NavigationAvailable function)
+ *
+ *   		-  Build version of the Browser Control (VersionInfoLC function)
+ *
+ *   		-  Number of images in the current page (ImageCountL function)
+ *
+ *   		-  Type of focused element (FocusedElementType function)
+ *
+ *   		-  Minimum size of the Browser Control (MinimumSize function)
+ *
+ *   		To create a basic Browser Control within your application to display Web-related content, call the following function of the CBrCtlInterface class:
+ *
+ *   			- CreateBrowserControlL() which creates an instance of a basic Browser Control.
+ *
+ * 			To call this function, supply the following data:
+ *
+ *			-  Parent window of the Browser Control which is a pointer to the parent of the Browser Control window.
+ *
+ *			-  Bounding rectangle of the Browser Control which is the size and location of the Browser Control window.
+ *
+ * 			-  Capabilities desired for the Browser Control, for example, displaying scroll bars, allowing network access for HTTP requests.
+ *
+ *    The Basic BrCtl menu option in the sample application creates an instance of a basic Browser Control. In this sample, the capabilities are set so that the Browser Control can:
+ *
+ * 	- 	Make external HTTP requests  (ECapabilityLoadHttpFw)
+ *
+ * 	- 	Handle scroll bars (ECapabilityDisplayBar)
+ *
+ *	This relieves the host application of these responsibilities.
+ *
+ *
+ *	\subsubsection Sub332 3.3.2 BrCtl Observers
+ *
+ * 	An observer is an interface, implemented by the host application, which listens for Browser Control events and performs customized actions based on those events. Table 6 lists and describes the observer interfaces.
+ *
+ *	-  Dialogs Provider Provides the dialogs used by the Browser Control.
+ *
+ *		Implement this interface if you wish to customize the dialogs.
+ *
+ *	-  Download Observer Handles download events received from the Download Manager. It provides a callback mechanism that enables the Download Manager to inform the host application about new downloads and downloads to resume.
+ *
+ *		Implement this interface if you wish to display the content progressively as it is downloading.
+ *
+ *	-  Layout Observer Receives scrolling events and updates the scroll bar.
+ *
+ *		Implement this interface if you wish to customize the scroll bars.
+ *
+ *	-  Link Resolver Provides a callback mechanism for receiving the content of an embedded link or the content of a user-initiated load request.
+ *
+ *		Implement this interface if the host application must control page navigation or if the host application stores its content in a private store.
+ *
+ *	-  Load Event Observer Receives load progress events and updates the progress bar every time the Browser Control receives a data chunk.
+ *
+ *		Implement this interface if the host application implements a progress bar.
+ *
+ *	-  Softkey Observer Listens for events and changes the softkeys based on those events.Handles requests from the Browser Control for the host application to change one or both softkeys.
+ *
+ *		Implement this interface if changes in the state of the Browser Control require the host application to change the softkeys.
+ *
+ *	-  Special Load Observer Handles special load requests.
+ *
+ *		Implement this interface if the host application requires:
+ *
+ * 			-  Control over network connections
+ *
+ * 			-  Non-markup content
+ *
+ * 			-  Non-HTTP(S) requests
+ *
+ *	-  State Change Observer Receives state-changed events.
+ *
+ *		Implement this interface if the Browser Control switches to and from the Image Map view.
+ *
+ *	-  Window Observer is reserved for future use.
+ *
+ *
+ *	To create a Browser Control with observer interfaces, follow these steps:
+ *
+ *	1.	Select the observer class you wish to add.
+ *
+ *	2.	Implement the functions defined for the observer class you selected in step1.
+ *
+ *	3.	Call the CreateBrowserControlL() function of the CBrCtlInterface class with the pointers to the newly created interface class(es).
+ *
+ *
+ *	<b>Note:</b> The LoadEventObserver class can be added and removed dynamically. The other observers must be created and passed in to the CreateBrowserControlL function.
+ *
+ *    The BrCtl Observers menu option in the sample application creates an instance of a Browser Control with observer interfaces.
+ *
+ *	\subsubsection Sub333 3.3.3 Load Content using File Handle
+ *
+ *    A host application can load content by calling a number of different load methods on the Browser Control.
+ *    In the Load Content using File Handle menu option, we call LoadFileL() and pass it a RFile handle to an already open file.
+ *    An RFile is a Symbian object that contains a handle to a resource that is maintained by the file server.
+ *
+ *	\subsubsection Sub334 3.3.4 Load Content using Buffer
+ *
+ *	A host application can load content by calling a number of different load methods on the Browser Control.
+ *    In the Load Content using Buffer menu option, we call LoadDataL() and pass it a data buffer.
+ *
+ *	\subsubsection Sub335 3.3.5 Incremental Loading
+ *
+ *	The host application can pass content to the Browser Control in small chunks, if desired. The Browser Control displays this content incrementally.
+ *	To pass content from the host application to the Browser Control incrementally, follow these steps:
+ *
+ *	1.	Inherit from the MBrCtlDataLoadSupplier class  and implement the CancelLoad() function to stop the load operation.
+ *
+ *	2.	Call the InitLoadDataL() function of the CBrCtlInterface class to request the Browser Control to display content incrementally.  *
+ *
+ *	3.	Call the HandleNextDataChunk() function of the MBrCtlDataLoadConsumer class to pass the data chunks to the Browser Control.
+ *
+ *	4.	Call the HandleLoadComplete() function when the data chunk has finished loading.
+ *
+ *	5.	If an error occurs, call the HandleError() function.
+ *
+ *	In the Incremental Loading menu option, we demonstrate how to pass content to the Browser Control incrementally.
+ *
+ *	\subsubsection Sub336 3.3.6 Special Load Requests
+ *
+ *	Special load requests consist of the following:
+ *
+ *	- 	Non-HTTP(S) load requests
+ *
+ *	- 	Non-HTML content
+ *
+ *	- 	Control over network connections
+ *
+ *	In these cases, the host application can handle the requests instead of the Browser Control.
+ *
+ *	HandleDownloadL() requests the host application to handle a download.
+ *	The host application should call the Download Manager to handle non-HTML content. Only GET requests are supported because the Browser Control must cancel the transaction before the Download Manager can take over.
+ *	In the case of a POST request, the Browser Control downloads the content and passes it to the host application.
+ *	The host application should look for the parameter EParamLocalFileName to determine whether or not the Browser Control downloaded the content.
+ *
+ *	HandleRequestL() checks the scheme of a URL to determine whether or not the Browser Control supports it.
+ *	If the Browser Control does not support it, then the host application should pass the content to an application that does support that scheme.
+ *
+ *	NetworkConnectionNeededL() requests a new network connection.
+ *	The Browser Control calls this function for each HTTP(S) load request. It is up to the host application to ensure that the network connection is available.
+ *
+ *	In the Special Load Requests menu option we demonstrate how to handle a request to load non-HTML content.
+ *
+ *	<b>Note:</b> Because there is no Scheme Handler API shipped with the SDK, you as a developer are responsible for implementing
+ *	your own scheme handling mechanism.  By this we mean, inspecting the file type, and then trying to locate the appropriate
+ *    application to handle this file. There are comments in the code as to where this implementation should take place.
+ *    Without a scheme handler, this code is unable to locate the appropriate application that would handle this unknown scheme, so the
+ *    unknown scheme is ignored.
+ *
+ *	\subsubsection Sub337 3.3.7 Customized Dialogs
+ *
+ *	The Browser Control provides dialogs to communicate with the user of the host application. You can customize these dialogs by implementing the MBrCtlDialogsProvider interface to:
+ *
+ *	- 	Remove one or more dialogs
+ *
+ *	- 	Change the format or content of dialogs
+ *
+ *	- 	Selectively implement some of the default dialogs
+ *
+ *
+ *	The Customized Dialogs menu option demonstrates how to customize the alert dialog.
+ *
+ *	\subsubsection Sub338 3.3.8 Customized Softkeys
+ *
+ *	The host application can change the labels of the softkeys as a response to softkey events received from the Browser Control. The Browser Control transmits one or more softkey events under the following conditions:
+ *	- 	A document is displayed
+ *
+ *	- 	A plug-in control is activated or deactivated
+ *
+ *	- 	An input box is activated or deactivated
+ *
+ *	- 	The browser view changes to and from the Image Map view
+ *
+ *	To specify the softkeys, follow these steps:
+ *
+ *	1.	Implement the UpdateSoftkeyL() function to change the softkeys.
+ *
+ *	2.	Use the event to query the FocusedElementType() function to learn what the focused element is. All events are issued the EChangeReasonIdle reason code.
+ *
+ *	3.	Change the softkeys based on the focused element.
+ *
+ *	The Customized Softkeys menu option demonstrates how to customize the softkeys.
+ *
+ *	\subsubsection Sub339 3.3.9 Embedded Links
+ *
+ *	If the content of an embedded link is to be loaded from the private store of a host application, such as an e-mail application, then the developer should implement the MBrCtlLinkResolver class.
+ *	This interface provides a callback mechanism to the host application to transmit the content of an embedded link or the content of a user-initiated load request to the Browser Control.
+ *	To enable this callback mechanism, the host application must set the ECapabilityClientResolveEmbeddedURL capability or the ECapabilityClientNotifyURL capability.
+ *	If the host application is unable to resolve the embedded link, then the Browser Control tries to handle the request through the HTTP framework.
+ *	The following functions of the MBrCtlLinkResolver interface provide the content of an embedded link.
+ *
+ *	-  CancelAll() cancels all outstanding link resolution operations.
+ *
+ *	-  ResolveEmbeddedLinkL() retrieves the content of an embedded link. For example, the Browser Control calls this function to display images embedded within an e-mail message.
+ *
+ *
+ *	The Browser Control implements this interface after a link is resolved or an error occurs. Table 16 lists the functions called by the host application after a link is resolved or after an error occurs in resolving the link.
+ *
+ *	-  HandleResolveComplete() called by the host application when the content of a link has finished loading.
+ *
+ *    -  HandleResolveError() Called by the host application if an error occurred while downloading the content of a link.
+ *
+ *
+ *	The Embedded Links menu option demonstrates how to resolve an embedded link.
+ *
+ *	\subsubsection Sub3310 3.3.10 Customized Scrollbars
+ *
+ *	To customize a scroll bar based upon one or more layout (scrolling) events, follow these steps:
+ *
+ *	1.	When you create the Browser Control, do not specify the EcapabilityDisplayScrollBar flag.
+ *
+ *	2.	Implement the MBrCtlLayoutObserver interface.
+ *
+ *	This enables the host application to display and update the scroll bars.
+ *	If you wish to have no scroll bars at all, follow step 1 but do not implement step 2.
+ *	The following functions of the MBrCtlLayoutObserver interface receive scrolling events when the host application draws the scrollbar.
+ *
+ *	-  NotifyLayoutChange() determines whether the page is to be read from right-to-left or from left-to-right.
+ *
+ *	-  UpdateBrowserHScrollBarL() updates the position of the horizontal scrollbar.
+ *
+ *	-  UpdateBrowserVScrollBarL() updates the position of the vertical scrollbar.
+ *
+ *	-  UpdateTitleL() updates the page title in the History view.
+ *
+ *	The Customized Scrollbars menu option demonstrates how you would go about customizing a scroll bar.
+ *
+ *    <b>Note:</b> This sample doesn't acutally customize the scrollbars, that is left as an excercise for the reader, so to speak.
+ *    What we do in this example is to show you how to set up the observer interface in order to receive these layout events.
+ *    You will notice that we resize the browser control screen and write a text string below the browser control. This is
+ *    to show that the methods on this observer are getting called. There are comments in the code which tell you that this
+ *    is where you would implement your own scrolling implementation, if that is what you wish to do with the layout events.
+ *
+ *	\subsubsection Sub3311 3.3.11 Handle State Changed
+ *
+ *	A change-of-state-event indicates that the state of the browser has changed. For example, the browser may switch to or from the Image Map view.
+ *	To receive change-of-state events, inherit from the MBrCtlStateChangeObserver interface and implement the StateChanged function.
+ *	The following function indicates that the browser has changed its state:
+ *
+ *	-  StateChanged() called by the browser when its state has changed.
+ *
+ *	NOTE: The only state change currently supported is the change to and from the Image Map view.
+ *
+ *	The Handle State Changed menu option demonstrates how to receive an event that indicates that the state of the browser has changed.
+ *
+ *	\subsubsection Sub3312 3.3.12 Change Size Extents
+ *
+ *    The Change Size Extents menu options, allows you to change the size of the browser control.
+ *
+ *	\subsubsection Sub3313 3.3.13 Page Info
+ *
+ *    The Page Info menu option, uses the PageInfoLC() method on the Browser Control to
+ *    request the Browser Control to return information about the page, such as the page title, URL, or content.
+ *
+ *	\subsubsection Sub3314 3.3.14 Content Size and Image Count
+ *
+ *    The Content Size and Image Count menu option uses the ContentSize() and ImageCountL() methods on the Browser Control
+ *    to return this information to the host application.
+ *
+ *  \subsection Sub32 3.2 Capabilities
+ *
+ *  NetworkServices
+ *
+ *  \subsection Sub33 3.3 ScalableUI
+ *
+ *  This sample application handles multiple screen modes and the screen size can change dynamically.
+ *
+ *  \subsection Sub34 3.4 Known Issues
+ *
+ *   The right softkey with the title "Back" is not integrated into the application and
+ *   will not take you back to the previous page in the history list.  If you want to go to
+ *   the previous page in the history list please go to Options->Tools->Back
+ *
+ *  \subsection Sub34 3.4 Installation Instructions
+ *
+ *
+ *   EMULATOR SDK
+ *
+ *   \code
+ *   cd to \BrCtlSampleApp\group
+ *
+ *   bldmake bldfiles
+ *
+ *   abld build winscw udeb
+ *
+ *   start the emulator
+ *
+ *   \endcode
+ *
+ *   HARDWARE (ARMV5)
+ *
+ *   \code
+ *   cd to \BrCtlSampleApp\group
+ *
+ *   bldmake bldfiles
+ *
+ *   abld build armv5 urel
+ *
+ *   makesis BrCtlSampleApp_armv5.pkg
+ *
+ *   \endcode
+ *
+ *   HARDWARE (GCCE)
+ *
+ *   \code
+ *   cd to \BrCtlSampleApp\group
+ *
+ *   bldmake bldfiles
+ *
+ *   abld build gcce urel
+ *
+ *   makesis BrCtlSampleApp_gcce.pkg
+ *
+ *   \endcode
+ *
+ *   Copy the sis file to the phone (memory card, bluetooth, etc)
+ *   Run the sis file to install the application
+ *
+*/

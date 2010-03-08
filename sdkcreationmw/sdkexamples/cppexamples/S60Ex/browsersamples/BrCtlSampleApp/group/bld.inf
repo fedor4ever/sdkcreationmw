@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file provides the information required
+		for building the whole of a BrCtlSampleApp.
+*
+*/
+
+
+PRJ_PLATFORMS
+
+// Export the sample html pages to a location where the emulator (WINSCW) can find them
+
+PRJ_EXPORTS
+..\data\samplepages\sample1.htm    ..\winscw\c\BrCtlSampleApp\sample1.htm
+..\data\samplepages\sample2.htm    ..\winscw\c\BrCtlSampleApp\sample2.htm
+..\data\samplepages\sample3.htm    ..\winscw\c\BrCtlSampleApp\sample3.htm
+..\data\samplepages\sample4.htm    ..\winscw\c\BrCtlSampleApp\sample4.htm
+..\data\samplepages\sample5.htm    ..\winscw\c\BrCtlSampleApp\sample5.htm
+..\data\samplepages\sample6.htm    ..\winscw\c\BrCtlSampleApp\sample6.htm
+..\data\samplepages\sample7.htm    ..\winscw\c\BrCtlSampleApp\sample7.htm
+..\data\samplepages\sample8.htm    ..\winscw\c\BrCtlSampleApp\sample8.htm
+..\data\samplepages\sample9.htm    ..\winscw\c\BrCtlSampleApp\sample9.htm
+..\data\samplepages\sample10.htm   ..\winscw\c\BrCtlSampleApp\sample10.htm
+..\data\samplepages\sample11.htm   ..\winscw\c\BrCtlSampleApp\sample11.htm
+..\data\samplepages\img4.jpg       ..\winscw\c\BrCtlSampleApp\img4.jpg
+..\data\samplepages\img5.jpg       ..\winscw\c\BrCtlSampleApp\img5.jpg
+
+// If EKA2 Kernel Architecture is supported, assume S60 3rd Edition Platform
+
+PRJ_MMPFILES
+
+gnumakefile Icons_scalable_dc.mk
+
+BrCtlSampleApp.mmp
+

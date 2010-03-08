@@ -1,0 +1,19 @@
+EXPORTS
+	??0CMessageSession@@AAE@XZ @ 1 NONAME ; CMessageSession::CMessageSession(void)
+	??1CMessageListener@@UAE@XZ @ 2 NONAME ; CMessageListener::~CMessageListener(void)
+	??1CMessageSession@@QAE@XZ @ 3 NONAME ; CMessageSession::~CMessageSession(void)
+	?AttachL@CMessageSession@@QAEXXZ @ 4 NONAME ; void CMessageSession::AttachL(void)
+	?ConstructL@CMessageListener@@IAEXXZ @ 5 NONAME ; void CMessageListener::ConstructL(void)
+	?ConstructL@CMessageSession@@AAEXXZ @ 6 NONAME ; void CMessageSession::ConstructL(void)
+	?IsListening@CMessageSession@@QBEHXZ @ 7 NONAME ; int CMessageSession::IsListening(void) const
+	?ListenMessagesL@CMessageSession@@QAEXW4TMessageType@@I@Z @ 8 NONAME ; void CMessageSession::ListenMessagesL(enum TMessageType, unsigned int)
+	?NewL@CMessageListener@@SAPAV1@XZ @ 9 NONAME ; class CMessageListener * CMessageListener::NewL(void)
+	?NewL@CMessageSession@@SAPAV1@XZ @ 10 NONAME ; class CMessageSession * CMessageSession::NewL(void)
+	?NewLC@CMessageListener@@SAPAV1@XZ @ 11 NONAME ; class CMessageListener * CMessageListener::NewLC(void)
+	?NewLC@CMessageSession@@SAPAV1@XZ @ 12 NONAME ; class CMessageSession * CMessageSession::NewLC(void)
+	?ReceiveMessageL@CMessageListener@@UAEXABVTPtr8@@@Z @ 13 NONAME ; void CMessageListener::ReceiveMessageL(class TPtr8 const &)
+	?SendMessageL@CMessageSession@@QAEXABVTPtr8@@W4TMessageType@@@Z @ 14 NONAME ; void CMessageSession::SendMessageL(class TPtr8 const &, enum TMessageType)
+	?SetListener@CMessageSession@@QAEXPAVCMessageListener@@@Z @ 15 NONAME ; void CMessageSession::SetListener(class CMessageListener *)
+	?StopListeningL@CMessageSession@@QAEXXZ @ 16 NONAME ; void CMessageSession::StopListeningL(void)
+	?UseFileSMS@CMessageSession@@SAHXZ @ 17 NONAME ; int CMessageSession::UseFileSMS(void)
+

@@ -1,0 +1,53 @@
+/*! \mainpage OpenGL ES Floating Duck Example
+ *
+ * \ref intro_sec
+ * \n\ref Pre_sec
+ * \n\ref Desing_sec
+ *
+ * <HR>
+ *
+ * \section intro_sec 1. About this Example
+ *
+ *  This example demonstrates both how to use the user clip plane and vertex buffer objects.
+ *  Both new features in OpenGL ES 1.1.
+ *
+ *  This example can be extended to any kind of OpenGL ES application, but you might
+ *  want to look at the other example applications as well for how to use other,
+ *  different kinds of, OpenGL ES features.
+ *
+ *  Only classes used by this example are the basic UI framework baseclasses. Open GL ES itself is pure C
+ *  method call API and doesn't use classes.
+ *
+ * <HR>
+ *
+ * \section Pre_sec 2. Prerequisites
+ *   To build and run this example you need to have the S60 SDK installed and working correctly on your computer.
+ *   You also need basic understanding on how to build S60 applications.
+ *
+ *   To work with this example application you need basic understanding on how to build S60 applications and
+ *   basic undestanding of how Symbian (or COE) UI and application framework works. Also basic knowledge on
+ *   OpenGL or OpenGL ES is required if you wish to modify the example.
+ *
+ *	<HR>
+ *
+ *  \section Desing_sec 3. Desing and Implemention
+ *
+ *  <P>The image is simply done by first drawing the reflection of the duck (by using y scale of -1), then the semitransparent
+ *  water surface is drawn on top and after that the duck model is drawn on top of the water. When drawing the ducks the
+ *  user clip plane is used to clip the duck so that the duck reflection is never drawn over the water and that the duck itself
+ *  is never drawn below the water. The duck is drawn using vertex buffers objects.</P>
+ *
+ *  <P>Class design follows the other OpenGL examples, the framework consists of the usual App, AppUi, Document and Container classes.
+ *  CFloatingDuck class is the main OpenGL drawing class and handles all the drawing.</P>
+ *
+ *  \subsection Sub31 3.1 Capabilities
+ *
+ *  The application has only NONE capability as it only needs the rights to execute and access to the screen.
+ *
+ *  \subsection Sub32 3.2 ScalabaleUI
+ *
+ *  All Open GL ES examples support various screen modes. The examples also support changing the screen size while the
+ *  application is running. Note that this support must be coded in the application and this code
+ *  resides in the container's SizeChanged() method.
+ *
+ */

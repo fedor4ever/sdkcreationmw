@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+      <!-- Package documentation to be used by javadoc -->     <!--
+      Copyright 1998-2001- Nokia Corporation  All rights reserved.
+      Nokia Americas
+      6000 Connection Drive
+      Irving, Texas 75039
+
+      Restricted Rights: Use, duplication, or disclosure by the
+      U.S. Government is subject to restrictions as set forth in
+      subparagraph (c)(1)(ii) of DFARS 252.227-7013, or in FAR
+      52.227-19, or in FAR 52.227-14 Alt. III, as applicable.
+
+      This software is proprietary to and embodies the confidential
+      technology of Nokia.  Possession, use, or copying of this software
+      and media is authorized only pursuant to a valid written license
+      from Nokia or an authorized sublicensor.
+    -->
+  <title>com.nokia.wtk.browser</title>
+   
+</head>
+    <body>
+       
+<p>The package that collects all classes related to the View and the management 
+of Views.<br>
+ </p>
+ 
+<p>Views have an expanded and a summary (collapsed) state. Views are implemented 
+as a tuple of a Panel for the expanded state and a Panel for the collapsed 
+state, managed by a ViewPanel that shows the correct Panel when necessary. 
+The ViewPanel objects also handles showing proper decorations around and resizing-handles.
+These ViewPanel objects are held together in the ViewsManager. The ViewsManager
+exports a JContainer that a program can put in their main window to show
+all the Views.</p>
+ 
+<p><b>To use Views in a program</b><br>
+ &nbsp; A program that wants to use the Views system needs to<br>
+ </p>
+ 
+<ol>
+   <li>For every view that needs to be created, create an object that implements 
+AbstractViewFactoryInterface. This interface defines how the expanded and 
+the summary view belong together.&nbsp;</li>
+   <li>Pass this AbstractFactoryViewInterface object to ViewPanel, and ViewPanel 
+will instantiate properly.&nbsp;</li>
+   <li>Add this new ViewPanel to the ViewsManager. ViewsManager will return 
+and object that implements in the interface ViewsManager.ViewState so you 
+can find out if a View is expanded or collapsed and what the ViewPanel was 
+that actually got added.</li>
+ 
+</ol>
+<p>AbstractViewFactoryInterface actually does not want a JComponent directly
+for the expanded state pf the view, it expects an object implementing ViewAndControlsInterface.
+&nbsp;ViewAndControlsInterface has a call to get the JComponent that makes
+up the expanded state of the view, getPodContent() which may not return null,
+but also two other calls for the controls that appear in the top line of
+a View in its expanded state. Either one of these two calls can return null,
+and, if so, the ViewPanel will be able to deal with that.<br>
+</p>
+<p><b>To set the look for Views</b><br>
+ViewPanel does all the decoration for the Views, ViewsManager does nothing.
+ViewPanel reads in which decoration to use from resources/ViewPanel.properties.
+The corners of a ViewPanel are simple gif images in a JPanel that the ViewPanel
+put on each corner, the borders are repetitions of gif images in a JPanel
+that the ViewPanel puts on the sides. The width or height of these borders
+depends on the width or height of the images in the corners.<br>
+</p>
+<p></p>
+<br>
+ <br>
+   <br>
+ 
+</body>
+</html>

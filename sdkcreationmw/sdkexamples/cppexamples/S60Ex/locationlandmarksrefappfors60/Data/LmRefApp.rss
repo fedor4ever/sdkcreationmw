@@ -1,0 +1,845 @@
+/*
+* Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines the resources used by the Landmark Reference App.
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME LMKS
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+
+#include <appinfo.rh>
+
+#include "LmRefApp.hrh"
+#include "LmRefApp.rls"
+#include <LmRefApp.mbg>
+
+//  RESOURCE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE {  }
+
+// -----------------------------------------------------------------------------
+//
+//    Define the title of the app
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF { buf="LmRefApp"; }
+
+// -----------------------------------------------------------------------------
+//
+//    Define default application info.
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = r_lmrefapp_status_pane;
+    }
+
+// Add a new resource definition
+RESOURCE LOCALISABLE_APP_INFO r_lmrefapp_localisable_app_info
+    {
+    short_caption = STRING_r_lmrefapp_title;
+    caption_and_icon =
+        CAPTION_AND_ICON_INFO
+            {
+            caption = STRING_r_lmrefapp_title;
+            number_of_icons = 1;
+            icon_file =  "\\resource\\apps\\lmrefappfors60_icon.mif";
+            };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    Define the application icon.
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE CONTEXT_PANE r_lmrefapp_app_icon
+    {
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_status_pane
+//    define the default appearance of the status pane
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE STATUS_PANE_APP_MODEL r_lmrefapp_status_pane
+    {
+    panes =
+        {
+        SPANE_PANE
+            {
+            id = EEikStatusPaneUidContext;
+            type=EAknCtContextPane;
+            resource = r_lmrefapp_app_icon;
+            },
+        SPANE_PANE
+            {
+            id = EEikStatusPaneUidNavi;
+            type = EAknCtNaviPane;
+            resource = r_lmrefapp_navi_decorator;
+            }
+        };
+    }
+
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_navi_decorator
+//    define the navigation decorator on the status pane
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_lmrefapp_navi_decorator
+    {
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+        {
+        tab_width = EAknTabWidthWithTwoLongTabs;
+        active = 0;
+        tabs =
+            {
+            TAB
+                {
+                id = ELandmarksNameTab;
+                txt = STRING_r_lmrefapp_view;
+                },
+            TAB
+                {
+                id = ELandmarksCategoriesTab;
+                txt = STRING_r_lmrefapp_categories_view;
+                }
+            };
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_view
+//    Define the landmarks view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_lmrefapp_view
+    {
+    menubar = r_lmrefapp_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_menubar
+//   Define the menu bar of the landmarks view
+//
+// -----------------------------------------------------------------------------
+RESOURCE MENU_BAR r_lmrefapp_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_lmrefapp_menu;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_menu
+//   Define the menu pane of the landmarks view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_lmrefapp_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ELandmarksOpen;
+            txt = STRING_r_lmrefapp_open_item;
+            },
+        MENU_ITEM
+            {
+            txt = STRING_r_lmrefapp_new_lm_item;
+            cascade = r_lmrefapp_add_sub_menu;
+            },
+        MENU_ITEM
+            {
+            command = ELandmarksDelete;
+            txt = STRING_r_lmrefapp_delete_item;
+            },
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = STRING_r_lmrefapp_exit_item;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_add_sub_menu
+//   Define the add sub menu pane of the landmarks view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_lmrefapp_add_sub_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ELandmarksAddCurrent;
+            txt = STRING_r_lmrefapp_add_current_item;
+            },
+        MENU_ITEM
+            {
+            command = ELandmarksAddBlank;
+            txt = STRING_r_lmrefapp_add_blank_item;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_categories_view
+//    Define the categories view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_lmrefapp_categories_view
+    {
+    menubar = r_lmrefapp_categories_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_categories_menubar
+//   Define the menu bar of the categories view
+//
+// -----------------------------------------------------------------------------
+RESOURCE MENU_BAR r_lmrefapp_categories_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_lmrefapp_categories_menu;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_categories_menu
+//   Define the categories menu pane
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_lmrefapp_categories_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ELandmarksAddCategory;
+            txt = STRING_r_lmrefapp_new_cat_item;
+            },
+        MENU_ITEM
+            {
+            command = ELandmarksRename;
+            txt = STRING_r_lmrefapp_rename_item;
+            },
+        MENU_ITEM
+            {
+            command = ELandmarksDelete;
+            txt = STRING_r_lmrefapp_delete_item;
+            },
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = STRING_r_lmrefapp_exit_item;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_info_view
+//    Define the landmark info view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_lmrefapp_info_view
+    {
+    cba = r_lmrefapp_info_view_cba;
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_info_view_cba
+//   CBA for the landmark info view
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE CBA r_lmrefapp_info_view_cba
+    {
+    buttons =
+        {
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyEdit;
+            txt = STRING_r_lmrefapp_edit;
+            },
+        CBA_BUTTON
+            {
+            id = EAknSoftkeyBack;
+            txt = STRING_r_lmrefapp_back;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_edit_menu_bar
+//   Define the menu bar of the edit dialog
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_lmrefapp_edit_menu_bar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_lmrefapp_edit_menu_pane;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//   r_lmrefapp_edit_menu_pane
+//   Define the menu pane of the edit dialog
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_lmrefapp_edit_menu_pane
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = ELandmarksEditCategories;
+            txt = STRING_r_lmrefapp_edit_cat_item;
+            },
+        MENU_ITEM
+            {
+            command = ELandmarksUpdateToCurrentLocation;
+            txt = STRING_r_lmrefapp_current_loc;
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_edit_categories_dialog
+//    Dialog containing a list box for selecting categories for a landmark
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_edit_categories_dialog
+    {
+    flags = EAknDialogMarkableList;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtSingleListBox;
+            id = ESelectionListControl;
+            control = LISTBOX
+                {
+                flags = EAknListBoxMarkableList | EAknListBoxLoopScrolling;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_edit_dialog
+//    Dialog containing a form for editing landmarks fields
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_edit_dialog
+    {
+    flags = EAknDialogGenericFullScreen;
+    buttons = R_AVKON_SOFTKEYS_OPTIONS_DONE;
+    form = r_lmrefapp_edit_form;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_lmrefapp_edit_form
+//    Form containg the landmark fields for editing.
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE FORM r_lmrefapp_edit_form
+    {
+    flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly;
+    items =
+        {
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_name;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_description;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_category;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_latitude;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_longitude;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_altitude;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_hor_acc;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_ver_acc;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_radius;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_street;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_postal;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_city;
+            },
+        DLG_LINE_INDIRECT
+            {
+            line = r_lmrefapp_field_country;
+            }
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_name
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_name;
+    id = ELandmarkNameField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_description
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_description;
+    id = ELandmarkDescField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KDescMaxWidth;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_category
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_categories;
+    id = ELandmarkCategoryField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable |
+            EEikEdwinNoAutoSelection | EEikEdwinReadOnly;
+        maxlength = KDescMaxWidth;
+        };
+    }
+
+//  The float editors below cannot use type = EEikCtFlPtEd and
+//  control = FLPTED since we allow NaN in our range.
+RESOURCE DLG_LINE r_lmrefapp_field_latitude
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_latitude;
+    id = ELandmarkLatitudeField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_longitude
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_longitude;
+    id = ELandmarkLongitudeField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_altitude
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_altitude;
+    id = ELandmarkAltitudeField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_hor_acc
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_hor_acc;
+    id = ELandmarkHorAccField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_ver_acc
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_ver_acc;
+    id = ELandmarkVerAccField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_radius
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_radius;
+    id = ELandmarkRadiusField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        allowed_input_modes = EAknEditorNumericInputMode;
+        avkon_flags = EAknEditorFlagFixedCase |
+            EAknEditorFlagSupressShiftMenu;
+        default_input_mode = EAknEditorNumericInputMode;
+        numeric_keymap = EAknEditorConverterNumberModeKeymap;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_street
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_street;
+    id = ELandmarkStreetField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_postal
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_postal;
+    id = ELandmarkPostalField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        default_input_mode = EAknEditorNumericInputMode;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_city
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_city;
+    id = ELandmarkCityField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        };
+    }
+
+RESOURCE DLG_LINE r_lmrefapp_field_country
+    {
+    type = EEikCtEdwin;
+    prompt = STRING_r_lmrefapp_country;
+    id = ELandmarkCountryField;
+    control = EDWIN
+        {
+        flags = EEikEdwinNoAutoSelection;
+        maxlength = KEditorMaxWidth;
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_init_db_progress_dialog
+//    Dialog for displaying a progress dialog when initializing the database
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_init_db_progress_dialog
+    {
+    flags = EAknProgressNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = ELandmarksInitDbProgressDialog;
+            control = AVKON_NOTE
+                {
+                layout = EProgressLayout;
+                singular_label = STRING_r_lmrefapp_initializing;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_acquire_location_wait_note
+//    Dialog for displaying a wait note when acquiring a location
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_acquire_location_wait_note
+    {
+    flags = EAknWaitNoteFlags | EEikDialogFlagWait;
+    buttons = R_AVKON_SOFTKEYS_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = ELandmarksAcquireLocationWaitNote;
+            control = AVKON_NOTE
+                {
+                layout = EWaitLayout;
+                singular_label = STRING_r_lmrefapp_acquiring_loc;
+                animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_general_query
+//    Dialog for displaying a general query
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_general_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_YES_NO;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = ELandmarksGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_rename_query
+//    Dialog for displaying a text editor
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_lmrefapp_rename_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = ELandmarksRenameQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                control = EDWIN
+                    {
+                    };
+                };
+            }
+        };
+    }
+
+// -----------------------------------------------------------------------------
+//
+//    r_lmrefapp_???_label
+//    Field labels for info view and edit dialog
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE TBUF r_lmrefapp_lmname_label { buf = STRING_r_lmrefapp_name; }
+RESOURCE TBUF r_lmrefapp_description_label { buf = STRING_r_lmrefapp_description; }
+RESOURCE TBUF r_lmrefapp_category_label { buf = STRING_r_lmrefapp_category; }
+RESOURCE TBUF r_lmrefapp_categories_label { buf = STRING_r_lmrefapp_categories; }
+RESOURCE TBUF r_lmrefapp_lat_label { buf = STRING_r_lmrefapp_latitude; }
+RESOURCE TBUF r_lmrefapp_lon_label { buf = STRING_r_lmrefapp_longitude; }
+RESOURCE TBUF r_lmrefapp_alt_label { buf = STRING_r_lmrefapp_altitude; }
+RESOURCE TBUF r_lmrefapp_hor_acc_label { buf = STRING_r_lmrefapp_hor_acc; }
+RESOURCE TBUF r_lmrefapp_ver_acc_label { buf = STRING_r_lmrefapp_ver_acc; }
+RESOURCE TBUF r_lmrefapp_radius_label { buf = STRING_r_lmrefapp_radius; }
+RESOURCE TBUF r_lmrefapp_street_label { buf = STRING_r_lmrefapp_street; }
+RESOURCE TBUF r_lmrefapp_postal_label { buf = STRING_r_lmrefapp_postal; }
+RESOURCE TBUF r_lmrefapp_city_label { buf = STRING_r_lmrefapp_city; }
+RESOURCE TBUF r_lmrefapp_country_label { buf = STRING_r_lmrefapp_country; }
+
+RESOURCE TBUF r_lmrefapp_lmname_label_short { buf = STRING_r_lmrefapp_name_short; }
+RESOURCE TBUF r_lmrefapp_description_label_short { buf = STRING_r_lmrefapp_description_short; }
+RESOURCE TBUF r_lmrefapp_category_label_short { buf = STRING_r_lmrefapp_category_short; }
+RESOURCE TBUF r_lmrefapp_categories_label_short { buf = STRING_r_lmrefapp_categories_short; }
+RESOURCE TBUF r_lmrefapp_lat_label_short { buf = STRING_r_lmrefapp_latitude_short; }
+RESOURCE TBUF r_lmrefapp_lon_label_short { buf = STRING_r_lmrefapp_longitude_short; }
+RESOURCE TBUF r_lmrefapp_alt_label_short { buf = STRING_r_lmrefapp_altitude_short; }
+RESOURCE TBUF r_lmrefapp_hor_acc_label_short { buf = STRING_r_lmrefapp_hor_acc_short; }
+RESOURCE TBUF r_lmrefapp_ver_acc_label_short { buf = STRING_r_lmrefapp_ver_acc_short; }
+RESOURCE TBUF r_lmrefapp_radius_label_short { buf = STRING_r_lmrefapp_radius_short; }
+RESOURCE TBUF r_lmrefapp_street_label_short { buf = STRING_r_lmrefapp_street_short; }
+RESOURCE TBUF r_lmrefapp_postal_label_short { buf = STRING_r_lmrefapp_postal_short; }
+RESOURCE TBUF r_lmrefapp_city_label_short { buf = STRING_r_lmrefapp_city_short; }
+RESOURCE TBUF r_lmrefapp_country_label_short { buf = STRING_r_lmrefapp_country_short; }
+
+// -----------------------------------------------------------------------------
+//
+//    Various strings
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE TBUF r_lmrefapp_app_title { buf = STRING_r_lmrefapp_title; }
+RESOURCE TBUF r_lmrefapp_latitude_error { buf = STRING_r_lmrefapp_latitude_error; }
+RESOURCE TBUF r_lmrefapp_longitude_error { buf = STRING_r_lmrefapp_longitude_error; }
+RESOURCE TBUF r_lmrefapp_altitude_error { buf = STRING_r_lmrefapp_altitude_error; }
+RESOURCE TBUF r_lmrefapp_hor_acc_error { buf = STRING_r_lmrefapp_hor_acc_error; }
+RESOURCE TBUF r_lmrefapp_ver_acc_error { buf = STRING_r_lmrefapp_ver_acc_error; }
+RESOURCE TBUF r_lmrefapp_radius_error { buf = STRING_r_lmrefapp_radius_error; }
+RESOURCE TBUF r_lmrefapp_lat_long_error { buf = STRING_r_lmrefapp_lat_long_error; }
+RESOURCE TBUF r_lmrefapp_alt_lat_long_error { buf = STRING_r_lmrefapp_alt_lat_long_error; }
+RESOURCE TBUF r_lmrefapp_hacc_lat_long_error { buf = STRING_r_lmrefapp_hacc_lat_long_error; }
+RESOURCE TBUF r_lmrefapp_vacc_alt_error { buf = STRING_r_lmrefapp_vacc_alt_error; }
+RESOURCE TBUF r_lmrefapp_acquiring_loc { buf = STRING_r_lmrefapp_acquiring_loc; }
+RESOURCE TBUF r_lmrefapp_delete_category { buf = STRING_r_lmrefapp_delete_category; }
+RESOURCE TBUF r_lmrefapp_new_category { buf = STRING_r_lmrefapp_new_category; }
+RESOURCE TBUF r_lmrefapp_category_name { buf = STRING_r_lmrefapp_category_name; }
+RESOURCE TBUF r_lmrefapp_undefined_category { buf = STRING_r_lmrefapp_undefined_category; }
+RESOURCE TBUF r_lmrefapp_delete_landmark { buf = STRING_r_lmrefapp_delete_landmark; }
+RESOURCE TBUF r_lmrefapp_edit_cat_title { buf = STRING_r_lmrefapp_edit_cat_title; }
+RESOURCE TBUF r_lmrefapp_acquiring_loc_error { buf = STRING_r_lmrefapp_acquiring_loc_error; }
+RESOURCE TBUF r_lmrefapp_empty_landmark { buf = STRING_r_lmrefapp_empty_landmark_error; }
+
+// Enf of File
+

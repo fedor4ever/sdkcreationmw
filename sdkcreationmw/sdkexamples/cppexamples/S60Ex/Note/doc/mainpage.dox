@@ -1,0 +1,272 @@
+/*! \mainpage Note Example
+ *
+ * \ref Intro_sec
+ * \n\ref UI_sec
+ * \n\ref Design_sec
+ *
+ * <HR>
+ *
+ * \section Intro_sec 1. About this Example
+ *
+ * This tutorial explains how to use the note control for Avkon applications.
+ * The note control is used to show a dialog that calls the user's attention to
+ * something or to explain a situation.
+ *
+ * In the note example application, the following functions are introduced:
+ *
+ * - Error note
+ * - Wait note
+ * - Dynamic text note
+ * - Progress note
+ * - Global note
+ *
+ * Typical uses of the note control are:
+ *
+ * - Warning message when an error occurs
+ * - Warning message about battery consumption
+ *
+ * \subsection Sub11 1.1 APIs demonstrated
+ *
+ * The following UML diagram shows key classes of the note example application.
+ *
+ * \image html image_note001.gif
+ *
+ * <HR>
+ *
+ * \subsection Sub12 1.2 Prerequisites
+ *
+ * The Note example application shows how to use note controls in the
+ * application. In particular, an understanding of the following topics is
+ * important to use the note controls:
+ *
+ * - Defining the resources
+ * - Implementing functions to deal with note controls
+ * - Classes that are related to the note control
+ *
+ * <HR>
+ *
+ * \section UI_sec 2. User Interface
+ *
+ * This section shows how the note controls are displayed to users and explains
+ * how to operate them in the note example application.
+ *
+ * \subsection Sub21 2.1 Initial view
+ *
+ * The initial view is displayed immediately after the note example application
+ * launches.
+ *
+ * \image html image_note002.gif
+ *
+ * \subsection Sub22 2.2 Options menu
+ *
+ * You can change screens as you want using the \b Options menu. To open the
+ * \b Options menu, press the left soft key (\b Options) when no dialog is
+ * displayed.
+ *
+ * \image html image_note029.gif
+ *
+ * The following are the commands on the \b Options menu:
+ *
+ * <TABLE><TR>
+ * <TD>\b Menu</TD>
+ * <TD><B>Examples to be shown</B></TD>
+ * </TR><TR>
+ * <TD>Error note</TD>
+ * <TD>Shows the error note example (See
+ * \ref Sub231 "section 2.3.1, Error note").</TD>
+ * </TR><TR>
+ * <TD>Wait note</TD>
+ * <TD>Shows the wait note example (See
+ * \ref Sub24 "section 2.4, Wait note").</TD>
+ * </TR><TR>
+ * <TD>Dynamic text</TD>
+ * <TD>Shows the example of the note with dynamic text (See
+ * \ref Sub251 "section 2.5.1, Dynamic text").</TD>
+ * </TR><TR>
+ * <TD>Progress note</TD>
+ * <TD>Shows the progress note example (See
+ * \ref Sub26 "section 2.6, Progress note").</TD>
+ * </TR><TR>
+ * <TD>Global Confirmation note</TD>
+ * <TD>Shows the Global confirmation note example (See
+ * \ref Sub271 "section 2.7.1, Global confirmation note").</TD>
+ * </TR><TR>
+ * <TD>Exit</TD>
+ * <TD>Ends the application.</TD>
+ * </TR></TABLE>
+ *
+ * \subsection Sub23 2.3 Note dialog
+ *
+ * In order to use a base note dialog, it is necessary to specify resource data
+ * such as image and text. (For more details, see section 5.)
+ *
+ * \subsection Sub231 2.3.1 Error note
+ *
+ * To display an Error note dialog , press the right soft key (\b Next) when the
+ * initial view (see figure 2) is displayed.
+ *
+ * The Error note dialog disappears (right screen in the following figure) when
+ * you press any key or after waiting for a given number of seconds.
+ *
+ * \image html image_note003.gif
+ *
+ * \subsection Sub24 2.4 Wait note
+ *
+ * To display a Wait note dialog, press the right soft key (\b Next) after the
+ * Error note dialog disappears.
+ *
+ * The Wait note dialog disappears when you press the right soft key
+ * (\b Cancel).
+ *
+ * \image html image_note008.gif
+ *
+ * \subsection Sub25 2.5 Displaying text
+ *
+ * \subsection Sub251 2.5.1 Dynamic text
+ *
+ * To display a note dialog with dynamic text, press the right soft key
+ * (\b Next) after the Wait note disappears. In this example, the number in the
+ * text string changes. This dialog disappears when you press any key or after
+ * waiting for a given number of seconds.
+ *
+ * \image html image_note010.gif
+ *
+ * \subsection Sub26 2.6 Progress note
+ *
+ * To display a Progress note dialog, press the right soft key (\b Next) after
+ * the note dialog with dynamic text disappears. A progress note is used to show
+ * the status of operation in progress.
+ *
+ * This dialog disappears when you press the right soft key (\b Cancel) or when
+ * the progress bar reaches its maximum point.
+ *
+ * \image html image_note015.gif
+ *
+ * \subsection Sub27 2.7 Global note dialog
+ *
+ * A global note dialog remains on top when the application changes. It also has
+ * its own resource data. Therefore, it can be used only by specifying a text to
+ * be displayed and a note type. (For more details, see section 3.)
+ *
+ * \subsection Sub271 2.7.1 Global confirmation note
+ *
+ * To display a Global confirmation note dialog, press the right soft key
+ * (\b Next) after the Progress note dialog disappears. The Global confirmation
+ * note dialog disappears when you press any key or after waiting for a given
+ * number of seconds.
+ *
+ * \image html image_note020.gif
+ *
+ *
+ * \section Design_sec 3. Design and implementation
+ *
+ * \subsection Sub31 3.1 Resource definition of note classes
+ *
+ * All structures for note classes are defined in "avkon.rh". It is necessary to
+ * define resource data in an .rss file using the AVKON_NOTE structure. For
+ * example, an error note dialog is defined like this:
+ *
+ * \code
+ * RESOURCE DIALOG r_aknexnote_error_note
+ *     {
+ *     flags = EAknErrorNoteFlags;
+ *     items =
+ *         {
+ *         DLG_LINE
+ *             {
+ *             type = EAknCtNote;
+ *             id = EAknExNoteCtrlIdErrorNote;
+ *             control = AVKON_NOTE
+ *                 {
+ *                 layout = EGeneralLayout;
+ *                 singular_label = STRING_r_exnt_error_singular;
+ *                 plural_label = STRING_r_exnt_error_plural;
+ *                 imagefile = AKNEXNOTE_BMPFILE_NAME;
+ *                 imageid = EMbmAknexnoteAknexnoteerroricon;
+ *                 };
+ *             }
+ *         };
+ *     }
+ * \endcode
+ *
+ * \subsection Sub32 3.2 Constructing a note control
+ *
+ * This section explains the method of note control construction.
+ *
+ * \subsection Sub321 3.2.1 Note dialog
+ *
+ * The method of note dialog construction is almost the same as that of a
+ * standard dialog. However, the process differs depending on the message type
+ * (static or dynamic).
+ *
+ * In the case of a static message, a dialog is first created and then the
+ * ExecuteDlgLD function is called.
+ *
+ * \code
+ * // Create CAknNoteDialog instance
+ * CAknNoteDialog* dlg = new ( ELeave ) CAknNoteDialog( aTone, aTimeout );
+ * 
+ * dlg->PrepareLC( aResourceId );
+ * dlg->SetTextPluralityL( aPlural );
+ * 
+ * // Show the Dialog
+ * dlg->RunLD();
+ * \endcode
+ *
+ * \image html image_note033.gif
+ *
+ * In the case of a dynamic message, a dialog is first created and the resource
+ * data is specified using the PrepareLC function.
+ *
+ * Then RunDlgLD is called after setting the changeable part of data and the
+ * dialog is displayed.
+ *
+ * \code
+ * // Create CAknNoteDialog instance
+ * CAknNoteDialog* dlg = new ( ELeave ) CAknNoteDialog( 
+ *                                      CAknNoteDialog::EConfirmationTone, 
+ *                                      CAknNoteDialog::ELongTimeout );
+ * 
+ * dlg->PrepareLC( R_AKNEXNOTE_DYNAMIC_TEXT );
+ * TTime theTime( KAknExNoteInitializeTime );
+ * theTime.UniversalTime();
+ * TInt64 randSeed( theTime.Int64() );
+ * TInt number( Math::Rand( randSeed ) % KAknExNoteRandomNumberRange );
+ * dlg->SetTextPluralityL( EFalse );
+ * dlg->SetTextNumberL( number );
+ * 
+ * // Show the Dialog
+ * dlg->RunLD();
+ * \endcode
+ *
+ * \subsection Sub322 3.2.2 Global note
+ *
+ * The construction of a global note does not need dialog resource data. In
+ * order to display a dialog, the NewL function is first called to instantiate
+ * an object, then the ShowNoteL function is called.
+ *
+ * \code
+ * //Allocate TBuf with constant length.
+ * TBuf<KAknExNoteTextBufLength> text( NULL );
+ * 
+ * // Reads a resource into a descriptor.
+ * CEikonEnv::Static()->ReadResource( text, aResourceId );
+ * 
+ * TPtrC noteText( text );
+ * 
+ * // Create new CAknGlobalNote instance.
+ * CAknGlobalNote* globalNote = CAknGlobalNote::NewL();
+ * 
+ * // Push CAknGlobalNote's pointer to CleanupStack
+ * CleanupStack::PushL( globalNote );
+ * 
+ * iPermanentNoteId = globalNote->ShowNoteL( aType, noteText );
+ * 
+ * // Pop and Destroy CAknGlobalNote's pointer from CleanupStack
+ * CleanupStack::PopAndDestroy();
+ * \endcode
+ *
+ * \image html image_note034.gif
+ *
+ *
+ */

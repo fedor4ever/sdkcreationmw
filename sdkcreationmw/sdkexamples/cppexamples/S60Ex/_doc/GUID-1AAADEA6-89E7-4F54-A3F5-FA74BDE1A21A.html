@@ -1,0 +1,127 @@
+﻿
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="copyright" content="(C) Copyright 2007"/><meta name="DC.rights.owner" content="(C) Copyright 2007"/><meta name="DC.Type" content="mobileconcept"/><meta name="DC.Title" content="Building and running example applications from the command line interface"/><meta name="DC.Format" content="XHTML"/><meta name="DC.Identifier" content="GUID-1AAADEA6-89E7-4F54-A3F5-FA74BDE1A21A"/><title> S60 Example Applications</title><script type="text/javascript" src="js/utils.js">//</script><script type="text/javascript" src="js/gui.js">//</script><script type="text/javascript" src="js/common.js">//</script><script type="text/javascript" src="js/toc.js">//</script><script type="text/javascript" src="js/page.js">//</script><script type="text/javascript" src="js/s60/white_toc.js">//</script><script type="text/javascript" src="js/s60/page.js">//</script><link href="css/html.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/style.css" rel="stylesheet" type="text/css" media="screen"/><link href="css/print.css" rel="stylesheet" type="text/css" media="print"/><link href="css/nwg.css" rel="stylesheet" type="text/css" media="all"/><link href="css/s60/white.css" rel="stylesheet" type="text/css" media="all"/><script>if( self == top ){ window.location.replace( "../../../?topic=/com.nokia.s60.sdk.cppapi_5.0/GUID-441D327D-D737-42A2-BCEA-FE89FBCA2F35/GUID-1AAADEA6-89E7-4F54-A3F5-FA74BDE1A21A.html");}</script>
+</head><body onload="initPage();"><!--BEGIN: HEADER--><!--END: HEADER--><!--BEGIN: BODY SECTION--><div class="body"><!--begin: content--><div class="contentLeft prTxt"><h1 class="pageHeading" id="GUID-1AAADEA6-89E7-4F54-A3F5-FA74BDE1A21A"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-1AAADEA6-89E7-4F54-A3F5-FA74BDE1A21A"><!----></a>Building
+and running example applications from the command line interface</h1>
+<div><h3>Check the current SDK device</h3><p>Before starting to build an example application, you need to ensure
+that the S60 SDK device points to the device that the application in question
+is intended to run on. In other words, you need to make sure that the appropriate
+SDK installation is set as default.</p><p>To check the device, perform the following steps:</p><ol>
+<li id="GUID-DE3624BD-FB3A-4AB5-A3EC-7F452CF7F12C"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-DE3624BD-FB3A-4AB5-A3EC-7F452CF7F12C"><!----></a><p>Open the command
+prompt and enter the following command and press enter:</p><p><code>devices</code></p>
+<p>This command displays all Symbian SDK installations available to you,
+for example:</p><p><code>S60_5th_Edition_SDK_v1.0:com.nokia.S60
+- default</code></p><p>In the above, you can see that in this case
+the <code>S60_5th_Edition_SDK_v1.0:com.nokia.S60</code> is the default (active) SDK
+(that is, the S60 5th Edition SDK
+1). To switch between devices, use the <code>-setdefault</code> option
+of the <code>devices</code> command. Enter this command to switch
+to the S60 5th Edition SDK :</p>
+<p><code>C:\devices -setdefault S60_5th_Edition_SDK_v1.0:com.nokia.S60</code></p>
+<div class="note"><p><strong class="note_title">Note: </strong><code>@</code> is part of the command.</p></div>
+</li>
+</ol><p>For more information, please, refer to  <strong>SDK Help &gt; Symbian Developer
+Library &gt; How to Manage development for multiple device types</strong> for more
+information. </p></div>
+<div><h3>Create the abld.bat file</h3><p>Once you have checked that the current SDK is the default SDK, you need
+to create an <code>abld.bat</code> file. The <code>abld.bat</code> file
+is a batch file that controls the build process. The <code>abld.bat</code> file
+is generated from the <code>bld.inf</code> component description file.</p><p>To create the <code>abld.bat</code> file, perform the following
+steps:</p><ol>
+<li id="GUID-74CF9595-BFA5-4A18-A9CC-2571A5467FF0"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-74CF9595-BFA5-4A18-A9CC-2571A5467FF0"><!----></a><p>Open the command
+prompt and go to the application top-level folder.</p><p>For example, <code>&lt;S60_SDK_installation_directory&gt;\S60CPPExamples\helloworldbasic</code></p></li>
+<li id="GUID-7CFDA1CF-6B48-4053-B8F9-A7A6D49991BC"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7CFDA1CF-6B48-4053-B8F9-A7A6D49991BC"><!----></a><p>In the application
+top-level folder, locate the <code>group</code> subdirectory which
+contains the <code>bld.inf</code> file.</p><p>For example, <code>&lt;S60_SDK_installation_directory&gt;\S60CPPExamples\helloworldbasic\group\</code></p></li>
+<li id="GUID-D803DFC1-5F30-4314-B6F0-8F3AF11DB612"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-D803DFC1-5F30-4314-B6F0-8F3AF11DB612"><!----></a><p>Enter the
+following command and press enter:</p><p><code>bldmake bldfiles</code></p>
+<p>This will create the <code>abld.bat</code> file in the current
+directory, making the <code>abld</code> command available for use.</p>
+</li>
+</ol><p>In the following, you will use the command in creating build files and
+building the Hello World Basic example application. To find more information
+on other commands and switches, enter the <code>abld</code> command
+without arguments, for example:</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60CPPExamples\helloworldbasic\group\abld</code></p><p>The help message printed to the console provides more information on
+the command and its parameters.</p></div>
+<div><h3>Create the build files and build the application</h3><p>With the <code>abld</code> command available, perform the following
+steps to create the needed build files:</p><ol>
+<li id="GUID-7E73FB81-E0FE-4724-A538-5AEF4749D793"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-7E73FB81-E0FE-4724-A538-5AEF4749D793"><!----></a><p>Open the command
+prompt and go to the application folder, which now contains the <code>abld.bat</code> file.</p>
+<p>For example:</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60ECPPExamples\helloworldbasic\group\</code></p>
+</li>
+<li id="GUID-B8C875F6-A7BB-462F-B7F3-CB9A24B02CE9"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-B8C875F6-A7BB-462F-B7F3-CB9A24B02CE9"><!----></a><p>Enter the
+following command and press <strong>Enter</strong>:</p><p><code>abld build
+winscw udeb</code></p></li>
+</ol><p>Notice, that you have now built a debug build of the Hello World Basic
+example application (that is, debug-type binaries), which you can run on the
+emulator. This build is appropriate for your purposes at this point, as it
+enables you to run and view the application on the S60 emulator.</p><p>The build process creates the necessary build files and application
+binaries, including any resource files required.</p><p>This stage of the process may produce warnings. If there are errors,
+it may be because the exports of a DLL component were not frozen. If the application
+has a DLL component, you need to freeze the exports by performing the following
+steps.</p><ol>
+<li id="GUID-2E568371-8E9D-483B-95D5-02869764CB3D"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-2E568371-8E9D-483B-95D5-02869764CB3D"><!----></a><p>In the application
+group folder, enter the following command:</p><p><code>abld freeze</code></p>
+<p>For example,</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60CPPExamples\SIPExample\group\abld
+freeze</code></p><p>This ensures that the exports are frozen. To
+use the frozen exported interfaces, the application needs to be re-built after
+the freeze. </p></li>
+<li id="GUID-61D2AB6B-78C6-49DA-9305-C430B4028192"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-61D2AB6B-78C6-49DA-9305-C430B4028192"><!----></a><p>Rebuild the
+application after freezing the exports by entering the build
+command:</p><p><code>abld build winscw udeb</code></p><p>For
+example,</p><p><code>&lt;S60_SDK_installation_directory&gt;\S60CPPExamples\helloworldbasic\group\abld
+build winscw udeb</code></p></li>
+</ol></div>
+<div><h3>Launch the application in the emulator</h3><p>To run the example application that you have built on the S60 SDK emulator,
+perform the following steps:</p><ol>
+<li id="GUID-8319CFBF-719F-4DB7-AB52-545798F09509"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-8319CFBF-719F-4DB7-AB52-545798F09509"><!----></a><p>Run the emulator
+by entering the following command in the command prompt:</p><p><code>epoc</code></p>
+<p>This opens the S60 emulator.</p></li>
+<li id="GUID-CC5997A8-530A-4250-8354-6015B5043ECE"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-CC5997A8-530A-4250-8354-6015B5043ECE"><!----></a><p>In the emulator,
+click the <strong>Applications</strong> button to open the application grid.</p>
+</li>
+<li id="GUID-9C9D6214-8B73-4008-9A0E-2032227980EE"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-9C9D6214-8B73-4008-9A0E-2032227980EE"><!----></a><p>In the application
+grid, navigate to the <strong>Installed</strong> folder with the five-way navigation
+key.</p></li>
+<li id="GUID-F73B7608-65F7-462E-AB56-A755FF77F628"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F73B7608-65F7-462E-AB56-A755FF77F628"><!----></a><p>Open the <strong>Installed</strong> folder
+either by:</p>
+<ul>
+<li><p>clicking the center of the five-way navigation key or</p>
+<p>clicking the left soft key (under <strong>Options</strong>) and then selecting <strong>Open</strong> from
+the menu that appears.</p></li>
+</ul>
+</li>
+<li id="GUID-0C5CBEA3-8E74-4AE1-8F77-EAA6F6BD8BFE"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-0C5CBEA3-8E74-4AE1-8F77-EAA6F6BD8BFE"><!----></a><p>Once the <strong>Installed</strong> folder
+has been opened, use the five-way navigation key to locate the icon of the
+application in question (in this case <strong>Hello World Basic</strong>): </p></li>
+<li id="GUID-3BBC616F-0C74-4921-A4FB-286E4B976A0F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-3BBC616F-0C74-4921-A4FB-286E4B976A0F"><!----></a><p>Click the
+left soft key under <strong>Options</strong> to open the application.</p><p>You
+can scroll the menu options with the five-way navigation key and select them
+by clicking <strong>Select</strong> (right soft key).</p></li>
+<li id="GUID-FC5771BA-9B31-4743-85AF-957621AB793D"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-FC5771BA-9B31-4743-85AF-957621AB793D"><!----></a><p>With <strong>Open</strong> highlighted
+on the menu (see figure above), click the center of the five-way navigation
+key or the left soft key under <strong>Select</strong> to open the <strong>Hello World Basic</strong> application.</p>
+</li>
+<li id="GUID-F3DB2E62-8EFF-4A4D-A144-2CA45DC61A2A"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F3DB2E62-8EFF-4A4D-A144-2CA45DC61A2A"><!----></a><p>Click the
+left soft key under <strong>Options</strong>.</p></li>
+<li id="GUID-F3F52A19-D838-4737-8208-DB21969C269F"><a xmlns:d="http://www.pnp-software.com/XSLTdoc" name="GUID-F3F52A19-D838-4737-8208-DB21969C269F"><!----></a><p>With <strong>Hello</strong> highlighted
+in the menu, click the left soft key under <strong>Select</strong>.</p><p>The
+"Hello!" message is, in effect, what the Hello World Basic application consists
+of from the user's point of view. Once the message clears from the screen
+you can view it again by clicking the left soft key under <strong>Options</strong> and
+going through steps 5 and 6 again.</p></li>
+</ol><p>Once you return to the application grid, feel free to explore the emulator
+and its functionality. The emulator works like a real S60 device: click the
+keys in the emulator as you would press the keys on a real device. Use the
+five-way navigation key to select applications and open them by clicking the
+center of the five-way navigation key or <strong>Select</strong> under the left soft
+key. Exiting applications happens typically by clicking the right soft key. </p><div class="note"><p><strong class="note_title">Note: </strong>With a multi-SDK installation, the <code>epoc</code> command
+is an SDK-independent stub that launches the emulator application for the
+SDK device that is currently set as the default. Make sure that you are using
+the appropriate default device, as described in <a href="#GUID-DE3624BD-FB3A-4AB5-A3EC-7F452CF7F12C">Check
+the current SDK device</a>.</p><p>It is also possible to start the emulator from the <strong>Start</strong> menu
+by selecting, for example, <strong>Start &gt; All Programs &gt; S60 Developer Tools &gt;
+5th Edition SDK &gt; v1.0 &gt; Emulator</strong>. This will start the designated emulator
+application regardless of the current device settings.</p></div></div>
+</div><!--end: content--><!--start: sidebar--><!--end: sidebar--></div><!--END: BODY SECTION--><!--BEGIN: FOOTER--><div class="footer"><hr/><div class="copy">© Nokia 2009</div></div><!--END: FOOTER--></body></html>
