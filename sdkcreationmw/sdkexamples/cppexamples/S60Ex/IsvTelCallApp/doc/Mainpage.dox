@@ -101,7 +101,7 @@
  *
  * Each Symbian OS application has an associated MMP file. The MMP file defines such things as which source files are to be compiled, which libraries to be linked, and so on. To create an IsvTelCallApp DLL, it is necessary to specify the target type and UID in the MMP. These should be set to the values shown below.
  * - TARGETTYPE exe
- * - UID 0xA00001EF
+ * - UID 0xE00001EF
  *
  *
  *

@@ -21,5 +21,5 @@ WINSCW
 
 PRJ_MMPFILES
 #ifdef WINS
-EcmtWsockPlugin.mmp
+ecmtwsockplugin.mmp
 #endif //WINS

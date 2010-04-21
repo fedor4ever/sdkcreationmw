@@ -20,7 +20,7 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\PushURLUids.h"
 
-TARGET      EcmtPushURLPlugin.dll
+TARGET      ecmtpushurlplugin.dll
 TARGETTYPE  PLUGIN
 
 #ifdef WINS
@@ -34,7 +34,7 @@ CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
 UID KECOM_DLL_UID KPUSH_URL_PLUGIN_DLL_UID
 
 SOURCEPATH ..\src
-SOURCE PushURL.cpp
+SOURCE pushurl.cpp
 
 USERINCLUDE  ..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

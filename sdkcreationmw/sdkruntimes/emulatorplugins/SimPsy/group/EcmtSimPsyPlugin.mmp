@@ -21,14 +21,14 @@
 #include "..\inc\EcmtSimPsyPluginUids.h"
 #include <data_caging_paths.hrh>
 
-TARGET          EcmtSimPsyPlugin.dll
+TARGET          ecmtsimpsyplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KSIMPSYPLUGIN_DLL_UID
 CAPABILITY		CAP_ECOM_PLUGIN
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtSimPsyPlugin.cpp
+SOURCE		ecmtsimpsyplugin.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\Core\inc

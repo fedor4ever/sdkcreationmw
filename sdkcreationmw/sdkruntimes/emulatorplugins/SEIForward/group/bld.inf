@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtSEIForwardPlugin.mmp
+ecmtseiforwardplugin.mmp
 
 //  End of File  

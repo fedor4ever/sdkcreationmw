@@ -23,7 +23,7 @@ PRJ_PLATFORMS
 WINSCW
 
 PRJ_MMPFILES
-EcmtEthernetPlugin.mmp
+ecmtethernetplugin.mmp
 
 #endif // !SDK_MIDP
 #endif // WINS

@@ -19,7 +19,7 @@
 #include <data_caging_paths.hrh>
 #include "..\inc\HttpPluginUids.h"
 
-TARGET      EcmtHttpTrafficPlugin.dll
+TARGET      ecmthttptrafficplugin.dll
 TARGETTYPE  PLUGIN 
 
 #ifdef WINS
@@ -33,7 +33,7 @@ CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
 UID 0x10009D8D KHTTPPLUGINFILTER_DLL_UID 
 
 SOURCEPATH ..\src
-SOURCE HttpPluginFilter.cpp
+SOURCE httppluginfilter.cpp
 
 USERINCLUDE ..\inc
 SYSTEMINCLUDE \epoc32\include

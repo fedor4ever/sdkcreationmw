@@ -59,7 +59,7 @@ TargetPath=.\build\release\windows\sdkw.exe
 TargetName=sdkw
 SOURCE="$(InputPath)"
 PostBuild_Desc=Copying release files...
-PostBuild_Cmds=if exist ..\..\..\..\epoc32\release\wins\urel echo ..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\wins\urel copy $(TargetPath) ..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\urel echo ..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\urel copy $(TargetPath) ..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\udeb echo ..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\udeb copy $(TargetPath) ..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe
+PostBuild_Cmds=if exist ..\..\..\..\..\epoc32\release\wins\urel echo ..\..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\wins\urel copy $(TargetPath) ..\..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\urel echo ..\..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\urel copy $(TargetPath) ..\..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\udeb echo ..\..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\udeb copy $(TargetPath) ..\..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe
 # End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "dscli - Win32 Debug"
@@ -91,7 +91,7 @@ TargetPath=.\build\debug\windows\sdkw.exe
 TargetName=sdkw
 SOURCE="$(InputPath)"
 PostBuild_Desc=Copying debug files...
-PostBuild_Cmds=if exist ..\..\..\..\epoc32\release\wins\udeb echo ..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\wins\udeb copy $(TargetPath) ..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe
+PostBuild_Cmds=if exist ..\..\..\..\..\epoc32\release\wins\udeb echo ..\..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\wins\udeb copy $(TargetPath) ..\..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe
 # End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "dscli - Win32 Debug Console"
@@ -123,7 +123,7 @@ TargetPath=.\build\debug\console\sdk.exe
 TargetName=sdk
 SOURCE="$(InputPath)"
 PostBuild_Desc=Copying debug files...
-PostBuild_Cmds=if exist ..\..\..\..\epoc32\release\wins\udeb echo ..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\wins\udeb copy $(TargetPath) ..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe
+PostBuild_Cmds=if exist ..\..\..\..\..\epoc32\release\wins\udeb echo ..\..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\wins\udeb copy $(TargetPath) ..\..\..\..\..\epoc32\release\wins\udeb\$(TargetName).exe
 # End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "dscli - Win32 Release Console"
@@ -157,7 +157,7 @@ TargetPath=.\build\release\console\sdk.exe
 TargetName=sdk
 SOURCE="$(InputPath)"
 PostBuild_Desc=Copying release files...
-PostBuild_Cmds=if exist ..\..\..\..\epoc32\release\wins\urel echo ..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\wins\urel copy $(TargetPath) ..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\urel echo ..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\urel copy $(TargetPath) ..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\udeb echo ..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe	if exist ..\..\..\..\epoc32\release\winscw\udeb copy $(TargetPath) ..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe
+PostBuild_Cmds=if exist ..\..\..\..\..\epoc32\release\wins\urel echo ..\..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\wins\urel copy $(TargetPath) ..\..\..\..\..\epoc32\release\wins\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\urel echo ..\..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\urel copy $(TargetPath) ..\..\..\..\..\epoc32\release\winscw\urel\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\udeb echo ..\..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe	if exist ..\..\..\..\..\epoc32\release\winscw\udeb copy $(TargetPath) ..\..\..\..\..\epoc32\release\winscw\udeb\$(TargetName).exe
 # End Special Build Tool
 
 !ENDIF 

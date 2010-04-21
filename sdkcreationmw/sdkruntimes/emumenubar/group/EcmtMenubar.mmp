@@ -175,9 +175,9 @@ LIBRARY         charconv.lib
 // The path here must be relative (as opposed to WIN32_LIBRARY where
 // path must be absolute - how convenient!).
 #ifdef DEBUG_LIBS
-LIBRARY   ..\..\..\..\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\msvcrtd.lib
+LIBRARY   msvcrtd.lib
 #else
-LIBRARY   ..\..\..\..\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\msvcrt.lib
+LIBRARY   msvcrt.lib
 #endif
 
 START WINS
@@ -198,7 +198,7 @@ WIN32_LIBRARY	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\comdlg32.lib
 WIN32_LIBRARY 	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\shell32.lib
 WIN32_LIBRARY	\PublicSDK\sdkcreationmw\sdkcommonutils\mslibs\ole32.lib
 
-WIN32_RESOURCE  ..\menubar\ECMT_MENUBAR_RC
+WIN32_RESOURCE  ..\menubar\EcmtMenubar.rc
 
 WIN32_LIBRARY   user32.lib
 WIN32_LIBRARY   kernel32.lib

@@ -21,19 +21,19 @@
 #include "..\inc\EcmtNCIPluginUids.h"
 
 
-TARGET          EcmtNCIPlugin.dll
+TARGET          ecmtnciplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KECMTNCIPLUGIN_DLL_UID
 CAPABILITY      CAP_ECOM_PLUGIN
 VENDORID        VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtNCIPlugin.cpp 
-SOURCE		MsgSvrDll.cpp
-SOURCE		MsgSvrEng.cpp
-SOURCE		MsgCommandConnection.cpp
-SOURCE		SmsFileHandler.cpp
-SOURCE		Timeoutimer.cpp
+SOURCE		ecmtnciplugin.cpp 
+SOURCE		msgsvrdll.cpp
+SOURCE		msgsvreng.cpp
+SOURCE		msgcommandconnection.cpp
+SOURCE		smsfilehandler.cpp
+SOURCE		timeoutimer.cpp
 SOURCE		message.cpp
 
 

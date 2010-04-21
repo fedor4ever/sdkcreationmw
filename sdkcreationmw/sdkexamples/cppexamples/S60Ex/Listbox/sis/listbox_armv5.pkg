@@ -2,7 +2,7 @@
 ; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
 ; All rights reserved.
 ; This component and the accompanying materials are made available
-; under the terms of "Eclipse Public License v1.0"
+; under the terms of the License "Eclipse Public License v1.0"
 ; which accompanies this distribution, and is available
 ; at the URL "http://www.eclipse.org/legal/epl-v10.html".
 ;
@@ -11,7 +11,7 @@
 ;
 ; Contributors:
 ;
-; Description: 
+; Description:
 ;
 ; Listbox_armv5.pkg
 ;
@@ -19,7 +19,7 @@
 &EN
 
 ; standard SIS file header
-#{"Listbox"},(0xA0000228),1,0,0
+#{"Listbox"},(0xE0000228),1,0,0
 
 ;Localised Vendor name
 %{"Vendor-EN"}
@@ -35,8 +35,8 @@
 "..\..\..\epoc32\data\z\resource\apps\Listbox.rsc"              -"!:\resource\apps\Listbox.rsc"
 "..\..\..\epoc32\data\z\private\10003a3f\import\apps\Listbox_reg.rsc"  -"!:\private\10003a3f\import\apps\Listbox_reg.rsc"
 "..\..\..\epoc32\data\z\resource\apps\listbox.mif"		-"!:\resource\apps\listbox.mif"
-"..\..\..\epoc32\data\z\private\A0000228\Listbox_bitmaps.mif"        		-"!:\private\A0000228\Listbox_bitmaps.mif"
+"..\..\..\epoc32\data\z\private\E0000228\Listbox_bitmaps.mif"        		-"!:\private\E0000228\Listbox_bitmaps.mif"
 
 ;required for application to be covered by backup/restore facility 
-"backup_registration.xml"						-"!:\private\A0000228\backup_registration.xml"
+"backup_registration.xml"						-"!:\private\E0000228\backup_registration.xml"
 

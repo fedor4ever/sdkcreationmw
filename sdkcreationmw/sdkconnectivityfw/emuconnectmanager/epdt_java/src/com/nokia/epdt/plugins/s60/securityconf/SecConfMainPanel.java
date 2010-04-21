@@ -2,7 +2,7 @@
 * Copyright (c) 2000 - 2006 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /* javax.swing */
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
@@ -77,15 +78,18 @@ class SecConfMainPanel extends JPanel {
         jDomainCombo = new JComboBox(domains);
         jDomainCombo.setSelectedItem(secConfModel.getSelectedDomain());
 
-        JRadioButton realLifeRadio = new JRadioButton(
-            "Run MIDlets within security domain specified by their certificates");
-        JRadioButton emulatedRadio = new JRadioButton(
-            "Run MIDlets within the following domain:");
+       // JRadioButton realLifeRadio = new JRadioButton(
+       //     "Run MIDlets within security domain specified by their certificates");
+       // JRadioButton emulatedRadio = new JRadioButton(
+       //     "Run MIDlets within the following domain:");
+        JLabel obj_JLabel = new JLabel("Run MIDlets within the following domain:");
+        
 
         ButtonGroup bg = new ButtonGroup();
-        bg.add(realLifeRadio);
-        bg.add(emulatedRadio);
-        if (secConfModel.isEmulatedSecurityMode()) {
+      //  bg.add(realLifeRadio);
+      //  bg.add(emulatedRadio);
+      //  bg.add(obj_JLabel);
+    /*    if (secConfModel.isEmulatedSecurityMode()) {
             realLifeRadio.setSelected(false);
             emulatedRadio.setSelected(true);
             jDomainCombo.setEnabled(true);
@@ -93,13 +97,14 @@ class SecConfMainPanel extends JPanel {
             realLifeRadio.setSelected(true);
             emulatedRadio.setSelected(false);
             jDomainCombo.setEnabled(false);
-        }
+        }*/
 
         jDomainCombo.addActionListener(new DomainSelectionListener());
-        realLifeRadio.addActionListener(new RealLifeRadioListener());
-        emulatedRadio.addActionListener(new EmulatedRadioListener());
+       // realLifeRadio.addActionListener(new RealLifeRadioListener());
+       // emulatedRadio.addActionListener(new EmulatedRadioListener());
 
-        BorderPanel bp = new BorderPanel(emulatedRadio);
+       // BorderPanel bp = new BorderPanel(emulatedRadio);
+        BorderPanel bp = new BorderPanel(obj_JLabel);
         bp.getContentPanel().add(createConfigurationsPanel());
 
         ProtectionDomain d = secConfModel.getSelectedDomain();
@@ -128,7 +133,7 @@ class SecConfMainPanel extends JPanel {
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.insets.left = bp.getBorder().getBorderInsets(bp).left +
             BorderPanel.COMPONENT_INSET_H;
-        add(realLifeRadio, gbc);
+        //add(realLifeRadio, gbc);
 
         gbc.weighty = 1.0;
         gbc.insets.left = 0;

@@ -288,13 +288,14 @@ public abstract class RemoteSession extends Session{
    *
    * @throws Exception if some error occured
    */
-  public synchronized MIDletSuiteInfo[] getInstalledMIDletSuitesInfo() throws Exception {
+  //public synchronized MIDletSuiteInfo[] getInstalledMIDletSuitesInfo() throws Exception {
     //get suites
-    ListSuitesCommand listSuitesCmd = new ListSuitesCommand();
+    /*ListSuitesCommand listSuitesCmd = new ListSuitesCommand();
     listSuitesCmd.execute(iDis, iDos);
     MIDletSuiteInfo[] suites = listSuitesCmd.getInstalledSuites();
-    return suites;
-  }
+    return suites;*/
+	 // return null;
+  //}
 
 
   /**
@@ -348,12 +349,12 @@ public abstract class RemoteSession extends Session{
    *
    * @throws Exception if some error occured
    */
-    public synchronized int getFreePort() throws Exception {
+    /*public synchronized int getFreePort() throws Exception {
       //get ports
       GetPortCommand portCmd = new GetPortCommand(1);
       portCmd.execute(iDis, iDos);
       return portCmd.getFreePorts()[0];
-    }
+    }*/
 
     /**
      * Get SEI-Slave TCP Inet address

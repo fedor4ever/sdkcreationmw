@@ -20,15 +20,15 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtWsockPluginUids.h"
 
-TARGET          EcmtWsockPlugin.dll
+TARGET          ecmtwsockplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KWSOCKPLUGIN_UID
 CAPABILITY      CAP_ECOM_PLUGIN
 VENDORID        VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtWsockPlugin.cpp
-SOURCE		EcmtWsockSettings.cpp
+SOURCE		ecmtwsockplugin.cpp
+SOURCE		ecmtwsocksettings.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

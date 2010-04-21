@@ -21,7 +21,7 @@ WINSCW
 
 PRJ_MMPFILES
 #ifdef WINS
-EcmtMsgRelayPlugin.mmp
+ecmtmsgrelayplugin.mmp
 #endif
 
 //  End of File  

@@ -2,16 +2,13 @@
 * Copyright (c) 2004-2005 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
-* at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
 * Initial Contributors:
 * Nokia Corporation - initial contribution.
 *
 * Contributors:
 *
-* Description: 
 *
 */
 
@@ -52,6 +49,39 @@ public:
     }
 };
 
+#if 0
+
+TWinProtocolDescInit IP(_S("ip"),
+    KAfInet,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
+    KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
+    KSocketMessageSizeIsStream, ESocketSupport,
+    SOCK_STREAM, IPPROTO_TCP);
+
+#ifdef WSOCK_IPV6
+
+TWinProtocolDescInit IP6(_S("ip6"),
+    KAfInet6,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
+    KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
+    KSocketMessageSizeIsStream, ESocketSupport,
+    SOCK_STREAM, IPPROTO_TCP);
+#endif
+
+// NOTE: the order of protocols must match the order of entries in the
+// ip.tcp.esk file (at the time of thie writing this file was located 
+// in c:\private\101f7989\ESock directory).
+static const TWinProtocolDesc* ipProtocols[] = {
+     &IP,
+#ifdef WSOCK_IPV6
+     &IP6
+#endif // WSOCK_IPV6
+};
+#else
+TWinProtocolDescInit IP(_S("ip"),
+    KAfInet,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
+    KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
+    KSocketMessageSizeIsStream, ESocketSupport,
+    SOCK_STREAM, IPPROTO_IP);
+
 TWinProtocolDescInit TCP(_S("tcp"),
     KAfInet,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
     KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
@@ -77,6 +107,13 @@ TWinProtocolDescInit ICMP6(_S("icmp6"),
     SOCK_RAW, IPPROTO_ICMPV6);
 
 #ifdef WSOCK_IPV6
+
+TWinProtocolDescInit IP6(_S("ip6"),
+    KAfInet6,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
+    KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
+    KSocketMessageSizeIsStream, ESocketSupport,
+    SOCK_STREAM, IPPROTO_IP);
+
 TWinProtocolDescInit TCP6(_S("tcp"),
     KAfInet6,  KSockStream,  KProtocolInetTcp, KSIStreamBased | KSIInOrder |
     KSIReliable | KSIGracefulClose | KSIPeekData | KSIUrgentData, 
@@ -103,16 +140,18 @@ TWinProtocolDescInit ICMP66(_S("icmp6"),
 
 #endif // WSOCK_IPV6
 
+
+
 // NOTE: the order of protocols must match the order of entries in the
 // ip.tcp.esk file (at the time of thie writing this file was located 
 // in c:\private\101f7989\ESock directory).
 static const TWinProtocolDesc* ipProtocols[] = {
-    &TCP,&UDP,&ICMP4,&ICMP6,
+    &IP,&TCP,&UDP,&ICMP4,&ICMP6,
 #ifdef WSOCK_IPV6
-    &TCP6,&UDP6,&ICMP46,&ICMP66
+    &IP6,&TCP6,&UDP6,&ICMP46,&ICMP66
 #endif // WSOCK_IPV6
 };
-
+#endif
 CWinsockProtocolFamily::CWinsockProtocolFamily(TUint aAddrFamily) :
 iAddrFamily(aAddrFamily)
 {
@@ -147,6 +186,34 @@ const TServerProtocolDesc* CWinsockProtocolFamily::ProtocolDesc(TInt aIndex)
     {
         return NULL;
     }
+}
+
+// Returns comma separated list of protocol names
+void CWinsockProtocolFamily::ProtocolNamesfownetwork(TDes& aProtocols)
+{
+    aProtocols.SetLength(0);
+ /*   for (TInt i=0; i<N(ipProtocols); i++)
+    {
+        TBool alreadyThere = EFalse;
+        for (TInt k=0; k<i; k++)
+        {
+            if (!ipProtocols[i]->iName.Compare(ipProtocols[k]->iName))
+            {
+                alreadyThere = ETrue;
+                break;
+            }
+        }
+        if (!alreadyThere)
+        {
+            if (i > 0) aProtocols.Append(',');
+            aProtocols.Append(ipProtocols[i]->iName);
+        }
+    }*/
+    aProtocols.Append(ipProtocols[0]->iName);
+    aProtocols.Append(',');
+    aProtocols.Append(ipProtocols[5]->iName);
+    
+    TRACE1("ProtocolNames: %S",&aProtocols);
 }
 
 // Returns comma separated list of protocol names

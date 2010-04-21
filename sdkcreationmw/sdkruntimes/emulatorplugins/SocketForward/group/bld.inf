@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtSocketForwardPlugin.mmp
+ecmtsocketforwardplugin.mmp
 
 //  End of File  

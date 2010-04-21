@@ -2,7 +2,7 @@
 * Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -20,11 +20,9 @@
 #include "RichTextEditorAppUi.h"
 #include "RichTextEditorContainer.h"
 #include <RichTextEditor.rsg>
-#ifdef __SERIES60_3X__
+
 #include <avkon.hrh> //Font ids
-#else
-#include <AknUtils.h> //Defined font name
-#endif
+
 #include "RichTextEditor.hrh"
 
 #define KEnableSkinFlag 0x1000
@@ -39,11 +37,9 @@
 //
 void CRTEAppUi::ConstructL()
     {
-    #ifdef __SERIES60_3X__
-	BaseConstructL(EAknEnableSkin);
-	#else
-	BaseConstructL(KEnableSkinFlag | KLayoutAwareApp);
-	#endif
+
+   	BaseConstructL(EAknEnableSkin);
+
     iAppContainer = new (ELeave) CRTEContainer;
     iAppContainer->SetMopParent(this);
     iAppContainer->ConstructL( ClientRect() );
@@ -92,26 +88,13 @@ void CRTEAppUi::HandleCommandL(TInt aCommand)
 		// Font names defined at AknUtils.h in 1st and 2nd editions.
 		// Font ids at avkon.hrh from 3rd Edition onwards.
 		case ERichTextCmdAppFont1:
-			#ifdef __SERIES60_3X__
 			iAppContainer->SetFont(EAknLogicalFontPrimaryFont);
-			#else
-			iAppContainer->SetFont(LatinPlain12());
-			#endif
 			break;
 		case ERichTextCmdAppFont2:
-			#ifdef __SERIES60_3X__
 			iAppContainer->SetFont(EAknLogicalFontSecondaryFont);
-			#else
-			// default font at Typo application startup in 1st and 2nd edition.
-			iAppContainer->SetFont(LatinBold12());
-			#endif
 			break;
 		case ERichTextCmdAppFont3:
-			#ifdef __SERIES60_3X__
 			iAppContainer->SetFont(EAknLogicalFontPrimarySmallFont);
-			#else
-			iAppContainer->SetFont(LatinBold19());
-			#endif
 			break;
 		case ERichTextCmdAppSetStrikethrough:
 			iAppContainer->Strike();

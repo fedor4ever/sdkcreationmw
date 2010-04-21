@@ -23,20 +23,20 @@
 #include "..\inc\EcmtCommonPluginUids.h"
 #include <data_caging_paths.hrh>
 
-TARGET          EcmtCommonPlugin.dll
+TARGET          ecmtcommonplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KCOMMONPLUGIN_DLL_UID
 CAPABILITY	CAP_ECOM_PLUGIN
 VENDORID	VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtCommonPluginMain.cpp
-SOURCE		EcmtFile.cpp
-SOURCE		EcmtSeekFile.cpp
+SOURCE		ecmtcommonpluginmain.cpp
+SOURCE		ecmtfile.cpp
+SOURCE		ecmtseekfile.cpp
 
-SOURCE		EcmtCommonPluginBase.cpp
-SOURCE		EcmtPanPlugin.cpp
-SOURCE		EcmtEmuConfigPlugin.cpp
+SOURCE		ecmtcommonpluginbase.cpp
+SOURCE		ecmtpanplugin.cpp
+SOURCE		ecmtemuconfigplugin.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

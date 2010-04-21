@@ -161,7 +161,7 @@ public abstract class Session {
    *
    * @throws Exception if some error occured
    */
-  public abstract int getFreePort() throws Exception;
+  //public abstract int getFreePort() throws Exception;
 
 
 
@@ -233,7 +233,7 @@ public abstract class Session {
    *
    * @throws Exception if some error occured
    */
-  public abstract MIDletSuiteInfo[] getInstalledMIDletSuitesInfo() throws Exception;
+  //public abstract MIDletSuiteInfo[] getInstalledMIDletSuitesInfo() throws Exception;
 
 
   /**

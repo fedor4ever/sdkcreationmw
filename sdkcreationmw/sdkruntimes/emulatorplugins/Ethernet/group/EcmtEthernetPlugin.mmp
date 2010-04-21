@@ -20,17 +20,17 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtEthernetPluginUids.h"
 
-TARGET          EcmtEthernetPlugin.dll
+TARGET          ecmtethernetplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KETHERNETPLUGIN_DLL_UID
 CAPABILITY      CAP_ECOM_PLUGIN
 VENDORID        VID_DEFAULT
 
 SOURCEPATH      ..\src
-SOURCE          EcmtEthernetPlugin.cpp
+SOURCE          ecmtethernetplugin.cpp
 SOURCEPATH      ..\..\Common\src
-SOURCE          EcmtCommonPluginBase.cpp
-SOURCE          EcmtFile.cpp
+SOURCE          ecmtcommonpluginbase.cpp
+SOURCE          ecmtfile.cpp
 
 USERINCLUDE     ..\inc
 USERINCLUDE     ..\..\Common\inc

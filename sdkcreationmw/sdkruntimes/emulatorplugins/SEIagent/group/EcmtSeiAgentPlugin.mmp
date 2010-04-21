@@ -20,14 +20,14 @@
 #include "..\..\..\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtSeiAgentPluginUids.h"
 
-TARGET          EcmtSeiAgentPlugin.dll
+TARGET          ecmtseiagentplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KSEIAGENTPLUGIN_DLL_UID
 CAPABILITY		CAP_ECOM_PLUGIN PowerMgmt
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtSeiAgentPlugin.cpp
+SOURCE		ecmtseiagentplugin.cpp
 
 
 USERINCLUDE	..\inc

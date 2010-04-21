@@ -2,7 +2,7 @@
 * Copyright (c) 2003 - 2004 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -77,12 +77,6 @@ public class VMLaunchArguments {
   //
   // Members
   //
-
-
-  /**
-   * MIDlet suite AMS arguments
-   */
-  private MIDletSuiteAMSArguments iAMSArguments = new MIDletSuiteAMSArguments();
 
   /**
    * VM arguments
@@ -155,18 +149,6 @@ public class VMLaunchArguments {
    * @param aSEICommand SEI command
    */
   public VMLaunchArguments(SEICommand aSEICommand) {
-    //properties
-    if(aSEICommand.getSystemProperties() != null)
-    {
-      Map props = aSEICommand.getSystemProperties();
-      String key;
-      for(Iterator iter = props.keySet().iterator(); iter.hasNext(); )
-      {
-        key = (String)iter.next();
-        iAMSArguments.setSystemProperty(key, (String)props.get(key));
-      }
-    }
-
     //verbose
     for(Iterator iter = aSEICommand.getVerboseTypes().iterator();iter.hasNext() ;)
     {
@@ -194,18 +176,6 @@ public class VMLaunchArguments {
   public VMArguments getVMArguments(){
     return iVMArguments;
   }
-
-
-  /**
-   * Get MIDlet suite AMS arguments
-   *
-   * @return MIDlet suite AMS arguments
-   */
-  public MIDletSuiteAMSArguments getMIDletSuiteAMSArguments()
-  {
-    return iAMSArguments;
-  }
-
 
   /**
    * Get MIDlet info
@@ -238,7 +208,8 @@ public class VMLaunchArguments {
    */
   public void dump(DataOutputStream aDos) throws IOException{
     iMIDletInfo.dump(aDos);
-    aDos.writeUTF(iVMArguments.getArguments() + " " + iAMSArguments.getArguments());
+    //No need to write AMSArguments to the OutputStream 
+    aDos.writeUTF(iVMArguments.getArguments());
   }
 
 }

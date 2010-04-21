@@ -22,7 +22,7 @@ winscw
 
 PRJ_MMPFILES
 #ifdef WINS
-//EcmtEventSimPlugin.mmp
+//ecmteventsimplugin.mmp
 #endif //WINS
 
 //  End of File  

@@ -20,4 +20,4 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtMidpDebugPlugin.mmp
+ecmtmidpdebugplugin.mmp

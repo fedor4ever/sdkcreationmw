@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtTaskManagerPlugin.mmp
+ecmttaskmanagerplugin.mmp
 
 //  End of File  

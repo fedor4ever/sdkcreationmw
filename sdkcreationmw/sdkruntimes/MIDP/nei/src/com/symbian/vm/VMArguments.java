@@ -2,7 +2,7 @@
 * Copyright (c) 2003 - 2004 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -91,21 +91,24 @@ public class VMArguments extends Arguments{
   // Operations
   //
 
-  /**
-   * Set VM debug port.
-   *
-   * @param int debug port
-   */
-  public void setVMDebugPort(int aDebugPort, boolean isVmInServerMode) {
+	/**
+	 * Method has been updated to set the -Xdebug and -Xrunjdwp as part of VM argument for MIDlet debugging
+	 *
+	 * @param aDebugPort int debug port
+	 * @param peramXdebug String -Xdebug parameter
+	 * @param peramXrunjdwp String -Xrunjdwp parameter
+	 */
+	public void setVMDebugPort(int aDebugPort, String peramXdebug,
+			String peramXrunjdwp) {
     iDebugPort = aDebugPort;
-    //iArguments.append(" ").append(DEBUG_ARG).
-    //    append(" ").append(DEBUG_PORT_ARG).append(" ").append(iDebugPort);
     
-    iArguments.append(" -ide_server_mode "+ (isVmInServerMode?"y":"n"));
-    // The address should be set in console settings already, do not do that:
-    //iArguments.append(" -ide_addr 127.0.0.1");
-    iArguments.append(" -ide_port ").append(iDebugPort);
-    
+		// Previous args: Ignoring it....
+		//iArguments.append(" -ide_server_mode "+ (isVmInServerMode?"y":"n"));
+		//iArguments.append(" -ide_port ").append(iDebugPort);
+
+		iArguments.append(peramXdebug + " ");
+		iArguments.append(peramXrunjdwp);
+
   }
 
   /**
@@ -122,6 +125,7 @@ public class VMArguments extends Arguments{
    *
    * @param VM console port
    */
+	// Pranav: Method is no longer useful - Keep it for time being and will remove in future.
   public void setVMConsolePort(int aConsolePort) {
     iConsolePort = aConsolePort;
     iArguments.append(" -ide_addr 127.0.0.1");
@@ -134,6 +138,7 @@ public class VMArguments extends Arguments{
    *
    * @return VM console port
    */
+	// Pranav: Method is no longer useful - Keep it for time being and will remove in future.
   public int getVMConsolePort(){
     return iConsolePort;
   }

@@ -22,6 +22,6 @@ DEFAULT
 PRJ_EXPORTS
 
 PRJ_MMPFILES
-AsyStub.mmp
+asystub.mmp
 
 //  End of File  

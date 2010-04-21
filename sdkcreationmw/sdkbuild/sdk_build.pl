@@ -96,6 +96,8 @@ $BUILD_TYPE = $BUILD_TYPE_ALL;
 $CHECK_BUILD = 0;
 $DO_UNPATCH = 0;
 $FINALIZE_S60EX = 0;
+$DO_EMU_PATCH=0;  ## Added to run optimize emulator patch only when complete build is given
+$DO_DB_UPDATE=0;  ## Added to update commsdb only when complete build is given
 
 # Non-edtable configuration
 $FS = '/';  # File separator
@@ -104,16 +106,17 @@ $PS = ';';  # Path separator
 @VARIANTS  = ("udeb", "urel");
 @SDK_MODULES = (
   "NMIT",
- # "sdkcommonutils",
+ #"sdkcommonutils",
   "msgsimulation",
   "xrpcrt",
   "wsock",
-  "scard",
-#  "MIDP", later needs to be enabled 
+  "new_wsock_3pc",
   "emumenubar",
   "bluetoothdriver",
   #"Tools",
- # "AsyStub"
+  "scard",
+  "MIDP",  
+  "AsyStub"
 );
 
 $PATCH_LIST_FNAME = "sdk_build.conf";
@@ -178,6 +181,24 @@ $JAVA_TARGET_DIR = "${BUILD_ROOT}epoc32/tools/ecmt";
 
   msg ("Build script started at " . localtime());
   msg ("Cmd line: $0 @ARGV");
+  
+  
+  if ($DO_EMU_PATCH)
+  {
+	  #Apply OptimiseEmulator patch to improve the SDK performance
+	  #Do not remove eval error handling, it will cause issues with build scripts
+	  msg ("Starting Optimise Emulator Patch,  " . localtime());
+	  eval
+	  {
+## 	do_apply_patch_OptimiseEmulator();
+	  };
+	  if ($@)
+	  {
+	        print "\n ERROR: $@";
+	  }
+	  msg ("End of Optimise Emulator Patch,  " . localtime());
+	}
+
 
   open PATCH_LIST, $patch_list_path or die "$DIED_MSG Could not find $patch_list_path!";
 
@@ -387,16 +408,22 @@ $JAVA_TARGET_DIR = "${BUILD_ROOT}epoc32/tools/ecmt";
     dbg ("Build info: @bld_info");
     check_platform_build (@bld_info);
   }
-
-  if($FINALIZE_S60EX && $BUILD_TYPE != $BUILD_TYPE_MIDP){
-  	dbg ("Finalizing S60 C++ examples:");
-  	do_s60ex_finalizing();
+##  Remove the example application build:  As example application build should happen only after SDK installation. So 
+##  this has to be moved from build phase to sanity test phase
+ # if($FINALIZE_S60EX && $BUILD_TYPE != $BUILD_TYPE_MIDP){
+#  	dbg ("Finalizing S60 C++ examples:");
+ # 	do_s60ex_finalizing();
   	#TODO: Cleaning may not be required for 9.l check and add components in the below function
   	#do_s60_rndtools_cleaning();
-  }
+ # }
   
   
 	msg ("Build script finished at " . localtime());
+	if ($DO_DB_UPDATE)
+	{
+	do_Db_Update();
+     }
+
   close ($LOG_FH) if $LOG;
 }
 
@@ -546,6 +573,9 @@ Options:\
           $BUILD_JAVA = 1;
           $BUILD_SDK = 1;
           $DO_PATCH = 1;
+          $DO_EMU_PATCH=1;
+          $DO_DB_UPDATE=1;
+         
           if ($DO_DIFF) {
             err ("--diff and --all options are mutually exclusive");
             exit 1;
@@ -831,7 +861,6 @@ Options:\
       my $group_dir = shift @modules;
       chdir_or_die ("$BUILD_ROOT$group_dir");
       dbg ("Building in $BUILD_ROOT$group_dir");
-      run ("cmd /c bldmake.bat bldfiles");
 
       #modules are optional
       if(@modules>0)
@@ -853,28 +882,27 @@ Options:\
 # =======================================================================
   {
     # Build java system ams
-  		my $java_group_dir = "sf/app/java/group";
+  		my $java_group_dir = "sf/app/jrt/group";
       chdir_or_die ("$BUILD_ROOT$java_group_dir");
       dbg ("Building in $BUILD_ROOT$java_group_dir");
-      run ("cmd /c bldmake.bat bldfiles");
-      run ("cmd /c abld.bat export");
+      run ("cmd /c sbs export");
       run ("cmd /c pbuild build winscw udeb midp2ams");
       run ("cmd /c pbuild build winscw udeb wma");
       run ("cmd /c pbuild build winscw udeb multimedia11");
-			
-			my $s60ex_dir = $BUILD_ROOT . "$SDK_PROJ_NAME/sdkexamples/javaexamples";
+
+			my $s60ex_dir = $BUILD_ROOT . "$SDK_PROJ_NAME/sdkexamples/java";
 			chdir_or_die ($s60ex_dir);
 			
 			run_build_cmd("ant IAPInfoMIDlet eSWTMIDlet SystemProperties");
 			run_build_cmd("ant copy_documentation");
-		  $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\IAPInfoMIDlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\dist\\examples\\IAPInfoMIDlet";
+		  $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\IAPInfoMIDlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\dist\\examples\\IAPInfoMIDlet";
       print ($cmd."\n"); system ($cmd);
-      $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\eSWTMIDlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\dist\\examples\\eSWTMIDlet";
+      $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\eSWTMIDlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\dist\\examples\\eSWTMIDlet";
       print ($cmd."\n"); system ($cmd);
-      $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\SystemPropertiesMidlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\dist\\examples\\SystemProperties";
+      $cmd = "unzip -o \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\SystemPropertiesMidlet_doc.zip -d Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\dist\\examples\\SystemProperties";
       print ($cmd."\n"); system ($cmd);
-      system("copy /V Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\examples\\examples.html Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\dist\\examples");
-      system("copy /V \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\build.xml Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\javaexamples\\dist\\examples\\IAPInfoMIDlet\\targets");
+      system("copy /V Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\examples\\examples.html Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\dist\\examples");
+      system("copy /V \\\\filerblr\\SP\\AM\\DT_SDK\\SDK_BIS\\Repository\\Java_API\\build.xml Z\:\\PublicSDK\\sdkcreationmw\\sdkexamples\\java\\dist\\examples\\IAPInfoMIDlet\\targets");
   }
 
 # =======================================================================
@@ -913,10 +941,8 @@ Options:\
     my $module = shift;
     dbg ("Checking $dir");
     foreach $t (@PLATFORMS) {
-      if (!-e "ABLD.BAT") {
-        run ("cmd /c bldmake.bat bldfiles");
-      }
-      run ("cmd /c abld.bat build -c $t $module");
+
+      run (" cmd /c sbs -c winscw $module");
     }
   }
 
@@ -930,15 +956,14 @@ Options:\
     chdir_or_die ($dir);
     chdir_to_build_specific_dir ();
     dbg ("Building in " . getcwd);
-    run ("cmd /c bldmake.bat bldfiles");
-    run ("cmd /c abld.bat export");
-    run ("cmd /c abld.bat makefile");
+ 
     foreach $bt (@VARIANTS) {
       if($REBUILD || $CLEAN) {
-        run_build_cmd ( "cmd /c abld.bat clean $bt");
+        run_build_cmd ( "cmd /c sbs clean");
       }
       if (!$CLEAN) {
-        run_build_cmd ( "cmd /c abld.bat -k build $bt");
+        # Build only for winscw , No need to build for ARM targets
+        run_build_cmd ( "cmd /c sbs -c winscw");
       }
     }
   }
@@ -956,10 +981,8 @@ Options:\
     };
     chdir_to_build_specific_dir ();
     dbg ("Checking " . getcwd);
-    if (!-e "ABLD.BAT") {
-      run ("cmd /c bldmake.bat bldfiles");
-    }
-    run ("cmd /c abld.bat build -c");
+    
+    run ("cmd /c sbs -c winscw");
   }
 
 
@@ -972,18 +995,14 @@ Options:\
     foreach $t (@PLATFORMS) {
       if (!$CLEAN) 
       {
-        run_build_cmd ( "cmd /c abld.bat makefile $t $module");
+        run_build_cmd ( "cmd /c sbs -m winscw");
       }
       foreach $bt (@VARIANTS) 
       {
-        if($REBUILD || $CLEAN) 
-        {
-          run_build_cmd ( "cmd /c abld.bat clean $t $bt $module");
-        }
-        if (!$CLEAN) 
-        {
-          	run_build_cmd ( "cmd /c abld.bat -k build $t $bt $module");
-        }
+          run_build_cmd ( "cmd /c sbs reallyclean");
+        
+          run_build_cmd ( "cmd /c sbs -c winscw");
+        
       }
     }
   }
@@ -1481,7 +1500,7 @@ Options:\
   sub do_s60ex_finalizing
 # ========================================================================
   {
-    my $s60ex_dir = $BUILD_ROOT . "$SDK_PROJ_NAME/ExamplesCpp/build";
+    my $s60ex_dir = $BUILD_ROOT . "$SDK_PROJ_NAME/tools_config/build";
     chdir_or_die ($s60ex_dir);
     run ("cmd /c finalize.bat");
   }
@@ -1500,13 +1519,39 @@ sub do_s60_rndtools_cleaning
       print "\n\n=== Clean up of rnd tools: $rndtools_cleandirs\n\n ===";
       chdir $rndtools_cleandirs or print  " WARNING: Can chdir to $rndtools_cleandirs: $!";
     
-      $cmd = "call bldmake bldfiles";
+ 
+
+      $cmd = "call sbs -m winscw";
       system ($cmd); #==0 or print ($cmd."\n\n");
 
-      $cmd = "call abld makefile";
-      system ($cmd); #==0 or print ($cmd."\n\n");
-
-      $cmd = "call abld reallyclean";
+      $cmd = "call sbs reallyclean";
       system ($cmd); #==0 or print ($cmd."\n\n");
     }
+  }
+# ========================================================================
+  sub do_Db_Update()
+# ========================================================================
+  {
+  	
+msg("Updating the commsDb\n");
+my $CommsDb_update = "${BUILD_ROOT}epoc32/release/winscw/udeb";
+chdir_or_die ($CommsDb_update);
+run ("cmd /c ced -dtextshell -- -i c:\\cedout.cfg");
+run ("cmd /c dbcreator -dtextshell --");
+msg("Finished Updating the commsDb\n");
+
+  }
+
+# ========================================================================
+  sub do_apply_patch_OptimiseEmulator
+# ========================================================================
+  {
+    #return 0 if (! -d optEmuPatch);
+    msg("Start Apply Emulator performance boost patching...");
+    my $optEmuPatch = $BUILD_ROOT . "OptimiseEmulator";
+    #Add patch path to System path
+    $ENV{'PATH'}=$optEmuPatch.";".$ENV{'PATH'};
+    chdir_or_die ($optEmuPatch);
+    run ("cmd /c OptimiseEmulator.bat");
+    msg("Finished Applying Emulator performance boost Patch...");
   }

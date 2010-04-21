@@ -2,7 +2,7 @@
 * Copyright (c) 2000 - 2005 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -45,10 +45,6 @@ public class PanConstants extends Object {
     protected static final String BLUETOOTH_ENABLE_LABEL = "bluetooth.enable.label";
     protected static final String BLUETOOTH_COM_PORT_LABEL = "bluetooth.com.port.label";
     protected static final String BLUETOOTH_COM_HCI_LABEL = "bluetooth.hci.label";
-    protected static final String IRDA_BORDER_TITLE = "irda.border.title";
-    protected static final String IRDA_DISABLE_LABEL = "irda.disable.label";
-    protected static final String IRDA_ENABLE_LABEL = "irda.enable.label";
-    protected static final String IRDA_COM_PORT_LABEL = "irda.com.port.label";
     
     /**
      * Creates a new instance of PanConstants

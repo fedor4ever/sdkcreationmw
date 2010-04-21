@@ -22,7 +22,7 @@
 #include <e32std.h>         // GLDEF_C
 #include <e32base.h>
 #include "MsgSession.h"
-#include "sysini.h"
+#include "..\..\..\..\sdkcommonutils\util\Inc\sysini.h"
 
 #define KInitialMessageBufferSize		1024
 

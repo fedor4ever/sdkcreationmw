@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtPushURLPlugin.mmp
+ecmtpushurlplugin.mmp
 
 //  End of File  

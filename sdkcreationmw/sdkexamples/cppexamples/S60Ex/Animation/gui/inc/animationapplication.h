@@ -2,7 +2,7 @@
 * Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -24,7 +24,7 @@
 
 // CONSTANTS
 // UID for the application; this should match the uid defined in the mmp file.
-static const TUid KUidAnimationApp = { 0xA000022D };
+static const TUid KUidAnimationApp = { 0xE000022D };
 
 // CLASS DECLARATION
 

@@ -20,20 +20,24 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtMsgRelayPluginUids.h"
 
-TARGET          EcmtMsgRelayPlugin.dll
+TARGET          ecmtmsgrelayplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KECMTMSGRELAYPLUGIN_DLL_UID
 CAPABILITY		CAP_ECOM_PLUGIN
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtMsgRelayPlugin.cpp MessageRelayAppDll.cpp
+SOURCE		ecmtmsgrelayplugin.cpp messagerelayappdll.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE	..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
+USERINCLUDE ..\..\..\..\sdkcommonutils\util\Inc
 SYSTEMINCLUDE	\epoc32\include
 SYSTEMINCLUDE	\epoc32\include\ecom
-SYSTEMINCLUDE	\epoc32\include\OpenLIB
+//SYSTEMINCLUDE	\epoc32\include\OpenLIB
+SYSTEMINCLUDE  \epoc32\include\platform
+SYSTEMINCLUDE  \epoc32\include\mw
+SYSTEMINCLUDE  \epoc32\include\platform\mw
 
 LIBRARY		euser.lib charconv.lib
 LIBRARY		efsrv.lib estor.lib gsmu.lib

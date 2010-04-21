@@ -2,7 +2,7 @@
 * Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -23,7 +23,7 @@
 /* UID for the application;
  * this should correspond to the uid defined in the mmp file
  */
-const TUid KUidHapticsExampleApp = { 0xA0007DFE };
+const TUid KUidHapticsExampleApp = { 0xE0007DFE };
 
 
 // ---------------------------------------------------------------------------

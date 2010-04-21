@@ -21,17 +21,17 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtEventSimPluginUids.h"
 
-TARGET          EcmtEventSimPlugin.dll
+TARGET          ecmteventsimplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KEVENTSIMPLUGIN_DLL_UID
 CAPABILITY      CAP_ECOM_PLUGIN -CommDD -MultimediaDD -SurroundingsDD -TrustedUI -DRM -NetworkControl
 VENDORID        VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtEventSimPlugin.cpp
-SOURCE		EventWrapper.cpp
-SOURCE		EcmtMMCEvent.cpp
-SOURCE 		WinsDrives.cpp
+SOURCE		ecmteventsimplugin.cpp
+SOURCE		eventwrapper.cpp
+SOURCE		ecmtmmcevent.cpp
+SOURCE 		winsdrives.cpp
 
 //MMC
 USERINCLUDE     ..\..\Common\inc

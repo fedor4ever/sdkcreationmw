@@ -2,7 +2,7 @@
 * Copyright (c) 2004-2005 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -20,6 +20,7 @@
 #include "wsock.h"
 #include "WinsockInterface.h"
 #include "WinsockProtocolFamily.h"
+#include <es_enum_partner.h>
 
 const TInt KWinsockSubConnectionId = 1;
 const TConnectionType EWinsockConnectionType = EConnectionEthernet;
@@ -250,7 +251,7 @@ TInt CWinsockInterface::Control(TUint aLevel,TUint aName,TDes8& aOption,
     TRACE3("Control(%d,%08X), %d bytes",aLevel,aName,aOption.Length());
 	switch (aLevel)
     {
-    case KCOLInterface:
+  /*  case KCOLInterface:
         switch (aName)
         {
         case KCOGetNifEMIPtr:
@@ -273,7 +274,7 @@ TInt CWinsockInterface::Control(TUint aLevel,TUint aName,TDes8& aOption,
             break;
         }
         break;
-
+*/
     case KCOLAgent:
         switch (aName)
         {

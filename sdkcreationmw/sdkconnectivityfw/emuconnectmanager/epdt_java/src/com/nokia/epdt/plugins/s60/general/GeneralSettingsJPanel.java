@@ -2,7 +2,7 @@
 * Copyright (c) 2000 - 2005 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -204,7 +204,10 @@ public class GeneralSettingsJPanel extends javax.swing.JPanel
 		 resourceBundle.getString("startlist.description")));
 		 add(startListPanel);
 		 */
-		startListPanel = new JPanel();
+		
+		
+		
+		/*startListPanel = new JPanel();
 		startListPanel.setLayout(new SpringLayout());
 		startListPanel.setBorder(new TitledBorder(resourceBundle
 				.getString("startlist.border.title")));
@@ -235,7 +238,10 @@ public class GeneralSettingsJPanel extends javax.swing.JPanel
 		SpringUtilities.makeCompactGrid(startListPanel, 2, 2,//rows cols
 				GAP * 2, 0,//left and top margins
 				GAP, 0);//gaps between elements
-		add(startListPanel);
+		add(startListPanel);*/
+		
+		
+		
 		// Warning panel
 		JPanel warning = new JPanel(new BorderLayout(5, 5));
 		warning.add(GUI.createTextComponent(resourceBundle
@@ -249,7 +255,7 @@ public class GeneralSettingsJPanel extends javax.swing.JPanel
 			warning.add(warningIcon, BorderLayout.WEST);
 		}
 		add(warning);
-		warning.setBounds(10, 300, 340, 370);
+		warning.setBounds(10, 200, 340, 370);
 	}//GEN-END:initComponents
 
 	public void actionPerformed(java.awt.event.ActionEvent e)
@@ -281,11 +287,12 @@ public class GeneralSettingsJPanel extends javax.swing.JPanel
 		}
 		model.saveSelectedResolution((String) resolutionComboBox
 				.getSelectedItem());
-		model.saveStartMode(trimmedListButton.isSelected());
-		
 		
 		//Change for non critical starter mode
-		model.saveStarterNonCriticalMode(trimmedListButton.isSelected());
+		//Pranav: Commented as startup mode setting is not require.
+		//TODO: Code cleanup is require.
+		//model.saveStartMode(trimmedListButton.isSelected());
+		//model.saveStarterNonCriticalMode(trimmedListButton.isSelected());
 		configurator.saveSettings();
 
 	}

@@ -23,4 +23,5 @@ PRJ_MMPFILES
 //nmakefile instregw.mk
 nmakefile sdkw.mk
 nmakefile sdk.mk
+..\..\..\sdkcommonutils\util\group\Openlib.mmp
 #endif

@@ -2,7 +2,7 @@
 ; Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
 ; All rights reserved.
 ; This component and the accompanying materials are made available
-; under the terms of "Eclipse Public License v1.0"
+; under the terms of the License "Eclipse Public License v1.0"
 ; which accompanies this distribution, and is available
 ; at the URL "http://www.eclipse.org/legal/epl-v10.html".
 ;
@@ -17,7 +17,7 @@
 ;Languages
 &EN
 ; Package header
-#{"CommonDialogsEx"},(0xA0007DFD),1, 0, 0, TYPE=SA
+#{"CommonDialogsEx"},(0xE0007DFD),1, 0, 0, TYPE=SA
 
 ;
 ;Localised Vendor name
@@ -41,4 +41,4 @@
 ;
 ; Backup & Restore
 ;
-;"backup_registration.xml"-"!:\private\0xA0007DFD\backup_registration.xml"
+;"backup_registration.xml"-"!:\private\0xE0007DFD\backup_registration.xml"

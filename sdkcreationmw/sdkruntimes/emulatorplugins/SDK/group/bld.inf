@@ -21,7 +21,7 @@ WINSCW
 
 PRJ_MMPFILES
 #ifdef WINS
-EcmtSDKPlugin.mmp
+ecmtsdkplugin.mmp
 #endif
 
 //  End of File  

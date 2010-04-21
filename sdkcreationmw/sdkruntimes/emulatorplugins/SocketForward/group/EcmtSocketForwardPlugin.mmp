@@ -21,7 +21,7 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtSocketForwardPluginUids.h"
 
-TARGET          EcmtSocketForwardPlugin.dll
+TARGET          ecmtsocketforwardplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KSOCKETFORWARDPLUGIN_DLL_UID
 
@@ -34,8 +34,8 @@ CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtSocketForwardPlugin.cpp
-SOURCE		SymbianSocket.cpp
+SOURCE		ecmtsocketforwardplugin.cpp
+SOURCE		symbiansocket.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

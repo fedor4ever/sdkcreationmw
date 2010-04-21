@@ -2,7 +2,7 @@
 * Copyright (c) 2004-2006 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -20,12 +20,12 @@ PRJ_PLATFORMS
 
 PRJ_MMPFILES
 
-gnumakefile ..\gameUI_series60\group\icons_scalable.mk
+gnumakefile ..\gameUI\group\icons_scalable.mk
 
 ..\sipengine\group\SIPExSIPEngine.mmp
 ..\socketengine\group\SIPExSocketEngine.mmp
 ..\gameengine\group\gameengine.mmp
-..\gameUI_series60\group\ui.mmp
+..\gameUI\group\ui.mmp
 ..\resolverplugin\group\resolverplugin.mmp
 
 //  End of File  

@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtSimPsyPlugin.mmp
+ecmtsimpsyplugin.mmp
 
 //  End of File  

@@ -2,7 +2,7 @@
 * Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -24,22 +24,5 @@ PRJ_MMPFILES
 // Specify the .mmp files required for building the important component
 // releasables. 
 
-#ifdef _CARBIDE_CPP_
-
 gnumakefile icons_scalable_dc.mk
-MyView_s60_3rd_ed.mmp
-
-#else
-
-#ifdef EKA2
-
-gnumakefile icons_scalable_dc.mk
-MyView_s60_3rd_ed.mmp
-
-#else
-
-MyView_s60_2nd_ed.mmp
-
-#endif //EKA2
-
-#endif //_CARBIDE_CPP_
+MyView.mmp

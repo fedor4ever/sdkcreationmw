@@ -2,7 +2,7 @@
 * Copyright (c) 2003 - 2004 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -558,18 +558,37 @@ public class EmulatorLauncher implements SystemExitListener {
 	 */
 	protected void assignSessionPorts() throws Exception {
 		Debug.println(this, "+EmulatorLauncher.assignSessionPorts()");
-		// find free verbose port
-		int consolePort = iSession.getFreePort();
-		iVMLaunchArguments.getVMArguments().setVMConsolePort(consolePort);
-		Debug.println(this, "console port: " + consolePort);
+		
+		String[] comm = (String[])iSEICommand.getArguments();
+		for (int i = 0; i < comm.length; i++) {
+			System.out.println(comm[i]);
+		}
+		
+		/* Pranav: 
+		 * Console IP address & port were part of the IDE VM arguments.  
+		 * Those were being used for console/Diagnostic output. Not required...code removed from here..
+		 */ 
+		
 		if (iMode == DEBUG_MODE) {
-			// Emulator in server mode:
-			// Phone VM connects to the port in command line
-			// Emulator in client mode:
-			// Phone VM listens on the port given
-			iVMLaunchArguments.getVMArguments().setVMDebugPort(
-					iSEICommand.getVMRemotePort(),
-					iSEICommand.isEmulatorServerMode());
+			// Emulator in server mode: Phone VM connects to the port in command line
+			// Emulator in client mode: Phone VM listens on the port given
+			
+			//Pranav: Write VM arguments for MIDlet Debug from the iSEICommand
+			String[] seiCommands = (String[])iSEICommand.getArguments();
+			
+			String parmaDebug = "";
+			String paramJdwp = "";
+			for (int i = 0; i < seiCommands.length; i++) {
+				System.out.println(seiCommands[i]);
+				if (seiCommands[i].startsWith("-Xdebug")) parmaDebug = seiCommands[i];
+				else if (seiCommands[i].startsWith("-Xrunjdwp")) paramJdwp = seiCommands[i];
+				
+				if(!parmaDebug.equals("") && !paramJdwp.equals("")){
+					break;
+				}
+			}
+			iVMLaunchArguments.getVMArguments().setVMDebugPort(iSEICommand.getVMRemotePort(), parmaDebug.trim(), paramJdwp.trim());
+			
 			Debug.println(this, "debug port: " + iSEICommand.getVMRemotePort());
 		}
 	}
@@ -632,41 +651,6 @@ public class EmulatorLauncher implements SystemExitListener {
 			lib = new File(new File(SDKRuntimeProperties.EPOC_HOME)
 					.getParentFile().getParentFile(), "lib");
 		}
-		/*if (lib.isDirectory()) {
-			String[] jars = lib.list(new FilenameFilter() {
-				public boolean accept(File dir, String name) {
-					return (name.toLowerCase().endsWith(".jar") || name
-							.toLowerCase().endsWith(".zip"));
-				}
-			});
-			if (jars != null && jars.length > 0) {
-				for (int i = 0; i < jars.length; i++) {
-					JarFile jarFile = new JarFile(lib.getAbsolutePath()
-							+ File.separatorChar + jars[i]);
-					Manifest manifest = jarFile.getManifest();
-					if(manifest != null)
-					{
-						Attributes atr = manifest.getMainAttributes();
-						String apiName = atr.getValue("API");
-						String apiVersion = atr
-								.getValue("API-Specification-Version");
-						if(!apiName.equalsIgnoreCase("CLDC") && !apiName.equalsIgnoreCase("MIDP")){
-							if(optionalApis.length()>0){ optionalApis.append(", ");}
-							optionalApis.append(apiName + "-" + apiVersion);
-						}
-					}
-				}
-
-				// TODO
-				// 1) Form an array of API names from jar manifests:
-				// profile, configuration, optionalAPIs
-				// 2) Form an array of API names from properties file
-				// 3) Form resulting array of API names:
-				// add an api to the array 1. from JAR array,
-				// if absent - from properties array
-
-			}
-		}*/
 		
 		if (lib.isDirectory()) {
 			String[] jars = lib.list(new FilenameFilter() {
@@ -700,24 +684,8 @@ public class EmulatorLauncher implements SystemExitListener {
 					}
 				}
 
-				// TODO
-				// 1) Form an array of API names from jar manifests:
-				// profile, configuration, optionalAPIs
-				// 2) Form an array of API names from properties file
-				// 3) Form resulting array of API names:
-				// add an api to the array 1. from JAR array,
-				// if absent - from properties array
-
 			}
 		}
-		/*for (int i = 0; i < defaultOptionalApis.length; i++) {
-			String defaultApiName = defaultOptionalApis[i]
-					.substring(0, defaultOptionalApis[i].indexOf('-'));
-			if (optionalApis.indexOf(defaultApiName) == -1) {
-				optionalApis.append(", " + defaultOptionalApis[i]);
-			}
-		}*/
-
 		System.out.println("Profile: " + profile);
 		System.out.println("Configuration: " + configuration);
 		System.out.println("Optional: " + optionalApis);
@@ -875,6 +843,7 @@ public class EmulatorLauncher implements SystemExitListener {
 			String epocLine = "";
 			String resolutionFileName = "";
 			while ((epocLine = bReader.readLine()) != null) {
+				if (!epocLine.equals("")){
 				if (epocLine.substring(0, epocLine.indexOf(" ")).trim().equals(
 						"configuration")) {
 					
@@ -904,6 +873,7 @@ public class EmulatorLauncher implements SystemExitListener {
 					param.add(height);
 					
 					break;
+				}
 				}
 			}
 		} catch (Exception e) {

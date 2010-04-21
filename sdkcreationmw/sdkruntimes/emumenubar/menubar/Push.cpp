@@ -38,6 +38,7 @@
 #include <PushMessage.h>
 #include <PushDispatcher.h>
 #include <CPushHandlerBase.h>
+#include <viewclipartner.h>
 
 // We define CWatcherLog locally because CWatcherLog::NewL is not
 // exported from watcher.dll

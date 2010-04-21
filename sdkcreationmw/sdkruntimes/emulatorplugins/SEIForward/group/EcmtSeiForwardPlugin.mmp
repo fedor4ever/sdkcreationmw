@@ -20,16 +20,16 @@
 #include "..\..\..\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtSeiForwardPluginUids.h"
 
-TARGET          EcmtSeiForwardPlugin.dll
+TARGET          ecmtseiforwardplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KSEIFORWARDPLUGIN_DLL_UID
 CAPABILITY		CAP_ECOM_PLUGIN
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtSeiForwardPlugin.cpp
-SOURCE		SocketListener.cpp
-SOURCE		SymbianSocket.cpp
+SOURCE		ecmtseiforwardplugin.cpp
+SOURCE		socketlistener.cpp
+SOURCE		symbiansocket.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\Core\inc

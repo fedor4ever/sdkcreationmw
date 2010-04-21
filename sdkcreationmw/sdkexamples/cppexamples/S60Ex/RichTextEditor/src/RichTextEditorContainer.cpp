@@ -2,7 +2,7 @@
 * Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -25,10 +25,8 @@
 #include <RichTextEditor.rsg> // Demo Text Buffer
 #include "mypicture.h"   // CMyPicture 
 #include <AknUtils.h>	
-
-#ifdef __SERIES60_3X__
 #include <eikapp.h>
-#endif
+
 
 // ================= MEMBER FUNCTIONS =======================
 
@@ -75,17 +73,7 @@ void CRTEContainer::Prepare()
 //
 void CRTEContainer::PrepareBitmapL()
 	{
-	#ifndef __SERIES60_3X__
-	TFileName name(KImageBitmapFile);
-	CompleteWithAppPath( name );
-	// windows build wants to install apps on rom drive ( "z:\" )
-	// but we want the data from "c:\" instead
-	#ifdef __WINS__
-	name[ 0 ] = 'C';
-	#endif
-
-    #else // 3rd ed
-
+	
     RFs fsSession;
     User::LeaveIfError(fsSession.Connect());
     CleanupClosePushL( fsSession );
@@ -100,7 +88,7 @@ void CRTEContainer::PrepareBitmapL()
     name.Insert( 0, parse.Drive() );
     #endif
 
-	#endif
+	
 
 	// Create and Load the Bitmap
 	CFbsBitmap* bitmap = new( ELeave )CFbsBitmap;
@@ -110,9 +98,9 @@ void CRTEContainer::PrepareBitmapL()
 	iBitmap->AppendL(bitmap);
 
 	CleanupStack::Pop(); //bitmap - container free bitmap at the destructor
-	#ifdef __SERIES60_3X__
+	
     CleanupStack::PopAndDestroy(1, &fsSession);
-    #endif
+  
 	// last item in iBitmap array is ready to Insert
 	}
 
@@ -258,17 +246,14 @@ void CRTEContainer::SizeChanged()
 	TInt StatusLineHeight = iStatusLine->Font()->HeightInPixels()+6;
 	iStatusLine->SetExtent(TPoint(0, 0),TSize(rect.Width(), StatusLineHeight));
 	
-	#ifdef __SERIES60_3X__
+	
 	TRect ScrollBarRect = iRtEd->ScrollBarFrame()->VerticalScrollBar()->Rect();
 	//In 3rd edition CEikRichTextEditor draw the view for the whole rect and
 	//the scrollbar doesn't show. That is a reason why CEikRichTextEditor Width() is
 	//rect.Width()-ScrollBarRect.Width()
 	iRtEd->SetExtent(TPoint(0,StatusLineHeight), 
 		TSize(rect.Width()-ScrollBarRect.Width(), rect.Height()-StatusLineHeight));
-	#else
-    iRtEd->SetExtent(TPoint(0,StatusLineHeight), 
-    	TSize(rect.Width(), rect.Height()-StatusLineHeight));
-    #endif
+	
     }
 
 // ---------------------------------------------------------
@@ -378,7 +363,7 @@ void CRTEContainer::SetCharacterBIUAttribL(CEikGlobalTextEditor::TFontStyleFlags
 	Echo(R_TYPE_DIALOG_TBUF_INDICATOR_CHARACTER_FORMAT);
 	}
 	
-#ifdef __SERIES60_3X__
+
 // ----------------------------------------------------
 // SetFont(TInt aFontId)
 // Change the text's font in the editor 
@@ -401,30 +386,6 @@ void CRTEContainer::SetFont(TInt aFontId)
 
 	Echo(R_TYPE_DIALOG_TBUF_INDICATOR_FONT);
 	}
-#else
-// ----------------------------------------------------
-// SetFont(const CFont *aFont)
-// Change the text's font in the editor 
-// to the one specified as input parameter for the function 
-// ----------------------------------------------------
-void CRTEContainer::SetFont(const CFont *aFont)
-	{	
-		/*
-	TCursorSelection cs = iRtEd->Selection();
-	
-	SetSelectionL(cs.iCursorPos, cs.iAnchorPos-1);
-	*/
-    TFontSpec fontspec = aFont->FontSpecInTwips();
-    TCharFormat charFormat( fontspec.iTypeface.iName, fontspec.iHeight );
-    TCharFormatMask charFormatMask;
-
-    charFormatMask.SetAttrib(EAttFontTypeface);
-    charFormatMask.SetAttrib(EAttFontHeight);
-	iRtEd->ApplyCharFormatL(charFormat, charFormatMask);
-
-	Echo(R_TYPE_DIALOG_TBUF_INDICATOR_FONT);
-	}
-#endif
 // ----------------------------------------------------
 // Strike()
 // Toggle between strikethrough or not strikethrough text

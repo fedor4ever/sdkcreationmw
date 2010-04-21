@@ -2,7 +2,7 @@
 * Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -31,7 +31,7 @@
 // CONSTANTS
 const TInt KAknExQueryTextBufLength = 128;
 
-#define KAknExQueryGray TRgb( 0xaaaaaa )
+#define KAknExQueryGray TRgb( 0xEaaaaa )
 #define AKNEXQUERY_LABEL_ORIGIN TPoint( 0, 0 )
 #define AKNEXQUERY_LABEL2_POSITION TPoint( 0, 20 )
 

@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtHttpTrafficPlugin.mmp
+ecmthttptrafficplugin.mmp
 
 //  End of File  

@@ -20,6 +20,6 @@ PRJ_PLATFORMS
 DEFAULT
 
 PRJ_MMPFILES
-EcmtSEIAgentPlugin.mmp
+ecmtseiagentplugin.mmp
 
 //  End of File  

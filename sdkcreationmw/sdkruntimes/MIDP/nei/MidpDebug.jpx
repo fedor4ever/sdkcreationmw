@@ -22,7 +22,7 @@
   <property category="runtime.0" name="ConfigurationName" value="Debug"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
   <property category="runtime.0" name="application.class" value="com.symbian.tools.j2me.sei.emulator.Main"/>
-  <property category="runtime.0" name="application.parameters" value="-Xdevice:S60Emulator -Xdebug -Xrunjdwp:transport=dt_socket,address=2690,server=y -Xdescriptor:&quot;C:\USERS\slava\projects\midp\chess\jar\chess.jad&quot;"/>
+  <property category="runtime.0" name="application.parameters" value="-Xdevice:SymbianEmulator -Xdebug -Xrunjdwp:transport=dt_socket,address=2690,server=y -Xdescriptor:&quot;C:\USERS\slava\projects\midp\chess\jar\chess.jad&quot;"/>
   <property category="runtime.0" name="application.vmparameters" value="-Dsei.trace=true -Dsei.trace.all=true -Depoc.root=z:/ -Dsdk.home=Z:\Series60SDK_dev\Series60_tools\MIDP\dist\S60_3rd_MIDP_SDK -Dxrpc.logon-id=000000000015D665"/>
   <property category="serverservices" name="disabled.services" value=""/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>

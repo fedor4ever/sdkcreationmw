@@ -2,7 +2,7 @@
 ; Copyright (c) 2004 - 2006 Nokia Corporation and/or its subsidiary(-ies).
 ; All rights reserved.
 ; This component and the accompanying materials are made available
-; under the terms of "Eclipse Public License v1.0"
+; under the terms of the License "Eclipse Public License v1.0"
 ; which accompanies this distribution, and is available
 ; at the URL "http://www.eclipse.org/legal/epl-v10.html".
 ;
@@ -11,14 +11,14 @@
 ;
 ; Contributors:
 ;
-; Description: 
+; Description:
 ;
 
 ; Languages
 &EN
 
 ; Header
-#{"Query Example"},(0xA0000232),1,0,0
+#{"Query Example"},(0xE0000232),1,0,0
 
 ;Localised Vendor name
 %{"Vendor-EN"}
@@ -34,8 +34,8 @@
 "..\..\..\epoc32\data\z\resource\apps\AknExQuery.rsc"            -"!:\resource\apps\AknExQuery.rsc"
 "..\..\..\epoc32\data\z\private\10003a3f\import\apps\AknExQuery_reg.rsc"  -"!:\private\10003a3f\import\apps\AknExQuery_reg.rsc"
 "..\..\..\epoc32\data\z\resource\apps\AknExQuery_aif.mif"            -"!:\resource\apps\AknExQuery_aif.mif"
-"..\..\..\epoc32\data\z\private\A0000232\aknexquery.mbm"	        -"!:\private\A0000232\aknexquery.mbm"
-"..\..\..\epoc32\data\z\private\A0000232\aknexquery.mif"	        -"!:\private\A0000232\aknexquery.mif"
+"..\..\..\epoc32\data\z\private\E0000232\aknexquery.mbm"	        -"!:\private\E0000232\aknexquery.mbm"
+"..\..\..\epoc32\data\z\private\E0000232\aknexquery.mif"	        -"!:\private\E0000232\aknexquery.mif"
 
 ;required for application to be covered by backup/restore facility
-;"backup_registration.xml"						-"!:\private\A0000232\backup_registration.xml"
+;"backup_registration.xml"						-"!:\private\E0000232\backup_registration.xml"

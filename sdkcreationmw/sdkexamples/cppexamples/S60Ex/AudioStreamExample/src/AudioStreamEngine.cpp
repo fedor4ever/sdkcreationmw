@@ -2,7 +2,7 @@
 * Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -33,13 +33,9 @@
 // returns audio data in 4096-byte chunks. In 2nd Edition, ReadL() returns data in 320-byte
 // chunks.
 
-#ifdef __SERIES60_3X__  // 3rd Edition
+
 const TInt KFrameSizePCM = 4096;
 const TInt KFrameCountPCM = 10;
-#else // 2nd Edition
-const TInt KFrameSizePCM = 320;
-const TInt KFrameCountPCM = 128;
-#endif
 
 // Audio data buffer size for AMR encoding. For AMR, the buffer size is the same in
 // both 2nd and 3rd Edition devices (20 ms per frame, a total of 2560 ms in 128 frames).
@@ -97,22 +93,10 @@ void CAudioStreamEngine::ConstructL()
 	iStreamStart=0;
 	iStreamEnd=iFrameCount - 1;
 	
-	#ifdef __SERIES60_3X__    
-	// Only in 3rd Edition. The sample.aud/amr can be found in \private\<UID3>\ folder.
-    	User::LeaveIfError( iFs.CreatePrivatePath( EDriveC ) );
+
+
+   	User::LeaveIfError( iFs.CreatePrivatePath( EDriveC ) );
 		User::LeaveIfError( iFs.SetSessionToPrivate( EDriveC ) );
-	#else
-		#ifndef __WINS__  // don't save settings to z-drive in emulator
-			// In 2nd Ed device the sample.aud/amr will be in \system\apps\audiostream\ folder.
-    		TFileName appFullName = iAppUi->Application()->AppFullName();
-    		TParsePtr appPath(appFullName);
-	    	iAudioFilePath = appPath.DriveAndPath();
-		#else 
-			// For 2nd Ed emulator
-			iAudioFilePath.Append(KEmulatorPath);
-		#endif //__WINS__
-		
-	#endif
 	}
 
 // ----------------------------------------------------------------------------
@@ -186,15 +170,7 @@ void CAudioStreamEngine::Play()
 	// Open output stream.
 	// Upon completion will receive callback in 
 	// MMdaAudioOutputStreamCallback::MaoscOpenComplete().
-	#ifndef __SERIES60_3X__  // Not 3rd Ed
-		// Some 2nd Edition, FP2 devices (such as Nokia 6630) require the stream to be
-		// reconstructed each time before calling Open() - otherwise the callback
-		// never gets called.
-		if (iOutputStream) delete iOutputStream;
-		iOutputStream = NULL; // In case the following NewL leaves
-		TRAPD(err, iOutputStream = CMdaAudioOutputStream::NewL(*this));
-		PanicIfError(err);
-	#endif
+
 	iOutputStream->Open(&iStreamSettings);
 	}
 
@@ -216,15 +192,7 @@ void CAudioStreamEngine::Record()
 	// Open input stream.
 	// Upon completion will receive callback in 
 	// MMdaAudioInputStreamCallback::MaiscOpenComplete().
-	#ifndef __SERIES60_3X__  // Not 3rd Ed
-		// Some 2nd Edition, FP2 devices (such as Nokia 6630) require the stream to be
-		// reconstructed each time before calling Open() - otherwise the callback
-		// never gets called.
-		if (iInputStream) delete iInputStream;
-		iInputStream = NULL; // In case the following NewL leaves
-		TRAPD(err, iInputStream = CMdaAudioInputStream::NewL(*this));
-		PanicIfError(err);
-	#endif
+
 	iInputStream->Open(&iStreamSettings);
 	}
 
@@ -538,14 +506,7 @@ void CAudioStreamEngine::MaiscBufferCopied(TInt aError, const TDesC8& /*aBuffer*
 			// MaiscRecordComplete() will not be called either after exiting this method.
 			// In 3rd Edition, however, iInputStream->Stop() MUST be called in order to reach
 			// MaiscRecordComplete(), otherwise the stream will "hang".
-			#ifdef __SERIES60_3X__
-				// It appears that in 3.2 also calling Stop() here causes crash.
-				// Instead we let MMF to detect that buffer becomes full. It will
-				// then call MaiscRecordComplete() with status KErrOverflow.
-				// Input stream will be stopped there.
-
-				// iInputStream->Stop();
-			#endif
+			
 		    return;
 		  	}		
 		
@@ -670,9 +631,9 @@ void CAudioStreamEngine::MaoscBufferCopied(TInt aError, const TDesC8& /*aBuffer*
 			// MaiscRecordComplete() will not be called either after exiting this method.
 			// In 3rd Edition, however, iOutputStream->Stop() MUST be called in order to reach
 			// MaiscRecordComplete(), otherwise the stream will "hang".
-			#ifdef __SERIES60_3X__
+			
 				iOutputStream->Stop();
-			#endif
+			
 			}
 		else 
 			{

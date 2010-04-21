@@ -19,7 +19,7 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtMidpDebugPluginUids.h"
 
-TARGET      EcmtMidpDebugPlugin.dll
+TARGET      ecmtmidpdebugplugin.dll
 TARGETTYPE  PLUGIN
 
 #ifdef WINS
@@ -33,10 +33,10 @@ CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
 UID KECOM_DLL_UID KECMT_MIDP_DEBUG_PLUGIN_UID
 
 SOURCEPATH    ..\src
-SOURCE        EcmtMidpDebugPlugin.cpp
-SOURCE        EcmtMidpDebugSession.cpp
-SOURCE        EcmtMidpDebugConnection.cpp
-SOURCE        EcmtMidpDebugTrace.cpp
+SOURCE        ecmtmidpdebugplugin.cpp
+SOURCE        ecmtmidpdebugsession.cpp
+SOURCE        ecmtmidpdebugconnection.cpp
+SOURCE        ecmtmidpdebugtrace.cpp
 
 USERINCLUDE   ..\inc
 USERINCLUDE   ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

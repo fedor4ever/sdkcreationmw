@@ -20,7 +20,7 @@
 #include "..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc\EcmtUids.h"
 #include "..\inc\EcmtTaskManagerPluginUids.h"
 
-TARGET          EcmtTaskManagerPlugin.dll
+TARGET          ecmttaskmanagerplugin.dll
 TARGETTYPE      PLUGIN
 UID             KECOM_DLL_UID KTASKMANAGERPLUGIN_DLL_UID
 
@@ -33,8 +33,8 @@ CAPABILITY      CAP_ECOM_PLUGIN -AllFiles -DRM
 VENDORID		VID_DEFAULT
 
 SOURCEPATH	..\src
-SOURCE		EcmtTaskManagerPlugin.cpp
-SOURCE		MovingAverage.cpp
+SOURCE		ecmttaskmanagerplugin.cpp
+SOURCE		movingaverage.cpp
 
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc

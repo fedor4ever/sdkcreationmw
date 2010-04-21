@@ -21,7 +21,7 @@ DEFAULT
 
 PRJ_MMPFILES
 #ifdef WINS
-EcmtNCIPlugin.mmp
+ecmtnciplugin.mmp
 #endif //WINS
 
 //  End of File  

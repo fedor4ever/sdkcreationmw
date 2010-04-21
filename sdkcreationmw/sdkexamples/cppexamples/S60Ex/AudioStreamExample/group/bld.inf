@@ -2,7 +2,7 @@
 * Copyright (c) 2006 - 2007 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -19,21 +19,14 @@
 
 PRJ_MMPFILES
 
-#ifdef EKA2	// S60 3rd Ed
-audiostream_s60_3rd_ed.mmp
-#else // S60 2nd Ed
-audiostream_s60_2nd_ed.mmp
-#endif
+
+audiostream.mmp
 
 PRJ_EXPORTS
 // Specify the source file followed by its destination here
 // copy will be used to copy the source file to its destination
 // If there's no destination then the source file will be copied
 // to the same name in \epoc32\include
-#ifdef EKA2 // S60 3rd Ed
+
 ..\data\sample.aud ..\winscw\c\private\e01ff1c3\sample.aud
 ..\data\sample.amr ..\winscw\c\private\e01ff1c3\sample.amr
-#else // S60 2nd Ed
-..\data\sample.aud ..\winscw\c\system\Apps\audiostream\sample.aud
-..\data\sample.amr ..\winscw\c\system\Apps\audiostream\sample.amr
-#endif

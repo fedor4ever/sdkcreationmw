@@ -138,6 +138,7 @@ $ENV{BUILD_ROOT} = $BUILD_ROOT;
 
   # These affect everything...
   $ENV{EPOCROOT} = $EPOCROOT;
+  $ENV{SBS_HOME} = "C:/apps/sbs";
   $ENV{PATH} = $rvct_bin . "$PS$ENV{JAVA_HOME}$FS" . "bin$PS" .
                "$ant_dir$FS" . "bin$PS" .
                "$python_dir$PS" .
@@ -146,9 +147,9 @@ $ENV{BUILD_ROOT} = $BUILD_ROOT;
                "$cw_tool_dir$PS$cw_bin_dir$PS" .
                "$msdev_dir$PS$cl_dir$PS$perl_path$PS" .
                "$ENV{SystemRoot}$PS" . "$ENV{SystemRoot}$FS" . "system32$PS" .
-               "$doxy_bin";
+               "$doxy_bin" . "C:/apps/sbs/bin";
 
-#  print "$ENV{JAVA_HOME}\n$ENV{EPOCROOT}\n$ENV{BUILD_ROOT}\n$ENV{MWCIncludes}\n$ENV{PATH}\n$ENV{RVCT21INC}\n$ENV{RVCT21LIB}\n$ENV{ARMROOT}\n";
+  print "$ENV{JAVA_HOME}\n$ENV{EPOCROOT}\n$ENV{BUILD_ROOT}\n$ENV{MWCIncludes}\n$ENV{PATH}\n$ENV{RVCT21INC}\n$ENV{RVCT21LIB}\n$ENV{ARMROOT}\n";
 
 # ======================================================================+
   sub find_prog_or_die

@@ -2,7 +2,7 @@
 * Copyright (c) 2003 - 2004 Nokia Corporation and/or its subsidiary(-ies).
 * All rights reserved.
 * This component and the accompanying materials are made available
-* under the terms of "Eclipse Public License v1.0"
+* under the terms of the License "Eclipse Public License v1.0"
 * which accompanies this distribution, and is available
 * at the URL "http://www.eclipse.org/legal/epl-v10.html".
 *
@@ -11,7 +11,7 @@
 *
 * Contributors:
 *
-* Description: 
+* Description:
 *
 */
 
@@ -27,8 +27,8 @@ import com.symbian.utils.Debug;
 
 public class KDPPreferences implements Serializable {
 
-  public static final String EMULATOR_SESSION_NAME = "S60Emulator";
-  public static final String DEVICE_SESSION_NAME = "S60Device";
+  public static final String EMULATOR_SESSION_NAME = "SymbianEmulator";
+  public static final String DEVICE_SESSION_NAME = "SymbianDevice";
   
   //
   // Constant default values

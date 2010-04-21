@@ -17,7 +17,7 @@
 
 #include <platform_paths.hrh>
 
-TARGET          AsyStub.dll
+TARGET          asystub.dll
 TARGETTYPE      PLUGIN
 VENDORID        VID_DEFAULT
 
@@ -28,12 +28,12 @@ CAPABILITY      CAP_ECOM_PLUGIN
 
 SOURCEPATH      ..\src
 
-SOURCE          ASYStubProxy.cpp
-SOURCE          ASYStubCmdHandlerBase.cpp
-SOURCE          ASYStubMainServiceBase.cpp
-SOURCE          ASYStubObserver.cpp
-SOURCE          ASYStubService.cpp
-SOURCE          AsyStubCmdObserver.cpp
+SOURCE          asystubproxy.cpp
+SOURCE          asystubcmdhandlerbase.cpp
+SOURCE          asystubmainservicebase.cpp
+SOURCE          asystubobserver.cpp
+SOURCE          asystubservice.cpp
+SOURCE          asystubcmdobserver.cpp
 
 USERINCLUDE     ..\inc
 
