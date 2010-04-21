@@ -1,0 +1,46 @@
+
+TARGET          w3sock.dll
+TARGETTYPE       PLUGIN
+
+#include "../inc/WinsockUid.h"
+
+UID 0x10009D8D KW3sockProtocolUid
+
+SOURCEPATH      ..\src
+SOURCE             winsockflow.cpp 
+SOURCE             winsockmcpr.cpp
+SOURCE  	       winsockbinders.cpp
+SOURCE             winsockmcprfactory.cpp
+SOURCE             winsockflowfactory.cpp
+SOURCE		       winsockprovision.cpp
+SOURCE             ecom_impl.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE	    ../../../../sf/os/networkingsrv/linklayercontrol/networkinterfacemgr/agentprcore/inc
+USERINCLUDE	    ../../../../sf/os/networkingsrv/linklayercontrol/networkinterfacemgr/agentpr/inc
+
+OS_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+LIBRARY mbufmgr.lib
+LIBRARY euser.lib 
+LIBRARY esocksvr.lib
+LIBRARY serverden.lib
+LIBRARY netmeta.lib
+LIBRARY coreproviders.lib
+LIBRARY commsfw.lib
+LIBRARY agentprcore.lib
+LIBRARY insock.lib
+LIBRARY nodemessages.lib
+LIBRARY meshmachine.lib
+LIBRARY netinterfaces.lib
+LIBRARY virtualconstructors.lib
+LIBRARY factories.lib
+
+START RESOURCE 10281DE7.rss
+TARGET w3sock.rsc
+END
+
+CAPABILITY CommDD PowerMgmt ReadDeviceData WriteDeviceData TrustedUI ProtServ NetworkControl NetworkServices LocalServices ReadUserData WriteUserData
+UNPAGED
+
