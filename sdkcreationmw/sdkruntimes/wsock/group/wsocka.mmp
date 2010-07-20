@@ -36,7 +36,9 @@ SOURCE          wsocka.cpp
 
 USERINCLUDE     ..\inc
 SYSTEMINCLUDE   \epoc32\include
-SYSTEMINCLUDE   \epoc32\include\comms-infras
+SYSTEMINCLUDE   \epoc32\include\platform
+SYSTEMINCLUDE   \epoc32\include\mw
+SYSTEMINCLUDE   \epoc32\include\platform\comms-infras
 
 LIBRARY         euser.lib 
 LIBRARY         wsock.lib 

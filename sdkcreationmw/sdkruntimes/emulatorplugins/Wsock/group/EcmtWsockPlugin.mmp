@@ -33,6 +33,7 @@ SOURCE		ecmtwsocksettings.cpp
 USERINCLUDE	..\inc
 USERINCLUDE     ..\..\..\..\sdkconnectivityfw\emuconnectserver\Core\inc
 SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\platform
 SYSTEMINCLUDE   \epoc32\include\ecom
 
 LIBRARY         euser.lib

@@ -56,7 +56,10 @@ SOURCE          WinsockUtils.cpp
 
 USERINCLUDE     ..\inc
 MW_LAYER_SYSTEMINCLUDE
-SYSTEMINCLUDE   \epoc32\include\comms-infras
+SYSTEMINCLUDE   \epoc32\include
+SYSTEMINCLUDE   \epoc32\include\platform
+SYSTEMINCLUDE   \epoc32\include\mw
+SYSTEMINCLUDE   \epoc32\include\platform\comms-infras
 
 LIBRARY         euser.lib
 LIBRARY         esock.lib
