@@ -174,8 +174,11 @@ void CWinsockInterface::DataSent(TUint aBytes)
         {
             int chunks = delta/iBytesSentGranularity;
             iBytesSentMark += chunks*iBytesSentGranularity;
-            iNotify->NotifyDataSent(KWinsockSubConnectionId,
-                delta*iBytesSentGranularity);
+            //
+            // Workaround for  Bug 3917 -  CWinsockInterface::DataSent calls NotifyDataSent which is not implemented.
+            //
+            // iNotify->NotifyDataSent(KWinsockSubConnectionId,
+            //    delta*iBytesSentGranularity);
         }
     }
 }
